@@ -3,12 +3,10 @@ package com.rndash.mbheadunit.canData
 import com.rndash.mbheadunit.CarCanFrame
 
 import java.lang.IndexOutOfBoundsException
-import kotlin.system.measureNanoTime
-import kotlin.system.measureTimeMillis
 
 
 @ExperimentalUnsignedTypes
-class DataSignal(private val name: String, val offset: Int, val len: Int) {
+class FrameSignal(private val name: String, val offset: Int, val len: Int) {
     private var storedValue : Int = 0
 
     fun setValue(raw: Int) {
@@ -33,17 +31,12 @@ class DataSignal(private val name: String, val offset: Int, val len: Int) {
     }
 
     fun processBits(bs: Array<Boolean>) {
-        if (this.len == 16) {
-            println("ME")
-        }
         if (offset + len > bs.size) {
             throw IndexOutOfBoundsException("$offset + $len > ${bs.size}")
         }
-        var value: Int = 0
+        var value = 0
         (0 until len).forEach {
-            if (bs[offset + it]) {
-                value = value or (1 shl it)
-            }
+            value = (value shl 1) or (if (bs[offset+it]) 1 else 0)
         }
         storedValue = value
     }
@@ -51,11 +44,11 @@ class DataSignal(private val name: String, val offset: Int, val len: Int) {
 
 
 @ExperimentalUnsignedTypes
-abstract class DataFrame {
+abstract class ECUFrame {
     abstract val name: String // CAN Frame name (ECU ID)
     abstract val id: Int // Can ID
     abstract val dlc: Int // Can DLC of ECU Frame
-    abstract val signals: List<DataSignal>
+    abstract val signals: List<FrameSignal>
 
     fun parseFrame(frame: CarCanFrame) {
         if (frame.canID != this.id) {

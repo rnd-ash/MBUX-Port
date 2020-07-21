@@ -22,9 +22,7 @@ class CarCanFrame(val canID: Int, var data: Array<Byte>) {
             try {
                 // Try to bit shift
                 (0 until 8).forEach { bit ->
-                    if (data[(index*8)+bit]) {
-                        byte = byte or (1 shl bit)
-                    }
+                    byte = (byte shl 1) or (if (data[(index*8)+(7-bit)]) 1 else 0)
                 }
             }
             // Frame wasn't complete. Ignore and leave result
@@ -87,7 +85,7 @@ class CarCanFrame(val canID: Int, var data: Array<Byte>) {
         val array = Array(this.dlc*8){false}
         this.data.forEachIndexed { index, byte ->
             (0 until 8).forEach { bit ->
-                array[(index*8)+bit] = ((byte.toInt() shr bit) and 1) == 1
+                array[(index*8)+(7-bit)] = ((byte.toInt() shr bit) and 1) == 1
             }
         }
         return array

@@ -5,6 +5,10 @@ import android.hardware.usb.UsbManager
 import com.hoho.android.usbserial.driver.UsbSerialDriver
 import com.hoho.android.usbserial.driver.UsbSerialPort
 import com.hoho.android.usbserial.driver.UsbSerialProber
+import com.rndash.mbheadunit.canData.CanBusB
+import com.rndash.mbheadunit.canData.CanBusC
+import com.rndash.mbheadunit.canData.canB.KLA_A1
+import com.rndash.mbheadunit.canData.canB.SAM_V_A2
 
 
 @ExperimentalStdlibApi
@@ -17,12 +21,9 @@ class CarComm(device: UsbDevice, manager: UsbManager) {
     }
 
     companion object {
-        var CAN_B_FRAMES = HashMap<Int, CarCanFrame>()
-        var CAN_C_FRAMES = HashMap<Int, CarCanFrame>()
         private var serialDevice : UsbSerialPort? = null
-
         fun sendFrame(targetBus: CANBUS_ID, canFrame: CarCanFrame) {
-            serialDevice!!.write( byteArrayOf(targetBus.id.toByte()) + canFrame.toByteArray().toByteArray() , 100);
+            serialDevice!!.write( byteArrayOf(targetBus.id.toByte()) + canFrame.toByteArray().toByteArray() , 100)
         }
     }
 
@@ -44,13 +45,15 @@ class CarComm(device: UsbDevice, manager: UsbManager) {
                     when(line[0]) {
                         'B' -> {
                             CarCanFrame.fromHexStr(line.drop(1))?.let {
-                                println(it)
-                                CAN_B_FRAMES[it.canID] = it
+                                if (it.canID == 0x0030) {
+                                    println(KLA_A1().apply { this.parseFrame(it) })
+                                }
+                                CanBusB.updateFrames(it)
                             }
                         }
                         'C' -> {
                             CarCanFrame.fromHexStr(line.drop(1))?.let {
-                                CAN_C_FRAMES[it.canID] = it
+                                CanBusC.updateFrames(it)
                             }
                         }
                         else -> {}

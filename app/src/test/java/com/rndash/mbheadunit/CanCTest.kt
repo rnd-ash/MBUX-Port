@@ -1,7 +1,6 @@
 package com.rndash.mbheadunit
 
-import com.rndash.mbheadunit.canData.DataFrame
-import com.rndash.mbheadunit.canData.DataSignal
+import com.rndash.mbheadunit.canData.canC.MS308
 import com.rndash.mbheadunit.canData.canC.MS608
 import org.junit.Test
 
@@ -15,5 +14,12 @@ class CanCTest {
         println(f)
         f.parseFrame(f.createCanFrame())
         println(f)
+    }
+
+    @Test
+    fun testMS308() {
+        val x = MS308()
+        x.parseFrame(CarCanFrame(0x0308, arrayOf(0,5,169,0,0,121,192,62)))
+        println(x)
     }
 }

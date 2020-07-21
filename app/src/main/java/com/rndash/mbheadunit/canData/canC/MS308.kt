@@ -1,46 +1,55 @@
 package com.rndash.mbheadunit.canData.canC
 
-import com.rndash.mbheadunit.CarCanFrame
-import com.rndash.mbheadunit.canData.DataFrame
-import com.rndash.mbheadunit.canData.DataSignal
+import com.rndash.mbheadunit.canData.ECUFrame
+import com.rndash.mbheadunit.canData.FrameSignal
 import com.rndash.mbheadunit.canData.UnVerifiedValue
-import java.lang.Integer.min
-import kotlin.math.sign
 
 @ExperimentalUnsignedTypes
-class MS308 : DataFrame() {
+class MS308 : ECUFrame() {
     override val name : String = "MS308"
     override val dlc: Int = 8
     override val id: Int = 0x0308
-    override val signals: List<DataSignal> = listOf(
-            DataSignal( "KPL", 0, 1),
-            DataSignal( "KUEB_O_A", 1, 1),
-            DataSignal( "N_MAX_BG", 2, 1),
-            DataSignal( "SAST", 3, 1),
-            DataSignal( "SASV", 4, 1),
-            DataSignal( "KSF_KL", 5, 1),
-            DataSignal( "WKS_KL", 6, 1),
-            DataSignal( "ZASBED", 7, 1),
-            DataSignal( "NMOT", 8, 16),
-            DataSignal( "ELHP_WARN", 25, 1),
-            DataSignal( "EOH", 26, 1),
-            DataSignal( "LUFI_KL", 27, 1),
-            DataSignal( "VGL_KL", 28, 1),
-            DataSignal( "OEL_KL", 29, 1),
-            DataSignal( "DIAG_KL", 30, 1),
-            DataSignal( "TANK_KL", 31, 1),
-            DataSignal( "UEHITZ", 32, 1),
-            DataSignal( "ZAS", 33, 1),
-            DataSignal( "ADR_KL", 34, 1),
-            DataSignal( "ADR_DEF_KL", 35, 1),
-            DataSignal( "ANL_LFT", 36, 1),
-            DataSignal( "LUEFT_MOT_KL", 37, 1),
-            DataSignal( "DBAA", 38, 1),
-            DataSignal( "TEMP_KL", 39, 1),
-            DataSignal( "T_OEL", 40, 8),
-            DataSignal( "OEL_FS", 48, 8),
-            DataSignal( "OEL_QUAL", 56, 8)
+    override val signals: List<FrameSignal> = listOf(
+            FrameSignal( "KPL", 0, 1),
+            FrameSignal( "KUEB_O_A", 1, 1),
+            FrameSignal( "N_MAX_BG", 2, 1),
+            FrameSignal( "SAST", 3, 1),
+            FrameSignal( "SASV", 4, 1),
+            FrameSignal( "KSF_KL", 5, 1),
+            FrameSignal( "WKS_KL", 6, 1),
+            FrameSignal( "ZASBED", 7, 1),
+            FrameSignal( "NMOT", 8, 16),
+            FrameSignal( "ELHP_WARN", 25, 1),
+            FrameSignal( "EOH", 26, 1),
+            FrameSignal( "LUFI_KL", 27, 1),
+            FrameSignal( "VGL_KL", 28, 1),
+            FrameSignal( "OEL_KL", 29, 1),
+            FrameSignal( "DIAG_KL", 30, 1),
+            FrameSignal( "TANK_KL", 31, 1),
+            FrameSignal( "UEHITZ", 32, 1),
+            FrameSignal( "ZAS", 33, 1),
+            FrameSignal( "ADR_KL", 34, 1),
+            FrameSignal( "ADR_DEF_KL", 35, 1),
+            FrameSignal( "ANL_LFT", 36, 1),
+            FrameSignal( "LUEFT_MOT_KL", 37, 1),
+            FrameSignal( "DBAA", 38, 1),
+            FrameSignal( "TEMP_KL", 39, 1),
+            FrameSignal( "T_OEL", 40, 8),
+            FrameSignal( "OEL_FS", 48, 8),
+            FrameSignal( "OEL_QUAL", 56, 8)
     )
+
+    override fun toString(): String {
+        return """
+            MS308
+            Speed limit active?: ${isSpeedLimitActive()}
+            Speed limit display active?: ${isSpeedLimitDisplayActive()}
+            Engine limiter active?: ${isLimiterHit()}
+            Fuel Filter clogged?: ${isFuelFilterClogged()}
+            Water in fuel?: ${isWaterInFuel()}
+            Engine RPM: ${getEngineRPM()} RPM 
+        """.trimIndent()
+    }
 
     /**
      * Returns if the speed limiter function is activated
