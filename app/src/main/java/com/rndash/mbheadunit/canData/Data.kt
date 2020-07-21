@@ -3,11 +3,13 @@ package com.rndash.mbheadunit.canData
 import com.rndash.mbheadunit.CarCanFrame
 
 import java.lang.IndexOutOfBoundsException
+import kotlin.system.measureNanoTime
+import kotlin.system.measureTimeMillis
 
 
 @ExperimentalUnsignedTypes
-class DataSignal(initialValue: Int, private val name: String, val offset: Int, val len: Int) {
-    private var storedValue : Int = initialValue
+class DataSignal(private val name: String, val offset: Int, val len: Int) {
+    private var storedValue : Int = 0
 
     fun setValue(raw: Int) {
         this.storedValue = raw
@@ -31,12 +33,15 @@ class DataSignal(initialValue: Int, private val name: String, val offset: Int, v
     }
 
     fun processBits(bs: Array<Boolean>) {
+        if (this.len == 16) {
+            println("ME")
+        }
         if (offset + len > bs.size) {
             throw IndexOutOfBoundsException("$offset + $len > ${bs.size}")
         }
         var value: Int = 0
         (0 until len).forEach {
-            if (bs[offset+it]) {
+            if (bs[offset + it]) {
                 value = value or (1 shl it)
             }
         }

@@ -69,7 +69,7 @@ class CarCanFrame(val canID: Int, var data: Array<Byte>) {
     }
 
     override fun toString(): String {
-        return "ID: $canID DLC: $dlc BYTES: [${data.joinToString(",")}]"
+        return "ID: $canID DLC: $dlc BYTES: [${data.map{it.toUByte()}.joinToString(",")}]"
     }
 
     /**

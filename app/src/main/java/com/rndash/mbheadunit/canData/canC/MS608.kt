@@ -13,19 +13,19 @@ class MS608 : DataFrame() {
     override val dlc: Int = 8
     override val id: Int = 0x0608
     override val signals: List<DataSignal> = listOf(
-            DataSignal(0, "T_MOT", 0, 8),
-            DataSignal(0, "T_LUFT", 8, 8),
-            DataSignal(0, "FCOD_KAR", 16, 3),
-            DataSignal(0, "FCOD_BR", 19, 5),
-            DataSignal(0, "FCOD_MOT6", 24, 1),
-            DataSignal(0, "GS_NVH", 25, 1),
-            DataSignal(0, "FCOD_MOT", 26, 6),
-            DataSignal(0, "V_MAX_FIX", 32, 8),
-            DataSignal(0, "VB", 40, 16),
-            DataSignal(0, "ZWP_EIN_MS", 56, 1),
-            DataSignal(0, "PFW", 57, 2),
-            DataSignal(0, "ZVB_EIN_MS", 59, 1),
-            DataSignal(0, "PFKO", 60, 4)
+            DataSignal( "T_MOT", 0, 8),
+            DataSignal("T_LUFT", 8, 8),
+            DataSignal( "FCOD_KAR", 16, 3),
+            DataSignal( "FCOD_BR", 19, 5),
+            DataSignal( "FCOD_MOT6", 24, 1),
+            DataSignal( "GS_NVH", 25, 1),
+            DataSignal( "FCOD_MOT", 26, 6),
+            DataSignal( "V_MAX_FIX", 32, 8),
+            DataSignal( "VB", 40, 16),
+            DataSignal( "ZWP_EIN_MS", 56, 1),
+            DataSignal( "PFW", 57, 2),
+            DataSignal( "ZVB_EIN_MS", 59, 1),
+            DataSignal( "PFKO", 60, 4)
     )
 
     /**

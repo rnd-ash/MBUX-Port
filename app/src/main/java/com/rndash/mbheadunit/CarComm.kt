@@ -8,6 +8,7 @@ import com.hoho.android.usbserial.driver.UsbSerialProber
 
 
 @ExperimentalStdlibApi
+@ExperimentalUnsignedTypes
 class CarComm(device: UsbDevice, manager: UsbManager) {
 
     enum class CANBUS_ID(val id: Char) {
@@ -56,7 +57,6 @@ class CarComm(device: UsbDevice, manager: UsbManager) {
                     }
                 }
             }
-            sendFrame(CANBUS_ID.CANBUS_B, CarCanFrame(0x01E0, arrayOf<Byte>(0, 1, 2, 3)))
         }
     }
 
