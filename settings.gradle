@@ -1,0 +1,2 @@
+rootProject.name='Mercedes UI'
+include ':app'
