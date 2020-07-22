@@ -6,11 +6,11 @@ import android.content.Intent
 import android.hardware.usb.UsbDevice
 import android.hardware.usb.UsbManager
 import android.os.Bundle
-import android.util.DisplayMetrics
 import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.rndash.mbheadunit.ui.MbButton
 
 
 /**
@@ -18,6 +18,7 @@ import androidx.appcompat.app.AppCompatActivity
  * status bar and navigation/system bar) with user interaction.
  */
 @ExperimentalStdlibApi
+@ExperimentalUnsignedTypes
 class FullscreenActivity : AppCompatActivity() {
 
     companion object {
@@ -52,12 +53,6 @@ class FullscreenActivity : AppCompatActivity() {
 
     override fun onPostCreate(savedInstanceState: Bundle?) {
         super.onPostCreate(savedInstanceState)
-        val dm = DisplayMetrics()
-        windowManager.defaultDisplay.getMetrics(dm)
-        val x2 = Math.pow(dm.widthPixels / dm.xdpi.toDouble(), 2.0)
-        val y2 = Math.pow(dm.heightPixels / dm.ydpi.toDouble(), 2.0)
-        var screenInches = Math.sqrt(x2 + y2)
-        println("Screen size: $screenInches. Dimensions: ${dm.widthPixels} x ${dm.heightPixels}")
         var x : UsbManager = getSystemService(Context.USB_SERVICE) as UsbManager
         var dev : UsbDevice? = null
         x.deviceList.forEach { (_, u) ->
