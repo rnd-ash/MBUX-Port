@@ -1,7 +1,9 @@
 package com.rndash.mbheadunit.canData.canC
 
+import com.rndash.mbheadunit.CarCanFrame
 import com.rndash.mbheadunit.canData.ECUFrame
 import com.rndash.mbheadunit.canData.FrameSignal
+import java.lang.ArithmeticException
 import java.lang.Integer.max
 import java.lang.Integer.min
 
@@ -54,8 +56,10 @@ class MS608 : ECUFrame() {
     fun getIntakeTemp() : Int = signals[1].getValue() - 40
 
     /**
-     * Returns fuel consumed in ul/s
+     * Returns fuel consumed in ul/s, rolling average
      */
     // Use Min here as sometimes when coasting we get a negative value!
-    fun getFuelConsumption() : Int = max(0, signals[8].getValue())
+    fun getFuelConsumption() : Int {
+        return signals[8].getValue()
+    }
 }

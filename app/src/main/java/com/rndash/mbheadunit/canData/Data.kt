@@ -51,7 +51,7 @@ abstract class ECUFrame {
     abstract val dlc: Int // Can DLC of ECU Frame
     abstract val signals: List<FrameSignal>
 
-    fun parseFrame(frame: CarCanFrame) {
+    open fun parseFrame(frame: CarCanFrame) {
         // check if frame is our frame, if it isn't, ignore it
         if (frame.canID != this.id) {
             return

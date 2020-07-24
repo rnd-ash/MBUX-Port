@@ -5,6 +5,7 @@ import com.rndash.mbheadunit.canData.canC.*
 
 @ExperimentalUnsignedTypes
 object CanBusC  {
+
     /**
      * Gear enum varients for the 722.6 + 722.9 transmission
      */
@@ -52,13 +53,11 @@ object CanBusC  {
         }
     }
 
-    fun isEngineOn(): Boolean = ms308.getEngineRPM() != 0
+    fun isEngineOn(): Boolean = (ms308.getEngineRPM() != 0)
 
-    fun getTransmissionProgram() : DriveProgram {
-        return getTransmissionProgram(gs418.getShiftProgram()).also { println("TRANS PROG $it") }
-    }
+    fun getTransmissionProgram() : DriveProgram = getTransmissionProgram(gs418.getShiftProgram())
 
-    fun getGear() : Gear = getTransmissionGear(gs418.getTargetGear()).also { println("TRANS GEAR $it") }
+    fun getGear() : Gear = getTransmissionGear(gs418.getTargetGear())
 
     fun getCruiseState() : Pair<CruiseState, Int> {
         if (!isEngineOn()) {
@@ -66,6 +65,12 @@ object CanBusC  {
         }
         return Pair(CruiseState.ARMED, 99)
     }
+
+    private var fuel_cons_total: Long = 0
+
+    fun getFuelConsumptionCurr() : Int = ms608.getFuelConsumption()
+    fun getFuelConsumedTotal() : Long = fuel_cons_total
+
 
     fun getLimState() : Pair<CruiseState, Int> {
         if (!isEngineOn()) {
@@ -98,5 +103,21 @@ object CanBusC  {
             77 -> DriveProgram.MANUAL
             else -> DriveProgram.UNKNOWN
         }
+    }
+
+
+
+    // Keep track of MPG figures
+    val fuelThread = Thread() {
+        while(true) {
+            val consumed = ms608.getFuelConsumption()
+            this.fuel_cons_total += consumed
+            Thread.sleep(1000)
+        }
+    }
+
+
+    init {
+        fuelThread.start()
     }
 }

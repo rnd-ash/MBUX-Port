@@ -5,6 +5,7 @@ import com.rndash.mbheadunit.canData.FrameSignal
 import com.rndash.mbheadunit.canData.UnVerifiedValue
 
 @ExperimentalUnsignedTypes
+@ExperimentalStdlibApi
 class KLA_A1 : ECUFrame() {
     enum class FlapPosition() {
         OPEN,

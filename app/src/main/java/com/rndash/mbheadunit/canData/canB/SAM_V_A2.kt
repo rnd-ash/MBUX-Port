@@ -4,6 +4,7 @@ import com.rndash.mbheadunit.canData.ECUFrame
 import com.rndash.mbheadunit.canData.FrameSignal
 
 @ExperimentalUnsignedTypes
+@ExperimentalStdlibApi
 class SAM_V_A2 : ECUFrame() {
     override val name : String = "SAM_V_A2"
     override val dlc: Int = 6
@@ -29,7 +30,7 @@ class SAM_V_A2 : ECUFrame() {
      * Returns the outside air tempurature in Celsius, as measured from the sensor
      * on the front bumper (Beside the right fog lamp)
      */
-    fun getOutsideTemp() : Double = signals[0].getValue().toFloat() / 2.0 - 40
+    fun getOutsideTemp() : Double = signals[0].getValue().toFloat() / 2.0 - 40.0
 
     /**
      * Returns the pressure of the refrigerant within the AC Compressor in bars

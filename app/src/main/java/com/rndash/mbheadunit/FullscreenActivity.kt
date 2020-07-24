@@ -5,6 +5,7 @@ import android.content.Context
 import android.content.Intent
 import android.hardware.usb.UsbDevice
 import android.hardware.usb.UsbManager
+import android.media.AudioManager
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -28,10 +29,20 @@ import kotlin.math.abs
 class FullscreenActivity : FragmentActivity() {
     private lateinit var viewPager: ViewPager2
     companion object {
+        private lateinit var audiomanager: AudioManager
         var comm: CarComm? = null
+
+        fun modifyVolume(increase: Boolean) {
+            if (increase) {
+                audiomanager.adjustVolume(AudioManager.ADJUST_RAISE, AudioManager.FLAG_PLAY_SOUND)
+            } else {
+                audiomanager.adjustVolume(AudioManager.ADJUST_LOWER, AudioManager.FLAG_PLAY_SOUND)
+            }
+        }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        audiomanager = applicationContext.getSystemService(Context.AUDIO_SERVICE) as AudioManager
         super.onCreate(savedInstanceState)
         window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_FULLSCREEN
         actionBar?.hide()
@@ -99,7 +110,6 @@ class FullscreenActivity : FragmentActivity() {
     @RequiresApi(21)
     class ZoomOutPageTransformer : ViewPager2.PageTransformer {
         private val MIN_SCALE = 0.95f
-        private val MIN_ALPHA = 0.75f
         override fun transformPage(view: View, position: Float) {
             view.apply {
                 val pageWidth = width
@@ -123,10 +133,6 @@ class FullscreenActivity : FragmentActivity() {
                         // Scale the page down (between MIN_SCALE and 1)
                         scaleX = scaleFactor
                         scaleY = scaleFactor
-
-                        // Fade the page relative to its size.
-                        alpha = (MIN_ALPHA +
-                                (((scaleFactor - MIN_SCALE) / (1 - MIN_SCALE)) * (1 - MIN_ALPHA)))
                     }
                     else -> { alpha = 0f }
                 }

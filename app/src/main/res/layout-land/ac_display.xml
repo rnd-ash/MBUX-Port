@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -17,22 +18,90 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_marginTop="30dp"
-            android:layout_marginBottom="85dp"
+            android:layout_height="match_parent"
             android:layout_marginLeft="80dp"
+            android:layout_marginTop="30dp"
             android:layout_marginRight="80dp"
-            android:layout_height="match_parent">
+            android:layout_marginBottom="85dp">
 
             <TextView
                 android:id="@+id/ac_header"
-                android:textColor="#FFFFFF"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:text="Climatronics information"
+                android:textColor="#FFFFFF"
+                android:textSize="20dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/text_interior_temp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="Interior temp: __ C"
+                android:textColor="#FFFFFF"
+                app:layout_constraintBottom_toTopOf="@+id/text_exterior_temp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ac_header" />
+
+            <TextView
+                android:id="@+id/text_exterior_temp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Exterior temp: __ C"
+                android:textColor="#FFFFFF"
+                app:layout_constraintBottom_toTopOf="@+id/text_fan_speed"
+                app:layout_constraintStart_toStartOf="@+id/text_interior_temp"
+                app:layout_constraintTop_toBottomOf="@+id/text_interior_temp" />
+
+            <TextView
+                android:id="@+id/text_fan_speed"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Fan Speed: ___%"
+                android:textColor="#FFFFFF"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/text_interior_temp"
+                app:layout_constraintTop_toBottomOf="@+id/text_exterior_temp" />
+
+            <TextView
+                android:id="@+id/pass_target_temp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="__ C"
+                android:textColor="#FFFFFF"
+                app:layout_constraintBottom_toBottomOf="@+id/imageView"
+                app:layout_constraintEnd_toStartOf="@+id/imageView"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toEndOf="@+id/text_exterior_temp"
+                app:layout_constraintTop_toTopOf="@+id/imageView"
+                app:layout_constraintVertical_bias="0.368" />
+
+            <TextView
+                android:id="@+id/drv_target_temp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="__ C"
+                android:textColor="#FFFFFF"
+                app:layout_constraintBottom_toBottomOf="@+id/pass_target_temp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/imageView"
+                app:layout_constraintTop_toTopOf="@+id/pass_target_temp" />
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="80dp"
+                android:layout_height="160dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ac_header"
+                android:src="@drawable/car" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
