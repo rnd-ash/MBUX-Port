@@ -9,8 +9,14 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
-import com.rndash.mbheadunit.ui.MbButton
+import androidx.annotation.RequiresApi
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentActivity
+import androidx.viewpager2.adapter.FragmentStateAdapter
+import androidx.viewpager2.widget.ViewPager2
+import com.rndash.mbheadunit.ui.ACDisplay
+import com.rndash.mbheadunit.ui.MPGDisplay
+import kotlin.math.abs
 
 
 /**
@@ -19,8 +25,8 @@ import com.rndash.mbheadunit.ui.MbButton
  */
 @ExperimentalStdlibApi
 @ExperimentalUnsignedTypes
-class FullscreenActivity : AppCompatActivity() {
-
+class FullscreenActivity : FragmentActivity() {
+    private lateinit var viewPager: ViewPager2
     companion object {
         var comm: CarComm? = null
     }
@@ -30,6 +36,10 @@ class FullscreenActivity : AppCompatActivity() {
         window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_FULLSCREEN
         actionBar?.hide()
         setContentView(R.layout.activity_fullscreen)
+        viewPager = findViewById(R.id.ui_fragment)
+        val pagerAdapter = ScreenSlidePagerAdapter(this)
+        viewPager.setPageTransformer(ZoomOutPageTransformer())
+        viewPager.adapter = pagerAdapter
     }
 
     override fun onWindowFocusChanged(hasFocus: Boolean) {
@@ -74,6 +84,53 @@ class FullscreenActivity : AppCompatActivity() {
             Log.d("MAIN", "Arduino found!")
             comm = CarComm(dev!!, x)
             Toast.makeText(this, "Connected to car!", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    private inner class ScreenSlidePagerAdapter(fa: FragmentActivity) : FragmentStateAdapter(fa) {
+        override fun getItemCount(): Int = 2
+
+        override fun createFragment(position: Int): Fragment = when(position) {
+            1 -> ACDisplay()
+            else -> MPGDisplay()
+        }
+    }
+
+    @RequiresApi(21)
+    class ZoomOutPageTransformer : ViewPager2.PageTransformer {
+        private val MIN_SCALE = 0.95f
+        private val MIN_ALPHA = 0.75f
+        override fun transformPage(view: View, position: Float) {
+            view.apply {
+                val pageWidth = width
+                val pageHeight = height
+                when {
+                    position < -1 -> { // [-Infinity,-1)
+                        // This page is way off-screen to the left.
+                        alpha = 0f
+                    }
+                    position <= 1 -> { // [-1,1]
+                        // Modify the default slide transition to shrink the page as well
+                        val scaleFactor = Math.max(MIN_SCALE, 1 - abs(position))
+                        val vertMargin = pageHeight * (1 - scaleFactor) / 2
+                        val horzMargin = pageWidth * (1 - scaleFactor) / 2
+                        translationX = if (position < 0) {
+                            horzMargin - vertMargin / 2
+                        } else {
+                            horzMargin + vertMargin / 2
+                        }
+
+                        // Scale the page down (between MIN_SCALE and 1)
+                        scaleX = scaleFactor
+                        scaleY = scaleFactor
+
+                        // Fade the page relative to its size.
+                        alpha = (MIN_ALPHA +
+                                (((scaleFactor - MIN_SCALE) / (1 - MIN_SCALE)) * (1 - MIN_ALPHA)))
+                    }
+                    else -> { alpha = 0f }
+                }
+            }
         }
     }
 }

@@ -2,6 +2,7 @@ package com.rndash.mbheadunit.canData.canC
 
 import com.rndash.mbheadunit.canData.ECUFrame
 import com.rndash.mbheadunit.canData.FrameSignal
+import java.lang.Integer.max
 import java.lang.Integer.min
 
 @ExperimentalUnsignedTypes
@@ -26,6 +27,16 @@ class MS608 : ECUFrame() {
             FrameSignal( "PFKO", 60, 4)
     )
 
+    override fun toString(): String {
+        return """
+            MS608 (Engine ECU)
+            Engine temperature: ${getMotorTemp()} Celsius
+            Max speed allowed (code): ${getVMax()} km/h
+            Intake temperature: ${getIntakeTemp()} Celsius
+            Current fuel consumption: ${getFuelConsumption()} ul/s
+        """.trimIndent()
+    }
+
     /**
      * Returns engine tempurature in Celcius
      */
@@ -46,5 +57,5 @@ class MS608 : ECUFrame() {
      * Returns fuel consumed in ul/s
      */
     // Use Min here as sometimes when coasting we get a negative value!
-    fun getFuelConsumption() : Int = min(0, signals[8].getValue())
+    fun getFuelConsumption() : Int = max(0, signals[8].getValue())
 }

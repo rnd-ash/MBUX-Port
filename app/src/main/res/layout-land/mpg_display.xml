@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="341dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@drawable/ic_lcd"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="80dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginRight="80dp"
+            android:layout_marginBottom="85dp">
+
+            <TextView
+                android:id="@+id/ac_header"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Fuel consumption and power"
+                android:textColor="#FFFFFF"
+                android:textSize="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/text_mpg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="Current MPG: ___"
+                android:textColor="#FFFFFF"
+                app:layout_constraintBottom_toTopOf="@+id/text_avg_mpg"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ac_header" />
+
+            <TextView
+                android:id="@+id/text_consumed_curr"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Fuel usage: ___ ul/s"
+                android:textColor="#FFFFFF"
+                app:layout_constraintBottom_toTopOf="@+id/text_consumed_journey"
+                app:layout_constraintStart_toStartOf="@+id/text_mpg"
+                app:layout_constraintTop_toBottomOf="@+id/text_reset_mpg" />
+
+            <TextView
+                android:id="@+id/text_consumed_journey"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Fuel used since start: ___ L"
+                android:textColor="#FFFFFF"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/text_mpg"
+                app:layout_constraintTop_toBottomOf="@+id/text_consumed_curr" />
+
+            <TextView
+                android:id="@+id/text_avg_mpg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Average MPG: __"
+                android:textColor="#FFFFFF"
+                app:layout_constraintBottom_toTopOf="@+id/text_reset_mpg"
+                app:layout_constraintStart_toStartOf="@+id/text_mpg"
+                app:layout_constraintTop_toBottomOf="@+id/text_mpg" />
+
+            <TextView
+                android:id="@+id/text_reset_mpg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Since full tank: __"
+                android:textColor="#FFFFFF"
+                app:layout_constraintBottom_toTopOf="@+id/text_consumed_curr"
+                app:layout_constraintStart_toStartOf="@+id/text_mpg"
+                app:layout_constraintTop_toBottomOf="@+id/text_avg_mpg" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

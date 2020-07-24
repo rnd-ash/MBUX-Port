@@ -1,5 +1,6 @@
 package com.rndash.mbheadunit
 
+import com.rndash.mbheadunit.canData.canC.GS218
 import com.rndash.mbheadunit.canData.canC.MS308
 import com.rndash.mbheadunit.canData.canC.MS608
 import org.junit.Test
@@ -21,5 +22,10 @@ class CanCTest {
         val x = MS308()
         x.parseFrame(CarCanFrame(0x0308, arrayOf(0,5,169,0,0,121,192,62)))
         println(x)
+    }
+
+    @Test
+    fun testGS218() {
+        println(GS218().toRawString())
     }
 }

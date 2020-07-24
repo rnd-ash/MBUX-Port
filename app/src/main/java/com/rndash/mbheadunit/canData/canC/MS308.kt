@@ -41,13 +41,14 @@ class MS308 : ECUFrame() {
 
     override fun toString(): String {
         return """
-            MS308
+            MS308 (Engine ECU)
             Speed limit active?: ${isSpeedLimitActive()}
             Speed limit display active?: ${isSpeedLimitDisplayActive()}
             Engine limiter active?: ${isLimiterHit()}
             Fuel Filter clogged?: ${isFuelFilterClogged()}
             Water in fuel?: ${isWaterInFuel()}
             Engine RPM: ${getEngineRPM()} RPM 
+            Oil temperature: ${getOilTemp()} Celsius
         """.trimIndent()
     }
 

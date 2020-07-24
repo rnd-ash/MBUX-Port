@@ -1,5 +1,6 @@
 package com.rndash.mbheadunit.canData
 
+import android.util.Log
 import com.rndash.mbheadunit.CarCanFrame
 
 import java.lang.IndexOutOfBoundsException
@@ -14,7 +15,7 @@ class FrameSignal(private val name: String, val offset: Int, val len: Int) {
     }
 
     override fun toString(): String {
-        return "Signal $name - Value: $storedValue"
+        return "Signal $name [Bits $offset - ${offset+len}] - Value: $storedValue"
     }
 
     fun getValue() : Int {
@@ -51,11 +52,12 @@ abstract class ECUFrame {
     abstract val signals: List<FrameSignal>
 
     fun parseFrame(frame: CarCanFrame) {
+        // check if frame is our frame, if it isn't, ignore it
         if (frame.canID != this.id) {
-            throw Exception("Invalid CAN ID for $name")
+            return
         }
         if (frame.dlc != this.dlc) {
-            throw Exception("Invalid DLC for $name")
+            return
         }
         val bs = frame.toBitArray()
         signals.forEach {
@@ -73,10 +75,17 @@ abstract class ECUFrame {
     }
 
     override fun toString(): String {
+        return this.toRawString()
+    }
+
+    /**
+     * Returns a raw string containing or the CAN Signals within the frame in their raw state
+     */
+    fun toRawString(): String {
         return """
-            Frame $name (ID: $id - DLC: $dlc)
-            Data:
-            ${signals.joinToString("\n")}
-        """.trimIndent()
+            |Frame $name (ID: $id - DLC: $dlc)
+            |Data:
+            |${signals.joinToString("\n")}
+        """.trimMargin("|")
     }
 }

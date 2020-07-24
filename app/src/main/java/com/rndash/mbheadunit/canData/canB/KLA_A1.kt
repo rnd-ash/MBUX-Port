@@ -125,7 +125,7 @@ class KLA_A1 : ECUFrame() {
      * Returns the position of the Flap that allows air to flow onto the front windshield
      */
     @UnVerifiedValue
-    fun getUpFlapPosition(): FlapPosition = getFlapPos(signals[17].getValue())
+    fun getUpFlapPosition(): FlapPosition = getFlapPos(signals[16].getValue())
 
     /**
      * Returns the position of the flap that allows air onto the passengers front
@@ -139,13 +139,16 @@ class KLA_A1 : ECUFrame() {
     @UnVerifiedValue
     fun getLowerFlapPosition(): FlapPosition = getFlapPos(signals[18].getValue())
 
-    fun getInteriorTemp(): Int = signals[19].getValue()
+    /**
+     * Returns the interior temperature of the car in Celsius
+     */
+    fun getInteriorTemp(): Double = signals[19].getValue() / 4.0
 
     private fun getFlapPos(raw: Int) : FlapPosition {
         return when(raw) {
             0 -> FlapPosition.PARTIAL
-            1 -> FlapPosition.CLOSED
-            2 -> FlapPosition.OPEN
+            1 -> FlapPosition.OPEN
+            2 -> FlapPosition.CLOSED
             else -> FlapPosition.UNKNOWN
         }
     }

@@ -32,7 +32,7 @@ class CarComm(device: UsbDevice, manager: UsbManager) {
         serialDevice!!.dtr = false
         serialDevice!!.purgeHwBuffers(true, true);
         serialDevice!!.dtr = true
-        val readBuffer = ByteArray(1024)
+        val readBuffer = ByteArray(512)
 
         while(true) {
             val readCount = serialDevice!!.read(readBuffer, 100)
@@ -45,8 +45,8 @@ class CarComm(device: UsbDevice, manager: UsbManager) {
                     when(line[0]) {
                         'B' -> {
                             CarCanFrame.fromHexStr(line.drop(1))?.let {
-                                if (it.canID == 0x0030) {
-                                    println(KLA_A1().apply { this.parseFrame(it) })
+                                if (it.canID == 0x01A4) {
+                                    println("AGW: ${it}")
                                 }
                                 CanBusB.updateFrames(it)
                             }
