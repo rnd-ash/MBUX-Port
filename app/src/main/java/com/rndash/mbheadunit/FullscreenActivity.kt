@@ -16,8 +16,10 @@ import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
 import com.rndash.mbheadunit.ui.ACDisplay
+import com.rndash.mbheadunit.ui.ICDisplayTest
 import com.rndash.mbheadunit.ui.MPGDisplay
 import kotlin.math.abs
+import kotlin.math.pow
 
 
 /**
@@ -99,40 +101,25 @@ class FullscreenActivity : FragmentActivity() {
     }
 
     private inner class ScreenSlidePagerAdapter(fa: FragmentActivity) : FragmentStateAdapter(fa) {
-        override fun getItemCount(): Int = 2
+        override fun getItemCount(): Int = 3
 
         override fun createFragment(position: Int): Fragment = when(position) {
             1 -> ACDisplay()
-            else -> MPGDisplay()
+            2 -> MPGDisplay()
+            else -> ICDisplayTest()
         }
     }
 
     @RequiresApi(21)
     class ZoomOutPageTransformer : ViewPager2.PageTransformer {
-        private val MIN_SCALE = 0.95f
         override fun transformPage(view: View, position: Float) {
             view.apply {
-                val pageWidth = width
-                val pageHeight = height
                 when {
-                    position < -1 -> { // [-Infinity,-1)
-                        // This page is way off-screen to the left.
+                    position < -1 -> {
                         alpha = 0f
                     }
-                    position <= 1 -> { // [-1,1]
-                        // Modify the default slide transition to shrink the page as well
-                        val scaleFactor = Math.max(MIN_SCALE, 1 - abs(position))
-                        val vertMargin = pageHeight * (1 - scaleFactor) / 2
-                        val horzMargin = pageWidth * (1 - scaleFactor) / 2
-                        translationX = if (position < 0) {
-                            horzMargin - vertMargin / 2
-                        } else {
-                            horzMargin + vertMargin / 2
-                        }
-
-                        // Scale the page down (between MIN_SCALE and 1)
-                        scaleX = scaleFactor
-                        scaleY = scaleFactor
+                    position <= 1 -> {
+                        translationX = 0.0f
                     }
                     else -> { alpha = 0f }
                 }
