@@ -2,13 +2,15 @@ package com.rndash.mbheadunit
 
 import android.hardware.usb.UsbDevice
 import android.hardware.usb.UsbManager
+import android.util.Log
 import com.hoho.android.usbserial.driver.UsbSerialDriver
 import com.hoho.android.usbserial.driver.UsbSerialPort
 import com.hoho.android.usbserial.driver.UsbSerialProber
+import com.hoho.android.usbserial.util.SerialInputOutputManager
 import com.rndash.mbheadunit.canData.CanBusB
 import com.rndash.mbheadunit.canData.CanBusC
-import com.rndash.mbheadunit.canData.canB.KLA_A1
-import com.rndash.mbheadunit.canData.canB.SAM_V_A2
+import java.lang.NullPointerException
+import java.util.concurrent.Executors
 
 
 @ExperimentalStdlibApi
@@ -20,45 +22,60 @@ class CarComm(device: UsbDevice, manager: UsbManager) {
         CANBUS_C('C')
     }
 
-    companion object {
-        private var serialDevice : UsbSerialPort? = null
-        fun sendFrame(targetBus: CANBUS_ID, canFrame: CarCanFrame) {
-            serialDevice!!.write( byteArrayOf(targetBus.id.toByte()) + canFrame.toByteArray().toByteArray() , 100)
+    val readThread = Thread {
+        var str = ""
+        var read: Byte = 0x00
+        while(true) {
+            if (SerialManager.buffer.size != 0) {
+                try {
+                    read = SerialManager.buffer.removeFirst()
+                    if (read == 0x0A.toByte()) {
+                        if (str.length > 7) {
+                            processFrame(str)
+                        }
+                        str = ""
+                    } else {
+                        str += read.toChar()
+                    }
+                } catch (e: NullPointerException){}
+            }
         }
     }
 
-    val readThread = Thread {
-        var buff: ByteArray = byteArrayOf()
-        serialDevice!!.dtr = false
-        serialDevice!!.purgeHwBuffers(true, true);
-        serialDevice!!.dtr = true
-        val readBuffer = ByteArray(32)
-
-        while(true) {
-            val readCount = serialDevice!!.read(readBuffer, 10)
-            (buff+readBuffer.take(readCount)).decodeToString().split("\n").apply {
-                buff = this.last().toByteArray()
-                this.forEach { line ->
-                    if (line.length < 7) {
-                        return@forEach
-                    }
-                    when(line[0]) {
-                        'B' -> {
-                            CarCanFrame.fromHexStr(line.drop(1))?.let {
-                                CanBusB.updateFrames(it)
-                            }
-                        }
-                        'C' -> {
-                            CarCanFrame.fromHexStr(line.drop(1))?.let {
-                                CanBusC.updateFrames(it)
-                            }
-                        }
-                        else -> {}
-                    }
+    fun processFrame(str: String) {
+        when(str[0]) {
+            'B' -> {
+                CarCanFrame.fromHexStr(str.drop(1))?.let {
+                    CanBusB.updateFrames(it)
+                }
+            }
+            'C' -> {
+                CarCanFrame.fromHexStr(str.drop(1))?.let {
+                    CanBusC.updateFrames(it)
                 }
             }
         }
     }
+
+    companion object {
+        private var serialDevice : UsbSerialPort? = null
+        @Synchronized
+        fun sendFrame(targetBus: CANBUS_ID, canFrame: CarCanFrame) {
+            if (serialDevice == null) {
+                Log.e("SerialSend", "Sending without Arduino present!")
+            }
+            println("Sending $canFrame")
+            var bytes = byteArrayOf(targetBus.id.toByte())
+            bytes += canFrame.canID.toByte()
+            bytes += (canFrame.canID shr 8 and 0xFF).toByte()
+            bytes += canFrame.dlc.toByte()
+            bytes += canFrame.data.toByteArray()
+            serialDevice?.write( bytes , 100)
+        }
+    }
+
+    var buff: ArrayDeque<Byte> = ArrayDeque(0)
+    var isModify = false
 
     init {
         val availableDevices = UsbSerialProber.getDefaultProber().findAllDrivers(manager)
@@ -73,12 +90,14 @@ class CarComm(device: UsbDevice, manager: UsbManager) {
         port.open(connection)
         port.setParameters(115200, 8, UsbSerialPort.STOPBITS_1, UsbSerialPort.PARITY_NONE)
         serialDevice = port
+        val usbIoManager = SerialInputOutputManager(serialDevice, SerialManager())
+        Executors.newSingleThreadExecutor().submit(usbIoManager)
         readThread.start()
     }
 
     fun quit() {
         println("Destroying serial")
-        readThread.interrupt()
         serialDevice?.close()
+        readThread.interrupt()
     }
 }
