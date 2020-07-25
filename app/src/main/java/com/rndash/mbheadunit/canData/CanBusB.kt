@@ -8,6 +8,7 @@ import com.rndash.mbheadunit.FullscreenActivity
 import com.rndash.mbheadunit.canData.canB.KLA_A1
 import com.rndash.mbheadunit.canData.canB.KOMBI_A5
 import com.rndash.mbheadunit.canData.canB.SAM_V_A2
+import com.rndash.mbheadunit.canData.canB.kombiDisplay.ICDisplay
 import kotlin.properties.Delegates
 
 
@@ -56,6 +57,8 @@ object CanBusB  {
             kla_a1.id -> kla_a1.parseFrame(incoming)
             sam_v_a2.id -> sam_v_a2.parseFrame(incoming)
             kombiA5.id -> kombiA5.parseFrame(incoming)
+            0x01D0 -> println("KOMBI: $incoming")
+            0x01A4 -> println("IC: $incoming")
         }
     }
 }
