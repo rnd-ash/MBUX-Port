@@ -1,15 +1,17 @@
 package com.rndash.mbheadunit.canData.canB
 
+import android.content.Intent
 import com.rndash.mbheadunit.CarCanFrame
 import com.rndash.mbheadunit.canData.CanBusB
 import com.rndash.mbheadunit.canData.ECUFrame
 import com.rndash.mbheadunit.canData.FrameSignal
+import java.lang.Integer.max
+import java.lang.Integer.min
 import java.util.*
 
 @ExperimentalUnsignedTypes
 @ExperimentalStdlibApi
 class KOMBI_A5 : ECUFrame() {
-
     override val name: String = "KOMBI_A5"
     override val dlc: Int = 4 // Full frame is 8, my unit only car 5 bytes??
     override val id: Int = 0x01CA
@@ -23,12 +25,12 @@ class KOMBI_A5 : ECUFrame() {
             FrameSignal("BUTTON_2_2", 12, 1),
             FrameSignal("BUTTON_2_1", 13, 1),
             FrameSignal("BUTTON_1_2", 14, 1),
-            FrameSignal("BUTTON_1_1", 15, 8),
-            FrameSignal("BUTTON_8_2", 16, 8),
-            FrameSignal("BUTTON_8_1", 17, 8),
+            FrameSignal("BUTTON_1_1", 15, 1),
+            FrameSignal("BUTTON_8_2", 16, 1),
+            FrameSignal("BUTTON_8_1", 17, 1),
             FrameSignal("BUTTON_7_2", 18, 1),
             FrameSignal("BUTTON_7_1", 19, 1),
-            FrameSignal("BUTTON_6_2", 20, 8),
+            FrameSignal("BUTTON_6_2", 20, 1),
             FrameSignal("BUTTON_6_1", 21, 1),
             FrameSignal("BUTTON_5_2", 22, 1),
             FrameSignal("BUTTON_5_1", 23, 1),

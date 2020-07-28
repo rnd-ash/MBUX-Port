@@ -68,7 +68,7 @@ object CanBusC  {
 
     private var fuel_cons_total: Long = 0
 
-    fun getFuelConsumptionCurr() : Int = ms608.getFuelConsumption()
+    fun getFuelConsumptionCurr() : Int = this.currFuelUsage
     fun getFuelConsumedTotal() : Long = fuel_cons_total
 
 
@@ -106,12 +106,13 @@ object CanBusC  {
     }
 
 
+    var currFuelUsage: Int = 0
 
     // Keep track of MPG figures
     val fuelThread = Thread() {
         while(true) {
-            val consumed = ms608.getFuelConsumption()
-            this.fuel_cons_total += consumed
+            currFuelUsage = ms608.getFuelConsumption()
+            this.fuel_cons_total += currFuelUsage
             Thread.sleep(1000)
         }
     }

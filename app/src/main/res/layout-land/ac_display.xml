@@ -67,31 +67,6 @@
                 app:layout_constraintStart_toStartOf="@+id/text_interior_temp"
                 app:layout_constraintTop_toBottomOf="@+id/text_exterior_temp" />
 
-            <TextView
-                android:id="@+id/pass_target_temp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="__ C"
-                android:textColor="#FFFFFF"
-                app:layout_constraintBottom_toBottomOf="@+id/imageView"
-                app:layout_constraintEnd_toStartOf="@+id/imageView"
-                app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toEndOf="@+id/text_exterior_temp"
-                app:layout_constraintTop_toTopOf="@+id/imageView"
-                app:layout_constraintVertical_bias="0.368" />
-
-            <TextView
-                android:id="@+id/drv_target_temp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="__ C"
-                android:textColor="#FFFFFF"
-                app:layout_constraintBottom_toBottomOf="@+id/pass_target_temp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toEndOf="@+id/imageView"
-                app:layout_constraintTop_toTopOf="@+id/pass_target_temp" />
-
             <ImageView
                 android:id="@+id/imageView"
                 android:layout_width="80dp"
@@ -102,6 +77,71 @@
                 app:layout_constraintTop_toBottomOf="@+id/ac_header"
                 android:src="@drawable/car" />
 
+
+            <TextView
+                android:id="@+id/window_fr"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="__ %"
+                android:textColor="#FFFFFF"
+                app:layout_constraintBottom_toBottomOf="@+id/imageView"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/imageView"
+                app:layout_constraintTop_toTopOf="@+id/imageView"
+                app:layout_constraintVertical_bias="0.36" />
+
+            <TextView
+                android:id="@+id/window_rr"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="__ %"
+                android:textColor="#FFFFFF"
+                app:layout_constraintBottom_toBottomOf="@+id/imageView"
+                app:layout_constraintEnd_toEndOf="@+id/window_fr"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/window_fr"
+                app:layout_constraintTop_toTopOf="@+id/imageView"
+                app:layout_constraintVertical_bias="0.7" />
+
+            <TextView
+                android:id="@+id/window_fl"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="__ %"
+                android:textColor="#FFFFFF"
+                app:layout_constraintBottom_toBottomOf="@+id/imageView"
+                app:layout_constraintEnd_toStartOf="@+id/imageView"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toEndOf="@+id/text_exterior_temp"
+                app:layout_constraintTop_toTopOf="@+id/imageView"
+                app:layout_constraintVertical_bias="0.36"/>
+
+            <TextView
+                android:id="@+id/window_rl"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="__ %"
+                android:textColor="#FFFFFF"
+                app:layout_constraintBottom_toBottomOf="@+id/imageView"
+                app:layout_constraintEnd_toEndOf="@+id/window_fl"
+                app:layout_constraintStart_toStartOf="@+id/window_fl"
+                app:layout_constraintTop_toTopOf="@+id/imageView"
+                app:layout_constraintVertical_bias="0.7"/>
+
+            <Button
+                android:id="@+id/test_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Test window pos"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/window_fr"
+                app:layout_constraintTop_toBottomOf="@+id/ac_header" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

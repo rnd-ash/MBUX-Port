@@ -6,6 +6,7 @@ import android.content.Intent
 import android.hardware.usb.UsbDevice
 import android.hardware.usb.UsbManager
 import android.media.AudioManager
+import android.microntek.MTCData
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -15,6 +16,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
+import com.rndash.mbheadunit.canData.CanBusB
 import com.rndash.mbheadunit.ui.ACDisplay
 import com.rndash.mbheadunit.ui.ICDisplayTest
 import com.rndash.mbheadunit.ui.MPGDisplay
@@ -33,17 +35,22 @@ class FullscreenActivity : FragmentActivity() {
     companion object {
         private lateinit var audiomanager: AudioManager
         var comm: CarComm? = null
-
+        lateinit var volContext: Context
+        var volume = 10
         fun modifyVolume(increase: Boolean) {
-            if (increase) {
-                audiomanager.adjustVolume(AudioManager.ADJUST_RAISE, AudioManager.FLAG_PLAY_SOUND)
-            } else {
-                audiomanager.adjustVolume(AudioManager.ADJUST_LOWER, AudioManager.FLAG_PLAY_SOUND)
+            val intent = Intent().apply {
+                this.setAction("com.microntek.VOLUME_SET")
+                when(increase) {
+                    true -> this.putExtra("type", "add")
+                    false -> this.putExtra("type", "sub")
+                }
             }
+            volContext.sendBroadcast(intent)
         }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        volContext = this
         audiomanager = applicationContext.getSystemService(Context.AUDIO_SERVICE) as AudioManager
         super.onCreate(savedInstanceState)
         window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_FULLSCREEN

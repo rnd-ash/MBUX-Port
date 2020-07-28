@@ -7,8 +7,14 @@ import com.hoho.android.usbserial.driver.UsbSerialDriver
 import com.hoho.android.usbserial.driver.UsbSerialPort
 import com.hoho.android.usbserial.driver.UsbSerialProber
 import com.hoho.android.usbserial.util.SerialInputOutputManager
+import com.rndash.mbheadunit.SerialManager.Companion.buffer
 import com.rndash.mbheadunit.canData.CanBusB
 import com.rndash.mbheadunit.canData.CanBusC
+import com.rndash.mbheadunit.canData.canB.kombiDisplay.ICDisplay
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import java.lang.IndexOutOfBoundsException
 import java.lang.NullPointerException
 import java.util.concurrent.Executors
 
@@ -24,36 +30,37 @@ class CarComm(device: UsbDevice, manager: UsbManager) {
 
     val readThread = Thread {
         var str = ""
-        var read: Byte = 0x00
+        var b: Byte?
         while(true) {
-            if (SerialManager.buffer.size != 0) {
-                try {
-                    read = SerialManager.buffer.removeFirst()
-                    if (read == 0x0A.toByte()) {
-                        if (str.length > 7) {
-                            processFrame(str)
-                        }
-                        str = ""
-                    } else {
-                        str += read.toChar()
-                    }
-                } catch (e: NullPointerException){}
+            synchronized(buffer) {
+                b = buffer.removeFirstOrNull()
+            }
+            b?.let {
+                if (it == '\n'.toByte()){
+                    processFrame(str)
+                    str = ""
+                } else {
+                    str += it.toChar()
+                }
             }
         }
     }
 
-    fun processFrame(str: String) {
-        when(str[0]) {
-            'B' -> {
-                CarCanFrame.fromHexStr(str.drop(1))?.let {
-                    CanBusB.updateFrames(it)
+    private fun processFrame(str: String) {
+        try {
+            when (str[0]) {
+                'B' -> {
+                    CarCanFrame.fromHexStr(str.drop(1))?.let {
+                        CoroutineScope(Dispatchers.Default).launch { CanBusB.updateFrames(it) }
+                    }
+                }
+                'C' -> {
+                    CarCanFrame.fromHexStr(str.drop(1))?.let {
+                        CoroutineScope(Dispatchers.Default).launch { CanBusC.updateFrames(it) }
+                    }
                 }
             }
-            'C' -> {
-                CarCanFrame.fromHexStr(str.drop(1))?.let {
-                    CanBusC.updateFrames(it)
-                }
-            }
+        } catch (e: IndexOutOfBoundsException){
         }
     }
 
@@ -64,7 +71,6 @@ class CarComm(device: UsbDevice, manager: UsbManager) {
             if (serialDevice == null) {
                 Log.e("SerialSend", "Sending without Arduino present!")
             }
-            println("Sending $canFrame")
             var bytes = byteArrayOf(targetBus.id.toByte())
             bytes += canFrame.canID.toByte()
             bytes += (canFrame.canID shr 8 and 0xFF).toByte()
@@ -73,9 +79,6 @@ class CarComm(device: UsbDevice, manager: UsbManager) {
             serialDevice?.write( bytes , 100)
         }
     }
-
-    var buff: ArrayDeque<Byte> = ArrayDeque(0)
-    var isModify = false
 
     init {
         val availableDevices = UsbSerialProber.getDefaultProber().findAllDrivers(manager)
@@ -93,6 +96,7 @@ class CarComm(device: UsbDevice, manager: UsbManager) {
         val usbIoManager = SerialInputOutputManager(serialDevice, SerialManager())
         Executors.newSingleThreadExecutor().submit(usbIoManager)
         readThread.start()
+        Thread() { ICDisplay.beginInitSequence() }.start() // Init the display now we are connected
     }
 
     fun quit() {

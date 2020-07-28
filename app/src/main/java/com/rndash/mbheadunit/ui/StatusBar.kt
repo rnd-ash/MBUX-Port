@@ -8,17 +8,19 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.rndash.mbheadunit.R
+import com.rndash.mbheadunit.canData.CanBusB
 import com.rndash.mbheadunit.canData.CanBusC
 import java.util.*
 
 @ExperimentalUnsignedTypes
+@ExperimentalStdlibApi
 class StatusBar : Fragment() {
 
     lateinit var gear_display : ImageView
     lateinit var cruise_img: ImageView
-    lateinit var lim_img: ImageView
     lateinit var cruise_text: TextView
-    lateinit var lim_text: TextView
+    lateinit var bat_text: TextView
+    lateinit var bat_img: ImageView
 
     fun getCruiseData() : Pair<Int, String> {
         val state = CanBusC.getCruiseState()
@@ -46,11 +48,10 @@ class StatusBar : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         gear_display = view.findViewById(R.id.gear_display)
-        lim_img = view.findViewById(R.id.lim_display)
-        lim_text = view.findViewById(R.id.lim_text)
         cruise_img = view.findViewById(R.id.cruise_display)
         cruise_text = view.findViewById(R.id.cruise_text)
-
+        bat_img = view.findViewById(R.id.batt_icon)
+        bat_text = view.findViewById(R.id.batt_text)
 
         Timer().schedule(object: TimerTask() {
             override fun run() {
@@ -91,16 +92,23 @@ class StatusBar : Fragment() {
                     }
                     CanBusC.DriveProgram.UNKNOWN -> R.drawable.gear_unknown
                 }
+
+                val bat_voltage = CanBusB.ezsA11.getBattVoltage()
+                val bat_image : Int = when {
+                    bat_voltage < 12.0 ->  R.drawable.bat_red
+                    bat_voltage < 13.0 -> R.drawable.bat_white
+                    else -> R.drawable.bat_white
+                }
+
                 val cruise_data = getCruiseData()
-                val lim_data = getLimData()
                 activity?.runOnUiThread {
                     gear_display.scaleX = 0.75F
                     gear_display.scaleY = 0.75F
                     gear_display.setImageResource(resource)
                     cruise_img.setImageResource(cruise_data.first)
                     cruise_text.text = cruise_data.second
-                    lim_img.setImageResource(lim_data.first)
-                    lim_text.text = lim_data.second
+                    bat_img.setImageResource(bat_image)
+                    bat_text.text = String.format("%2.2f V", bat_voltage)
                 }
             }
         }, 0, 200)

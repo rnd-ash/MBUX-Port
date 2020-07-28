@@ -1,33 +1,33 @@
 package com.rndash.mbheadunit.canData
 
-import android.util.Log
 import com.rndash.mbheadunit.CarCanFrame
-
-import java.lang.IndexOutOfBoundsException
-
-
 
 @ExperimentalUnsignedTypes
 abstract class ECUFrame {
     abstract val name: String // CAN Frame name (ECU ID)
     abstract val id: Int // Can ID
     abstract val dlc: Int // Can DLC of ECU Frame
-    abstract val signals: List<FrameSignal>
+    abstract val signals: List<FrameSignal> // List of [FrameSignals] describing what data is in the frame
 
     open fun parseFrame(frame: CarCanFrame) {
         // check if frame is our frame, if it isn't, ignore it
         if (frame.canID != this.id) {
             return
         }
+        // Also check DLCs! - Sometimes Arduino can corrupt certain data!
         if (frame.dlc != this.dlc) {
             return
         }
         val bs = frame.toBitArray()
+        // Iterate over each signal, and let each signal extract its data
         signals.forEach {
             it.processBits(bs)
         }
     }
 
+    /**
+     * Creates a CAN Frame containing the data from signals
+     */
     fun createCanFrame() : CarCanFrame {
         val bs = Array(this.dlc*8){false}
         signals.forEach {
@@ -50,5 +50,12 @@ abstract class ECUFrame {
             |Data:
             |${signals.joinToString("\n")}
         """.trimMargin("|")
+    }
+
+    fun copy() = object : ECUFrame() {
+        override val id: Int = this@ECUFrame.id
+        override val dlc: Int = this@ECUFrame.dlc
+        override val name: String = this@ECUFrame.name
+        override val signals: List<FrameSignal> = this@ECUFrame.signals.map { it.copy() }
     }
 }

@@ -1,0 +1,499 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AndroidLayouts">
+    <shared>
+      <config>
+        <device id="pixel_3" />
+        <device id="Nexus 7 2013" />
+        <device id="automotive_1024p_landscape" />
+      </config>
+    </shared>
+  </component>
+  <component name="AndroidLogFilters">
+    <option name="TOOL_WINDOW_CUSTOM_FILTER" value="sys" />
+    <option name="TOOL_WINDOW_LOG_LEVEL" value="verbose" />
+    <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
+  </component>
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="NONE" />
+  </component>
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="e769e335-b827-46ea-88c9-08ee87aa1d03" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/rndash/mbheadunit/canData/canB/EZS_A11.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/rndash/mbheadunit/ui/elements/MbCheckbox.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/test/java/com/rndash/mbheadunit/FrameTest.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UNO_CODE/UNO_CODE.ino" beforeDir="false" afterPath="$PROJECT_DIR$/UNO_CODE/UNO_CODE.ino" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/rndash/mbheadunit/CarCanFrame.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/rndash/mbheadunit/CarCanFrame.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/rndash/mbheadunit/CarComm.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/rndash/mbheadunit/CarComm.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/rndash/mbheadunit/FullscreenActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/rndash/mbheadunit/FullscreenActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/rndash/mbheadunit/SerialManager.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/rndash/mbheadunit/SerialManager.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/rndash/mbheadunit/canData/CanBusB.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/rndash/mbheadunit/canData/CanBusB.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/rndash/mbheadunit/canData/ECUFrame.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/rndash/mbheadunit/canData/ECUFrame.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/rndash/mbheadunit/canData/FrameSignal.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/rndash/mbheadunit/canData/FrameSignal.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/rndash/mbheadunit/canData/canB/KOMBI_A5.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/rndash/mbheadunit/canData/canB/KOMBI_A5.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/rndash/mbheadunit/canData/canB/kombiDisplay/ICDisplay.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/rndash/mbheadunit/canData/canB/kombiDisplay/ICDisplay.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/rndash/mbheadunit/canData/canB/kombiDisplay/ISO15765Protocol.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/rndash/mbheadunit/canData/canB/kombiDisplay/ISO15765Protocol.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/rndash/mbheadunit/ui/ACDisplay.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/rndash/mbheadunit/ui/ACDisplay.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/rndash/mbheadunit/ui/ICDisplayTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/rndash/mbheadunit/ui/ICDisplayTest.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/rndash/mbheadunit/ui/StatusBar.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/rndash/mbheadunit/ui/StatusBar.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout-land/ac_display.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout-land/ac_display.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout-land/activity_fullscreen.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout-land/activity_fullscreen.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout-land/status_bar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout-land/status_bar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/test/java/com/rndash/mbheadunit/ISOTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/test/java/com/rndash/mbheadunit/ISOTest.kt" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[192.168.43.170:5555]" />
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <projects_view>
+          <tree_state>
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="Mercedes UI" type="f1a62948:ProjectNode" />
+              </path>
+            </expand>
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Kotlin Interface" />
+        <option value="Kotlin Class" />
+        <option value="layoutResourceFile" />
+        <option value="resourceFile" />
+        <option value="valueResourceFile" />
+        <option value="Class" />
+        <option value="Kotlin File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="KonanWorkspace">
+    <executables />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="$APPLICATION_HOME_DIR$/plugins/maven/lib/maven3" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="1e5lrCyv3tpQcYDZoiOgQ1ZoFBO" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DeviceAndSnapshotComboBoxAction.selectedDevice" value="headunit_API_29" />
+    <property name="DeviceAndSnapshotComboBoxAction.selectionTime" value="2020-07-20T20:30:57.800Z" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="android-custom-view/home/ashcon/.gradle/caches/modules-2/files-2.1/androidx.appcompat/appcompat/1.0.2/e38e7c85994112b70d4548176128c72b8477c110/appcompat-1.0.2-sources.jar!/androidx/appcompat/widget/AppCompatButton.java_SELECTED" value="AppCompatButton" />
+    <property name="android-custom-view/home/ashcon/code/MercedesUI/app/src/main/java/com/rndash/mbheadunit/ui/Indicators.kt_SELECTED" value="Indicators" />
+    <property name="android-custom-view/home/ashcon/code/MercedesUI/app/src/main/java/com/rndash/mbheadunit/ui/MbButton.kt_SELECTED" value="MbButton" />
+    <property name="android-custom-view/home/ashcon/code/MercedesUI/app/src/main/java/com/rndash/mbheadunit/ui/elements/MbCheckbox.kt_SELECTED" value="MbCheckbox" />
+    <property name="android-custom-view/home/ashcon/code/MercedesUI/app/src/main/java/com/rndash/mbheadunit/ui/views/GearView.kt_SELECTED" value="GearView" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_directory_selection" value="$PROJECT_DIR$/app/src/main/java" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/src/main/res/layout-land" />
+    <property name="memory.settings.postsync.last.time.stamp" value="1595266580590" />
+    <property name="multi-representation-preview/home/ashcon/.gradle/caches/modules-2/files-2.1/androidx.appcompat/appcompat/1.0.2/e38e7c85994112b70d4548176128c72b8477c110/appcompat-1.0.2-sources.jar!/androidx/appcompat/widget/AppCompatButton.java_selected" value="Custom views" />
+    <property name="multi-representation-preview/home/ashcon/code/MercedesUI/app/src/main/java/com/rndash/mbheadunit/ui/Indicators.kt_selected" value="" />
+    <property name="multi-representation-preview/home/ashcon/code/MercedesUI/app/src/main/java/com/rndash/mbheadunit/ui/MbButton.kt_selected" value="Custom views" />
+    <property name="multi-representation-preview/home/ashcon/code/MercedesUI/app/src/main/java/com/rndash/mbheadunit/ui/elements/MbCheckbox.kt_selected" value="Custom views" />
+    <property name="multi-representation-preview/home/ashcon/code/MercedesUI/app/src/main/java/com/rndash/mbheadunit/ui/views/GearView.kt_selected" value="Custom views" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyKotlinDeclarationDialog.RECENTS_KEY">
+      <recent name="com.rndash.mbheadunit.canData.canB" />
+      <recent name="com.rndash.mbheadunit.ui" />
+      <recent name="com.rndash.mbheadunit.canData.canC" />
+      <recent name="com.rndash.mbheadunit.canData" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/src/main/res/layout-land" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Android App.app">
+    <configuration name="CanCTest.testGS218" type="AndroidJUnit" factoryName="Android JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Mercedes_UI.app" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.rndash.mbheadunit.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.rndash.mbheadunit" />
+      <option name="MAIN_CLASS_NAME" value="com.rndash.mbheadunit.CanCTest" />
+      <option name="METHOD_NAME" value="testGS218" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <method v="2">
+        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CanCTest.testMS608" type="AndroidJUnit" factoryName="Android JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Mercedes_UI.app" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.rndash.mbheadunit.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.rndash.mbheadunit" />
+      <option name="MAIN_CLASS_NAME" value="com.rndash.mbheadunit.CanCTest" />
+      <option name="METHOD_NAME" value="testMS608" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <method v="2">
+        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ISOTest.testSinglePacket" type="AndroidJUnit" factoryName="Android JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Mercedes_UI.app" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.rndash.mbheadunit.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.rndash.mbheadunit" />
+      <option name="MAIN_CLASS_NAME" value="com.rndash.mbheadunit.ISOTest" />
+      <option name="METHOD_NAME" value="testSinglePacket" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <method v="2">
+        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="AndroidJUnit" factoryName="Android JUnit">
+      <option name="TEST_OBJECT" value="class" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <method v="2">
+        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Mercedes_UI.app" type="AndroidRunConfigurationType" factoryName="Android App" activateToolWindowBeforeRun="false">
+      <module name="Mercedes_UI.app" />
+      <option name="DEPLOY" value="true" />
+      <option name="DEPLOY_APK_FROM_BUNDLE" value="false" />
+      <option name="DEPLOY_AS_INSTANT" value="false" />
+      <option name="ARTIFACT_NAME" value="" />
+      <option name="PM_INSTALL_OPTIONS" value="" />
+      <option name="ALL_USERS" value="false" />
+      <option name="DYNAMIC_FEATURES_DISABLED_LIST" value="" />
+      <option name="ACTIVITY_EXTRA_FLAGS" value="" />
+      <option name="MODE" value="default_activity" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="false" />
+      <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
+      <option name="FORCE_STOP_RUNNING_APP" value="true" />
+      <option name="TARGET_SELECTION_MODE" value="DEVICE_AND_SNAPSHOT_COMBO_BOX" />
+      <option name="SELECTED_CLOUD_MATRIX_CONFIGURATION_ID" value="-1" />
+      <option name="SELECTED_CLOUD_MATRIX_PROJECT_ID" value="" />
+      <option name="DEBUGGER_TYPE" value="Java" />
+      <Auto>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Auto>
+      <Hybrid>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Hybrid>
+      <Java />
+      <Native>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Native>
+      <Profilers>
+        <option name="ADVANCED_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_CPU_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_CPU_PROFILING_CONFIGURATION_NAME" value="Sample Java Methods" />
+        <option name="STARTUP_NATIVE_MEMORY_PROFILING_ENABLED" value="false" />
+        <option name="NATIVE_MEMORY_SAMPLE_RATE_BYTES" value="2048" />
+      </Profilers>
+      <option name="DEEP_LINK" value="" />
+      <option name="ACTIVITY_CLASS" value="" />
+      <option name="SEARCH_ACTIVITY_IN_GLOBAL_SCOPE" value="false" />
+      <option name="SKIP_ACTIVITY_VALIDATION" value="false" />
+      <method v="2">
+        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="app" type="AndroidRunConfigurationType" factoryName="Android App" activateToolWindowBeforeRun="false">
+      <module name="Mercedes_UI.app" />
+      <option name="DEPLOY" value="true" />
+      <option name="DEPLOY_APK_FROM_BUNDLE" value="false" />
+      <option name="DEPLOY_AS_INSTANT" value="false" />
+      <option name="ARTIFACT_NAME" value="" />
+      <option name="PM_INSTALL_OPTIONS" value="" />
+      <option name="ALL_USERS" value="false" />
+      <option name="DYNAMIC_FEATURES_DISABLED_LIST" value="" />
+      <option name="ACTIVITY_EXTRA_FLAGS" value="" />
+      <option name="MODE" value="default_activity" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="false" />
+      <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
+      <option name="FORCE_STOP_RUNNING_APP" value="true" />
+      <option name="TARGET_SELECTION_MODE" value="DEVICE_AND_SNAPSHOT_COMBO_BOX" />
+      <option name="SELECTED_CLOUD_MATRIX_CONFIGURATION_ID" value="-1" />
+      <option name="SELECTED_CLOUD_MATRIX_PROJECT_ID" value="" />
+      <option name="DEBUGGER_TYPE" value="Java" />
+      <Auto>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Auto>
+      <Hybrid>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Hybrid>
+      <Java />
+      <Native>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Native>
+      <Profilers>
+        <option name="ADVANCED_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_CPU_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_CPU_PROFILING_CONFIGURATION_NAME" value="Sample Java Methods" />
+        <option name="STARTUP_NATIVE_MEMORY_PROFILING_ENABLED" value="false" />
+        <option name="NATIVE_MEMORY_SAMPLE_RATE_BYTES" value="2048" />
+      </Profilers>
+      <option name="DEEP_LINK" value="" />
+      <option name="ACTIVITY_CLASS" value="" />
+      <option name="SEARCH_ACTIVITY_IN_GLOBAL_SCOPE" value="false" />
+      <option name="SKIP_ACTIVITY_VALIDATION" value="false" />
+      <method v="2">
+        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="FrameTest.checkConsistency" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Mercedes_UI.app" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.rndash.mbheadunit.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.rndash.mbheadunit" />
+      <option name="MAIN_CLASS_NAME" value="com.rndash.mbheadunit.FrameTest" />
+      <option name="METHOD_NAME" value="checkConsistency" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="FrameTest.checkTVRA2" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Mercedes_UI.app" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.rndash.mbheadunit.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.rndash.mbheadunit" />
+      <option name="MAIN_CLASS_NAME" value="com.rndash.mbheadunit.FrameTest" />
+      <option name="METHOD_NAME" value="checkTVRA2" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Android JUnit.ISOTest.testSinglePacket" />
+        <item itemvalue="Android JUnit.CanCTest.testGS218" />
+        <item itemvalue="Android JUnit.CanCTest.testMS608" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" BundledDictionaries="0" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" Dictionaries="0" CorrectionsLimit="5" DefaultDictionary="application-level" UseSingleDictionary="true" />
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="e769e335-b827-46ea-88c9-08ee87aa1d03" name="Default Changelist" comment="" />
+      <created>1593619530702</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1593619530702</updated>
+      <workItem from="1593619536190" duration="611000" />
+      <workItem from="1595233572744" duration="22803000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="691" y="359" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1595568368743">
+      <screen x="0" y="32" width="1920" height="1048" />
+    </state>
+    <state x="691" y="359" key="#com.intellij.fileTypes.FileTypeChooser/0.32.1920.1048@0.32.1920.1048" timestamp="1595568368743" />
+    <state x="694" y="306" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1595566928077">
+      <screen x="0" y="32" width="1920" height="1048" />
+    </state>
+    <state x="694" y="306" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.32.1920.1048@0.32.1920.1048" timestamp="1595566928077" />
+    <state x="100" y="129" width="1080" height="505" key="AVDManager" timestamp="1595581369899">
+      <screen x="0" y="32" width="1920" height="1048" />
+    </state>
+    <state x="100" y="129" width="1080" height="505" key="AVDManager/0.32.1920.1048@0.32.1920.1048" timestamp="1595581369899" />
+    <state x="2020" y="100" width="1080" height="520" key="AVDManager/1920.0.1920.1080/0.0.1920.1044@1920.0.1920.1080" timestamp="1593620146705" />
+    <state x="2020" y="100" width="1080" height="520" key="AVDManager/1920.0.1920.1080/0.32.1920.1048@1920.0.1920.1080" timestamp="1595277123338" />
+    <state x="544" y="338" key="AndroidCreateResourceDirectoryDialog" timestamp="1595568328081">
+      <screen x="0" y="32" width="1920" height="1048" />
+    </state>
+    <state x="544" y="338" key="AndroidCreateResourceDirectoryDialog/0.32.1920.1048@0.32.1920.1048" timestamp="1595568328081" />
+    <state x="2464" y="315" key="AndroidCreateResourceDirectoryDialog/1920.0.1920.1080/0.32.1920.1048@1920.0.1920.1080" timestamp="1595365323676" />
+    <state x="544" y="338" key="AndroidCreateResourceFileDialog" timestamp="1595934911272">
+      <screen x="0" y="32" width="1920" height="1048" />
+    </state>
+    <state x="544" y="338" key="AndroidCreateResourceFileDialog/0.32.1920.1048@0.32.1920.1048" timestamp="1595934911272" />
+    <state x="2464" y="315" key="AndroidCreateResourceFileDialog/1920.0.1920.1080/0.32.1920.1048@1920.0.1920.1080" timestamp="1595513712487" />
+    <state x="2682" y="308" key="FileChooserDialogImpl" timestamp="1595422049691">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state x="2682" y="308" key="FileChooserDialogImpl/1920.0.1920.1080/0.32.1920.1048@1920.0.1920.1080" timestamp="1595422049691" />
+    <state width="1874" height="282" key="GridCell.Tab.0.bottom" timestamp="1595942744367">
+      <screen x="0" y="32" width="1920" height="1048" />
+    </state>
+    <state width="1874" height="282" key="GridCell.Tab.0.bottom/0.32.1920.1048@0.32.1920.1048" timestamp="1595942744367" />
+    <state width="1874" height="410" key="GridCell.Tab.0.bottom/1920.0.1920.1080/0.32.1920.1048@0.32.1920.1048" timestamp="1595534738914" />
+    <state width="1874" height="287" key="GridCell.Tab.0.bottom/1920.0.1920.1080/0.32.1920.1048@1920.0.1920.1080" timestamp="1595705116447" />
+    <state width="1874" height="282" key="GridCell.Tab.0.center" timestamp="1595942744366">
+      <screen x="0" y="32" width="1920" height="1048" />
+    </state>
+    <state width="1874" height="282" key="GridCell.Tab.0.center/0.32.1920.1048@0.32.1920.1048" timestamp="1595942744366" />
+    <state width="1874" height="410" key="GridCell.Tab.0.center/1920.0.1920.1080/0.32.1920.1048@0.32.1920.1048" timestamp="1595534738914" />
+    <state width="1874" height="287" key="GridCell.Tab.0.center/1920.0.1920.1080/0.32.1920.1048@1920.0.1920.1080" timestamp="1595705116447" />
+    <state width="1874" height="282" key="GridCell.Tab.0.left" timestamp="1595942744366">
+      <screen x="0" y="32" width="1920" height="1048" />
+    </state>
+    <state width="1874" height="282" key="GridCell.Tab.0.left/0.32.1920.1048@0.32.1920.1048" timestamp="1595942744366" />
+    <state width="1874" height="410" key="GridCell.Tab.0.left/1920.0.1920.1080/0.32.1920.1048@0.32.1920.1048" timestamp="1595534738913" />
+    <state width="1874" height="287" key="GridCell.Tab.0.left/1920.0.1920.1080/0.32.1920.1048@1920.0.1920.1080" timestamp="1595705116447" />
+    <state width="1874" height="282" key="GridCell.Tab.0.right" timestamp="1595942744367">
+      <screen x="0" y="32" width="1920" height="1048" />
+    </state>
+    <state width="1874" height="282" key="GridCell.Tab.0.right/0.32.1920.1048@0.32.1920.1048" timestamp="1595942744367" />
+    <state width="1874" height="410" key="GridCell.Tab.0.right/1920.0.1920.1080/0.32.1920.1048@0.32.1920.1048" timestamp="1595534738914" />
+    <state width="1874" height="287" key="GridCell.Tab.0.right/1920.0.1920.1080/0.32.1920.1048@1920.0.1920.1080" timestamp="1595705116447" />
+    <state width="1874" height="665" key="GridCell.Tab.1.bottom" timestamp="1595797069403">
+      <screen x="0" y="32" width="1920" height="1048" />
+    </state>
+    <state width="1874" height="665" key="GridCell.Tab.1.bottom/0.32.1920.1048@0.32.1920.1048" timestamp="1595797069403" />
+    <state width="1874" height="442" key="GridCell.Tab.1.bottom/1920.0.1920.1080/0.32.1920.1048@1920.0.1920.1080" timestamp="1595628359548" />
+    <state width="1874" height="665" key="GridCell.Tab.1.center" timestamp="1595797069402">
+      <screen x="0" y="32" width="1920" height="1048" />
+    </state>
+    <state width="1874" height="665" key="GridCell.Tab.1.center/0.32.1920.1048@0.32.1920.1048" timestamp="1595797069402" />
+    <state width="1874" height="442" key="GridCell.Tab.1.center/1920.0.1920.1080/0.32.1920.1048@1920.0.1920.1080" timestamp="1595628359548" />
+    <state width="1874" height="665" key="GridCell.Tab.1.left" timestamp="1595797069402">
+      <screen x="0" y="32" width="1920" height="1048" />
+    </state>
+    <state width="1874" height="665" key="GridCell.Tab.1.left/0.32.1920.1048@0.32.1920.1048" timestamp="1595797069402" />
+    <state width="1874" height="442" key="GridCell.Tab.1.left/1920.0.1920.1080/0.32.1920.1048@1920.0.1920.1080" timestamp="1595628359548" />
+    <state width="1874" height="665" key="GridCell.Tab.1.right" timestamp="1595797069403">
+      <screen x="0" y="32" width="1920" height="1048" />
+    </state>
+    <state width="1874" height="665" key="GridCell.Tab.1.right/0.32.1920.1048@0.32.1920.1048" timestamp="1595797069403" />
+    <state width="1874" height="442" key="GridCell.Tab.1.right/1920.0.1920.1080/0.32.1920.1048@1920.0.1920.1080" timestamp="1595628359548" />
+    <state x="589" y="113" width="1007" height="734" key="SettingsEditor" timestamp="1595844848327">
+      <screen x="0" y="32" width="1920" height="1048" />
+    </state>
+    <state x="589" y="113" width="1007" height="734" key="SettingsEditor/0.32.1920.1048@0.32.1920.1048" timestamp="1595844848327" />
+    <state x="758" y="337" key="chooseDestDirectoryDialog" timestamp="1595609760110">
+      <screen x="0" y="32" width="1920" height="1048" />
+    </state>
+    <state x="758" y="337" key="chooseDestDirectoryDialog/0.32.1920.1048@0.32.1920.1048" timestamp="1595609760110" />
+    <state x="664" y="164" width="592" height="783" key="find.popup" timestamp="1595692477004">
+      <screen x="0" y="32" width="1920" height="1048" />
+    </state>
+    <state x="664" y="164" width="592" height="783" key="find.popup/0.32.1920.1048@0.32.1920.1048" timestamp="1595692477004" />
+    <state x="623" y="264" width="672" height="678" key="search.everywhere.popup" timestamp="1595351337499">
+      <screen x="0" y="32" width="1920" height="1048" />
+    </state>
+    <state x="623" y="264" width="672" height="678" key="search.everywhere.popup/0.32.1920.1048@0.32.1920.1048" timestamp="1595351337499" />
+  </component>
+</project>

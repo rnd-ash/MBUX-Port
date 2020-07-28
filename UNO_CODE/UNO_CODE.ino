@@ -10,6 +10,8 @@
 MCP2515* canC;
 MCP2515* canB;
 
+void processKombi();
+
 // IO struct with the tablet
 // It is a compressed CAN Frame
 struct tablet_frame {
@@ -80,8 +82,34 @@ void loop() {
         }
     }
     // Poll for any new CAN frames on Bus B
+    unsigned long lastTime = millis();
+    bool isPoll = false;
     if (canB->readMessage(&io_can_frame) == MCP2515::ERROR_OK) {
+        /*
+        if (io_can_frame.can_id == 0x01D0 || io_can_frame.can_id == 0x01A4) {
+            if (io_can_frame.can_id == 0x01D0) {
+                if (io_can_frame.data[0] = 0x03 && io_can_frame.data[2] == 0x20 && io_can_frame.data[3] == 0x06) {
+                    Serial.println("if can frame:");
+                    isPoll = true;
+                    lastTime = millis();
+                }
+            } else if (io_can_frame.can_id == 0x01A4) {
+                Serial.print("Thread.sleep(");
+                Serial.print(millis() - lastTime);
+                Serial.println(")");
+                lastTime = millis();
+                char buf[7];
+                for (int i = 0; i < io_can_frame.can_dlc; i++) {
+                    sprintf(buf, "0x%02X, ", io_can_frame.data[i]);
+                    Serial.print(buf);
+                }
+                Serial.println();
+
+            }
+        } else {
+            */
         writeFrame('B', &io_can_frame);
+        //}
     }
     // Poll for any new CAN frames on Bus C
     if (canC->readMessage(&io_can_frame) == MCP2515::ERROR_OK) {

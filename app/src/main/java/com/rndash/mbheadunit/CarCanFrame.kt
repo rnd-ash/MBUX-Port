@@ -10,25 +10,19 @@ class CarCanFrame(val canID: Int, var data: Array<Byte>) {
     constructor(canID: Int, data: Array<Int>) : this(canID, data.map { it.toByte() }.toTypedArray())
 
     constructor(canID: Int, data: Array<Boolean>) : this(canID, arrayOf<Byte>(0x00)){
-        val constructedData : Array<Byte> = if (data.size % 8 == 0) {
-            Array<Byte>(data.size / 8){0x00}
-        } else {
-            Array<Byte>(data.size / 8 + 1) {0x00}
-        }
-
+        val constructedData = Array<Byte>(data.size / 8){0x00}
         constructedData.indices.forEach { index -> // Which index byte are we on?
             var byte = 0
             // Bit shifting
             try {
                 // Try to bit shift
                 (0 until 8).forEach { bit ->
-                    byte = (byte shl 1) or (if (data[(index*8)+(7-bit)]) 1 else 0)
+                    byte = (byte shl 1) or (if (data[(index*8)+(bit)]) 1 else 0)
                 }
             }
             // Frame wasn't complete. Ignore and leave result
             catch (e: IndexOutOfBoundsException) {
             }
-
 
             // Emplace into list
             constructedData[index] = byte.toByte()
@@ -57,17 +51,17 @@ class CarCanFrame(val canID: Int, var data: Array<Byte>) {
             }
             return try {
                 val cid = str.take(4).toLong(16).toInt()
-                val b = str.drop(4).chunked(2).dropLast(1)
-                val bytes = b.map { it.toLong(16).toByte() }
-                CarCanFrame(cid, bytes.toTypedArray())
+                val b = str.drop(4).chunked(2).dropLast(1).map { it.toLong(16).toByte() }
+                CarCanFrame(cid, b.toTypedArray())
             } catch (e: NumberFormatException) {
                 null
             }
         }
     }
 
+    @ExperimentalUnsignedTypes
     override fun toString(): String {
-        return "ID: $canID DLC: $dlc BYTES: [${data.map{it.toUByte()}.joinToString(",")}]"
+        return "ID: $canID DLC: $dlc BYTES: [${data.map{String.format("%02X", it)}.joinToString(",")}]"
     }
 
     /**

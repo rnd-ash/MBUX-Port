@@ -7,11 +7,15 @@ import java.lang.Exception
 class SerialManager() : SerialInputOutputManager.Listener {
 
     companion object {
-        var buffer: ArrayDeque<Byte> = ArrayDeque(0)
+        val buffer: ArrayDeque<Byte> = ArrayDeque(0)
     }
 
     override fun onNewData(data: ByteArray?) {
-        data?.let { b -> b.forEach { buffer.add(it) } }
+        data?.let {
+            synchronized(buffer) {
+                it.forEach { b -> buffer.add(b) }
+            }
+        }
     }
 
     override fun onRunError(e: Exception?) {
