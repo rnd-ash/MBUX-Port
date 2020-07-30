@@ -1,5 +1,6 @@
 package com.rndash.mbheadunit.ui
 
+import android.app.Dialog
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,7 +10,8 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.rndash.mbheadunit.R
 import com.rndash.mbheadunit.canData.CanBusB
-import org.w3c.dom.Text
+import com.rndash.mbheadunit.warnings.MBUXDialog
+import com.rndash.mbheadunit.warnings.Seatbelts
 import java.util.*
 
 @ExperimentalUnsignedTypes
@@ -43,19 +45,10 @@ class ACDisplay : Fragment() {
         rr_window_text = view.findViewById(R.id.window_rr)
         rl_window_text = view.findViewById(R.id.window_rl)
 
-        val test_btn = view.findViewById<Button>(R.id.test_btn)
-        test_btn.setOnClickListener {
-            Thread {
-                CanBusB.WindowManager.setWindowPositions(0,0, 100, 50)
-                CanBusB.WindowManager.setWindowPositions(0,0, 50, 100)
-                CanBusB.WindowManager.setWindowPositions(0,0, 75, 75)
-                Thread.sleep(100)
-                CanBusB.WindowManager.setWindowPositions(0,0, 50, 50)
-                Thread.sleep(100)
-                CanBusB.WindowManager.setWindowPositions(0,0, 25, 25)
-                Thread.sleep(100)
-                CanBusB.WindowManager.setWindowPositions(0,0, 0, 0)
-            }.start()
+        val btn : Button = view.findViewById(R.id.test_btn)
+        btn.setOnClickListener {
+            val d = Seatbelts(requireActivity())
+            d.show()
         }
 
         Timer().schedule(object : TimerTask() {

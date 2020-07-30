@@ -17,6 +17,7 @@ class MbCheckbox(private val ctx: Context, attrs: AttributeSet) : AppCompatCheck
         buttonDrawable = null
         text = null
     }
+
     override fun onTouchEvent(event: MotionEvent?): Boolean {
         super.setSoundEffectsEnabled(false)
         event?.let {
