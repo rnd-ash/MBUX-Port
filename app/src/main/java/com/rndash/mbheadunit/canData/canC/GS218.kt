@@ -109,7 +109,8 @@ class GS218 : ECUFrame() {
     fun getTCState() : TCState {
         return when {
             signals[8].getValue() != 0 -> TCState.LOCKED
-            signals[7].getValue() != 0 -> TCState.SLIPPING
+            // signals[7] is 'OPEN'
+            signals[6].getValue() != 0 -> TCState.SLIPPING
             else -> TCState.OPEN
         }
     }
