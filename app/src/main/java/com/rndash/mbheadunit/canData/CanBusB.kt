@@ -26,13 +26,11 @@ object CanBusB  {
     var thlA1 = THL_A1()
     var tvrA3 = TVR_A3()
     var tvlA3 = TVL_A3()
-
-    // On init we don't know what page we are on!
-    val toneGen1 = ToneGenerator(AudioManager.STREAM_MUSIC, 100)
+    var kombiA1 = KOMBI_A1()
+    
     internal var curr_keys : ArrayList<WheelKey> by Delegates.observable(arrayListOf()) { _, o, n ->
         if (n != o) {
             println("New key map: $n")
-            toneGen1.startTone(ToneGenerator.TONE_CDMA_ABBR_ALERT,200)
             if (WheelKey.VOL_UP in n) {
                 FullscreenActivity.modifyVolume(true)
             } else if (WheelKey.VOL_DN in n) {
@@ -65,6 +63,7 @@ object CanBusB  {
     fun updateFrames(incoming: CarCanFrame) {
         when(incoming.canID) {
             kla_a1.id -> kla_a1.parseFrame(incoming)
+            kombiA1.id -> kombiA1.parseFrame(incoming)
             sam_v_a2.id -> sam_v_a2.parseFrame(incoming)
             kombiA5.id -> kombiA5.parseFrame(incoming)
             ezsA11.id -> ezsA11.parseFrame(incoming)

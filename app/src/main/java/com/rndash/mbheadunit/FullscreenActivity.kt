@@ -20,6 +20,7 @@ import com.rndash.mbheadunit.canData.CanBusB
 import com.rndash.mbheadunit.ui.ACDisplay
 import com.rndash.mbheadunit.ui.ICDisplayTest
 import com.rndash.mbheadunit.ui.MPGDisplay
+import com.rndash.mbheadunit.ui.PTDisplay
 import kotlin.math.abs
 import kotlin.math.pow
 
@@ -60,6 +61,8 @@ class FullscreenActivity : FragmentActivity() {
         val pagerAdapter = ScreenSlidePagerAdapter(this)
         viewPager.setPageTransformer(ZoomOutPageTransformer())
         viewPager.adapter = pagerAdapter
+        val am = this.getSystemService(Context.AUDIO_SERVICE) as AudioManager
+        am.setStreamVolume(AudioManager.STREAM_NOTIFICATION, 10, 0)
     }
 
     override fun onWindowFocusChanged(hasFocus: Boolean) {
@@ -108,11 +111,12 @@ class FullscreenActivity : FragmentActivity() {
     }
 
     private inner class ScreenSlidePagerAdapter(fa: FragmentActivity) : FragmentStateAdapter(fa) {
-        override fun getItemCount(): Int = 3
+        override fun getItemCount(): Int = 4
 
         override fun createFragment(position: Int): Fragment = when(position) {
             1 -> ACDisplay()
             2 -> MPGDisplay()
+            3 -> PTDisplay()
             else -> ICDisplayTest()
         }
     }

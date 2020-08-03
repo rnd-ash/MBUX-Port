@@ -14,10 +14,6 @@ class MS608 : ECUFrame() {
     override val name : String = "MS608"
     override val dlc: Int = 8
     override val id: Int = 0x0608
-    @Volatile
-    private var fuelSamples = 0
-    @Volatile
-    private var fuelTotal = 0
     override val signals: List<FrameSignal> = listOf(
             FrameSignal( "T_MOT", 0, 8),
             FrameSignal("T_LUFT", 8, 8),
@@ -33,12 +29,6 @@ class MS608 : ECUFrame() {
             FrameSignal( "ZVB_EIN_MS", 59, 1),
             FrameSignal( "PFKO", 60, 4)
     )
-
-    override fun parseFrame(frame: CarCanFrame) {
-        super.parseFrame(frame)
-        fuelSamples++
-        fuelTotal+=signals[8].getValue()
-    }
 
     override fun toString(): String {
         return """
@@ -70,18 +60,5 @@ class MS608 : ECUFrame() {
      * Returns fuel consumed in ul/s, rolling average
      */
     // Use Min here as sometimes when coasting we get a negative value!
-    fun getFuelConsumption() : Int {
-        var ret : Int = try {
-            (fuelTotal.toDouble() / fuelSamples.toDouble()).toInt().also {
-                fuelTotal = 0
-                fuelSamples = 0
-            }
-        } catch (e: Exception) {
-            signals[8].getValue()
-        }
-        if (ret == 0) {
-            ret = signals[8].getValue()
-        }
-        return ret
-    }
+    fun getFuelConsumption() : Int = signals[8].getValue()
 }

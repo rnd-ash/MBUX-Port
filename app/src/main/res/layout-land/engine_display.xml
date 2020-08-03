@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="50dp"
+            android:layout_marginBottom="50dp">
+
+            <TextView
+                android:id="@+id/header"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Powertrain data"
+                android:textColor="#FFFFFF"
+                android:textSize="20dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <TextView
+                android:id="@+id/engine_header"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Engine"
+                android:textColor="#FFFFFF"
+                android:textSize="20dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/header"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/header"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <TextView
+                android:id="@+id/trans_header"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="722.x transmission"
+                android:textColor="#FFFFFF"
+                android:textSize="20dp"
+                app:layout_constraintBottom_toBottomOf="@+id/engine_header"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/header"
+                app:layout_constraintTop_toTopOf="@+id/engine_header" />
+
+            <TextView
+                android:id="@+id/trans_temp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tempurature __ C"
+                android:textColor="#FFFFFF"
+                android:textSize="15dp"
+                app:layout_constraintBottom_toTopOf="@+id/trans_tc_state"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/trans_header"
+                app:layout_constraintTop_toBottomOf="@+id/trans_header" />
+
+            <TextView
+                android:id="@+id/trans_tc_state"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Torque coverter: Open"
+                android:textColor="#FFFFFF"
+                android:textSize="15dp"
+                app:layout_constraintBottom_toTopOf="@+id/trans_torque"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/trans_header"
+                app:layout_constraintTop_toBottomOf="@+id/trans_temp" />
+
+            <TextView
+                android:id="@+id/trans_torque"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Torque: __ Nm"
+                android:textColor="#FFFFFF"
+                android:textSize="15dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/trans_header"
+                app:layout_constraintTop_toBottomOf="@+id/trans_tc_state" />
+
+            <TextView
+                android:id="@+id/engine_oil_temp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Oil tempurature __ C"
+                android:textColor="#FFFFFF"
+                android:textSize="15dp"
+                app:layout_constraintBottom_toTopOf="@+id/engine_coolant_temp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/engine_header"
+                app:layout_constraintTop_toBottomOf="@+id/engine_header" />
+
+            <TextView
+                android:id="@+id/engine_coolant_temp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Coolant tempurature __ C"
+                android:textColor="#FFFFFF"
+                android:textSize="15dp"
+                app:layout_constraintBottom_toTopOf="@+id/engine_intake_temp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/engine_header"
+                app:layout_constraintTop_toBottomOf="@+id/engine_oil_temp" />
+
+            <TextView
+                android:id="@+id/engine_intake_temp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Intake tempurature __ C"
+                android:textColor="#FFFFFF"
+                android:textSize="15dp"
+                app:layout_constraintBottom_toTopOf="@+id/engine_fuel_consump"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/engine_header"
+                app:layout_constraintTop_toBottomOf="@+id/engine_coolant_temp" />
+
+            <TextView
+                android:id="@+id/engine_fuel_consump"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Fuel usage __ ul/s"
+                android:textColor="#FFFFFF"
+                android:textSize="15dp"
+                app:layout_constraintBottom_toTopOf="@+id/engine_rpm"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/engine_header"
+                app:layout_constraintTop_toBottomOf="@+id/engine_intake_temp" />
+
+            <TextView
+                android:id="@+id/engine_rpm"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Engine speed __ rpm"
+                android:textColor="#FFFFFF"
+                android:textSize="15dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/engine_header"
+                app:layout_constraintTop_toBottomOf="@+id/engine_fuel_consump" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

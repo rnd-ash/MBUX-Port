@@ -11,6 +11,7 @@ import com.rndash.mbheadunit.canData.CanBusC
 import java.util.*
 
 @ExperimentalUnsignedTypes
+@ExperimentalStdlibApi
 class MPGDisplay : Fragment() {
     lateinit var mpg_text: TextView
     lateinit var avg_mpg_text: TextView
@@ -35,15 +36,14 @@ class MPGDisplay : Fragment() {
             override fun run() {
                 if (!isInPage){return}
                 val consumedLitres = CanBusC.getFuelConsumedTotal() / 1000000.0 //ul  to L
-                val consumed_curr = CanBusC.getFuelConsumptionCurr()
                 activity?.runOnUiThread {
                     if(CanBusC.isEngineOn()) {
-                        fuel_consumed_curr.text = String.format("Fuel usage: %4d ul/s", consumed_curr)
+                        fuel_consumed_curr.text = String.format("Fuel usage: %4d ul/s", CanBusC.ms608.getFuelConsumption())
                         fuel_usage.text = String.format("Fuel used: %2.2f L", consumedLitres)
-                        mpg_text.text = String.format("Usage: %02.2f L/h", (consumed_curr * 3600) / 1000000.0)
+                        mpg_text.text = String.format("Current: %2.1f MPG", CanBusC.getMPG())
                     } else {
-                        fuel_consumed_curr.text = "Fuel usage: __ ul/s"
-                        mpg_text.text = "Engine off"
+                        fuel_consumed_curr.text = "Fuel usage: 0.0 ul/s"
+                        mpg_text.text = "Current: 0.0 MPG"
                     }
                 }
             }

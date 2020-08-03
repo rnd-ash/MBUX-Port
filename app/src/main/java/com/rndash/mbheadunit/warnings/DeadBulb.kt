@@ -14,12 +14,12 @@ import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.Fragment
 import com.rndash.mbheadunit.R
 
-class Seatbelts(a: Activity) : MBUXDialog(
-    R.drawable.belt,
-    R.raw.belt_phase2,
-    true,
-    WarnLevel.WARNING,
-        "",
-    "Fasten seat belt",
+class DeadBulb(a: Activity) : MBUXDialog(
+    R.drawable.bulb,
+    R.raw.attention,
+    false,
+    WarnLevel.INFO,
+        "Passenger fog lamp inoperative",
+    "Faulty bulb detected",
     a
 )

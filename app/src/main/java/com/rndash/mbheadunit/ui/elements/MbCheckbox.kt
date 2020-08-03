@@ -12,7 +12,6 @@ import java.io.IOException
 
 
 class MbCheckbox(private val ctx: Context, attrs: AttributeSet) : AppCompatCheckBox(ctx, attrs) {
-    private val mp = MediaPlayer.create(ctx, R.raw.click_01)
     init {
         buttonDrawable = null
         text = null
@@ -22,7 +21,6 @@ class MbCheckbox(private val ctx: Context, attrs: AttributeSet) : AppCompatCheck
         super.setSoundEffectsEnabled(false)
         event?.let {
             if (it.action == MotionEvent.ACTION_DOWN) {
-                mp.start()
             }
         }
         return super.onTouchEvent(event)

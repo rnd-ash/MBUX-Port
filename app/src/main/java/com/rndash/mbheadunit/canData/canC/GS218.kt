@@ -12,6 +12,12 @@ class GS218 : ECUFrame() {
     override val dlc: Int = 8
     override val id: Int = 0x0218
 
+    enum class TCState {
+        OPEN,
+        SLIPPING,
+        LOCKED
+    }
+
     /*
     MSG NAME: MTGL_EGS - Motormomentenanf. Toggle 40ms + -10, OFFSET 0, LENGTH 1
 	MSG NAME: MMIN_EGS - Engine torque requirement Min, OFFSET 1, LENGTH 1
@@ -100,7 +106,13 @@ class GS218 : ECUFrame() {
 
     fun isOverheating(): Boolean = signals[17].getValue() != 0
 
-
+    fun getTCState() : TCState {
+        return when {
+            signals[8].getValue() != 0 -> TCState.LOCKED
+            signals[7].getValue() != 0 -> TCState.SLIPPING
+            else -> TCState.OPEN
+        }
+    }
 
     override fun toString(): String {
         return """

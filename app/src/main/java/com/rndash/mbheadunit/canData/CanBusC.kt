@@ -2,8 +2,11 @@ package com.rndash.mbheadunit.canData
 
 import com.rndash.mbheadunit.CarCanFrame
 import com.rndash.mbheadunit.canData.canC.*
+import kotlin.math.max
+import kotlin.math.min
 
 @ExperimentalUnsignedTypes
+@ExperimentalStdlibApi
 object CanBusC  {
 
     /**
@@ -38,10 +41,10 @@ object CanBusC  {
     }
 
 
-    private val ms608 = MS608()
-    private val ms308 = MS308()
-    private val gs418 = GS418()
-    private val gs218 = GS218()
+    val ms608 = MS608()
+    val ms308 = MS308()
+    val gs418 = GS418()
+    val gs218 = GS218()
 
     fun updateFrames(incoming: CarCanFrame) {
         when(incoming.canID) {
@@ -67,8 +70,6 @@ object CanBusC  {
     }
 
     private var fuel_cons_total: Long = 0
-
-    fun getFuelConsumptionCurr() : Int = this.currFuelUsage
     fun getFuelConsumedTotal() : Long = fuel_cons_total
 
 
@@ -105,16 +106,32 @@ object CanBusC  {
         }
     }
 
-
-    var currFuelUsage: Int = 0
-
     // Keep track of MPG figures
     val fuelThread = Thread() {
         while(true) {
-            currFuelUsage = ms608.getFuelConsumption()
-            this.fuel_cons_total += currFuelUsage
+            this.fuel_cons_total += ms608.getFuelConsumption()
             Thread.sleep(1000)
         }
+    }
+
+    private var mpg = 0.0F
+    private var lastMPGTime = System.currentTimeMillis()
+    fun getMPG() : Float {
+        if (System.currentTimeMillis() - lastMPGTime >= 1000) {
+            lastMPGTime = System.currentTimeMillis()
+            val spd = CanBusB.kombiA1.getSpeedKmh()
+            if (spd == 0) {
+                mpg = 0.0F
+            } else if (ms608.getFuelConsumption() == 0) {
+                mpg = 99.9F
+            } else {
+                val l_per_hour = 3600.0 * (ms608.getFuelConsumption() / 1000000.0)
+                val km_l = spd / l_per_hour
+                mpg = min(99.9, km_l * 2.82481).toFloat() // Don't exceed 99.9
+            }
+
+        }
+        return mpg
     }
 
 
