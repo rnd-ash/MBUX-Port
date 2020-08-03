@@ -7,11 +7,11 @@ import com.rndash.mbheadunit.canData.UnVerifiedValue
 @ExperimentalUnsignedTypes
 @ExperimentalStdlibApi
 class KLA_A1 : ECUFrame() {
-    enum class FlapPosition() {
-        OPEN,
-        CLOSED,
-        PARTIAL,
-        UNKNOWN
+    enum class FlapPosition(val str: String) {
+        OPEN("Full"),
+        CLOSED("Closed"),
+        PARTIAL("Trickle"),
+        UNKNOWN("Unknown")
     }
 
     override val name: String = "KLA_A1"

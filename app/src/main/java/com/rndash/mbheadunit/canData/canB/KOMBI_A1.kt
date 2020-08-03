@@ -77,5 +77,10 @@ class KOMBI_A1 : ECUFrame() {
         FrameSignal("ABL_NLZ", 56, 8)
     )
 
+    fun getDisplayBrightness(): Int = signals[0].getValue()
     fun getSpeedKmh() : Int = signals[1].getValue()
+    fun isLowFuel(): Boolean = signals[3].getValue() != 0
+    fun hasAutoDoorLock(): Boolean = signals[4].getValue() != 0
+
+
 }

@@ -22,12 +22,14 @@ class ACDisplay : Fragment() {
     lateinit var fan_speed_text : TextView
     lateinit var interior_text: TextView
     lateinit var exterior_text: TextView
-
     lateinit var fr_window_text: TextView
     lateinit var fl_window_text: TextView
-
     lateinit var rr_window_text: TextView
     lateinit var rl_window_text: TextView
+
+    lateinit var up_flap_pos: TextView
+    lateinit var cent_flap_pos: TextView
+    lateinit var low_flap_pos: TextView
 
     var isInPage = false
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -46,11 +48,9 @@ class ACDisplay : Fragment() {
         rr_window_text = view.findViewById(R.id.window_rr)
         rl_window_text = view.findViewById(R.id.window_rl)
 
-        val btn : Button = view.findViewById(R.id.test_btn)
-        btn.setOnClickListener {
-            val d = Seatbelts(requireActivity())
-            d.show()
-        }
+        up_flap_pos = view.findViewById(R.id.upper_vent)
+        cent_flap_pos = view.findViewById(R.id.mid_vent)
+        low_flap_pos = view.findViewById(R.id.low_vent)
 
         Timer().schedule(object : TimerTask() {
             override fun run() {
@@ -63,6 +63,9 @@ class ACDisplay : Fragment() {
                     rr_window_text.text = String.format("%3d %%", CanBusB.thrA1.getWindowPositionPercent())
                     fl_window_text.text = String.format("%3d %%", CanBusB.tvlA3.getWindowPositionPercent())
                     fr_window_text.text = String.format("%3d %%", CanBusB.tvrA3.getWindowPositionPercent())
+                    up_flap_pos.text = "Windshield: ${CanBusB.kla_a1.getUpFlapPosition().str}"
+                    cent_flap_pos.text = "Center: ${CanBusB.kla_a1.getCenterFlapPosition().str}"
+                    low_flap_pos.text = "Footwell: ${CanBusB.kla_a1.getLowerFlapPosition().str}"
                 }
             }
         }, 0, 100)
