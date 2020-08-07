@@ -18,7 +18,6 @@ import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
 import com.rndash.mbheadunit.canData.CanBusB
 import com.rndash.mbheadunit.ui.ACDisplay
-import com.rndash.mbheadunit.ui.ICDisplayTest
 import com.rndash.mbheadunit.ui.MPGDisplay
 import com.rndash.mbheadunit.ui.PTDisplay
 import kotlin.math.abs
@@ -111,13 +110,12 @@ class FullscreenActivity : FragmentActivity() {
     }
 
     private inner class ScreenSlidePagerAdapter(fa: FragmentActivity) : FragmentStateAdapter(fa) {
-        override fun getItemCount(): Int = 4
+        override fun getItemCount(): Int = 3
 
         override fun createFragment(position: Int): Fragment = when(position) {
             1 -> ACDisplay()
             2 -> MPGDisplay()
-            3 -> PTDisplay()
-            else -> ICDisplayTest()
+            else -> PTDisplay()
         }
     }
 

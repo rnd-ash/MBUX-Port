@@ -96,7 +96,7 @@
                 android:text="Torque: __ Nm"
                 android:textColor="#FFFFFF"
                 android:textSize="15dp"
-                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintBottom_toTopOf="@+id/turbine_rpm"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="@+id/trans_header"
@@ -167,6 +167,18 @@
                 app:layout_constraintStart_toStartOf="@+id/engine_header"
                 app:layout_constraintTop_toBottomOf="@+id/engine_fuel_consump" />
 
+            <TextView
+                android:id="@+id/turbine_rpm"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Turbine speed __ rpm"
+                android:textColor="#FFFFFF"
+                android:textSize="15dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/trans_header"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/trans_header"
+                app:layout_constraintTop_toBottomOf="@+id/trans_torque" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </LinearLayout>

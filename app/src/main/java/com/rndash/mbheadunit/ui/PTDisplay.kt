@@ -8,7 +8,6 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.rndash.mbheadunit.R
 import com.rndash.mbheadunit.canData.CanBusC
-import org.w3c.dom.Text
 import java.util.*
 
 @ExperimentalUnsignedTypes
@@ -30,6 +29,7 @@ class PTDisplay : Fragment() {
         val transTemp = view.findViewById<TextView>(R.id.trans_temp)
         val transTorque = view.findViewById<TextView>(R.id.trans_torque)
         val transTC = view.findViewById<TextView>(R.id.trans_tc_state)
+        val turbineRPM = view.findViewById<TextView>(R.id.turbine_rpm)
 
         Timer().schedule(object: TimerTask() {
             override fun run() {
@@ -37,13 +37,14 @@ class PTDisplay : Fragment() {
                 activity?.runOnUiThread {
                     engCoolant.text = String.format("Coolant temperature: %2d C", CanBusC.ms608.getMotorTemp())
                     engOil.text = String.format("Oil temperature: %2d C", CanBusC.ms308.getOilTemp())
-                    engIntake.text = String.format("Oil temperature: %2d C", CanBusC.ms608.getIntakeTemp())
+                    engIntake.text = String.format("Intake temperature: %2d C", CanBusC.ms608.getIntakeTemp())
                     engFuel.text = String.format("Fuel usage: %4d ul/s", CanBusC.ms608.getFuelConsumption())
                     engRpm.text = String.format("Engine speed: %4d RPM", CanBusC.ms308.getEngineRPM())
 
                     transTemp.text = String.format("Oil temperature: %2d C", CanBusC.gs418.getTransOilTemp())
                     transTorque.text = String.format("Torque: %4d Nm", CanBusC.gs218.getEngineTorque())
-                    transTC.text = "TC state: ${CanBusC.gs218.getTCState()}"
+                    transTC.text = String.format("TC clutch duty: %3d%%", CanBusC.getTCDuty())
+                    turbineRPM.text = String.format("Turbine speed: %4d RPM", CanBusC.gs338.getTurbineSpeed())
                 }
             }
         }, 0, 250)

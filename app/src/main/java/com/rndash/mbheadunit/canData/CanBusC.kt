@@ -8,7 +8,6 @@ import kotlin.math.min
 @ExperimentalUnsignedTypes
 @ExperimentalStdlibApi
 object CanBusC  {
-
     /**
      * Gear enum varients for the 722.6 + 722.9 transmission
      */
@@ -45,6 +44,7 @@ object CanBusC  {
     val ms308 = MS308()
     val gs418 = GS418()
     val gs218 = GS218()
+    val gs338 = GS338()
 
     fun updateFrames(incoming: CarCanFrame) {
         when(incoming.canID) {
@@ -52,7 +52,7 @@ object CanBusC  {
             ms608.id -> ms608.parseFrame(incoming)
             gs418.id -> gs418.parseFrame(incoming)
             gs218.id -> gs218.parseFrame(incoming)
-
+            gs338.id -> gs338.parseFrame(incoming)
         }
     }
 
@@ -134,6 +134,34 @@ object CanBusC  {
         return mpg
     }
 
+    /**
+     * Returns an estimated percentage of the Torque converters
+     * Lockup clutch duty cycle application percentage
+     * in range 0 to 100.
+     *
+     * Known values:kon
+     * Park or Neutral - Clutch is 0% lockup
+     */
+    fun getTCDuty() : Int {
+        // Divide by 10 on both to get rid of any noise
+        val engineRPM = (ms308.getEngineRPM() / 10)
+        var tcRPM = (gs338.getTurbineSpeed() / 10) // Given at input to transmission
+
+        // If in park or neutral, return 0 as TC Clutch is on 0% duty cycle
+        if (gs218.getActualGear() == 0 || gs218.getActualGear() == 13) {
+            return 0
+        }
+        // Now we know car must be in gear
+
+        if (tcRPM == 0) {
+            return 0
+        }
+        // Clamp TC RPM in case rounding error so output isn't > 100 %
+        if (tcRPM > engineRPM) {
+            tcRPM = engineRPM
+        }
+        return ((tcRPM.toDouble() / engineRPM.toDouble())*100).toInt()
+    }
 
     init {
         fuelThread.start()
