@@ -97,7 +97,7 @@ class StatusBar : Fragment() {
                 val bat_image : Int = when {
                     bat_voltage < 12.0 ->  R.drawable.bat_red
                     bat_voltage < 13.0 -> R.drawable.bat_white
-                    else -> R.drawable.bat_white
+                    else -> R.drawable.bat_green
                 }
 
                 val cruise_data = getCruiseData()
