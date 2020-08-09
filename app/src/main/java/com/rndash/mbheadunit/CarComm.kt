@@ -7,7 +7,6 @@ import com.hoho.android.usbserial.driver.UsbSerialDriver
 import com.hoho.android.usbserial.driver.UsbSerialPort
 import com.hoho.android.usbserial.driver.UsbSerialProber
 import com.hoho.android.usbserial.util.SerialInputOutputManager
-import com.rndash.mbheadunit.SerialManager.Companion.buffer
 import com.rndash.mbheadunit.canData.CanBusB
 import com.rndash.mbheadunit.canData.CanBusC
 import com.rndash.mbheadunit.canData.canB.kombiDisplay.ICDisplay
@@ -28,6 +27,7 @@ class CarComm(device: UsbDevice, manager: UsbManager) {
         CANBUS_C('C')
     }
 
+    /*
     val readThread = Thread {
         var str = ""
         var b: Byte?
@@ -45,6 +45,7 @@ class CarComm(device: UsbDevice, manager: UsbManager) {
             }
         }
     }
+     */
 
     private fun processFrame(str: String) {
         try {
@@ -95,13 +96,13 @@ class CarComm(device: UsbDevice, manager: UsbManager) {
         serialDevice = port
         val usbIoManager = SerialInputOutputManager(serialDevice, SerialManager())
         Executors.newSingleThreadExecutor().submit(usbIoManager)
-        readThread.start()
+        //readThread.start()
         Thread() { ICDisplay.beginInitSequence() }.start() // Init the display now we are connected
     }
 
     fun quit() {
         println("Destroying serial")
         serialDevice?.close()
-        readThread.interrupt()
+        //readThread.interrupt()
     }
 }

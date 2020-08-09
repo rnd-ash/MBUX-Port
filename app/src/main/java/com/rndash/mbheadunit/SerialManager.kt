@@ -5,17 +5,10 @@ import java.lang.Exception
 
 @ExperimentalStdlibApi
 class SerialManager() : SerialInputOutputManager.Listener {
-
-    companion object {
-        val buffer: ArrayDeque<Byte> = ArrayDeque(0)
-    }
-
+    val canbusNative = CanbusNative()
     override fun onNewData(data: ByteArray?) {
-        data?.let {
-            synchronized(buffer) {
-                it.forEach { b -> buffer.add(b) }
-            }
-        }
+        // Add to our native buffer
+        data?.let { canbusNative.addBytes(it) }
     }
 
     override fun onRunError(e: Exception?) {
