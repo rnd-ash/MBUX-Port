@@ -20,6 +20,7 @@ import com.rndash.mbheadunit.canData.CanBusB
 import com.rndash.mbheadunit.ui.ACDisplay
 import com.rndash.mbheadunit.ui.MPGDisplay
 import com.rndash.mbheadunit.ui.PTDisplay
+import com.rndash.mbheadunit.ui.dialog.MBUXDialog
 import kotlin.math.abs
 import kotlin.math.pow
 
@@ -46,6 +47,9 @@ class FullscreenActivity : FragmentActivity() {
                 }
             }
             volContext.sendBroadcast(intent)
+        }
+        init {
+            System.loadLibrary("canbus-lib")
         }
     }
 
@@ -107,6 +111,18 @@ class FullscreenActivity : FragmentActivity() {
             comm = CarComm(dev!!, x)
             Toast.makeText(this, "Connected to car!", Toast.LENGTH_SHORT).show()
         }
+
+        val mbux = MBUXDialog(this)
+        mbux.show()
+
+        // Test thread - remove!
+        Thread {
+            while(true) {
+                println("Sending 6 bytes")
+                SerialManager().onNewData(byteArrayOf(0x00, 0x01, 0x02, 0x03, 0x04, 0x05))
+                Thread.sleep(500)
+            }
+        }.start()
     }
 
     private inner class ScreenSlidePagerAdapter(fa: FragmentActivity) : FragmentStateAdapter(fa) {
