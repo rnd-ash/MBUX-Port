@@ -99,6 +99,6 @@ object ISO15765Protocol {
     }
 
     private fun sendFrame(id: Int, b: Array<Byte>) {
-        CarComm.sendFrame(CarComm.CANBUS_ID.CANBUS_B, CarCanFrame(id, b))
+        //CarComm.sendFrame(CarComm.CANBUS_ID.CANBUS_B, CarCanFrame(id, b))
     }
 }

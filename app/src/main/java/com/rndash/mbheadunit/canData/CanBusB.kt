@@ -115,7 +115,7 @@ object CanBusB  {
                         rr_done = true
                     }
                 }
-                CarComm.sendFrame(CarComm.CANBUS_ID.CANBUS_B, canFrame.createCanFrame())
+                //CarComm.sendFrame(CarComm.CANBUS_ID.CANBUS_B, canFrame.createCanFrame())
                 Thread.sleep(10) // IMPORTANT DON'T SPAM CANBUS!
             }
             Thread.sleep(50) // Give can a break before we exit

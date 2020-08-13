@@ -21,6 +21,7 @@ import com.rndash.mbheadunit.ui.ACDisplay
 import com.rndash.mbheadunit.ui.MPGDisplay
 import com.rndash.mbheadunit.ui.PTDisplay
 import com.rndash.mbheadunit.ui.dialog.MBUXDialog
+import java.lang.RuntimeException
 import kotlin.math.abs
 import kotlin.math.pow
 
@@ -65,7 +66,11 @@ class FullscreenActivity : FragmentActivity() {
         viewPager.setPageTransformer(ZoomOutPageTransformer())
         viewPager.adapter = pagerAdapter
         val am = this.getSystemService(Context.AUDIO_SERVICE) as AudioManager
-        am.setStreamVolume(AudioManager.STREAM_NOTIFICATION, 10, 0)
+        try {
+            am.setStreamVolume(AudioManager.STREAM_NOTIFICATION, 10, 0)
+        } catch (e: RuntimeException) {
+            // Ignore - this is due to DND
+        }
     }
 
     override fun onWindowFocusChanged(hasFocus: Boolean) {
@@ -99,7 +104,7 @@ class FullscreenActivity : FragmentActivity() {
                     Intent("com.rnd-ash.github.mbui"), 0
                 )
                 dev = u
-                x.requestPermission(dev, pi);
+                x.requestPermission(dev, pi)
                 return@forEach
             }
         }
@@ -114,15 +119,16 @@ class FullscreenActivity : FragmentActivity() {
 
         val mbux = MBUXDialog(this)
         mbux.show()
-
         // Test thread - remove!
+        /*
         Thread {
             while(true) {
-                println("Sending 6 bytes")
-                SerialManager().onNewData(byteArrayOf(0x00, 0x01, 0x02, 0x03, 0x04, 0x05))
+                println("Sending test frame")
+                SerialManager().onNewData(byteArrayOf('B'.toByte(), 0x00, 0xCA.toByte(), 0x02, 0x00, 0x01, 0x02, 0x03, 0x04, 0x04, 0x05, 0x06))
                 Thread.sleep(500)
             }
         }.start()
+         */
     }
 
     private inner class ScreenSlidePagerAdapter(fa: FragmentActivity) : FragmentStateAdapter(fa) {

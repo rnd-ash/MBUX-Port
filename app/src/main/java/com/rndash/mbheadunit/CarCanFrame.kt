@@ -1,8 +1,6 @@
 package com.rndash.mbheadunit
 import java.lang.IndexOutOfBoundsException
-import java.lang.Integer.max
 import java.lang.NumberFormatException
-import java.util.*
 
 class CarCanFrame(val canID: Int, var data: Array<Byte>) {
     var dlc = data.size
