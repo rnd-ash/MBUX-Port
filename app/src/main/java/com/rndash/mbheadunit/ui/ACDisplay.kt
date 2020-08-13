@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.rndash.mbheadunit.R
-import com.rndash.mbheadunit.canData.CanBusB
 import java.util.*
 
 @ExperimentalUnsignedTypes
@@ -51,6 +50,7 @@ class ACDisplay : Fragment() {
             override fun run() {
                 if(!isInPage){return}
                 activity?.runOnUiThread {
+                    /*
                     fan_speed_text.text = String.format("Fan speed: %3d %%", CanBusB.kla_a1.getFanSpeedPercent())
                     interior_text.text = String.format("Interior temp: %2.1f C", CanBusB.kla_a1.getInteriorTemp())
                     exterior_text.text = String.format("Exterior temp: %2.1f C", CanBusB.sam_v_a2.getOutsideTemp())
@@ -61,6 +61,7 @@ class ACDisplay : Fragment() {
                     up_flap_pos.text = "Windshield: ${CanBusB.kla_a1.getUpFlapPosition().str}"
                     cent_flap_pos.text = "Center: ${CanBusB.kla_a1.getCenterFlapPosition().str}"
                     low_flap_pos.text = "Footwell: ${CanBusB.kla_a1.getLowerFlapPosition().str}"
+                     */
                 }
             }
         }, 0, 100)

@@ -3,12 +3,10 @@ package com.rndash.mbheadunit
 import android.hardware.usb.UsbDevice
 import android.hardware.usb.UsbManager
 import android.os.Process
-import android.util.Log
 import com.hoho.android.usbserial.driver.UsbSerialDriver
 import com.hoho.android.usbserial.driver.UsbSerialPort
 import com.hoho.android.usbserial.driver.UsbSerialProber
-import com.hoho.android.usbserial.util.SerialInputOutputManager
-import java.nio.ByteBuffer
+import com.rndash.mbheadunit.nativeCan.CanBusNative
 import java.util.concurrent.Executors
 
 
@@ -21,7 +19,6 @@ class CarComm(device: UsbDevice, manager: UsbManager) {
 
     companion object {
         private var serialDevice : UsbSerialPort? = null
-        val nativeCanbus = CanBusNative()
         private val SERIAL_INPUT_OUTPUT_MANAGER_THREAD_PRIORITY: Int = Process.THREAD_PRIORITY_URGENT_AUDIO
     }
 
@@ -30,7 +27,7 @@ class CarComm(device: UsbDevice, manager: UsbManager) {
     val sendThread = Thread {
         var data : ByteArray // Allocate here
         while(true) {
-            data = nativeCanbus.getSendFrame()
+            data = CanBusNative.getSendFrame()
             if (data.isNotEmpty()) {
                 // Something to send!
                 serialDevice?.write(data, 100)
@@ -49,7 +46,7 @@ class CarComm(device: UsbDevice, manager: UsbManager) {
         val connection = manager.openDevice(driver.device)
         val port = driver.ports[0]
         port.open(connection)
-        nativeCanbus.init()
+        CanBusNative.init()
         port.setParameters(115200, 8, UsbSerialPort.STOPBITS_1, UsbSerialPort.PARITY_NONE)
         serialDevice = port
         val readThread = object : IOManager(64, serialDevice!!, SerialManager()) {
@@ -70,6 +67,6 @@ class CarComm(device: UsbDevice, manager: UsbManager) {
         println("Destroying serial")
         serialDevice?.close()
         sendThread.interrupt()
-        nativeCanbus.destroy()
+        CanBusNative.destroy()
     }
 }

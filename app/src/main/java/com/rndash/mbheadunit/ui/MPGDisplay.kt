@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.rndash.mbheadunit.R
-import com.rndash.mbheadunit.canData.CanBusC
 import java.util.*
 
 @ExperimentalUnsignedTypes
@@ -34,6 +33,7 @@ class MPGDisplay : Fragment() {
 
         Timer().schedule(object: TimerTask() {
             override fun run() {
+                /*
                 if (!isInPage){return}
                 val consumedLitres = CanBusC.getFuelConsumedTotal() / 1000000.0 //ul  to L
                 activity?.runOnUiThread {
@@ -46,6 +46,8 @@ class MPGDisplay : Fragment() {
                         mpg_text.text = "Current: 0.0 MPG"
                     }
                 }
+
+                 */
             }
         }, 0, 500)
     }

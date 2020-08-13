@@ -1,11 +1,9 @@
-package com.rndash.mbheadunit
-
-import java.nio.ByteBuffer
+package com.rndash.mbheadunit.nativeCan
 
 /**
  * Native Canbus wrapper for JNI Code
  */
-class CanBusNative {
+object CanBusNative {
     /**
      * Sets up the native canbus interface
      */
@@ -30,4 +28,15 @@ class CanBusNative {
      * If return size is 0, then there is nothing to send
      */
     external fun getSendFrame() : ByteArray
+
+
+    fun getECUParameterB(ecuAddr: CanBAddrs, offset: Int, len: Int) : Int {
+        return getECUParam(ecuAddr.addr, 'B', offset, len)
+    }
+
+    fun getECUParameterC(ecuAddr: CanCAddrs, offset: Int, len: Int) : Int {
+        return getECUParam(ecuAddr.addr, 'C', offset, len)
+    }
+
+    private external fun getECUParam(ecuAddr: Int, bus_id: Char, offset: Int, len: Int) : Int
 }

@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.rndash.mbheadunit.R
-import com.rndash.mbheadunit.canData.CanBusC
 import java.util.*
 
 @ExperimentalUnsignedTypes
@@ -35,6 +34,7 @@ class PTDisplay : Fragment() {
             override fun run() {
                 if (!isInPage){return}
                 activity?.runOnUiThread {
+                    /*
                     engCoolant.text = String.format("Coolant temperature: %2d C", CanBusC.ms608.getMotorTemp())
                     engOil.text = String.format("Oil temperature: %2d C", CanBusC.ms308.getOilTemp())
                     engIntake.text = String.format("Intake temperature: %2d C", CanBusC.ms608.getIntakeTemp())
@@ -45,6 +45,8 @@ class PTDisplay : Fragment() {
                     transTorque.text = String.format("Torque: %4d Nm", CanBusC.gs218.getEngineTorque())
                     transTC.text = String.format("TC clutch duty: %3d%%", CanBusC.getTCDuty())
                     turbineRPM.text = String.format("Turbine speed: %4d RPM", CanBusC.gs338.getTurbineSpeed())
+
+                     */
                 }
             }
         }, 0, 250)

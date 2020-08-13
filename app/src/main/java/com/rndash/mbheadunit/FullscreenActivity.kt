@@ -6,7 +6,6 @@ import android.content.Intent
 import android.hardware.usb.UsbDevice
 import android.hardware.usb.UsbManager
 import android.media.AudioManager
-import android.microntek.MTCData
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -16,14 +15,13 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
-import com.rndash.mbheadunit.canData.CanBusB
+import com.rndash.mbheadunit.nativeCan.CanBusNative
+import com.rndash.mbheadunit.nativeCan.canB.KLA_A1
 import com.rndash.mbheadunit.ui.ACDisplay
 import com.rndash.mbheadunit.ui.MPGDisplay
 import com.rndash.mbheadunit.ui.PTDisplay
 import com.rndash.mbheadunit.ui.dialog.MBUXDialog
 import java.lang.RuntimeException
-import kotlin.math.abs
-import kotlin.math.pow
 
 
 /**
@@ -111,6 +109,7 @@ class FullscreenActivity : FragmentActivity() {
         if (dev == null) {
             Log.e("MAIN", "No Arduino found!")
             Toast.makeText(this, "Error. Arduino not found!", Toast.LENGTH_LONG).show()
+            CanBusNative.init()
         } else {
             Log.d("MAIN", "Arduino found!")
             comm = CarComm(dev!!, x)
@@ -119,16 +118,12 @@ class FullscreenActivity : FragmentActivity() {
 
         val mbux = MBUXDialog(this)
         mbux.show()
-        // Test thread - remove!
-        /*
         Thread {
-            while(true) {
-                println("Sending test frame")
-                SerialManager().onNewData(byteArrayOf('B'.toByte(), 0x00, 0xCA.toByte(), 0x02, 0x00, 0x01, 0x02, 0x03, 0x04, 0x04, 0x05, 0x06))
-                Thread.sleep(500)
-            }
+            Thread.sleep(1000)
+            CanBusNative.sendBytesToBuffer("B00302000031A00260150\r\n".toByteArray(Charsets.US_ASCII), 23)
+            Thread.sleep(10)
+            println(KLA_A1)
         }.start()
-         */
     }
 
     private inner class ScreenSlidePagerAdapter(fa: FragmentActivity) : FragmentStateAdapter(fa) {

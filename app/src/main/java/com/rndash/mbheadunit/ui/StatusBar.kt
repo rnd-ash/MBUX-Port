@@ -8,8 +8,6 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.rndash.mbheadunit.R
-import com.rndash.mbheadunit.canData.CanBusB
-import com.rndash.mbheadunit.canData.CanBusC
 import java.util.*
 
 @ExperimentalUnsignedTypes
@@ -22,6 +20,7 @@ class StatusBar : Fragment() {
     lateinit var bat_text: TextView
     lateinit var bat_img: ImageView
 
+    /*
     fun getCruiseData() : Pair<Int, String> {
         val state = CanBusC.getCruiseState()
         return when(state.first) {
@@ -39,7 +38,7 @@ class StatusBar : Fragment() {
             CanBusC.CruiseState.ARMED -> Pair(R.drawable.lim_armed, "__")
         }
     }
-
+    */
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.status_bar, container, false)
@@ -55,6 +54,7 @@ class StatusBar : Fragment() {
 
         Timer().schedule(object: TimerTask() {
             override fun run() {
+                /*
                 val resource = when (CanBusC.getTransmissionProgram()) {
                     CanBusC.DriveProgram.MANUAL -> {
                         val x = when(CanBusC.getGear()) {
@@ -110,6 +110,7 @@ class StatusBar : Fragment() {
                     bat_img.setImageResource(bat_image)
                     bat_text.text = String.format("%2.2f V", bat_voltage)
                 }
+                */
             }
         }, 0, 200)
     }

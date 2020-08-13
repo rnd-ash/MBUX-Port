@@ -19,8 +19,6 @@ struct tablet_frame {
     uint8_t data[8];
 };
 
-bool doRead = true;
-
 const uint8_t FRAME_SIZE = sizeof(tablet_frame);
 
 tablet_frame io_frame = {0x00}; // Reserve in memory
@@ -77,39 +75,35 @@ void loop() {
             canB->sendMessage(&io_can_frame);
             writeFrame('B', &io_can_frame);
             break;
-        case 0xFF:
-            // Toggle on this special byte
-            doRead = !doRead;
-            break;
         default:
             break;
         }
     }
-    if (doRead) {
-        // Poll for any new CAN frames on Bus B
-        if (canB->readMessage(&io_can_frame) == MCP2515::ERROR_OK) {
-            writeFrame('B', &io_can_frame);
-        }
-        // Poll for any new CAN frames on Bus C
-        if (canC->readMessage(&io_can_frame) == MCP2515::ERROR_OK) {
-            writeFrame('C', &io_can_frame);
-        }
-
-        // Debug only for desk purposes
-        io_can_frame.can_dlc = 8;
-        io_can_frame.can_id = 0x00AA;
-        io_can_frame.data[0] = 0x00;
-        io_can_frame.data[1] = 0x01;
-        io_can_frame.data[2] = 0x02;
-        io_can_frame.data[3] = 0x03;
-        io_can_frame.data[4] = 0x04;
-        io_can_frame.data[5] = 0x05;
-        io_can_frame.data[6] = 0x06;
-        io_can_frame.data[7] = 0x07;
-        if (random(1) == 1) {
-            writeFrame('B', &io_can_frame);
-        } else {
-            writeFrame('C', &io_can_frame);
-        }
+    // Poll for any new CAN frames on Bus B
+    if (canB->readMessage(&io_can_frame) == MCP2515::ERROR_OK) {
+        writeFrame('B', &io_can_frame);
     }
+    // Poll for any new CAN frames on Bus C
+    if (canC->readMessage(&io_can_frame) == MCP2515::ERROR_OK) {
+        writeFrame('C', &io_can_frame);
+    }
+
+    /*
+    // Debug only for desk purposes
+    io_can_frame.can_dlc = 8;
+    io_can_frame.can_id = 0x00AA;
+    io_can_frame.data[0] = 0x00;
+    io_can_frame.data[1] = 0x01;
+    io_can_frame.data[2] = 0x02;
+    io_can_frame.data[3] = 0x03;
+    io_can_frame.data[4] = 0x04;
+    io_can_frame.data[5] = 0x05;
+    io_can_frame.data[6] = 0x06;
+    io_can_frame.data[7] = 0x07;
+    if (random(1) == 1) {
+        writeFrame('B', &io_can_frame);
+    } else {
+        writeFrame('C', &io_can_frame);
+    }
+    */
 }
