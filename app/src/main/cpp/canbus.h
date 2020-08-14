@@ -81,3 +81,30 @@ Java_com_rndash_mbheadunit_nativeCan_CanBusNative_getECUParam(JNIEnv *env, jobje
     }
     return 0;
 }
+
+extern "C"
+JNIEXPORT jbyteArray JNICALL
+Java_com_rndash_mbheadunit_nativeCan_CanBusNative_getNativeFrame(JNIEnv *env, jobject thiz,
+                                                                 jint ecu_addr, jchar bus_id) {
+    try {
+        CanFrame *f = decoder->getFrame(bus_id, ecu_addr);
+        if (f == nullptr) {
+            env->ThrowNew(env->FindClass("java/lang/IllegalArgumentException"), "Null ECU Frame!");
+        } else {
+            uint8_t* temp = new uint8_t [f->dlc+2];
+            temp[0] = f->id << 8;
+            temp[1] = f->id;
+            memcpy(&temp[2], &f->data[0], f->dlc);
+
+            jbyteArray bytes = env->NewByteArray(2 + f->dlc);
+            env->SetByteArrayRegion(bytes, 0, 2+f->dlc, (jbyte*)(temp));
+            delete[] temp;
+            return bytes;
+        }
+    } catch (InvalidECUAddressException e) {
+        env->ThrowNew(env->FindClass("java/lang/IllegalArgumentException"), e.what().c_str());
+    } catch (InvalidBusException e) {
+        env->ThrowNew(env->FindClass("java/lang/IllegalArgumentException"), e.what().c_str());
+    }
+    return env->NewByteArray(0);
+}

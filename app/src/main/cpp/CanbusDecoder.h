@@ -6,7 +6,7 @@
 #define MERCEDES_UI_CANBUSDECODER_H
 
 #include "ECUs/ECU.h"
-#include "ECUs/Addrs.h"
+#include <map>
 
 class InvalidBusException : public std::exception {
 public:
@@ -22,43 +22,36 @@ private:
     char bus;
 };
 
-class InvalidECUAddressException : public std::exception  {
+class InvalidECUAddressException : public std::exception {
 public:
-    InvalidECUAddressException(int id) {
-        this->id = id;
+    InvalidECUAddressException(int addr) {
+        this->addr = addr;
     }
     std::string what() {
         char buf[50];
-        sprintf(buf, "Unknown ECU ID '0x%04X'", this->id);
+        sprintf(buf, "Unknown ECU Address '0x%04X'", this->addr);
         return std::string(buf);
     }
 private:
-    int id;
+    char addr;
 };
 
-
-
-class CanB {
+class CanDB {
 public:
     void processFrame(CanFrame* frame);
     int getValue(int ecuAddr, int offset, int len);
+    CanFrame* getFrame(uint16_t ecuAddr);
 private:
-    ECUFrame KLA_A1 = ECUFrame();
-};
-
-class CanC {
-public:
-    void processFrame(CanFrame* frame);
-private:
-    // TODO Add ECUs
+    std::map<uint16_t, ECUFrame> frames;
 };
 
 class CanbusDecoder {
 public:
     void processFrame(CanFrame* frame);
-    CanB busB = CanB();
-    CanC busC = CanC();
+    CanDB canB;
+    CanDB canC;
     int getValue(char bus, int ecuAddr, int offset, int len);
+    CanFrame* getFrame(char bus, int ecuAddr);
 };
 
 

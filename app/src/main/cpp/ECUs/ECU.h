@@ -8,7 +8,6 @@
 #include <cstdlib>
 #include <cstring>
 #include <android/log.h>
-#include "Addrs.h"
 
 #define CANC 'C'
 #define CANB 'B'
@@ -51,22 +50,19 @@ public:
         }
         int start = offset / 8;
         int end = (offset+len-1) / 8; //-1 here as we start inclusive of start
-        __android_log_print(ANDROID_LOG_DEBUG, "GET_PARAM", "%d %d", start, end);
         uint32_t d = this->data.data[start];
         if (start != end) {
-            for (int i = start; i <= end; i++) {
-                d |= data.data[i];
+            for (int i = start+1; i <= end; i++) {
                 d <<= 8;
+                d |= data.data[i];
             }
         }
         uint32_t mask = 0x00;
         for (int i = 0; i < len; i++) {
             mask |= (1 << i);
         }
-        __android_log_print(ANDROID_LOG_DEBUG, "GET_PARAM", "%04X", mask);
-        __android_log_print(ANDROID_LOG_DEBUG, "GET_PARAM", "%04X", d);
         // Now bit shift so that masking values start at the start of the byte
-        return (d >> offset % 8) & mask;
+        return (d >> (offset % 8)) & mask;
     }
 
     bool setParam(int value, int offset, int len) {

@@ -11,13 +11,13 @@ void CanbusDecoder::processFrame(CanFrame *frame) {
     for (int i = 0; i < frame->dlc; i++) {
         pos += sprintf(buf+pos, "%02X ", frame->data[i]);
     }
-    __android_log_print(ANDROID_LOG_DEBUG, "CanbusDecoer", "CAN FRAME: Bus: %c, ID: %04X, DLC: %d. Data: [%s]", frame->busID, frame->id, frame->dlc, buf);
+    //__android_log_print(ANDROID_LOG_DEBUG, "CanbusDecoer", "CAN FRAME: Bus: %c, ID: %04X, DLC: %d. Data: [%s]", frame->busID, frame->id, frame->dlc, buf);
     switch (frame->busID) {
         case CANB:
-            busB.processFrame(frame);
+            canB.processFrame(frame);
             break;
         case CANC:
-            busC.processFrame(frame);
+            canC.processFrame(frame);
             break;
         default:
             break;
@@ -27,31 +27,46 @@ void CanbusDecoder::processFrame(CanFrame *frame) {
 int CanbusDecoder::getValue(char bus, int ecuAddr, int offset, int len) {
     switch (bus) {
         case CANB:
-            return this->busB.getValue(ecuAddr, offset, len);
+            return this->canB.getValue(ecuAddr, offset, len);
+        case CANC:
+            return this->canC.getValue(ecuAddr, offset, len);
         default:
             throw InvalidBusException(bus);
     }
 }
 
-void CanB::processFrame(CanFrame *frame) {
-    switch (frame->id) {
-        case B_KLA_A1:
-            __android_log_print(ANDROID_LOG_DEBUG, "CANB" ,"Found KLAA1");
-            this->KLA_A1.setData(frame);
+CanFrame *CanbusDecoder::getFrame(char bus, int ecuAddr) {
+    switch (bus) {
+        case CANB:
+            return this->canB.getFrame(ecuAddr);
+        case CANC:
+            return this->canC.getFrame(ecuAddr);
         default:
-            break;
+            throw InvalidBusException(bus);
     }
 }
 
-int CanB::getValue(int ecuAddr, int offset, int len) {
-    switch (ecuAddr) {
-        case B_KLA_A1:
-            return KLA_A1.getParam(offset, len);
-        default:
-            throw InvalidECUAddressException(ecuAddr);
+void CanDB::processFrame(CanFrame *frame) {
+    if (frames.find(frame->id) == frames.end()) {
+        // Insert ECU Frame if not existing
+        this->frames.insert(std::make_pair(frame->id, ECUFrame()));
+    }
+    // Update Frame
+    frames[frame->id].setData(frame);
+}
+
+int CanDB::getValue(int ecuAddr, int offset, int len) {
+    try {
+        return frames[ecuAddr].getParam(offset, len);
+    } catch (...) {
+        throw InvalidECUAddressException(ecuAddr);
     }
 }
 
-void CanC::processFrame(CanFrame *frame) {
-    // TODO process ECUs
+CanFrame *CanDB::getFrame(uint16_t ecuAddr) {
+    try {
+        return frames[ecuAddr].getData();
+    } catch (...) {
+        return nullptr;
+    }
 }
