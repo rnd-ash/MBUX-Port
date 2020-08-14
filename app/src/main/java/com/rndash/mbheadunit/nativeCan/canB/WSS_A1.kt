@@ -36,7 +36,5 @@ object WSS_A1 {
 			WSS_ANZ: ${get_wss_anz()}
 		""".trimIndent()
 	}
-
-
 	private fun getParam(o: Int, l: Int) : Int = CanBusNative.getECUParameterB(CanBAddrs.WSS_A1, o, l)
 }

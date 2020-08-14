@@ -158,5 +158,5 @@ object EZS_A1 {
 	}
 
 
-	private fun getParam(o: Int, l: Int) : Int = CanBusNative.getECUParameterB(CanBAddrs.UNKNOWN, o, l)
+	private fun getParam(o: Int, l: Int) : Int = CanBusNative.getECUParameterB(CanBAddrs.EZS_A1, o, l)
 }

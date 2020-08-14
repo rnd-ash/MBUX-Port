@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.rndash.mbheadunit.R
+import com.rndash.mbheadunit.nativeCan.canC.*
 import java.util.*
 
 @ExperimentalUnsignedTypes
@@ -34,19 +35,16 @@ class PTDisplay : Fragment() {
             override fun run() {
                 if (!isInPage){return}
                 activity?.runOnUiThread {
-                    /*
-                    engCoolant.text = String.format("Coolant temperature: %2d C", CanBusC.ms608.getMotorTemp())
-                    engOil.text = String.format("Oil temperature: %2d C", CanBusC.ms308.getOilTemp())
-                    engIntake.text = String.format("Intake temperature: %2d C", CanBusC.ms608.getIntakeTemp())
-                    engFuel.text = String.format("Fuel usage: %4d ul/s", CanBusC.ms608.getFuelConsumption())
-                    engRpm.text = String.format("Engine speed: %4d RPM", CanBusC.ms308.getEngineRPM())
+                    engCoolant.text = String.format("Coolant temperature: %2d C", MS_608h.get_t_mot() - 40)
+                    engOil.text = String.format("Oil temperature: %2d C", MS_308h.get_t_oel() - 40)
+                    engIntake.text = String.format("Intake temperature: %2d C", MS_608h.get_t_luft() - 40)
+                    engFuel.text = String.format("Fuel usage: %4d ul/s", MS_608h.get_vb())
+                    engRpm.text = String.format("Engine speed: %4d RPM", MS_308h.get_nmot())
 
-                    transTemp.text = String.format("Oil temperature: %2d C", CanBusC.gs418.getTransOilTemp())
-                    transTorque.text = String.format("Torque: %4d Nm", CanBusC.gs218.getEngineTorque())
-                    transTC.text = String.format("TC clutch duty: %3d%%", CanBusC.getTCDuty())
-                    turbineRPM.text = String.format("Turbine speed: %4d RPM", CanBusC.gs338.getTurbineSpeed())
-
-                     */
+                    transTemp.text = String.format("Oil temperature: %2d C", GS_418h.get_t_get() - 40)
+                    transTorque.text = String.format("Torque: %3.1f Nm", MS_312h.get_m_max_atl().toFloat()/10.0)
+                    //transTC.text = String.format("TC clutch duty: %3d%%", CanBusC.getTCDuty())
+                    turbineRPM.text = String.format("Turbine speed: %4d RPM", GS_338h.get_nturbine())
                 }
             }
         }, 0, 250)

@@ -36,7 +36,5 @@ object THL_A1 {
 			FESTE_HL: ${get_feste_hl()}
 		""".trimIndent()
 	}
-
-
 	private fun getParam(o: Int, l: Int) : Int = CanBusNative.getECUParameterB(CanBAddrs.THL_A1, o, l)
 }

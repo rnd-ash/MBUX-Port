@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.rndash.mbheadunit.R
+import com.rndash.mbheadunit.nativeCan.canB.*
 import java.util.*
 
 @ExperimentalUnsignedTypes
@@ -50,18 +51,16 @@ class ACDisplay : Fragment() {
             override fun run() {
                 if(!isInPage){return}
                 activity?.runOnUiThread {
-                    /*
-                    fan_speed_text.text = String.format("Fan speed: %3d %%", CanBusB.kla_a1.getFanSpeedPercent())
-                    interior_text.text = String.format("Interior temp: %2.1f C", CanBusB.kla_a1.getInteriorTemp())
-                    exterior_text.text = String.format("Exterior temp: %2.1f C", CanBusB.sam_v_a2.getOutsideTemp())
-                    rl_window_text.text = String.format("%3d %%", CanBusB.thlA1.getWindowPositionPercent())
-                    rr_window_text.text = String.format("%3d %%", CanBusB.thrA1.getWindowPositionPercent())
-                    fl_window_text.text = String.format("%3d %%", CanBusB.tvlA3.getWindowPositionPercent())
-                    fr_window_text.text = String.format("%3d %%", CanBusB.tvrA3.getWindowPositionPercent())
-                    up_flap_pos.text = "Windshield: ${CanBusB.kla_a1.getUpFlapPosition().str}"
-                    cent_flap_pos.text = "Center: ${CanBusB.kla_a1.getCenterFlapPosition().str}"
-                    low_flap_pos.text = "Footwell: ${CanBusB.kla_a1.getLowerFlapPosition().str}"
-                     */
+                    fan_speed_text.text = String.format("Fan speed: %3d %%", KLA_A1.get_geb_lstg())
+                    interior_text.text = String.format("Interior temp: %2.1f C", KLA_A1.get_t_innen_kla().toFloat() / 4.0)
+                    exterior_text.text = String.format("Exterior temp: %2.1f C", SAM_V_A2.get_t_aussen_b().toFloat() / 4.0)
+                    rl_window_text.text = String.format("%3d %%", THL_A1.get_feste_hl())
+                    rr_window_text.text = String.format("%3d %%", THR_A1.get_feste_hr())
+                    fl_window_text.text = String.format("%3d %%", TVL_A3.get_feste_vl())
+                    fr_window_text.text = String.format("%3d %%", TVR_A3.get_feste_vr())
+                    up_flap_pos.text = "Windshield: ${KLA_A1.get_lko_vorn()}"
+                    cent_flap_pos.text = "Center: ${KLA_A1.get_lkm_vorn()}"
+                    low_flap_pos.text = "Footwell: ${KLA_A1.get_lku_vorn()}"
                 }
             }
         }, 0, 100)

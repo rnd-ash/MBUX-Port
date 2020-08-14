@@ -8,6 +8,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.rndash.mbheadunit.R
+import com.rndash.mbheadunit.nativeCan.canB.EZS_A11
 import java.util.*
 
 @ExperimentalUnsignedTypes
@@ -92,25 +93,24 @@ class StatusBar : Fragment() {
                     }
                     CanBusC.DriveProgram.UNKNOWN -> R.drawable.gear_unknown
                 }
-
-                val bat_voltage = CanBusB.ezsA11.getBattVoltage()
+                */
+                val bat_voltage = EZS_A11.get_u_batt().toFloat() / 10.0
                 val bat_image : Int = when {
                     bat_voltage < 12.0 ->  R.drawable.bat_red
                     bat_voltage < 13.0 -> R.drawable.bat_white
                     else -> R.drawable.bat_green
                 }
 
-                val cruise_data = getCruiseData()
+                //val cruise_data = getCruiseData()
                 activity?.runOnUiThread {
                     gear_display.scaleX = 0.75F
                     gear_display.scaleY = 0.75F
-                    gear_display.setImageResource(resource)
-                    cruise_img.setImageResource(cruise_data.first)
-                    cruise_text.text = cruise_data.second
+                    //gear_display.setImageResource(resource)
+                    //cruise_img.setImageResource(cruise_data.first)
+                    //cruise_text.text = cruise_data.second
                     bat_img.setImageResource(bat_image)
                     bat_text.text = String.format("%2.2f V", bat_voltage)
                 }
-                */
             }
         }, 0, 200)
     }

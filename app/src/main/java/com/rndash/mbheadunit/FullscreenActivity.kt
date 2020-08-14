@@ -15,6 +15,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
+import com.rndash.mbheadunit.nativeCan.CanBAddrs
 import com.rndash.mbheadunit.nativeCan.CanBusNative
 import com.rndash.mbheadunit.nativeCan.canB.KLA_A1
 import com.rndash.mbheadunit.ui.ACDisplay
@@ -123,6 +124,7 @@ class FullscreenActivity : FragmentActivity() {
             CanBusNative.sendBytesToBuffer("B00302000031A00260150\r\n".toByteArray(Charsets.US_ASCII), 23)
             Thread.sleep(10)
             println(KLA_A1)
+            println(CanBusNative.getBFrame(CanBAddrs.KLA_A1))
         }.start()
     }
 
