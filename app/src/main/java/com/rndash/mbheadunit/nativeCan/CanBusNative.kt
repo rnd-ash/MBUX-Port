@@ -1,6 +1,8 @@
 package com.rndash.mbheadunit.nativeCan
 
 import com.rndash.mbheadunit.CanFrame
+import com.rndash.mbheadunit.nativeCan.canB.CanBAddrs
+import com.rndash.mbheadunit.nativeCan.canC.CanCAddrs
 
 /**
  * Native Canbus wrapper for JNI Code
@@ -54,20 +56,33 @@ object CanBusNative {
         }
     }
 
-    private external fun getECUParam(ecuAddr: Int, bus_id: Char, offset: Int, len: Int) : Int
-
+    /**
+     * Returns an optional can frame from canbus B
+     * @param ecuAddr Address from Canbus B
+     */
     fun getBFrame(ecuAddr: CanBAddrs) : CanFrame? = getECUFrame(ecuAddr.addr, 'B')
+
+    /**
+     * Returns an optional can frame from canbus C
+     * @param ecuAddr Address from Canbus C
+     */
     fun getCFrame(ecuAddr: CanCAddrs) : CanFrame? = getECUFrame(ecuAddr.addr, 'C')
 
+    /**
+     * Returns a frame from canbus native
+     * @param ecuAddr ECU Frame ID
+     * @param bus_id Can Bus Identifier
+     */
     private fun getECUFrame(ecuAddr: Int, bus_id: Char) : CanFrame? {
         return try {
             val data = getNativeFrame(ecuAddr, bus_id)
             val id = (data[0].toInt() shl 8) or data[1].toInt()
-            CanFrame(id, data.drop(2).toByteArray())
+            CanFrame(id, bus_id, data.drop(2).toByteArray())
         } catch (e: Exception) {
             null
         }
     }
 
+    private external fun getECUParam(ecuAddr: Int, bus_id: Char, offset: Int, len: Int) : Int
     private external fun getNativeFrame(ecuAddr: Int, bus_id: Char) : ByteArray
 }

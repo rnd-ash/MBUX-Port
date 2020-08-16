@@ -1,7 +1,7 @@
 package com.rndash.mbheadunit
 import java.nio.ByteBuffer
 
-class CanFrame(val canID: Int, bytes: ByteArray) {
+class CanFrame(val canID: Int, val bus: Char, bytes: ByteArray) {
     var data = ByteBuffer.allocate(8).put(bytes)
     var dlc = bytes.size
 
@@ -20,7 +20,7 @@ class CanFrame(val canID: Int, bytes: ByteArray) {
     }
 
     override fun toString(): String {
-        return String.format("CID 0x%04X, DLC: %d, Data: [%s]", canID, dlc, data.array().take(dlc).map { x -> String.format("%02X", x) }.joinToString(" "))
+        return String.format("BUS %c, CID 0x%04X, DLC: %d, Data: [%s]", bus, canID, dlc, data.array().take(dlc).map { x -> String.format("%02X", x) }.joinToString(" "))
     }
 
     fun getBitRange(offset: Int, len: Int) : Int {
@@ -46,5 +46,13 @@ class CanFrame(val canID: Int, bytes: ByteArray) {
             // Now bit shift so that masking values start at the start of the byte
             return (d shr offset % 8) and mask
         }
+    }
+
+    fun toStruct(): ByteArray {
+        return byteArrayOf(
+                bus.toByte(),
+                (canID shl 8).toByte(),
+                (canID).toByte()
+        ) + this.data.array()
     }
 }

@@ -48,9 +48,28 @@ private:
 class CanbusDecoder {
 public:
     void processFrame(CanFrame* frame);
+    // Database for CAN B
     CanDB canB;
+
+    // Database for CAN C
     CanDB canC;
+
+    /**
+     * Gets a value from within a can frame
+     * @param bus Can BUS ECU Frame is from
+     * @param ecuAddr ECU Frame ID
+     * @param offset offset from bit 0 within the frame to read the value from
+     * @param len Length in bits the value is
+     * @return Extracted value
+     */
     int getValue(char bus, int ecuAddr, int offset, int len);
+
+    /**
+     * Returns a can frame from a bus
+     * @param bus Can Bus for frame
+     * @param ecuAddr ECU Frame ID
+     * @return Nullptr if frame not found, else pointer to can frame
+     */
     CanFrame* getFrame(char bus, int ecuAddr);
 };
 

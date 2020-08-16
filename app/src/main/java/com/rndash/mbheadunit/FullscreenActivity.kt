@@ -15,7 +15,8 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
-import com.rndash.mbheadunit.nativeCan.CanBAddrs
+import com.rndash.mbheadunit.nativeCan.canB.CanBAddrs
+import com.rndash.mbheadunit.nativeCan.canC.CanCAddrs
 import com.rndash.mbheadunit.nativeCan.CanBusNative
 import com.rndash.mbheadunit.nativeCan.canB.KLA_A1
 import com.rndash.mbheadunit.ui.ACDisplay

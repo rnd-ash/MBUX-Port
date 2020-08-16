@@ -54,16 +54,6 @@ extern "C"
  */
 JNIEXPORT void JNICALL
 Java_com_rndash_mbheadunit_nativeCan_CanBusNative_sendBytesToBuffer(JNIEnv *env, jobject thiz, jbyteArray bytes, jint numBytes);
-#endif
-
-
-
-// MESS BELOW
-extern "C"
-JNIEXPORT jboolean JNICALL
-Java_com_rndash_mbheadunit_NativeCan_CanB_KLA_1A1_isHeatedRearWindows(JNIEnv *env, jobject thiz) {
-    return false;
-}
 
 extern "C"
 JNIEXPORT jint JNICALL
@@ -108,3 +98,5 @@ Java_com_rndash_mbheadunit_nativeCan_CanBusNative_getNativeFrame(JNIEnv *env, jo
     }
     return env->NewByteArray(0);
 }
+
+#endif

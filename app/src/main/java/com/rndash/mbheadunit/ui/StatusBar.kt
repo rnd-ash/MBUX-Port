@@ -9,6 +9,7 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.rndash.mbheadunit.R
 import com.rndash.mbheadunit.nativeCan.canB.EZS_A11
+import com.rndash.mbheadunit.nativeCan.canC.*
 import java.util.*
 
 @ExperimentalUnsignedTypes
@@ -55,45 +56,48 @@ class StatusBar : Fragment() {
 
         Timer().schedule(object: TimerTask() {
             override fun run() {
-                /*
-                val resource = when (CanBusC.getTransmissionProgram()) {
-                    CanBusC.DriveProgram.MANUAL -> {
-                        val x = when(CanBusC.getGear()) {
-                            CanBusC.Gear.P -> R.drawable.gear_p
-                            CanBusC.Gear.N -> R.drawable.gear_n
-                            CanBusC.Gear.R1 -> R.drawable.gear_r1
-                            CanBusC.Gear.R2 -> R.drawable.gear_r2
-                            CanBusC.Gear.D1 -> R.drawable.gear_m1
-                            CanBusC.Gear.D2 -> R.drawable.gear_m2
-                            CanBusC.Gear.D3 -> R.drawable.gear_m3
-                            CanBusC.Gear.D4 -> R.drawable.gear_m4
-                            CanBusC.Gear.D5 -> R.drawable.gear_m5
-                            CanBusC.Gear.D6 -> R.drawable.gear_m6
-                            CanBusC.Gear.D7 -> R.drawable.gear_m7
-                            else -> R.drawable.gear_n
+                val resource = try {
+                    when (GS_418h.get_fpc()) {
+                        FPC.M -> {
+                            val x = when (GS_218h.get_gic()) {
+                                GIC.P -> R.drawable.gear_p
+                                GIC.N -> R.drawable.gear_n
+                                GIC.R -> R.drawable.gear_r1
+                                GIC.R2 -> R.drawable.gear_r2
+                                GIC.D1 -> R.drawable.gear_m1
+                                GIC.D2 -> R.drawable.gear_m2
+                                GIC.D3 -> R.drawable.gear_m3
+                                GIC.D4 -> R.drawable.gear_m4
+                                GIC.D5 -> R.drawable.gear_m5
+                                GIC.D6 -> R.drawable.gear_m6
+                                GIC.D7 -> R.drawable.gear_m7
+                                else -> R.drawable.gear_n
+                            }
+                            x
                         }
-                        x
-                    }
-                    CanBusC.DriveProgram.SPORT, CanBusC.DriveProgram.COMFORT -> {
-                        val x : Int = when(CanBusC.getGear()) {
-                            CanBusC.Gear.P -> R.drawable.gear_p
-                            CanBusC.Gear.N -> R.drawable.gear_n
-                            CanBusC.Gear.R1 -> R.drawable.gear_r1
-                            CanBusC.Gear.R2 -> R.drawable.gear_r2
-                            CanBusC.Gear.D1 -> R.drawable.gear_d1
-                            CanBusC.Gear.D2 -> R.drawable.gear_d2
-                            CanBusC.Gear.D3 -> R.drawable.gear_d3
-                            CanBusC.Gear.D4 -> R.drawable.gear_d4
-                            CanBusC.Gear.D5 -> R.drawable.gear_d5
-                            CanBusC.Gear.D6 -> R.drawable.gear_d6
-                            CanBusC.Gear.D7 -> R.drawable.gear_d7
-                            else -> R.drawable.gear_n
+                        FPC.S, FPC.C -> {
+                            val x: Int = when (GS_218h.get_gic()) {
+                                GIC.P -> R.drawable.gear_p
+                                GIC.N -> R.drawable.gear_n
+                                GIC.R2 -> R.drawable.gear_r1
+                                GIC.R3 -> R.drawable.gear_r2
+                                GIC.D1 -> R.drawable.gear_d1
+                                GIC.D2 -> R.drawable.gear_d2
+                                GIC.D3 -> R.drawable.gear_d3
+                                GIC.D4 -> R.drawable.gear_d4
+                                GIC.D5 -> R.drawable.gear_d5
+                                GIC.D6 -> R.drawable.gear_d6
+                                GIC.D7 -> R.drawable.gear_d7
+                                else -> R.drawable.gear_n
+                            }
+                            x
                         }
-                        x
+                        else -> R.drawable.gear_unknown
                     }
-                    CanBusC.DriveProgram.UNKNOWN -> R.drawable.gear_unknown
+                } catch (e: Exception) {
+                    R.drawable.gear_unknown
                 }
-                */
+
                 val bat_voltage = EZS_A11.get_u_batt().toFloat() / 10.0
                 val bat_image : Int = when {
                     bat_voltage < 12.0 ->  R.drawable.bat_red
@@ -105,7 +109,7 @@ class StatusBar : Fragment() {
                 activity?.runOnUiThread {
                     gear_display.scaleX = 0.75F
                     gear_display.scaleY = 0.75F
-                    //gear_display.setImageResource(resource)
+                    gear_display.setImageResource(resource)
                     //cruise_img.setImageResource(cruise_data.first)
                     //cruise_text.text = cruise_data.second
                     bat_img.setImageResource(bat_image)
