@@ -289,9 +289,10 @@ object {0} {{
         }}
     }}""".format(can_subsystem ,frame.get_name())
     buf += "\n\n\toverride fun toString() = \"\"\"\n"
+    buf += "\t\t|Frame {0} ({1}):\n".format(frame.get_name(), frame.get_id())
     for l in frame.generate_to_string().split("\n"):
         if l:
-            buf += "\t\t|" + l + "\n"
+            buf += "\t\t|\t" + l + "\n"
     buf += "\t\"\"\".trimMargin(\"|\")"
 
     buf += "\n}\n"
