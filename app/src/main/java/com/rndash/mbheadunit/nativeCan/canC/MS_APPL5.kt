@@ -1,5 +1,5 @@
 
-@file:Suppress("unused", "FunctionName")
+@file:Suppress("unused", "FunctionName", "ClassName")
 package com.rndash.mbheadunit.nativeCan.canC
 import com.rndash.mbheadunit.CanFrame // AUTO GEN
 import com.rndash.mbheadunit.nativeCan.CanBusNative // AUTO GEN
@@ -11,11 +11,33 @@ import com.rndash.mbheadunit.nativeCan.CanBusNative // AUTO GEN
 
 object MS_APPL5 {
 
-    	/** Gets application **/
+    /** 
+     *  Returns the most recent Can Frame representing the state
+     *  of MS_APPL5
+    **/
+    fun get_frame() : CanFrame? = CanBusNative.getCFrame(CanCAddrs.MS_APPL5)
+
+	/** Gets application **/
 	fun get_appl5() : Int = CanBusNative.getECUParameterC(CanCAddrs.MS_APPL5, 0, 64)
 	
 	/** Sets application **/
-	fun set_appl5(f: CanFrame, p: Int) = CanBusNative.setFrameParameter(f, 0, 64, p)
+	fun set_appl5(f: CanFrame, p: Int) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 0, 64, p)
+	}
 	
-	
+	/**
+     * Auto generated function
+     * Throws exception if user tries to set a value in a frame
+     * Not designated from the correct ECU
+    **/
+    private fun checkFrame(f: CanFrame) {
+        if (f.canID != CanCAddrs.MS_APPL5.addr) {
+            throw IllegalArgumentException("CAN ID does not match object!")
+        }
+    }
+
+	override fun toString() = """
+		|application: ${get_appl5()}
+	""".trimMargin("|")
 }

@@ -1,5 +1,5 @@
 
-@file:Suppress("unused", "FunctionName")
+@file:Suppress("unused", "FunctionName", "ClassName")
 package com.rndash.mbheadunit.nativeCan.canC
 import com.rndash.mbheadunit.CanFrame // AUTO GEN
 import com.rndash.mbheadunit.nativeCan.CanBusNative // AUTO GEN
@@ -11,7 +11,13 @@ import com.rndash.mbheadunit.nativeCan.CanBusNative // AUTO GEN
 
 object MS_ANZ {
 
-    	/** Gets number of the ASS status message **/
+    /** 
+     *  Returns the most recent Can Frame representing the state
+     *  of MS_ANZ
+    **/
+    fun get_frame() : CanFrame? = CanBusNative.getCFrame(CanCAddrs.MS_ANZ)
+
+	/** Gets number of the ASS status message **/
 	fun get_ass_dspl() : ASS_DSPL = when(CanBusNative.getECUParameterC(CanCAddrs.MS_ANZ, 20, 4)) {
 		 0 -> ASS_DSPL.IDLE
 		 1 -> ASS_DSPL.M1
@@ -33,7 +39,10 @@ object MS_ANZ {
 	}
 	
 	/** Sets number of the ASS status message **/
-	fun set_ass_dspl(f: CanFrame, p: ASS_DSPL) = CanBusNative.setFrameParameter(f, 20, 4, p.raw)
+	fun set_ass_dspl(f: CanFrame, p: ASS_DSPL) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 20, 4, p.raw)
+	}
 	
 	/** Gets number of the ASS warning message **/
 	fun get_ass_warn() : ASS_WARN = when(CanBusNative.getECUParameterC(CanCAddrs.MS_ANZ, 16, 4)) {
@@ -57,13 +66,34 @@ object MS_ANZ {
 	}
 	
 	/** Sets number of the ASS warning message **/
-	fun set_ass_warn(f: CanFrame, p: ASS_WARN) = CanBusNative.setFrameParameter(f, 16, 4, p.raw)
+	fun set_ass_warn(f: CanFrame, p: ASS_WARN) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 16, 4, p.raw)
+	}
 	
 	/** Gets Suppression of lamp test during the stop phase **/
 	fun get_ass_ltest_aus() : Boolean = CanBusNative.getECUParameterC(CanCAddrs.MS_ANZ, 24, 1) != 0
 	
 	/** Sets Suppression of lamp test during the stop phase **/
-	fun set_ass_ltest_aus(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 24, 1, if(p) 1 else 0)
+	fun set_ass_ltest_aus(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 24, 1, if(p) 1 else 0)
+	}
 	
-	
+	/**
+     * Auto generated function
+     * Throws exception if user tries to set a value in a frame
+     * Not designated from the correct ECU
+    **/
+    private fun checkFrame(f: CanFrame) {
+        if (f.canID != CanCAddrs.MS_ANZ.addr) {
+            throw IllegalArgumentException("CAN ID does not match object!")
+        }
+    }
+
+	override fun toString() = """
+		|number of the ASS status message: ${get_ass_dspl()}
+		|number of the ASS warning message: ${get_ass_warn()}
+		|Suppression of lamp test during the stop phase: ${get_ass_ltest_aus()}
+	""".trimMargin("|")
 }

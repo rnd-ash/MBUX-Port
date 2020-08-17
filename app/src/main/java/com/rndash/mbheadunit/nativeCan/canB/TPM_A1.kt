@@ -1,5 +1,5 @@
 
-@file:Suppress("unused", "FunctionName")
+@file:Suppress("unused", "FunctionName", "ClassName")
 package com.rndash.mbheadunit.nativeCan.canB
 import com.rndash.mbheadunit.CanFrame // AUTO GEN
 import com.rndash.mbheadunit.nativeCan.CanBusNative // AUTO GEN
@@ -11,7 +11,13 @@ import com.rndash.mbheadunit.nativeCan.CanBusNative // AUTO GEN
 
 object TPM_A1 {
 
-    	/** Gets TPM state **/
+    /** 
+     *  Returns the most recent Can Frame representing the state
+     *  of TPM_A1
+    **/
+    fun get_frame() : CanFrame? = CanBusNative.getBFrame(CanBAddrs.TPM_A1)
+
+	/** Gets TPM state **/
 	fun get_tpm_stat() : TPM_STAT = when(CanBusNative.getECUParameterB(CanBAddrs.TPM_A1, 4, 4)) {
 		 0 -> TPM_STAT.DISP_VAL
 		 1 -> TPM_STAT.MEASURE
@@ -26,7 +32,10 @@ object TPM_A1 {
 	}
 	
 	/** Sets TPM state **/
-	fun set_tpm_stat(f: CanFrame, p: TPM_STAT) = CanBusNative.setFrameParameter(f, 4, 4, p.raw)
+	fun set_tpm_stat(f: CanFrame, p: TPM_STAT) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 4, 4, p.raw)
+	}
 	
 	/** Gets TPM message display request **/
 	fun get_tpm_msgdisp_rq() : TPM_MSGDISP_RQ = when(CanBusNative.getECUParameterB(CanBAddrs.TPM_A1, 0, 4)) {
@@ -47,7 +56,10 @@ object TPM_A1 {
 	}
 	
 	/** Sets TPM message display request **/
-	fun set_tpm_msgdisp_rq(f: CanFrame, p: TPM_MSGDISP_RQ) = CanBusNative.setFrameParameter(f, 0, 4, p.raw)
+	fun set_tpm_msgdisp_rq(f: CanFrame, p: TPM_MSGDISP_RQ) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 0, 4, p.raw)
+	}
 	
 	/** Gets TPM warning display request **/
 	fun get_tpm_warndisp_rq() : TPM_WARNDISP_RQ = when(CanBusNative.getECUParameterB(CanBAddrs.TPM_A1, 13, 3)) {
@@ -60,111 +72,185 @@ object TPM_A1 {
 	}
 	
 	/** Sets TPM warning display request **/
-	fun set_tpm_warndisp_rq(f: CanFrame, p: TPM_WARNDISP_RQ) = CanBusNative.setFrameParameter(f, 13, 3, p.raw)
+	fun set_tpm_warndisp_rq(f: CanFrame, p: TPM_WARNDISP_RQ) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 13, 3, p.raw)
+	}
 	
 	/** Gets Tire pressure module indication lamp on request **/
 	fun get_tpm_indlmp_on_rq() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.TPM_A1, 12, 1) != 0
 	
 	/** Sets Tire pressure module indication lamp on request **/
-	fun set_tpm_indlmp_on_rq(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 12, 1, if(p) 1 else 0)
+	fun set_tpm_indlmp_on_rq(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 12, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets Tire in limp-home operation mode **/
 	fun get_tire_lhom() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.TPM_A1, 11, 1) != 0
 	
 	/** Sets Tire in limp-home operation mode **/
-	fun set_tire_lhom(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 11, 1, if(p) 1 else 0)
+	fun set_tire_lhom(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 11, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets Tire pressure module malfunction lamp on request **/
 	fun get_tpm_malflmp_on_rq() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.TPM_A1, 10, 1) != 0
 	
 	/** Sets Tire pressure module malfunction lamp on request **/
-	fun set_tpm_malflmp_on_rq(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 10, 1, if(p) 1 else 0)
+	fun set_tpm_malflmp_on_rq(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 10, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets Tire pressure module display on request **/
 	fun get_tpm_disp_on_rq() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.TPM_A1, 9, 1) != 0
 	
 	/** Sets Tire pressure module display on request **/
-	fun set_tpm_disp_on_rq(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 9, 1, if(p) 1 else 0)
+	fun set_tpm_disp_on_rq(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 9, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets Tire front left **/
 	fun get_tire_fl() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.TPM_A1, 20, 1) != 0
 	
 	/** Sets Tire front left **/
-	fun set_tire_fl(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 20, 1, if(p) 1 else 0)
+	fun set_tire_fl(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 20, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets Tire front right **/
 	fun get_tire_fr() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.TPM_A1, 19, 1) != 0
 	
 	/** Sets Tire front right **/
-	fun set_tire_fr(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 19, 1, if(p) 1 else 0)
+	fun set_tire_fr(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 19, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets Tire rear left **/
 	fun get_tire_rl() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.TPM_A1, 18, 1) != 0
 	
 	/** Sets Tire rear left **/
-	fun set_tire_rl(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 18, 1, if(p) 1 else 0)
+	fun set_tire_rl(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 18, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets Tire rear right **/
 	fun get_tire_rr() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.TPM_A1, 17, 1) != 0
 	
 	/** Sets Tire rear right **/
-	fun set_tire_rr(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 17, 1, if(p) 1 else 0)
+	fun set_tire_rr(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 17, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets Spare tire **/
 	fun get_tire_spr() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.TPM_A1, 16, 1) != 0
 	
 	/** Sets Spare tire **/
-	fun set_tire_spr(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 16, 1, if(p) 1 else 0)
+	fun set_tire_spr(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 16, 1, if(p) 1 else 0)
+	}
 	
-	/** Gets Tire pressure front left UNIT: bar **/
+	/** Gets Tire pressure front left  **/
 	fun get_tirepress_fl() : TIREPRESS_FL = when(CanBusNative.getECUParameterB(CanBAddrs.TPM_A1, 24, 8)) {
 		 254 -> TIREPRESS_FL.NO_IND
 		 255 -> TIREPRESS_FL.SNA
 		 else -> throw Exception("Invalid raw value for TIREPRESS_FL")
 	}
 	
-	/** Sets Tire pressure front left UNIT: bar **/
-	fun set_tirepress_fl(f: CanFrame, p: TIREPRESS_FL) = CanBusNative.setFrameParameter(f, 24, 8, p.raw)
+	/** Sets Tire pressure front left  **/
+	fun set_tirepress_fl(f: CanFrame, p: TIREPRESS_FL) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 24, 8, p.raw)
+	}
 	
-	/** Gets Tire pressure front right UNIT: bar **/
+	/** Gets Tire pressure front right  **/
 	fun get_tirepress_fr() : TIREPRESS_FR = when(CanBusNative.getECUParameterB(CanBAddrs.TPM_A1, 32, 8)) {
 		 254 -> TIREPRESS_FR.NO_IND
 		 255 -> TIREPRESS_FR.SNA
 		 else -> throw Exception("Invalid raw value for TIREPRESS_FR")
 	}
 	
-	/** Sets Tire pressure front right UNIT: bar **/
-	fun set_tirepress_fr(f: CanFrame, p: TIREPRESS_FR) = CanBusNative.setFrameParameter(f, 32, 8, p.raw)
+	/** Sets Tire pressure front right  **/
+	fun set_tirepress_fr(f: CanFrame, p: TIREPRESS_FR) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 32, 8, p.raw)
+	}
 	
-	/** Gets Tire pressure rear left UNIT: bar **/
+	/** Gets Tire pressure rear left  **/
 	fun get_tirepress_rl() : TIREPRESS_RL = when(CanBusNative.getECUParameterB(CanBAddrs.TPM_A1, 40, 8)) {
 		 254 -> TIREPRESS_RL.NO_IND
 		 255 -> TIREPRESS_RL.SNA
 		 else -> throw Exception("Invalid raw value for TIREPRESS_RL")
 	}
 	
-	/** Sets Tire pressure rear left UNIT: bar **/
-	fun set_tirepress_rl(f: CanFrame, p: TIREPRESS_RL) = CanBusNative.setFrameParameter(f, 40, 8, p.raw)
+	/** Sets Tire pressure rear left  **/
+	fun set_tirepress_rl(f: CanFrame, p: TIREPRESS_RL) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 40, 8, p.raw)
+	}
 	
-	/** Gets Tire pressure rear right UNIT: bar **/
+	/** Gets Tire pressure rear right  **/
 	fun get_tirepress_rr() : TIREPRESS_RR = when(CanBusNative.getECUParameterB(CanBAddrs.TPM_A1, 48, 8)) {
 		 254 -> TIREPRESS_RR.NO_IND
 		 255 -> TIREPRESS_RR.SNA
 		 else -> throw Exception("Invalid raw value for TIREPRESS_RR")
 	}
 	
-	/** Sets Tire pressure rear right UNIT: bar **/
-	fun set_tirepress_rr(f: CanFrame, p: TIREPRESS_RR) = CanBusNative.setFrameParameter(f, 48, 8, p.raw)
+	/** Sets Tire pressure rear right  **/
+	fun set_tirepress_rr(f: CanFrame, p: TIREPRESS_RR) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 48, 8, p.raw)
+	}
 	
-	/** Gets Tire pressure spare tire UNIT: bar **/
+	/** Gets Tire pressure spare tire  **/
 	fun get_tirepress_spr() : TIREPRESS_SPR = when(CanBusNative.getECUParameterB(CanBAddrs.TPM_A1, 56, 8)) {
 		 254 -> TIREPRESS_SPR.NO_IND
 		 255 -> TIREPRESS_SPR.SNA
 		 else -> throw Exception("Invalid raw value for TIREPRESS_SPR")
 	}
 	
-	/** Sets Tire pressure spare tire UNIT: bar **/
-	fun set_tirepress_spr(f: CanFrame, p: TIREPRESS_SPR) = CanBusNative.setFrameParameter(f, 56, 8, p.raw)
+	/** Sets Tire pressure spare tire  **/
+	fun set_tirepress_spr(f: CanFrame, p: TIREPRESS_SPR) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 56, 8, p.raw)
+	}
 	
-	
+	/**
+     * Auto generated function
+     * Throws exception if user tries to set a value in a frame
+     * Not designated from the correct ECU
+    **/
+    private fun checkFrame(f: CanFrame) {
+        if (f.canID != CanBAddrs.TPM_A1.addr) {
+            throw IllegalArgumentException("CAN ID does not match object!")
+        }
+    }
+
+	override fun toString() = """
+		|TPM state: ${get_tpm_stat()}
+		|TPM message display request: ${get_tpm_msgdisp_rq()}
+		|TPM warning display request: ${get_tpm_warndisp_rq()}
+		|Tire pressure module indication lamp on request: ${get_tpm_indlmp_on_rq()}
+		|Tire in limp-home operation mode: ${get_tire_lhom()}
+		|Tire pressure module malfunction lamp on request: ${get_tpm_malflmp_on_rq()}
+		|Tire pressure module display on request: ${get_tpm_disp_on_rq()}
+		|Tire front left: ${get_tire_fl()}
+		|Tire front right: ${get_tire_fr()}
+		|Tire rear left: ${get_tire_rl()}
+		|Tire rear right: ${get_tire_rr()}
+		|Spare tire: ${get_tire_spr()}
+		|Tire pressure front left : ${get_tirepress_fl()} bar
+		|Tire pressure front right : ${get_tirepress_fr()} bar
+		|Tire pressure rear left : ${get_tirepress_rl()} bar
+		|Tire pressure rear right : ${get_tirepress_rr()} bar
+		|Tire pressure spare tire : ${get_tirepress_spr()} bar
+	""".trimMargin("|")
 }

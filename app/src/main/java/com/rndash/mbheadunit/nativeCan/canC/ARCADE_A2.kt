@@ -1,5 +1,5 @@
 
-@file:Suppress("unused", "FunctionName")
+@file:Suppress("unused", "FunctionName", "ClassName")
 package com.rndash.mbheadunit.nativeCan.canC
 import com.rndash.mbheadunit.CanFrame // AUTO GEN
 import com.rndash.mbheadunit.nativeCan.CanBusNative // AUTO GEN
@@ -11,23 +11,53 @@ import com.rndash.mbheadunit.nativeCan.CanBusNative // AUTO GEN
 
 object ARCADE_A2 {
 
-    	/** Gets frontal event 5 **/
+    /** 
+     *  Returns the most recent Can Frame representing the state
+     *  of ARCADE_A2
+    **/
+    fun get_frame() : CanFrame? = CanBusNative.getCFrame(CanCAddrs.ARCADE_A2)
+
+	/** Gets frontal event 5 **/
 	fun get_crash_c() : Boolean = CanBusNative.getECUParameterC(CanCAddrs.ARCADE_A2, 5, 1) != 0
 	
 	/** Sets frontal event 5 **/
-	fun set_crash_c(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 5, 1, if(p) 1 else 0)
+	fun set_crash_c(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 5, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets frontal event 2 **/
 	fun get_crash_f() : Boolean = CanBusNative.getECUParameterC(CanCAddrs.ARCADE_A2, 2, 1) != 0
 	
 	/** Sets frontal event 2 **/
-	fun set_crash_f(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 2, 1, if(p) 1 else 0)
+	fun set_crash_f(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 2, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets Confirm bit for all crash events, toggling **/
 	fun get_conf_crash() : Boolean = CanBusNative.getECUParameterC(CanCAddrs.ARCADE_A2, 0, 1) != 0
 	
 	/** Sets Confirm bit for all crash events, toggling **/
-	fun set_conf_crash(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 0, 1, if(p) 1 else 0)
+	fun set_conf_crash(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 0, 1, if(p) 1 else 0)
+	}
 	
-	
+	/**
+     * Auto generated function
+     * Throws exception if user tries to set a value in a frame
+     * Not designated from the correct ECU
+    **/
+    private fun checkFrame(f: CanFrame) {
+        if (f.canID != CanCAddrs.ARCADE_A2.addr) {
+            throw IllegalArgumentException("CAN ID does not match object!")
+        }
+    }
+
+	override fun toString() = """
+		|frontal event 5: ${get_crash_c()}
+		|frontal event 2: ${get_crash_f()}
+		|Confirm bit for all crash events, toggling: ${get_conf_crash()}
+	""".trimMargin("|")
 }

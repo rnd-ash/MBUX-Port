@@ -1,5 +1,5 @@
 
-@file:Suppress("unused", "FunctionName")
+@file:Suppress("unused", "FunctionName", "ClassName")
 package com.rndash.mbheadunit.nativeCan.canC
 import com.rndash.mbheadunit.CanFrame // AUTO GEN
 import com.rndash.mbheadunit.nativeCan.CanBusNative // AUTO GEN
@@ -11,7 +11,13 @@ import com.rndash.mbheadunit.nativeCan.CanBusNative // AUTO GEN
 
 object SBW_232h {
 
-    	/** Gets Steering wheel buttons "+", "-" pressed **/
+    /** 
+     *  Returns the most recent Can Frame representing the state
+     *  of SBW_232h
+    **/
+    fun get_frame() : CanFrame? = CanBusNative.getCFrame(CanCAddrs.SBW_232h)
+
+	/** Gets Steering wheel buttons "+", "-" pressed **/
 	fun get_lrt_pm3() : LRT_PM3 = when(CanBusNative.getECUParameterC(CanCAddrs.SBW_232h, 5, 3)) {
 		 0 -> LRT_PM3.NBET
 		 1 -> LRT_PM3.PLUS
@@ -25,7 +31,10 @@ object SBW_232h {
 	}
 	
 	/** Sets Steering wheel buttons "+", "-" pressed **/
-	fun set_lrt_pm3(f: CanFrame, p: LRT_PM3) = CanBusNative.setFrameParameter(f, 5, 3, p.raw)
+	fun set_lrt_pm3(f: CanFrame, p: LRT_PM3) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 5, 3, p.raw)
+	}
 	
 	/** Gets sender identification **/
 	fun get_sid_sbw() : SID_SBW = when(CanBusNative.getECUParameterC(CanCAddrs.SBW_232h, 0, 2)) {
@@ -37,7 +46,10 @@ object SBW_232h {
 	}
 	
 	/** Sets sender identification **/
-	fun set_sid_sbw(f: CanFrame, p: SID_SBW) = CanBusNative.setFrameParameter(f, 0, 2, p.raw)
+	fun set_sid_sbw(f: CanFrame, p: SID_SBW) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 0, 2, p.raw)
+	}
 	
 	/** Gets Shift-by-wire control element Status RND **/
 	fun get_sbwb_st_rnd() : SBWB_ST_RND = when(CanBusNative.getECUParameterC(CanCAddrs.SBW_232h, 12, 4)) {
@@ -52,7 +64,10 @@ object SBW_232h {
 	}
 	
 	/** Sets Shift-by-wire control element Status RND **/
-	fun set_sbwb_st_rnd(f: CanFrame, p: SBWB_ST_RND) = CanBusNative.setFrameParameter(f, 12, 4, p.raw)
+	fun set_sbwb_st_rnd(f: CanFrame, p: SBWB_ST_RND) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 12, 4, p.raw)
+	}
 	
 	/** Gets Shift-by-wire control element P button **/
 	fun get_sbwb_st_p() : SBWB_ST_P = when(CanBusNative.getECUParameterC(CanCAddrs.SBW_232h, 10, 2)) {
@@ -64,7 +79,10 @@ object SBW_232h {
 	}
 	
 	/** Sets Shift-by-wire control element P button **/
-	fun set_sbwb_st_p(f: CanFrame, p: SBWB_ST_P) = CanBusNative.setFrameParameter(f, 10, 2, p.raw)
+	fun set_sbwb_st_p(f: CanFrame, p: SBWB_ST_P) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 10, 2, p.raw)
+	}
 	
 	/** Gets Shift-by-wire control element identification **/
 	fun get_sbwb_id() : SBWB_ID = when(CanBusNative.getECUParameterC(CanCAddrs.SBW_232h, 8, 2)) {
@@ -75,13 +93,37 @@ object SBW_232h {
 	}
 	
 	/** Sets Shift-by-wire control element identification **/
-	fun set_sbwb_id(f: CanFrame, p: SBWB_ID) = CanBusNative.setFrameParameter(f, 8, 2, p.raw)
+	fun set_sbwb_id(f: CanFrame, p: SBWB_ID) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 8, 2, p.raw)
+	}
 	
 	/** Gets message counter **/
 	fun get_bz232h() : Int = CanBusNative.getECUParameterC(CanCAddrs.SBW_232h, 16, 4)
 	
 	/** Sets message counter **/
-	fun set_bz232h(f: CanFrame, p: Int) = CanBusNative.setFrameParameter(f, 16, 4, p)
+	fun set_bz232h(f: CanFrame, p: Int) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 16, 4, p)
+	}
 	
-	
+	/**
+     * Auto generated function
+     * Throws exception if user tries to set a value in a frame
+     * Not designated from the correct ECU
+    **/
+    private fun checkFrame(f: CanFrame) {
+        if (f.canID != CanCAddrs.SBW_232h.addr) {
+            throw IllegalArgumentException("CAN ID does not match object!")
+        }
+    }
+
+	override fun toString() = """
+		|Steering wheel buttons "+", "-" pressed: ${get_lrt_pm3()}
+		|sender identification: ${get_sid_sbw()}
+		|Shift-by-wire control element Status RND: ${get_sbwb_st_rnd()}
+		|Shift-by-wire control element P button: ${get_sbwb_st_p()}
+		|Shift-by-wire control element identification: ${get_sbwb_id()}
+		|message counter: ${get_bz232h()}
+	""".trimMargin("|")
 }

@@ -1,5 +1,5 @@
 
-@file:Suppress("unused", "FunctionName")
+@file:Suppress("unused", "FunctionName", "ClassName")
 package com.rndash.mbheadunit.nativeCan.canB
 import com.rndash.mbheadunit.CanFrame // AUTO GEN
 import com.rndash.mbheadunit.nativeCan.CanBusNative // AUTO GEN
@@ -11,95 +11,173 @@ import com.rndash.mbheadunit.nativeCan.CanBusNative // AUTO GEN
 
 object KG_A1 {
 
-    	/** Gets switch on the warning tone **/
+    /** 
+     *  Returns the most recent Can Frame representing the state
+     *  of KG_A1
+    **/
+    fun get_frame() : CanFrame? = CanBusNative.getBFrame(CanBAddrs.KG_A1)
+
+	/** Gets switch on the warning tone **/
 	fun get_warnton_kg() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.KG_A1, 6, 1) != 0
 	
 	/** Sets switch on the warning tone **/
-	fun set_warnton_kg(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 6, 1, if(p) 1 else 0)
+	fun set_warnton_kg(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 6, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets Messg. 0: "Chip card / key not recognized" (red) **/
 	fun get_m0() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.KG_A1, 5, 1) != 0
 	
 	/** Sets Messg. 0: "Chip card / key not recognized" (red) **/
-	fun set_m0(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 5, 1, if(p) 1 else 0)
+	fun set_m0(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 5, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets Messg. 1: "Chip card / key not recognized" (white) **/
 	fun get_m1() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.KG_A1, 4, 1) != 0
 	
 	/** Sets Messg. 1: "Chip card / key not recognized" (white) **/
-	fun set_m1(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 4, 1, if(p) 1 else 0)
+	fun set_m1(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 4, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets Messg. 2: "Chip card / key recognized in vehicle" (white) **/
 	fun get_m2() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.KG_A1, 3, 1) != 0
 	
 	/** Sets Messg. 2: "Chip card / key recognized in vehicle" (white) **/
-	fun set_m2(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 3, 1, if(p) 1 else 0)
+	fun set_m2(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 3, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets Messg. 3: "Selector lever to P" (red, continuous tone) **/
 	fun get_m3() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.KG_A1, 2, 1) != 0
 	
 	/** Sets Messg. 3: "Selector lever to P" (red, continuous tone) **/
-	fun set_m3(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 2, 1, if(p) 1 else 0)
+	fun set_m3(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 2, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets Messg. 4: "Check chip card / key battery" (white) **/
 	fun get_m4() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.KG_A1, 1, 1) != 0
 	
 	/** Sets Messg. 4: "Check chip card / key battery" (white) **/
-	fun set_m4(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 1, 1, if(p) 1 else 0)
+	fun set_m4(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 1, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets Messg. 5: "Selector lever please in P or N position" **/
 	fun get_m5() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.KG_A1, 0, 1) != 0
 	
 	/** Sets Messg. 5: "Selector lever please in P or N position" **/
-	fun set_m5(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 0, 1, if(p) 1 else 0)
+	fun set_m5(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 0, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets message. 6: "No driving authorization" **/
 	fun get_m6() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.KG_A1, 15, 1) != 0
 	
 	/** Sets message. 6: "No driving authorization" **/
-	fun set_m6(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 15, 1, if(p) 1 else 0)
+	fun set_m6(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 15, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets message. 7: Reserved **/
 	fun get_m7() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.KG_A1, 14, 1) != 0
 	
 	/** Sets message. 7: Reserved **/
-	fun set_m7(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 14, 1, if(p) 1 else 0)
+	fun set_m7(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 14, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets Messg. 8: "door open" **/
 	fun get_m8() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.KG_A1, 13, 1) != 0
 	
 	/** Sets Messg. 8: "door open" **/
-	fun set_m8(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 13, 1, if(p) 1 else 0)
+	fun set_m8(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 13, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets message. 9: "Keyless Go in Diagnosis" **/
 	fun get_m9() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.KG_A1, 12, 1) != 0
 	
 	/** Sets message. 9: "Keyless Go in Diagnosis" **/
-	fun set_m9(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 12, 1, if(p) 1 else 0)
+	fun set_m9(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 12, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets message. 10: "Key calculates" **/
 	fun get_m10() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.KG_A1, 11, 1) != 0
 	
 	/** Sets message. 10: "Key calculates" **/
-	fun set_m10(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 11, 1, if(p) 1 else 0)
+	fun set_m10(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 11, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets message. 11: "Please leave the key in" **/
 	fun get_m11() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.KG_A1, 10, 1) != 0
 	
 	/** Sets message. 11: "Please leave the key in" **/
-	fun set_m11(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 10, 1, if(p) 1 else 0)
+	fun set_m11(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 10, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets message. 12: "Take your chip card / key with you!" **/
 	fun get_m12() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.KG_A1, 9, 1) != 0
 	
 	/** Sets message. 12: "Take your chip card / key with you!" **/
-	fun set_m12(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 9, 1, if(p) 1 else 0)
+	fun set_m12(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 9, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets Keyless Go UNIT path indication: km **/
 	fun get_km_rest_kg() : Int = CanBusNative.getECUParameterB(CanBAddrs.KG_A1, 16, 8)
 	
 	/** Sets Keyless Go UNIT path indication: km **/
-	fun set_km_rest_kg(f: CanFrame, p: Int) = CanBusNative.setFrameParameter(f, 16, 8, p)
+	fun set_km_rest_kg(f: CanFrame, p: Int) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 16, 8, p)
+	}
 	
-	
+	/**
+     * Auto generated function
+     * Throws exception if user tries to set a value in a frame
+     * Not designated from the correct ECU
+    **/
+    private fun checkFrame(f: CanFrame) {
+        if (f.canID != CanBAddrs.KG_A1.addr) {
+            throw IllegalArgumentException("CAN ID does not match object!")
+        }
+    }
+
+	override fun toString() = """
+		|switch on the warning tone: ${get_warnton_kg()}
+		|Messg. 0: "Chip card / key not recognized" (red): ${get_m0()}
+		|Messg. 1: "Chip card / key not recognized" (white): ${get_m1()}
+		|Messg. 2: "Chip card / key recognized in vehicle" (white): ${get_m2()}
+		|Messg. 3: "Selector lever to P" (red, continuous tone): ${get_m3()}
+		|Messg. 4: "Check chip card / key battery" (white): ${get_m4()}
+		|Messg. 5: "Selector lever please in P or N position": ${get_m5()}
+		|message. 6: "No driving authorization": ${get_m6()}
+		|message. 7: Reserved: ${get_m7()}
+		|Messg. 8: "door open": ${get_m8()}
+		|message. 9: "Keyless Go in Diagnosis": ${get_m9()}
+		|message. 10: "Key calculates": ${get_m10()}
+		|message. 11: "Please leave the key in": ${get_m11()}
+		|message. 12: "Take your chip card / key with you!": ${get_m12()}
+		|Keyless Go UNIT path indication: km: ${get_km_rest_kg()}
+	""".trimMargin("|")
 }

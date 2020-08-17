@@ -1,5 +1,5 @@
 
-@file:Suppress("unused", "FunctionName")
+@file:Suppress("unused", "FunctionName", "ClassName")
 package com.rndash.mbheadunit.nativeCan.canB
 import com.rndash.mbheadunit.CanFrame // AUTO GEN
 import com.rndash.mbheadunit.nativeCan.CanBusNative // AUTO GEN
@@ -11,11 +11,20 @@ import com.rndash.mbheadunit.nativeCan.CanBusNative // AUTO GEN
 
 object HFS_A1 {
 
-    	/** Gets Close and secure trunk lid actuated **/
+    /** 
+     *  Returns the most recent Can Frame representing the state
+     *  of HFS_A1
+    **/
+    fun get_frame() : CanFrame? = CanBusNative.getBFrame(CanBAddrs.HFS_A1)
+
+	/** Gets Close and secure trunk lid actuated **/
 	fun get_hd_sich_hfs() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.HFS_A1, 3, 1) != 0
 	
 	/** Sets Close and secure trunk lid actuated **/
-	fun set_hd_sich_hfs(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 3, 1, if(p) 1 else 0)
+	fun set_hd_sich_hfs(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 3, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets Status trunk lid **/
 	fun get_hd_st() : HD_ST = when(CanBusNative.getECUParameterB(CanBAddrs.HFS_A1, 0, 3)) {
@@ -30,7 +39,24 @@ object HFS_A1 {
 	}
 	
 	/** Sets Status trunk lid **/
-	fun set_hd_st(f: CanFrame, p: HD_ST) = CanBusNative.setFrameParameter(f, 0, 3, p.raw)
+	fun set_hd_st(f: CanFrame, p: HD_ST) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 0, 3, p.raw)
+	}
 	
-	
+	/**
+     * Auto generated function
+     * Throws exception if user tries to set a value in a frame
+     * Not designated from the correct ECU
+    **/
+    private fun checkFrame(f: CanFrame) {
+        if (f.canID != CanBAddrs.HFS_A1.addr) {
+            throw IllegalArgumentException("CAN ID does not match object!")
+        }
+    }
+
+	override fun toString() = """
+		|Close and secure trunk lid actuated: ${get_hd_sich_hfs()}
+		|Status trunk lid: ${get_hd_st()}
+	""".trimMargin("|")
 }

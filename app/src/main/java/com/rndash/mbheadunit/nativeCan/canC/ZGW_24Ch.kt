@@ -1,5 +1,5 @@
 
-@file:Suppress("unused", "FunctionName")
+@file:Suppress("unused", "FunctionName", "ClassName")
 package com.rndash.mbheadunit.nativeCan.canC
 import com.rndash.mbheadunit.CanFrame // AUTO GEN
 import com.rndash.mbheadunit.nativeCan.CanBusNative // AUTO GEN
@@ -11,17 +11,43 @@ import com.rndash.mbheadunit.nativeCan.CanBusNative // AUTO GEN
 
 object ZGW_24Ch {
 
-    	/** Gets low beam defective driver / left (depending on BR) **/
+    /** 
+     *  Returns the most recent Can Frame representing the state
+     *  of ZGW_24Ch
+    **/
+    fun get_frame() : CanFrame? = CanBusNative.getCFrame(CanCAddrs.ZGW_24Ch)
+
+	/** Gets low beam defective driver / left (depending on BR) **/
 	fun get_abl_def_f_l() : Boolean = CanBusNative.getECUParameterC(CanCAddrs.ZGW_24Ch, 39, 1) != 0
 	
 	/** Sets low beam defective driver / left (depending on BR) **/
-	fun set_abl_def_f_l(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 39, 1, if(p) 1 else 0)
+	fun set_abl_def_f_l(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 39, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets dipped beam defective passenger / right (depending on BR) **/
 	fun get_abl_def_bf_r() : Boolean = CanBusNative.getECUParameterC(CanCAddrs.ZGW_24Ch, 38, 1) != 0
 	
 	/** Sets dipped beam defective passenger / right (depending on BR) **/
-	fun set_abl_def_bf_r(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 38, 1, if(p) 1 else 0)
+	fun set_abl_def_bf_r(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 38, 1, if(p) 1 else 0)
+	}
 	
-	
+	/**
+     * Auto generated function
+     * Throws exception if user tries to set a value in a frame
+     * Not designated from the correct ECU
+    **/
+    private fun checkFrame(f: CanFrame) {
+        if (f.canID != CanCAddrs.ZGW_24Ch.addr) {
+            throw IllegalArgumentException("CAN ID does not match object!")
+        }
+    }
+
+	override fun toString() = """
+		|low beam defective driver / left (depending on BR): ${get_abl_def_f_l()}
+		|dipped beam defective passenger / right (depending on BR): ${get_abl_def_bf_r()}
+	""".trimMargin("|")
 }

@@ -1,5 +1,5 @@
 
-@file:Suppress("unused", "FunctionName")
+@file:Suppress("unused", "FunctionName", "ClassName")
 package com.rndash.mbheadunit.nativeCan.canB
 import com.rndash.mbheadunit.CanFrame // AUTO GEN
 import com.rndash.mbheadunit.nativeCan.CanBusNative // AUTO GEN
@@ -11,17 +11,43 @@ import com.rndash.mbheadunit.nativeCan.CanBusNative // AUTO GEN
 
 object GPS_A1 {
 
-    	/** Gets GPS Latitude (+ = North) UNIT: ms **/
+    /** 
+     *  Returns the most recent Can Frame representing the state
+     *  of GPS_A1
+    **/
+    fun get_frame() : CanFrame? = CanBusNative.getBFrame(CanBAddrs.GPS_A1)
+
+	/** Gets GPS Latitude (+ = North)  **/
 	fun get_latitude() : Int = CanBusNative.getECUParameterB(CanBAddrs.GPS_A1, 0, 32)
 	
-	/** Sets GPS Latitude (+ = North) UNIT: ms **/
-	fun set_latitude(f: CanFrame, p: Int) = CanBusNative.setFrameParameter(f, 0, 32, p)
+	/** Sets GPS Latitude (+ = North)  **/
+	fun set_latitude(f: CanFrame, p: Int) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 0, 32, p)
+	}
 	
-	/** Gets GPS Longitude (+ = East) UNIT: ms **/
+	/** Gets GPS Longitude (+ = East)  **/
 	fun get_longitude() : Int = CanBusNative.getECUParameterB(CanBAddrs.GPS_A1, 32, 32)
 	
-	/** Sets GPS Longitude (+ = East) UNIT: ms **/
-	fun set_longitude(f: CanFrame, p: Int) = CanBusNative.setFrameParameter(f, 32, 32, p)
+	/** Sets GPS Longitude (+ = East)  **/
+	fun set_longitude(f: CanFrame, p: Int) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 32, 32, p)
+	}
 	
-	
+	/**
+     * Auto generated function
+     * Throws exception if user tries to set a value in a frame
+     * Not designated from the correct ECU
+    **/
+    private fun checkFrame(f: CanFrame) {
+        if (f.canID != CanBAddrs.GPS_A1.addr) {
+            throw IllegalArgumentException("CAN ID does not match object!")
+        }
+    }
+
+	override fun toString() = """
+		|GPS Latitude (+ = North) : ${get_latitude()} ms
+		|GPS Longitude (+ = East) : ${get_longitude()} ms
+	""".trimMargin("|")
 }

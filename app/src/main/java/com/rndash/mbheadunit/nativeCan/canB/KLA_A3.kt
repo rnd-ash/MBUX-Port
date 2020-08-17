@@ -1,5 +1,5 @@
 
-@file:Suppress("unused", "FunctionName")
+@file:Suppress("unused", "FunctionName", "ClassName")
 package com.rndash.mbheadunit.nativeCan.canB
 import com.rndash.mbheadunit.CanFrame // AUTO GEN
 import com.rndash.mbheadunit.nativeCan.CanBusNative // AUTO GEN
@@ -11,17 +11,43 @@ import com.rndash.mbheadunit.nativeCan.CanBusNative // AUTO GEN
 
 object KLA_A3 {
 
-    	/** Gets Request heating power UNIT:% **/
+    /** 
+     *  Returns the most recent Can Frame representing the state
+     *  of KLA_A3
+    **/
+    fun get_frame() : CanFrame? = CanBusNative.getBFrame(CanBAddrs.KLA_A3)
+
+	/** Gets Request heating power  **/
 	fun get_hzl_anf() : Int = CanBusNative.getECUParameterB(CanBAddrs.KLA_A3, 0, 8)
 	
-	/** Sets Request heating power UNIT:% **/
-	fun set_hzl_anf(f: CanFrame, p: Int) = CanBusNative.setFrameParameter(f, 0, 8, p)
+	/** Sets Request heating power  **/
+	fun set_hzl_anf(f: CanFrame, p: Int) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 0, 8, p)
+	}
 	
-	/** Gets Outside air temperature for heat management UNIT: ° C **/
+	/** Gets Outside air temperature for heat management  **/
 	fun get_t_aussen_wm() : Int = CanBusNative.getECUParameterB(CanBAddrs.KLA_A3, 8, 8)
 	
-	/** Sets Outside air temperature for heat management UNIT: ° C **/
-	fun set_t_aussen_wm(f: CanFrame, p: Int) = CanBusNative.setFrameParameter(f, 8, 8, p)
+	/** Sets Outside air temperature for heat management  **/
+	fun set_t_aussen_wm(f: CanFrame, p: Int) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 8, 8, p)
+	}
 	
-	
+	/**
+     * Auto generated function
+     * Throws exception if user tries to set a value in a frame
+     * Not designated from the correct ECU
+    **/
+    private fun checkFrame(f: CanFrame) {
+        if (f.canID != CanBAddrs.KLA_A3.addr) {
+            throw IllegalArgumentException("CAN ID does not match object!")
+        }
+    }
+
+	override fun toString() = """
+		|Request heating power : ${get_hzl_anf()} %
+		|Outside air temperature for heat management : ${get_t_aussen_wm()} ° C
+	""".trimMargin("|")
 }

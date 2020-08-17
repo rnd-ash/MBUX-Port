@@ -1,5 +1,5 @@
 
-@file:Suppress("unused", "FunctionName")
+@file:Suppress("unused", "FunctionName", "ClassName")
 package com.rndash.mbheadunit.nativeCan.canC
 import com.rndash.mbheadunit.CanFrame // AUTO GEN
 import com.rndash.mbheadunit.nativeCan.CanBusNative // AUTO GEN
@@ -11,17 +11,43 @@ import com.rndash.mbheadunit.nativeCan.CanBusNative // AUTO GEN
 
 object GS_338h {
 
-    	/** Gets gearbox output speed (only 463/461, otherwise FFFFh) **/
+    /** 
+     *  Returns the most recent Can Frame representing the state
+     *  of GS_338h
+    **/
+    fun get_frame() : CanFrame? = CanBusNative.getCFrame(CanCAddrs.GS_338h)
+
+	/** Gets gearbox output speed (only 463/461, otherwise FFFFh) **/
 	fun get_nab() : Int = CanBusNative.getECUParameterC(CanCAddrs.GS_338h, 0, 16)
 	
 	/** Sets gearbox output speed (only 463/461, otherwise FFFFh) **/
-	fun set_nab(f: CanFrame, p: Int) = CanBusNative.setFrameParameter(f, 0, 16, p)
+	fun set_nab(f: CanFrame, p: Int) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 0, 16, p)
+	}
 	
 	/** Gets turbine speed (EGS52-NAG, VGS-NAG2) **/
 	fun get_nturbine() : Int = CanBusNative.getECUParameterC(CanCAddrs.GS_338h, 48, 16)
 	
 	/** Sets turbine speed (EGS52-NAG, VGS-NAG2) **/
-	fun set_nturbine(f: CanFrame, p: Int) = CanBusNative.setFrameParameter(f, 48, 16, p)
+	fun set_nturbine(f: CanFrame, p: Int) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 48, 16, p)
+	}
 	
-	
+	/**
+     * Auto generated function
+     * Throws exception if user tries to set a value in a frame
+     * Not designated from the correct ECU
+    **/
+    private fun checkFrame(f: CanFrame) {
+        if (f.canID != CanCAddrs.GS_338h.addr) {
+            throw IllegalArgumentException("CAN ID does not match object!")
+        }
+    }
+
+	override fun toString() = """
+		|gearbox output speed (only 463/461, otherwise FFFFh): ${get_nab()}
+		|turbine speed (EGS52-NAG, VGS-NAG2): ${get_nturbine()}
+	""".trimMargin("|")
 }

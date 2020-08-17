@@ -1,5 +1,5 @@
 
-@file:Suppress("unused", "FunctionName")
+@file:Suppress("unused", "FunctionName", "ClassName")
 package com.rndash.mbheadunit.nativeCan.canB
 import com.rndash.mbheadunit.CanFrame // AUTO GEN
 import com.rndash.mbheadunit.nativeCan.CanBusNative // AUTO GEN
@@ -11,23 +11,53 @@ import com.rndash.mbheadunit.nativeCan.CanBusNative // AUTO GEN
 
 object KOMBI_A3 {
 
-    	/** Gets Current time UNIT: s **/
+    /** 
+     *  Returns the most recent Can Frame representing the state
+     *  of KOMBI_A3
+    **/
+    fun get_frame() : CanFrame? = CanBusNative.getBFrame(CanBAddrs.KOMBI_A3)
+
+	/** Gets Current time  **/
 	fun get_a_zeit() : Int = CanBusNative.getECUParameterB(CanBAddrs.KOMBI_A3, 0, 16)
 	
-	/** Sets Current time UNIT: s **/
-	fun set_a_zeit(f: CanFrame, p: Int) = CanBusNative.setFrameParameter(f, 0, 16, p)
+	/** Sets Current time  **/
+	fun set_a_zeit(f: CanFrame, p: Int) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 0, 16, p)
+	}
 	
-	/** Gets Mileage UNIT: km **/
+	/** Gets Mileage  **/
 	fun get_km() : Int = CanBusNative.getECUParameterB(CanBAddrs.KOMBI_A3, 16, 24)
 	
-	/** Sets Mileage UNIT: km **/
-	fun set_km(f: CanFrame, p: Int) = CanBusNative.setFrameParameter(f, 16, 24, p)
+	/** Sets Mileage  **/
+	fun set_km(f: CanFrame, p: Int) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 16, 24, p)
+	}
 	
-	/** Gets Range UNIT: km (miles) **/
+	/** Gets Range  **/
 	fun get_rw() : Int = CanBusNative.getECUParameterB(CanBAddrs.KOMBI_A3, 40, 16)
 	
-	/** Sets Range UNIT: km (miles) **/
-	fun set_rw(f: CanFrame, p: Int) = CanBusNative.setFrameParameter(f, 40, 16, p)
+	/** Sets Range  **/
+	fun set_rw(f: CanFrame, p: Int) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 40, 16, p)
+	}
 	
-	
+	/**
+     * Auto generated function
+     * Throws exception if user tries to set a value in a frame
+     * Not designated from the correct ECU
+    **/
+    private fun checkFrame(f: CanFrame) {
+        if (f.canID != CanBAddrs.KOMBI_A3.addr) {
+            throw IllegalArgumentException("CAN ID does not match object!")
+        }
+    }
+
+	override fun toString() = """
+		|Current time : ${get_a_zeit()} s
+		|Mileage : ${get_km()} km
+		|Range : ${get_rw()} km (miles)
+	""".trimMargin("|")
 }

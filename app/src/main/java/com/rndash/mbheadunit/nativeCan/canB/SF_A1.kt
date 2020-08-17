@@ -1,5 +1,5 @@
 
-@file:Suppress("unused", "FunctionName")
+@file:Suppress("unused", "FunctionName", "ClassName")
 package com.rndash.mbheadunit.nativeCan.canB
 import com.rndash.mbheadunit.CanFrame // AUTO GEN
 import com.rndash.mbheadunit.nativeCan.CanBusNative // AUTO GEN
@@ -11,29 +11,63 @@ import com.rndash.mbheadunit.nativeCan.CanBusNative // AUTO GEN
 
 object SF_A1 {
 
-    	/** Gets Driver seat backrest unlocked **/
+    /** 
+     *  Returns the most recent Can Frame representing the state
+     *  of SF_A1
+    **/
+    fun get_frame() : CanFrame? = CanBusNative.getBFrame(CanBAddrs.SF_A1)
+
+	/** Gets Driver seat backrest unlocked **/
 	fun get_le_f_ent() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.SF_A1, 4, 1) != 0
 	
 	/** Sets Driver seat backrest unlocked **/
-	fun set_le_f_ent(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 4, 1, if(p) 1 else 0)
+	fun set_le_f_ent(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 4, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets Save manually set position (redundant) **/
 	fun get_mf_man_sp1() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.SF_A1, 0, 1) != 0
 	
 	/** Sets Save manually set position (redundant) **/
-	fun set_mf_man_sp1(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 0, 1, if(p) 1 else 0)
+	fun set_mf_man_sp1(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 0, 1, if(p) 1 else 0)
+	}
 	
-	/** Gets Driver seat position UNIT: Sections **/
+	/** Gets Driver seat position  **/
 	fun get_sf_pos() : Int = CanBusNative.getECUParameterB(CanBAddrs.SF_A1, 8, 8)
 	
-	/** Sets Driver seat position UNIT: Sections **/
-	fun set_sf_pos(f: CanFrame, p: Int) = CanBusNative.setFrameParameter(f, 8, 8, p)
+	/** Sets Driver seat position  **/
+	fun set_sf_pos(f: CanFrame, p: Int) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 8, 8, p)
+	}
 	
-	/** Gets Default position for driver's seat with I / O help UNIT: Sections **/
+	/** Gets Default position for driver's seat with I / O help  **/
 	fun get_sf_ea_def() : Int = CanBusNative.getECUParameterB(CanBAddrs.SF_A1, 16, 8)
 	
-	/** Sets Default position for driver's seat with I / O help UNIT: Sections **/
-	fun set_sf_ea_def(f: CanFrame, p: Int) = CanBusNative.setFrameParameter(f, 16, 8, p)
+	/** Sets Default position for driver's seat with I / O help  **/
+	fun set_sf_ea_def(f: CanFrame, p: Int) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 16, 8, p)
+	}
 	
-	
+	/**
+     * Auto generated function
+     * Throws exception if user tries to set a value in a frame
+     * Not designated from the correct ECU
+    **/
+    private fun checkFrame(f: CanFrame) {
+        if (f.canID != CanBAddrs.SF_A1.addr) {
+            throw IllegalArgumentException("CAN ID does not match object!")
+        }
+    }
+
+	override fun toString() = """
+		|Driver seat backrest unlocked: ${get_le_f_ent()}
+		|Save manually set position (redundant): ${get_mf_man_sp1()}
+		|Driver seat position : ${get_sf_pos()} Sections
+		|Default position for driver's seat with I / O help : ${get_sf_ea_def()} Sections
+	""".trimMargin("|")
 }

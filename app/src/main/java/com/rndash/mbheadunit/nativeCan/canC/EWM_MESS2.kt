@@ -1,5 +1,5 @@
 
-@file:Suppress("unused", "FunctionName")
+@file:Suppress("unused", "FunctionName", "ClassName")
 package com.rndash.mbheadunit.nativeCan.canC
 import com.rndash.mbheadunit.CanFrame // AUTO GEN
 import com.rndash.mbheadunit.nativeCan.CanBusNative // AUTO GEN
@@ -11,11 +11,33 @@ import com.rndash.mbheadunit.nativeCan.CanBusNative // AUTO GEN
 
 object EWM_MESS2 {
 
-    	/** Gets measured values **/
+    /** 
+     *  Returns the most recent Can Frame representing the state
+     *  of EWM_MESS2
+    **/
+    fun get_frame() : CanFrame? = CanBusNative.getCFrame(CanCAddrs.EWM_MESS2)
+
+	/** Gets measured values **/
 	fun get_mess2() : Int = CanBusNative.getECUParameterC(CanCAddrs.EWM_MESS2, 0, 64)
 	
 	/** Sets measured values **/
-	fun set_mess2(f: CanFrame, p: Int) = CanBusNative.setFrameParameter(f, 0, 64, p)
+	fun set_mess2(f: CanFrame, p: Int) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 0, 64, p)
+	}
 	
-	
+	/**
+     * Auto generated function
+     * Throws exception if user tries to set a value in a frame
+     * Not designated from the correct ECU
+    **/
+    private fun checkFrame(f: CanFrame) {
+        if (f.canID != CanCAddrs.EWM_MESS2.addr) {
+            throw IllegalArgumentException("CAN ID does not match object!")
+        }
+    }
+
+	override fun toString() = """
+		|measured values: ${get_mess2()}
+	""".trimMargin("|")
 }

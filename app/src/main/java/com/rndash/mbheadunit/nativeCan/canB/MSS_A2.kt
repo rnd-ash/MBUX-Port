@@ -1,5 +1,5 @@
 
-@file:Suppress("unused", "FunctionName")
+@file:Suppress("unused", "FunctionName", "ClassName")
 package com.rndash.mbheadunit.nativeCan.canB
 import com.rndash.mbheadunit.CanFrame // AUTO GEN
 import com.rndash.mbheadunit.nativeCan.CanBusNative // AUTO GEN
@@ -11,107 +11,193 @@ import com.rndash.mbheadunit.nativeCan.CanBusNative // AUTO GEN
 
 object MSS_A2 {
 
-    	/** Gets Electronics on the MSS defective **/
+    /** 
+     *  Returns the most recent Can Frame representing the state
+     *  of MSS_A2
+    **/
+    fun get_frame() : CanFrame? = CanBusNative.getBFrame(CanBAddrs.MSS_A2)
+
+	/** Gets Electronics on the MSS defective **/
 	fun get_mss_ee_def() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.MSS_A2, 7, 1) != 0
 	
 	/** Sets Electronics on the MSS defective **/
-	fun set_mss_ee_def(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 7, 1, if(p) 1 else 0)
+	fun set_mss_ee_def(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 7, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets Emergency alarm system defective **/
 	fun get_notalm_def() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.MSS_A2, 6, 1) != 0
 	
 	/** Sets Emergency alarm system defective **/
-	fun set_notalm_def(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 6, 1, if(p) 1 else 0)
+	fun set_notalm_def(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 6, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets Silent alarm triggered **/
 	fun get_mss_alm() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.MSS_A2, 5, 1) != 0
 	
 	/** Sets Silent alarm triggered **/
-	fun set_mss_alm(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 5, 1, if(p) 1 else 0)
+	fun set_mss_alm(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 5, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets MSS detects undervoltage **/
 	fun get_mss_uspg() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.MSS_A2, 4, 1) != 0
 	
 	/** Sets MSS detects undervoltage **/
-	fun set_mss_uspg(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 4, 1, if(p) 1 else 0)
+	fun set_mss_uspg(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 4, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets roof sign defective (short circuit) **/
 	fun get_dz_def() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.MSS_A2, 3, 1) != 0
 	
 	/** Sets roof sign defective (short circuit) **/
-	fun set_dz_def(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 3, 1, if(p) 1 else 0)
+	fun set_dz_def(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 3, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets check roof sign (interruption) **/
 	fun get_dz_prf() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.MSS_A2, 2, 1) != 0
 	
 	/** Sets check roof sign (interruption) **/
-	fun set_dz_prf(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 2, 1, if(p) 1 else 0)
+	fun set_dz_prf(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 2, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets Roof sign lamp defect **/
 	fun get_dz_la_def() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.MSS_A2, 1, 1) != 0
 	
 	/** Sets Roof sign lamp defect **/
-	fun set_dz_la_def(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 1, 1, if(p) 1 else 0)
+	fun set_dz_la_def(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 1, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets Roof sign control lamp on **/
 	fun get_dz_kl() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.MSS_A2, 0, 1) != 0
 	
 	/** Sets Roof sign control lamp on **/
-	fun set_dz_kl(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 0, 1, if(p) 1 else 0)
+	fun set_dz_kl(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 0, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets fog cartridge empty **/
 	fun get_np_leer() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.MSS_A2, 15, 1) != 0
 	
 	/** Sets fog cartridge empty **/
-	fun set_np_leer(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 15, 1, if(p) 1 else 0)
+	fun set_np_leer(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 15, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets Fog system activated **/
 	fun get_nebel_akt() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.MSS_A2, 14, 1) != 0
 	
 	/** Sets Fog system activated **/
-	fun set_nebel_akt(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 14, 1, if(p) 1 else 0)
+	fun set_nebel_akt(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 14, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets Fog system out of order **/
 	fun get_nebel_aus() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.MSS_A2, 13, 1) != 0
 	
 	/** Sets Fog system out of order **/
-	fun set_nebel_aus(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 13, 1, if(p) 1 else 0)
+	fun set_nebel_aus(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 13, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets fresh air bottle empty **/
 	fun get_o2_leer() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.MSS_A2, 12, 1) != 0
 	
 	/** Sets fresh air bottle empty **/
-	fun set_o2_leer(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 12, 1, if(p) 1 else 0)
+	fun set_o2_leer(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 12, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets fresh air system activated **/
 	fun get_o2_akt() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.MSS_A2, 11, 1) != 0
 	
 	/** Sets fresh air system activated **/
-	fun set_o2_akt(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 11, 1, if(p) 1 else 0)
+	fun set_o2_akt(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 11, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets fresh air system out of order **/
 	fun get_o2_aus() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.MSS_A2, 10, 1) != 0
 	
 	/** Sets fresh air system out of order **/
-	fun set_o2_aus(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 10, 1, if(p) 1 else 0)
+	fun set_o2_aus(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 10, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets control buzzer in combi **/
 	fun get_mss_summer() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.MSS_A2, 9, 1) != 0
 	
 	/** Sets control buzzer in combi **/
-	fun set_mss_summer(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 9, 1, if(p) 1 else 0)
+	fun set_mss_summer(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 9, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets radio status **/
 	fun get_fnk_stat() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.MSS_A2, 8, 1) != 0
 	
 	/** Sets radio status **/
-	fun set_fnk_stat(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 8, 1, if(p) 1 else 0)
+	fun set_fnk_stat(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 8, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets MSS detects undervoltage when the motor is running **/
 	fun get_mss_uspg_mo() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.MSS_A2, 21, 1) != 0
 	
 	/** Sets MSS detects undervoltage when the motor is running **/
-	fun set_mss_uspg_mo(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 21, 1, if(p) 1 else 0)
+	fun set_mss_uspg_mo(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 21, 1, if(p) 1 else 0)
+	}
 	
-	
+	/**
+     * Auto generated function
+     * Throws exception if user tries to set a value in a frame
+     * Not designated from the correct ECU
+    **/
+    private fun checkFrame(f: CanFrame) {
+        if (f.canID != CanBAddrs.MSS_A2.addr) {
+            throw IllegalArgumentException("CAN ID does not match object!")
+        }
+    }
+
+	override fun toString() = """
+		|Electronics on the MSS defective: ${get_mss_ee_def()}
+		|Emergency alarm system defective: ${get_notalm_def()}
+		|Silent alarm triggered: ${get_mss_alm()}
+		|MSS detects undervoltage: ${get_mss_uspg()}
+		|roof sign defective (short circuit): ${get_dz_def()}
+		|check roof sign (interruption): ${get_dz_prf()}
+		|Roof sign lamp defect: ${get_dz_la_def()}
+		|Roof sign control lamp on: ${get_dz_kl()}
+		|fog cartridge empty: ${get_np_leer()}
+		|Fog system activated: ${get_nebel_akt()}
+		|Fog system out of order: ${get_nebel_aus()}
+		|fresh air bottle empty: ${get_o2_leer()}
+		|fresh air system activated: ${get_o2_akt()}
+		|fresh air system out of order: ${get_o2_aus()}
+		|control buzzer in combi: ${get_mss_summer()}
+		|radio status: ${get_fnk_stat()}
+		|MSS detects undervoltage when the motor is running: ${get_mss_uspg_mo()}
+	""".trimMargin("|")
 }

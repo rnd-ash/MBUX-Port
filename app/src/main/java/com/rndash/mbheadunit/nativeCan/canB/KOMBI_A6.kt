@@ -1,5 +1,5 @@
 
-@file:Suppress("unused", "FunctionName")
+@file:Suppress("unused", "FunctionName", "ClassName")
 package com.rndash.mbheadunit.nativeCan.canB
 import com.rndash.mbheadunit.CanFrame // AUTO GEN
 import com.rndash.mbheadunit.nativeCan.CanBusNative // AUTO GEN
@@ -11,17 +11,43 @@ import com.rndash.mbheadunit.nativeCan.CanBusNative // AUTO GEN
 
 object KOMBI_A6 {
 
-    	/** Gets Identification key for pre-filtering **/
+    /** 
+     *  Returns the most recent Can Frame representing the state
+     *  of KOMBI_A6
+    **/
+    fun get_frame() : CanFrame? = CanBusNative.getBFrame(CanBAddrs.KOMBI_A6)
+
+	/** Gets Identification key for pre-filtering **/
 	fun get_schlue_id_ki() : Int = CanBusNative.getECUParameterB(CanBAddrs.KOMBI_A6, 0, 32)
 	
 	/** Sets Identification key for pre-filtering **/
-	fun set_schlue_id_ki(f: CanFrame, p: Int) = CanBusNative.setFrameParameter(f, 0, 32, p)
+	fun set_schlue_id_ki(f: CanFrame, p: Int) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 0, 32, p)
+	}
 	
-	/** Gets Mileage UNIT: km **/
+	/** Gets Mileage  **/
 	fun get_km_ki() : Int = CanBusNative.getECUParameterB(CanBAddrs.KOMBI_A6, 32, 24)
 	
-	/** Sets Mileage UNIT: km **/
-	fun set_km_ki(f: CanFrame, p: Int) = CanBusNative.setFrameParameter(f, 32, 24, p)
+	/** Sets Mileage  **/
+	fun set_km_ki(f: CanFrame, p: Int) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 32, 24, p)
+	}
 	
-	
+	/**
+     * Auto generated function
+     * Throws exception if user tries to set a value in a frame
+     * Not designated from the correct ECU
+    **/
+    private fun checkFrame(f: CanFrame) {
+        if (f.canID != CanBAddrs.KOMBI_A6.addr) {
+            throw IllegalArgumentException("CAN ID does not match object!")
+        }
+    }
+
+	override fun toString() = """
+		|Identification key for pre-filtering: ${get_schlue_id_ki()}
+		|Mileage : ${get_km_ki()} km
+	""".trimMargin("|")
 }

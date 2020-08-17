@@ -1,5 +1,5 @@
 
-@file:Suppress("unused", "FunctionName")
+@file:Suppress("unused", "FunctionName", "ClassName")
 package com.rndash.mbheadunit.nativeCan.canB
 import com.rndash.mbheadunit.CanFrame // AUTO GEN
 import com.rndash.mbheadunit.nativeCan.CanBusNative // AUTO GEN
@@ -11,101 +11,183 @@ import com.rndash.mbheadunit.nativeCan.CanBusNative // AUTO GEN
 
 object MRM_A2 {
 
-    	/** Gets button top left to top **/
+    /** 
+     *  Returns the most recent Can Frame representing the state
+     *  of MRM_A2
+    **/
+    fun get_frame() : CanFrame? = CanBusNative.getBFrame(CanBAddrs.MRM_A2)
+
+	/** Gets button top left to top **/
 	fun get_wippe_1_1() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.MRM_A2, 7, 1) != 0
 	
 	/** Sets button top left to top **/
-	fun set_wippe_1_1(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 7, 1, if(p) 1 else 0)
+	fun set_wippe_1_1(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 7, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets button top left to bottom **/
 	fun get_wippe_1_2() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.MRM_A2, 6, 1) != 0
 	
 	/** Sets button top left to bottom **/
-	fun set_wippe_1_2(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 6, 1, if(p) 1 else 0)
+	fun set_wippe_1_2(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 6, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets button left bottom up **/
 	fun get_wippe_2_1() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.MRM_A2, 5, 1) != 0
 	
 	/** Sets button left bottom up **/
-	fun set_wippe_2_1(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 5, 1, if(p) 1 else 0)
+	fun set_wippe_2_1(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 5, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets button left bottom down **/
 	fun get_wippe_2_2() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.MRM_A2, 4, 1) != 0
 	
 	/** Sets button left bottom down **/
-	fun set_wippe_2_2(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 4, 1, if(p) 1 else 0)
+	fun set_wippe_2_2(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 4, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets button top right up **/
 	fun get_wippe_3_1() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.MRM_A2, 3, 1) != 0
 	
 	/** Sets button top right up **/
-	fun set_wippe_3_1(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 3, 1, if(p) 1 else 0)
+	fun set_wippe_3_1(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 3, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets button top right to bottom **/
 	fun get_wippe_3_2() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.MRM_A2, 2, 1) != 0
 	
 	/** Sets button top right to bottom **/
-	fun set_wippe_3_2(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 2, 1, if(p) 1 else 0)
+	fun set_wippe_3_2(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 2, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets button bottom right up **/
 	fun get_wippe_4_1() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.MRM_A2, 1, 1) != 0
 	
 	/** Sets button bottom right up **/
-	fun set_wippe_4_1(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 1, 1, if(p) 1 else 0)
+	fun set_wippe_4_1(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 1, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets button bottom right down **/
 	fun get_wippe_4_2() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.MRM_A2, 0, 1) != 0
 	
 	/** Sets button bottom right down **/
-	fun set_wippe_4_2(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 0, 1, if(p) 1 else 0)
+	fun set_wippe_4_2(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 0, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets reserve **/
 	fun get_wippe_5_1() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.MRM_A2, 15, 1) != 0
 	
 	/** Sets reserve **/
-	fun set_wippe_5_1(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 15, 1, if(p) 1 else 0)
+	fun set_wippe_5_1(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 15, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets reserve **/
 	fun get_wippe_5_2() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.MRM_A2, 14, 1) != 0
 	
 	/** Sets reserve **/
-	fun set_wippe_5_2(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 14, 1, if(p) 1 else 0)
+	fun set_wippe_5_2(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 14, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets reserve **/
 	fun get_wippe_6_1() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.MRM_A2, 13, 1) != 0
 	
 	/** Sets reserve **/
-	fun set_wippe_6_1(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 13, 1, if(p) 1 else 0)
+	fun set_wippe_6_1(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 13, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets reserve **/
 	fun get_wippe_6_2() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.MRM_A2, 12, 1) != 0
 	
 	/** Sets reserve **/
-	fun set_wippe_6_2(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 12, 1, if(p) 1 else 0)
+	fun set_wippe_6_2(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 12, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets reserve **/
 	fun get_wippe_7_1() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.MRM_A2, 11, 1) != 0
 	
 	/** Sets reserve **/
-	fun set_wippe_7_1(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 11, 1, if(p) 1 else 0)
+	fun set_wippe_7_1(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 11, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets reserve **/
 	fun get_wippe_7_2() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.MRM_A2, 10, 1) != 0
 	
 	/** Sets reserve **/
-	fun set_wippe_7_2(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 10, 1, if(p) 1 else 0)
+	fun set_wippe_7_2(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 10, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets reserve **/
 	fun get_wippe_8_1() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.MRM_A2, 9, 1) != 0
 	
 	/** Sets reserve **/
-	fun set_wippe_8_1(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 9, 1, if(p) 1 else 0)
+	fun set_wippe_8_1(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 9, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets reserve **/
 	fun get_wippe_8_2() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.MRM_A2, 8, 1) != 0
 	
 	/** Sets reserve **/
-	fun set_wippe_8_2(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 8, 1, if(p) 1 else 0)
+	fun set_wippe_8_2(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 8, 1, if(p) 1 else 0)
+	}
 	
-	
+	/**
+     * Auto generated function
+     * Throws exception if user tries to set a value in a frame
+     * Not designated from the correct ECU
+    **/
+    private fun checkFrame(f: CanFrame) {
+        if (f.canID != CanBAddrs.MRM_A2.addr) {
+            throw IllegalArgumentException("CAN ID does not match object!")
+        }
+    }
+
+	override fun toString() = """
+		|button top left to top: ${get_wippe_1_1()}
+		|button top left to bottom: ${get_wippe_1_2()}
+		|button left bottom up: ${get_wippe_2_1()}
+		|button left bottom down: ${get_wippe_2_2()}
+		|button top right up: ${get_wippe_3_1()}
+		|button top right to bottom: ${get_wippe_3_2()}
+		|button bottom right up: ${get_wippe_4_1()}
+		|button bottom right down: ${get_wippe_4_2()}
+		|reserve: ${get_wippe_5_1()}
+		|reserve: ${get_wippe_5_2()}
+		|reserve: ${get_wippe_6_1()}
+		|reserve: ${get_wippe_6_2()}
+		|reserve: ${get_wippe_7_1()}
+		|reserve: ${get_wippe_7_2()}
+		|reserve: ${get_wippe_8_1()}
+		|reserve: ${get_wippe_8_2()}
+	""".trimMargin("|")
 }

@@ -1,5 +1,5 @@
 
-@file:Suppress("unused", "FunctionName")
+@file:Suppress("unused", "FunctionName", "ClassName")
 package com.rndash.mbheadunit.nativeCan.canB
 import com.rndash.mbheadunit.CanFrame // AUTO GEN
 import com.rndash.mbheadunit.nativeCan.CanBusNative // AUTO GEN
@@ -11,29 +11,63 @@ import com.rndash.mbheadunit.nativeCan.CanBusNative // AUTO GEN
 
 object SAM_V_A2 {
 
-    	/** Gets outside air temperature UNIT: ° C **/
+    /** 
+     *  Returns the most recent Can Frame representing the state
+     *  of SAM_V_A2
+    **/
+    fun get_frame() : CanFrame? = CanBusNative.getBFrame(CanBAddrs.SAM_V_A2)
+
+	/** Gets outside air temperature  **/
 	fun get_t_aussen_b() : Int = CanBusNative.getECUParameterB(CanBAddrs.SAM_V_A2, 0, 8)
 	
-	/** Sets outside air temperature UNIT: ° C **/
-	fun set_t_aussen_b(f: CanFrame, p: Int) = CanBusNative.setFrameParameter(f, 0, 8, p)
+	/** Sets outside air temperature  **/
+	fun set_t_aussen_b(f: CanFrame, p: Int) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 0, 8, p)
+	}
 	
-	/** Gets pressure refrigerant R134a UNIT: bar **/
+	/** Gets pressure refrigerant R134a  **/
 	fun get_p_kaelte() : Int = CanBusNative.getECUParameterB(CanBAddrs.SAM_V_A2, 8, 16)
 	
-	/** Sets pressure refrigerant R134a UNIT: bar **/
-	fun set_p_kaelte(f: CanFrame, p: Int) = CanBusNative.setFrameParameter(f, 8, 16, p)
+	/** Sets pressure refrigerant R134a  **/
+	fun set_p_kaelte(f: CanFrame, p: Int) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 8, 16, p)
+	}
 	
-	/** Gets temperature refrigerant R134a UNIT: ° C **/
+	/** Gets temperature refrigerant R134a  **/
 	fun get_t_kaelte() : Int = CanBusNative.getECUParameterB(CanBAddrs.SAM_V_A2, 24, 16)
 	
-	/** Sets temperature refrigerant R134a UNIT: ° C **/
-	fun set_t_kaelte(f: CanFrame, p: Int) = CanBusNative.setFrameParameter(f, 24, 16, p)
+	/** Sets temperature refrigerant R134a  **/
+	fun set_t_kaelte(f: CanFrame, p: Int) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 24, 16, p)
+	}
 	
-	/** Gets Current compressor main control valve UNIT: mA **/
+	/** Gets Current compressor main control valve  **/
 	fun get_i_komp() : Int = CanBusNative.getECUParameterB(CanBAddrs.SAM_V_A2, 40, 8)
 	
-	/** Sets Current compressor main control valve UNIT: mA **/
-	fun set_i_komp(f: CanFrame, p: Int) = CanBusNative.setFrameParameter(f, 40, 8, p)
+	/** Sets Current compressor main control valve  **/
+	fun set_i_komp(f: CanFrame, p: Int) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 40, 8, p)
+	}
 	
-	
+	/**
+     * Auto generated function
+     * Throws exception if user tries to set a value in a frame
+     * Not designated from the correct ECU
+    **/
+    private fun checkFrame(f: CanFrame) {
+        if (f.canID != CanBAddrs.SAM_V_A2.addr) {
+            throw IllegalArgumentException("CAN ID does not match object!")
+        }
+    }
+
+	override fun toString() = """
+		|outside air temperature : ${get_t_aussen_b()} ° C
+		|pressure refrigerant R134a : ${get_p_kaelte()} bar
+		|temperature refrigerant R134a : ${get_t_kaelte()} ° C
+		|Current compressor main control valve : ${get_i_komp()} mA
+	""".trimMargin("|")
 }

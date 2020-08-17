@@ -1,5 +1,5 @@
 
-@file:Suppress("unused", "FunctionName")
+@file:Suppress("unused", "FunctionName", "ClassName")
 package com.rndash.mbheadunit.nativeCan.canB
 import com.rndash.mbheadunit.CanFrame // AUTO GEN
 import com.rndash.mbheadunit.nativeCan.CanBusNative // AUTO GEN
@@ -11,35 +11,73 @@ import com.rndash.mbheadunit.nativeCan.CanBusNative // AUTO GEN
 
 object THL_A1 {
 
-    	/** Gets rear left window regulator larger short stroke position **/
+    /** 
+     *  Returns the most recent Can Frame representing the state
+     *  of THL_A1
+    **/
+    fun get_frame() : CanFrame? = CanBusNative.getBFrame(CanBAddrs.THL_A1)
+
+	/** Gets rear left window regulator larger short stroke position **/
 	fun get_fhl_kzhb() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.THL_A1, 3, 1) != 0
 	
 	/** Sets rear left window regulator larger short stroke position **/
-	fun set_fhl_kzhb(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 3, 1, if(p) 1 else 0)
+	fun set_fhl_kzhb(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 3, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets rear left window open **/
 	fun get_fhl_auf() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.THL_A1, 2, 1) != 0
 	
 	/** Sets rear left window open **/
-	fun set_fhl_auf(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 2, 1, if(p) 1 else 0)
+	fun set_fhl_auf(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 2, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets Window lifter blocked at the rear left **/
 	fun get_fhl_block() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.THL_A1, 1, 1) != 0
 	
 	/** Sets Window lifter blocked at the rear left **/
-	fun set_fhl_block(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 1, 1, if(p) 1 else 0)
+	fun set_fhl_block(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 1, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets Window lifter at the rear left standardized **/
 	fun get_fhl_norm() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.THL_A1, 0, 1) != 0
 	
 	/** Sets Window lifter at the rear left standardized **/
-	fun set_fhl_norm(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 0, 1, if(p) 1 else 0)
+	fun set_fhl_norm(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 0, 1, if(p) 1 else 0)
+	}
 	
-	/** Gets window position rear left UNIT: 1 / anchor turn **/
+	/** Gets window position rear left  **/
 	fun get_feste_hl() : Int = CanBusNative.getECUParameterB(CanBAddrs.THL_A1, 4, 12)
 	
-	/** Sets window position rear left UNIT: 1 / anchor turn **/
-	fun set_feste_hl(f: CanFrame, p: Int) = CanBusNative.setFrameParameter(f, 4, 12, p)
+	/** Sets window position rear left  **/
+	fun set_feste_hl(f: CanFrame, p: Int) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 4, 12, p)
+	}
 	
-	
+	/**
+     * Auto generated function
+     * Throws exception if user tries to set a value in a frame
+     * Not designated from the correct ECU
+    **/
+    private fun checkFrame(f: CanFrame) {
+        if (f.canID != CanBAddrs.THL_A1.addr) {
+            throw IllegalArgumentException("CAN ID does not match object!")
+        }
+    }
+
+	override fun toString() = """
+		|rear left window regulator larger short stroke position: ${get_fhl_kzhb()}
+		|rear left window open: ${get_fhl_auf()}
+		|Window lifter blocked at the rear left: ${get_fhl_block()}
+		|Window lifter at the rear left standardized: ${get_fhl_norm()}
+		|window position rear left : ${get_feste_hl()} 1 / anchor turn
+	""".trimMargin("|")
 }

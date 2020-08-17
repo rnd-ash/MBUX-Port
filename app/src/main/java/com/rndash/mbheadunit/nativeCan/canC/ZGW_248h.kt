@@ -1,5 +1,5 @@
 
-@file:Suppress("unused", "FunctionName")
+@file:Suppress("unused", "FunctionName", "ClassName")
 package com.rndash.mbheadunit.nativeCan.canC
 import com.rndash.mbheadunit.CanFrame // AUTO GEN
 import com.rndash.mbheadunit.nativeCan.CanBusNative // AUTO GEN
@@ -11,23 +11,38 @@ import com.rndash.mbheadunit.nativeCan.CanBusNative // AUTO GEN
 
 object ZGW_248h {
 
-    	/** Gets switch on low beam **/
+    /** 
+     *  Returns the most recent Can Frame representing the state
+     *  of ZGW_248h
+    **/
+    fun get_frame() : CanFrame? = CanBusNative.getCFrame(CanCAddrs.ZGW_248h)
+
+	/** Gets switch on low beam **/
 	fun get_abl_ein() : Boolean = CanBusNative.getECUParameterC(CanCAddrs.ZGW_248h, 3, 1) != 0
 	
 	/** Sets switch on low beam **/
-	fun set_abl_ein(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 3, 1, if(p) 1 else 0)
+	fun set_abl_ein(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 3, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets Start Xenon4 diagnostic procedure on the driver's side **/
 	fun get_diag_x4_f() : Boolean = CanBusNative.getECUParameterC(CanCAddrs.ZGW_248h, 1, 1) != 0
 	
 	/** Sets Start Xenon4 diagnostic procedure on the driver's side **/
-	fun set_diag_x4_f(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 1, 1, if(p) 1 else 0)
+	fun set_diag_x4_f(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 1, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets Start Xenon4 diagnostic procedure on the passenger side **/
 	fun get_diag_x4_b() : Boolean = CanBusNative.getECUParameterC(CanCAddrs.ZGW_248h, 0, 1) != 0
 	
 	/** Sets Start Xenon4 diagnostic procedure on the passenger side **/
-	fun set_diag_x4_b(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 0, 1, if(p) 1 else 0)
+	fun set_diag_x4_b(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 0, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets Trailer operation detected **/
 	fun get_anh_erk2() : ANH_ERK2 = when(CanBusNative.getECUParameterC(CanCAddrs.ZGW_248h, 14, 2)) {
@@ -39,19 +54,46 @@ object ZGW_248h {
 	}
 	
 	/** Sets Trailer operation detected **/
-	fun set_anh_erk2(f: CanFrame, p: ANH_ERK2) = CanBusNative.setFrameParameter(f, 14, 2, p.raw)
+	fun set_anh_erk2(f: CanFrame, p: ANH_ERK2) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 14, 2, p.raw)
+	}
 	
 	/** Gets Auxiliary water pump is running **/
 	fun get_zwp_lft() : Boolean = CanBusNative.getECUParameterC(CanCAddrs.ZGW_248h, 13, 1) != 0
 	
 	/** Sets Auxiliary water pump is running **/
-	fun set_zwp_lft(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 13, 1, if(p) 1 else 0)
+	fun set_zwp_lft(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 13, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets AFL request: switch on low beam **/
 	fun get_afl_abl_ein() : Boolean = CanBusNative.getECUParameterC(CanCAddrs.ZGW_248h, 12, 1) != 0
 	
 	/** Sets AFL request: switch on low beam **/
-	fun set_afl_abl_ein(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 12, 1, if(p) 1 else 0)
+	fun set_afl_abl_ein(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 12, 1, if(p) 1 else 0)
+	}
 	
-	
+	/**
+     * Auto generated function
+     * Throws exception if user tries to set a value in a frame
+     * Not designated from the correct ECU
+    **/
+    private fun checkFrame(f: CanFrame) {
+        if (f.canID != CanCAddrs.ZGW_248h.addr) {
+            throw IllegalArgumentException("CAN ID does not match object!")
+        }
+    }
+
+	override fun toString() = """
+		|switch on low beam: ${get_abl_ein()}
+		|Start Xenon4 diagnostic procedure on the driver's side: ${get_diag_x4_f()}
+		|Start Xenon4 diagnostic procedure on the passenger side: ${get_diag_x4_b()}
+		|Trailer operation detected: ${get_anh_erk2()}
+		|Auxiliary water pump is running: ${get_zwp_lft()}
+		|AFL request: switch on low beam: ${get_afl_abl_ein()}
+	""".trimMargin("|")
 }

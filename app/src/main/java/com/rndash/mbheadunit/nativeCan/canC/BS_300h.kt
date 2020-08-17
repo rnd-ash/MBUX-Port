@@ -1,5 +1,5 @@
 
-@file:Suppress("unused", "FunctionName")
+@file:Suppress("unused", "FunctionName", "ClassName")
 package com.rndash.mbheadunit.nativeCan.canC
 import com.rndash.mbheadunit.CanFrame // AUTO GEN
 import com.rndash.mbheadunit.nativeCan.CanBusNative // AUTO GEN
@@ -11,53 +11,83 @@ import com.rndash.mbheadunit.nativeCan.CanBusNative // AUTO GEN
 
 object BS_300h {
 
-    	/** Gets Steering angle sensor initialization possible **/
+    /** 
+     *  Returns the most recent Can Frame representing the state
+     *  of BS_300h
+    **/
+    fun get_frame() : CanFrame? = CanBusNative.getCFrame(CanCAddrs.BS_300h)
+
+	/** Gets Steering angle sensor initialization possible **/
 	fun get_lws_ini_ein() : Boolean = CanBusNative.getECUParameterC(CanCAddrs.BS_300h, 7, 1) != 0
 	
 	/** Sets Steering angle sensor initialization possible **/
-	fun set_lws_ini_ein(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 7, 1, if(p) 1 else 0)
+	fun set_lws_ini_ein(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 7, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets Initialization of steering angle sensor o.k. **/
 	fun get_lws_ini_ok() : Boolean = CanBusNative.getECUParameterC(CanCAddrs.BS_300h, 6, 1) != 0
 	
 	/** Sets Initialization of steering angle sensor o.k. **/
-	fun set_lws_ini_ok(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 6, 1, if(p) 1 else 0)
+	fun set_lws_ini_ok(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 6, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets ESP yaw moment control active **/
 	fun get_esp_gier_akt() : Boolean = CanBusNative.getECUParameterC(CanCAddrs.BS_300h, 5, 1) != 0
 	
 	/** Sets ESP yaw moment control active **/
-	fun set_esp_gier_akt(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 5, 1, if(p) 1 else 0)
+	fun set_esp_gier_akt(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 5, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets Enable ART **/
 	fun get_art_e() : Boolean = CanBusNative.getECUParameterC(CanCAddrs.BS_300h, 4, 1) != 0
 	
 	/** Sets Enable ART **/
-	fun set_art_e(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 4, 1, if(p) 1 else 0)
+	fun set_art_e(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 4, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets Full braking (ABS controls all 4 wheels) **/
 	fun get_vollbre() : Boolean = CanBusNative.getECUParameterC(CanCAddrs.BS_300h, 3, 1) != 0
 	
 	/** Sets Full braking (ABS controls all 4 wheels) **/
-	fun set_vollbre(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 3, 1, if(p) 1 else 0)
+	fun set_vollbre(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 3, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets BAS control active **/
 	fun get_bas_akt() : Boolean = CanBusNative.getECUParameterC(CanCAddrs.BS_300h, 2, 1) != 0
 	
 	/** Sets BAS control active **/
-	fun set_bas_akt(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 2, 1, if(p) 1 else 0)
+	fun set_bas_akt(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 2, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets Dynamic engine torque request **/
 	fun get_dmdyn_art() : Boolean = CanBusNative.getECUParameterC(CanCAddrs.BS_300h, 1, 1) != 0
 	
 	/** Sets Dynamic engine torque request **/
-	fun set_dmdyn_art(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 1, 1, if(p) 1 else 0)
+	fun set_dmdyn_art(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 1, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets Motor torque request parity (even parity) **/
 	fun get_dmpar_art() : Boolean = CanBusNative.getECUParameterC(CanCAddrs.BS_300h, 0, 1) != 0
 	
 	/** Sets Motor torque request parity (even parity) **/
-	fun set_dmpar_art(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 0, 1, if(p) 1 else 0)
+	fun set_dmpar_art(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 0, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets driver brakes **/
 	fun get_sfb() : SFB = when(CanBusNative.getECUParameterC(CanCAddrs.BS_300h, 14, 2)) {
@@ -69,13 +99,19 @@ object BS_300h {
 	}
 	
 	/** Sets driver brakes **/
-	fun set_sfb(f: CanFrame, p: SFB) = CanBusNative.setFrameParameter(f, 14, 2, p.raw)
+	fun set_sfb(f: CanFrame, p: SFB) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 14, 2, p.raw)
+	}
 	
 	/** Gets driver brakes parity (even parity) **/
 	fun get_sfb_pa() : Boolean = CanBusNative.getECUParameterC(CanCAddrs.BS_300h, 13, 1) != 0
 	
 	/** Sets driver brakes parity (even parity) **/
-	fun set_sfb_pa(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 13, 1, if(p) 1 else 0)
+	fun set_sfb_pa(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 13, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets transmission cycle time **/
 	fun get_t_z() : T_Z = when(CanBusNative.getECUParameterC(CanCAddrs.BS_300h, 11, 2)) {
@@ -87,79 +123,153 @@ object BS_300h {
 	}
 	
 	/** Sets transmission cycle time **/
-	fun set_t_z(f: CanFrame, p: T_Z) = CanBusNative.setFrameParameter(f, 11, 2, p.raw)
+	fun set_t_z(f: CanFrame, p: T_Z) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 11, 2, p.raw)
+	}
 	
 	/** Gets drive torque control active **/
 	fun get_amr_akt_esp() : Boolean = CanBusNative.getECUParameterC(CanCAddrs.BS_300h, 10, 1) != 0
 	
 	/** Sets drive torque control active **/
-	fun set_amr_akt_esp(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 10, 1, if(p) 1 else 0)
+	fun set_amr_akt_esp(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 10, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets Dynamic motor torque request **/
 	fun get_mdyn_esp() : Boolean = CanBusNative.getECUParameterC(CanCAddrs.BS_300h, 9, 1) != 0
 	
 	/** Sets Dynamic motor torque request **/
-	fun set_mdyn_esp(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 9, 1, if(p) 1 else 0)
+	fun set_mdyn_esp(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 9, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets Motor torque request parity (even parity) **/
 	fun get_mpar_esp() : Boolean = CanBusNative.getECUParameterC(CanCAddrs.BS_300h, 8, 1) != 0
 	
 	/** Sets Motor torque request parity (even parity) **/
-	fun set_mpar_esp(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 8, 1, if(p) 1 else 0)
+	fun set_mpar_esp(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 8, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets Motor torque request Max **/
 	fun get_dmmax_art() : Boolean = CanBusNative.getECUParameterC(CanCAddrs.BS_300h, 18, 1) != 0
 	
 	/** Sets Motor torque request Max **/
-	fun set_dmmax_art(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 18, 1, if(p) 1 else 0)
+	fun set_dmmax_art(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 18, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets engine torque request min **/
 	fun get_dmmin_art() : Boolean = CanBusNative.getECUParameterC(CanCAddrs.BS_300h, 17, 1) != 0
 	
 	/** Sets engine torque request min **/
-	fun set_dmmin_art(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 17, 1, if(p) 1 else 0)
+	fun set_dmmin_art(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 17, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets engine torque request. Toggle 40ms + -10 **/
 	fun get_dmtgl_art() : Boolean = CanBusNative.getECUParameterC(CanCAddrs.BS_300h, 16, 1) != 0
 	
 	/** Sets engine torque request. Toggle 40ms + -10 **/
-	fun set_dmtgl_art(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 16, 1, if(p) 1 else 0)
+	fun set_dmtgl_art(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 16, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets Required. Engine torque **/
 	fun get_dm_art() : Int = CanBusNative.getECUParameterC(CanCAddrs.BS_300h, 19, 13)
 	
 	/** Sets Required. Engine torque **/
-	fun set_dm_art(f: CanFrame, p: Int) = CanBusNative.setFrameParameter(f, 19, 13, p)
+	fun set_dm_art(f: CanFrame, p: Int) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 19, 13, p)
+	}
 	
 	/** Gets Motor torque request Max **/
 	fun get_mmax_esp() : Boolean = CanBusNative.getECUParameterC(CanCAddrs.BS_300h, 34, 1) != 0
 	
 	/** Sets Motor torque request Max **/
-	fun set_mmax_esp(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 34, 1, if(p) 1 else 0)
+	fun set_mmax_esp(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 34, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets Motor torque request Min **/
 	fun get_mmin_esp() : Boolean = CanBusNative.getECUParameterC(CanCAddrs.BS_300h, 33, 1) != 0
 	
 	/** Sets Motor torque request Min **/
-	fun set_mmin_esp(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 33, 1, if(p) 1 else 0)
+	fun set_mmin_esp(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 33, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets motor torque request. Toggle 40ms + -10 **/
 	fun get_mtgl_esp() : Boolean = CanBusNative.getECUParameterC(CanCAddrs.BS_300h, 32, 1) != 0
 	
 	/** Sets motor torque request. Toggle 40ms + -10 **/
-	fun set_mtgl_esp(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 32, 1, if(p) 1 else 0)
+	fun set_mtgl_esp(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 32, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets Required. Engine torque **/
 	fun get_m_esp() : Int = CanBusNative.getECUParameterC(CanCAddrs.BS_300h, 35, 13)
 	
 	/** Sets Required. Engine torque **/
-	fun set_m_esp(f: CanFrame, p: Int) = CanBusNative.setFrameParameter(f, 35, 13, p)
+	fun set_m_esp(f: CanFrame, p: Int) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 35, 13, p)
+	}
 	
 	/** Gets Raw signal yaw rate without adjustment / filtering (+ = left) **/
 	fun get_gier_roh() : Int = CanBusNative.getECUParameterC(CanCAddrs.BS_300h, 48, 16)
 	
 	/** Sets Raw signal yaw rate without adjustment / filtering (+ = left) **/
-	fun set_gier_roh(f: CanFrame, p: Int) = CanBusNative.setFrameParameter(f, 48, 16, p)
+	fun set_gier_roh(f: CanFrame, p: Int) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 48, 16, p)
+	}
 	
-	
+	/**
+     * Auto generated function
+     * Throws exception if user tries to set a value in a frame
+     * Not designated from the correct ECU
+    **/
+    private fun checkFrame(f: CanFrame) {
+        if (f.canID != CanCAddrs.BS_300h.addr) {
+            throw IllegalArgumentException("CAN ID does not match object!")
+        }
+    }
+
+	override fun toString() = """
+		|Steering angle sensor initialization possible: ${get_lws_ini_ein()}
+		|Initialization of steering angle sensor o.k.: ${get_lws_ini_ok()}
+		|ESP yaw moment control active: ${get_esp_gier_akt()}
+		|Enable ART: ${get_art_e()}
+		|Full braking (ABS controls all 4 wheels): ${get_vollbre()}
+		|BAS control active: ${get_bas_akt()}
+		|Dynamic engine torque request: ${get_dmdyn_art()}
+		|Motor torque request parity (even parity): ${get_dmpar_art()}
+		|driver brakes: ${get_sfb()}
+		|driver brakes parity (even parity): ${get_sfb_pa()}
+		|transmission cycle time: ${get_t_z()}
+		|drive torque control active: ${get_amr_akt_esp()}
+		|Dynamic motor torque request: ${get_mdyn_esp()}
+		|Motor torque request parity (even parity): ${get_mpar_esp()}
+		|Motor torque request Max: ${get_dmmax_art()}
+		|engine torque request min: ${get_dmmin_art()}
+		|engine torque request. Toggle 40ms + -10: ${get_dmtgl_art()}
+		|Required. Engine torque: ${get_dm_art()}
+		|Motor torque request Max: ${get_mmax_esp()}
+		|Motor torque request Min: ${get_mmin_esp()}
+		|motor torque request. Toggle 40ms + -10: ${get_mtgl_esp()}
+		|Required. Engine torque: ${get_m_esp()}
+		|Raw signal yaw rate without adjustment / filtering (+ = left): ${get_gier_roh()}
+	""".trimMargin("|")
 }

@@ -1,5 +1,5 @@
 
-@file:Suppress("unused", "FunctionName")
+@file:Suppress("unused", "FunctionName", "ClassName")
 package com.rndash.mbheadunit.nativeCan.canB
 import com.rndash.mbheadunit.CanFrame // AUTO GEN
 import com.rndash.mbheadunit.nativeCan.CanBusNative // AUTO GEN
@@ -11,11 +11,33 @@ import com.rndash.mbheadunit.nativeCan.CanBusNative // AUTO GEN
 
 object DBE_A4 {
 
-    	/** Gets Sliding / tilting roof closed when it rains **/
+    /** 
+     *  Returns the most recent Can Frame representing the state
+     *  of DBE_A4
+    **/
+    fun get_frame() : CanFrame? = CanBusNative.getBFrame(CanBAddrs.DBE_A4)
+
+	/** Gets Sliding / tilting roof closed when it rains **/
 	fun get_shd_zu_rs() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.DBE_A4, 0, 1) != 0
 	
 	/** Sets Sliding / tilting roof closed when it rains **/
-	fun set_shd_zu_rs(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 0, 1, if(p) 1 else 0)
+	fun set_shd_zu_rs(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 0, 1, if(p) 1 else 0)
+	}
 	
-	
+	/**
+     * Auto generated function
+     * Throws exception if user tries to set a value in a frame
+     * Not designated from the correct ECU
+    **/
+    private fun checkFrame(f: CanFrame) {
+        if (f.canID != CanBAddrs.DBE_A4.addr) {
+            throw IllegalArgumentException("CAN ID does not match object!")
+        }
+    }
+
+	override fun toString() = """
+		|Sliding / tilting roof closed when it rains: ${get_shd_zu_rs()}
+	""".trimMargin("|")
 }

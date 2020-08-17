@@ -1,5 +1,5 @@
 
-@file:Suppress("unused", "FunctionName")
+@file:Suppress("unused", "FunctionName", "ClassName")
 package com.rndash.mbheadunit.nativeCan.canC
 import com.rndash.mbheadunit.CanFrame // AUTO GEN
 import com.rndash.mbheadunit.nativeCan.CanBusNative // AUTO GEN
@@ -11,11 +11,33 @@ import com.rndash.mbheadunit.nativeCan.CanBusNative // AUTO GEN
 
 object FBS_112h {
 
-    	/** Gets FBS message to GS (8 bytes) **/
+    /** 
+     *  Returns the most recent Can Frame representing the state
+     *  of FBS_112h
+    **/
+    fun get_frame() : CanFrame? = CanBusNative.getCFrame(CanCAddrs.FBS_112h)
+
+	/** Gets FBS message to GS (8 bytes) **/
 	fun get_fbs_gs() : Int = CanBusNative.getECUParameterC(CanCAddrs.FBS_112h, 0, 64)
 	
 	/** Sets FBS message to GS (8 bytes) **/
-	fun set_fbs_gs(f: CanFrame, p: Int) = CanBusNative.setFrameParameter(f, 0, 64, p)
+	fun set_fbs_gs(f: CanFrame, p: Int) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 0, 64, p)
+	}
 	
-	
+	/**
+     * Auto generated function
+     * Throws exception if user tries to set a value in a frame
+     * Not designated from the correct ECU
+    **/
+    private fun checkFrame(f: CanFrame) {
+        if (f.canID != CanCAddrs.FBS_112h.addr) {
+            throw IllegalArgumentException("CAN ID does not match object!")
+        }
+    }
+
+	override fun toString() = """
+		|FBS message to GS (8 bytes): ${get_fbs_gs()}
+	""".trimMargin("|")
 }

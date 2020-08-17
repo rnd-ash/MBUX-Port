@@ -1,5 +1,5 @@
 
-@file:Suppress("unused", "FunctionName")
+@file:Suppress("unused", "FunctionName", "ClassName")
 package com.rndash.mbheadunit.nativeCan.canC
 import com.rndash.mbheadunit.CanFrame // AUTO GEN
 import com.rndash.mbheadunit.nativeCan.CanBusNative // AUTO GEN
@@ -11,17 +11,29 @@ import com.rndash.mbheadunit.nativeCan.CanBusNative // AUTO GEN
 
 object LRW_236h {
 
-    	/** Gets steering wheel angle **/
+    /** 
+     *  Returns the most recent Can Frame representing the state
+     *  of LRW_236h
+    **/
+    fun get_frame() : CanFrame? = CanBusNative.getCFrame(CanCAddrs.LRW_236h)
+
+	/** Gets steering wheel angle **/
 	fun get_lrw() : Int = CanBusNative.getECUParameterC(CanCAddrs.LRW_236h, 2, 14)
 	
 	/** Sets steering wheel angle **/
-	fun set_lrw(f: CanFrame, p: Int) = CanBusNative.setFrameParameter(f, 2, 14, p)
+	fun set_lrw(f: CanFrame, p: Int) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 2, 14, p)
+	}
 	
 	/** Gets steering wheel angular speed **/
 	fun get_vlrw() : Int = CanBusNative.getECUParameterC(CanCAddrs.LRW_236h, 18, 14)
 	
 	/** Sets steering wheel angular speed **/
-	fun set_vlrw(f: CanFrame, p: Int) = CanBusNative.setFrameParameter(f, 18, 14, p)
+	fun set_vlrw(f: CanFrame, p: Int) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 18, 14, p)
+	}
 	
 	/** Gets Steering wheel angle sensor status **/
 	fun get_lrws_st() : LRWS_ST = when(CanBusNative.getECUParameterC(CanCAddrs.LRW_236h, 38, 2)) {
@@ -33,7 +45,10 @@ object LRW_236h {
 	}
 	
 	/** Sets Steering wheel angle sensor status **/
-	fun set_lrws_st(f: CanFrame, p: LRWS_ST) = CanBusNative.setFrameParameter(f, 38, 2, p.raw)
+	fun set_lrws_st(f: CanFrame, p: LRWS_ST) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 38, 2, p.raw)
+	}
 	
 	/** Gets Identification of the steering wheel angle sensor **/
 	fun get_lrws_id() : LRWS_ID = when(CanBusNative.getECUParameterC(CanCAddrs.LRW_236h, 36, 2)) {
@@ -45,19 +60,46 @@ object LRW_236h {
 	}
 	
 	/** Sets Identification of the steering wheel angle sensor **/
-	fun set_lrws_id(f: CanFrame, p: LRWS_ID) = CanBusNative.setFrameParameter(f, 36, 2, p.raw)
+	fun set_lrws_id(f: CanFrame, p: LRWS_ID) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 36, 2, p.raw)
+	}
 	
 	/** Gets message counter **/
 	fun get_bz236h() : Int = CanBusNative.getECUParameterC(CanCAddrs.LRW_236h, 32, 4)
 	
 	/** Sets message counter **/
-	fun set_bz236h(f: CanFrame, p: Int) = CanBusNative.setFrameParameter(f, 32, 4, p)
+	fun set_bz236h(f: CanFrame, p: Int) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 32, 4, p)
+	}
 	
 	/** Gets CRC checksum byte 1 **/
 	fun get_crc236h() : Int = CanBusNative.getECUParameterC(CanCAddrs.LRW_236h, 56, 8)
 	
 	/** Sets CRC checksum byte 1 **/
-	fun set_crc236h(f: CanFrame, p: Int) = CanBusNative.setFrameParameter(f, 56, 8, p)
+	fun set_crc236h(f: CanFrame, p: Int) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 56, 8, p)
+	}
 	
-	
+	/**
+     * Auto generated function
+     * Throws exception if user tries to set a value in a frame
+     * Not designated from the correct ECU
+    **/
+    private fun checkFrame(f: CanFrame) {
+        if (f.canID != CanCAddrs.LRW_236h.addr) {
+            throw IllegalArgumentException("CAN ID does not match object!")
+        }
+    }
+
+	override fun toString() = """
+		|steering wheel angle: ${get_lrw()}
+		|steering wheel angular speed: ${get_vlrw()}
+		|Steering wheel angle sensor status: ${get_lrws_st()}
+		|Identification of the steering wheel angle sensor: ${get_lrws_id()}
+		|message counter: ${get_bz236h()}
+		|CRC checksum byte 1: ${get_crc236h()}
+	""".trimMargin("|")
 }

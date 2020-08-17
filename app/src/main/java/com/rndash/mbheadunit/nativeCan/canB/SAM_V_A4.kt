@@ -1,5 +1,5 @@
 
-@file:Suppress("unused", "FunctionName")
+@file:Suppress("unused", "FunctionName", "ClassName")
 package com.rndash.mbheadunit.nativeCan.canB
 import com.rndash.mbheadunit.CanFrame // AUTO GEN
 import com.rndash.mbheadunit.nativeCan.CanBusNative // AUTO GEN
@@ -11,47 +11,93 @@ import com.rndash.mbheadunit.nativeCan.CanBusNative // AUTO GEN
 
 object SAM_V_A4 {
 
-    	/** Gets outside mirror glass to the left **/
+    /** 
+     *  Returns the most recent Can Frame representing the state
+     *  of SAM_V_A4
+    **/
+    fun get_frame() : CanFrame? = CanBusNative.getBFrame(CanBAddrs.SAM_V_A4)
+
+	/** Gets outside mirror glass to the left **/
 	fun get_sp_n_li() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.SAM_V_A4, 7, 1) != 0
 	
 	/** Sets outside mirror glass to the left **/
-	fun set_sp_n_li(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 7, 1, if(p) 1 else 0)
+	fun set_sp_n_li(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 7, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets Outside mirror glass to the right **/
 	fun get_sp_n_re() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.SAM_V_A4, 6, 1) != 0
 	
 	/** Sets Outside mirror glass to the right **/
-	fun set_sp_n_re(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 6, 1, if(p) 1 else 0)
+	fun set_sp_n_re(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 6, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets outside mirror glass upwards **/
 	fun get_sp_n_ob() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.SAM_V_A4, 5, 1) != 0
 	
 	/** Sets outside mirror glass upwards **/
-	fun set_sp_n_ob(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 5, 1, if(p) 1 else 0)
+	fun set_sp_n_ob(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 5, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets Outside mirror glass down **/
 	fun get_sp_n_un() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.SAM_V_A4, 4, 1) != 0
 	
 	/** Sets Outside mirror glass down **/
-	fun set_sp_n_un(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 4, 1, if(p) 1 else 0)
+	fun set_sp_n_un(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 4, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets Outside mirror after garage position **/
 	fun get_sp_garage() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.SAM_V_A4, 3, 1) != 0
 	
 	/** Sets Outside mirror after garage position **/
-	fun set_sp_garage(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 3, 1, if(p) 1 else 0)
+	fun set_sp_garage(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 3, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets Outside mirror according to driving position **/
 	fun get_sp_fahren() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.SAM_V_A4, 2, 1) != 0
 	
 	/** Sets Outside mirror according to driving position **/
-	fun set_sp_fahren(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 2, 1, if(p) 1 else 0)
+	fun set_sp_fahren(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 2, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets Mirror adjustment switch setting **/
 	fun get_spvs_st() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.SAM_V_A4, 0, 1) != 0
 	
 	/** Sets Mirror adjustment switch setting **/
-	fun set_spvs_st(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 0, 1, if(p) 1 else 0)
+	fun set_spvs_st(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 0, 1, if(p) 1 else 0)
+	}
 	
-	
+	/**
+     * Auto generated function
+     * Throws exception if user tries to set a value in a frame
+     * Not designated from the correct ECU
+    **/
+    private fun checkFrame(f: CanFrame) {
+        if (f.canID != CanBAddrs.SAM_V_A4.addr) {
+            throw IllegalArgumentException("CAN ID does not match object!")
+        }
+    }
+
+	override fun toString() = """
+		|outside mirror glass to the left: ${get_sp_n_li()}
+		|Outside mirror glass to the right: ${get_sp_n_re()}
+		|outside mirror glass upwards: ${get_sp_n_ob()}
+		|Outside mirror glass down: ${get_sp_n_un()}
+		|Outside mirror after garage position: ${get_sp_garage()}
+		|Outside mirror according to driving position: ${get_sp_fahren()}
+		|Mirror adjustment switch setting: ${get_spvs_st()}
+	""".trimMargin("|")
 }

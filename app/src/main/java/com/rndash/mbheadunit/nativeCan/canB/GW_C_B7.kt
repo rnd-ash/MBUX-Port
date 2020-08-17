@@ -1,5 +1,5 @@
 
-@file:Suppress("unused", "FunctionName")
+@file:Suppress("unused", "FunctionName", "ClassName")
 package com.rndash.mbheadunit.nativeCan.canB
 import com.rndash.mbheadunit.CanFrame // AUTO GEN
 import com.rndash.mbheadunit.nativeCan.CanBusNative // AUTO GEN
@@ -11,7 +11,13 @@ import com.rndash.mbheadunit.nativeCan.CanBusNative // AUTO GEN
 
 object GW_C_B7 {
 
-    	/** Gets direction of rotation of the front right wheel **/
+    /** 
+     *  Returns the most recent Can Frame representing the state
+     *  of GW_C_B7
+    **/
+    fun get_frame() : CanFrame? = CanBusNative.getBFrame(CanBAddrs.GW_C_B7)
+
+	/** Gets direction of rotation of the front right wheel **/
 	fun get_drtgvr() : DRTGVR = when(CanBusNative.getECUParameterB(CanBAddrs.GW_C_B7, 32, 2)) {
 		 0 -> DRTGVR.PASSIVE
 		 1 -> DRTGVR.FORWARD
@@ -21,13 +27,33 @@ object GW_C_B7 {
 	}
 	
 	/** Sets direction of rotation of the front right wheel **/
-	fun set_drtgvr(f: CanFrame, p: DRTGVR) = CanBusNative.setFrameParameter(f, 32, 2, p.raw)
+	fun set_drtgvr(f: CanFrame, p: DRTGVR) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 32, 2, p.raw)
+	}
 	
-	/** Gets wheel speed front right UNIT: 1 / min **/
+	/** Gets wheel speed front right  **/
 	fun get_dvr() : Int = CanBusNative.getECUParameterB(CanBAddrs.GW_C_B7, 34, 14)
 	
-	/** Sets wheel speed front right UNIT: 1 / min **/
-	fun set_dvr(f: CanFrame, p: Int) = CanBusNative.setFrameParameter(f, 34, 14, p)
+	/** Sets wheel speed front right  **/
+	fun set_dvr(f: CanFrame, p: Int) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 34, 14, p)
+	}
 	
-	
+	/**
+     * Auto generated function
+     * Throws exception if user tries to set a value in a frame
+     * Not designated from the correct ECU
+    **/
+    private fun checkFrame(f: CanFrame) {
+        if (f.canID != CanBAddrs.GW_C_B7.addr) {
+            throw IllegalArgumentException("CAN ID does not match object!")
+        }
+    }
+
+	override fun toString() = """
+		|direction of rotation of the front right wheel: ${get_drtgvr()}
+		|wheel speed front right : ${get_dvr()} 1 / min
+	""".trimMargin("|")
 }

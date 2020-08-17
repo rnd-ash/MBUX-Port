@@ -1,5 +1,5 @@
 
-@file:Suppress("unused", "FunctionName")
+@file:Suppress("unused", "FunctionName", "ClassName")
 package com.rndash.mbheadunit.nativeCan.canB
 import com.rndash.mbheadunit.CanFrame // AUTO GEN
 import com.rndash.mbheadunit.nativeCan.CanBusNative // AUTO GEN
@@ -11,41 +11,83 @@ import com.rndash.mbheadunit.nativeCan.CanBusNative // AUTO GEN
 
 object VS_A2 {
 
-    	/** Gets FH travel limitation long stroke active **/
+    /** 
+     *  Returns the most recent Can Frame representing the state
+     *  of VS_A2
+    **/
+    fun get_frame() : CanFrame? = CanBusNative.getBFrame(CanBAddrs.VS_A2)
+
+	/** Gets FH travel limitation long stroke active **/
 	fun get_fh_lh_begr() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.VS_A2, 7, 1) != 0
 	
 	/** Sets FH travel limitation long stroke active **/
-	fun set_fh_lh_begr(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 7, 1, if(p) 1 else 0)
+	fun set_fh_lh_begr(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 7, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets window lifter run **/
 	fun get_fh_mod_vs() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.VS_A2, 6, 1) != 0
 	
 	/** Sets window lifter run **/
-	fun set_fh_mod_vs(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 6, 1, if(p) 1 else 0)
+	fun set_fh_mod_vs(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 6, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets Direction to operate the window regulator **/
 	fun get_fh_ri_vs() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.VS_A2, 5, 1) != 0
 	
 	/** Sets Direction to operate the window regulator **/
-	fun set_fh_ri_vs(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 5, 1, if(p) 1 else 0)
+	fun set_fh_ri_vs(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 5, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets Open / close front left window **/
 	fun get_fvl_vs() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.VS_A2, 3, 1) != 0
 	
 	/** Sets Open / close front left window **/
-	fun set_fvl_vs(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 3, 1, if(p) 1 else 0)
+	fun set_fvl_vs(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 3, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets Open / close front right window **/
 	fun get_fvr_vs() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.VS_A2, 2, 1) != 0
 	
 	/** Sets Open / close front right window **/
-	fun set_fvr_vs(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 2, 1, if(p) 1 else 0)
+	fun set_fvr_vs(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 2, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets rollover detected **/
 	fun get_ueb_erk() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.VS_A2, 8, 1) != 0
 	
 	/** Sets rollover detected **/
-	fun set_ueb_erk(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 8, 1, if(p) 1 else 0)
+	fun set_ueb_erk(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 8, 1, if(p) 1 else 0)
+	}
 	
-	
+	/**
+     * Auto generated function
+     * Throws exception if user tries to set a value in a frame
+     * Not designated from the correct ECU
+    **/
+    private fun checkFrame(f: CanFrame) {
+        if (f.canID != CanBAddrs.VS_A2.addr) {
+            throw IllegalArgumentException("CAN ID does not match object!")
+        }
+    }
+
+	override fun toString() = """
+		|FH travel limitation long stroke active: ${get_fh_lh_begr()}
+		|window lifter run: ${get_fh_mod_vs()}
+		|Direction to operate the window regulator: ${get_fh_ri_vs()}
+		|Open / close front left window: ${get_fvl_vs()}
+		|Open / close front right window: ${get_fvr_vs()}
+		|rollover detected: ${get_ueb_erk()}
+	""".trimMargin("|")
 }

@@ -1,5 +1,5 @@
 
-@file:Suppress("unused", "FunctionName")
+@file:Suppress("unused", "FunctionName", "ClassName")
 package com.rndash.mbheadunit.nativeCan.canC
 import com.rndash.mbheadunit.CanFrame // AUTO GEN
 import com.rndash.mbheadunit.nativeCan.CanBusNative // AUTO GEN
@@ -11,17 +11,29 @@ import com.rndash.mbheadunit.nativeCan.CanBusNative // AUTO GEN
 
 object MS_608h {
 
-    	/** Gets engine coolant temperature **/
+    /** 
+     *  Returns the most recent Can Frame representing the state
+     *  of MS_608h
+    **/
+    fun get_frame() : CanFrame? = CanBusNative.getCFrame(CanCAddrs.MS_608h)
+
+	/** Gets engine coolant temperature **/
 	fun get_t_mot() : Int = CanBusNative.getECUParameterC(CanCAddrs.MS_608h, 0, 8)
 	
 	/** Sets engine coolant temperature **/
-	fun set_t_mot(f: CanFrame, p: Int) = CanBusNative.setFrameParameter(f, 0, 8, p)
+	fun set_t_mot(f: CanFrame, p: Int) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 0, 8, p)
+	}
 	
 	/** Gets intake air temperature **/
 	fun get_t_luft() : Int = CanBusNative.getECUParameterC(CanCAddrs.MS_608h, 8, 8)
 	
 	/** Sets intake air temperature **/
-	fun set_t_luft(f: CanFrame, p: Int) = CanBusNative.setFrameParameter(f, 8, 8, p)
+	fun set_t_luft(f: CanFrame, p: Int) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 8, 8, p)
+	}
 	
 	/** Gets vehicle code series **/
 	fun get_fcod_br() : FCOD_BR = when(CanBusNative.getECUParameterC(CanCAddrs.MS_608h, 19, 5)) {
@@ -61,7 +73,10 @@ object MS_608h {
 	}
 	
 	/** Sets vehicle code series **/
-	fun set_fcod_br(f: CanFrame, p: FCOD_BR) = CanBusNative.setFrameParameter(f, 19, 5, p.raw)
+	fun set_fcod_br(f: CanFrame, p: FCOD_BR) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 19, 5, p.raw)
+	}
 	
 	/** Gets vehicle code body **/
 	fun get_fcod_kar() : FCOD_KAR = when(CanBusNative.getECUParameterC(CanCAddrs.MS_608h, 16, 3)) {
@@ -77,7 +92,10 @@ object MS_608h {
 	}
 	
 	/** Sets vehicle code body **/
-	fun set_fcod_kar(f: CanFrame, p: FCOD_KAR) = CanBusNative.setFrameParameter(f, 16, 3, p.raw)
+	fun set_fcod_kar(f: CanFrame, p: FCOD_KAR) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 16, 3, p.raw)
+	}
 	
 	/** Gets Vehicle code motor 7Bit, Bit0-5 (Bit6 -> Signal FCOD_MOT6) **/
 	fun get_fcod_mot() : FCOD_MOT = when(CanBusNative.getECUParameterC(CanCAddrs.MS_608h, 26, 6)) {
@@ -135,43 +153,64 @@ object MS_608h {
 	}
 	
 	/** Sets Vehicle code motor 7Bit, Bit0-5 (Bit6 -> Signal FCOD_MOT6) **/
-	fun set_fcod_mot(f: CanFrame, p: FCOD_MOT) = CanBusNative.setFrameParameter(f, 26, 6, p.raw)
+	fun set_fcod_mot(f: CanFrame, p: FCOD_MOT) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 26, 6, p.raw)
+	}
 	
 	/** Gets transmission control not available **/
 	fun get_gs_nvh() : Boolean = CanBusNative.getECUParameterC(CanCAddrs.MS_608h, 25, 1) != 0
 	
 	/** Sets transmission control not available **/
-	fun set_gs_nvh(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 25, 1, if(p) 1 else 0)
+	fun set_gs_nvh(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 25, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets Vehicle code engine with 7 bits, bit 6 **/
 	fun get_fcod_mot6() : Boolean = CanBusNative.getECUParameterC(CanCAddrs.MS_608h, 24, 1) != 0
 	
 	/** Sets Vehicle code engine with 7 bits, bit 6 **/
-	fun set_fcod_mot6(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 24, 1, if(p) 1 else 0)
+	fun set_fcod_mot6(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 24, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets Fixed maximum speed **/
 	fun get_v_max_fix() : Int = CanBusNative.getECUParameterC(CanCAddrs.MS_608h, 32, 8)
 	
 	/** Sets Fixed maximum speed **/
-	fun set_v_max_fix(f: CanFrame, p: Int) = CanBusNative.setFrameParameter(f, 32, 8, p)
+	fun set_v_max_fix(f: CanFrame, p: Int) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 32, 8, p)
+	}
 	
 	/** Gets consumption **/
 	fun get_vb() : Int = CanBusNative.getECUParameterC(CanCAddrs.MS_608h, 40, 16)
 	
 	/** Sets consumption **/
-	fun set_vb(f: CanFrame, p: Int) = CanBusNative.setFrameParameter(f, 40, 16, p)
+	fun set_vb(f: CanFrame, p: Int) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 40, 16, p)
+	}
 	
 	/** Gets Particle filter correction offset FMMOTMAX **/
 	fun get_pfko() : Int = CanBusNative.getECUParameterC(CanCAddrs.MS_608h, 60, 4)
 	
 	/** Sets Particle filter correction offset FMMOTMAX **/
-	fun set_pfko(f: CanFrame, p: Int) = CanBusNative.setFrameParameter(f, 60, 4, p)
+	fun set_pfko(f: CanFrame, p: Int) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 60, 4, p)
+	}
 	
 	/** Gets switch on additional consumer **/
 	fun get_zvb_ein_ms() : Boolean = CanBusNative.getECUParameterC(CanCAddrs.MS_608h, 59, 1) != 0
 	
 	/** Sets switch on additional consumer **/
-	fun set_zvb_ein_ms(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 59, 1, if(p) 1 else 0)
+	fun set_zvb_ein_ms(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 59, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets Particle filter warning **/
 	fun get_pfw() : PFW = when(CanBusNative.getECUParameterC(CanCAddrs.MS_608h, 57, 2)) {
@@ -183,13 +222,44 @@ object MS_608h {
 	}
 	
 	/** Sets Particle filter warning **/
-	fun set_pfw(f: CanFrame, p: PFW) = CanBusNative.setFrameParameter(f, 57, 2, p.raw)
+	fun set_pfw(f: CanFrame, p: PFW) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 57, 2, p.raw)
+	}
 	
 	/** Gets switch on additional water pump **/
 	fun get_zwp_ein_ms() : Boolean = CanBusNative.getECUParameterC(CanCAddrs.MS_608h, 56, 1) != 0
 	
 	/** Sets switch on additional water pump **/
-	fun set_zwp_ein_ms(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 56, 1, if(p) 1 else 0)
+	fun set_zwp_ein_ms(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 56, 1, if(p) 1 else 0)
+	}
 	
-	
+	/**
+     * Auto generated function
+     * Throws exception if user tries to set a value in a frame
+     * Not designated from the correct ECU
+    **/
+    private fun checkFrame(f: CanFrame) {
+        if (f.canID != CanCAddrs.MS_608h.addr) {
+            throw IllegalArgumentException("CAN ID does not match object!")
+        }
+    }
+
+	override fun toString() = """
+		|engine coolant temperature: ${get_t_mot()}
+		|intake air temperature: ${get_t_luft()}
+		|vehicle code series: ${get_fcod_br()}
+		|vehicle code body: ${get_fcod_kar()}
+		|Vehicle code motor 7Bit, Bit0-5 (Bit6 -> Signal FCOD_MOT6): ${get_fcod_mot()}
+		|transmission control not available: ${get_gs_nvh()}
+		|Vehicle code engine with 7 bits, bit 6: ${get_fcod_mot6()}
+		|Fixed maximum speed: ${get_v_max_fix()}
+		|consumption: ${get_vb()}
+		|Particle filter correction offset FMMOTMAX: ${get_pfko()}
+		|switch on additional consumer: ${get_zvb_ein_ms()}
+		|Particle filter warning: ${get_pfw()}
+		|switch on additional water pump: ${get_zwp_ein_ms()}
+	""".trimMargin("|")
 }

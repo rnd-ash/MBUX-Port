@@ -1,5 +1,5 @@
 
-@file:Suppress("unused", "FunctionName")
+@file:Suppress("unused", "FunctionName", "ClassName")
 package com.rndash.mbheadunit.nativeCan.canB
 import com.rndash.mbheadunit.CanFrame // AUTO GEN
 import com.rndash.mbheadunit.nativeCan.CanBusNative // AUTO GEN
@@ -11,71 +11,110 @@ import com.rndash.mbheadunit.nativeCan.CanBusNative // AUTO GEN
 
 object DBE_A1 {
 
-    	/** Gets Switch on the exit light at the rear right **/
+    /** 
+     *  Returns the most recent Can Frame representing the state
+     *  of DBE_A1
+    **/
+    fun get_frame() : CanFrame? = CanBusNative.getBFrame(CanBAddrs.DBE_A1)
+
+	/** Gets Switch on the exit light at the rear right **/
 	fun get_al_hr() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.DBE_A1, 3, 1) != 0
 	
 	/** Sets Switch on the exit light at the rear right **/
-	fun set_al_hr(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 3, 1, if(p) 1 else 0)
+	fun set_al_hr(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 3, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets Switch on the exit light at the rear left **/
 	fun get_al_hl() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.DBE_A1, 2, 1) != 0
 	
 	/** Sets Switch on the exit light at the rear left **/
-	fun set_al_hl(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 2, 1, if(p) 1 else 0)
+	fun set_al_hl(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 2, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets Switch on the exit light at the front right **/
 	fun get_al_vr() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.DBE_A1, 1, 1) != 0
 	
 	/** Sets Switch on the exit light at the front right **/
-	fun set_al_vr(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 1, 1, if(p) 1 else 0)
+	fun set_al_vr(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 1, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets Switch on the exit light at the front left **/
 	fun get_al_vl() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.DBE_A1, 0, 1) != 0
 	
 	/** Sets Switch on the exit light at the front left **/
-	fun set_al_vl(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 0, 1, if(p) 1 else 0)
+	fun set_al_vl(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 0, 1, if(p) 1 else 0)
+	}
 	
-	/** Gets Inside temperature UNIT: ° C **/
+	/** Gets Inside temperature  **/
 	fun get_t_innen() : Int = CanBusNative.getECUParameterB(CanBAddrs.DBE_A1, 8, 8)
 	
-	/** Sets Inside temperature UNIT: ° C **/
-	fun set_t_innen(f: CanFrame, p: Int) = CanBusNative.setFrameParameter(f, 8, 8, p)
+	/** Sets Inside temperature  **/
+	fun set_t_innen(f: CanFrame, p: Int) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 8, 8, p)
+	}
 	
 	/** Gets LS initialization is running **/
 	fun get_init_ls_akt() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.DBE_A1, 23, 1) != 0
 	
 	/** Sets LS initialization is running **/
-	fun set_init_ls_akt(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 23, 1, if(p) 1 else 0)
+	fun set_init_ls_akt(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 23, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets Light sensor: Dusk **/
 	fun get_daemmer() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.DBE_A1, 21, 1) != 0
 	
 	/** Sets Light sensor: Dusk **/
-	fun set_daemmer(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 21, 1, if(p) 1 else 0)
+	fun set_daemmer(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 21, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets Light sensor: tunnel **/
 	fun get_tunnel() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.DBE_A1, 20, 1) != 0
 	
 	/** Sets Light sensor: tunnel **/
-	fun set_tunnel(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 20, 1, if(p) 1 else 0)
+	fun set_tunnel(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 20, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets light sensor defective **/
 	fun get_lisr_def() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.DBE_A1, 18, 1) != 0
 	
 	/** Sets light sensor defective **/
-	fun set_lisr_def(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 18, 1, if(p) 1 else 0)
+	fun set_lisr_def(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 18, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets day / night signal **/
 	fun get_night() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.DBE_A1, 17, 1) != 0
 	
 	/** Sets day / night signal **/
-	fun set_night(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 17, 1, if(p) 1 else 0)
+	fun set_night(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 17, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets AFL request: switch on low beam **/
 	fun get_afl_abl_ein() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.DBE_A1, 16, 1) != 0
 	
 	/** Sets AFL request: switch on low beam **/
-	fun set_afl_abl_ein(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 16, 1, if(p) 1 else 0)
+	fun set_afl_abl_ein(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 16, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets Sunroof status **/
 	fun get_shd_st() : SHD_ST = when(CanBusNative.getECUParameterB(CanBAddrs.DBE_A1, 29, 3)) {
@@ -91,49 +130,104 @@ object DBE_A1 {
 	}
 	
 	/** Sets Sunroof status **/
-	fun set_shd_st(f: CanFrame, p: SHD_ST) = CanBusNative.setFrameParameter(f, 29, 3, p.raw)
+	fun set_shd_st(f: CanFrame, p: SHD_ST) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 29, 3, p.raw)
+	}
 	
 	/** Gets Switch on the charging lamp **/
 	fun get_lade_ein() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.DBE_A1, 27, 1) != 0
 	
 	/** Sets Switch on the charging lamp **/
-	fun set_lade_ein(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 27, 1, if(p) 1 else 0)
+	fun set_lade_ein(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 27, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets convertible top locked (with W, S, C, CL = [1]) **/
 	fun get_verd_zu() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.DBE_A1, 26, 1) != 0
 	
 	/** Sets convertible top locked (with W, S, C, CL = [1]) **/
-	fun set_verd_zu(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 26, 1, if(p) 1 else 0)
+	fun set_verd_zu(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 26, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets Convertible top in catch position **/
 	fun get_verd_fangpos() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.DBE_A1, 25, 1) != 0
 	
 	/** Sets Convertible top in catch position **/
-	fun set_verd_fangpos(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 25, 1, if(p) 1 else 0)
+	fun set_verd_fangpos(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 25, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets Interior protection glass breakage triggered **/
 	fun get_irs_gb() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.DBE_A1, 33, 1) != 0
 	
 	/** Sets Interior protection glass breakage triggered **/
-	fun set_irs_gb(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 33, 1, if(p) 1 else 0)
+	fun set_irs_gb(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 33, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets Interior protection triggered **/
 	fun get_irs_alm() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.DBE_A1, 32, 1) != 0
 	
 	/** Sets Interior protection triggered **/
-	fun set_irs_alm(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 32, 1, if(p) 1 else 0)
+	fun set_irs_alm(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 32, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets front left footwell lighting on **/
 	fun get_frbl_vl() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.DBE_A1, 52, 1) != 0
 	
 	/** Sets front left footwell lighting on **/
-	fun set_frbl_vl(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 52, 1, if(p) 1 else 0)
+	fun set_frbl_vl(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 52, 1, if(p) 1 else 0)
+	}
 	
-	/** Gets Brightness of footwell lighting UNIT:% **/
+	/** Gets Brightness of footwell lighting  **/
 	fun get_frbl_hell() : Int = CanBusNative.getECUParameterB(CanBAddrs.DBE_A1, 56, 8)
 	
-	/** Sets Brightness of footwell lighting UNIT:% **/
-	fun set_frbl_hell(f: CanFrame, p: Int) = CanBusNative.setFrameParameter(f, 56, 8, p)
+	/** Sets Brightness of footwell lighting  **/
+	fun set_frbl_hell(f: CanFrame, p: Int) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 56, 8, p)
+	}
 	
-	
+	/**
+     * Auto generated function
+     * Throws exception if user tries to set a value in a frame
+     * Not designated from the correct ECU
+    **/
+    private fun checkFrame(f: CanFrame) {
+        if (f.canID != CanBAddrs.DBE_A1.addr) {
+            throw IllegalArgumentException("CAN ID does not match object!")
+        }
+    }
+
+	override fun toString() = """
+		|Switch on the exit light at the rear right: ${get_al_hr()}
+		|Switch on the exit light at the rear left: ${get_al_hl()}
+		|Switch on the exit light at the front right: ${get_al_vr()}
+		|Switch on the exit light at the front left: ${get_al_vl()}
+		|Inside temperature : ${get_t_innen()} ° C
+		|LS initialization is running: ${get_init_ls_akt()}
+		|Light sensor: Dusk: ${get_daemmer()}
+		|Light sensor: tunnel: ${get_tunnel()}
+		|light sensor defective: ${get_lisr_def()}
+		|day / night signal: ${get_night()}
+		|AFL request: switch on low beam: ${get_afl_abl_ein()}
+		|Sunroof status: ${get_shd_st()}
+		|Switch on the charging lamp: ${get_lade_ein()}
+		|convertible top locked (with W, S, C, CL = [1]): ${get_verd_zu()}
+		|Convertible top in catch position: ${get_verd_fangpos()}
+		|Interior protection glass breakage triggered: ${get_irs_gb()}
+		|Interior protection triggered: ${get_irs_alm()}
+		|front left footwell lighting on: ${get_frbl_vl()}
+		|Brightness of footwell lighting : ${get_frbl_hell()} %
+	""".trimMargin("|")
 }

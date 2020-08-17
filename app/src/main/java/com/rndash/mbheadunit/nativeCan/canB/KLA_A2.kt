@@ -1,5 +1,5 @@
 
-@file:Suppress("unused", "FunctionName")
+@file:Suppress("unused", "FunctionName", "ClassName")
 package com.rndash.mbheadunit.nativeCan.canB
 import com.rndash.mbheadunit.CanFrame // AUTO GEN
 import com.rndash.mbheadunit.nativeCan.CanBusNative // AUTO GEN
@@ -11,47 +11,93 @@ import com.rndash.mbheadunit.nativeCan.CanBusNative // AUTO GEN
 
 object KLA_A2 {
 
-    	/** Gets Comfort operation mode **/
+    /** 
+     *  Returns the most recent Can Frame representing the state
+     *  of KLA_A2
+    **/
+    fun get_frame() : CanFrame? = CanBusNative.getBFrame(CanBAddrs.KLA_A2)
+
+	/** Gets Comfort operation mode **/
 	fun get_kb_mod_kla() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.KLA_A2, 6, 1) != 0
 	
 	/** Sets Comfort operation mode **/
-	fun set_kb_mod_kla(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 6, 1, if(p) 1 else 0)
+	fun set_kb_mod_kla(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 6, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets Direction of comfort actuation **/
 	fun get_kb_ri_kla() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.KLA_A2, 5, 1) != 0
 	
 	/** Sets Direction of comfort actuation **/
-	fun set_kb_ri_kla(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 5, 1, if(p) 1 else 0)
+	fun set_kb_ri_kla(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 5, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets SHD / open / close convertible top **/
 	fun get_shd_kla() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.KLA_A2, 4, 1) != 0
 	
 	/** Sets SHD / open / close convertible top **/
-	fun set_shd_kla(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 4, 1, if(p) 1 else 0)
+	fun set_shd_kla(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 4, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets Open / close front left window **/
 	fun get_fvl_kla() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.KLA_A2, 3, 1) != 0
 	
 	/** Sets Open / close front left window **/
-	fun set_fvl_kla(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 3, 1, if(p) 1 else 0)
+	fun set_fvl_kla(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 3, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets Open / close front right window **/
 	fun get_fvr_kla() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.KLA_A2, 2, 1) != 0
 	
 	/** Sets Open / close front right window **/
-	fun set_fvr_kla(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 2, 1, if(p) 1 else 0)
+	fun set_fvr_kla(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 2, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets Open / close rear left window **/
 	fun get_fhl_kla() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.KLA_A2, 1, 1) != 0
 	
 	/** Sets Open / close rear left window **/
-	fun set_fhl_kla(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 1, 1, if(p) 1 else 0)
+	fun set_fhl_kla(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 1, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets Open / close rear right window **/
 	fun get_fhr_kla() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.KLA_A2, 0, 1) != 0
 	
 	/** Sets Open / close rear right window **/
-	fun set_fhr_kla(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 0, 1, if(p) 1 else 0)
+	fun set_fhr_kla(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 0, 1, if(p) 1 else 0)
+	}
 	
-	
+	/**
+     * Auto generated function
+     * Throws exception if user tries to set a value in a frame
+     * Not designated from the correct ECU
+    **/
+    private fun checkFrame(f: CanFrame) {
+        if (f.canID != CanBAddrs.KLA_A2.addr) {
+            throw IllegalArgumentException("CAN ID does not match object!")
+        }
+    }
+
+	override fun toString() = """
+		|Comfort operation mode: ${get_kb_mod_kla()}
+		|Direction of comfort actuation: ${get_kb_ri_kla()}
+		|SHD / open / close convertible top: ${get_shd_kla()}
+		|Open / close front left window: ${get_fvl_kla()}
+		|Open / close front right window: ${get_fvr_kla()}
+		|Open / close rear left window: ${get_fhl_kla()}
+		|Open / close rear right window: ${get_fhr_kla()}
+	""".trimMargin("|")
 }

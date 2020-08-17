@@ -1,5 +1,5 @@
 
-@file:Suppress("unused", "FunctionName")
+@file:Suppress("unused", "FunctionName", "ClassName")
 package com.rndash.mbheadunit.nativeCan.canB
 import com.rndash.mbheadunit.CanFrame // AUTO GEN
 import com.rndash.mbheadunit.nativeCan.CanBusNative // AUTO GEN
@@ -11,7 +11,13 @@ import com.rndash.mbheadunit.nativeCan.CanBusNative // AUTO GEN
 
 object AGW_A3 {
 
-    	/** Gets Numeric keypad head unit **/
+    /** 
+     *  Returns the most recent Can Frame representing the state
+     *  of AGW_A3
+    **/
+    fun get_frame() : CanFrame? = CanBusNative.getBFrame(CanBAddrs.AGW_A3)
+
+	/** Gets Numeric keypad head unit **/
 	fun get_ziffer_hu() : ZIFFER_HU = when(CanBusNative.getECUParameterB(CanBAddrs.AGW_A3, 4, 4)) {
 		 0 -> ZIFFER_HU.N_BET
 		 1 -> ZIFFER_HU.T1_KEY
@@ -28,25 +34,37 @@ object AGW_A3 {
 	}
 	
 	/** Sets Numeric keypad head unit **/
-	fun set_ziffer_hu(f: CanFrame, p: ZIFFER_HU) = CanBusNative.setFrameParameter(f, 4, 4, p.raw)
+	fun set_ziffer_hu(f: CanFrame, p: ZIFFER_HU) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 4, 4, p.raw)
+	}
 	
 	/** Gets Diamond key pressed **/
 	fun get_raute_hu() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.AGW_A3, 3, 1) != 0
 	
 	/** Sets Diamond key pressed **/
-	fun set_raute_hu(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 3, 1, if(p) 1 else 0)
+	fun set_raute_hu(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 3, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets star key pressed **/
 	fun get_stern_hu() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.AGW_A3, 2, 1) != 0
 	
 	/** Sets star key pressed **/
-	fun set_stern_hu(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 2, 1, if(p) 1 else 0)
+	fun set_stern_hu(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 2, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets Rejection of numeric entry HU **/
 	fun get_cancel_hu() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.AGW_A3, 1, 1) != 0
 	
 	/** Sets Rejection of numeric entry HU **/
-	fun set_cancel_hu(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 1, 1, if(p) 1 else 0)
+	fun set_cancel_hu(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 1, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets Active application **/
 	fun get_akt_sys() : AKT_SYS = when(CanBusNative.getECUParameterB(CanBAddrs.AGW_A3, 13, 3)) {
@@ -56,7 +74,10 @@ object AGW_A3 {
 	}
 	
 	/** Sets Active application **/
-	fun set_akt_sys(f: CanFrame, p: AKT_SYS) = CanBusNative.setFrameParameter(f, 13, 3, p.raw)
+	fun set_akt_sys(f: CanFrame, p: AKT_SYS) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 13, 3, p.raw)
+	}
 	
 	/** Gets function keys **/
 	fun get_function_keys() : FUNCTION_KEYS = when(CanBusNative.getECUParameterB(CanBAddrs.AGW_A3, 10, 3)) {
@@ -72,7 +93,28 @@ object AGW_A3 {
 	}
 	
 	/** Sets function keys **/
-	fun set_function_keys(f: CanFrame, p: FUNCTION_KEYS) = CanBusNative.setFrameParameter(f, 10, 3, p.raw)
+	fun set_function_keys(f: CanFrame, p: FUNCTION_KEYS) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 10, 3, p.raw)
+	}
 	
-	
+	/**
+     * Auto generated function
+     * Throws exception if user tries to set a value in a frame
+     * Not designated from the correct ECU
+    **/
+    private fun checkFrame(f: CanFrame) {
+        if (f.canID != CanBAddrs.AGW_A3.addr) {
+            throw IllegalArgumentException("CAN ID does not match object!")
+        }
+    }
+
+	override fun toString() = """
+		|Numeric keypad head unit: ${get_ziffer_hu()}
+		|Diamond key pressed: ${get_raute_hu()}
+		|star key pressed: ${get_stern_hu()}
+		|Rejection of numeric entry HU: ${get_cancel_hu()}
+		|Active application: ${get_akt_sys()}
+		|function keys: ${get_function_keys()}
+	""".trimMargin("|")
 }

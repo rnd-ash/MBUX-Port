@@ -1,5 +1,5 @@
 
-@file:Suppress("unused", "FunctionName")
+@file:Suppress("unused", "FunctionName", "ClassName")
 package com.rndash.mbheadunit.nativeCan.canC
 import com.rndash.mbheadunit.CanFrame // AUTO GEN
 import com.rndash.mbheadunit.nativeCan.CanBusNative // AUTO GEN
@@ -11,11 +11,33 @@ import com.rndash.mbheadunit.nativeCan.CanBusNative // AUTO GEN
 
 object DG_RQ_OBD {
 
-    	/** Gets KWP2000 diagnosis request **/
+    /** 
+     *  Returns the most recent Can Frame representing the state
+     *  of DG_RQ_OBD
+    **/
+    fun get_frame() : CanFrame? = CanBusNative.getCFrame(CanCAddrs.DG_RQ_OBD)
+
+	/** Gets KWP2000 diagnosis request **/
 	fun get_d_rq() : Int = CanBusNative.getECUParameterC(CanCAddrs.DG_RQ_OBD, 0, 64)
 	
 	/** Sets KWP2000 diagnosis request **/
-	fun set_d_rq(f: CanFrame, p: Int) = CanBusNative.setFrameParameter(f, 0, 64, p)
+	fun set_d_rq(f: CanFrame, p: Int) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 0, 64, p)
+	}
 	
-	
+	/**
+     * Auto generated function
+     * Throws exception if user tries to set a value in a frame
+     * Not designated from the correct ECU
+    **/
+    private fun checkFrame(f: CanFrame) {
+        if (f.canID != CanCAddrs.DG_RQ_OBD.addr) {
+            throw IllegalArgumentException("CAN ID does not match object!")
+        }
+    }
+
+	override fun toString() = """
+		|KWP2000 diagnosis request: ${get_d_rq()}
+	""".trimMargin("|")
 }

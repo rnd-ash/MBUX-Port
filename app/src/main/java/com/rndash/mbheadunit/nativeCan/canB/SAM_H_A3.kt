@@ -1,5 +1,5 @@
 
-@file:Suppress("unused", "FunctionName")
+@file:Suppress("unused", "FunctionName", "ClassName")
 package com.rndash.mbheadunit.nativeCan.canB
 import com.rndash.mbheadunit.CanFrame // AUTO GEN
 import com.rndash.mbheadunit.nativeCan.CanBusNative // AUTO GEN
@@ -11,29 +11,63 @@ import com.rndash.mbheadunit.nativeCan.CanBusNative // AUTO GEN
 
 object SAM_H_A3 {
 
-    	/** Gets Hazard warning lights active **/
+    /** 
+     *  Returns the most recent Can Frame representing the state
+     *  of SAM_H_A3
+    **/
+    fun get_frame() : CanFrame? = CanBusNative.getBFrame(CanBAddrs.SAM_H_A3)
+
+	/** Gets Hazard warning lights active **/
 	fun get_warn_akt() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.SAM_H_A3, 2, 1) != 0
 	
 	/** Sets Hazard warning lights active **/
-	fun set_warn_akt(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 2, 1, if(p) 1 else 0)
+	fun set_warn_akt(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 2, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets Switch on the left turn signal **/
 	fun get_bli_li_ein() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.SAM_H_A3, 1, 1) != 0
 	
 	/** Sets Switch on the left turn signal **/
-	fun set_bli_li_ein(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 1, 1, if(p) 1 else 0)
+	fun set_bli_li_ein(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 1, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets Switch on the right turn signal **/
 	fun get_bli_re_ein() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.SAM_H_A3, 0, 1) != 0
 	
 	/** Sets Switch on the right turn signal **/
-	fun set_bli_re_ein(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 0, 1, if(p) 1 else 0)
+	fun set_bli_re_ein(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 0, 1, if(p) 1 else 0)
+	}
 	
-	/** Gets Flashing-light-bright phase UNIT: ms **/
+	/** Gets Flashing-light-bright phase  **/
 	fun get_hell_blink() : Int = CanBusNative.getECUParameterB(CanBAddrs.SAM_H_A3, 8, 8)
 	
-	/** Sets Flashing-light-bright phase UNIT: ms **/
-	fun set_hell_blink(f: CanFrame, p: Int) = CanBusNative.setFrameParameter(f, 8, 8, p)
+	/** Sets Flashing-light-bright phase  **/
+	fun set_hell_blink(f: CanFrame, p: Int) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 8, 8, p)
+	}
 	
-	
+	/**
+     * Auto generated function
+     * Throws exception if user tries to set a value in a frame
+     * Not designated from the correct ECU
+    **/
+    private fun checkFrame(f: CanFrame) {
+        if (f.canID != CanBAddrs.SAM_H_A3.addr) {
+            throw IllegalArgumentException("CAN ID does not match object!")
+        }
+    }
+
+	override fun toString() = """
+		|Hazard warning lights active: ${get_warn_akt()}
+		|Switch on the left turn signal: ${get_bli_li_ein()}
+		|Switch on the right turn signal: ${get_bli_re_ein()}
+		|Flashing-light-bright phase : ${get_hell_blink()} ms
+	""".trimMargin("|")
 }

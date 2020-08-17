@@ -1,5 +1,5 @@
 
-@file:Suppress("unused", "FunctionName")
+@file:Suppress("unused", "FunctionName", "ClassName")
 package com.rndash.mbheadunit.nativeCan.canB
 import com.rndash.mbheadunit.CanFrame // AUTO GEN
 import com.rndash.mbheadunit.nativeCan.CanBusNative // AUTO GEN
@@ -11,7 +11,13 @@ import com.rndash.mbheadunit.nativeCan.CanBusNative // AUTO GEN
 
 object EZS_A6 {
 
-    	/** Gets year of change **/
+    /** 
+     *  Returns the most recent Can Frame representing the state
+     *  of EZS_A6
+    **/
+    fun get_frame() : CanFrame? = CanBusNative.getBFrame(CanBAddrs.EZS_A6)
+
+	/** Gets year of change **/
 	fun get_ver_ae() : VER_AE = when(CanBusNative.getECUParameterB(CanBAddrs.EZS_A6, 6, 2)) {
 		 0 -> VER_AE.AE1
 		 1 -> VER_AE.AEX
@@ -21,7 +27,10 @@ object EZS_A6 {
 	}
 	
 	/** Sets year of change **/
-	fun set_ver_ae(f: CanFrame, p: VER_AE) = CanBusNative.setFrameParameter(f, 6, 2, p.raw)
+	fun set_ver_ae(f: CanFrame, p: VER_AE) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 6, 2, p.raw)
+	}
 	
 	/** Gets year specification **/
 	fun get_ver_jahr() : VER_JAHR = when(CanBusNative.getECUParameterB(CanBAddrs.EZS_A6, 1, 5)) {
@@ -34,7 +43,10 @@ object EZS_A6 {
 	}
 	
 	/** Sets year specification **/
-	fun set_ver_jahr(f: CanFrame, p: VER_JAHR) = CanBusNative.setFrameParameter(f, 1, 5, p.raw)
+	fun set_ver_jahr(f: CanFrame, p: VER_JAHR) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 1, 5, p.raw)
+	}
 	
 	/** Gets Tire pressure module available **/
 	fun get_tpm_vh() : TPM_VH = when(CanBusNative.getECUParameterB(CanBAddrs.EZS_A6, 30, 2)) {
@@ -46,7 +58,25 @@ object EZS_A6 {
 	}
 	
 	/** Sets Tire pressure module available **/
-	fun set_tpm_vh(f: CanFrame, p: TPM_VH) = CanBusNative.setFrameParameter(f, 30, 2, p.raw)
+	fun set_tpm_vh(f: CanFrame, p: TPM_VH) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 30, 2, p.raw)
+	}
 	
-	
+	/**
+     * Auto generated function
+     * Throws exception if user tries to set a value in a frame
+     * Not designated from the correct ECU
+    **/
+    private fun checkFrame(f: CanFrame) {
+        if (f.canID != CanBAddrs.EZS_A6.addr) {
+            throw IllegalArgumentException("CAN ID does not match object!")
+        }
+    }
+
+	override fun toString() = """
+		|year of change: ${get_ver_ae()}
+		|year specification: ${get_ver_jahr()}
+		|Tire pressure module available: ${get_tpm_vh()}
+	""".trimMargin("|")
 }

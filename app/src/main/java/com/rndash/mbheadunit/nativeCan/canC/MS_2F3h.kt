@@ -1,5 +1,5 @@
 
-@file:Suppress("unused", "FunctionName")
+@file:Suppress("unused", "FunctionName", "ClassName")
 package com.rndash.mbheadunit.nativeCan.canC
 import com.rndash.mbheadunit.CanFrame // AUTO GEN
 import com.rndash.mbheadunit.nativeCan.CanBusNative // AUTO GEN
@@ -11,7 +11,13 @@ import com.rndash.mbheadunit.nativeCan.CanBusNative // AUTO GEN
 
 object MS_2F3h {
 
-    	/** Gets Gear step shift recommendation "Actual" **/
+    /** 
+     *  Returns the most recent Can Frame representing the state
+     *  of MS_2F3h
+    **/
+    fun get_frame() : CanFrame? = CanBusNative.getCFrame(CanCAddrs.MS_2F3h)
+
+	/** Gets Gear step shift recommendation "Actual" **/
 	fun get_fsc_ist() : FSC_IST = when(CanBusNative.getECUParameterC(CanCAddrs.MS_2F3h, 0, 8)) {
 		 32 -> FSC_IST.BLANK
 		 49 -> FSC_IST.ONE
@@ -32,7 +38,10 @@ object MS_2F3h {
 	}
 	
 	/** Sets Gear step shift recommendation "Actual" **/
-	fun set_fsc_ist(f: CanFrame, p: FSC_IST) = CanBusNative.setFrameParameter(f, 0, 8, p.raw)
+	fun set_fsc_ist(f: CanFrame, p: FSC_IST) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 0, 8, p.raw)
+	}
 	
 	/** Gets Gear step shift recommendation "target" **/
 	fun get_fsc_soll() : FSC_SOLL = when(CanBusNative.getECUParameterC(CanCAddrs.MS_2F3h, 40, 8)) {
@@ -57,7 +66,24 @@ object MS_2F3h {
 	}
 	
 	/** Sets Gear step shift recommendation "target" **/
-	fun set_fsc_soll(f: CanFrame, p: FSC_SOLL) = CanBusNative.setFrameParameter(f, 40, 8, p.raw)
+	fun set_fsc_soll(f: CanFrame, p: FSC_SOLL) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 40, 8, p.raw)
+	}
 	
-	
+	/**
+     * Auto generated function
+     * Throws exception if user tries to set a value in a frame
+     * Not designated from the correct ECU
+    **/
+    private fun checkFrame(f: CanFrame) {
+        if (f.canID != CanCAddrs.MS_2F3h.addr) {
+            throw IllegalArgumentException("CAN ID does not match object!")
+        }
+    }
+
+	override fun toString() = """
+		|Gear step shift recommendation "Actual": ${get_fsc_ist()}
+		|Gear step shift recommendation "target": ${get_fsc_soll()}
+	""".trimMargin("|")
 }

@@ -1,5 +1,5 @@
 
-@file:Suppress("unused", "FunctionName")
+@file:Suppress("unused", "FunctionName", "ClassName")
 package com.rndash.mbheadunit.nativeCan.canB
 import com.rndash.mbheadunit.CanFrame // AUTO GEN
 import com.rndash.mbheadunit.nativeCan.CanBusNative // AUTO GEN
@@ -11,23 +11,38 @@ import com.rndash.mbheadunit.nativeCan.CanBusNative // AUTO GEN
 
 object GPS_A3 {
 
-    	/** Gets GPS Speed ​​UNIT: cm / s **/
+    /** 
+     *  Returns the most recent Can Frame representing the state
+     *  of GPS_A3
+    **/
+    fun get_frame() : CanFrame? = CanBusNative.getBFrame(CanBAddrs.GPS_A3)
+
+	/** Gets GPS Speed ​​ **/
 	fun get_gps_speed() : Int = CanBusNative.getECUParameterB(CanBAddrs.GPS_A3, 0, 16)
 	
-	/** Sets GPS Speed ​​UNIT: cm / s **/
-	fun set_gps_speed(f: CanFrame, p: Int) = CanBusNative.setFrameParameter(f, 0, 16, p)
+	/** Sets GPS Speed ​​ **/
+	fun set_gps_speed(f: CanFrame, p: Int) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 0, 16, p)
+	}
 	
-	/** Gets GPS Heading (0 ° = North) UNIT: ° **/
+	/** Gets GPS Heading (0 ° = North)  **/
 	fun get_gps_heading() : Int = CanBusNative.getECUParameterB(CanBAddrs.GPS_A3, 16, 8)
 	
-	/** Sets GPS Heading (0 ° = North) UNIT: ° **/
-	fun set_gps_heading(f: CanFrame, p: Int) = CanBusNative.setFrameParameter(f, 16, 8, p)
+	/** Sets GPS Heading (0 ° = North)  **/
+	fun set_gps_heading(f: CanFrame, p: Int) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 16, 8, p)
+	}
 	
-	/** Gets GPS height UNIT: m **/
+	/** Gets GPS height  **/
 	fun get_gps_height() : Int = CanBusNative.getECUParameterB(CanBAddrs.GPS_A3, 24, 8)
 	
-	/** Sets GPS height UNIT: m **/
-	fun set_gps_height(f: CanFrame, p: Int) = CanBusNative.setFrameParameter(f, 24, 8, p)
+	/** Sets GPS height  **/
+	fun set_gps_height(f: CanFrame, p: Int) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 24, 8, p)
+	}
 	
 	/** Gets GPS fix **/
 	fun get_gps_fix() : GPS_FIX = when(CanBusNative.getECUParameterB(CanBAddrs.GPS_A3, 37, 3)) {
@@ -40,61 +55,116 @@ object GPS_A3 {
 	}
 	
 	/** Sets GPS fix **/
-	fun set_gps_fix(f: CanFrame, p: GPS_FIX) = CanBusNative.setFrameParameter(f, 37, 3, p.raw)
+	fun set_gps_fix(f: CanFrame, p: GPS_FIX) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 37, 3, p.raw)
+	}
 	
 	/** Gets Calibrated **/
 	fun get_cali() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.GPS_A3, 46, 1) != 0
 	
 	/** Sets Calibrated **/
-	fun set_cali(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 46, 1, if(p) 1 else 0)
+	fun set_cali(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 46, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets Matched to digital map **/
 	fun get_mdm() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.GPS_A3, 45, 1) != 0
 	
 	/** Sets Matched to digital map **/
-	fun set_mdm(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 45, 1, if(p) 1 else 0)
+	fun set_mdm(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 45, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets Fully digitalized area **/
 	fun get_fdg() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.GPS_A3, 44, 1) != 0
 	
 	/** Sets Fully digitalized area **/
-	fun set_fdg(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 44, 1, if(p) 1 else 0)
+	fun set_fdg(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 44, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets Inside digitalized area (on map) **/
 	fun get_idg() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.GPS_A3, 43, 1) != 0
 	
 	/** Sets Inside digitalized area (on map) **/
-	fun set_idg(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 43, 1, if(p) 1 else 0)
+	fun set_idg(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 43, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets Dead reckoning available **/
 	fun get_dead_rck() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.GPS_A3, 42, 1) != 0
 	
 	/** Sets Dead reckoning available **/
-	fun set_dead_rck(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 42, 1, if(p) 1 else 0)
+	fun set_dead_rck(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 42, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets Differential GPS position data available **/
 	fun get_diff_pos_avlb() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.GPS_A3, 41, 1) != 0
 	
 	/** Sets Differential GPS position data available **/
-	fun set_diff_pos_avlb(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 41, 1, if(p) 1 else 0)
+	fun set_diff_pos_avlb(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 41, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets GPS position avilable **/
 	fun get_pos_avlb() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.GPS_A3, 40, 1) != 0
 	
 	/** Sets GPS position avilable **/
-	fun set_pos_avlb(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 40, 1, if(p) 1 else 0)
+	fun set_pos_avlb(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 40, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets Vertical dilution of position **/
 	fun get_v_dop() : Int = CanBusNative.getECUParameterB(CanBAddrs.GPS_A3, 48, 8)
 	
 	/** Sets Vertical dilution of position **/
-	fun set_v_dop(f: CanFrame, p: Int) = CanBusNative.setFrameParameter(f, 48, 8, p)
+	fun set_v_dop(f: CanFrame, p: Int) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 48, 8, p)
+	}
 	
 	/** Gets Horizontal dilution of position **/
 	fun get_h_dop() : Int = CanBusNative.getECUParameterB(CanBAddrs.GPS_A3, 56, 8)
 	
 	/** Sets Horizontal dilution of position **/
-	fun set_h_dop(f: CanFrame, p: Int) = CanBusNative.setFrameParameter(f, 56, 8, p)
+	fun set_h_dop(f: CanFrame, p: Int) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 56, 8, p)
+	}
 	
-	
+	/**
+     * Auto generated function
+     * Throws exception if user tries to set a value in a frame
+     * Not designated from the correct ECU
+    **/
+    private fun checkFrame(f: CanFrame) {
+        if (f.canID != CanBAddrs.GPS_A3.addr) {
+            throw IllegalArgumentException("CAN ID does not match object!")
+        }
+    }
+
+	override fun toString() = """
+		|GPS Speed ​​: ${get_gps_speed()} cm / s
+		|GPS Heading (0 ° = North) : ${get_gps_heading()} °
+		|GPS height : ${get_gps_height()} m
+		|GPS fix: ${get_gps_fix()}
+		|Calibrated: ${get_cali()}
+		|Matched to digital map: ${get_mdm()}
+		|Fully digitalized area: ${get_fdg()}
+		|Inside digitalized area (on map): ${get_idg()}
+		|Dead reckoning available: ${get_dead_rck()}
+		|Differential GPS position data available: ${get_diff_pos_avlb()}
+		|GPS position avilable: ${get_pos_avlb()}
+		|Vertical dilution of position: ${get_v_dop()}
+		|Horizontal dilution of position: ${get_h_dop()}
+	""".trimMargin("|")
 }

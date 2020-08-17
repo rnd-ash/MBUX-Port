@@ -1,5 +1,5 @@
 
-@file:Suppress("unused", "FunctionName")
+@file:Suppress("unused", "FunctionName", "ClassName")
 package com.rndash.mbheadunit.nativeCan.canB
 import com.rndash.mbheadunit.CanFrame // AUTO GEN
 import com.rndash.mbheadunit.nativeCan.CanBusNative // AUTO GEN
@@ -11,101 +11,155 @@ import com.rndash.mbheadunit.nativeCan.CanBusNative // AUTO GEN
 
 object EZS_A8 {
 
-    	/** Gets refrigerant level control inactive **/
+    /** 
+     *  Returns the most recent Can Frame representing the state
+     *  of EZS_A8
+    **/
+    fun get_frame() : CanFrame? = CanBusNative.getBFrame(CanBAddrs.EZS_A8)
+
+	/** Gets refrigerant level control inactive **/
 	fun get_kfk_aus() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.EZS_A8, 7, 1) != 0
 	
 	/** Sets refrigerant level control inactive **/
-	fun set_kfk_aus(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 7, 1, if(p) 1 else 0)
+	fun set_kfk_aus(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 7, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets Corrosive gas-dependent air recirculation switch off **/
 	fun get_sus_aus() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.EZS_A8, 6, 1) != 0
 	
 	/** Sets Corrosive gas-dependent air recirculation switch off **/
-	fun set_sus_aus(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 6, 1, if(p) 1 else 0)
+	fun set_sus_aus(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 6, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets Corrosive gas-dependent recirculation switch generally on **/
 	fun get_sus_ein() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.EZS_A8, 5, 1) != 0
 	
 	/** Sets Corrosive gas-dependent recirculation switch generally on **/
-	fun set_sus_ein(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 5, 1, if(p) 1 else 0)
+	fun set_sus_ein(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 5, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets 40% basic ventilation **/
 	fun get_gbl_40() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.EZS_A8, 4, 1) != 0
 	
 	/** Sets 40% basic ventilation **/
-	fun set_gbl_40(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 4, 1, if(p) 1 else 0)
+	fun set_gbl_40(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 4, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets Fan bar display only in manual mode **/
 	fun get_gba_man() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.EZS_A8, 3, 1) != 0
 	
 	/** Sets Fan bar display only in manual mode **/
-	fun set_gba_man(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 3, 1, if(p) 1 else 0)
+	fun set_gba_man(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 3, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets always REHEAT operation **/
 	fun get_rht_ein() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.EZS_A8, 2, 1) != 0
 	
 	/** Sets always REHEAT operation **/
-	fun set_rht_ein(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 2, 1, if(p) 1 else 0)
+	fun set_rht_ein(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 2, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets manual recirculation switching for an unlimited period **/
 	fun get_umluft_ubg() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.EZS_A8, 1, 1) != 0
 	
 	/** Sets manual recirculation switching for an unlimited period **/
-	fun set_umluft_ubg(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 1, 1, if(p) 1 else 0)
+	fun set_umluft_ubg(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 1, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets additional water pump not installed **/
 	fun get_zwp_nvh() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.EZS_A8, 0, 1) != 0
 	
 	/** Sets additional water pump not installed **/
-	fun set_zwp_nvh(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 0, 1, if(p) 1 else 0)
+	fun set_zwp_nvh(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 0, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets "-1 ° C" hot countries **/
 	fun get_heissland_1() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.EZS_A8, 15, 1) != 0
 	
 	/** Sets "-1 ° C" hot countries **/
-	fun set_heissland_1(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 15, 1, if(p) 1 else 0)
+	fun set_heissland_1(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 15, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets Solar influence not active **/
 	fun get_sol_aus() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.EZS_A8, 14, 1) != 0
 	
 	/** Sets Solar influence not active **/
-	fun set_sol_aus(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 14, 1, if(p) 1 else 0)
+	fun set_sol_aus(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 14, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets Recirculation flap open in OFF operation **/
 	fun get_umluft_aus() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.EZS_A8, 13, 1) != 0
 	
 	/** Sets Recirculation flap open in OFF operation **/
-	fun set_umluft_aus(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 13, 1, if(p) 1 else 0)
+	fun set_umluft_aus(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 13, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets 20% basic ventilation E-suction fan on **/
 	fun get_esaugbel_ein() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.EZS_A8, 12, 1) != 0
 	
 	/** Sets 20% basic ventilation E-suction fan on **/
-	fun set_esaugbel_ein(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 12, 1, if(p) 1 else 0)
+	fun set_esaugbel_ein(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 12, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets Completely close the recirculation flap from <20% **/
 	fun get_circulation_on() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.EZS_A8, 11, 1) != 0
 	
 	/** Sets Completely close the recirculation flap from <20% **/
-	fun set_circulation_on(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 11, 1, if(p) 1 else 0)
+	fun set_circulation_on(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 11, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets "+ 2 ° C" increase **/
 	fun get_kaltland_2() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.EZS_A8, 10, 1) != 0
 	
 	/** Sets "+ 2 ° C" increase **/
-	fun set_kaltland_2(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 10, 1, if(p) 1 else 0)
+	fun set_kaltland_2(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 10, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets "- 2 ° C" reduction **/
 	fun get_heissland_2() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.EZS_A8, 9, 1) != 0
 	
 	/** Sets "- 2 ° C" reduction **/
-	fun set_heissland_2(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 9, 1, if(p) 1 else 0)
+	fun set_heissland_2(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 9, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets "+ 1 ° C" increase **/
 	fun get_kaltland_1() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.EZS_A8, 8, 1) != 0
 	
 	/** Sets "+ 1 ° C" increase **/
-	fun set_kaltland_1(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 8, 1, if(p) 1 else 0)
+	fun set_kaltland_1(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 8, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets pressure characteristic **/
 	fun get_p_knl() : P_KNL = when(CanBusNative.getECUParameterB(CanBAddrs.EZS_A8, 20, 4)) {
@@ -119,7 +173,10 @@ object EZS_A8 {
 	}
 	
 	/** Sets pressure characteristic **/
-	fun set_p_knl(f: CanFrame, p: P_KNL) = CanBusNative.setFrameParameter(f, 20, 4, p.raw)
+	fun set_p_knl(f: CanFrame, p: P_KNL) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 20, 4, p.raw)
+	}
 	
 	/** Gets basic ventilation characteristic **/
 	fun get_gbl_knl() : GBL_KNL = when(CanBusNative.getECUParameterB(CanBAddrs.EZS_A8, 17, 3)) {
@@ -131,61 +188,130 @@ object EZS_A8 {
 	}
 	
 	/** Sets basic ventilation characteristic **/
-	fun set_gbl_knl(f: CanFrame, p: GBL_KNL) = CanBusNative.setFrameParameter(f, 17, 3, p.raw)
+	fun set_gbl_knl(f: CanFrame, p: GBL_KNL) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 17, 3, p.raw)
+	}
 	
 	/** Gets desert lands with sand **/
 	fun get_desert_country() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.EZS_A8, 16, 1) != 0
 	
 	/** Sets desert lands with sand **/
-	fun set_desert_country(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 16, 1, if(p) 1 else 0)
+	fun set_desert_country(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 16, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets Autom. Standard logic fan **/
 	fun get_asl_gbl() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.EZS_A8, 31, 1) != 0
 	
 	/** Sets Autom. Standard logic fan **/
-	fun set_asl_gbl(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 31, 1, if(p) 1 else 0)
+	fun set_asl_gbl(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 31, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets Autom. Standard logic air distribution **/
 	fun get_asl_lvt() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.EZS_A8, 30, 1) != 0
 	
 	/** Sets Autom. Standard logic air distribution **/
-	fun set_asl_lvt(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 30, 1, if(p) 1 else 0)
+	fun set_asl_lvt(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 30, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets "MAXCOOL" display (USA only) **/
 	fun get_maxcool() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.EZS_A8, 29, 1) != 0
 	
 	/** Sets "MAXCOOL" display (USA only) **/
-	fun set_maxcool(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 29, 1, if(p) 1 else 0)
+	fun set_maxcool(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 29, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets residual heat utilization available **/
 	fun get_rest_vh() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.EZS_A8, 28, 1) != 0
 	
 	/** Sets residual heat utilization available **/
-	fun set_rest_vh(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 28, 1, if(p) 1 else 0)
+	fun set_rest_vh(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 28, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets Inside sensor available in DBE **/
 	fun get_ifdbe_vh() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.EZS_A8, 27, 1) != 0
 	
 	/** Sets Inside sensor available in DBE **/
-	fun set_ifdbe_vh(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 27, 1, if(p) 1 else 0)
+	fun set_ifdbe_vh(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 27, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets dew point sensor not available **/
 	fun get_tps_nvh() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.EZS_A8, 26, 1) != 0
 	
 	/** Sets dew point sensor not available **/
-	fun set_tps_nvh(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 26, 1, if(p) 1 else 0)
+	fun set_tps_nvh(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 26, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets Gear shift point increase in case of heating power deficit **/
 	fun get_gspa_kla_heiz() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.EZS_A8, 25, 1) != 0
 	
 	/** Sets Gear shift point increase in case of heating power deficit **/
-	fun set_gspa_kla_heiz(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 25, 1, if(p) 1 else 0)
+	fun set_gspa_kla_heiz(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 25, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets Gear shift point increase in case of cooling power deficit **/
 	fun get_gspa_kla_kuehl() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.EZS_A8, 24, 1) != 0
 	
 	/** Sets Gear shift point increase in case of cooling power deficit **/
-	fun set_gspa_kla_kuehl(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 24, 1, if(p) 1 else 0)
+	fun set_gspa_kla_kuehl(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 24, 1, if(p) 1 else 0)
+	}
 	
-	
+	/**
+     * Auto generated function
+     * Throws exception if user tries to set a value in a frame
+     * Not designated from the correct ECU
+    **/
+    private fun checkFrame(f: CanFrame) {
+        if (f.canID != CanBAddrs.EZS_A8.addr) {
+            throw IllegalArgumentException("CAN ID does not match object!")
+        }
+    }
+
+	override fun toString() = """
+		|refrigerant level control inactive: ${get_kfk_aus()}
+		|Corrosive gas-dependent air recirculation switch off: ${get_sus_aus()}
+		|Corrosive gas-dependent recirculation switch generally on: ${get_sus_ein()}
+		|40% basic ventilation: ${get_gbl_40()}
+		|Fan bar display only in manual mode: ${get_gba_man()}
+		|always REHEAT operation: ${get_rht_ein()}
+		|manual recirculation switching for an unlimited period: ${get_umluft_ubg()}
+		|additional water pump not installed: ${get_zwp_nvh()}
+		|"-1 ° C" hot countries: ${get_heissland_1()}
+		|Solar influence not active: ${get_sol_aus()}
+		|Recirculation flap open in OFF operation: ${get_umluft_aus()}
+		|20% basic ventilation E-suction fan on: ${get_esaugbel_ein()}
+		|Completely close the recirculation flap from <20%: ${get_circulation_on()}
+		|"+ 2 ° C" increase: ${get_kaltland_2()}
+		|"- 2 ° C" reduction: ${get_heissland_2()}
+		|"+ 1 ° C" increase: ${get_kaltland_1()}
+		|pressure characteristic: ${get_p_knl()}
+		|basic ventilation characteristic: ${get_gbl_knl()}
+		|desert lands with sand: ${get_desert_country()}
+		|Autom. Standard logic fan: ${get_asl_gbl()}
+		|Autom. Standard logic air distribution: ${get_asl_lvt()}
+		|"MAXCOOL" display (USA only): ${get_maxcool()}
+		|residual heat utilization available: ${get_rest_vh()}
+		|Inside sensor available in DBE: ${get_ifdbe_vh()}
+		|dew point sensor not available: ${get_tps_nvh()}
+		|Gear shift point increase in case of heating power deficit: ${get_gspa_kla_heiz()}
+		|Gear shift point increase in case of cooling power deficit: ${get_gspa_kla_kuehl()}
+	""".trimMargin("|")
 }

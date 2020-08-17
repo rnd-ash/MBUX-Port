@@ -1,5 +1,5 @@
 
-@file:Suppress("unused", "FunctionName")
+@file:Suppress("unused", "FunctionName", "ClassName")
 package com.rndash.mbheadunit.nativeCan.canB
 import com.rndash.mbheadunit.CanFrame // AUTO GEN
 import com.rndash.mbheadunit.nativeCan.CanBusNative // AUTO GEN
@@ -11,11 +11,33 @@ import com.rndash.mbheadunit.nativeCan.CanBusNative // AUTO GEN
 
 object EZS_A11 {
 
-    	/** Gets Battery voltage UNIT: V **/
+    /** 
+     *  Returns the most recent Can Frame representing the state
+     *  of EZS_A11
+    **/
+    fun get_frame() : CanFrame? = CanBusNative.getBFrame(CanBAddrs.EZS_A11)
+
+	/** Gets Battery voltage  **/
 	fun get_u_batt() : Int = CanBusNative.getECUParameterB(CanBAddrs.EZS_A11, 0, 8)
 	
-	/** Sets Battery voltage UNIT: V **/
-	fun set_u_batt(f: CanFrame, p: Int) = CanBusNative.setFrameParameter(f, 0, 8, p)
+	/** Sets Battery voltage  **/
+	fun set_u_batt(f: CanFrame, p: Int) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 0, 8, p)
+	}
 	
-	
+	/**
+     * Auto generated function
+     * Throws exception if user tries to set a value in a frame
+     * Not designated from the correct ECU
+    **/
+    private fun checkFrame(f: CanFrame) {
+        if (f.canID != CanBAddrs.EZS_A11.addr) {
+            throw IllegalArgumentException("CAN ID does not match object!")
+        }
+    }
+
+	override fun toString() = """
+		|Battery voltage : ${get_u_batt()} V
+	""".trimMargin("|")
 }

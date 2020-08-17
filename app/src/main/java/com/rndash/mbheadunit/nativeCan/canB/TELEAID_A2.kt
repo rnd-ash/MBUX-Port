@@ -1,5 +1,5 @@
 
-@file:Suppress("unused", "FunctionName")
+@file:Suppress("unused", "FunctionName", "ClassName")
 package com.rndash.mbheadunit.nativeCan.canB
 import com.rndash.mbheadunit.CanFrame // AUTO GEN
 import com.rndash.mbheadunit.nativeCan.CanBusNative // AUTO GEN
@@ -11,17 +11,43 @@ import com.rndash.mbheadunit.nativeCan.CanBusNative // AUTO GEN
 
 object TELEAID_A2 {
 
-    	/** Gets Alive message TELEAID **/
+    /** 
+     *  Returns the most recent Can Frame representing the state
+     *  of TELEAID_A2
+    **/
+    fun get_frame() : CanFrame? = CanBusNative.getBFrame(CanBAddrs.TELEAID_A2)
+
+	/** Gets Alive message TELEAID **/
 	fun get_live_teleaid() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.TELEAID_A2, 4, 1) != 0
 	
 	/** Sets Alive message TELEAID **/
-	fun set_live_teleaid(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 4, 1, if(p) 1 else 0)
+	fun set_live_teleaid(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 4, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets mobility account authorized **/
 	fun get_mk_atrsrt() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.TELEAID_A2, 0, 1) != 0
 	
 	/** Sets mobility account authorized **/
-	fun set_mk_atrsrt(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 0, 1, if(p) 1 else 0)
+	fun set_mk_atrsrt(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 0, 1, if(p) 1 else 0)
+	}
 	
-	
+	/**
+     * Auto generated function
+     * Throws exception if user tries to set a value in a frame
+     * Not designated from the correct ECU
+    **/
+    private fun checkFrame(f: CanFrame) {
+        if (f.canID != CanBAddrs.TELEAID_A2.addr) {
+            throw IllegalArgumentException("CAN ID does not match object!")
+        }
+    }
+
+	override fun toString() = """
+		|Alive message TELEAID: ${get_live_teleaid()}
+		|mobility account authorized: ${get_mk_atrsrt()}
+	""".trimMargin("|")
 }

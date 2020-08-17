@@ -25,32 +25,41 @@ class enum_object:
             print("Enum existing value detected")
             self.key_name = self.key_name + "_{0}".format(self.raw) # Ensure enums are not duplicate values!
         self.key_name = self.key_name.encode("ascii", errors="ignore").decode().upper() # Strip all the German characters from string (Compiler no likey!)
-
+        if (self.key_name == "_"):
+            self.key_name = "UNDERSCORE"
 
 class code_object:
     def __init__(self, lines: []):
         self.lines = lines
-        self.__name__ = None
-        self.__description__ = None
-        self.__lines__ = lines
-        self.__data_offset__ = None
-        self.__data_length__ = None
-        self.__data_type__ = None
-        self.__is_enum__ = False
-        self.__enum__data__ = []
-        self.__function_getter__ = None
-        self.__function_setter__ = None
+        self.__name__ = None # Name of parameter
+        self.__description__ = None # Description of parameter
+        self.__lines__ = lines # Raw lines
+        self.__data_offset__ = None # Data offset in frame (bits)
+        self.__data_length__ = None # Data length in frame (bits)
+        self.__data_type__ = None   # Data type (Boolean, Int, Enum)
+        self.__is_enum__ = False    # Boolean if enum is detected
+        self.__enum__data__ = []    # Storage for enum ID's
+        self.__function_getter__ = None # Parameter getter string
+        self.__function_setter__ = None # Parameter setter string
+        self.__raw_unit__ = None        # Raw Unit conversion (If found)
     
     def get_signal_attributes(self, line: str):
         self.__name__ = line.split(": ")[1].split(",")[0].replace(" ", "_").upper().strip().encode("ascii", errors="ignore").decode() # Strip all the German characters from string (Compiler no likey!)
         self.__data_offset__ = int(line.split("OFFSET ")[1].split(" LEN ")[0])
         self.__data_length__ = int(line.split("LEN ")[1].split(" ")[0])
+        if len(line.split("UNIT:")) > 1: # Unit detected
+            print(line)
+            self.__raw_unit__ = line.split("UNIT:")[1].strip()
+
         if (self.__data_type__ == "E"): # Enum temp, replace with name of enum
             self.__data_type__ = self.__name__
         try:
             self.__description__ = line.split(" - ")[1]
+            if self.__raw_unit__:
+                self.__description__ = self.__description__.split("UNIT:")[0] # Remove unit!
         except IndexError:
             print("Error generating description for {0}".format(self.__name__))
+        self.__name__ = self.__name__.replace("-","_")
         self.__function_getter__ = "get_{0}".format(self.__name__.lower())
         self.__function_setter__ = "set_{0}".format(self.__name__.lower())
         
@@ -76,6 +85,12 @@ class code_object:
                 except IndexError:
                     print("WARNING: Ignoring undefined enum value - {0} in {1}".format(l, self.__name__))
 
+    def get_to_string_call(self) -> str:
+        buf = "{0}: ${{get_{1}()}}".format(self.__description__, self.__name__.lower())
+        if self.__raw_unit__:
+            buf += " {0}".format(self.__raw_unit__)
+        buf +="\n"
+        return buf
 
     # ECU Name needed for function call!
     def build_function_getter(self, ecuName: str) -> str:
@@ -125,13 +140,15 @@ class code_object:
                 buf = "/** Sets {0} **/\n".format(self.__description__)
             else:
                 buf = "/** UNKNOWN DESCRIPTION **/\n"
-            buf += "fun {0}(f: CanFrame, p: {1}) = ".format(self.__function_setter__, self.__data_type__)
+            buf += "fun {0}(f: CanFrame, p: {1}) : CanFrame? {{\n".format(self.__function_setter__, self.__data_type__)
+            buf += "\tcheckFrame(f)\n"
             if self.__data_type__ == "Boolean": # Bo olean - just check return value is not 0
-                buf += "CanBusNative.setFrameParameter(f, {0}, {1}, if(p) 1 else 0)\n".format(self.__data_offset__, self.__data_length__)
+                buf += "\treturn CanBusNative.setFrameParameter(f, {0}, {1}, if(p) 1 else 0)\n".format(self.__data_offset__, self.__data_length__)
             elif self.__data_type__ == "Int": # Int - return value is OK!
-                buf += "CanBusNative.setFrameParameter(f, {0}, {1}, p)\n".format(self.__data_offset__, self.__data_length__)
+                buf += "\treturn CanBusNative.setFrameParameter(f, {0}, {1}, p)\n".format(self.__data_offset__, self.__data_length__)
             else: # Extract value from enum
-                buf += "CanBusNative.setFrameParameter(f, {0}, {1}, p.raw)\n".format(self.__data_offset__, self.__data_length__)
+                buf += "\treturn CanBusNative.setFrameParameter(f, {0}, {1}, p.raw)\n".format(self.__data_offset__, self.__data_length__)
+            buf += "}\n"
             return buf
         except Exception as e:
             print("WARNING: Code generation error for {0} failed due to {1}".format(self.__name__, e))
@@ -208,6 +225,12 @@ class frame_code:
                 buf += s + "\n"
         return buf
 
+    def generate_to_string(self) -> str:
+        buf = ""
+        for obj in self.__code_objects__:
+            buf += obj.get_to_string_call() + "\n"
+        return buf
+
 class Parser:
     def __init__(self, lines: []):
         self.__lines__ = lines
@@ -235,7 +258,7 @@ class Parser:
 # Function to generate JVM Kotlin class
 def generate_class_content(frame: frame_code) -> str:
     buf =  """
-@file:Suppress("unused", "FunctionName")
+@file:Suppress("unused", "FunctionName", "ClassName")
 package com.rndash.mbheadunit.nativeCan.can{2}
 import com.rndash.mbheadunit.CanFrame // AUTO GEN
 import com.rndash.mbheadunit.nativeCan.CanBusNative // AUTO GEN
@@ -245,11 +268,33 @@ import com.rndash.mbheadunit.nativeCan.CanBusNative // AUTO GEN
  *   Object for {0} (ID {1})
 **/
 
-object {0} {{\n
-    """.format(frame.get_name(), frame.get_id(), can_subsystem)
+object {0} {{
+
+    /** 
+     *  Returns the most recent Can Frame representing the state
+     *  of {0}
+    **/
+    fun get_frame() : CanFrame? = CanBusNative.get{2}Frame(Can{2}Addrs.{0})\n\n""".format(frame.get_name(), frame.get_id(), can_subsystem)
     for l in frame.generate_class_body().split("\n"):
         buf += "\t" + l + "\n"
-    buf += "}\n"
+    buf = buf[:-1]
+    buf += """/**
+     * Auto generated function
+     * Throws exception if user tries to set a value in a frame
+     * Not designated from the correct ECU
+    **/
+    private fun checkFrame(f: CanFrame) {{
+        if (f.canID != Can{0}Addrs.{1}.addr) {{
+            throw IllegalArgumentException("CAN ID does not match object!")
+        }}
+    }}""".format(can_subsystem ,frame.get_name())
+    buf += "\n\n\toverride fun toString() = \"\"\"\n"
+    for l in frame.generate_to_string().split("\n"):
+        if l:
+            buf += "\t\t|" + l + "\n"
+    buf += "\t\"\"\".trimMargin(\"|\")"
+
+    buf += "\n}\n"
     return buf
 
 def generate_addr_file(f: []):

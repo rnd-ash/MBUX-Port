@@ -1,5 +1,5 @@
 
-@file:Suppress("unused", "FunctionName")
+@file:Suppress("unused", "FunctionName", "ClassName")
 package com.rndash.mbheadunit.nativeCan.canB
 import com.rndash.mbheadunit.CanFrame // AUTO GEN
 import com.rndash.mbheadunit.nativeCan.CanBusNative // AUTO GEN
@@ -11,7 +11,13 @@ import com.rndash.mbheadunit.nativeCan.CanBusNative // AUTO GEN
 
 object WSS_A1 {
 
-    	/** Gets Weight classification passenger **/
+    /** 
+     *  Returns the most recent Can Frame representing the state
+     *  of WSS_A1
+    **/
+    fun get_frame() : CanFrame? = CanBusNative.getBFrame(CanBAddrs.WSS_A1)
+
+	/** Gets Weight classification passenger **/
 	fun get_wss_psg() : WSS_PSG = when(CanBusNative.getECUParameterB(CanBAddrs.WSS_A1, 5, 3)) {
 		 0 -> WSS_PSG.CLASS0
 		 1 -> WSS_PSG.CLASS1
@@ -23,13 +29,19 @@ object WSS_A1 {
 	}
 	
 	/** Sets Weight classification passenger **/
-	fun set_wss_psg(f: CanFrame, p: WSS_PSG) = CanBusNative.setFrameParameter(f, 5, 3, p.raw)
+	fun set_wss_psg(f: CanFrame, p: WSS_PSG) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 5, 3, p.raw)
+	}
 	
 	/** Gets Weight classification passenger fault **/
 	fun get_wss_psg_fault() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.WSS_A1, 4, 1) != 0
 	
 	/** Sets Weight classification passenger fault **/
-	fun set_wss_psg_fault(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 4, 1, if(p) 1 else 0)
+	fun set_wss_psg_fault(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 4, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets Passenger Detection Fast **/
 	fun get_psg_detect_fast() : PSG_DETECT_FAST = when(CanBusNative.getECUParameterB(CanBAddrs.WSS_A1, 2, 2)) {
@@ -41,7 +53,10 @@ object WSS_A1 {
 	}
 	
 	/** Sets Passenger Detection Fast **/
-	fun set_psg_detect_fast(f: CanFrame, p: PSG_DETECT_FAST) = CanBusNative.setFrameParameter(f, 2, 2, p.raw)
+	fun set_psg_detect_fast(f: CanFrame, p: PSG_DETECT_FAST) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 2, 2, p.raw)
+	}
 	
 	/** Gets WSS Identification **/
 	fun get_wss_id() : WSS_ID = when(CanBusNative.getECUParameterB(CanBAddrs.WSS_A1, 16, 8)) {
@@ -54,7 +69,10 @@ object WSS_A1 {
 	}
 	
 	/** Sets WSS Identification **/
-	fun set_wss_id(f: CanFrame, p: WSS_ID) = CanBusNative.setFrameParameter(f, 16, 8, p.raw)
+	fun set_wss_id(f: CanFrame, p: WSS_ID) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 16, 8, p.raw)
+	}
 	
 	/** Gets WSS display in the combi **/
 	fun get_wss_anz() : WSS_ANZ = when(CanBusNative.getECUParameterB(CanBAddrs.WSS_A1, 30, 2)) {
@@ -66,7 +84,27 @@ object WSS_A1 {
 	}
 	
 	/** Sets WSS display in the combi **/
-	fun set_wss_anz(f: CanFrame, p: WSS_ANZ) = CanBusNative.setFrameParameter(f, 30, 2, p.raw)
+	fun set_wss_anz(f: CanFrame, p: WSS_ANZ) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 30, 2, p.raw)
+	}
 	
-	
+	/**
+     * Auto generated function
+     * Throws exception if user tries to set a value in a frame
+     * Not designated from the correct ECU
+    **/
+    private fun checkFrame(f: CanFrame) {
+        if (f.canID != CanBAddrs.WSS_A1.addr) {
+            throw IllegalArgumentException("CAN ID does not match object!")
+        }
+    }
+
+	override fun toString() = """
+		|Weight classification passenger: ${get_wss_psg()}
+		|Weight classification passenger fault: ${get_wss_psg_fault()}
+		|Passenger Detection Fast: ${get_psg_detect_fast()}
+		|WSS Identification: ${get_wss_id()}
+		|WSS display in the combi: ${get_wss_anz()}
+	""".trimMargin("|")
 }

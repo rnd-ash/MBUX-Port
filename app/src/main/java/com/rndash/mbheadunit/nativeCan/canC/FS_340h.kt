@@ -1,5 +1,5 @@
 
-@file:Suppress("unused", "FunctionName")
+@file:Suppress("unused", "FunctionName", "ClassName")
 package com.rndash.mbheadunit.nativeCan.canC
 import com.rndash.mbheadunit.CanFrame // AUTO GEN
 import com.rndash.mbheadunit.nativeCan.CanBusNative // AUTO GEN
@@ -11,11 +11,33 @@ import com.rndash.mbheadunit.nativeCan.CanBusNative // AUTO GEN
 
 object FS_340h {
 
-    	/** Gets Load torque ABC pump **/
+    /** 
+     *  Returns the most recent Can Frame representing the state
+     *  of FS_340h
+    **/
+    fun get_frame() : CanFrame? = CanBusNative.getCFrame(CanCAddrs.FS_340h)
+
+	/** Gets Load torque ABC pump **/
 	fun get_m_last() : Int = CanBusNative.getECUParameterC(CanCAddrs.FS_340h, 60, 4)
 	
 	/** Sets Load torque ABC pump **/
-	fun set_m_last(f: CanFrame, p: Int) = CanBusNative.setFrameParameter(f, 60, 4, p)
+	fun set_m_last(f: CanFrame, p: Int) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 60, 4, p)
+	}
 	
-	
+	/**
+     * Auto generated function
+     * Throws exception if user tries to set a value in a frame
+     * Not designated from the correct ECU
+    **/
+    private fun checkFrame(f: CanFrame) {
+        if (f.canID != CanCAddrs.FS_340h.addr) {
+            throw IllegalArgumentException("CAN ID does not match object!")
+        }
+    }
+
+	override fun toString() = """
+		|Load torque ABC pump: ${get_m_last()}
+	""".trimMargin("|")
 }

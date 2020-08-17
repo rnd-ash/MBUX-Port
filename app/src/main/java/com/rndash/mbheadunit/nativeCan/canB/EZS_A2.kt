@@ -1,5 +1,5 @@
 
-@file:Suppress("unused", "FunctionName")
+@file:Suppress("unused", "FunctionName", "ClassName")
 package com.rndash.mbheadunit.nativeCan.canB
 import com.rndash.mbheadunit.CanFrame // AUTO GEN
 import com.rndash.mbheadunit.nativeCan.CanBusNative // AUTO GEN
@@ -11,29 +11,63 @@ import com.rndash.mbheadunit.nativeCan.CanBusNative // AUTO GEN
 
 object EZS_A2 {
 
-    	/** Gets Pulse ring counter, front left wheel (48 per revolution) UNIT: Pulse **/
+    /** 
+     *  Returns the most recent Can Frame representing the state
+     *  of EZS_A2
+    **/
+    fun get_frame() : CanFrame? = CanBusNative.getBFrame(CanBAddrs.EZS_A2)
+
+	/** Gets Pulse ring counter, front left wheel (48 per revolution)  **/
 	fun get_riz_vl() : Int = CanBusNative.getECUParameterB(CanBAddrs.EZS_A2, 0, 8)
 	
-	/** Sets Pulse ring counter, front left wheel (48 per revolution) UNIT: Pulse **/
-	fun set_riz_vl(f: CanFrame, p: Int) = CanBusNative.setFrameParameter(f, 0, 8, p)
+	/** Sets Pulse ring counter, front left wheel (48 per revolution)  **/
+	fun set_riz_vl(f: CanFrame, p: Int) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 0, 8, p)
+	}
 	
-	/** Gets Pulse ring counter, front right wheel (48 per revolution) UNIT: Pulse **/
+	/** Gets Pulse ring counter, front right wheel (48 per revolution)  **/
 	fun get_riz_vr() : Int = CanBusNative.getECUParameterB(CanBAddrs.EZS_A2, 8, 8)
 	
-	/** Sets Pulse ring counter, front right wheel (48 per revolution) UNIT: Pulse **/
-	fun set_riz_vr(f: CanFrame, p: Int) = CanBusNative.setFrameParameter(f, 8, 8, p)
+	/** Sets Pulse ring counter, front right wheel (48 per revolution)  **/
+	fun set_riz_vr(f: CanFrame, p: Int) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 8, 8, p)
+	}
 	
-	/** Gets Motor speed UNIT: 1 / min **/
+	/** Gets Motor speed  **/
 	fun get_n_mot() : Int = CanBusNative.getECUParameterB(CanBAddrs.EZS_A2, 16, 16)
 	
-	/** Sets Motor speed UNIT: 1 / min **/
-	fun set_n_mot(f: CanFrame, p: Int) = CanBusNative.setFrameParameter(f, 16, 16, p)
+	/** Sets Motor speed  **/
+	fun set_n_mot(f: CanFrame, p: Int) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 16, 16, p)
+	}
 	
-	/** Gets engine coolant temperature UNIT: ° C **/
+	/** Gets engine coolant temperature  **/
 	fun get_t_mot() : Int = CanBusNative.getECUParameterB(CanBAddrs.EZS_A2, 32, 8)
 	
-	/** Sets engine coolant temperature UNIT: ° C **/
-	fun set_t_mot(f: CanFrame, p: Int) = CanBusNative.setFrameParameter(f, 32, 8, p)
+	/** Sets engine coolant temperature  **/
+	fun set_t_mot(f: CanFrame, p: Int) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 32, 8, p)
+	}
 	
-	
+	/**
+     * Auto generated function
+     * Throws exception if user tries to set a value in a frame
+     * Not designated from the correct ECU
+    **/
+    private fun checkFrame(f: CanFrame) {
+        if (f.canID != CanBAddrs.EZS_A2.addr) {
+            throw IllegalArgumentException("CAN ID does not match object!")
+        }
+    }
+
+	override fun toString() = """
+		|Pulse ring counter, front left wheel (48 per revolution) : ${get_riz_vl()} Pulse
+		|Pulse ring counter, front right wheel (48 per revolution) : ${get_riz_vr()} Pulse
+		|Motor speed : ${get_n_mot()} 1 / min
+		|engine coolant temperature : ${get_t_mot()} ° C
+	""".trimMargin("|")
 }

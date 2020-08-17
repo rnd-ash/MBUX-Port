@@ -1,5 +1,5 @@
 
-@file:Suppress("unused", "FunctionName")
+@file:Suppress("unused", "FunctionName", "ClassName")
 package com.rndash.mbheadunit.nativeCan.canB
 import com.rndash.mbheadunit.CanFrame // AUTO GEN
 import com.rndash.mbheadunit.nativeCan.CanBusNative // AUTO GEN
@@ -11,101 +11,183 @@ import com.rndash.mbheadunit.nativeCan.CanBusNative // AUTO GEN
 
 object ARMADA_A2 {
 
-    	/** Gets frontal event 1 **/
+    /** 
+     *  Returns the most recent Can Frame representing the state
+     *  of ARMADA_A2
+    **/
+    fun get_frame() : CanFrame? = CanBusNative.getBFrame(CanBAddrs.ARMADA_A2)
+
+	/** Gets frontal event 1 **/
 	fun get_crash_a() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.ARMADA_A2, 7, 1) != 0
 	
 	/** Sets frontal event 1 **/
-	fun set_crash_a(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 7, 1, if(p) 1 else 0)
+	fun set_crash_a(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 7, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets rear event 1 **/
 	fun get_crash_b() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.ARMADA_A2, 6, 1) != 0
 	
 	/** Sets rear event 1 **/
-	fun set_crash_b(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 6, 1, if(p) 1 else 0)
+	fun set_crash_b(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 6, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets frontal event 5 **/
 	fun get_crash_c() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.ARMADA_A2, 5, 1) != 0
 	
 	/** Sets frontal event 5 **/
-	fun set_crash_c(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 5, 1, if(p) 1 else 0)
+	fun set_crash_c(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 5, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets side event 1 **/
 	fun get_crash_d() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.ARMADA_A2, 4, 1) != 0
 	
 	/** Sets side event 1 **/
-	fun set_crash_d(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 4, 1, if(p) 1 else 0)
+	fun set_crash_d(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 4, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets rear event 2 **/
 	fun get_crash_e() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.ARMADA_A2, 3, 1) != 0
 	
 	/** Sets rear event 2 **/
-	fun set_crash_e(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 3, 1, if(p) 1 else 0)
+	fun set_crash_e(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 3, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets frontal event 2 **/
 	fun get_crash_f() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.ARMADA_A2, 2, 1) != 0
 	
 	/** Sets frontal event 2 **/
-	fun set_crash_f(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 2, 1, if(p) 1 else 0)
+	fun set_crash_f(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 2, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets rollover event 1 **/
 	fun get_crash_g() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.ARMADA_A2, 1, 1) != 0
 	
 	/** Sets rollover event 1 **/
-	fun set_crash_g(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 1, 1, if(p) 1 else 0)
+	fun set_crash_g(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 1, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets Confirm bit for all crash events, toggling **/
 	fun get_conf_crash() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.ARMADA_A2, 0, 1) != 0
 	
 	/** Sets Confirm bit for all crash events, toggling **/
-	fun set_conf_crash(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 0, 1, if(p) 1 else 0)
+	fun set_conf_crash(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 0, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets rollover event 2 **/
 	fun get_crash_h() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.ARMADA_A2, 15, 1) != 0
 	
 	/** Sets rollover event 2 **/
-	fun set_crash_h(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 15, 1, if(p) 1 else 0)
+	fun set_crash_h(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 15, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets rollover event 3 **/
 	fun get_crash_i() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.ARMADA_A2, 14, 1) != 0
 	
 	/** Sets rollover event 3 **/
-	fun set_crash_i(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 14, 1, if(p) 1 else 0)
+	fun set_crash_i(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 14, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets rear event 3 **/
 	fun get_crash_k() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.ARMADA_A2, 13, 1) != 0
 	
 	/** Sets rear event 3 **/
-	fun set_crash_k(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 13, 1, if(p) 1 else 0)
+	fun set_crash_k(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 13, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets side event 2 **/
 	fun get_crash_l() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.ARMADA_A2, 12, 1) != 0
 	
 	/** Sets side event 2 **/
-	fun set_crash_l(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 12, 1, if(p) 1 else 0)
+	fun set_crash_l(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 12, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets event tbd **/
 	fun get_crash_m() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.ARMADA_A2, 11, 1) != 0
 	
 	/** Sets event tbd **/
-	fun set_crash_m(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 11, 1, if(p) 1 else 0)
+	fun set_crash_m(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 11, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets event tbd **/
 	fun get_crash_n() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.ARMADA_A2, 10, 1) != 0
 	
 	/** Sets event tbd **/
-	fun set_crash_n(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 10, 1, if(p) 1 else 0)
+	fun set_crash_n(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 10, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets event tbd **/
 	fun get_crash_o() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.ARMADA_A2, 9, 1) != 0
 	
 	/** Sets event tbd **/
-	fun set_crash_o(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 9, 1, if(p) 1 else 0)
+	fun set_crash_o(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 9, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets Any crash event **/
 	fun get_x_crash() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.ARMADA_A2, 8, 1) != 0
 	
 	/** Sets Any crash event **/
-	fun set_x_crash(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 8, 1, if(p) 1 else 0)
+	fun set_x_crash(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 8, 1, if(p) 1 else 0)
+	}
 	
-	
+	/**
+     * Auto generated function
+     * Throws exception if user tries to set a value in a frame
+     * Not designated from the correct ECU
+    **/
+    private fun checkFrame(f: CanFrame) {
+        if (f.canID != CanBAddrs.ARMADA_A2.addr) {
+            throw IllegalArgumentException("CAN ID does not match object!")
+        }
+    }
+
+	override fun toString() = """
+		|frontal event 1: ${get_crash_a()}
+		|rear event 1: ${get_crash_b()}
+		|frontal event 5: ${get_crash_c()}
+		|side event 1: ${get_crash_d()}
+		|rear event 2: ${get_crash_e()}
+		|frontal event 2: ${get_crash_f()}
+		|rollover event 1: ${get_crash_g()}
+		|Confirm bit for all crash events, toggling: ${get_conf_crash()}
+		|rollover event 2: ${get_crash_h()}
+		|rollover event 3: ${get_crash_i()}
+		|rear event 3: ${get_crash_k()}
+		|side event 2: ${get_crash_l()}
+		|event tbd: ${get_crash_m()}
+		|event tbd: ${get_crash_n()}
+		|event tbd: ${get_crash_o()}
+		|Any crash event: ${get_x_crash()}
+	""".trimMargin("|")
 }

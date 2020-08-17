@@ -1,5 +1,5 @@
 
-@file:Suppress("unused", "FunctionName")
+@file:Suppress("unused", "FunctionName", "ClassName")
 package com.rndash.mbheadunit.nativeCan.canB
 import com.rndash.mbheadunit.CanFrame // AUTO GEN
 import com.rndash.mbheadunit.nativeCan.CanBusNative // AUTO GEN
@@ -11,65 +11,123 @@ import com.rndash.mbheadunit.nativeCan.CanBusNative // AUTO GEN
 
 object TVR_A3 {
 
-    	/** Gets trunk lid remote locking **/
+    /** 
+     *  Returns the most recent Can Frame representing the state
+     *  of TVR_A3
+    **/
+    fun get_frame() : CanFrame? = CanBusNative.getBFrame(CanBAddrs.TVR_A3)
+
+	/** Gets trunk lid remote locking **/
 	fun get_hfs_rl() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.TVR_A3, 4, 1) != 0
 	
 	/** Sets trunk lid remote locking **/
-	fun set_hfs_rl(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 4, 1, if(p) 1 else 0)
+	fun set_hfs_rl(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 4, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets additional right turn signal defective **/
 	fun get_zblr_def() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.TVR_A3, 3, 1) != 0
 	
 	/** Sets additional right turn signal defective **/
-	fun set_zblr_def(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 3, 1, if(p) 1 else 0)
+	fun set_zblr_def(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 3, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets parental controls on **/
 	fun get_kisi_ein_rl() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.TVR_A3, 2, 1) != 0
 	
 	/** Sets parental controls on **/
-	fun set_kisi_ein_rl(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 2, 1, if(p) 1 else 0)
+	fun set_kisi_ein_rl(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 2, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets trunk lid remote release **/
 	fun get_hfe_rl() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.TVR_A3, 1, 1) != 0
 	
 	/** Sets trunk lid remote release **/
-	fun set_hfe_rl(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 1, 1, if(p) 1 else 0)
+	fun set_hfe_rl(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 1, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets Mirror adjustment switch. in position. left (not 203) **/
 	fun get_spvs_bf_rl() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.TVR_A3, 0, 1) != 0
 	
 	/** Sets Mirror adjustment switch. in position. left (not 203) **/
-	fun set_spvs_bf_rl(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 0, 1, if(p) 1 else 0)
+	fun set_spvs_bf_rl(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 0, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets Front right window regulator larger short stroke position **/
 	fun get_fvr_kzhb() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.TVR_A3, 11, 1) != 0
 	
 	/** Sets Front right window regulator larger short stroke position **/
-	fun set_fvr_kzhb(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 11, 1, if(p) 1 else 0)
+	fun set_fvr_kzhb(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 11, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets window open **/
 	fun get_fvr_auf() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.TVR_A3, 10, 1) != 0
 	
 	/** Sets window open **/
-	fun set_fvr_auf(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 10, 1, if(p) 1 else 0)
+	fun set_fvr_auf(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 10, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets Front right window blocked **/
 	fun get_fvr_block() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.TVR_A3, 9, 1) != 0
 	
 	/** Sets Front right window blocked **/
-	fun set_fvr_block(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 9, 1, if(p) 1 else 0)
+	fun set_fvr_block(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 9, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets normalized front right window **/
 	fun get_fvr_norm() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.TVR_A3, 8, 1) != 0
 	
 	/** Sets normalized front right window **/
-	fun set_fvr_norm(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 8, 1, if(p) 1 else 0)
+	fun set_fvr_norm(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 8, 1, if(p) 1 else 0)
+	}
 	
-	/** Gets window position front right UNIT: 1 / anchor turn **/
+	/** Gets window position front right  **/
 	fun get_feste_vr() : Int = CanBusNative.getECUParameterB(CanBAddrs.TVR_A3, 12, 12)
 	
-	/** Sets window position front right UNIT: 1 / anchor turn **/
-	fun set_feste_vr(f: CanFrame, p: Int) = CanBusNative.setFrameParameter(f, 12, 12, p)
+	/** Sets window position front right  **/
+	fun set_feste_vr(f: CanFrame, p: Int) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 12, 12, p)
+	}
 	
-	
+	/**
+     * Auto generated function
+     * Throws exception if user tries to set a value in a frame
+     * Not designated from the correct ECU
+    **/
+    private fun checkFrame(f: CanFrame) {
+        if (f.canID != CanBAddrs.TVR_A3.addr) {
+            throw IllegalArgumentException("CAN ID does not match object!")
+        }
+    }
+
+	override fun toString() = """
+		|trunk lid remote locking: ${get_hfs_rl()}
+		|additional right turn signal defective: ${get_zblr_def()}
+		|parental controls on: ${get_kisi_ein_rl()}
+		|trunk lid remote release: ${get_hfe_rl()}
+		|Mirror adjustment switch. in position. left (not 203): ${get_spvs_bf_rl()}
+		|Front right window regulator larger short stroke position: ${get_fvr_kzhb()}
+		|window open: ${get_fvr_auf()}
+		|Front right window blocked: ${get_fvr_block()}
+		|normalized front right window: ${get_fvr_norm()}
+		|window position front right : ${get_feste_vr()} 1 / anchor turn
+	""".trimMargin("|")
 }

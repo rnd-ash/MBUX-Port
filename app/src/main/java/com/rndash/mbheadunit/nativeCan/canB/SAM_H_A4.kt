@@ -1,5 +1,5 @@
 
-@file:Suppress("unused", "FunctionName")
+@file:Suppress("unused", "FunctionName", "ClassName")
 package com.rndash.mbheadunit.nativeCan.canB
 import com.rndash.mbheadunit.CanFrame // AUTO GEN
 import com.rndash.mbheadunit.nativeCan.CanBusNative // AUTO GEN
@@ -11,17 +11,43 @@ import com.rndash.mbheadunit.nativeCan.CanBusNative // AUTO GEN
 
 object SAM_H_A4 {
 
-    	/** Gets ZV emergency opening **/
+    /** 
+     *  Returns the most recent Can Frame representing the state
+     *  of SAM_H_A4
+    **/
+    fun get_frame() : CanFrame? = CanBusNative.getBFrame(CanBAddrs.SAM_H_A4)
+
+	/** Gets ZV emergency opening **/
 	fun get_zv_notoeff() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.SAM_H_A4, 7, 1) != 0
 	
 	/** Sets ZV emergency opening **/
-	fun set_zv_notoeff(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 7, 1, if(p) 1 else 0)
+	fun set_zv_notoeff(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 7, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets lock follower 1 (unlock) **/
 	fun get_sn1_sam_h() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.SAM_H_A4, 1, 1) != 0
 	
 	/** Sets lock follower 1 (unlock) **/
-	fun set_sn1_sam_h(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 1, 1, if(p) 1 else 0)
+	fun set_sn1_sam_h(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 1, 1, if(p) 1 else 0)
+	}
 	
-	
+	/**
+     * Auto generated function
+     * Throws exception if user tries to set a value in a frame
+     * Not designated from the correct ECU
+    **/
+    private fun checkFrame(f: CanFrame) {
+        if (f.canID != CanBAddrs.SAM_H_A4.addr) {
+            throw IllegalArgumentException("CAN ID does not match object!")
+        }
+    }
+
+	override fun toString() = """
+		|ZV emergency opening: ${get_zv_notoeff()}
+		|lock follower 1 (unlock): ${get_sn1_sam_h()}
+	""".trimMargin("|")
 }

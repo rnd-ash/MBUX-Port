@@ -1,5 +1,5 @@
 
-@file:Suppress("unused", "FunctionName")
+@file:Suppress("unused", "FunctionName", "ClassName")
 package com.rndash.mbheadunit.nativeCan.canC
 import com.rndash.mbheadunit.CanFrame // AUTO GEN
 import com.rndash.mbheadunit.nativeCan.CanBusNative // AUTO GEN
@@ -11,7 +11,13 @@ import com.rndash.mbheadunit.nativeCan.CanBusNative // AUTO GEN
 
 object GS_418h {
 
-    	/** Gets speed step **/
+    /** 
+     *  Returns the most recent Can Frame representing the state
+     *  of GS_418h
+    **/
+    fun get_frame() : CanFrame? = CanBusNative.getCFrame(CanCAddrs.GS_418h)
+
+	/** Gets speed step **/
 	fun get_fsc() : FSC = when(CanBusNative.getECUParameterC(CanCAddrs.GS_418h, 0, 8)) {
 		 32 -> FSC.BLANK
 		 49 -> FSC.ONE
@@ -32,7 +38,10 @@ object GS_418h {
 	}
 	
 	/** Sets speed step **/
-	fun set_fsc(f: CanFrame, p: FSC) = CanBusNative.setFrameParameter(f, 0, 8, p.raw)
+	fun set_fsc(f: CanFrame, p: FSC) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 0, 8, p.raw)
+	}
 	
 	/** Gets driving program **/
 	fun get_fpc() : FPC = when(CanBusNative.getECUParameterC(CanCAddrs.GS_418h, 8, 8)) {
@@ -61,7 +70,7 @@ object GS_418h {
 		 77 -> FPC.M
 		 83 -> FPC.S
 		 87 -> FPC.W
-		 95 -> FPC._
+		 95 -> FPC.UNDERSCORE
 		 96 -> FPC.BLANK_MGW
 		 97 -> FPC.A_MGN
 		 99 -> FPC.C_MGN
@@ -81,25 +90,37 @@ object GS_418h {
 	}
 	
 	/** Sets driving program **/
-	fun set_fpc(f: CanFrame, p: FPC) = CanBusNative.setFrameParameter(f, 8, 8, p.raw)
+	fun set_fpc(f: CanFrame, p: FPC) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 8, 8, p.raw)
+	}
 	
 	/** Gets transmission oil temperature **/
 	fun get_t_get() : Int = CanBusNative.getECUParameterC(CanCAddrs.GS_418h, 16, 8)
 	
 	/** Sets transmission oil temperature **/
-	fun set_t_get(f: CanFrame, p: Int) = CanBusNative.setFrameParameter(f, 16, 8, p)
+	fun set_t_get(f: CanFrame, p: Int) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 16, 8, p)
+	}
 	
 	/** Gets Kickdown **/
 	fun get_kd() : Boolean = CanBusNative.getECUParameterC(CanCAddrs.GS_418h, 31, 1) != 0
 	
 	/** Sets Kickdown **/
-	fun set_kd(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 31, 1, if(p) 1 else 0)
+	fun set_kd(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 31, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets apply brake when switching on **/
 	fun get_esv_bre() : Boolean = CanBusNative.getECUParameterC(CanCAddrs.GS_418h, 30, 1) != 0
 	
 	/** Sets apply brake when switching on **/
-	fun set_esv_bre(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 30, 1, if(p) 1 else 0)
+	fun set_esv_bre(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 30, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets gear mechanism variant **/
 	fun get_mech() : MECH = when(CanBusNative.getECUParameterC(CanCAddrs.GS_418h, 28, 2)) {
@@ -111,31 +132,46 @@ object GS_418h {
 	}
 	
 	/** Sets gear mechanism variant **/
-	fun set_mech(f: CanFrame, p: MECH) = CanBusNative.setFrameParameter(f, 28, 2, p.raw)
+	fun set_mech(f: CanFrame, p: MECH) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 28, 2, p.raw)
+	}
 	
 	/** Gets continuously variable transmission [1], multi-step transmission [0] **/
 	fun get_cvt() : Boolean = CanBusNative.getECUParameterC(CanCAddrs.GS_418h, 27, 1) != 0
 	
 	/** Sets continuously variable transmission [1], multi-step transmission [0] **/
-	fun set_cvt(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 27, 1, if(p) 1 else 0)
+	fun set_cvt(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 27, 1, if(p) 1 else 0)
+	}
 	
 	/** UNKNOWN DESCRIPTION **/
 	fun get_switch() : Boolean = CanBusNative.getECUParameterC(CanCAddrs.GS_418h, 26, 1) != 0
 	
 	/** UNKNOWN DESCRIPTION **/
-	fun set_switch(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 26, 1, if(p) 1 else 0)
+	fun set_switch(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 26, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets front-wheel drive [1], rear-wheel drive [0] **/
 	fun get_front() : Boolean = CanBusNative.getECUParameterC(CanCAddrs.GS_418h, 25, 1) != 0
 	
 	/** Sets front-wheel drive [1], rear-wheel drive [0] **/
-	fun set_front(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 25, 1, if(p) 1 else 0)
+	fun set_front(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 25, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets all-wheel drive **/
-	fun get_all-wheel() : Boolean = CanBusNative.getECUParameterC(CanCAddrs.GS_418h, 24, 1) != 0
+	fun get_all_wheel() : Boolean = CanBusNative.getECUParameterC(CanCAddrs.GS_418h, 24, 1) != 0
 	
 	/** Sets all-wheel drive **/
-	fun set_all-wheel(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 24, 1, if(p) 1 else 0)
+	fun set_all_wheel(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 24, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets actual gear **/
 	fun get_gic() : GIC = when(CanBusNative.getECUParameterC(CanCAddrs.GS_418h, 36, 4)) {
@@ -159,7 +195,10 @@ object GS_418h {
 	}
 	
 	/** Sets actual gear **/
-	fun set_gic(f: CanFrame, p: GIC) = CanBusNative.setFrameParameter(f, 36, 4, p.raw)
+	fun set_gic(f: CanFrame, p: GIC) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 36, 4, p.raw)
+	}
 	
 	/** Gets target gear **/
 	fun get_gzc() : GZC = when(CanBusNative.getECUParameterC(CanCAddrs.GS_418h, 32, 4)) {
@@ -183,13 +222,19 @@ object GS_418h {
 	}
 	
 	/** Sets target gear **/
-	fun set_gzc(f: CanFrame, p: GZC) = CanBusNative.setFrameParameter(f, 32, 4, p.raw)
+	fun set_gzc(f: CanFrame, p: GZC) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 32, 4, p.raw)
+	}
 	
 	/** Gets torque loss (FFh at KSG) **/
 	fun get_m_verl() : Int = CanBusNative.getECUParameterC(CanCAddrs.GS_418h, 40, 8)
 	
 	/** Sets torque loss (FFh at KSG) **/
-	fun set_m_verl(f: CanFrame, p: Int) = CanBusNative.setFrameParameter(f, 40, 8, p)
+	fun set_m_verl(f: CanFrame, p: Int) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 40, 8, p)
+	}
 	
 	/** Gets Gear selector lever position (NAG, KSG, CVT) **/
 	fun get_whst() : WHST = when(CanBusNative.getECUParameterC(CanCAddrs.GS_418h, 50, 3)) {
@@ -202,25 +247,66 @@ object GS_418h {
 	}
 	
 	/** Sets Gear selector lever position (NAG, KSG, CVT) **/
-	fun set_whst(f: CanFrame, p: WHST) = CanBusNative.setFrameParameter(f, 50, 3, p.raw)
+	fun set_whst(f: CanFrame, p: WHST) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 50, 3, p.raw)
+	}
 	
 	/** Gets Factor wheel torque toggle 40ms + -10 **/
 	fun get_fmradtgl() : Boolean = CanBusNative.getECUParameterC(CanCAddrs.GS_418h, 49, 1) != 0
 	
 	/** Sets Factor wheel torque toggle 40ms + -10 **/
-	fun set_fmradtgl(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 49, 1, if(p) 1 else 0)
+	fun set_fmradtgl(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 49, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets Wheel torque parity factor (even parity) **/
 	fun get_fmradpar() : Boolean = CanBusNative.getECUParameterC(CanCAddrs.GS_418h, 48, 1) != 0
 	
 	/** Sets Wheel torque parity factor (even parity) **/
-	fun set_fmradpar(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 48, 1, if(p) 1 else 0)
+	fun set_fmradpar(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 48, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets wheel torque factor (7FFh at KSG) **/
 	fun get_fmrad() : Int = CanBusNative.getECUParameterC(CanCAddrs.GS_418h, 53, 11)
 	
 	/** Sets wheel torque factor (7FFh at KSG) **/
-	fun set_fmrad(f: CanFrame, p: Int) = CanBusNative.setFrameParameter(f, 53, 11, p)
+	fun set_fmrad(f: CanFrame, p: Int) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 53, 11, p)
+	}
 	
-	
+	/**
+     * Auto generated function
+     * Throws exception if user tries to set a value in a frame
+     * Not designated from the correct ECU
+    **/
+    private fun checkFrame(f: CanFrame) {
+        if (f.canID != CanCAddrs.GS_418h.addr) {
+            throw IllegalArgumentException("CAN ID does not match object!")
+        }
+    }
+
+	override fun toString() = """
+		|speed step: ${get_fsc()}
+		|driving program: ${get_fpc()}
+		|transmission oil temperature: ${get_t_get()}
+		|Kickdown: ${get_kd()}
+		|apply brake when switching on: ${get_esv_bre()}
+		|gear mechanism variant: ${get_mech()}
+		|continuously variable transmission [1], multi-step transmission [0]: ${get_cvt()}
+		|None: ${get_switch()}
+		|front-wheel drive [1], rear-wheel drive [0]: ${get_front()}
+		|all-wheel drive: ${get_all_wheel()}
+		|actual gear: ${get_gic()}
+		|target gear: ${get_gzc()}
+		|torque loss (FFh at KSG): ${get_m_verl()}
+		|Gear selector lever position (NAG, KSG, CVT): ${get_whst()}
+		|Factor wheel torque toggle 40ms + -10: ${get_fmradtgl()}
+		|Wheel torque parity factor (even parity): ${get_fmradpar()}
+		|wheel torque factor (7FFh at KSG): ${get_fmrad()}
+	""".trimMargin("|")
 }

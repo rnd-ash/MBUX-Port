@@ -1,5 +1,5 @@
 
-@file:Suppress("unused", "FunctionName")
+@file:Suppress("unused", "FunctionName", "ClassName")
 package com.rndash.mbheadunit.nativeCan.canB
 import com.rndash.mbheadunit.CanFrame // AUTO GEN
 import com.rndash.mbheadunit.nativeCan.CanBusNative // AUTO GEN
@@ -11,7 +11,13 @@ import com.rndash.mbheadunit.nativeCan.CanBusNative // AUTO GEN
 
 object EZS_A5 {
 
-    	/** Gets left / right hand drive **/
+    /** 
+     *  Returns the most recent Can Frame representing the state
+     *  of EZS_A5
+    **/
+    fun get_frame() : CanFrame? = CanBusNative.getBFrame(CanBAddrs.EZS_A5)
+
+	/** Gets left / right hand drive **/
 	fun get_ll_rl() : LL_RL = when(CanBusNative.getECUParameterB(CanBAddrs.EZS_A5, 6, 2)) {
 		 1 -> LL_RL.LL
 		 2 -> LL_RL.RL
@@ -20,7 +26,10 @@ object EZS_A5 {
 	}
 	
 	/** Sets left / right hand drive **/
-	fun set_ll_rl(f: CanFrame, p: LL_RL) = CanBusNative.setFrameParameter(f, 6, 2, p.raw)
+	fun set_ll_rl(f: CanFrame, p: LL_RL) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 6, 2, p.raw)
+	}
 	
 	/** Gets Country-specific SA coding **/
 	fun get_land() : LAND = when(CanBusNative.getECUParameterB(CanBAddrs.EZS_A5, 0, 4)) {
@@ -36,103 +45,154 @@ object EZS_A5 {
 	}
 	
 	/** Sets Country-specific SA coding **/
-	fun set_land(f: CanFrame, p: LAND) = CanBusNative.setFrameParameter(f, 0, 4, p.raw)
+	fun set_land(f: CanFrame, p: LAND) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 0, 4, p.raw)
+	}
 	
 	/** Gets Taxi International **/
 	fun get_taxi_int() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.EZS_A5, 15, 1) != 0
 	
 	/** Sets Taxi International **/
-	fun set_taxi_int(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 15, 1, if(p) 1 else 0)
+	fun set_taxi_int(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 15, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets Taxi emergency alarm system **/
 	fun get_taxi_notalm() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.EZS_A5, 14, 1) != 0
 	
 	/** Sets Taxi emergency alarm system **/
-	fun set_taxi_notalm(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 14, 1, if(p) 1 else 0)
+	fun set_taxi_notalm(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 14, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets connection for roof signs **/
 	fun get_taxi_dz() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.EZS_A5, 13, 1) != 0
 	
 	/** Sets connection for roof signs **/
-	fun set_taxi_dz(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 13, 1, if(p) 1 else 0)
+	fun set_taxi_dz(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 13, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets taxi call for help **/
 	fun get_taxi_hiru() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.EZS_A5, 12, 1) != 0
 	
 	/** Sets taxi call for help **/
-	fun set_taxi_hiru(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 12, 1, if(p) 1 else 0)
+	fun set_taxi_hiru(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 12, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets special vehicle **/
 	fun get_so_fzg() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.EZS_A5, 11, 1) != 0
 	
 	/** Sets special vehicle **/
-	fun set_so_fzg(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 11, 1, if(p) 1 else 0)
+	fun set_so_fzg(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 11, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets radio activation taxi **/
 	fun get_taxi_funkauf() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.EZS_A5, 10, 1) != 0
 	
 	/** Sets radio activation taxi **/
-	fun set_taxi_funkauf(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 10, 1, if(p) 1 else 0)
+	fun set_taxi_funkauf(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 10, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets Conversion for the disabled (only via tester) **/
 	fun get_behi_fzg() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.EZS_A5, 9, 1) != 0
 	
 	/** Sets Conversion for the disabled (only via tester) **/
-	fun set_behi_fzg(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 9, 1, if(p) 1 else 0)
+	fun set_behi_fzg(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 9, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets special protection Guard B4 **/
 	fun get_guard_b4() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.EZS_A5, 8, 1) != 0
 	
 	/** Sets special protection Guard B4 **/
-	fun set_guard_b4(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 8, 1, if(p) 1 else 0)
+	fun set_guard_b4(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 8, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets special protection Guard B6 / 7 **/
 	fun get_guard_b6() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.EZS_A5, 23, 1) != 0
 	
 	/** Sets special protection Guard B6 / 7 **/
-	fun set_guard_b6(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 23, 1, if(p) 1 else 0)
+	fun set_guard_b6(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 23, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets radio data transmission available **/
 	fun get_datenf() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.EZS_A5, 22, 1) != 0
 	
 	/** Sets radio data transmission available **/
-	fun set_datenf(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 22, 1, if(p) 1 else 0)
+	fun set_datenf(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 22, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets close fresh air flap when the engine starts **/
 	fun get_fl_zu_ms() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.EZS_A5, 21, 1) != 0
 	
 	/** Sets close fresh air flap when the engine starts **/
-	fun set_fl_zu_ms(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 21, 1, if(p) 1 else 0)
+	fun set_fl_zu_ms(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 21, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets Lock automatic startup FH-rear **/
 	fun get_fh_sperr_hi() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.EZS_A5, 20, 1) != 0
 	
 	/** Sets Lock automatic startup FH-rear **/
-	fun set_fh_sperr_hi(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 20, 1, if(p) 1 else 0)
+	fun set_fh_sperr_hi(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 20, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets Block automatic start-up FH-front **/
 	fun get_fh_sperr_vo() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.EZS_A5, 19, 1) != 0
 	
 	/** Sets Block automatic start-up FH-front **/
-	fun set_fh_sperr_vo(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 19, 1, if(p) 1 else 0)
+	fun set_fh_sperr_vo(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 19, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets Comfort run mode **/
 	fun get_kb_auto() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.EZS_A5, 18, 1) != 0
 	
 	/** Sets Comfort run mode **/
-	fun set_kb_auto(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 18, 1, if(p) 1 else 0)
+	fun set_kb_auto(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 18, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets Comfort circulating air mode **/
 	fun get_kb_man_kla() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.EZS_A5, 17, 1) != 0
 	
 	/** Sets Comfort circulating air mode **/
-	fun set_kb_man_kla(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 17, 1, if(p) 1 else 0)
+	fun set_kb_man_kla(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 17, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets Block recirculated air comfort actuation **/
 	fun get_kb_sperr_kla() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.EZS_A5, 16, 1) != 0
 	
 	/** Sets Block recirculated air comfort actuation **/
-	fun set_kb_sperr_kla(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 16, 1, if(p) 1 else 0)
+	fun set_kb_sperr_kla(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 16, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets vehicle code series **/
 	fun get_fcod_br() : FCOD_BR = when(CanBusNative.getECUParameterB(CanBAddrs.EZS_A5, 27, 5)) {
@@ -172,7 +232,10 @@ object EZS_A5 {
 	}
 	
 	/** Sets vehicle code series **/
-	fun set_fcod_br(f: CanFrame, p: FCOD_BR) = CanBusNative.setFrameParameter(f, 27, 5, p.raw)
+	fun set_fcod_br(f: CanFrame, p: FCOD_BR) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 27, 5, p.raw)
+	}
 	
 	/** Gets vehicle code body (203/209) **/
 	fun get_fcod_kar() : FCOD_KAR = when(CanBusNative.getECUParameterB(CanBAddrs.EZS_A5, 24, 3)) {
@@ -188,7 +251,10 @@ object EZS_A5 {
 	}
 	
 	/** Sets vehicle code body (203/209) **/
-	fun set_fcod_kar(f: CanFrame, p: FCOD_KAR) = CanBusNative.setFrameParameter(f, 24, 3, p.raw)
+	fun set_fcod_kar(f: CanFrame, p: FCOD_KAR) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 24, 3, p.raw)
+	}
 	
 	/** Gets Vehicle code engine **/
 	fun get_fcod_mot7() : FCOD_MOT7 = when(CanBusNative.getECUParameterB(CanBAddrs.EZS_A5, 33, 7)) {
@@ -256,151 +322,283 @@ object EZS_A5 {
 	}
 	
 	/** Sets Vehicle code engine **/
-	fun set_fcod_mot7(f: CanFrame, p: FCOD_MOT7) = CanBusNative.setFrameParameter(f, 33, 7, p.raw)
+	fun set_fcod_mot7(f: CanFrame, p: FCOD_MOT7) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 33, 7, p.raw)
+	}
 	
 	/** Gets Flat roll warning device available **/
 	fun get_prw_vh() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.EZS_A5, 32, 1) != 0
 	
 	/** Sets Flat roll warning device available **/
-	fun set_prw_vh(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 32, 1, if(p) 1 else 0)
+	fun set_prw_vh(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 32, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets communication platform available **/
 	fun get_kp_vh() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.EZS_A5, 47, 1) != 0
 	
 	/** Sets communication platform available **/
-	fun set_kp_vh(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 47, 1, if(p) 1 else 0)
+	fun set_kp_vh(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 47, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets driver's seat memory available **/
 	fun get_memory_vh() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.EZS_A5, 46, 1) != 0
 	
 	/** Sets driver's seat memory available **/
-	fun set_memory_vh(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 46, 1, if(p) 1 else 0)
+	fun set_memory_vh(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 46, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets comfort manual transmission available **/
 	fun get_ksg_vh() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.EZS_A5, 45, 1) != 0
 	
 	/** Sets comfort manual transmission available **/
-	fun set_ksg_vh(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 45, 1, if(p) 1 else 0)
+	fun set_ksg_vh(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 45, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets automatic transmission available **/
 	fun get_nag_vh() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.EZS_A5, 44, 1) != 0
 	
 	/** Sets automatic transmission available **/
-	fun set_nag_vh(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 44, 1, if(p) 1 else 0)
+	fun set_nag_vh(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 44, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets air conditioning available **/
 	fun get_kla_vh() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.EZS_A5, 43, 1) != 0
 	
 	/** Sets air conditioning available **/
-	fun set_kla_vh(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 43, 1, if(p) 1 else 0)
+	fun set_kla_vh(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 43, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets headlight cleaning system available **/
 	fun get_sra_vh() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.EZS_A5, 42, 1) != 0
 	
 	/** Sets headlight cleaning system available **/
-	fun set_sra_vh(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 42, 1, if(p) 1 else 0)
+	fun set_sra_vh(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 42, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets Xenon light available **/
 	fun get_xen_vh() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.EZS_A5, 41, 1) != 0
 	
 	/** Sets Xenon light available **/
-	fun set_xen_vh(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 41, 1, if(p) 1 else 0)
+	fun set_xen_vh(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 41, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets rain sensor available **/
 	fun get_rs_vh() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.EZS_A5, 40, 1) != 0
 	
 	/** Sets rain sensor available **/
-	fun set_rs_vh(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 40, 1, if(p) 1 else 0)
+	fun set_rs_vh(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 40, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets sound system available **/
 	fun get_sound_vh() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.EZS_A5, 55, 1) != 0
 	
 	/** Sets sound system available **/
-	fun set_sound_vh(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 55, 1, if(p) 1 else 0)
+	fun set_sound_vh(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 55, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets level control available **/
 	fun get_niv_vh() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.EZS_A5, 53, 1) != 0
 	
 	/** Sets level control available **/
-	fun set_niv_vh(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 53, 1, if(p) 1 else 0)
+	fun set_niv_vh(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 53, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets Booster fan not available **/
 	fun get_booster_nvh() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.EZS_A5, 52, 1) != 0
 	
 	/** Sets Booster fan not available **/
-	fun set_booster_nvh(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 52, 1, if(p) 1 else 0)
+	fun set_booster_nvh(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 52, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets Footwell flaps in cooling mode, closed. (only G463) **/
 	fun get_fuk_schl() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.EZS_A5, 51, 1) != 0
 	
 	/** Sets Footwell flaps in cooling mode, closed. (only G463) **/
-	fun set_fuk_schl(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 51, 1, if(p) 1 else 0)
+	fun set_fuk_schl(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 51, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets windshield heater. existing **/
 	fun get_fsb_hzg_vh() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.EZS_A5, 50, 1) != 0
 	
 	/** Sets windshield heater. existing **/
-	fun set_fsb_hzg_vh(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 50, 1, if(p) 1 else 0)
+	fun set_fsb_hzg_vh(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 50, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets CVT available **/
 	fun get_cvt_vh() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.EZS_A5, 49, 1) != 0
 	
 	/** Sets CVT available **/
-	fun set_cvt_vh(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 49, 1, if(p) 1 else 0)
+	fun set_cvt_vh(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 49, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets ART available **/
 	fun get_art_vh() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.EZS_A5, 48, 1) != 0
 	
 	/** Sets ART available **/
-	fun set_art_vh(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 48, 1, if(p) 1 else 0)
+	fun set_art_vh(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 48, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets heated windscreen washer system available **/
 	fun get_swb_vh() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.EZS_A5, 63, 1) != 0
 	
 	/** Sets heated windscreen washer system available **/
-	fun set_swb_vh(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 63, 1, if(p) 1 else 0)
+	fun set_swb_vh(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 63, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets Complete replacement light allowed **/
 	fun get_ers_licht() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.EZS_A5, 62, 1) != 0
 	
 	/** Sets Complete replacement light allowed **/
-	fun set_ers_licht(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 62, 1, if(p) 1 else 0)
+	fun set_ers_licht(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 62, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets Keyless Go available **/
 	fun get_kg_vh() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.EZS_A5, 61, 1) != 0
 	
 	/** Sets Keyless Go available **/
-	fun set_kg_vh(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 61, 1, if(p) 1 else 0)
+	fun set_kg_vh(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 61, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets interior protection available **/
 	fun get_irs_vh() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.EZS_A5, 60, 1) != 0
 	
 	/** Sets interior protection available **/
-	fun set_irs_vh(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 60, 1, if(p) 1 else 0)
+	fun set_irs_vh(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 60, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets anti-theft alarm system available **/
 	fun get_edw_vh() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.EZS_A5, 59, 1) != 0
 	
 	/** Sets anti-theft alarm system available **/
-	fun set_edw_vh(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 59, 1, if(p) 1 else 0)
+	fun set_edw_vh(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 59, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets rear roller blind available **/
 	fun get_hr_vh() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.EZS_A5, 58, 1) != 0
 	
 	/** Sets rear roller blind available **/
-	fun set_hr_vh(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 58, 1, if(p) 1 else 0)
+	fun set_hr_vh(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 58, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets trailer coupling available **/
 	fun get_ahk_vh() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.EZS_A5, 57, 1) != 0
 	
 	/** Sets trailer coupling available **/
-	fun set_ahk_vh(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 57, 1, if(p) 1 else 0)
+	fun set_ahk_vh(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 57, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets Parktronics system available **/
 	fun get_pts_vh() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.EZS_A5, 56, 1) != 0
 	
 	/** Sets Parktronics system available **/
-	fun set_pts_vh(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 56, 1, if(p) 1 else 0)
+	fun set_pts_vh(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 56, 1, if(p) 1 else 0)
+	}
 	
-	
+	/**
+     * Auto generated function
+     * Throws exception if user tries to set a value in a frame
+     * Not designated from the correct ECU
+    **/
+    private fun checkFrame(f: CanFrame) {
+        if (f.canID != CanBAddrs.EZS_A5.addr) {
+            throw IllegalArgumentException("CAN ID does not match object!")
+        }
+    }
+
+	override fun toString() = """
+		|left / right hand drive: ${get_ll_rl()}
+		|Country-specific SA coding: ${get_land()}
+		|Taxi International: ${get_taxi_int()}
+		|Taxi emergency alarm system: ${get_taxi_notalm()}
+		|connection for roof signs: ${get_taxi_dz()}
+		|taxi call for help: ${get_taxi_hiru()}
+		|special vehicle: ${get_so_fzg()}
+		|radio activation taxi: ${get_taxi_funkauf()}
+		|Conversion for the disabled (only via tester): ${get_behi_fzg()}
+		|special protection Guard B4: ${get_guard_b4()}
+		|special protection Guard B6 / 7: ${get_guard_b6()}
+		|radio data transmission available: ${get_datenf()}
+		|close fresh air flap when the engine starts: ${get_fl_zu_ms()}
+		|Lock automatic startup FH-rear: ${get_fh_sperr_hi()}
+		|Block automatic start-up FH-front: ${get_fh_sperr_vo()}
+		|Comfort run mode: ${get_kb_auto()}
+		|Comfort circulating air mode: ${get_kb_man_kla()}
+		|Block recirculated air comfort actuation: ${get_kb_sperr_kla()}
+		|vehicle code series: ${get_fcod_br()}
+		|vehicle code body (203/209): ${get_fcod_kar()}
+		|Vehicle code engine: ${get_fcod_mot7()}
+		|Flat roll warning device available: ${get_prw_vh()}
+		|communication platform available: ${get_kp_vh()}
+		|driver's seat memory available: ${get_memory_vh()}
+		|comfort manual transmission available: ${get_ksg_vh()}
+		|automatic transmission available: ${get_nag_vh()}
+		|air conditioning available: ${get_kla_vh()}
+		|headlight cleaning system available: ${get_sra_vh()}
+		|Xenon light available: ${get_xen_vh()}
+		|rain sensor available: ${get_rs_vh()}
+		|sound system available: ${get_sound_vh()}
+		|level control available: ${get_niv_vh()}
+		|Booster fan not available: ${get_booster_nvh()}
+		|Footwell flaps in cooling mode, closed. (only G463): ${get_fuk_schl()}
+		|windshield heater. existing: ${get_fsb_hzg_vh()}
+		|CVT available: ${get_cvt_vh()}
+		|ART available: ${get_art_vh()}
+		|heated windscreen washer system available: ${get_swb_vh()}
+		|Complete replacement light allowed: ${get_ers_licht()}
+		|Keyless Go available: ${get_kg_vh()}
+		|interior protection available: ${get_irs_vh()}
+		|anti-theft alarm system available: ${get_edw_vh()}
+		|rear roller blind available: ${get_hr_vh()}
+		|trailer coupling available: ${get_ahk_vh()}
+		|Parktronics system available: ${get_pts_vh()}
+	""".trimMargin("|")
 }

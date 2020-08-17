@@ -1,5 +1,5 @@
 
-@file:Suppress("unused", "FunctionName")
+@file:Suppress("unused", "FunctionName", "ClassName")
 package com.rndash.mbheadunit.nativeCan.canB
 import com.rndash.mbheadunit.CanFrame // AUTO GEN
 import com.rndash.mbheadunit.nativeCan.CanBusNative // AUTO GEN
@@ -11,35 +11,56 @@ import com.rndash.mbheadunit.nativeCan.CanBusNative // AUTO GEN
 
 object TELEAID_POS5 {
 
-    	/** Gets GPS visible satellites **/
+    /** 
+     *  Returns the most recent Can Frame representing the state
+     *  of TELEAID_POS5
+    **/
+    fun get_frame() : CanFrame? = CanBusNative.getBFrame(CanBAddrs.TELEAID_POS5)
+
+	/** Gets GPS visible satellites **/
 	fun get_gps_vsbl_sat() : Int = CanBusNative.getECUParameterB(CanBAddrs.TELEAID_POS5, 4, 4)
 	
 	/** Sets GPS visible satellites **/
-	fun set_gps_vsbl_sat(f: CanFrame, p: Int) = CanBusNative.setFrameParameter(f, 4, 4, p)
+	fun set_gps_vsbl_sat(f: CanFrame, p: Int) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 4, 4, p)
+	}
 	
 	/** Gets GPS tracked satellites **/
 	fun get_gps_trck_sat() : Int = CanBusNative.getECUParameterB(CanBAddrs.TELEAID_POS5, 0, 4)
 	
 	/** Sets GPS tracked satellites **/
-	fun set_gps_trck_sat(f: CanFrame, p: Int) = CanBusNative.setFrameParameter(f, 0, 4, p)
+	fun set_gps_trck_sat(f: CanFrame, p: Int) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 0, 4, p)
+	}
 	
 	/** Gets GPS vertical dilution of position **/
 	fun get_gps_vdop() : Int = CanBusNative.getECUParameterB(CanBAddrs.TELEAID_POS5, 8, 8)
 	
 	/** Sets GPS vertical dilution of position **/
-	fun set_gps_vdop(f: CanFrame, p: Int) = CanBusNative.setFrameParameter(f, 8, 8, p)
+	fun set_gps_vdop(f: CanFrame, p: Int) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 8, 8, p)
+	}
 	
 	/** Gets GPS horizontal dilution of position **/
 	fun get_gps_hdop() : Int = CanBusNative.getECUParameterB(CanBAddrs.TELEAID_POS5, 16, 8)
 	
 	/** Sets GPS horizontal dilution of position **/
-	fun set_gps_hdop(f: CanFrame, p: Int) = CanBusNative.setFrameParameter(f, 16, 8, p)
+	fun set_gps_hdop(f: CanFrame, p: Int) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 16, 8, p)
+	}
 	
 	/** Gets GPS dilution of position **/
 	fun get_gps_pdop() : Int = CanBusNative.getECUParameterB(CanBAddrs.TELEAID_POS5, 24, 8)
 	
 	/** Sets GPS dilution of position **/
-	fun set_gps_pdop(f: CanFrame, p: Int) = CanBusNative.setFrameParameter(f, 24, 8, p)
+	fun set_gps_pdop(f: CanFrame, p: Int) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 24, 8, p)
+	}
 	
 	/** Gets GPS fix **/
 	fun get_gps_fix() : GPS_FIX = when(CanBusNative.getECUParameterB(CanBAddrs.TELEAID_POS5, 36, 4)) {
@@ -52,13 +73,19 @@ object TELEAID_POS5 {
 	}
 	
 	/** Sets GPS fix **/
-	fun set_gps_fix(f: CanFrame, p: GPS_FIX) = CanBusNative.setFrameParameter(f, 36, 4, p.raw)
+	fun set_gps_fix(f: CanFrame, p: GPS_FIX) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 36, 4, p.raw)
+	}
 	
-	/** Gets Dead reckoning / map matching position reliablity UNIT:% **/
+	/** Gets Dead reckoning / map matching position reliablity  **/
 	fun get_dr_mm_rel() : Int = CanBusNative.getECUParameterB(CanBAddrs.TELEAID_POS5, 40, 8)
 	
-	/** Sets Dead reckoning / map matching position reliablity UNIT:% **/
-	fun set_dr_mm_rel(f: CanFrame, p: Int) = CanBusNative.setFrameParameter(f, 40, 8, p)
+	/** Sets Dead reckoning / map matching position reliablity  **/
+	fun set_dr_mm_rel(f: CanFrame, p: Int) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 40, 8, p)
+	}
 	
 	/** Gets Dead reckoning / map matching state **/
 	fun get_dr_mm_stat() : DR_MM_STAT = when(CanBusNative.getECUParameterB(CanBAddrs.TELEAID_POS5, 54, 2)) {
@@ -70,7 +97,10 @@ object TELEAID_POS5 {
 	}
 	
 	/** Sets Dead reckoning / map matching state **/
-	fun set_dr_mm_stat(f: CanFrame, p: DR_MM_STAT) = CanBusNative.setFrameParameter(f, 54, 2, p.raw)
+	fun set_dr_mm_stat(f: CanFrame, p: DR_MM_STAT) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 54, 2, p.raw)
+	}
 	
 	/** Gets Map matching route state **/
 	fun get_mm_route_stat() : MM_ROUTE_STAT = when(CanBusNative.getECUParameterB(CanBAddrs.TELEAID_POS5, 52, 2)) {
@@ -82,7 +112,10 @@ object TELEAID_POS5 {
 	}
 	
 	/** Sets Map matching route state **/
-	fun set_mm_route_stat(f: CanFrame, p: MM_ROUTE_STAT) = CanBusNative.setFrameParameter(f, 52, 2, p.raw)
+	fun set_mm_route_stat(f: CanFrame, p: MM_ROUTE_STAT) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 52, 2, p.raw)
+	}
 	
 	/** Gets Map matching road state **/
 	fun get_mm_road_stat() : MM_ROAD_STAT = when(CanBusNative.getECUParameterB(CanBAddrs.TELEAID_POS5, 50, 2)) {
@@ -94,7 +127,10 @@ object TELEAID_POS5 {
 	}
 	
 	/** Sets Map matching road state **/
-	fun set_mm_road_stat(f: CanFrame, p: MM_ROAD_STAT) = CanBusNative.setFrameParameter(f, 50, 2, p.raw)
+	fun set_mm_road_stat(f: CanFrame, p: MM_ROAD_STAT) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 50, 2, p.raw)
+	}
 	
 	/** Gets Map matching map state **/
 	fun get_mm_map_stat() : MM_MAP_STAT = when(CanBusNative.getECUParameterB(CanBAddrs.TELEAID_POS5, 48, 2)) {
@@ -106,7 +142,33 @@ object TELEAID_POS5 {
 	}
 	
 	/** Sets Map matching map state **/
-	fun set_mm_map_stat(f: CanFrame, p: MM_MAP_STAT) = CanBusNative.setFrameParameter(f, 48, 2, p.raw)
+	fun set_mm_map_stat(f: CanFrame, p: MM_MAP_STAT) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 48, 2, p.raw)
+	}
 	
-	
+	/**
+     * Auto generated function
+     * Throws exception if user tries to set a value in a frame
+     * Not designated from the correct ECU
+    **/
+    private fun checkFrame(f: CanFrame) {
+        if (f.canID != CanBAddrs.TELEAID_POS5.addr) {
+            throw IllegalArgumentException("CAN ID does not match object!")
+        }
+    }
+
+	override fun toString() = """
+		|GPS visible satellites: ${get_gps_vsbl_sat()}
+		|GPS tracked satellites: ${get_gps_trck_sat()}
+		|GPS vertical dilution of position: ${get_gps_vdop()}
+		|GPS horizontal dilution of position: ${get_gps_hdop()}
+		|GPS dilution of position: ${get_gps_pdop()}
+		|GPS fix: ${get_gps_fix()}
+		|Dead reckoning / map matching position reliablity : ${get_dr_mm_rel()} %
+		|Dead reckoning / map matching state: ${get_dr_mm_stat()}
+		|Map matching route state: ${get_mm_route_stat()}
+		|Map matching road state: ${get_mm_road_stat()}
+		|Map matching map state: ${get_mm_map_stat()}
+	""".trimMargin("|")
 }

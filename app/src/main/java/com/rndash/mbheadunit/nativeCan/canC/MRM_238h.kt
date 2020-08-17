@@ -1,5 +1,5 @@
 
-@file:Suppress("unused", "FunctionName")
+@file:Suppress("unused", "FunctionName", "ClassName")
 package com.rndash.mbheadunit.nativeCan.canC
 import com.rndash.mbheadunit.CanFrame // AUTO GEN
 import com.rndash.mbheadunit.nativeCan.CanBusNative // AUTO GEN
@@ -11,101 +11,183 @@ import com.rndash.mbheadunit.nativeCan.CanBusNative // AUTO GEN
 
 object MRM_238h {
 
-    	/** Gets Cruise control lever: "Switch off" **/
+    /** 
+     *  Returns the most recent Can Frame representing the state
+     *  of MRM_238h
+    **/
+    fun get_frame() : CanFrame? = CanBusNative.getCFrame(CanCAddrs.MRM_238h)
+
+	/** Gets Cruise control lever: "Switch off" **/
 	fun get_off() : Boolean = CanBusNative.getECUParameterC(CanCAddrs.MRM_238h, 7, 1) != 0
 	
 	/** Sets Cruise control lever: "Switch off" **/
-	fun set_off(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 7, 1, if(p) 1 else 0)
+	fun set_off(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 7, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets Cruise control lever: "Resume" **/
 	fun get_wa() : Boolean = CanBusNative.getECUParameterC(CanCAddrs.MRM_238h, 6, 1) != 0
 	
 	/** Sets Cruise control lever: "Resume" **/
-	fun set_wa(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 6, 1, if(p) 1 else 0)
+	fun set_wa(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 6, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets Cruise control lever: "Set and accelerate level0" **/
 	fun get_s_plus_b() : Boolean = CanBusNative.getECUParameterC(CanCAddrs.MRM_238h, 5, 1) != 0
 	
 	/** Sets Cruise control lever: "Set and accelerate level0" **/
-	fun set_s_plus_b(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 5, 1, if(p) 1 else 0)
+	fun set_s_plus_b(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 5, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets Cruise control lever: "Set and decelerate level0" **/
 	fun get_s_minus_b() : Boolean = CanBusNative.getECUParameterC(CanCAddrs.MRM_238h, 4, 1) != 0
 	
 	/** Sets Cruise control lever: "Set and decelerate level0" **/
-	fun set_s_minus_b(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 4, 1, if(p) 1 else 0)
+	fun set_s_minus_b(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 4, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets Operation variable speed limit **/
 	fun get_vmax_akt() : Boolean = CanBusNative.getECUParameterC(CanCAddrs.MRM_238h, 3, 1) != 0
 	
 	/** Sets Operation variable speed limit **/
-	fun set_vmax_akt(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 3, 1, if(p) 1 else 0)
+	fun set_vmax_akt(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 3, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets Cruise control lever implausible **/
 	fun get_wh_up() : Boolean = CanBusNative.getECUParameterC(CanCAddrs.MRM_238h, 2, 1) != 0
 	
 	/** Sets Cruise control lever implausible **/
-	fun set_wh_up(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 2, 1, if(p) 1 else 0)
+	fun set_wh_up(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 2, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets message counter **/
 	fun get_bz238h() : Int = CanBusNative.getECUParameterC(CanCAddrs.MRM_238h, 12, 4)
 	
 	/** Sets message counter **/
-	fun set_bz238h(f: CanFrame, p: Int) = CanBusNative.setFrameParameter(f, 12, 4, p)
+	fun set_bz238h(f: CanFrame, p: Int) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 12, 4, p)
+	}
 	
 	/** Gets Cruise control lever parity (even parity) **/
 	fun get_wh_pa() : Boolean = CanBusNative.getECUParameterC(CanCAddrs.MRM_238h, 11, 1) != 0
 	
 	/** Sets Cruise control lever parity (even parity) **/
-	fun set_wh_pa(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 11, 1, if(p) 1 else 0)
+	fun set_wh_pa(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 11, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets direction flashing left **/
 	fun get_bli_li() : Boolean = CanBusNative.getECUParameterC(CanCAddrs.MRM_238h, 9, 1) != 0
 	
 	/** Sets direction flashing left **/
-	fun set_bli_li(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 9, 1, if(p) 1 else 0)
+	fun set_bli_li(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 9, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets right direction flashing **/
 	fun get_bli_re() : Boolean = CanBusNative.getECUParameterC(CanCAddrs.MRM_238h, 8, 1) != 0
 	
 	/** Sets right direction flashing **/
-	fun set_bli_re(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 8, 1, if(p) 1 else 0)
+	fun set_bli_re(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 8, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets steering angle sign **/
 	fun get_lw_vz() : Boolean = CanBusNative.getECUParameterC(CanCAddrs.MRM_238h, 20, 1) != 0
 	
 	/** Sets steering angle sign **/
-	fun set_lw_vz(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 20, 1, if(p) 1 else 0)
+	fun set_lw_vz(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 20, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets Steering angle sensor: not initialized **/
 	fun get_lw_ini() : Boolean = CanBusNative.getECUParameterC(CanCAddrs.MRM_238h, 19, 1) != 0
 	
 	/** Sets Steering angle sensor: not initialized **/
-	fun set_lw_ini(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 19, 1, if(p) 1 else 0)
+	fun set_lw_ini(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 19, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets Steering angle sensor: Code error **/
 	fun get_lw_cf() : Boolean = CanBusNative.getECUParameterC(CanCAddrs.MRM_238h, 18, 1) != 0
 	
 	/** Sets Steering angle sensor: Code error **/
-	fun set_lw_cf(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 18, 1, if(p) 1 else 0)
+	fun set_lw_cf(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 18, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets Steering angle sensor: overflow **/
 	fun get_lw_ov() : Boolean = CanBusNative.getECUParameterC(CanCAddrs.MRM_238h, 17, 1) != 0
 	
 	/** Sets Steering angle sensor: overflow **/
-	fun set_lw_ov(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 17, 1, if(p) 1 else 0)
+	fun set_lw_ov(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 17, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets Steering angle parity (even parity) **/
 	fun get_lw_pa() : Boolean = CanBusNative.getECUParameterC(CanCAddrs.MRM_238h, 16, 1) != 0
 	
 	/** Sets Steering angle parity (even parity) **/
-	fun set_lw_pa(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 16, 1, if(p) 1 else 0)
+	fun set_lw_pa(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 16, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets steering angle **/
 	fun get_lw() : Int = CanBusNative.getECUParameterC(CanCAddrs.MRM_238h, 21, 11)
 	
 	/** Sets steering angle **/
-	fun set_lw(f: CanFrame, p: Int) = CanBusNative.setFrameParameter(f, 21, 11, p)
+	fun set_lw(f: CanFrame, p: Int) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 21, 11, p)
+	}
 	
-	
+	/**
+     * Auto generated function
+     * Throws exception if user tries to set a value in a frame
+     * Not designated from the correct ECU
+    **/
+    private fun checkFrame(f: CanFrame) {
+        if (f.canID != CanCAddrs.MRM_238h.addr) {
+            throw IllegalArgumentException("CAN ID does not match object!")
+        }
+    }
+
+	override fun toString() = """
+		|Cruise control lever: "Switch off": ${get_off()}
+		|Cruise control lever: "Resume": ${get_wa()}
+		|Cruise control lever: "Set and accelerate level0": ${get_s_plus_b()}
+		|Cruise control lever: "Set and decelerate level0": ${get_s_minus_b()}
+		|Operation variable speed limit: ${get_vmax_akt()}
+		|Cruise control lever implausible: ${get_wh_up()}
+		|message counter: ${get_bz238h()}
+		|Cruise control lever parity (even parity): ${get_wh_pa()}
+		|direction flashing left: ${get_bli_li()}
+		|right direction flashing: ${get_bli_re()}
+		|steering angle sign: ${get_lw_vz()}
+		|Steering angle sensor: not initialized: ${get_lw_ini()}
+		|Steering angle sensor: Code error: ${get_lw_cf()}
+		|Steering angle sensor: overflow: ${get_lw_ov()}
+		|Steering angle parity (even parity): ${get_lw_pa()}
+		|steering angle: ${get_lw()}
+	""".trimMargin("|")
 }

@@ -1,5 +1,5 @@
 
-@file:Suppress("unused", "FunctionName")
+@file:Suppress("unused", "FunctionName", "ClassName")
 package com.rndash.mbheadunit.nativeCan.canC
 import com.rndash.mbheadunit.CanFrame // AUTO GEN
 import com.rndash.mbheadunit.nativeCan.CanBusNative // AUTO GEN
@@ -11,41 +11,83 @@ import com.rndash.mbheadunit.nativeCan.CanBusNative // AUTO GEN
 
 object CONFIG_6FFh {
 
-    	/** Gets E-suction fan: basic ventilation off **/
+    /** 
+     *  Returns the most recent Can Frame representing the state
+     *  of CONFIG_6FFh
+    **/
+    fun get_frame() : CanFrame? = CanBusNative.getCFrame(CanCAddrs.CONFIG_6FFh)
+
+	/** Gets E-suction fan: basic ventilation off **/
 	fun get_gbl_aus() : Boolean = CanBusNative.getECUParameterC(CanCAddrs.CONFIG_6FFh, 0, 1) != 0
 	
 	/** Sets E-suction fan: basic ventilation off **/
-	fun set_gbl_aus(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 0, 1, if(p) 1 else 0)
+	fun set_gbl_aus(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 0, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets air conditioning available **/
 	fun get_kla_vh() : Boolean = CanBusNative.getECUParameterC(CanCAddrs.CONFIG_6FFh, 50, 1) != 0
 	
 	/** Sets air conditioning available **/
-	fun set_kla_vh(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 50, 1, if(p) 1 else 0)
+	fun set_kla_vh(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 50, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets transfer case control available **/
 	fun get_vg_vh() : Boolean = CanBusNative.getECUParameterC(CanCAddrs.CONFIG_6FFh, 63, 1) != 0
 	
 	/** Sets transfer case control available **/
-	fun set_vg_vh(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 63, 1, if(p) 1 else 0)
+	fun set_vg_vh(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 63, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets Front differential lock available **/
 	fun get_dsv_vh() : Boolean = CanBusNative.getECUParameterC(CanCAddrs.CONFIG_6FFh, 62, 1) != 0
 	
 	/** Sets Front differential lock available **/
-	fun set_dsv_vh(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 62, 1, if(p) 1 else 0)
+	fun set_dsv_vh(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 62, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets Center differential lock available **/
 	fun get_dsm_vh() : Boolean = CanBusNative.getECUParameterC(CanCAddrs.CONFIG_6FFh, 61, 1) != 0
 	
 	/** Sets Center differential lock available **/
-	fun set_dsm_vh(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 61, 1, if(p) 1 else 0)
+	fun set_dsm_vh(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 61, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets Rear differential lock available **/
 	fun get_dsh_vh() : Boolean = CanBusNative.getECUParameterC(CanCAddrs.CONFIG_6FFh, 60, 1) != 0
 	
 	/** Sets Rear differential lock available **/
-	fun set_dsh_vh(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 60, 1, if(p) 1 else 0)
+	fun set_dsh_vh(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 60, 1, if(p) 1 else 0)
+	}
 	
-	
+	/**
+     * Auto generated function
+     * Throws exception if user tries to set a value in a frame
+     * Not designated from the correct ECU
+    **/
+    private fun checkFrame(f: CanFrame) {
+        if (f.canID != CanCAddrs.CONFIG_6FFh.addr) {
+            throw IllegalArgumentException("CAN ID does not match object!")
+        }
+    }
+
+	override fun toString() = """
+		|E-suction fan: basic ventilation off: ${get_gbl_aus()}
+		|air conditioning available: ${get_kla_vh()}
+		|transfer case control available: ${get_vg_vh()}
+		|Front differential lock available: ${get_dsv_vh()}
+		|Center differential lock available: ${get_dsm_vh()}
+		|Rear differential lock available: ${get_dsh_vh()}
+	""".trimMargin("|")
 }

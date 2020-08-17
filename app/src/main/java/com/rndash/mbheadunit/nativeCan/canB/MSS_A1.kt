@@ -1,5 +1,5 @@
 
-@file:Suppress("unused", "FunctionName")
+@file:Suppress("unused", "FunctionName", "ClassName")
 package com.rndash.mbheadunit.nativeCan.canB
 import com.rndash.mbheadunit.CanFrame // AUTO GEN
 import com.rndash.mbheadunit.nativeCan.CanBusNative // AUTO GEN
@@ -11,119 +11,213 @@ import com.rndash.mbheadunit.nativeCan.CanBusNative // AUTO GEN
 
 object MSS_A1 {
 
-    	/** Gets Close central locking **/
+    /** 
+     *  Returns the most recent Can Frame representing the state
+     *  of MSS_A1
+    **/
+    fun get_frame() : CanFrame? = CanBusNative.getBFrame(CanBAddrs.MSS_A1)
+
+	/** Gets Close central locking **/
 	fun get_zv_zu_mss() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.MSS_A1, 7, 1) != 0
 	
 	/** Sets Close central locking **/
-	fun set_zv_zu_mss(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 7, 1, if(p) 1 else 0)
+	fun set_zv_zu_mss(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 7, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets switch on the interior light **/
 	fun get_il_ein_mss() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.MSS_A1, 6, 1) != 0
 	
 	/** Sets switch on the interior light **/
-	fun set_il_ein_mss(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 6, 1, if(p) 1 else 0)
+	fun set_il_ein_mss(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 6, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets Close the recirculation flaps **/
 	fun get_umluft_mss() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.MSS_A1, 5, 1) != 0
 	
 	/** Sets Close the recirculation flaps **/
-	fun set_umluft_mss(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 5, 1, if(p) 1 else 0)
+	fun set_umluft_mss(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 5, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets Send taxi call for help **/
 	fun get_t_hiru_ein() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.MSS_A1, 4, 1) != 0
 	
 	/** Sets Send taxi call for help **/
-	fun set_t_hiru_ein(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 4, 1, if(p) 1 else 0)
+	fun set_t_hiru_ein(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 4, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets MSS flashing on **/
 	fun get_bli_ein_mss() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.MSS_A1, 3, 1) != 0
 	
 	/** Sets MSS flashing on **/
-	fun set_bli_ein_mss(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 3, 1, if(p) 1 else 0)
+	fun set_bli_ein_mss(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 3, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets switch on the horn **/
 	fun get_sgh_ein_mss() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.MSS_A1, 2, 1) != 0
 	
 	/** Sets switch on the horn **/
-	fun set_sgh_ein_mss(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 2, 1, if(p) 1 else 0)
+	fun set_sgh_ein_mss(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 2, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets switch on fog lights **/
 	fun get_nsw_ein_mss() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.MSS_A1, 1, 1) != 0
 	
 	/** Sets switch on fog lights **/
-	fun set_nsw_ein_mss(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 1, 1, if(p) 1 else 0)
+	fun set_nsw_ein_mss(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 1, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets switch on high beam **/
 	fun get_fl_ein_mss() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.MSS_A1, 0, 1) != 0
 	
 	/** Sets switch on high beam **/
-	fun set_fl_ein_mss(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 0, 1, if(p) 1 else 0)
+	fun set_fl_ein_mss(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 0, 1, if(p) 1 else 0)
+	}
 	
-	/** Gets Duration of blinker light phase UNIT: ms **/
+	/** Gets Duration of blinker light phase  **/
 	fun get_bli_hell_mss() : Int = CanBusNative.getECUParameterB(CanBAddrs.MSS_A1, 8, 8)
 	
-	/** Sets Duration of blinker light phase UNIT: ms **/
-	fun set_bli_hell_mss(f: CanFrame, p: Int) = CanBusNative.setFrameParameter(f, 8, 8, p)
+	/** Sets Duration of blinker light phase  **/
+	fun set_bli_hell_mss(f: CanFrame, p: Int) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 8, 8, p)
+	}
 	
-	/** Gets Duration of the horn UNIT: ms **/
+	/** Gets Duration of the horn  **/
 	fun get_sgh_an_mss() : Int = CanBusNative.getECUParameterB(CanBAddrs.MSS_A1, 16, 8)
 	
-	/** Sets Duration of the horn UNIT: ms **/
-	fun set_sgh_an_mss(f: CanFrame, p: Int) = CanBusNative.setFrameParameter(f, 16, 8, p)
+	/** Sets Duration of the horn  **/
+	fun set_sgh_an_mss(f: CanFrame, p: Int) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 16, 8, p)
+	}
 	
-	/** Gets Duration of fog lamp light phase UNIT: ms **/
+	/** Gets Duration of fog lamp light phase  **/
 	fun get_nsw_hell_mss() : Int = CanBusNative.getECUParameterB(CanBAddrs.MSS_A1, 24, 8)
 	
-	/** Sets Duration of fog lamp light phase UNIT: ms **/
-	fun set_nsw_hell_mss(f: CanFrame, p: Int) = CanBusNative.setFrameParameter(f, 24, 8, p)
+	/** Sets Duration of fog lamp light phase  **/
+	fun set_nsw_hell_mss(f: CanFrame, p: Int) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 24, 8, p)
+	}
 	
-	/** Gets Duration high beam light phase UNIT: ms **/
+	/** Gets Duration high beam light phase  **/
 	fun get_fl_hell_mss() : Int = CanBusNative.getECUParameterB(CanBAddrs.MSS_A1, 32, 8)
 	
-	/** Sets Duration high beam light phase UNIT: ms **/
-	fun set_fl_hell_mss(f: CanFrame, p: Int) = CanBusNative.setFrameParameter(f, 32, 8, p)
+	/** Sets Duration high beam light phase  **/
+	fun set_fl_hell_mss(f: CanFrame, p: Int) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 32, 8, p)
+	}
 	
 	/** Gets Audio Mute **/
 	fun get_audio_mute1() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.MSS_A1, 46, 1) != 0
 	
 	/** Sets Audio Mute **/
-	fun set_audio_mute1(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 46, 1, if(p) 1 else 0)
+	fun set_audio_mute1(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 46, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets Muting the audio source during radio reception **/
 	fun get_audio_mute2() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.MSS_A1, 45, 1) != 0
 	
 	/** Sets Muting the audio source during radio reception **/
-	fun set_audio_mute2(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 45, 1, if(p) 1 else 0)
+	fun set_audio_mute2(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 45, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets 220V external charge is connected **/
 	fun get_laden_akt() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.MSS_A1, 44, 1) != 0
 	
 	/** Sets 220V external charge is connected **/
-	fun set_laden_akt(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 44, 1, if(p) 1 else 0)
+	fun set_laden_akt(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 44, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets Request numeric keypad HU **/
 	fun get_anf_zt() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.MSS_A1, 43, 1) != 0
 	
 	/** Sets Request numeric keypad HU **/
-	fun set_anf_zt(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 43, 1, if(p) 1 else 0)
+	fun set_anf_zt(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 43, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets Switch on the LED authority radio **/
 	fun get_bhf_led_akt() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.MSS_A1, 42, 1) != 0
 	
 	/** Sets Switch on the LED authority radio **/
-	fun set_bhf_led_akt(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 42, 1, if(p) 1 else 0)
+	fun set_bhf_led_akt(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 42, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets Request FBAS input Comand **/
 	fun get_anf_fbas() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.MSS_A1, 41, 1) != 0
 	
 	/** Sets Request FBAS input Comand **/
-	fun set_anf_fbas(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 41, 1, if(p) 1 else 0)
+	fun set_anf_fbas(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 41, 1, if(p) 1 else 0)
+	}
 	
 	/** Gets radio activation active **/
 	fun get_fu_frsp_akt() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.MSS_A1, 40, 1) != 0
 	
 	/** Sets radio activation active **/
-	fun set_fu_frsp_akt(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 40, 1, if(p) 1 else 0)
+	fun set_fu_frsp_akt(f: CanFrame, p: Boolean) : CanFrame? {
+		checkFrame(f)
+		return CanBusNative.setFrameParameter(f, 40, 1, if(p) 1 else 0)
+	}
 	
-	
+	/**
+     * Auto generated function
+     * Throws exception if user tries to set a value in a frame
+     * Not designated from the correct ECU
+    **/
+    private fun checkFrame(f: CanFrame) {
+        if (f.canID != CanBAddrs.MSS_A1.addr) {
+            throw IllegalArgumentException("CAN ID does not match object!")
+        }
+    }
+
+	override fun toString() = """
+		|Close central locking: ${get_zv_zu_mss()}
+		|switch on the interior light: ${get_il_ein_mss()}
+		|Close the recirculation flaps: ${get_umluft_mss()}
+		|Send taxi call for help: ${get_t_hiru_ein()}
+		|MSS flashing on: ${get_bli_ein_mss()}
+		|switch on the horn: ${get_sgh_ein_mss()}
+		|switch on fog lights: ${get_nsw_ein_mss()}
+		|switch on high beam: ${get_fl_ein_mss()}
+		|Duration of blinker light phase : ${get_bli_hell_mss()} ms
+		|Duration of the horn : ${get_sgh_an_mss()} ms
+		|Duration of fog lamp light phase : ${get_nsw_hell_mss()} ms
+		|Duration high beam light phase : ${get_fl_hell_mss()} ms
+		|Audio Mute: ${get_audio_mute1()}
+		|Muting the audio source during radio reception: ${get_audio_mute2()}
+		|220V external charge is connected: ${get_laden_akt()}
+		|Request numeric keypad HU: ${get_anf_zt()}
+		|Switch on the LED authority radio: ${get_bhf_led_akt()}
+		|Request FBAS input Comand: ${get_anf_fbas()}
+		|radio activation active: ${get_fu_frsp_akt()}
+	""".trimMargin("|")
 }
