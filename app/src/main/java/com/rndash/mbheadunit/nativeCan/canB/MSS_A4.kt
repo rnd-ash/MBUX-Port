@@ -92,12 +92,13 @@ object MSS_A4 {
     }
 
 	override fun toString() = """
-		|SHD / power window run: ${get_mod_alarm()}
-		|Direction of alarm activation: ${get_ri_alarm()}
-		|SHD close: ${get_shd_alarm()}
-		|Close the front left window: ${get_fvl_alarm()}
-		|Close the front right window: ${get_fvr_alarm()}
-		|Close the rear left window: ${get_fhl_alarm()}
-		|Close the rear right window: ${get_fhr_alarm()}
+		|Frame MSS_A4 (0x0248):
+		|	SHD / power window run: ${get_mod_alarm()}
+		|	Direction of alarm activation: ${get_ri_alarm()}
+		|	SHD close: ${get_shd_alarm()}
+		|	Close the front left window: ${get_fvl_alarm()}
+		|	Close the front right window: ${get_fvr_alarm()}
+		|	Close the rear left window: ${get_fhl_alarm()}
+		|	Close the rear right window: ${get_fhr_alarm()}
 	""".trimMargin("|")
 }

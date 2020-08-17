@@ -286,32 +286,33 @@ object EZS_A8 {
     }
 
 	override fun toString() = """
-		|refrigerant level control inactive: ${get_kfk_aus()}
-		|Corrosive gas-dependent air recirculation switch off: ${get_sus_aus()}
-		|Corrosive gas-dependent recirculation switch generally on: ${get_sus_ein()}
-		|40% basic ventilation: ${get_gbl_40()}
-		|Fan bar display only in manual mode: ${get_gba_man()}
-		|always REHEAT operation: ${get_rht_ein()}
-		|manual recirculation switching for an unlimited period: ${get_umluft_ubg()}
-		|additional water pump not installed: ${get_zwp_nvh()}
-		|"-1 ° C" hot countries: ${get_heissland_1()}
-		|Solar influence not active: ${get_sol_aus()}
-		|Recirculation flap open in OFF operation: ${get_umluft_aus()}
-		|20% basic ventilation E-suction fan on: ${get_esaugbel_ein()}
-		|Completely close the recirculation flap from <20%: ${get_circulation_on()}
-		|"+ 2 ° C" increase: ${get_kaltland_2()}
-		|"- 2 ° C" reduction: ${get_heissland_2()}
-		|"+ 1 ° C" increase: ${get_kaltland_1()}
-		|pressure characteristic: ${get_p_knl()}
-		|basic ventilation characteristic: ${get_gbl_knl()}
-		|desert lands with sand: ${get_desert_country()}
-		|Autom. Standard logic fan: ${get_asl_gbl()}
-		|Autom. Standard logic air distribution: ${get_asl_lvt()}
-		|"MAXCOOL" display (USA only): ${get_maxcool()}
-		|residual heat utilization available: ${get_rest_vh()}
-		|Inside sensor available in DBE: ${get_ifdbe_vh()}
-		|dew point sensor not available: ${get_tps_nvh()}
-		|Gear shift point increase in case of heating power deficit: ${get_gspa_kla_heiz()}
-		|Gear shift point increase in case of cooling power deficit: ${get_gspa_kla_kuehl()}
+		|Frame EZS_A8 (0x0390):
+		|	refrigerant level control inactive: ${get_kfk_aus()}
+		|	Corrosive gas-dependent air recirculation switch off: ${get_sus_aus()}
+		|	Corrosive gas-dependent recirculation switch generally on: ${get_sus_ein()}
+		|	40% basic ventilation: ${get_gbl_40()}
+		|	Fan bar display only in manual mode: ${get_gba_man()}
+		|	always REHEAT operation: ${get_rht_ein()}
+		|	manual recirculation switching for an unlimited period: ${get_umluft_ubg()}
+		|	additional water pump not installed: ${get_zwp_nvh()}
+		|	"-1 ° C" hot countries: ${get_heissland_1()}
+		|	Solar influence not active: ${get_sol_aus()}
+		|	Recirculation flap open in OFF operation: ${get_umluft_aus()}
+		|	20% basic ventilation E-suction fan on: ${get_esaugbel_ein()}
+		|	Completely close the recirculation flap from <20%: ${get_circulation_on()}
+		|	"+ 2 ° C" increase: ${get_kaltland_2()}
+		|	"- 2 ° C" reduction: ${get_heissland_2()}
+		|	"+ 1 ° C" increase: ${get_kaltland_1()}
+		|	pressure characteristic: ${get_p_knl()}
+		|	basic ventilation characteristic: ${get_gbl_knl()}
+		|	desert lands with sand: ${get_desert_country()}
+		|	Autom. Standard logic fan: ${get_asl_gbl()}
+		|	Autom. Standard logic air distribution: ${get_asl_lvt()}
+		|	"MAXCOOL" display (USA only): ${get_maxcool()}
+		|	residual heat utilization available: ${get_rest_vh()}
+		|	Inside sensor available in DBE: ${get_ifdbe_vh()}
+		|	dew point sensor not available: ${get_tps_nvh()}
+		|	Gear shift point increase in case of heating power deficit: ${get_gspa_kla_heiz()}
+		|	Gear shift point increase in case of cooling power deficit: ${get_gspa_kla_kuehl()}
 	""".trimMargin("|")
 }

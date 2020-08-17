@@ -38,6 +38,7 @@ object DBE_A4 {
     }
 
 	override fun toString() = """
-		|Sliding / tilting roof closed when it rains: ${get_shd_zu_rs()}
+		|Frame DBE_A4 (0x0174):
+		|	Sliding / tilting roof closed when it rains: ${get_shd_zu_rs()}
 	""".trimMargin("|")
 }

@@ -296,33 +296,34 @@ object KOMBI_A1 {
     }
 
 	override fun toString() = """
-		|Brightness of instrument lighting : ${get_kl_58d_b()} %
-		|vehicle speed : ${get_v_signal()} km / h
-		|mirror in parking position: ${get_sp_park_sperr()}
-		|key dependency on: ${get_schlue_abh_ein()}
-		|Switch on trailer monitoring: ${get_anh_uebw()}
-		|daytime running lights on: ${get_tfl_ein()}
-		|temperature unit: ${get_t_c()}
-		|Automatic door locking: ${get_auto_tuer()}
-		|minimum tank level: ${get_tfsm_b()}
-		|switch on roof sign (taxi): ${get_dz_ein()}
-		|entry aid / autom. Positioning a: ${get_esh_auto_ein()}
-		|steering column adjustment with I / O help on: ${get_esh_lenk_ein()}
-		|Seat adjustment with I / O help on: ${get_esh_sitz_ein()}
-		|Seat adjustment path with I / O help on standard: ${get_esh_pos_std()}
-		|Mirror folding in with vehicle locking: ${get_sp_ankl_sperr()}
-		|Save longitudinal seat position for I / O help: ${get_esh_pos_sp()}
-		|language: ${get_language()}
-		|Surrounding lighting on: ${get_ufb_ein()}
-		|Switching on the high beam is permitted: ${get_fl_ok()}
-		|trip computer distance unit: ${get_rr_km()}
-		|search run: ${get_slf()}
-		|activate RDK: ${get_rdk_akt()}
-		|Interior protection on when the convertible top is open: ${get_irs_vdk_ein()}
-		|Preselection time deactivated via MFL (LED off): ${get_vwz_aus_mfl()}
-		|preset time activated (LED on): ${get_vwz_akt()}
-		|switch on auxiliary heating / ventilation: ${get_sthl_ein_kombi()}
-		|interior lighting afterglow time : ${get_inli_nlz()} s
-		|parking light or fog light afterglow time (SWA) : ${get_abl_nlz()} s
+		|Frame KOMBI_A1 (0x000C):
+		|	Brightness of instrument lighting : ${get_kl_58d_b()} %
+		|	vehicle speed : ${get_v_signal()} km / h
+		|	mirror in parking position: ${get_sp_park_sperr()}
+		|	key dependency on: ${get_schlue_abh_ein()}
+		|	Switch on trailer monitoring: ${get_anh_uebw()}
+		|	daytime running lights on: ${get_tfl_ein()}
+		|	temperature unit: ${get_t_c()}
+		|	Automatic door locking: ${get_auto_tuer()}
+		|	minimum tank level: ${get_tfsm_b()}
+		|	switch on roof sign (taxi): ${get_dz_ein()}
+		|	entry aid / autom. Positioning a: ${get_esh_auto_ein()}
+		|	steering column adjustment with I / O help on: ${get_esh_lenk_ein()}
+		|	Seat adjustment with I / O help on: ${get_esh_sitz_ein()}
+		|	Seat adjustment path with I / O help on standard: ${get_esh_pos_std()}
+		|	Mirror folding in with vehicle locking: ${get_sp_ankl_sperr()}
+		|	Save longitudinal seat position for I / O help: ${get_esh_pos_sp()}
+		|	language: ${get_language()}
+		|	Surrounding lighting on: ${get_ufb_ein()}
+		|	Switching on the high beam is permitted: ${get_fl_ok()}
+		|	trip computer distance unit: ${get_rr_km()}
+		|	search run: ${get_slf()}
+		|	activate RDK: ${get_rdk_akt()}
+		|	Interior protection on when the convertible top is open: ${get_irs_vdk_ein()}
+		|	Preselection time deactivated via MFL (LED off): ${get_vwz_aus_mfl()}
+		|	preset time activated (LED on): ${get_vwz_akt()}
+		|	switch on auxiliary heating / ventilation: ${get_sthl_ein_kombi()}
+		|	interior lighting afterglow time : ${get_inli_nlz()} s
+		|	parking light or fog light afterglow time (SWA) : ${get_abl_nlz()} s
 	""".trimMargin("|")
 }

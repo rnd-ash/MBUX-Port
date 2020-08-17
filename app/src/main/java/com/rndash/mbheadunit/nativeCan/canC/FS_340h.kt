@@ -38,6 +38,7 @@ object FS_340h {
     }
 
 	override fun toString() = """
-		|Load torque ABC pump: ${get_m_last()}
+		|Frame FS_340h (0x0340):
+		|	Load torque ABC pump: ${get_m_last()}
 	""".trimMargin("|")
 }

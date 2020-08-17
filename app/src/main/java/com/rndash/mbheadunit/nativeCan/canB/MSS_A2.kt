@@ -182,22 +182,23 @@ object MSS_A2 {
     }
 
 	override fun toString() = """
-		|Electronics on the MSS defective: ${get_mss_ee_def()}
-		|Emergency alarm system defective: ${get_notalm_def()}
-		|Silent alarm triggered: ${get_mss_alm()}
-		|MSS detects undervoltage: ${get_mss_uspg()}
-		|roof sign defective (short circuit): ${get_dz_def()}
-		|check roof sign (interruption): ${get_dz_prf()}
-		|Roof sign lamp defect: ${get_dz_la_def()}
-		|Roof sign control lamp on: ${get_dz_kl()}
-		|fog cartridge empty: ${get_np_leer()}
-		|Fog system activated: ${get_nebel_akt()}
-		|Fog system out of order: ${get_nebel_aus()}
-		|fresh air bottle empty: ${get_o2_leer()}
-		|fresh air system activated: ${get_o2_akt()}
-		|fresh air system out of order: ${get_o2_aus()}
-		|control buzzer in combi: ${get_mss_summer()}
-		|radio status: ${get_fnk_stat()}
-		|MSS detects undervoltage when the motor is running: ${get_mss_uspg_mo()}
+		|Frame MSS_A2 (0x01AE):
+		|	Electronics on the MSS defective: ${get_mss_ee_def()}
+		|	Emergency alarm system defective: ${get_notalm_def()}
+		|	Silent alarm triggered: ${get_mss_alm()}
+		|	MSS detects undervoltage: ${get_mss_uspg()}
+		|	roof sign defective (short circuit): ${get_dz_def()}
+		|	check roof sign (interruption): ${get_dz_prf()}
+		|	Roof sign lamp defect: ${get_dz_la_def()}
+		|	Roof sign control lamp on: ${get_dz_kl()}
+		|	fog cartridge empty: ${get_np_leer()}
+		|	Fog system activated: ${get_nebel_akt()}
+		|	Fog system out of order: ${get_nebel_aus()}
+		|	fresh air bottle empty: ${get_o2_leer()}
+		|	fresh air system activated: ${get_o2_akt()}
+		|	fresh air system out of order: ${get_o2_aus()}
+		|	control buzzer in combi: ${get_mss_summer()}
+		|	radio status: ${get_fnk_stat()}
+		|	MSS detects undervoltage when the motor is running: ${get_mss_uspg_mo()}
 	""".trimMargin("|")
 }

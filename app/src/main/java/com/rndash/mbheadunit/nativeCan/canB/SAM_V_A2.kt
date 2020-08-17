@@ -65,9 +65,10 @@ object SAM_V_A2 {
     }
 
 	override fun toString() = """
-		|outside air temperature : ${get_t_aussen_b()} ° C
-		|pressure refrigerant R134a : ${get_p_kaelte()} bar
-		|temperature refrigerant R134a : ${get_t_kaelte()} ° C
-		|Current compressor main control valve : ${get_i_komp()} mA
+		|Frame SAM_V_A2 (0x0017):
+		|	outside air temperature : ${get_t_aussen_b()} ° C
+		|	pressure refrigerant R134a : ${get_p_kaelte()} bar
+		|	temperature refrigerant R134a : ${get_t_kaelte()} ° C
+		|	Current compressor main control valve : ${get_i_komp()} mA
 	""".trimMargin("|")
 }

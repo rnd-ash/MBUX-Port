@@ -38,6 +38,7 @@ object TP_AGW_KOMBI1 {
     }
 
 	override fun toString() = """
-		|communication AGW to KOMBI: ${get_tp_agw_kombi()}
+		|Frame TP_AGW_KOMBI1 (0x01A4):
+		|	communication AGW to KOMBI: ${get_tp_agw_kombi()}
 	""".trimMargin("|")
 }

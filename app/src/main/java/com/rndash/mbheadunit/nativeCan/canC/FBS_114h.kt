@@ -38,6 +38,7 @@ object FBS_114h {
     }
 
 	override fun toString() = """
-		|FBS message to EWM (8 bytes): ${get_fbs_ewm()}
+		|Frame FBS_114h (0x0114):
+		|	FBS message to EWM (8 bytes): ${get_fbs_ewm()}
 	""".trimMargin("|")
 }

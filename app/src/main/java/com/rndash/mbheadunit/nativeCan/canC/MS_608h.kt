@@ -248,18 +248,19 @@ object MS_608h {
     }
 
 	override fun toString() = """
-		|engine coolant temperature: ${get_t_mot()}
-		|intake air temperature: ${get_t_luft()}
-		|vehicle code series: ${get_fcod_br()}
-		|vehicle code body: ${get_fcod_kar()}
-		|Vehicle code motor 7Bit, Bit0-5 (Bit6 -> Signal FCOD_MOT6): ${get_fcod_mot()}
-		|transmission control not available: ${get_gs_nvh()}
-		|Vehicle code engine with 7 bits, bit 6: ${get_fcod_mot6()}
-		|Fixed maximum speed: ${get_v_max_fix()}
-		|consumption: ${get_vb()}
-		|Particle filter correction offset FMMOTMAX: ${get_pfko()}
-		|switch on additional consumer: ${get_zvb_ein_ms()}
-		|Particle filter warning: ${get_pfw()}
-		|switch on additional water pump: ${get_zwp_ein_ms()}
+		|Frame MS_608h (0x0608):
+		|	engine coolant temperature: ${get_t_mot()}
+		|	intake air temperature: ${get_t_luft()}
+		|	vehicle code series: ${get_fcod_br()}
+		|	vehicle code body: ${get_fcod_kar()}
+		|	Vehicle code motor 7Bit, Bit0-5 (Bit6 -> Signal FCOD_MOT6): ${get_fcod_mot()}
+		|	transmission control not available: ${get_gs_nvh()}
+		|	Vehicle code engine with 7 bits, bit 6: ${get_fcod_mot6()}
+		|	Fixed maximum speed: ${get_v_max_fix()}
+		|	consumption: ${get_vb()}
+		|	Particle filter correction offset FMMOTMAX: ${get_pfko()}
+		|	switch on additional consumer: ${get_zvb_ein_ms()}
+		|	Particle filter warning: ${get_pfw()}
+		|	switch on additional water pump: ${get_zwp_ein_ms()}
 	""".trimMargin("|")
 }

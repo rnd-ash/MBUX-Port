@@ -38,6 +38,7 @@ object EZS_A3 {
     }
 
 	override fun toString() = """
-		|Mileage (up to AY 2002/1) : ${get_km_ezs_alt()} km
+		|Frame EZS_A3 (0x01B8):
+		|	Mileage (up to AY 2002/1) : ${get_km_ezs_alt()} km
 	""".trimMargin("|")
 }

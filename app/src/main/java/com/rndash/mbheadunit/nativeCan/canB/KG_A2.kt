@@ -92,12 +92,13 @@ object KG_A2 {
     }
 
 	override fun toString() = """
-		|Comfort control mode: ${get_kb_mod_kg()}
-		|direction of comfort actuation: ${get_kb_ri_kg()}
-		|SHD / open / close convertible top: ${get_shd_kg()}
-		|Open / close front left window: ${get_fvl_kg()}
-		|Open / close front right window: ${get_fvr_kg()}
-		|Open / close rear left window: ${get_fhl_kg()}
-		|Open / close rear right window: ${get_fhr_kg()}
+		|Frame KG_A2 (0x0050):
+		|	Comfort control mode: ${get_kb_mod_kg()}
+		|	direction of comfort actuation: ${get_kb_ri_kg()}
+		|	SHD / open / close convertible top: ${get_shd_kg()}
+		|	Open / close front left window: ${get_fvl_kg()}
+		|	Open / close front right window: ${get_fvr_kg()}
+		|	Open / close rear left window: ${get_fhl_kg()}
+		|	Open / close rear right window: ${get_fhr_kg()}
 	""".trimMargin("|")
 }

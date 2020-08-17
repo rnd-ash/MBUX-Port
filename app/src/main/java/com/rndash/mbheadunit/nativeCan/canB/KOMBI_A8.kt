@@ -268,30 +268,31 @@ object KOMBI_A8 {
     }
 
 	override fun toString() = """
-		|Status combi: ${get_ki_stat_mss()}
-		|Next display: ${get_button_1_1_mss()}
-		|previous display: ${get_button_1_2_mss()}
-		|reserve: ${get_button_2_1_mss()}
-		|reserve: ${get_button_2_2_mss()}
-		|"+" button: ${get_button_3_1_mss()}
-		|button "-": ${get_button_3_2_mss()}
-		|Telephone Send: ${get_button_4_1_mss()}
-		|Telephone End: ${get_button_4_2_mss()}
-		|reserve: ${get_button_5_1_mss()}
-		|reserve: ${get_button_5_2_mss()}
-		|reserve: ${get_button_6_1_mss()}
-		|reserve: ${get_button_6_2_mss()}
-		|reserve: ${get_button_7_1_mss()}
-		|reserve: ${get_button_7_2_mss()}
-		|reserve: ${get_button_8_1_mss()}
-		|reserve: ${get_button_8_2_mss()}
-		|Activate Linguatronic: ${get_ptt_1_1_mss()}
-		|Deactivate Linguatronic: ${get_ptt_1_2_mss()}
-		|reserve: ${get_ptt_2_1_mss()}
-		|reserve: ${get_ptt_2_2_mss()}
-		|reserve: ${get_ptt_3_1_mss()}
-		|reserve: ${get_ptt_3_2_mss()}
-		|reserve: ${get_ptt_4_1_mss()}
-		|reserve: ${get_ptt_4_2_mss()}
+		|Frame KOMBI_A8 (0x032A):
+		|	Status combi: ${get_ki_stat_mss()}
+		|	Next display: ${get_button_1_1_mss()}
+		|	previous display: ${get_button_1_2_mss()}
+		|	reserve: ${get_button_2_1_mss()}
+		|	reserve: ${get_button_2_2_mss()}
+		|	"+" button: ${get_button_3_1_mss()}
+		|	button "-": ${get_button_3_2_mss()}
+		|	Telephone Send: ${get_button_4_1_mss()}
+		|	Telephone End: ${get_button_4_2_mss()}
+		|	reserve: ${get_button_5_1_mss()}
+		|	reserve: ${get_button_5_2_mss()}
+		|	reserve: ${get_button_6_1_mss()}
+		|	reserve: ${get_button_6_2_mss()}
+		|	reserve: ${get_button_7_1_mss()}
+		|	reserve: ${get_button_7_2_mss()}
+		|	reserve: ${get_button_8_1_mss()}
+		|	reserve: ${get_button_8_2_mss()}
+		|	Activate Linguatronic: ${get_ptt_1_1_mss()}
+		|	Deactivate Linguatronic: ${get_ptt_1_2_mss()}
+		|	reserve: ${get_ptt_2_1_mss()}
+		|	reserve: ${get_ptt_2_2_mss()}
+		|	reserve: ${get_ptt_3_1_mss()}
+		|	reserve: ${get_ptt_3_2_mss()}
+		|	reserve: ${get_ptt_4_1_mss()}
+		|	reserve: ${get_ptt_4_2_mss()}
 	""".trimMargin("|")
 }

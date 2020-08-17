@@ -47,7 +47,8 @@ object EZS_A4 {
     }
 
 	override fun toString() = """
-		|Identification key for pre-filtering: ${get_schlue_id()}
-		|Mileage : ${get_km_ezs()} km
+		|Frame EZS_A4 (0x0058):
+		|	Identification key for pre-filtering: ${get_schlue_id()}
+		|	Mileage : ${get_km_ezs()} km
 	""".trimMargin("|")
 }

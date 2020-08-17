@@ -65,9 +65,10 @@ object SAM_H_A5 {
     }
 
 	override fun toString() = """
-		|switch on tail light: ${get_sl_ein_edw()}
-		|switch on low beam: ${get_abl_ein_edw()}
-		|switch on fog lights: ${get_nsw_ein_edw()}
-		|Duration light-bright phase : ${get_hell_edw()} ms
+		|Frame SAM_H_A5 (0x0230):
+		|	switch on tail light: ${get_sl_ein_edw()}
+		|	switch on low beam: ${get_abl_ein_edw()}
+		|	switch on fog lights: ${get_nsw_ein_edw()}
+		|	Duration light-bright phase : ${get_hell_edw()} ms
 	""".trimMargin("|")
 }

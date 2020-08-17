@@ -83,11 +83,12 @@ object TELEAID_POS3 {
     }
 
 	override fun toString() = """
-		|GPS date year : ${get_gps_date_year()} years
-		|GPS date month : ${get_gps_date_month()} months
-		|GPS date day : ${get_gps_date_day()} days
-		|GPS UTC hour : ${get_gps_utc_hour()} h
-		|GPS UTC minute : ${get_gps_utc_minute()} min
-		|GPS UTC second : ${get_gps_utc_second()} s
+		|Frame TELEAID_POS3 (0x03E7):
+		|	GPS date year : ${get_gps_date_year()} years
+		|	GPS date month : ${get_gps_date_month()} months
+		|	GPS date day : ${get_gps_date_day()} days
+		|	GPS UTC hour : ${get_gps_utc_hour()} h
+		|	GPS UTC minute : ${get_gps_utc_minute()} min
+		|	GPS UTC second : ${get_gps_utc_second()} s
 	""".trimMargin("|")
 }

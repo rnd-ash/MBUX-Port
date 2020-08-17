@@ -56,8 +56,9 @@ object KOMBI_A7 {
     }
 
 	override fun toString() = """
-		|Display dimming : ${get_disp_dimm()} %
-		|trunk lid limitation on: ${get_hd_begrenz()}
-		|Radio data menu activated: ${get_datenf_menu_akt()}
+		|Frame KOMBI_A7 (0x0194):
+		|	Display dimming : ${get_disp_dimm()} %
+		|	trunk lid limitation on: ${get_hd_begrenz()}
+		|	Radio data menu activated: ${get_datenf_menu_akt()}
 	""".trimMargin("|")
 }

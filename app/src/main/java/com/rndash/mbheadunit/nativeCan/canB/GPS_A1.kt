@@ -47,7 +47,8 @@ object GPS_A1 {
     }
 
 	override fun toString() = """
-		|GPS Latitude (+ = North) : ${get_latitude()} ms
-		|GPS Longitude (+ = East) : ${get_longitude()} ms
+		|Frame GPS_A1 (0x0338):
+		|	GPS Latitude (+ = North) : ${get_latitude()} ms
+		|	GPS Longitude (+ = East) : ${get_longitude()} ms
 	""".trimMargin("|")
 }

@@ -38,6 +38,7 @@ object SB_A1 {
     }
 
 	override fun toString() = """
-		|passenger seat backrest unlocked: ${get_le_b_ent()}
+		|Frame SB_A1 (0x01B6):
+		|	passenger seat backrest unlocked: ${get_le_b_ent()}
 	""".trimMargin("|")
 }

@@ -38,6 +38,7 @@ object PTS_A1 {
     }
 
 	override fun toString() = """
-		|PTS is completely switched off: ${get_pts_st_aus()}
+		|Frame PTS_A1 (0x02B0):
+		|	PTS is completely switched off: ${get_pts_st_aus()}
 	""".trimMargin("|")
 }

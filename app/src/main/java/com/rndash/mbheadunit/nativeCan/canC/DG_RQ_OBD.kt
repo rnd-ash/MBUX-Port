@@ -38,6 +38,7 @@ object DG_RQ_OBD {
     }
 
 	override fun toString() = """
-		|KWP2000 diagnosis request: ${get_d_rq()}
+		|Frame DG_RQ_OBD (0x07DF):
+		|	KWP2000 diagnosis request: ${get_d_rq()}
 	""".trimMargin("|")
 }

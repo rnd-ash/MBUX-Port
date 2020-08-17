@@ -173,21 +173,22 @@ object ARMADA_A2 {
     }
 
 	override fun toString() = """
-		|frontal event 1: ${get_crash_a()}
-		|rear event 1: ${get_crash_b()}
-		|frontal event 5: ${get_crash_c()}
-		|side event 1: ${get_crash_d()}
-		|rear event 2: ${get_crash_e()}
-		|frontal event 2: ${get_crash_f()}
-		|rollover event 1: ${get_crash_g()}
-		|Confirm bit for all crash events, toggling: ${get_conf_crash()}
-		|rollover event 2: ${get_crash_h()}
-		|rollover event 3: ${get_crash_i()}
-		|rear event 3: ${get_crash_k()}
-		|side event 2: ${get_crash_l()}
-		|event tbd: ${get_crash_m()}
-		|event tbd: ${get_crash_n()}
-		|event tbd: ${get_crash_o()}
-		|Any crash event: ${get_x_crash()}
+		|Frame ARMADA_A2 (0x0040):
+		|	frontal event 1: ${get_crash_a()}
+		|	rear event 1: ${get_crash_b()}
+		|	frontal event 5: ${get_crash_c()}
+		|	side event 1: ${get_crash_d()}
+		|	rear event 2: ${get_crash_e()}
+		|	frontal event 2: ${get_crash_f()}
+		|	rollover event 1: ${get_crash_g()}
+		|	Confirm bit for all crash events, toggling: ${get_conf_crash()}
+		|	rollover event 2: ${get_crash_h()}
+		|	rollover event 3: ${get_crash_i()}
+		|	rear event 3: ${get_crash_k()}
+		|	side event 2: ${get_crash_l()}
+		|	event tbd: ${get_crash_m()}
+		|	event tbd: ${get_crash_n()}
+		|	event tbd: ${get_crash_o()}
+		|	Any crash event: ${get_x_crash()}
 	""".trimMargin("|")
 }

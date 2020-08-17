@@ -38,6 +38,7 @@ object FBS_110h {
     }
 
 	override fun toString() = """
-		|FBS message to MS (8 bytes): ${get_ifz_st()}
+		|Frame FBS_110h (0x0110):
+		|	FBS message to MS (8 bytes): ${get_ifz_st()}
 	""".trimMargin("|")
 }

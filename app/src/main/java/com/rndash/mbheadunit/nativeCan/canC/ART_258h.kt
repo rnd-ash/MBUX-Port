@@ -308,31 +308,32 @@ object ART_258h {
     }
 
 	override fun toString() = """
-		|ART error code: ${get_art_err()}
-		|ART info lamp: ${get_art_info()}
-		|ART warning tone: ${get_art_wt()}
-		|Detection of stationary object: ${get_s_obj()}
-		|Switch display to ART display: ${get_art_dspl_ein()}
-		|set ART speed: ${get_v_art()}
-		|Distance relevant object: ${get_abst_r_obj()}
-		|driver's desired distance: ${get_soll_abst()}
-		|ART-Tempomat switched on: ${get_tm_ein_art()}
-		|speed display flashing: ${get_art_dspl_bl()}
-		|Switch on ART segment display: ${get_art_seg_ein()}
-		|Relevant object recognized: ${get_obj_erk()}
-		|Adaptive cruise control switched on: ${get_art_ein()}
-		|Indication "---" on the display: ${get_art_dspl_lim()}
-		|Indication "DTR AUS [0]" on the display: ${get_art_vfbr()}
-		|"Winter tire limit reached" on the display: ${get_art_dspl_pgb()}
-		|speed of detected target vehicle: ${get_v_ziel()}
-		|Active function: ${get_assist_fkt_akt()}
-		|LED distance assistant flash: ${get_aas_led_bl()}
-		|Object offer distance assistant: ${get_obj_agb()}
-		|ART distance warning is switched on: ${get_art_abw_akt()}
-		|Display of the system availability after system errors: ${get_art_reakt()}
-		|ART is overridden by the driver: ${get_art_uebersp()}
-		|Re-trigger the minimum display time: ${get_art_dspl_neu()}
-		|assistance system display request: ${get_assist_anz_v2()}
-		|CAS display request: ${get_cas_err_anz_v2()}
+		|Frame ART_258h (0x0258):
+		|	ART error code: ${get_art_err()}
+		|	ART info lamp: ${get_art_info()}
+		|	ART warning tone: ${get_art_wt()}
+		|	Detection of stationary object: ${get_s_obj()}
+		|	Switch display to ART display: ${get_art_dspl_ein()}
+		|	set ART speed: ${get_v_art()}
+		|	Distance relevant object: ${get_abst_r_obj()}
+		|	driver's desired distance: ${get_soll_abst()}
+		|	ART-Tempomat switched on: ${get_tm_ein_art()}
+		|	speed display flashing: ${get_art_dspl_bl()}
+		|	Switch on ART segment display: ${get_art_seg_ein()}
+		|	Relevant object recognized: ${get_obj_erk()}
+		|	Adaptive cruise control switched on: ${get_art_ein()}
+		|	Indication "---" on the display: ${get_art_dspl_lim()}
+		|	Indication "DTR AUS [0]" on the display: ${get_art_vfbr()}
+		|	"Winter tire limit reached" on the display: ${get_art_dspl_pgb()}
+		|	speed of detected target vehicle: ${get_v_ziel()}
+		|	Active function: ${get_assist_fkt_akt()}
+		|	LED distance assistant flash: ${get_aas_led_bl()}
+		|	Object offer distance assistant: ${get_obj_agb()}
+		|	ART distance warning is switched on: ${get_art_abw_akt()}
+		|	Display of the system availability after system errors: ${get_art_reakt()}
+		|	ART is overridden by the driver: ${get_art_uebersp()}
+		|	Re-trigger the minimum display time: ${get_art_dspl_neu()}
+		|	assistance system display request: ${get_assist_anz_v2()}
+		|	CAS display request: ${get_cas_err_anz_v2()}
 	""".trimMargin("|")
 }

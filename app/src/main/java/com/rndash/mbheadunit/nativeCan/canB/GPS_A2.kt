@@ -83,11 +83,12 @@ object GPS_A2 {
     }
 
 	override fun toString() = """
-		|UTC years : ${get_utc_years()} years
-		|UTC months : ${get_utc_months()} months
-		|UTC days : ${get_utc_days()} days
-		|UTC hours : ${get_utc_hours()} h
-		|UTC minutes : ${get_utc_minutes()} min
-		|UTC seconds : ${get_utc_seconds()} s
+		|Frame GPS_A2 (0x0339):
+		|	UTC years : ${get_utc_years()} years
+		|	UTC months : ${get_utc_months()} months
+		|	UTC days : ${get_utc_days()} days
+		|	UTC hours : ${get_utc_hours()} h
+		|	UTC minutes : ${get_utc_minutes()} min
+		|	UTC seconds : ${get_utc_seconds()} s
 	""".trimMargin("|")
 }

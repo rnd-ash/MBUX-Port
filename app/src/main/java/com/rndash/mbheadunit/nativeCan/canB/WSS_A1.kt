@@ -101,10 +101,11 @@ object WSS_A1 {
     }
 
 	override fun toString() = """
-		|Weight classification passenger: ${get_wss_psg()}
-		|Weight classification passenger fault: ${get_wss_psg_fault()}
-		|Passenger Detection Fast: ${get_psg_detect_fast()}
-		|WSS Identification: ${get_wss_id()}
-		|WSS display in the combi: ${get_wss_anz()}
+		|Frame WSS_A1 (0x02A4):
+		|	Weight classification passenger: ${get_wss_psg()}
+		|	Weight classification passenger fault: ${get_wss_psg_fault()}
+		|	Passenger Detection Fast: ${get_psg_detect_fast()}
+		|	WSS Identification: ${get_wss_id()}
+		|	WSS display in the combi: ${get_wss_anz()}
 	""".trimMargin("|")
 }

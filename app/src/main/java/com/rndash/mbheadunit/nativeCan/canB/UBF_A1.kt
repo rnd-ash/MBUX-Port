@@ -98,12 +98,13 @@ object UBF_A1 {
     }
 
 	override fun toString() = """
-		|Radio activation button pressed: ${get_fu_frsp_bet()}
-		|ASG sport mode on / off activated (ST2_LED_DL if ABC is available): ${get_asg_sport_bet()}
-		|ART distance warning on / off activated: ${get_art_abw_bet()}
-		|distance factor: ${get_art_abstand()}
-		|Authority radio button pressed: ${get_bh_funk_bet()}
-		|LEDs for auxiliary heater defective: ${get_led_sth_def()}
-		|Auxiliary heating switch actuated: ${get_sthl_bet()}
+		|Frame UBF_A1 (0x001A):
+		|	Radio activation button pressed: ${get_fu_frsp_bet()}
+		|	ASG sport mode on / off activated (ST2_LED_DL if ABC is available): ${get_asg_sport_bet()}
+		|	ART distance warning on / off activated: ${get_art_abw_bet()}
+		|	distance factor: ${get_art_abstand()}
+		|	Authority radio button pressed: ${get_bh_funk_bet()}
+		|	LEDs for auxiliary heater defective: ${get_led_sth_def()}
+		|	Auxiliary heating switch actuated: ${get_sthl_bet()}
 	""".trimMargin("|")
 }

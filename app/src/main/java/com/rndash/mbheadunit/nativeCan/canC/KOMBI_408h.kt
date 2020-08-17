@@ -218,24 +218,25 @@ object KOMBI_408h {
     }
 
 	override fun toString() = """
-		|tank level: ${get_tank_fs()}
-		|Terminal 61 decoupled: ${get_kl_61e()}
-		|minimum tank level: ${get_tfsm()}
-		|Pre-glow control lamp defective: ${get_vgl_kl_def()}
-		|air conditioning available: ${get_kla_vh()}
-		|mph instead of km / h (variable speed limit): ${get_v_mph()}
-		|Tacho calibration: ${get_tacho_sym()}
-		|Speed ​​limiter / tempomat display not possible: ${get_v_dspl_aus()}
-		|driver's door open: ${get_tf_auf()}
-		|Raw outside air temperature: ${get_t_aussen()}
-		|Terminal 58 dimmed: ${get_kl_58d()}
-		|engine shutdown time (is sent from terminal 15): ${get_maz()}
-		|mileage: ${get_km16()}
-		|maximum winter tire speed with 4 bits: ${get_wrc()}
-		|Activate roller test mode ESP: ${get_rt_ein()}
-		|Enable auxiliary heater: ${get_zh_freig()}
-		|segment tachometer available: ${get_sgt_vh()}
-		|Speed ​​limiter / cruise control display active: ${get_v_dspl_akt()}
-		|Winter tire maximum speed bit 3: ${get_wrc3()}
+		|Frame KOMBI_408h (0x0408):
+		|	tank level: ${get_tank_fs()}
+		|	Terminal 61 decoupled: ${get_kl_61e()}
+		|	minimum tank level: ${get_tfsm()}
+		|	Pre-glow control lamp defective: ${get_vgl_kl_def()}
+		|	air conditioning available: ${get_kla_vh()}
+		|	mph instead of km / h (variable speed limit): ${get_v_mph()}
+		|	Tacho calibration: ${get_tacho_sym()}
+		|	Speed ​​limiter / tempomat display not possible: ${get_v_dspl_aus()}
+		|	driver's door open: ${get_tf_auf()}
+		|	Raw outside air temperature: ${get_t_aussen()}
+		|	Terminal 58 dimmed: ${get_kl_58d()}
+		|	engine shutdown time (is sent from terminal 15): ${get_maz()}
+		|	mileage: ${get_km16()}
+		|	maximum winter tire speed with 4 bits: ${get_wrc()}
+		|	Activate roller test mode ESP: ${get_rt_ein()}
+		|	Enable auxiliary heater: ${get_zh_freig()}
+		|	segment tachometer available: ${get_sgt_vh()}
+		|	Speed ​​limiter / cruise control display active: ${get_v_dspl_akt()}
+		|	Winter tire maximum speed bit 3: ${get_wrc3()}
 	""".trimMargin("|")
 }

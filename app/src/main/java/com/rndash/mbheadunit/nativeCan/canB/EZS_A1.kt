@@ -363,41 +363,42 @@ object EZS_A1 {
     }
 
 	override fun toString() = """
-		|Authentic key is inserted (position 0): ${get_kl_15c_ein()}
-		|Terminal 15R is switched on: ${get_kl_15r_ein()}
-		|Terminal 15 is switched on: ${get_kl_15_ein()}
-		|Terminal 15X is switched on: ${get_kl_15x_ein()}
-		|Terminal 50 is switched on: ${get_kl_50_ein()}
-		|Keyless Go terminal control active: ${get_kg_kl_akt()}
-		|Remote triggering of the MSS alarm: ${get_fern_alarm()}
-		|Panic alarm by key on: ${get_pnk_alm_ein()}
-		|Panic alarm by key off: ${get_pnk_alm_aus()}
-		|Do not send application IDs, only NM IDs: ${get_appl_aus()}
-		|Diagnosis toggle bit: ${get_diag_tgl()}
-		|Message: "Vehicle is calculating, please wait": ${get_fzg_rech()}
-		|Current memory block number: ${get_spei_nr()}
-		|Stop the trunk lid: ${get_hd_stopp()}
-		|Backlash protection active: ${get_zv_spiel()}
-		|Passive locking: ${get_zv_passiv()}
-		|Message: Renew key: ${get_schlue_neu()}
-		|Unlock ZV blinker feedback: ${get_bli_entsi()}
-		|ZV secure blinker feedback: ${get_bli_sich()}
-		|External release: ${get_auss_entsi()}
-		|external security: ${get_auss_sich()}
-		|Mechanical / FB key active: ${get_schl_bef()}
-		|ZV post-locking: ${get_zv_nv()}
-		|Unlock the tank lid (HSF / storage compartments): ${get_td_entri()}
-		|Lock the tank lid (HSF / storage compartments): ${get_td_verri()}
-		|Unlock the trunk lid: ${get_hd_entsi()}
-		|secure trunk lid: ${get_hd_sich()}
-		|trunk lid remote unlocking: ${get_hfe_ezs()}
-		|Unlock the front left door: ${get_tvl_entri()}
-		|lock the front left door: ${get_tvl_verri()}
-		|Unlock the front right door: ${get_tvr_entri()}
-		|lock the front right door: ${get_tvr_verri()}
-		|Unlock the rear left door: ${get_thl_entri()}
-		|Lock the rear left door: ${get_thl_verri()}
-		|Unlock the rear right door: ${get_thr_entri()}
-		|Lock the rear right door: ${get_thr_verri()}
+		|Frame EZS_A1 (0x0000):
+		|	Authentic key is inserted (position 0): ${get_kl_15c_ein()}
+		|	Terminal 15R is switched on: ${get_kl_15r_ein()}
+		|	Terminal 15 is switched on: ${get_kl_15_ein()}
+		|	Terminal 15X is switched on: ${get_kl_15x_ein()}
+		|	Terminal 50 is switched on: ${get_kl_50_ein()}
+		|	Keyless Go terminal control active: ${get_kg_kl_akt()}
+		|	Remote triggering of the MSS alarm: ${get_fern_alarm()}
+		|	Panic alarm by key on: ${get_pnk_alm_ein()}
+		|	Panic alarm by key off: ${get_pnk_alm_aus()}
+		|	Do not send application IDs, only NM IDs: ${get_appl_aus()}
+		|	Diagnosis toggle bit: ${get_diag_tgl()}
+		|	Message: "Vehicle is calculating, please wait": ${get_fzg_rech()}
+		|	Current memory block number: ${get_spei_nr()}
+		|	Stop the trunk lid: ${get_hd_stopp()}
+		|	Backlash protection active: ${get_zv_spiel()}
+		|	Passive locking: ${get_zv_passiv()}
+		|	Message: Renew key: ${get_schlue_neu()}
+		|	Unlock ZV blinker feedback: ${get_bli_entsi()}
+		|	ZV secure blinker feedback: ${get_bli_sich()}
+		|	External release: ${get_auss_entsi()}
+		|	external security: ${get_auss_sich()}
+		|	Mechanical / FB key active: ${get_schl_bef()}
+		|	ZV post-locking: ${get_zv_nv()}
+		|	Unlock the tank lid (HSF / storage compartments): ${get_td_entri()}
+		|	Lock the tank lid (HSF / storage compartments): ${get_td_verri()}
+		|	Unlock the trunk lid: ${get_hd_entsi()}
+		|	secure trunk lid: ${get_hd_sich()}
+		|	trunk lid remote unlocking: ${get_hfe_ezs()}
+		|	Unlock the front left door: ${get_tvl_entri()}
+		|	lock the front left door: ${get_tvl_verri()}
+		|	Unlock the front right door: ${get_tvr_entri()}
+		|	lock the front right door: ${get_tvr_verri()}
+		|	Unlock the rear left door: ${get_thl_entri()}
+		|	Lock the rear left door: ${get_thl_verri()}
+		|	Unlock the rear right door: ${get_thr_entri()}
+		|	Lock the rear right door: ${get_thr_verri()}
 	""".trimMargin("|")
 }

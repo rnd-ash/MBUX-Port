@@ -38,6 +38,7 @@ object GS_HSA {
     }
 
 	override fun toString() = """
-		|manual control on the test bench: ${get_hsa()}
+		|Frame GS_HSA (0x050A):
+		|	manual control on the test bench: ${get_hsa()}
 	""".trimMargin("|")
 }

@@ -38,6 +38,7 @@ object EDC_MESS2 {
     }
 
 	override fun toString() = """
-		|measured values: ${get_mess2()}
+		|Frame EDC_MESS2 (0x0671):
+		|	measured values: ${get_mess2()}
 	""".trimMargin("|")
 }

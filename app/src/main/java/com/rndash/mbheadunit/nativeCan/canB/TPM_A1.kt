@@ -235,22 +235,23 @@ object TPM_A1 {
     }
 
 	override fun toString() = """
-		|TPM state: ${get_tpm_stat()}
-		|TPM message display request: ${get_tpm_msgdisp_rq()}
-		|TPM warning display request: ${get_tpm_warndisp_rq()}
-		|Tire pressure module indication lamp on request: ${get_tpm_indlmp_on_rq()}
-		|Tire in limp-home operation mode: ${get_tire_lhom()}
-		|Tire pressure module malfunction lamp on request: ${get_tpm_malflmp_on_rq()}
-		|Tire pressure module display on request: ${get_tpm_disp_on_rq()}
-		|Tire front left: ${get_tire_fl()}
-		|Tire front right: ${get_tire_fr()}
-		|Tire rear left: ${get_tire_rl()}
-		|Tire rear right: ${get_tire_rr()}
-		|Spare tire: ${get_tire_spr()}
-		|Tire pressure front left : ${get_tirepress_fl()} bar
-		|Tire pressure front right : ${get_tirepress_fr()} bar
-		|Tire pressure rear left : ${get_tirepress_rl()} bar
-		|Tire pressure rear right : ${get_tirepress_rr()} bar
-		|Tire pressure spare tire : ${get_tirepress_spr()} bar
+		|Frame TPM_A1 (0x02FF):
+		|	TPM state: ${get_tpm_stat()}
+		|	TPM message display request: ${get_tpm_msgdisp_rq()}
+		|	TPM warning display request: ${get_tpm_warndisp_rq()}
+		|	Tire pressure module indication lamp on request: ${get_tpm_indlmp_on_rq()}
+		|	Tire in limp-home operation mode: ${get_tire_lhom()}
+		|	Tire pressure module malfunction lamp on request: ${get_tpm_malflmp_on_rq()}
+		|	Tire pressure module display on request: ${get_tpm_disp_on_rq()}
+		|	Tire front left: ${get_tire_fl()}
+		|	Tire front right: ${get_tire_fr()}
+		|	Tire rear left: ${get_tire_rl()}
+		|	Tire rear right: ${get_tire_rr()}
+		|	Spare tire: ${get_tire_spr()}
+		|	Tire pressure front left : ${get_tirepress_fl()} bar
+		|	Tire pressure front right : ${get_tirepress_fr()} bar
+		|	Tire pressure rear left : ${get_tirepress_rl()} bar
+		|	Tire pressure rear right : ${get_tirepress_rr()} bar
+		|	Tire pressure spare tire : ${get_tirepress_spr()} bar
 	""".trimMargin("|")
 }

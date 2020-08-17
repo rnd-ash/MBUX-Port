@@ -38,6 +38,7 @@ object EZS_A11 {
     }
 
 	override fun toString() = """
-		|Battery voltage : ${get_u_batt()} V
+		|Frame EZS_A11 (0x0016):
+		|	Battery voltage : ${get_u_batt()} V
 	""".trimMargin("|")
 }

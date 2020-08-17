@@ -92,8 +92,9 @@ object MS_ANZ {
     }
 
 	override fun toString() = """
-		|number of the ASS status message: ${get_ass_dspl()}
-		|number of the ASS warning message: ${get_ass_warn()}
-		|Suppression of lamp test during the stop phase: ${get_ass_ltest_aus()}
+		|Frame MS_ANZ (0x033D):
+		|	number of the ASS status message: ${get_ass_dspl()}
+		|	number of the ASS warning message: ${get_ass_warn()}
+		|	Suppression of lamp test during the stop phase: ${get_ass_ltest_aus()}
 	""".trimMargin("|")
 }

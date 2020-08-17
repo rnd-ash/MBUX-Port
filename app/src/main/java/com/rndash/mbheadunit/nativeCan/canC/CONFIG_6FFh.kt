@@ -83,11 +83,12 @@ object CONFIG_6FFh {
     }
 
 	override fun toString() = """
-		|E-suction fan: basic ventilation off: ${get_gbl_aus()}
-		|air conditioning available: ${get_kla_vh()}
-		|transfer case control available: ${get_vg_vh()}
-		|Front differential lock available: ${get_dsv_vh()}
-		|Center differential lock available: ${get_dsm_vh()}
-		|Rear differential lock available: ${get_dsh_vh()}
+		|Frame CONFIG_6FFh (0x06FF):
+		|	E-suction fan: basic ventilation off: ${get_gbl_aus()}
+		|	air conditioning available: ${get_kla_vh()}
+		|	transfer case control available: ${get_vg_vh()}
+		|	Front differential lock available: ${get_dsv_vh()}
+		|	Center differential lock available: ${get_dsm_vh()}
+		|	Rear differential lock available: ${get_dsh_vh()}
 	""".trimMargin("|")
 }

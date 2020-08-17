@@ -38,6 +38,7 @@ object MS_101h {
     }
 
 	override fun toString() = """
-		|FBS message to EZS (8 bytes): ${get_ms_fbs()}
+		|Frame MS_101h (0x0101):
+		|	FBS message to EZS (8 bytes): ${get_ms_fbs()}
 	""".trimMargin("|")
 }

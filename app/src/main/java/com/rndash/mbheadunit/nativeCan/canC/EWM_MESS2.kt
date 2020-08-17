@@ -38,6 +38,7 @@ object EWM_MESS2 {
     }
 
 	override fun toString() = """
-		|measured values: ${get_mess2()}
+		|Frame EWM_MESS2 (0x06F1):
+		|	measured values: ${get_mess2()}
 	""".trimMargin("|")
 }

@@ -92,12 +92,13 @@ object KLA_A2 {
     }
 
 	override fun toString() = """
-		|Comfort operation mode: ${get_kb_mod_kla()}
-		|Direction of comfort actuation: ${get_kb_ri_kla()}
-		|SHD / open / close convertible top: ${get_shd_kla()}
-		|Open / close front left window: ${get_fvl_kla()}
-		|Open / close front right window: ${get_fvr_kla()}
-		|Open / close rear left window: ${get_fhl_kla()}
-		|Open / close rear right window: ${get_fhr_kla()}
+		|Frame KLA_A2 (0x0250):
+		|	Comfort operation mode: ${get_kb_mod_kla()}
+		|	Direction of comfort actuation: ${get_kb_ri_kla()}
+		|	SHD / open / close convertible top: ${get_shd_kla()}
+		|	Open / close front left window: ${get_fvl_kla()}
+		|	Open / close front right window: ${get_fvr_kla()}
+		|	Open / close rear left window: ${get_fhl_kla()}
+		|	Open / close rear right window: ${get_fhr_kla()}
 	""".trimMargin("|")
 }

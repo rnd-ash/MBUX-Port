@@ -38,6 +38,7 @@ object TP_MSS_KOMBI2 {
     }
 
 	override fun toString() = """
-		|Communication from the MSS to the KOMBI: ${get_tp_mss_kombi()}
+		|Frame TP_MSS_KOMBI2 (0x01A6):
+		|	Communication from the MSS to the KOMBI: ${get_tp_mss_kombi()}
 	""".trimMargin("|")
 }

@@ -47,7 +47,8 @@ object GS_338h {
     }
 
 	override fun toString() = """
-		|gearbox output speed (only 463/461, otherwise FFFFh): ${get_nab()}
-		|turbine speed (EGS52-NAG, VGS-NAG2): ${get_nturbine()}
+		|Frame GS_338h (0x0338):
+		|	gearbox output speed (only 463/461, otherwise FFFFh): ${get_nab()}
+		|	turbine speed (EGS52-NAG, VGS-NAG2): ${get_nturbine()}
 	""".trimMargin("|")
 }

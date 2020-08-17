@@ -134,16 +134,17 @@ object MS_268h {
     }
 
 	override fun toString() = """
-		|target ratio, lower limit (FCVT): ${get_imin_ms()}
-		|target ratio, upper limit (FCVT): ${get_imax_ms()}
-		|Status of heating output: ${get_hzl_st()}
-		|shut-off valve cooling circuit M266 ATL: ${get_asv_kkl_169()}
-		|Oil info, reserved M266: ${get_oel_info_169()}
-		|Terminal 61: ${get_kl_61_ein()}
-		|Generator utilization (only with LIN generators!): ${get_last_gen()}
-		|Air control system mode: ${get_lrs_mode()}
-		|Request force-free in "D" (FCVT): ${get_kid_ms()}
-		|Max. Air conditioning compressor torque: ${get_m_komp_max()}
-		|pedal value driver (only 169): ${get_pw_f()}
+		|Frame MS_268h (0x0268):
+		|	target ratio, lower limit (FCVT): ${get_imin_ms()}
+		|	target ratio, upper limit (FCVT): ${get_imax_ms()}
+		|	Status of heating output: ${get_hzl_st()}
+		|	shut-off valve cooling circuit M266 ATL: ${get_asv_kkl_169()}
+		|	Oil info, reserved M266: ${get_oel_info_169()}
+		|	Terminal 61: ${get_kl_61_ein()}
+		|	Generator utilization (only with LIN generators!): ${get_last_gen()}
+		|	Air control system mode: ${get_lrs_mode()}
+		|	Request force-free in "D" (FCVT): ${get_kid_ms()}
+		|	Max. Air conditioning compressor torque: ${get_m_komp_max()}
+		|	pedal value driver (only 169): ${get_pw_f()}
 	""".trimMargin("|")
 }

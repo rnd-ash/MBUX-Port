@@ -110,14 +110,15 @@ object PSM_3B8h {
     }
 
 	override fun toString() = """
-		|speed limit active: ${get_psm_v_akt()}
-		|speed limit: ${get_psm_v_tgl()}
-		|speed limit: ${get_psm_v_par()}
-		|speed limit: ${get_psm_v_soll()}
-		|Disable accelerator pedal module: ${get_psm_fpm_sp()}
-		|Motor remote stop active: ${get_psm_fern_stop()}
-		|Motor remote start active: ${get_psm_fern_start()}
-		|speed limitation: ${get_psm_dz_tgl()}
-		|speed limitation: ${get_psm_dz_par()}
+		|Frame PSM_3B8h (0x03B8):
+		|	speed limit active: ${get_psm_v_akt()}
+		|	speed limit: ${get_psm_v_tgl()}
+		|	speed limit: ${get_psm_v_par()}
+		|	speed limit: ${get_psm_v_soll()}
+		|	Disable accelerator pedal module: ${get_psm_fpm_sp()}
+		|	Motor remote stop active: ${get_psm_fern_stop()}
+		|	Motor remote start active: ${get_psm_fern_start()}
+		|	speed limitation: ${get_psm_dz_tgl()}
+		|	speed limitation: ${get_psm_dz_par()}
 	""".trimMargin("|")
 }

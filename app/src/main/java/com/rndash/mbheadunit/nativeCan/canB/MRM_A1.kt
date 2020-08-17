@@ -227,27 +227,28 @@ object MRM_A1 {
     }
 
 	override fun toString() = """
-		|direction flashing left: ${get_bli_li()}
-		|right direction flashing: ${get_bli_re()}
-		|switch on high beam: ${get_fl_ein()}
-		|switch on headlight flasher: ${get_lhp_ein()}
-		|switch on the horn: ${get_sgh_ein_lr()}
-		|Wipe / wash the rear window: ${get_heck_wisch_mrm()}
-		|Intermittent wiping of the rear window: ${get_heck_int_mrm()}
-		|Tip wipe actuated: ${get_tipp_wisch()}
-		|washing actuated: ${get_washing()}
-		|LSS in position I (rain sensor operation): ${get_sch_wi_int()}
-		|LSS in position II (level 1): ${get_sch_wi_1()}
-		|LSS in position III (level 2): ${get_sch_wi_2()}
-		|switch off voice control (abort): ${get_sbs_aus()}
-		|Activate voice control (push to talk): ${get_sbs_ein()}
-		|switch on the entry aid (if rotary knob): ${get_esh_ein_mrm()}
-		|steering column is locked [0] (only USA): ${get_ls_st_ver()}
-		|steering angle sign: ${get_lw_vz_b()}
-		|Steering angle sensor: not initialized: ${get_lw_ini_b()}
-		|Steering angle sensor: Code error: ${get_lw_cf_b()}
-		|Steering angle sensor: overflow: ${get_lw_ov_b()}
-		|Steering angle parity bit (even parity): ${get_lw_pa_b()}
-		|Steering angle : ${get_lw_b()} °
+		|Frame MRM_A1 (0x0006):
+		|	direction flashing left: ${get_bli_li()}
+		|	right direction flashing: ${get_bli_re()}
+		|	switch on high beam: ${get_fl_ein()}
+		|	switch on headlight flasher: ${get_lhp_ein()}
+		|	switch on the horn: ${get_sgh_ein_lr()}
+		|	Wipe / wash the rear window: ${get_heck_wisch_mrm()}
+		|	Intermittent wiping of the rear window: ${get_heck_int_mrm()}
+		|	Tip wipe actuated: ${get_tipp_wisch()}
+		|	washing actuated: ${get_washing()}
+		|	LSS in position I (rain sensor operation): ${get_sch_wi_int()}
+		|	LSS in position II (level 1): ${get_sch_wi_1()}
+		|	LSS in position III (level 2): ${get_sch_wi_2()}
+		|	switch off voice control (abort): ${get_sbs_aus()}
+		|	Activate voice control (push to talk): ${get_sbs_ein()}
+		|	switch on the entry aid (if rotary knob): ${get_esh_ein_mrm()}
+		|	steering column is locked [0] (only USA): ${get_ls_st_ver()}
+		|	steering angle sign: ${get_lw_vz_b()}
+		|	Steering angle sensor: not initialized: ${get_lw_ini_b()}
+		|	Steering angle sensor: Code error: ${get_lw_cf_b()}
+		|	Steering angle sensor: overflow: ${get_lw_ov_b()}
+		|	Steering angle parity bit (even parity): ${get_lw_pa_b()}
+		|	Steering angle : ${get_lw_b()} °
 	""".trimMargin("|")
 }

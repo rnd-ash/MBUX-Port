@@ -56,8 +56,9 @@ object MSSK_A2 {
     }
 
 	override fun toString() = """
-		|passenger seat: ${get_sbf_vor_k()}
-		|passenger seat: ${get_sbf_zur_k()}
-		|passenger seat: ${get_sbf_k_tgl()}
+		|Frame MSSK_A2 (0x0208):
+		|	passenger seat: ${get_sbf_vor_k()}
+		|	passenger seat: ${get_sbf_zur_k()}
+		|	passenger seat: ${get_sbf_k_tgl()}
 	""".trimMargin("|")
 }

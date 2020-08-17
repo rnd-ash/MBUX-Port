@@ -110,14 +110,15 @@ object AAG_A1 {
     }
 
 	override fun toString() = """
-		|Trailer brake light defective: ${get_anhbl_def()}
-		|EDW trailer monitoring alarm triggered: ${get_edw_anh_alm()}
-		|Trailer terminal 54 error: ${get_anhkl_54_def()}
-		|Trailer coupling not locked: ${get_ahk_nok()}
-		|Trailer operation detected: ${get_anh_erk()}
-		|Right trailer turn signal defective: ${get_anhbli_def_r()}
-		|Right trailer tail light defective: ${get_anhsl_def_r()}
-		|Left trailer turn signal defective: ${get_anhbli_def_l()}
-		|Trailer tail light on the left defective: ${get_anhsl_def_l()}
+		|Frame AAG_A1 (0x0130):
+		|	Trailer brake light defective: ${get_anhbl_def()}
+		|	EDW trailer monitoring alarm triggered: ${get_edw_anh_alm()}
+		|	Trailer terminal 54 error: ${get_anhkl_54_def()}
+		|	Trailer coupling not locked: ${get_ahk_nok()}
+		|	Trailer operation detected: ${get_anh_erk()}
+		|	Right trailer turn signal defective: ${get_anhbli_def_r()}
+		|	Right trailer tail light defective: ${get_anhsl_def_r()}
+		|	Left trailer turn signal defective: ${get_anhbli_def_l()}
+		|	Trailer tail light on the left defective: ${get_anhsl_def_l()}
 	""".trimMargin("|")
 }

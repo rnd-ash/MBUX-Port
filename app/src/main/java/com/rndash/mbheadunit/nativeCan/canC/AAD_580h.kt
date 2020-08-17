@@ -92,12 +92,13 @@ object AAD_580h {
     }
 
 	override fun toString() = """
-		|code number acceleration type (> 100: dynamic): ${get_ftk_bmi()}
-		|Code number for lateral acceleration type (> 100: dynamic): ${get_ftk_lmi()}
-		|code number brake type (> 100: dynamic): ${get_ftk_vmi()}
-		|Max.diff. Pedal angle value per maneuver: ${get_ftk_dpw()}
-		|Continuous driver observation: ${get_aadkb()}
-		|Spontaneous dynamic demand: ${get_aadkbdyn()}
-		|Nervousness: ${get_aadnt()}
+		|Frame AAD_580h (0x0580):
+		|	code number acceleration type (> 100: dynamic): ${get_ftk_bmi()}
+		|	Code number for lateral acceleration type (> 100: dynamic): ${get_ftk_lmi()}
+		|	code number brake type (> 100: dynamic): ${get_ftk_vmi()}
+		|	Max.diff. Pedal angle value per maneuver: ${get_ftk_dpw()}
+		|	Continuous driver observation: ${get_aadkb()}
+		|	Spontaneous dynamic demand: ${get_aadkbdyn()}
+		|	Nervousness: ${get_aadnt()}
 	""".trimMargin("|")
 }

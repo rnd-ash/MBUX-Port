@@ -47,7 +47,8 @@ object SAM_H_A4 {
     }
 
 	override fun toString() = """
-		|ZV emergency opening: ${get_zv_notoeff()}
-		|lock follower 1 (unlock): ${get_sn1_sam_h()}
+		|Frame SAM_H_A4 (0x0041):
+		|	ZV emergency opening: ${get_zv_notoeff()}
+		|	lock follower 1 (unlock): ${get_sn1_sam_h()}
 	""".trimMargin("|")
 }

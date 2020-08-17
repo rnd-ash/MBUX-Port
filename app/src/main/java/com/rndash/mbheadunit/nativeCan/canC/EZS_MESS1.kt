@@ -38,6 +38,7 @@ object EZS_MESS1 {
     }
 
 	override fun toString() = """
-		|measured values: ${get_mess1()}
+		|Frame EZS_MESS1 (0x060E):
+		|	measured values: ${get_mess1()}
 	""".trimMargin("|")
 }

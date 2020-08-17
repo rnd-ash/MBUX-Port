@@ -159,16 +159,17 @@ object TELEAID_POS5 {
     }
 
 	override fun toString() = """
-		|GPS visible satellites: ${get_gps_vsbl_sat()}
-		|GPS tracked satellites: ${get_gps_trck_sat()}
-		|GPS vertical dilution of position: ${get_gps_vdop()}
-		|GPS horizontal dilution of position: ${get_gps_hdop()}
-		|GPS dilution of position: ${get_gps_pdop()}
-		|GPS fix: ${get_gps_fix()}
-		|Dead reckoning / map matching position reliablity : ${get_dr_mm_rel()} %
-		|Dead reckoning / map matching state: ${get_dr_mm_stat()}
-		|Map matching route state: ${get_mm_route_stat()}
-		|Map matching road state: ${get_mm_road_stat()}
-		|Map matching map state: ${get_mm_map_stat()}
+		|Frame TELEAID_POS5 (0x03E9):
+		|	GPS visible satellites: ${get_gps_vsbl_sat()}
+		|	GPS tracked satellites: ${get_gps_trck_sat()}
+		|	GPS vertical dilution of position: ${get_gps_vdop()}
+		|	GPS horizontal dilution of position: ${get_gps_hdop()}
+		|	GPS dilution of position: ${get_gps_pdop()}
+		|	GPS fix: ${get_gps_fix()}
+		|	Dead reckoning / map matching position reliablity : ${get_dr_mm_rel()} %
+		|	Dead reckoning / map matching state: ${get_dr_mm_stat()}
+		|	Map matching route state: ${get_mm_route_stat()}
+		|	Map matching road state: ${get_mm_road_stat()}
+		|	Map matching map state: ${get_mm_map_stat()}
 	""".trimMargin("|")
 }

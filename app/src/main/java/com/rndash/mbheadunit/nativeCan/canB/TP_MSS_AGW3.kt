@@ -38,6 +38,7 @@ object TP_MSS_AGW3 {
     }
 
 	override fun toString() = """
-		|communication from the MSS to the AGW: ${get_tp_mss_agw3()}
+		|Frame TP_MSS_AGW3 (0x01D8):
+		|	communication from the MSS to the AGW: ${get_tp_mss_agw3()}
 	""".trimMargin("|")
 }

@@ -164,20 +164,21 @@ object KG_A1 {
     }
 
 	override fun toString() = """
-		|switch on the warning tone: ${get_warnton_kg()}
-		|Messg. 0: "Chip card / key not recognized" (red): ${get_m0()}
-		|Messg. 1: "Chip card / key not recognized" (white): ${get_m1()}
-		|Messg. 2: "Chip card / key recognized in vehicle" (white): ${get_m2()}
-		|Messg. 3: "Selector lever to P" (red, continuous tone): ${get_m3()}
-		|Messg. 4: "Check chip card / key battery" (white): ${get_m4()}
-		|Messg. 5: "Selector lever please in P or N position": ${get_m5()}
-		|message. 6: "No driving authorization": ${get_m6()}
-		|message. 7: Reserved: ${get_m7()}
-		|Messg. 8: "door open": ${get_m8()}
-		|message. 9: "Keyless Go in Diagnosis": ${get_m9()}
-		|message. 10: "Key calculates": ${get_m10()}
-		|message. 11: "Please leave the key in": ${get_m11()}
-		|message. 12: "Take your chip card / key with you!": ${get_m12()}
-		|Keyless Go UNIT path indication: km: ${get_km_rest_kg()}
+		|Frame KG_A1 (0x01B2):
+		|	switch on the warning tone: ${get_warnton_kg()}
+		|	Messg. 0: "Chip card / key not recognized" (red): ${get_m0()}
+		|	Messg. 1: "Chip card / key not recognized" (white): ${get_m1()}
+		|	Messg. 2: "Chip card / key recognized in vehicle" (white): ${get_m2()}
+		|	Messg. 3: "Selector lever to P" (red, continuous tone): ${get_m3()}
+		|	Messg. 4: "Check chip card / key battery" (white): ${get_m4()}
+		|	Messg. 5: "Selector lever please in P or N position": ${get_m5()}
+		|	message. 6: "No driving authorization": ${get_m6()}
+		|	message. 7: Reserved: ${get_m7()}
+		|	Messg. 8: "door open": ${get_m8()}
+		|	message. 9: "Keyless Go in Diagnosis": ${get_m9()}
+		|	message. 10: "Key calculates": ${get_m10()}
+		|	message. 11: "Please leave the key in": ${get_m11()}
+		|	message. 12: "Take your chip card / key with you!": ${get_m12()}
+		|	Keyless Go UNIT path indication: km: ${get_km_rest_kg()}
 	""".trimMargin("|")
 }

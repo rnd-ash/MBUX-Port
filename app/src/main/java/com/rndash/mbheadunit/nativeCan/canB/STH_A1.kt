@@ -101,13 +101,14 @@ object STH_A1 {
     }
 
 	override fun toString() = """
-		|transmitter learning mode on: ${get_sendlm_ein()}
-		|Switch on auxiliary heater LED: ${get_zh_led_ein()}
-		|Open the preset time menu: ${get_vwz_menue()}
-		|Switch on the vehicle fan: ${get_fan_on()}
-		|Switching on heating manually: ${get_sthzg_ein()}
-		|Switch on ventilation manually: ${get_stlft_ein()}
-		|switch off auxiliary heating / ventilation: ${get_sthl_aus()}
-		|switch on auxiliary heating / ventilation: ${get_sthl_ein()}
+		|Frame STH_A1 (0x0094):
+		|	transmitter learning mode on: ${get_sendlm_ein()}
+		|	Switch on auxiliary heater LED: ${get_zh_led_ein()}
+		|	Open the preset time menu: ${get_vwz_menue()}
+		|	Switch on the vehicle fan: ${get_fan_on()}
+		|	Switching on heating manually: ${get_sthzg_ein()}
+		|	Switch on ventilation manually: ${get_stlft_ein()}
+		|	switch off auxiliary heating / ventilation: ${get_sthl_aus()}
+		|	switch on auxiliary heating / ventilation: ${get_sthl_ein()}
 	""".trimMargin("|")
 }

@@ -183,17 +183,18 @@ object ARMADA_A1 {
     }
 
 	override fun toString() = """
-		|SRS control lamp (workshop): ${get_srs_werk()}
-		|SRS control lamp (service): ${get_srs_serv()}
-		|SRS control lamps flash: ${get_srs_blink()}
-		|SRS control lamp: ${get_srs_kl()}
-		|AKSE lights are flashing: ${get_akse_blink()}
-		|switch on the AKSE lamp: ${get_akse_ein()}
-		|Child seat status: ${get_kisi_st()}
-		|SBE class passenger: ${get_sbe_bf()}
-		|Passenger detection fast: ${get_psg_detec_fast()}
-		|seat belt buckle front passenger: ${get_gs_bf()}
-		|SBE class driver: ${get_sbe_f()}
-		|seat belt buckle driver: ${get_gs_f()}
+		|Frame ARMADA_A1 (0x0012):
+		|	SRS control lamp (workshop): ${get_srs_werk()}
+		|	SRS control lamp (service): ${get_srs_serv()}
+		|	SRS control lamps flash: ${get_srs_blink()}
+		|	SRS control lamp: ${get_srs_kl()}
+		|	AKSE lights are flashing: ${get_akse_blink()}
+		|	switch on the AKSE lamp: ${get_akse_ein()}
+		|	Child seat status: ${get_kisi_st()}
+		|	SBE class passenger: ${get_sbe_bf()}
+		|	Passenger detection fast: ${get_psg_detec_fast()}
+		|	seat belt buckle front passenger: ${get_gs_bf()}
+		|	SBE class driver: ${get_sbe_f()}
+		|	seat belt buckle driver: ${get_gs_f()}
 	""".trimMargin("|")
 }

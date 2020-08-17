@@ -38,6 +38,7 @@ object KLA_40Eh {
     }
 
 	override fun toString() = """
-		|Heating power requirement: ${get_hzl_anf()}
+		|Frame KLA_40Eh (0x040E):
+		|	Heating power requirement: ${get_hzl_anf()}
 	""".trimMargin("|")
 }

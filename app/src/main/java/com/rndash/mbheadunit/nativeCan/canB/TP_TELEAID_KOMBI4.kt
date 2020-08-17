@@ -38,6 +38,7 @@ object TP_TELEAID_KOMBI4 {
     }
 
 	override fun toString() = """
-		|Communication TELEAID to KOMBI: ${get_tp_teleaid_kombi()}
+		|Frame TP_TELEAID_KOMBI4 (0x01A1):
+		|	Communication TELEAID to KOMBI: ${get_tp_teleaid_kombi()}
 	""".trimMargin("|")
 }

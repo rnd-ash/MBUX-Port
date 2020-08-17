@@ -47,7 +47,8 @@ object MSS_A3 {
     }
 
 	override fun toString() = """
-		|GPS Latitude, South = [-]; North = [+] : ${get_dest_lat()} ms
-		|GPS Longitude, West = [-]; East = [+] : ${get_dest_long()} ms
+		|Frame MSS_A3 (0x01CE):
+		|	GPS Latitude, South = [-]; North = [+] : ${get_dest_lat()} ms
+		|	GPS Longitude, West = [-]; East = [+] : ${get_dest_long()} ms
 	""".trimMargin("|")
 }

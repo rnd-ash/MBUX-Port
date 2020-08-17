@@ -47,7 +47,8 @@ object ZGW_24Ch {
     }
 
 	override fun toString() = """
-		|low beam defective driver / left (depending on BR): ${get_abl_def_f_l()}
-		|dipped beam defective passenger / right (depending on BR): ${get_abl_def_bf_r()}
+		|Frame ZGW_24Ch (0x024C):
+		|	low beam defective driver / left (depending on BR): ${get_abl_def_f_l()}
+		|	dipped beam defective passenger / right (depending on BR): ${get_abl_def_bf_r()}
 	""".trimMargin("|")
 }

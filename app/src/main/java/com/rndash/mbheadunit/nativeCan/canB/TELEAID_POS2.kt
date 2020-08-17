@@ -65,9 +65,10 @@ object TELEAID_POS2 {
     }
 
 	override fun toString() = """
-		|GPS velocity : ${get_gps_vel()} cm / s
-		|GPS heading : ${get_gps_head()} °
-		|GPS ellipsoid height : ${get_gps_ellip()} m
-		|GPS altitude : ${get_gps_alt()} m
+		|Frame TELEAID_POS2 (0x03E6):
+		|	GPS velocity : ${get_gps_vel()} cm / s
+		|	GPS heading : ${get_gps_head()} °
+		|	GPS ellipsoid height : ${get_gps_ellip()} m
+		|	GPS altitude : ${get_gps_alt()} m
 	""".trimMargin("|")
 }

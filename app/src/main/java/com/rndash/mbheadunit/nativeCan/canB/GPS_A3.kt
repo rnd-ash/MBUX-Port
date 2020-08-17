@@ -153,18 +153,19 @@ object GPS_A3 {
     }
 
 	override fun toString() = """
-		|GPS Speed ​​: ${get_gps_speed()} cm / s
-		|GPS Heading (0 ° = North) : ${get_gps_heading()} °
-		|GPS height : ${get_gps_height()} m
-		|GPS fix: ${get_gps_fix()}
-		|Calibrated: ${get_cali()}
-		|Matched to digital map: ${get_mdm()}
-		|Fully digitalized area: ${get_fdg()}
-		|Inside digitalized area (on map): ${get_idg()}
-		|Dead reckoning available: ${get_dead_rck()}
-		|Differential GPS position data available: ${get_diff_pos_avlb()}
-		|GPS position avilable: ${get_pos_avlb()}
-		|Vertical dilution of position: ${get_v_dop()}
-		|Horizontal dilution of position: ${get_h_dop()}
+		|Frame GPS_A3 (0x033A):
+		|	GPS Speed ​​: ${get_gps_speed()} cm / s
+		|	GPS Heading (0 ° = North) : ${get_gps_heading()} °
+		|	GPS height : ${get_gps_height()} m
+		|	GPS fix: ${get_gps_fix()}
+		|	Calibrated: ${get_cali()}
+		|	Matched to digital map: ${get_mdm()}
+		|	Fully digitalized area: ${get_fdg()}
+		|	Inside digitalized area (on map): ${get_idg()}
+		|	Dead reckoning available: ${get_dead_rck()}
+		|	Differential GPS position data available: ${get_diff_pos_avlb()}
+		|	GPS position avilable: ${get_pos_avlb()}
+		|	Vertical dilution of position: ${get_v_dop()}
+		|	Horizontal dilution of position: ${get_h_dop()}
 	""".trimMargin("|")
 }

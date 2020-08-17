@@ -56,7 +56,8 @@ object HFS_A1 {
     }
 
 	override fun toString() = """
-		|Close and secure trunk lid actuated: ${get_hd_sich_hfs()}
-		|Status trunk lid: ${get_hd_st()}
+		|Frame HFS_A1 (0x0078):
+		|	Close and secure trunk lid actuated: ${get_hd_sich_hfs()}
+		|	Status trunk lid: ${get_hd_st()}
 	""".trimMargin("|")
 }

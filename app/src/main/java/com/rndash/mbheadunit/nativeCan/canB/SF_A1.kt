@@ -65,9 +65,10 @@ object SF_A1 {
     }
 
 	override fun toString() = """
-		|Driver seat backrest unlocked: ${get_le_f_ent()}
-		|Save manually set position (redundant): ${get_mf_man_sp1()}
-		|Driver seat position : ${get_sf_pos()} Sections
-		|Default position for driver's seat with I / O help : ${get_sf_ea_def()} Sections
+		|Frame SF_A1 (0x01AC):
+		|	Driver seat backrest unlocked: ${get_le_f_ent()}
+		|	Save manually set position (redundant): ${get_mf_man_sp1()}
+		|	Driver seat position : ${get_sf_pos()} Sections
+		|	Default position for driver's seat with I / O help : ${get_sf_ea_def()} Sections
 	""".trimMargin("|")
 }

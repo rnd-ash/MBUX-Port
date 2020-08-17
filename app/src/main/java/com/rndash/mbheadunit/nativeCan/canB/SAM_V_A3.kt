@@ -147,17 +147,18 @@ object SAM_V_A3 {
     }
 
 	override fun toString() = """
-		|rain sensor activated: ${get_rs_akt()}
-		|wiper outside parking position: ${get_kl_31b_ein()}
-		|washing activated: ${get_kl_86_ein()}
-		|configuration of rain sensor: ${get_konfig_rs()}
-		|Parity from bit 0 to 6 (even): ${get_parity_sam_v()}
-		|rain sensor on / off (position interval): ${get_rs_int()}
-		|wiper outside of parking position: ${get_kl_31b_rs()}
-		|washing activated: ${get_kl_86_rs()}
-		|SAM_V initialization: ${get_sam_v_init()}
-		|rain sensor operation not possible: ${get_rs_nm()}
-		|Rain sensor diagnosis: ${get_diag_rs()}
-		|byte identifier: ${get_byte_kenn()}
+		|Frame SAM_V_A3 (0x0070):
+		|	rain sensor activated: ${get_rs_akt()}
+		|	wiper outside parking position: ${get_kl_31b_ein()}
+		|	washing activated: ${get_kl_86_ein()}
+		|	configuration of rain sensor: ${get_konfig_rs()}
+		|	Parity from bit 0 to 6 (even): ${get_parity_sam_v()}
+		|	rain sensor on / off (position interval): ${get_rs_int()}
+		|	wiper outside of parking position: ${get_kl_31b_rs()}
+		|	washing activated: ${get_kl_86_rs()}
+		|	SAM_V initialization: ${get_sam_v_init()}
+		|	rain sensor operation not possible: ${get_rs_nm()}
+		|	Rain sensor diagnosis: ${get_diag_rs()}
+		|	byte identifier: ${get_byte_kenn()}
 	""".trimMargin("|")
 }

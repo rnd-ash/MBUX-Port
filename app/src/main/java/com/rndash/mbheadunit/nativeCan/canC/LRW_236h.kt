@@ -95,11 +95,12 @@ object LRW_236h {
     }
 
 	override fun toString() = """
-		|steering wheel angle: ${get_lrw()}
-		|steering wheel angular speed: ${get_vlrw()}
-		|Steering wheel angle sensor status: ${get_lrws_st()}
-		|Identification of the steering wheel angle sensor: ${get_lrws_id()}
-		|message counter: ${get_bz236h()}
-		|CRC checksum byte 1: ${get_crc236h()}
+		|Frame LRW_236h (0x0236):
+		|	steering wheel angle: ${get_lrw()}
+		|	steering wheel angular speed: ${get_vlrw()}
+		|	Steering wheel angle sensor status: ${get_lrws_st()}
+		|	Identification of the steering wheel angle sensor: ${get_lrws_id()}
+		|	message counter: ${get_bz236h()}
+		|	CRC checksum byte 1: ${get_crc236h()}
 	""".trimMargin("|")
 }

@@ -38,6 +38,7 @@ object SAM_H_A6 {
     }
 
 	override fun toString() = """
-		|code access authorization: ${get_zbc_sam_h()}
+		|Frame SAM_H_A6 (0x00CC):
+		|	code access authorization: ${get_zbc_sam_h()}
 	""".trimMargin("|")
 }

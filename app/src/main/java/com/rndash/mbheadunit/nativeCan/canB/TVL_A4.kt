@@ -38,6 +38,7 @@ object TVL_A4 {
     }
 
 	override fun toString() = """
-		|code access authorization: ${get_zbc_tvl()}
+		|Frame TVL_A4 (0x00E8):
+		|	code access authorization: ${get_zbc_tvl()}
 	""".trimMargin("|")
 }

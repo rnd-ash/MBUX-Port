@@ -291,22 +291,23 @@ object GS_418h {
     }
 
 	override fun toString() = """
-		|speed step: ${get_fsc()}
-		|driving program: ${get_fpc()}
-		|transmission oil temperature: ${get_t_get()}
-		|Kickdown: ${get_kd()}
-		|apply brake when switching on: ${get_esv_bre()}
-		|gear mechanism variant: ${get_mech()}
-		|continuously variable transmission [1], multi-step transmission [0]: ${get_cvt()}
-		|None: ${get_switch()}
-		|front-wheel drive [1], rear-wheel drive [0]: ${get_front()}
-		|all-wheel drive: ${get_all_wheel()}
-		|actual gear: ${get_gic()}
-		|target gear: ${get_gzc()}
-		|torque loss (FFh at KSG): ${get_m_verl()}
-		|Gear selector lever position (NAG, KSG, CVT): ${get_whst()}
-		|Factor wheel torque toggle 40ms + -10: ${get_fmradtgl()}
-		|Wheel torque parity factor (even parity): ${get_fmradpar()}
-		|wheel torque factor (7FFh at KSG): ${get_fmrad()}
+		|Frame GS_418h (0x0418):
+		|	speed step: ${get_fsc()}
+		|	driving program: ${get_fpc()}
+		|	transmission oil temperature: ${get_t_get()}
+		|	Kickdown: ${get_kd()}
+		|	apply brake when switching on: ${get_esv_bre()}
+		|	gear mechanism variant: ${get_mech()}
+		|	continuously variable transmission [1], multi-step transmission [0]: ${get_cvt()}
+		|	None: ${get_switch()}
+		|	front-wheel drive [1], rear-wheel drive [0]: ${get_front()}
+		|	all-wheel drive: ${get_all_wheel()}
+		|	actual gear: ${get_gic()}
+		|	target gear: ${get_gzc()}
+		|	torque loss (FFh at KSG): ${get_m_verl()}
+		|	Gear selector lever position (NAG, KSG, CVT): ${get_whst()}
+		|	Factor wheel torque toggle 40ms + -10: ${get_fmradtgl()}
+		|	Wheel torque parity factor (even parity): ${get_fmradpar()}
+		|	wheel torque factor (7FFh at KSG): ${get_fmrad()}
 	""".trimMargin("|")
 }

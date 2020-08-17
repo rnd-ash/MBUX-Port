@@ -452,52 +452,53 @@ object SAM_H_A1 {
     }
 
 	override fun toString() = """
-		|front left door is open: ${get_tvl_auf()}
-		|front right door is open: ${get_tvr_auf()}
-		|rear left door is open: ${get_thl_auf()}
-		|rear right door is open: ${get_thr_auf()}
-		|trunk lid is open: ${get_hd_auf()}
-		|trunk lid contact pressed: ${get_hdk_bet()}
-		|Terminal 54 hardware active: ${get_kl54_rm()}
-		|Panic alarm is active: ${get_pnk_akt()}
-		|trunk lid pawl activated: ${get_hd_sk_sam_h()}
-		|rear lock in 90 ° position: ${get_hschl_zu()}
-		|The rear lock is secured: ${get_hschl_st_sich()}
-		|heated rear window is switched on: ${get_hhs_st_ein()}
-		|Heizb. Rear window is switched off due to under voltage.: ${get_hhs_st_uspg()}
-		|Height adjuster driver unlocked: ${get_hvst_f_ent()}
-		|passenger height adjuster unlocked: ${get_hvst_bf_ent()}
-		|engine hood is open: ${get_mot_auf()}
-		|EDW alarm triggered: ${get_edw_alarm()}
-		|Activate EDW trailer monitoring: ${get_edw_aag_akt()}
-		|Activate EDW interior protection: ${get_edw_irs_akt()}
-		|EDW sharpened: ${get_edw_akt()}
-		|Switch on EDW interior light: ${get_edw_il_ein()}
-		|Terminal 54 error: ${get_kl_54_def()}
-		|3rd brake light defective: ${get_bl3_def()}
-		|rear fog light defective: ${get_nsl_def()}
-		|Rear left turn signal defective: ${get_bli_def_hl()}
-		|Left tail light defective: ${get_sl_def_l()}
-		|Left brake light defective: ${get_bl_def_l()}
-		|Left reversing light defective: ${get_rfl_def_l()}
-		|Left license plate light defective: ${get_kzl_def_l()}
-		|Sidemarker at the rear left defective: ${get_sm_def_hl()}
-		|Rear right side marker defective: ${get_sm_def_hr()}
-		|Rear right turn signal defective: ${get_bli_def_hr()}
-		|Right tail light defective: ${get_sl_def_r()}
-		|Right brake light defective: ${get_bl_def_r()}
-		|Right reversing light defective: ${get_rfl_def_r()}
-		|Right license plate light defective: ${get_kzl_def_r()}
-		|Spare light turn signal rear left active: ${get_bli_ers_hl()}
-		|Replacement light tail light rear left active: ${get_sl_ers_hl()}
-		|Spare light, turn signal, rear right active: ${get_bli_ers_hr()}
-		|Replacement light tail light rear right active: ${get_sl_ers_hr()}
-		|Replacement light rear fog lamp (s) active: ${get_nsl_ers()}
-		|Rear door button. close & secure pressed: ${get_hd_sich_sam_h()}
-		|Rear door button. close pressed: ${get_hd_schliess_sam_h()}
-		|Switch on the HFS search light: ${get_hfs_sb_ein()}
-		|SRS control lamp (for G463): ${get_srs_kl_hw()}
-		|switch on Gurt-KL (for G463): ${get_gurt_kl_hw()}
-		|rear wiper in intermittent operation: ${get_hw_int_akt()}
+		|Frame SAM_H_A1 (0x0004):
+		|	front left door is open: ${get_tvl_auf()}
+		|	front right door is open: ${get_tvr_auf()}
+		|	rear left door is open: ${get_thl_auf()}
+		|	rear right door is open: ${get_thr_auf()}
+		|	trunk lid is open: ${get_hd_auf()}
+		|	trunk lid contact pressed: ${get_hdk_bet()}
+		|	Terminal 54 hardware active: ${get_kl54_rm()}
+		|	Panic alarm is active: ${get_pnk_akt()}
+		|	trunk lid pawl activated: ${get_hd_sk_sam_h()}
+		|	rear lock in 90 ° position: ${get_hschl_zu()}
+		|	The rear lock is secured: ${get_hschl_st_sich()}
+		|	heated rear window is switched on: ${get_hhs_st_ein()}
+		|	Heizb. Rear window is switched off due to under voltage.: ${get_hhs_st_uspg()}
+		|	Height adjuster driver unlocked: ${get_hvst_f_ent()}
+		|	passenger height adjuster unlocked: ${get_hvst_bf_ent()}
+		|	engine hood is open: ${get_mot_auf()}
+		|	EDW alarm triggered: ${get_edw_alarm()}
+		|	Activate EDW trailer monitoring: ${get_edw_aag_akt()}
+		|	Activate EDW interior protection: ${get_edw_irs_akt()}
+		|	EDW sharpened: ${get_edw_akt()}
+		|	Switch on EDW interior light: ${get_edw_il_ein()}
+		|	Terminal 54 error: ${get_kl_54_def()}
+		|	3rd brake light defective: ${get_bl3_def()}
+		|	rear fog light defective: ${get_nsl_def()}
+		|	Rear left turn signal defective: ${get_bli_def_hl()}
+		|	Left tail light defective: ${get_sl_def_l()}
+		|	Left brake light defective: ${get_bl_def_l()}
+		|	Left reversing light defective: ${get_rfl_def_l()}
+		|	Left license plate light defective: ${get_kzl_def_l()}
+		|	Sidemarker at the rear left defective: ${get_sm_def_hl()}
+		|	Rear right side marker defective: ${get_sm_def_hr()}
+		|	Rear right turn signal defective: ${get_bli_def_hr()}
+		|	Right tail light defective: ${get_sl_def_r()}
+		|	Right brake light defective: ${get_bl_def_r()}
+		|	Right reversing light defective: ${get_rfl_def_r()}
+		|	Right license plate light defective: ${get_kzl_def_r()}
+		|	Spare light turn signal rear left active: ${get_bli_ers_hl()}
+		|	Replacement light tail light rear left active: ${get_sl_ers_hl()}
+		|	Spare light, turn signal, rear right active: ${get_bli_ers_hr()}
+		|	Replacement light tail light rear right active: ${get_sl_ers_hr()}
+		|	Replacement light rear fog lamp (s) active: ${get_nsl_ers()}
+		|	Rear door button. close & secure pressed: ${get_hd_sich_sam_h()}
+		|	Rear door button. close pressed: ${get_hd_schliess_sam_h()}
+		|	Switch on the HFS search light: ${get_hfs_sb_ein()}
+		|	SRS control lamp (for G463): ${get_srs_kl_hw()}
+		|	switch on Gurt-KL (for G463): ${get_gurt_kl_hw()}
+		|	rear wiper in intermittent operation: ${get_hw_int_akt()}
 	""".trimMargin("|")
 }

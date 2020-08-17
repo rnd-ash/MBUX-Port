@@ -110,14 +110,15 @@ object LWR_530h {
     }
 
 	override fun toString() = """
-		|Display message 1: "Cornering light defect! Drive to the workshop": ${get_lwr_m1()}
-		|Display message 2: "Cornering light, replacement light activated!" (White): ${get_lwr_m2()}
-		|Display message 3: "Cornering light currently not available" (white).: ${get_lwr_m3()}
-		|Display message 4: "Cornering light currently not available" (white / 5x flashing at 1Hz): ${get_lwr_m4()}
-		|Display message 5: "Left cornering light": ${get_lwr_m5()}
-		|Display message 6: "Right cornering light": ${get_lwr_m6()}
-		|Display message 7: "Cornering light currently not available": ${get_lwr_m7()}
-		|Substitution of right low beam: ${get_sub_abl_r()}
-		|Substitution of left low beam: ${get_sub_abl_l()}
+		|Frame LWR_530h (0x0530):
+		|	Display message 1: "Cornering light defect! Drive to the workshop": ${get_lwr_m1()}
+		|	Display message 2: "Cornering light, replacement light activated!" (White): ${get_lwr_m2()}
+		|	Display message 3: "Cornering light currently not available" (white).: ${get_lwr_m3()}
+		|	Display message 4: "Cornering light currently not available" (white / 5x flashing at 1Hz): ${get_lwr_m4()}
+		|	Display message 5: "Left cornering light": ${get_lwr_m5()}
+		|	Display message 6: "Right cornering light": ${get_lwr_m6()}
+		|	Display message 7: "Cornering light currently not available": ${get_lwr_m7()}
+		|	Substitution of right low beam: ${get_sub_abl_r()}
+		|	Substitution of left low beam: ${get_sub_abl_l()}
 	""".trimMargin("|")
 }

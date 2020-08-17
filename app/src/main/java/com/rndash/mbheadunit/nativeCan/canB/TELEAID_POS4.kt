@@ -47,7 +47,8 @@ object TELEAID_POS4 {
     }
 
 	override fun toString() = """
-		|Dead reckoning / map matching latitude (- means south) : ${get_dr_mm_lat()} mas
-		|Dead reckoning / map matching longtitude (- means west) : ${get_dr_mm_long()} mas
+		|Frame TELEAID_POS4 (0x03E8):
+		|	Dead reckoning / map matching latitude (- means south) : ${get_dr_mm_lat()} mas
+		|	Dead reckoning / map matching longtitude (- means west) : ${get_dr_mm_long()} mas
 	""".trimMargin("|")
 }

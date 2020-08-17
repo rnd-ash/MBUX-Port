@@ -119,11 +119,12 @@ object SBW_232h {
     }
 
 	override fun toString() = """
-		|Steering wheel buttons "+", "-" pressed: ${get_lrt_pm3()}
-		|sender identification: ${get_sid_sbw()}
-		|Shift-by-wire control element Status RND: ${get_sbwb_st_rnd()}
-		|Shift-by-wire control element P button: ${get_sbwb_st_p()}
-		|Shift-by-wire control element identification: ${get_sbwb_id()}
-		|message counter: ${get_bz232h()}
+		|Frame SBW_232h (0x0232):
+		|	Steering wheel buttons "+", "-" pressed: ${get_lrt_pm3()}
+		|	sender identification: ${get_sid_sbw()}
+		|	Shift-by-wire control element Status RND: ${get_sbwb_st_rnd()}
+		|	Shift-by-wire control element P button: ${get_sbwb_st_p()}
+		|	Shift-by-wire control element identification: ${get_sbwb_id()}
+		|	message counter: ${get_bz232h()}
 	""".trimMargin("|")
 }

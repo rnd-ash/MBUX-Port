@@ -416,48 +416,49 @@ object SAM_V_A1 {
     }
 
 	override fun toString() = """
-		|Outside light activated by light sensor: ${get_afl_akt()}
-		|Fog lights are switched on: ${get_nsw_st_ein()}
-		|high beam is switched on: ${get_fl_st_ein()}
-		|Signal horn is switched on: ${get_sgh_st_ein()}
-		|Mirror adjustment switch in the right position: ${get_spvs_st_r()}
-		|reverse gear engaged (only with NSG / KSG): ${get_rg_sam_v()}
-		|headlight activation active: ${get_swa_akt()}
-		|Terminal 61: ${get_kl_61_ein()}
-		|Switch on left parking light: ${get_pl_li_ein()}
-		|Switch on right parking light: ${get_pl_re_ein()}
-		|switch on parking lights: ${get_stl_ein()}
-		|switch on low beam: ${get_abl_ein()}
-		|switch on rear fog light: ${get_nsl_ein()}
-		|Terminal 15R activated via diagnosis: ${get_diag_15r_ein()}
-		|Terminal 15 activated via diagnosis: ${get_diag_15_ein()}
-		|Refrigeration compressor control, current output defective: ${get_komp_def()}
-		|Air conditioning compressor switched on: ${get_komp_ein()}
-		|handbrake applied (control lamp): ${get_has_kl()}
-		|refrigeration compressor is running: ${get_komp_lft()}
-		|auxiliary water pump is running: ${get_zwp_lft()}
-		|cooling water level too low control lamp: ${get_kws_kl()}
-		|wash water level too low control lamp: ${get_wws_kl()}
-		|Brake fluid level indicator lamp: ${get_bfl_kl()}
-		|Instrument lighting off: ${get_instr_aus()}
-		|Sidemarker front left defective: ${get_sm_def_vl()}
-		|Front left turn signal defective: ${get_bli_def_vl()}
-		|Front left parking light defective: ${get_pl_def_vl()}
-		|Left low beam defective: ${get_abl_def_l()}
-		|left high beam defective: ${get_fl_def_l()}
-		|Left fog light defective: ${get_nsw_def_l()}
-		|message. Steering oil too low: ${get_lenk_oel_kl()}
-		|Front right side marker defective: ${get_sm_def_vr()}
-		|Front right turn signal defective: ${get_bli_def_vr()}
-		|Front right parking light defective: ${get_pl_def_vr()}
-		|Right low beam defective: ${get_abl_def_r()}
-		|right high beam defective: ${get_fl_def_r()}
-		|Right fog light defective: ${get_nsw_def_r()}
-		|Start Xenon4 diagnostic procedure on the passenger side: ${get_diag_x4_b()}
-		|Replacement parking light front right active: ${get_pl_ers_vr()}
-		|Replacement blinker active at the front right: ${get_bli_ers_vr()}
-		|Start Xenon4 diagnostic procedure on the driver's side: ${get_diag_x4_f()}
-		|Replacement parking light front left active: ${get_pl_ers_vl()}
-		|Replacement turn signal front left active: ${get_bli_ers_vl()}
+		|Frame SAM_V_A1 (0x000A):
+		|	Outside light activated by light sensor: ${get_afl_akt()}
+		|	Fog lights are switched on: ${get_nsw_st_ein()}
+		|	high beam is switched on: ${get_fl_st_ein()}
+		|	Signal horn is switched on: ${get_sgh_st_ein()}
+		|	Mirror adjustment switch in the right position: ${get_spvs_st_r()}
+		|	reverse gear engaged (only with NSG / KSG): ${get_rg_sam_v()}
+		|	headlight activation active: ${get_swa_akt()}
+		|	Terminal 61: ${get_kl_61_ein()}
+		|	Switch on left parking light: ${get_pl_li_ein()}
+		|	Switch on right parking light: ${get_pl_re_ein()}
+		|	switch on parking lights: ${get_stl_ein()}
+		|	switch on low beam: ${get_abl_ein()}
+		|	switch on rear fog light: ${get_nsl_ein()}
+		|	Terminal 15R activated via diagnosis: ${get_diag_15r_ein()}
+		|	Terminal 15 activated via diagnosis: ${get_diag_15_ein()}
+		|	Refrigeration compressor control, current output defective: ${get_komp_def()}
+		|	Air conditioning compressor switched on: ${get_komp_ein()}
+		|	handbrake applied (control lamp): ${get_has_kl()}
+		|	refrigeration compressor is running: ${get_komp_lft()}
+		|	auxiliary water pump is running: ${get_zwp_lft()}
+		|	cooling water level too low control lamp: ${get_kws_kl()}
+		|	wash water level too low control lamp: ${get_wws_kl()}
+		|	Brake fluid level indicator lamp: ${get_bfl_kl()}
+		|	Instrument lighting off: ${get_instr_aus()}
+		|	Sidemarker front left defective: ${get_sm_def_vl()}
+		|	Front left turn signal defective: ${get_bli_def_vl()}
+		|	Front left parking light defective: ${get_pl_def_vl()}
+		|	Left low beam defective: ${get_abl_def_l()}
+		|	left high beam defective: ${get_fl_def_l()}
+		|	Left fog light defective: ${get_nsw_def_l()}
+		|	message. Steering oil too low: ${get_lenk_oel_kl()}
+		|	Front right side marker defective: ${get_sm_def_vr()}
+		|	Front right turn signal defective: ${get_bli_def_vr()}
+		|	Front right parking light defective: ${get_pl_def_vr()}
+		|	Right low beam defective: ${get_abl_def_r()}
+		|	right high beam defective: ${get_fl_def_r()}
+		|	Right fog light defective: ${get_nsw_def_r()}
+		|	Start Xenon4 diagnostic procedure on the passenger side: ${get_diag_x4_b()}
+		|	Replacement parking light front right active: ${get_pl_ers_vr()}
+		|	Replacement blinker active at the front right: ${get_bli_ers_vr()}
+		|	Start Xenon4 diagnostic procedure on the driver's side: ${get_diag_x4_f()}
+		|	Replacement parking light front left active: ${get_pl_ers_vl()}
+		|	Replacement turn signal front left active: ${get_bli_ers_vl()}
 	""".trimMargin("|")
 }

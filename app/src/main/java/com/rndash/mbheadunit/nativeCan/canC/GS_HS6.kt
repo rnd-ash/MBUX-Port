@@ -38,6 +38,7 @@ object GS_HS6 {
     }
 
 	override fun toString() = """
-		|None: ${get_hs6()}
+		|Frame GS_HS6 (0x0506):
+		|	None: ${get_hs6()}
 	""".trimMargin("|")
 }

@@ -47,7 +47,8 @@ object LRK_A1 {
     }
 
 	override fun toString() = """
-		|LRK LEDs flash due to Disorder: ${get_lrk_stoerg()}
-		|Switch on the LED steering wheel heating: ${get_lhzg_led_ein()}
+		|Frame LRK_A1 (0x0288):
+		|	LRK LEDs flash due to Disorder: ${get_lrk_stoerg()}
+		|	Switch on the LED steering wheel heating: ${get_lhzg_led_ein()}
 	""".trimMargin("|")
 }

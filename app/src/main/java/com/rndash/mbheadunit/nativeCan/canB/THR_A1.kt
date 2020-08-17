@@ -74,10 +74,11 @@ object THR_A1 {
     }
 
 	override fun toString() = """
-		|rear right window regulator larger short stroke position: ${get_fhr_kzhb()}
-		|window rear right open: ${get_fhr_auf()}
-		|Window lifter blocked at the rear right: ${get_fhr_block()}
-		|Window lifter standardized at the rear right: ${get_fhr_norm()}
-		|window position rear right : ${get_feste_hr()} 1 / anchor turn
+		|Frame THR_A1 (0x009C):
+		|	rear right window regulator larger short stroke position: ${get_fhr_kzhb()}
+		|	window rear right open: ${get_fhr_auf()}
+		|	Window lifter blocked at the rear right: ${get_fhr_block()}
+		|	Window lifter standardized at the rear right: ${get_fhr_norm()}
+		|	window position rear right : ${get_feste_hr()} 1 / anchor turn
 	""".trimMargin("|")
 }

@@ -47,7 +47,8 @@ object KLA_A3 {
     }
 
 	override fun toString() = """
-		|Request heating power : ${get_hzl_anf()} %
-		|Outside air temperature for heat management : ${get_t_aussen_wm()} ° C
+		|Frame KLA_A3 (0x00F1):
+		|	Request heating power : ${get_hzl_anf()} %
+		|	Outside air temperature for heat management : ${get_t_aussen_wm()} ° C
 	""".trimMargin("|")
 }

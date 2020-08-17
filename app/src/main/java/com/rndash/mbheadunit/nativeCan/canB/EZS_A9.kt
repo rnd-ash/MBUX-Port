@@ -53,7 +53,8 @@ object EZS_A9 {
     }
 
 	override fun toString() = """
-		|VIN signal part: ${get_vin_msg()}
-		|VIN data: ${get_vin_data()}
+		|Frame EZS_A9 (0x00B2):
+		|	VIN signal part: ${get_vin_msg()}
+		|	VIN data: ${get_vin_data()}
 	""".trimMargin("|")
 }

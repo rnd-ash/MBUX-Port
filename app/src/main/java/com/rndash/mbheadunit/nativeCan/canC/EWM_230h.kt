@@ -86,10 +86,11 @@ object EWM_230h {
     }
 
 	override fun toString() = """
-		|gear selector lever position (only NAG): ${get_whc()}
-		|Locking magnet energized: ${get_locking()}
-		|kickdown: ${get_kd()}
-		|Drive program button pressed: ${get_fpt()}
-		|drive program: ${get_w_s()}
+		|Frame EWM_230h (0x0230):
+		|	gear selector lever position (only NAG): ${get_whc()}
+		|	Locking magnet energized: ${get_locking()}
+		|	kickdown: ${get_kd()}
+		|	Drive program button pressed: ${get_fpt()}
+		|	drive program: ${get_w_s()}
 	""".trimMargin("|")
 }

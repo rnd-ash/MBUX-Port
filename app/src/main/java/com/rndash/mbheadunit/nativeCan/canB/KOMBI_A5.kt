@@ -268,30 +268,31 @@ object KOMBI_A5 {
     }
 
 	override fun toString() = """
-		|Status combi: ${get_ki_stat()}
-		|Next display: ${get_button_1_1()}
-		|Previous display: ${get_button_1_2()}
-		|reserve: ${get_button_2_1()}
-		|reserve: ${get_button_2_2()}
-		|"+" button: ${get_button_3_1()}
-		|button "-": ${get_button_3_2()}
-		|Telephone send: ${get_button_4_1()}
-		|Telephone End: ${get_button_4_2()}
-		|reserve: ${get_button_5_1()}
-		|reserve: ${get_button_5_2()}
-		|reserve: ${get_button_6_1()}
-		|reserve: ${get_button_6_2()}
-		|reserve: ${get_button_7_1()}
-		|reserve: ${get_button_7_2()}
-		|reserve: ${get_button_8_1()}
-		|reserve: ${get_button_8_2()}
-		|Activate Linguatronic: ${get_ptt_1_1()}
-		|Deactivate Linguatronic: ${get_ptt_1_2()}
-		|reserve: ${get_ptt_2_1()}
-		|reserve: ${get_ptt_2_2()}
-		|reserve: ${get_ptt_3_1()}
-		|reserve: ${get_ptt_3_2()}
-		|reserve: ${get_ptt_4_1()}
-		|reserve: ${get_ptt_4_2()}
+		|Frame KOMBI_A5 (0x01CA):
+		|	Status combi: ${get_ki_stat()}
+		|	Next display: ${get_button_1_1()}
+		|	Previous display: ${get_button_1_2()}
+		|	reserve: ${get_button_2_1()}
+		|	reserve: ${get_button_2_2()}
+		|	"+" button: ${get_button_3_1()}
+		|	button "-": ${get_button_3_2()}
+		|	Telephone send: ${get_button_4_1()}
+		|	Telephone End: ${get_button_4_2()}
+		|	reserve: ${get_button_5_1()}
+		|	reserve: ${get_button_5_2()}
+		|	reserve: ${get_button_6_1()}
+		|	reserve: ${get_button_6_2()}
+		|	reserve: ${get_button_7_1()}
+		|	reserve: ${get_button_7_2()}
+		|	reserve: ${get_button_8_1()}
+		|	reserve: ${get_button_8_2()}
+		|	Activate Linguatronic: ${get_ptt_1_1()}
+		|	Deactivate Linguatronic: ${get_ptt_1_2()}
+		|	reserve: ${get_ptt_2_1()}
+		|	reserve: ${get_ptt_2_2()}
+		|	reserve: ${get_ptt_3_1()}
+		|	reserve: ${get_ptt_3_2()}
+		|	reserve: ${get_ptt_4_1()}
+		|	reserve: ${get_ptt_4_2()}
 	""".trimMargin("|")
 }

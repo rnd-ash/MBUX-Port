@@ -38,6 +38,7 @@ object KOMBI_414h {
     }
 
 	override fun toString() = """
-		|filtered outside temperature combi: ${get_t_aussen_k()}
+		|Frame KOMBI_414h (0x0414):
+		|	filtered outside temperature combi: ${get_t_aussen_k()}
 	""".trimMargin("|")
 }

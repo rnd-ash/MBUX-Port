@@ -150,16 +150,17 @@ object KOMBI_412h {
     }
 
 	override fun toString() = """
-		|Status ECO warning: ${get_eco_warn_st()}
-		|Optical warning off: ${get_opt_warn_aus()}
-		|Acoustic warning off: ${get_aku_warn_aus()}
-		|Set distance: ${get_ist_abst()}
-		|distance unit: ${get_abst_s()}
-		|Displayed speed: ${get_v_anz()}
-		|direction of wheel rotation to V_ANZ: ${get_drtganz()}
-		|wheel speed calculated from V_ANZ: ${get_danz()}
-		|Flat roll warning request: ${get_prw_anf()}
-		|Activate ECO in the combination menu: ${get_eco_akt()}
-		|engine shutdown time: ${get_maz_neu()}
+		|Frame KOMBI_412h (0x0412):
+		|	Status ECO warning: ${get_eco_warn_st()}
+		|	Optical warning off: ${get_opt_warn_aus()}
+		|	Acoustic warning off: ${get_aku_warn_aus()}
+		|	Set distance: ${get_ist_abst()}
+		|	distance unit: ${get_abst_s()}
+		|	Displayed speed: ${get_v_anz()}
+		|	direction of wheel rotation to V_ANZ: ${get_drtganz()}
+		|	wheel speed calculated from V_ANZ: ${get_danz()}
+		|	Flat roll warning request: ${get_prw_anf()}
+		|	Activate ECO in the combination menu: ${get_eco_akt()}
+		|	engine shutdown time: ${get_maz_neu()}
 	""".trimMargin("|")
 }

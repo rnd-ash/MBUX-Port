@@ -65,9 +65,10 @@ object EZS_A2 {
     }
 
 	override fun toString() = """
-		|Pulse ring counter, front left wheel (48 per revolution) : ${get_riz_vl()} Pulse
-		|Pulse ring counter, front right wheel (48 per revolution) : ${get_riz_vr()} Pulse
-		|Motor speed : ${get_n_mot()} 1 / min
-		|engine coolant temperature : ${get_t_mot()} ° C
+		|Frame EZS_A2 (0x0002):
+		|	Pulse ring counter, front left wheel (48 per revolution) : ${get_riz_vl()} Pulse
+		|	Pulse ring counter, front right wheel (48 per revolution) : ${get_riz_vr()} Pulse
+		|	Motor speed : ${get_n_mot()} 1 / min
+		|	engine coolant temperature : ${get_t_mot()} ° C
 	""".trimMargin("|")
 }

@@ -200,24 +200,25 @@ object TVR_A2 {
     }
 
 	override fun toString() = """
-		|Comfort control mode: ${get_kb_mod_tvr()}
-		|direction of comfort actuation: ${get_kb_ri_tvr()}
-		|SHD / open / close convertible top: ${get_shd_tvr()}
-		|Open / close front left window: ${get_fvl_tvr()}
-		|Open / close front right window: ${get_fvr_tvr()}
-		|Open / close rear left window: ${get_fhl_tvr()}
-		|Open / close rear right window: ${get_fhr_tvr()}
-		|rear left window: ${get_fhl_aoe_rl()}
-		|rear left window: ${get_fhl_moe_rl()}
-		|rear left window: ${get_fhl_ms_rl()}
-		|rear left window: ${get_fhl_as_rl()}
-		|rear right window: ${get_fhr_aoe_rl()}
-		|rear right window: ${get_fhr_moe_rl()}
-		|rear right window: ${get_fhr_ms_rl()}
-		|rear right window: ${get_fhr_as_rl()}
-		|window front left: ${get_fvl_aoe()}
-		|front left window: ${get_fvl_moe()}
-		|front left window: ${get_fvl_ms()}
-		|front left window: ${get_fvl_as()}
+		|Frame TVR_A2 (0x0045):
+		|	Comfort control mode: ${get_kb_mod_tvr()}
+		|	direction of comfort actuation: ${get_kb_ri_tvr()}
+		|	SHD / open / close convertible top: ${get_shd_tvr()}
+		|	Open / close front left window: ${get_fvl_tvr()}
+		|	Open / close front right window: ${get_fvr_tvr()}
+		|	Open / close rear left window: ${get_fhl_tvr()}
+		|	Open / close rear right window: ${get_fhr_tvr()}
+		|	rear left window: ${get_fhl_aoe_rl()}
+		|	rear left window: ${get_fhl_moe_rl()}
+		|	rear left window: ${get_fhl_ms_rl()}
+		|	rear left window: ${get_fhl_as_rl()}
+		|	rear right window: ${get_fhr_aoe_rl()}
+		|	rear right window: ${get_fhr_moe_rl()}
+		|	rear right window: ${get_fhr_ms_rl()}
+		|	rear right window: ${get_fhr_as_rl()}
+		|	window front left: ${get_fvl_aoe()}
+		|	front left window: ${get_fvl_moe()}
+		|	front left window: ${get_fvl_ms()}
+		|	front left window: ${get_fvl_as()}
 	""".trimMargin("|")
 }

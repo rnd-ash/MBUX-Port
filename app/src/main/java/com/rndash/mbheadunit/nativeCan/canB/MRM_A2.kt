@@ -173,21 +173,22 @@ object MRM_A2 {
     }
 
 	override fun toString() = """
-		|button top left to top: ${get_wippe_1_1()}
-		|button top left to bottom: ${get_wippe_1_2()}
-		|button left bottom up: ${get_wippe_2_1()}
-		|button left bottom down: ${get_wippe_2_2()}
-		|button top right up: ${get_wippe_3_1()}
-		|button top right to bottom: ${get_wippe_3_2()}
-		|button bottom right up: ${get_wippe_4_1()}
-		|button bottom right down: ${get_wippe_4_2()}
-		|reserve: ${get_wippe_5_1()}
-		|reserve: ${get_wippe_5_2()}
-		|reserve: ${get_wippe_6_1()}
-		|reserve: ${get_wippe_6_2()}
-		|reserve: ${get_wippe_7_1()}
-		|reserve: ${get_wippe_7_2()}
-		|reserve: ${get_wippe_8_1()}
-		|reserve: ${get_wippe_8_2()}
+		|Frame MRM_A2 (0x01A8):
+		|	button top left to top: ${get_wippe_1_1()}
+		|	button top left to bottom: ${get_wippe_1_2()}
+		|	button left bottom up: ${get_wippe_2_1()}
+		|	button left bottom down: ${get_wippe_2_2()}
+		|	button top right up: ${get_wippe_3_1()}
+		|	button top right to bottom: ${get_wippe_3_2()}
+		|	button bottom right up: ${get_wippe_4_1()}
+		|	button bottom right down: ${get_wippe_4_2()}
+		|	reserve: ${get_wippe_5_1()}
+		|	reserve: ${get_wippe_5_2()}
+		|	reserve: ${get_wippe_6_1()}
+		|	reserve: ${get_wippe_6_2()}
+		|	reserve: ${get_wippe_7_1()}
+		|	reserve: ${get_wippe_7_2()}
+		|	reserve: ${get_wippe_8_1()}
+		|	reserve: ${get_wippe_8_2()}
 	""".trimMargin("|")
 }

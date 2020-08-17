@@ -248,28 +248,29 @@ object BS_300h {
     }
 
 	override fun toString() = """
-		|Steering angle sensor initialization possible: ${get_lws_ini_ein()}
-		|Initialization of steering angle sensor o.k.: ${get_lws_ini_ok()}
-		|ESP yaw moment control active: ${get_esp_gier_akt()}
-		|Enable ART: ${get_art_e()}
-		|Full braking (ABS controls all 4 wheels): ${get_vollbre()}
-		|BAS control active: ${get_bas_akt()}
-		|Dynamic engine torque request: ${get_dmdyn_art()}
-		|Motor torque request parity (even parity): ${get_dmpar_art()}
-		|driver brakes: ${get_sfb()}
-		|driver brakes parity (even parity): ${get_sfb_pa()}
-		|transmission cycle time: ${get_t_z()}
-		|drive torque control active: ${get_amr_akt_esp()}
-		|Dynamic motor torque request: ${get_mdyn_esp()}
-		|Motor torque request parity (even parity): ${get_mpar_esp()}
-		|Motor torque request Max: ${get_dmmax_art()}
-		|engine torque request min: ${get_dmmin_art()}
-		|engine torque request. Toggle 40ms + -10: ${get_dmtgl_art()}
-		|Required. Engine torque: ${get_dm_art()}
-		|Motor torque request Max: ${get_mmax_esp()}
-		|Motor torque request Min: ${get_mmin_esp()}
-		|motor torque request. Toggle 40ms + -10: ${get_mtgl_esp()}
-		|Required. Engine torque: ${get_m_esp()}
-		|Raw signal yaw rate without adjustment / filtering (+ = left): ${get_gier_roh()}
+		|Frame BS_300h (0x0300):
+		|	Steering angle sensor initialization possible: ${get_lws_ini_ein()}
+		|	Initialization of steering angle sensor o.k.: ${get_lws_ini_ok()}
+		|	ESP yaw moment control active: ${get_esp_gier_akt()}
+		|	Enable ART: ${get_art_e()}
+		|	Full braking (ABS controls all 4 wheels): ${get_vollbre()}
+		|	BAS control active: ${get_bas_akt()}
+		|	Dynamic engine torque request: ${get_dmdyn_art()}
+		|	Motor torque request parity (even parity): ${get_dmpar_art()}
+		|	driver brakes: ${get_sfb()}
+		|	driver brakes parity (even parity): ${get_sfb_pa()}
+		|	transmission cycle time: ${get_t_z()}
+		|	drive torque control active: ${get_amr_akt_esp()}
+		|	Dynamic motor torque request: ${get_mdyn_esp()}
+		|	Motor torque request parity (even parity): ${get_mpar_esp()}
+		|	Motor torque request Max: ${get_dmmax_art()}
+		|	engine torque request min: ${get_dmmin_art()}
+		|	engine torque request. Toggle 40ms + -10: ${get_dmtgl_art()}
+		|	Required. Engine torque: ${get_dm_art()}
+		|	Motor torque request Max: ${get_mmax_esp()}
+		|	Motor torque request Min: ${get_mmin_esp()}
+		|	motor torque request. Toggle 40ms + -10: ${get_mtgl_esp()}
+		|	Required. Engine torque: ${get_m_esp()}
+		|	Raw signal yaw rate without adjustment / filtering (+ = left): ${get_gier_roh()}
 	""".trimMargin("|")
 }

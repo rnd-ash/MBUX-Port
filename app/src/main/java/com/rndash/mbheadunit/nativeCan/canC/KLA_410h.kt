@@ -92,12 +92,13 @@ object KLA_410h {
     }
 
 	override fun toString() = """
-		|A / C compressor switched on: ${get_komp_ein()}
-		|Idle speed increase to increase the cooling capacity: ${get_ll_dza()}
-		|Switching on auxiliary heater allowed: ${get_zh_ein_ok()}
-		|refrigerant pressure: ${get_p_kaelte8()}
-		|Torque absorption refrigeration compressor: ${get_m_komp()}
-		|Motor fan setpoint speed: ${get_nlfts()}
-		|outside air temperature for heat management: ${get_t_aussen_wm()}
+		|Frame KLA_410h (0x0410):
+		|	A / C compressor switched on: ${get_komp_ein()}
+		|	Idle speed increase to increase the cooling capacity: ${get_ll_dza()}
+		|	Switching on auxiliary heater allowed: ${get_zh_ein_ok()}
+		|	refrigerant pressure: ${get_p_kaelte8()}
+		|	Torque absorption refrigeration compressor: ${get_m_komp()}
+		|	Motor fan setpoint speed: ${get_nlfts()}
+		|	outside air temperature for heat management: ${get_t_aussen_wm()}
 	""".trimMargin("|")
 }

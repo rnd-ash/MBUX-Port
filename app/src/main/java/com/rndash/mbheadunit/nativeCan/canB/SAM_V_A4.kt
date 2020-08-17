@@ -92,12 +92,13 @@ object SAM_V_A4 {
     }
 
 	override fun toString() = """
-		|outside mirror glass to the left: ${get_sp_n_li()}
-		|Outside mirror glass to the right: ${get_sp_n_re()}
-		|outside mirror glass upwards: ${get_sp_n_ob()}
-		|Outside mirror glass down: ${get_sp_n_un()}
-		|Outside mirror after garage position: ${get_sp_garage()}
-		|Outside mirror according to driving position: ${get_sp_fahren()}
-		|Mirror adjustment switch setting: ${get_spvs_st()}
+		|Frame SAM_V_A4 (0x02CC):
+		|	outside mirror glass to the left: ${get_sp_n_li()}
+		|	Outside mirror glass to the right: ${get_sp_n_re()}
+		|	outside mirror glass upwards: ${get_sp_n_ob()}
+		|	Outside mirror glass down: ${get_sp_n_un()}
+		|	Outside mirror after garage position: ${get_sp_garage()}
+		|	Outside mirror according to driving position: ${get_sp_fahren()}
+		|	Mirror adjustment switch setting: ${get_spvs_st()}
 	""".trimMargin("|")
 }

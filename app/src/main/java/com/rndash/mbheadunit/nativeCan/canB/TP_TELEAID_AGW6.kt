@@ -38,6 +38,7 @@ object TP_TELEAID_AGW6 {
     }
 
 	override fun toString() = """
-		|Communication TELEAID to AGW: ${get_tp_teleaid_agw()}
+		|Frame TP_TELEAID_AGW6 (0x0209):
+		|	Communication TELEAID to AGW: ${get_tp_teleaid_agw()}
 	""".trimMargin("|")
 }

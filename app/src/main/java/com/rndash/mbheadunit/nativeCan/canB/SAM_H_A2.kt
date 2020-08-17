@@ -56,8 +56,9 @@ object SAM_H_A2 {
     }
 
 	override fun toString() = """
-		|Tank level : ${get_tank_fs_b()} %
-		|Tank sensor value right : ${get_tank_ge_re()} %
-		|Tank sensor value left : ${get_tank_ge_li()} %
+		|Frame SAM_H_A2 (0x0090):
+		|	Tank level : ${get_tank_fs_b()} %
+		|	Tank sensor value right : ${get_tank_ge_re()} %
+		|	Tank sensor value left : ${get_tank_ge_li()} %
 	""".trimMargin("|")
 }

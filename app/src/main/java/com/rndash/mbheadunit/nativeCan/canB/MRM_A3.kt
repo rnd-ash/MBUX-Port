@@ -83,11 +83,12 @@ object MRM_A3 {
     }
 
 	override fun toString() = """
-		|Steering column adjustment lever turned up: ${get_lsvh_ob()}
-		|Steering column adjustment lever turned down: ${get_lsvh_un()}
-		|steering column up: ${get_ls_auf_mrm()}
-		|steering column down: ${get_ls_ab_mrm()}
-		|steering column forward: ${get_ls_vor_mrm()}
-		|steering column to the rear (towards the driver): ${get_ls_zur_mrm()}
+		|Frame MRM_A3 (0x0296):
+		|	Steering column adjustment lever turned up: ${get_lsvh_ob()}
+		|	Steering column adjustment lever turned down: ${get_lsvh_un()}
+		|	steering column up: ${get_ls_auf_mrm()}
+		|	steering column down: ${get_ls_ab_mrm()}
+		|	steering column forward: ${get_ls_vor_mrm()}
+		|	steering column to the rear (towards the driver): ${get_ls_zur_mrm()}
 	""".trimMargin("|")
 }

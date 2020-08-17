@@ -110,11 +110,12 @@ object AGW_A3 {
     }
 
 	override fun toString() = """
-		|Numeric keypad head unit: ${get_ziffer_hu()}
-		|Diamond key pressed: ${get_raute_hu()}
-		|star key pressed: ${get_stern_hu()}
-		|Rejection of numeric entry HU: ${get_cancel_hu()}
-		|Active application: ${get_akt_sys()}
-		|function keys: ${get_function_keys()}
+		|Frame AGW_A3 (0x0138):
+		|	Numeric keypad head unit: ${get_ziffer_hu()}
+		|	Diamond key pressed: ${get_raute_hu()}
+		|	star key pressed: ${get_stern_hu()}
+		|	Rejection of numeric entry HU: ${get_cancel_hu()}
+		|	Active application: ${get_akt_sys()}
+		|	function keys: ${get_function_keys()}
 	""".trimMargin("|")
 }

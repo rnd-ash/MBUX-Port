@@ -299,35 +299,36 @@ object TVR_A1 {
     }
 
 	override fun toString() = """
-		|seat front right: ${get_svr_vor()}
-		|seat front right: ${get_svr_zur()}
-		|seat front right: ${get_svr_hi_auf()}
-		|seat front right: ${get_svr_hi_ab()}
-		|front right seat: ${get_svr_tgl()}
-		|seat front right: ${get_svr_le_vor()}
-		|front right seat: ${get_svr_le_zur()}
-		|seat front right: ${get_svr_vo_auf()}
-		|seat in front right: ${get_svr_vo_ab()}
-		|front right seat: ${get_svr_kst_auf()}
-		|front right seat: ${get_svr_kst_ab()}
-		|steering column up: ${get_ls_auf_rl()}
-		|steering column down: ${get_ls_ab_rl()}
-		|steering column forward: ${get_ls_vor_rl()}
-		|steering column to the rear (towards the driver): ${get_ls_zurueck_rl()}
-		|memory front right: ${get_mvr_p1_en()}
-		|memory front right: ${get_mvr_p2_en()}
-		|memory front right: ${get_mvr_p3_en()}
-		|front right memory: ${get_mvr_p1_sp()}
-		|memory front right: ${get_mvr_p2_sp()}
-		|memory front right: ${get_mvr_p3_sp()}
-		|Save left exterior mirror parking position: ${get_spi_li_sp()}
-		|front right memory: ${get_mvr_tgl()}
-		|outside mirror left to left (not 203): ${get_spi_li_n_li()}
-		|outside mirror left to right (not 203): ${get_spi_li_n_re()}
-		|Left outside mirror up (not 203): ${get_spi_li_n_ob()}
-		|Left outside mirror down (not 203): ${get_spi_li_n_un()}
-		|outside mirror left after garage position (not 203): ${get_spi_li_garage()}
-		|Outside mirror left after driving position (not 203): ${get_spi_li_fahren()}
-		|Mirror adjustment switch actuated: ${get_spvs_bet_rl()}
+		|Frame TVR_A1 (0x0290):
+		|	seat front right: ${get_svr_vor()}
+		|	seat front right: ${get_svr_zur()}
+		|	seat front right: ${get_svr_hi_auf()}
+		|	seat front right: ${get_svr_hi_ab()}
+		|	front right seat: ${get_svr_tgl()}
+		|	seat front right: ${get_svr_le_vor()}
+		|	front right seat: ${get_svr_le_zur()}
+		|	seat front right: ${get_svr_vo_auf()}
+		|	seat in front right: ${get_svr_vo_ab()}
+		|	front right seat: ${get_svr_kst_auf()}
+		|	front right seat: ${get_svr_kst_ab()}
+		|	steering column up: ${get_ls_auf_rl()}
+		|	steering column down: ${get_ls_ab_rl()}
+		|	steering column forward: ${get_ls_vor_rl()}
+		|	steering column to the rear (towards the driver): ${get_ls_zurueck_rl()}
+		|	memory front right: ${get_mvr_p1_en()}
+		|	memory front right: ${get_mvr_p2_en()}
+		|	memory front right: ${get_mvr_p3_en()}
+		|	front right memory: ${get_mvr_p1_sp()}
+		|	memory front right: ${get_mvr_p2_sp()}
+		|	memory front right: ${get_mvr_p3_sp()}
+		|	Save left exterior mirror parking position: ${get_spi_li_sp()}
+		|	front right memory: ${get_mvr_tgl()}
+		|	outside mirror left to left (not 203): ${get_spi_li_n_li()}
+		|	outside mirror left to right (not 203): ${get_spi_li_n_re()}
+		|	Left outside mirror up (not 203): ${get_spi_li_n_ob()}
+		|	Left outside mirror down (not 203): ${get_spi_li_n_un()}
+		|	outside mirror left after garage position (not 203): ${get_spi_li_garage()}
+		|	Outside mirror left after driving position (not 203): ${get_spi_li_fahren()}
+		|	Mirror adjustment switch actuated: ${get_spvs_bet_rl()}
 	""".trimMargin("|")
 }

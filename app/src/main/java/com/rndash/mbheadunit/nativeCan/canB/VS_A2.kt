@@ -83,11 +83,12 @@ object VS_A2 {
     }
 
 	override fun toString() = """
-		|FH travel limitation long stroke active: ${get_fh_lh_begr()}
-		|window lifter run: ${get_fh_mod_vs()}
-		|Direction to operate the window regulator: ${get_fh_ri_vs()}
-		|Open / close front left window: ${get_fvl_vs()}
-		|Open / close front right window: ${get_fvr_vs()}
-		|rollover detected: ${get_ueb_erk()}
+		|Frame VS_A2 (0x0010):
+		|	FH travel limitation long stroke active: ${get_fh_lh_begr()}
+		|	window lifter run: ${get_fh_mod_vs()}
+		|	Direction to operate the window regulator: ${get_fh_ri_vs()}
+		|	Open / close front left window: ${get_fvl_vs()}
+		|	Open / close front right window: ${get_fvr_vs()}
+		|	rollover detected: ${get_ueb_erk()}
 	""".trimMargin("|")
 }

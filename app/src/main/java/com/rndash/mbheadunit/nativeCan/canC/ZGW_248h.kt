@@ -89,11 +89,12 @@ object ZGW_248h {
     }
 
 	override fun toString() = """
-		|switch on low beam: ${get_abl_ein()}
-		|Start Xenon4 diagnostic procedure on the driver's side: ${get_diag_x4_f()}
-		|Start Xenon4 diagnostic procedure on the passenger side: ${get_diag_x4_b()}
-		|Trailer operation detected: ${get_anh_erk2()}
-		|Auxiliary water pump is running: ${get_zwp_lft()}
-		|AFL request: switch on low beam: ${get_afl_abl_ein()}
+		|Frame ZGW_248h (0x0248):
+		|	switch on low beam: ${get_abl_ein()}
+		|	Start Xenon4 diagnostic procedure on the driver's side: ${get_diag_x4_f()}
+		|	Start Xenon4 diagnostic procedure on the passenger side: ${get_diag_x4_b()}
+		|	Trailer operation detected: ${get_anh_erk2()}
+		|	Auxiliary water pump is running: ${get_zwp_lft()}
+		|	AFL request: switch on low beam: ${get_afl_abl_ein()}
 	""".trimMargin("|")
 }

@@ -56,8 +56,9 @@ object ARCADE_A2 {
     }
 
 	override fun toString() = """
-		|frontal event 5: ${get_crash_c()}
-		|frontal event 2: ${get_crash_f()}
-		|Confirm bit for all crash events, toggling: ${get_conf_crash()}
+		|Frame ARCADE_A2 (0x0035):
+		|	frontal event 5: ${get_crash_c()}
+		|	frontal event 2: ${get_crash_f()}
+		|	Confirm bit for all crash events, toggling: ${get_conf_crash()}
 	""".trimMargin("|")
 }

@@ -47,7 +47,8 @@ object KOMBI_A6 {
     }
 
 	override fun toString() = """
-		|Identification key for pre-filtering: ${get_schlue_id_ki()}
-		|Mileage : ${get_km_ki()} km
+		|Frame KOMBI_A6 (0x009E):
+		|	Identification key for pre-filtering: ${get_schlue_id_ki()}
+		|	Mileage : ${get_km_ki()} km
 	""".trimMargin("|")
 }

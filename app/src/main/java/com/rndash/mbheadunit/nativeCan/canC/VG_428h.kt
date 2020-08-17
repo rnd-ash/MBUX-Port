@@ -87,10 +87,11 @@ object VG_428h {
     }
 
 	override fun toString() = """
-		|Current gear transfer case: ${get_vg_gang()}
-		|VG error (ECU failure detected): ${get_vg_err()}
-		|VG: ${get_anfn_vg()}
-		|VG: ${get_anfntgl_vg()}
-		|VG: ${get_anfnpar_vg()}
+		|Frame VG_428h (0x0428):
+		|	Current gear transfer case: ${get_vg_gang()}
+		|	VG error (ECU failure detected): ${get_vg_err()}
+		|	VG: ${get_anfn_vg()}
+		|	VG: ${get_anfntgl_vg()}
+		|	VG: ${get_anfnpar_vg()}
 	""".trimMargin("|")
 }

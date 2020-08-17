@@ -95,11 +95,12 @@ object EZS_A10 {
     }
 
 	override fun toString() = """
-		|Pulse ring counter, rear left wheel (48 per revolution) : ${get_riz_hl()} Pulse
-		|Pulse ring counter, rear right wheel (48 per revolution) : ${get_riz_hr()} Pulse
-		|direction of rotation of the rear wheel right: ${get_drtghr()}
-		|wheel speed rear right : ${get_dhr()} 1 / min
-		|direction of rotation of rear left wheel: ${get_drtghl()}
-		|wheel speed rear left : ${get_dhl()} 1 / min
+		|Frame EZS_A10 (0x010A):
+		|	Pulse ring counter, rear left wheel (48 per revolution) : ${get_riz_hl()} Pulse
+		|	Pulse ring counter, rear right wheel (48 per revolution) : ${get_riz_hr()} Pulse
+		|	direction of rotation of the rear wheel right: ${get_drtghr()}
+		|	wheel speed rear right : ${get_dhr()} 1 / min
+		|	direction of rotation of rear left wheel: ${get_drtghl()}
+		|	wheel speed rear left : ${get_dhl()} 1 / min
 	""".trimMargin("|")
 }

@@ -257,29 +257,30 @@ object VS_A1 {
     }
 
 	override fun toString() = """
-		|convertible top status: ${get_vdk_stat()}
-		|convertible top is active: ${get_vdk_aktiv()}
-		|Approach short stroke front left window regulator: ${get_fh_vl_kh()}
-		|switch on the warning tone: ${get_vdk_warn()}
-		|control lamp roll bar: ${get_uerb_kl()}
-		|opening trunk lid blocked: ${get_hd_sperr()}
-		|Approach short stroke front right window regulator: ${get_fh_vr_kh()}
-		|Message 1: "Close trunk lid": ${get_vs_m1()}
-		|Message 2: "Close trunk partition / ski bag": ${get_vs_m2()}
-		|Message 3: "Start engine for convertible top operation": ${get_vs_m3()}
-		|Message 4: "Lock convertible top": ${get_vs_m4()}
-		|Message 5: "Trigger roll bar": ${get_vs_m5()}
-		|Message 6: "Lower roll bar": ${get_vs_m6()}
-		|Message 7: "Convertible top in operation": ${get_vs_m7()}
-		|Message 8: "Convertible top is falling": ${get_vs_m8()}
-		|Message 9: "Visit convertible top workshop": ${get_vs_m9()}
-		|Message 10: "Convertible top blocked due to driving": ${get_vs_m10()}
-		|Message 11: "Convertible top operation please wait": ${get_vs_m11()}
-		|Message 12: "Convertible top open": ${get_vs_m12()}
-		|Message 13: "Convertible top closed": ${get_vs_m13()}
-		|Message 14: "Please close ski bag": ${get_vs_m14()}
-		|Rear lid locking pawl activated: ${get_hd_sk_vs()}
-		|Front window regulator block FHS commands: ${get_fhs_v_sperr()}
-		|Request for convertible top control lamp: ${get_vdk_kl_anf()}
+		|Frame VS_A1 (0x000B):
+		|	convertible top status: ${get_vdk_stat()}
+		|	convertible top is active: ${get_vdk_aktiv()}
+		|	Approach short stroke front left window regulator: ${get_fh_vl_kh()}
+		|	switch on the warning tone: ${get_vdk_warn()}
+		|	control lamp roll bar: ${get_uerb_kl()}
+		|	opening trunk lid blocked: ${get_hd_sperr()}
+		|	Approach short stroke front right window regulator: ${get_fh_vr_kh()}
+		|	Message 1: "Close trunk lid": ${get_vs_m1()}
+		|	Message 2: "Close trunk partition / ski bag": ${get_vs_m2()}
+		|	Message 3: "Start engine for convertible top operation": ${get_vs_m3()}
+		|	Message 4: "Lock convertible top": ${get_vs_m4()}
+		|	Message 5: "Trigger roll bar": ${get_vs_m5()}
+		|	Message 6: "Lower roll bar": ${get_vs_m6()}
+		|	Message 7: "Convertible top in operation": ${get_vs_m7()}
+		|	Message 8: "Convertible top is falling": ${get_vs_m8()}
+		|	Message 9: "Visit convertible top workshop": ${get_vs_m9()}
+		|	Message 10: "Convertible top blocked due to driving": ${get_vs_m10()}
+		|	Message 11: "Convertible top operation please wait": ${get_vs_m11()}
+		|	Message 12: "Convertible top open": ${get_vs_m12()}
+		|	Message 13: "Convertible top closed": ${get_vs_m13()}
+		|	Message 14: "Please close ski bag": ${get_vs_m14()}
+		|	Rear lid locking pawl activated: ${get_hd_sk_vs()}
+		|	Front window regulator block FHS commands: ${get_fhs_v_sperr()}
+		|	Request for convertible top control lamp: ${get_vdk_kl_anf()}
 	""".trimMargin("|")
 }

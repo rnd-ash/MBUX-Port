@@ -200,24 +200,25 @@ object MSS_A1 {
     }
 
 	override fun toString() = """
-		|Close central locking: ${get_zv_zu_mss()}
-		|switch on the interior light: ${get_il_ein_mss()}
-		|Close the recirculation flaps: ${get_umluft_mss()}
-		|Send taxi call for help: ${get_t_hiru_ein()}
-		|MSS flashing on: ${get_bli_ein_mss()}
-		|switch on the horn: ${get_sgh_ein_mss()}
-		|switch on fog lights: ${get_nsw_ein_mss()}
-		|switch on high beam: ${get_fl_ein_mss()}
-		|Duration of blinker light phase : ${get_bli_hell_mss()} ms
-		|Duration of the horn : ${get_sgh_an_mss()} ms
-		|Duration of fog lamp light phase : ${get_nsw_hell_mss()} ms
-		|Duration high beam light phase : ${get_fl_hell_mss()} ms
-		|Audio Mute: ${get_audio_mute1()}
-		|Muting the audio source during radio reception: ${get_audio_mute2()}
-		|220V external charge is connected: ${get_laden_akt()}
-		|Request numeric keypad HU: ${get_anf_zt()}
-		|Switch on the LED authority radio: ${get_bhf_led_akt()}
-		|Request FBAS input Comand: ${get_anf_fbas()}
-		|radio activation active: ${get_fu_frsp_akt()}
+		|Frame MSS_A1 (0x0015):
+		|	Close central locking: ${get_zv_zu_mss()}
+		|	switch on the interior light: ${get_il_ein_mss()}
+		|	Close the recirculation flaps: ${get_umluft_mss()}
+		|	Send taxi call for help: ${get_t_hiru_ein()}
+		|	MSS flashing on: ${get_bli_ein_mss()}
+		|	switch on the horn: ${get_sgh_ein_mss()}
+		|	switch on fog lights: ${get_nsw_ein_mss()}
+		|	switch on high beam: ${get_fl_ein_mss()}
+		|	Duration of blinker light phase : ${get_bli_hell_mss()} ms
+		|	Duration of the horn : ${get_sgh_an_mss()} ms
+		|	Duration of fog lamp light phase : ${get_nsw_hell_mss()} ms
+		|	Duration high beam light phase : ${get_fl_hell_mss()} ms
+		|	Audio Mute: ${get_audio_mute1()}
+		|	Muting the audio source during radio reception: ${get_audio_mute2()}
+		|	220V external charge is connected: ${get_laden_akt()}
+		|	Request numeric keypad HU: ${get_anf_zt()}
+		|	Switch on the LED authority radio: ${get_bhf_led_akt()}
+		|	Request FBAS input Comand: ${get_anf_fbas()}
+		|	radio activation active: ${get_fu_frsp_akt()}
 	""".trimMargin("|")
 }

@@ -227,25 +227,26 @@ object KLA_A1 {
     }
 
 	override fun toString() = """
-		|Ventilate auxiliary heating: ${get_ventilate()}
-		|heating auxiliary heating: ${get_heating()}
-		|Idle speed increase to increase the cooling capacity: ${get_ll_dza()}
-		|Switching on auxiliary heater allowed: ${get_zh_ein_ok()}
-		|switch on additional water pump: ${get_zwp_ein()}
-		|switch on the indoor sensor fan: ${get_ifg_ein()}
-		|EC mode active: ${get_ec_akt()}
-		|Switch on the heated rear window: ${get_hhs_ein()}
-		|Motor fan setpoint speed : ${get_nlfts()} %
-		|Torque absorption refrigeration compressor : ${get_m_komp()} Nm
-		|Cooling compressor control signal : ${get_komp_stell()} %
-		|Switching point increase in case of cooling power deficit: ${get_g_anf_kuehl_kla()}
-		|windshield heater. switch on (for G463): ${get_fsb_hzg_ein()}
-		|Fan output : ${get_geb_lstg()} %
-		|position ventilation flap down: ${get_lku_vorn()}
-		|Position ventilation flap center: ${get_lkm_vorn()}
-		|position ventilation flap up: ${get_lko_vorn()}
-		|Switching point increase in case of heating power deficit: ${get_g_anf_kla()}
-		|circulating air active: ${get_ul_akt_kla()}
-		|Inside temperature : ${get_t_innen_kla()} ° C
+		|Frame KLA_A1 (0x0030):
+		|	Ventilate auxiliary heating: ${get_ventilate()}
+		|	heating auxiliary heating: ${get_heating()}
+		|	Idle speed increase to increase the cooling capacity: ${get_ll_dza()}
+		|	Switching on auxiliary heater allowed: ${get_zh_ein_ok()}
+		|	switch on additional water pump: ${get_zwp_ein()}
+		|	switch on the indoor sensor fan: ${get_ifg_ein()}
+		|	EC mode active: ${get_ec_akt()}
+		|	Switch on the heated rear window: ${get_hhs_ein()}
+		|	Motor fan setpoint speed : ${get_nlfts()} %
+		|	Torque absorption refrigeration compressor : ${get_m_komp()} Nm
+		|	Cooling compressor control signal : ${get_komp_stell()} %
+		|	Switching point increase in case of cooling power deficit: ${get_g_anf_kuehl_kla()}
+		|	windshield heater. switch on (for G463): ${get_fsb_hzg_ein()}
+		|	Fan output : ${get_geb_lstg()} %
+		|	position ventilation flap down: ${get_lku_vorn()}
+		|	Position ventilation flap center: ${get_lkm_vorn()}
+		|	position ventilation flap up: ${get_lko_vorn()}
+		|	Switching point increase in case of heating power deficit: ${get_g_anf_kla()}
+		|	circulating air active: ${get_ul_akt_kla()}
+		|	Inside temperature : ${get_t_innen_kla()} ° C
 	""".trimMargin("|")
 }

@@ -53,7 +53,8 @@ object GW_C_B7 {
     }
 
 	override fun toString() = """
-		|direction of rotation of the front right wheel: ${get_drtgvr()}
-		|wheel speed front right : ${get_dvr()} 1 / min
+		|Frame GW_C_B7 (0x0005):
+		|	direction of rotation of the front right wheel: ${get_drtgvr()}
+		|	wheel speed front right : ${get_dvr()} 1 / min
 	""".trimMargin("|")
 }

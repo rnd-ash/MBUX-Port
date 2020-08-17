@@ -65,9 +65,10 @@ object SF_A2 {
     }
 
 	override fun toString() = """
-		|Perform mirror positioning: ${get_esh_auto_rest()}
-		|Save manually set position: ${get_mf_man_sp()}
-		|Approach travel position active: ${get_auto_akt()}
-		|Approach entry / exit position active: ${get_esh_akt()}
+		|Frame SF_A2 (0x02D0):
+		|	Perform mirror positioning: ${get_esh_auto_rest()}
+		|	Save manually set position: ${get_mf_man_sp()}
+		|	Approach travel position active: ${get_auto_akt()}
+		|	Approach entry / exit position active: ${get_esh_akt()}
 	""".trimMargin("|")
 }

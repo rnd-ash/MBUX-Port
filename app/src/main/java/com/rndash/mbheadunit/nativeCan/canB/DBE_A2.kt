@@ -147,17 +147,18 @@ object DBE_A2 {
     }
 
 	override fun toString() = """
-		|Wiper request: ${get_wiper_on()}
-		|error coding: ${get_error_rs()}
-		|reinitialization done: ${get_neu_ini_fertig()}
-		|request not understood: ${get_sende_wieder()}
-		|Parity from bit 0 to bit 6 (even): ${get_parity_dbe()}
-		|Wiper levels : ${get_wiper_st()} levels
-		|Flood detection: ${get_flood()}
-		|rain sensor defective: ${get_rs_def()}
-		|byte identifier rain sensor: ${get_kenn_rs()}
-		|Diagnostics rain / light sensor on: ${get_diag_rls_ein()}
-		|Communication error to the rain / light sensor: ${get_kom_rls_fehl()}
-		|Measured values ​​RLS not available: ${get_mess_rls_nv()}
+		|Frame DBE_A2 (0x0270):
+		|	Wiper request: ${get_wiper_on()}
+		|	error coding: ${get_error_rs()}
+		|	reinitialization done: ${get_neu_ini_fertig()}
+		|	request not understood: ${get_sende_wieder()}
+		|	Parity from bit 0 to bit 6 (even): ${get_parity_dbe()}
+		|	Wiper levels : ${get_wiper_st()} levels
+		|	Flood detection: ${get_flood()}
+		|	rain sensor defective: ${get_rs_def()}
+		|	byte identifier rain sensor: ${get_kenn_rs()}
+		|	Diagnostics rain / light sensor on: ${get_diag_rls_ein()}
+		|	Communication error to the rain / light sensor: ${get_kom_rls_fehl()}
+		|	Measured values ​​RLS not available: ${get_mess_rls_nv()}
 	""".trimMargin("|")
 }

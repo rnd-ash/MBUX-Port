@@ -65,9 +65,10 @@ object SAM_H_A3 {
     }
 
 	override fun toString() = """
-		|Hazard warning lights active: ${get_warn_akt()}
-		|Switch on the left turn signal: ${get_bli_li_ein()}
-		|Switch on the right turn signal: ${get_bli_re_ein()}
-		|Flashing-light-bright phase : ${get_hell_blink()} ms
+		|Frame SAM_H_A3 (0x000E):
+		|	Hazard warning lights active: ${get_warn_akt()}
+		|	Switch on the left turn signal: ${get_bli_li_ein()}
+		|	Switch on the right turn signal: ${get_bli_re_ein()}
+		|	Flashing-light-bright phase : ${get_hell_blink()} ms
 	""".trimMargin("|")
 }

@@ -65,9 +65,10 @@ object MS_312h {
     }
 
 	override fun toString() = """
-		|Static motor torque: ${get_m_sta()}
-		|Maximum motor torque including dyn. Turbocharger share: ${get_m_max_atl()}
-		|maximum motor torque: ${get_m_max()}
-		|minimum motor torque: ${get_m_min()}
+		|Frame MS_312h (0x0312):
+		|	Static motor torque: ${get_m_sta()}
+		|	Maximum motor torque including dyn. Turbocharger share: ${get_m_max_atl()}
+		|	maximum motor torque: ${get_m_max()}
+		|	minimum motor torque: ${get_m_min()}
 	""".trimMargin("|")
 }

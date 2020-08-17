@@ -38,6 +38,7 @@ object BS_APPL2 {
     }
 
 	override fun toString() = """
-		|application: ${get_appl2()}
+		|Frame BS_APPL2 (0x0635):
+		|	application: ${get_appl2()}
 	""".trimMargin("|")
 }

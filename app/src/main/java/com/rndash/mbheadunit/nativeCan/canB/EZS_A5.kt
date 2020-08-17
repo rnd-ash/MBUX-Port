@@ -555,50 +555,51 @@ object EZS_A5 {
     }
 
 	override fun toString() = """
-		|left / right hand drive: ${get_ll_rl()}
-		|Country-specific SA coding: ${get_land()}
-		|Taxi International: ${get_taxi_int()}
-		|Taxi emergency alarm system: ${get_taxi_notalm()}
-		|connection for roof signs: ${get_taxi_dz()}
-		|taxi call for help: ${get_taxi_hiru()}
-		|special vehicle: ${get_so_fzg()}
-		|radio activation taxi: ${get_taxi_funkauf()}
-		|Conversion for the disabled (only via tester): ${get_behi_fzg()}
-		|special protection Guard B4: ${get_guard_b4()}
-		|special protection Guard B6 / 7: ${get_guard_b6()}
-		|radio data transmission available: ${get_datenf()}
-		|close fresh air flap when the engine starts: ${get_fl_zu_ms()}
-		|Lock automatic startup FH-rear: ${get_fh_sperr_hi()}
-		|Block automatic start-up FH-front: ${get_fh_sperr_vo()}
-		|Comfort run mode: ${get_kb_auto()}
-		|Comfort circulating air mode: ${get_kb_man_kla()}
-		|Block recirculated air comfort actuation: ${get_kb_sperr_kla()}
-		|vehicle code series: ${get_fcod_br()}
-		|vehicle code body (203/209): ${get_fcod_kar()}
-		|Vehicle code engine: ${get_fcod_mot7()}
-		|Flat roll warning device available: ${get_prw_vh()}
-		|communication platform available: ${get_kp_vh()}
-		|driver's seat memory available: ${get_memory_vh()}
-		|comfort manual transmission available: ${get_ksg_vh()}
-		|automatic transmission available: ${get_nag_vh()}
-		|air conditioning available: ${get_kla_vh()}
-		|headlight cleaning system available: ${get_sra_vh()}
-		|Xenon light available: ${get_xen_vh()}
-		|rain sensor available: ${get_rs_vh()}
-		|sound system available: ${get_sound_vh()}
-		|level control available: ${get_niv_vh()}
-		|Booster fan not available: ${get_booster_nvh()}
-		|Footwell flaps in cooling mode, closed. (only G463): ${get_fuk_schl()}
-		|windshield heater. existing: ${get_fsb_hzg_vh()}
-		|CVT available: ${get_cvt_vh()}
-		|ART available: ${get_art_vh()}
-		|heated windscreen washer system available: ${get_swb_vh()}
-		|Complete replacement light allowed: ${get_ers_licht()}
-		|Keyless Go available: ${get_kg_vh()}
-		|interior protection available: ${get_irs_vh()}
-		|anti-theft alarm system available: ${get_edw_vh()}
-		|rear roller blind available: ${get_hr_vh()}
-		|trailer coupling available: ${get_ahk_vh()}
-		|Parktronics system available: ${get_pts_vh()}
+		|Frame EZS_A5 (0x001F):
+		|	left / right hand drive: ${get_ll_rl()}
+		|	Country-specific SA coding: ${get_land()}
+		|	Taxi International: ${get_taxi_int()}
+		|	Taxi emergency alarm system: ${get_taxi_notalm()}
+		|	connection for roof signs: ${get_taxi_dz()}
+		|	taxi call for help: ${get_taxi_hiru()}
+		|	special vehicle: ${get_so_fzg()}
+		|	radio activation taxi: ${get_taxi_funkauf()}
+		|	Conversion for the disabled (only via tester): ${get_behi_fzg()}
+		|	special protection Guard B4: ${get_guard_b4()}
+		|	special protection Guard B6 / 7: ${get_guard_b6()}
+		|	radio data transmission available: ${get_datenf()}
+		|	close fresh air flap when the engine starts: ${get_fl_zu_ms()}
+		|	Lock automatic startup FH-rear: ${get_fh_sperr_hi()}
+		|	Block automatic start-up FH-front: ${get_fh_sperr_vo()}
+		|	Comfort run mode: ${get_kb_auto()}
+		|	Comfort circulating air mode: ${get_kb_man_kla()}
+		|	Block recirculated air comfort actuation: ${get_kb_sperr_kla()}
+		|	vehicle code series: ${get_fcod_br()}
+		|	vehicle code body (203/209): ${get_fcod_kar()}
+		|	Vehicle code engine: ${get_fcod_mot7()}
+		|	Flat roll warning device available: ${get_prw_vh()}
+		|	communication platform available: ${get_kp_vh()}
+		|	driver's seat memory available: ${get_memory_vh()}
+		|	comfort manual transmission available: ${get_ksg_vh()}
+		|	automatic transmission available: ${get_nag_vh()}
+		|	air conditioning available: ${get_kla_vh()}
+		|	headlight cleaning system available: ${get_sra_vh()}
+		|	Xenon light available: ${get_xen_vh()}
+		|	rain sensor available: ${get_rs_vh()}
+		|	sound system available: ${get_sound_vh()}
+		|	level control available: ${get_niv_vh()}
+		|	Booster fan not available: ${get_booster_nvh()}
+		|	Footwell flaps in cooling mode, closed. (only G463): ${get_fuk_schl()}
+		|	windshield heater. existing: ${get_fsb_hzg_vh()}
+		|	CVT available: ${get_cvt_vh()}
+		|	ART available: ${get_art_vh()}
+		|	heated windscreen washer system available: ${get_swb_vh()}
+		|	Complete replacement light allowed: ${get_ers_licht()}
+		|	Keyless Go available: ${get_kg_vh()}
+		|	interior protection available: ${get_irs_vh()}
+		|	anti-theft alarm system available: ${get_edw_vh()}
+		|	rear roller blind available: ${get_hr_vh()}
+		|	trailer coupling available: ${get_ahk_vh()}
+		|	Parktronics system available: ${get_pts_vh()}
 	""".trimMargin("|")
 }

@@ -47,7 +47,8 @@ object TELEAID_A2 {
     }
 
 	override fun toString() = """
-		|Alive message TELEAID: ${get_live_teleaid()}
-		|mobility account authorized: ${get_mk_atrsrt()}
+		|Frame TELEAID_A2 (0x018D):
+		|	Alive message TELEAID: ${get_live_teleaid()}
+		|	mobility account authorized: ${get_mk_atrsrt()}
 	""".trimMargin("|")
 }

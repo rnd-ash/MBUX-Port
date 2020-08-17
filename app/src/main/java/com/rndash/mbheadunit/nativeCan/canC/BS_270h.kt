@@ -88,9 +88,10 @@ object BS_270h {
     }
 
 	override fun toString() = """
-		|Pulse ring counter, rear left wheel (48 per revolution): ${get_riz_hl()}
-		|Pulse ring counter, rear right wheel (48 per revolution): ${get_riz_hr()}
-		|Flat roll warning status: ${get_prw_st()}
-		|Warning messages flat roll warner: ${get_prw_warn()}
+		|Frame BS_270h (0x0270):
+		|	Pulse ring counter, rear left wheel (48 per revolution): ${get_riz_hl()}
+		|	Pulse ring counter, rear right wheel (48 per revolution): ${get_riz_hr()}
+		|	Flat roll warning status: ${get_prw_st()}
+		|	Warning messages flat roll warner: ${get_prw_warn()}
 	""".trimMargin("|")
 }

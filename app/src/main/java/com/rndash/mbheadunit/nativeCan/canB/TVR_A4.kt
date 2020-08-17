@@ -38,6 +38,7 @@ object TVR_A4 {
     }
 
 	override fun toString() = """
-		|Access authorization code: ${get_zbc_tvr()}
+		|Frame TVR_A4 (0x00EC):
+		|	Access authorization code: ${get_zbc_tvr()}
 	""".trimMargin("|")
 }

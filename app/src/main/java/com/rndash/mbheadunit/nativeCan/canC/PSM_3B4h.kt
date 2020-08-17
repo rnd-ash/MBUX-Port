@@ -137,17 +137,18 @@ object PSM_3B4h {
     }
 
 	override fun toString() = """
-		|Working speed control active: ${get_psm_adr_akt()}
-		|working speed control: ${get_psm_adr_tgl()}
-		|working speed control: ${get_psm_adr_par()}
-		|Motor target speed ADR: ${get_psm_n_soll()}
-		|torque limitation active: ${get_psm_mom_akt()}
-		|torque limit: ${get_psm_mom_tgl()}
-		|torque limitation: ${get_psm_mom_par()}
-		|Maximum motor torque: ${get_psm_mom_soll()}
-		|speed limitation active: ${get_psm_dz_akt()}
-		|speed limitation: ${get_psm_dz_tgl()}
-		|speed limitation: ${get_psm_dz_par()}
-		|maximum speed: ${get_psm_dz_max()}
+		|Frame PSM_3B4h (0x03B4):
+		|	Working speed control active: ${get_psm_adr_akt()}
+		|	working speed control: ${get_psm_adr_tgl()}
+		|	working speed control: ${get_psm_adr_par()}
+		|	Motor target speed ADR: ${get_psm_n_soll()}
+		|	torque limitation active: ${get_psm_mom_akt()}
+		|	torque limit: ${get_psm_mom_tgl()}
+		|	torque limitation: ${get_psm_mom_par()}
+		|	Maximum motor torque: ${get_psm_mom_soll()}
+		|	speed limitation active: ${get_psm_dz_akt()}
+		|	speed limitation: ${get_psm_dz_tgl()}
+		|	speed limitation: ${get_psm_dz_par()}
+		|	maximum speed: ${get_psm_dz_max()}
 	""".trimMargin("|")
 }

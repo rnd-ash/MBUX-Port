@@ -300,31 +300,32 @@ object EZS_A7 {
     }
 
 	override fun toString() = """
-		|Brake light switch status: ${get_bls_st()}
-		|brake light suppression: ${get_bls_unt()}
-		|switch on additional water pump: ${get_zwp_ein_ms()}
-		|motor fan defective control lamp: ${get_lueft_mot_kl()}
-		|Air conditioning compressor emergency shutdown: ${get_komp_notaus()}
-		|switch off air conditioning compressor: acceleration: ${get_komp_baus()}
-		|idle is stable: ${get_ll_stbl()}
-		|gear selector lever position (only NAG): ${get_whc()}
-		|Status of heating output: ${get_hzl_st()}
-		|Parking position engaged: ${get_p()}
-		|reverse gear engaged (all transmissions): ${get_rg()}
-		|direction of rotation of front left wheel: ${get_drtgvl()}
-		|wheel speed front left : ${get_dvl()} 1 / min
-		|clutch pressed: ${get_kpl()}
-		|engine oil temperature too high (overheating): ${get_uehitz()}
-		|Brake pad wear indicator lamp: ${get_bbv_kl()}
-		|ABS defective control lamp: ${get_abs_kl()}
-		|ESP defective control lamp: ${get_esp_kl()}
-		|BAS defective control lamp: ${get_bas_kl()}
-		|Diagnostic control lamp (OBD II): ${get_diag_kl()}
-		|Oil level / oil pressure control lamp: ${get_oel_kl()}
-		|Substitution of right low beam: ${get_sub_abl_r()}
-		|Substitution of left low beam: ${get_sub_abl_l()}
-		|ART distance warning is switched on: ${get_art_abw_akt()}
-		|emergency braking (brake light flashing): ${get_notbre()}
-		|Gear selector lever position (NAG, KSG, CVT): ${get_whst()}
+		|Frame EZS_A7 (0x0003):
+		|	Brake light switch status: ${get_bls_st()}
+		|	brake light suppression: ${get_bls_unt()}
+		|	switch on additional water pump: ${get_zwp_ein_ms()}
+		|	motor fan defective control lamp: ${get_lueft_mot_kl()}
+		|	Air conditioning compressor emergency shutdown: ${get_komp_notaus()}
+		|	switch off air conditioning compressor: acceleration: ${get_komp_baus()}
+		|	idle is stable: ${get_ll_stbl()}
+		|	gear selector lever position (only NAG): ${get_whc()}
+		|	Status of heating output: ${get_hzl_st()}
+		|	Parking position engaged: ${get_p()}
+		|	reverse gear engaged (all transmissions): ${get_rg()}
+		|	direction of rotation of front left wheel: ${get_drtgvl()}
+		|	wheel speed front left : ${get_dvl()} 1 / min
+		|	clutch pressed: ${get_kpl()}
+		|	engine oil temperature too high (overheating): ${get_uehitz()}
+		|	Brake pad wear indicator lamp: ${get_bbv_kl()}
+		|	ABS defective control lamp: ${get_abs_kl()}
+		|	ESP defective control lamp: ${get_esp_kl()}
+		|	BAS defective control lamp: ${get_bas_kl()}
+		|	Diagnostic control lamp (OBD II): ${get_diag_kl()}
+		|	Oil level / oil pressure control lamp: ${get_oel_kl()}
+		|	Substitution of right low beam: ${get_sub_abl_r()}
+		|	Substitution of left low beam: ${get_sub_abl_l()}
+		|	ART distance warning is switched on: ${get_art_abw_akt()}
+		|	emergency braking (brake light flashing): ${get_notbre()}
+		|	Gear selector lever position (NAG, KSG, CVT): ${get_whst()}
 	""".trimMargin("|")
 }

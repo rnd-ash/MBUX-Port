@@ -125,15 +125,16 @@ object OBF_A1 {
     }
 
 	override fun toString() = """
-		|ESP on / off actuated: ${get_esp_bet()}
-		|Rear head restraints raised / lowered actuated: ${get_fks_bet()}
-		|Rear blind button pressed: ${get_hr_bet()}
-		|unlock ZV (internal switch activated): ${get_zv_entri_is()}
-		|lock ZV (internal switch actuated): ${get_zv_verri_is()}
-		|EDW glove box contact triggered: ${get_edw_hand_auf()}
-		|Deselect EDW interior protection: ${get_edw_irs_abw()}
-		|EDW deselect towing protection: ${get_edw_as_abw()}
-		|Hazard warning lights on: ${get_wbl_ein()}
-		|Parktronic button pressed: ${get_pts_bet()}
+		|Frame OBF_A1 (0x002C):
+		|	ESP on / off actuated: ${get_esp_bet()}
+		|	Rear head restraints raised / lowered actuated: ${get_fks_bet()}
+		|	Rear blind button pressed: ${get_hr_bet()}
+		|	unlock ZV (internal switch activated): ${get_zv_entri_is()}
+		|	lock ZV (internal switch actuated): ${get_zv_verri_is()}
+		|	EDW glove box contact triggered: ${get_edw_hand_auf()}
+		|	Deselect EDW interior protection: ${get_edw_irs_abw()}
+		|	EDW deselect towing protection: ${get_edw_as_abw()}
+		|	Hazard warning lights on: ${get_wbl_ein()}
+		|	Parktronic button pressed: ${get_pts_bet()}
 	""".trimMargin("|")
 }

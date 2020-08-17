@@ -38,6 +38,7 @@ object DBE_A3 {
     }
 
 	override fun toString() = """
-		|mirror dimming : ${get_sp_abblend()} levels
+		|Frame DBE_A3 (0x02D4):
+		|	mirror dimming : ${get_sp_abblend()} levels
 	""".trimMargin("|")
 }

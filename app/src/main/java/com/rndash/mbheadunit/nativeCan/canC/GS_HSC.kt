@@ -38,6 +38,7 @@ object GS_HSC {
     }
 
 	override fun toString() = """
-		|manual control on the test bench: ${get_hsc()}
+		|Frame GS_HSC (0x050C):
+		|	manual control on the test bench: ${get_hsc()}
 	""".trimMargin("|")
 }

@@ -44,6 +44,7 @@ object UBF_A2 {
     }
 
 	override fun toString() = """
-		|convertible top actuation: ${get_vdk_anf()}
+		|Frame UBF_A2 (0x035B):
+		|	convertible top actuation: ${get_vdk_anf()}
 	""".trimMargin("|")
 }

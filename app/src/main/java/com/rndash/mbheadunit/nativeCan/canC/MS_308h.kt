@@ -272,32 +272,33 @@ object MS_308h {
     }
 
 	override fun toString() = """
-		|cylinder deactivation conditions met: ${get_zasbed()}
-		|water in fuel control lamp (only CR2-USA): ${get_wks_kl()}
-		|fuel filter clogged control lamp (only CR2-USA): ${get_ksf_kl()}
-		|fuel cutoff full: ${get_sasv()}
-		|partial thrust cut-off: ${get_sast()}
-		|speed limitation function active: ${get_n_max_bg()}
-		|Req. Torque converter lock-up clutch "open": ${get_kueb_o_a()}
-		|clutch pressed: ${get_kpl()}
-		|engine speed: ${get_nmot()}
-		|Tank cap open control lamp: ${get_tank_kl()}
-		|Diagnostic control lamp (OBD II): ${get_diag_kl()}
-		|Oil level / oil pressure control lamp: ${get_oel_kl()}
-		|Pre-glow control lamp: ${get_vgl_kl()}
-		|air filter dirty control lamp (only diesel): ${get_lufi_kl()}
-		|ethanol operation detected: ${get_eoh()}
-		|Warning message for the eco power steering pump: ${get_elhp_warn()}
-		|cooling water temperature too high: ${get_temp_kl()}
-		|speed limitation for display active (0 for CR): ${get_dbaa()}
-		|Motor fan defective control lamp: ${get_lueft_mot_kl()}
-		|starter is running: ${get_anl_lft()}
-		|ADR defective control lamp (only commercial vehicles): ${get_adr_def_kl()}
-		|ADR control lamp (commercial vehicles only): ${get_adr_kl()}
-		|cylinder deactivation: ${get_zas()}
-		|engine oil temperature too high (overheating): ${get_uehitz()}
-		|oil temperature: ${get_t_oel()}
-		|oil level: ${get_oel_fs()}
-		|oil quality: ${get_oel_qual()}
+		|Frame MS_308h (0x0308):
+		|	cylinder deactivation conditions met: ${get_zasbed()}
+		|	water in fuel control lamp (only CR2-USA): ${get_wks_kl()}
+		|	fuel filter clogged control lamp (only CR2-USA): ${get_ksf_kl()}
+		|	fuel cutoff full: ${get_sasv()}
+		|	partial thrust cut-off: ${get_sast()}
+		|	speed limitation function active: ${get_n_max_bg()}
+		|	Req. Torque converter lock-up clutch "open": ${get_kueb_o_a()}
+		|	clutch pressed: ${get_kpl()}
+		|	engine speed: ${get_nmot()}
+		|	Tank cap open control lamp: ${get_tank_kl()}
+		|	Diagnostic control lamp (OBD II): ${get_diag_kl()}
+		|	Oil level / oil pressure control lamp: ${get_oel_kl()}
+		|	Pre-glow control lamp: ${get_vgl_kl()}
+		|	air filter dirty control lamp (only diesel): ${get_lufi_kl()}
+		|	ethanol operation detected: ${get_eoh()}
+		|	Warning message for the eco power steering pump: ${get_elhp_warn()}
+		|	cooling water temperature too high: ${get_temp_kl()}
+		|	speed limitation for display active (0 for CR): ${get_dbaa()}
+		|	Motor fan defective control lamp: ${get_lueft_mot_kl()}
+		|	starter is running: ${get_anl_lft()}
+		|	ADR defective control lamp (only commercial vehicles): ${get_adr_def_kl()}
+		|	ADR control lamp (commercial vehicles only): ${get_adr_kl()}
+		|	cylinder deactivation: ${get_zas()}
+		|	engine oil temperature too high (overheating): ${get_uehitz()}
+		|	oil temperature: ${get_t_oel()}
+		|	oil level: ${get_oel_fs()}
+		|	oil quality: ${get_oel_qual()}
 	""".trimMargin("|")
 }

@@ -56,8 +56,9 @@ object KOMBI_A3 {
     }
 
 	override fun toString() = """
-		|Current time : ${get_a_zeit()} s
-		|Mileage : ${get_km()} km
-		|Range : ${get_rw()} km (miles)
+		|Frame KOMBI_A3 (0x00D4):
+		|	Current time : ${get_a_zeit()} s
+		|	Mileage : ${get_km()} km
+		|	Range : ${get_rw()} km (miles)
 	""".trimMargin("|")
 }

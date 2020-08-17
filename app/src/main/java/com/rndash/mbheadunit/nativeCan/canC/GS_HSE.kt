@@ -38,6 +38,7 @@ object GS_HSE {
     }
 
 	override fun toString() = """
-		|manual control on the test bench: ${get_hse()}
+		|Frame GS_HSE (0x050E):
+		|	manual control on the test bench: ${get_hse()}
 	""".trimMargin("|")
 }

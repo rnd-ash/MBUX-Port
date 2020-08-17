@@ -83,7 +83,8 @@ object MS_2F3h {
     }
 
 	override fun toString() = """
-		|Gear step shift recommendation "Actual": ${get_fsc_ist()}
-		|Gear step shift recommendation "target": ${get_fsc_soll()}
+		|Frame MS_2F3h (0x02F3):
+		|	Gear step shift recommendation "Actual": ${get_fsc_ist()}
+		|	Gear step shift recommendation "target": ${get_fsc_soll()}
 	""".trimMargin("|")
 }

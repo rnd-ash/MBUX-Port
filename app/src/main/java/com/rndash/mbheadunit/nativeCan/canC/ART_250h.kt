@@ -206,21 +206,22 @@ object ART_250h {
     }
 
 	override fun toString() = """
-		|Suppression of dynamic full load downshift: ${get_dyn_unt()}
-		|brake light suppression: ${get_bl_unt()}
-		|ART brakes: ${get_art_bre()}
-		|ART ok: ${get_art_ok()}
-		|switching line shift ART: ${get_slv_art()}
-		|Cityassistent regulates: ${get_cas_reg()}
-		|Motor torque request dynamic: ${get_mdyn_art()}
-		|Motor torque request parity (even parity): ${get_mpar_art()}
-		|ART regulates: ${get_art_reg()}
-		|Limiter controls: ${get_lim_reg()}
-		|Required. Engine torque: ${get_m_art()}
-		|message counter: ${get_bz250h()}
-		|braking torque (0000h: passive value): ${get_mbre_art()}
-		|target gear, lower limit: ${get_gmin_art()}
-		|target gear, upper limit: ${get_gmax_art()}
-		|ART request: "Active downshift": ${get_akt_r_art()}
+		|Frame ART_250h (0x0250):
+		|	Suppression of dynamic full load downshift: ${get_dyn_unt()}
+		|	brake light suppression: ${get_bl_unt()}
+		|	ART brakes: ${get_art_bre()}
+		|	ART ok: ${get_art_ok()}
+		|	switching line shift ART: ${get_slv_art()}
+		|	Cityassistent regulates: ${get_cas_reg()}
+		|	Motor torque request dynamic: ${get_mdyn_art()}
+		|	Motor torque request parity (even parity): ${get_mpar_art()}
+		|	ART regulates: ${get_art_reg()}
+		|	Limiter controls: ${get_lim_reg()}
+		|	Required. Engine torque: ${get_m_art()}
+		|	message counter: ${get_bz250h()}
+		|	braking torque (0000h: passive value): ${get_mbre_art()}
+		|	target gear, lower limit: ${get_gmin_art()}
+		|	target gear, upper limit: ${get_gmax_art()}
+		|	ART request: "Active downshift": ${get_akt_r_art()}
 	""".trimMargin("|")
 }

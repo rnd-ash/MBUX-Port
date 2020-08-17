@@ -53,7 +53,8 @@ object VIN {
     }
 
 	override fun toString() = """
-		|VIN signal part: ${get_vin_msg()}
-		|VIN data: ${get_vin_data()}
+		|Frame VIN (0x06FA):
+		|	VIN signal part: ${get_vin_msg()}
+		|	VIN data: ${get_vin_data()}
 	""".trimMargin("|")
 }

@@ -47,7 +47,8 @@ object TELEAID_POS1 {
     }
 
 	override fun toString() = """
-		|GPS latitude (- means south) : ${get_gps_lat()} mas
-		|GPS longitude (- means west) : ${get_gps_long()} mas
+		|Frame TELEAID_POS1 (0x03E5):
+		|	GPS latitude (- means south) : ${get_gps_lat()} mas
+		|	GPS longitude (- means west) : ${get_gps_long()} mas
 	""".trimMargin("|")
 }

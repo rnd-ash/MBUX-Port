@@ -141,14 +141,15 @@ object BS_328h {
     }
 
 	override fun toString() = """
-		|WMS Parity (even parity): ${get_wms_pa()}
-		|Set roll torque change: ${get_wms()}
-		|vehicle lateral acceleration. in the center of gravity (+ = left): ${get_ay_s()}
-		|ESP display messages: ${get_esp_dspl()}
-		|message counter: ${get_bz328h()}
-		|open clutch: ${get_kpl_oef()}
-		|emergency braking (brake light flashing): ${get_notbre()}
-		|Pulse ring counter, front left wheel (48 per revolution): ${get_riz_vl()}
-		|Pulse ring counter, front right wheel (48 per revolution): ${get_riz_vr()}
+		|Frame BS_328h (0x0328):
+		|	WMS Parity (even parity): ${get_wms_pa()}
+		|	Set roll torque change: ${get_wms()}
+		|	vehicle lateral acceleration. in the center of gravity (+ = left): ${get_ay_s()}
+		|	ESP display messages: ${get_esp_dspl()}
+		|	message counter: ${get_bz328h()}
+		|	open clutch: ${get_kpl_oef()}
+		|	emergency braking (brake light flashing): ${get_notbre()}
+		|	Pulse ring counter, front left wheel (48 per revolution): ${get_riz_vl()}
+		|	Pulse ring counter, front right wheel (48 per revolution): ${get_riz_vr()}
 	""".trimMargin("|")
 }

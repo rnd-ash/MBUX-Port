@@ -38,6 +38,7 @@ object GS_HS1 {
     }
 
 	override fun toString() = """
-		|manual control on the test bench: ${get_hs1()}
+		|Frame GS_HS1 (0x0501):
+		|	manual control on the test bench: ${get_hs1()}
 	""".trimMargin("|")
 }

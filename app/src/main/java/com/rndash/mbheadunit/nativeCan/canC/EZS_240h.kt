@@ -381,39 +381,40 @@ object EZS_240h {
     }
 
 	override fun toString() = """
-		|Cruise control lever: "Switch off": ${get_off()}
-		|Cruise control lever: "Resume": ${get_wa()}
-		|Cruise control lever: "Set and accelerate level0": ${get_s_plus_b()}
-		|Cruise control lever: "Set and decelerate level0": ${get_s_minus_b()}
-		|Operation variable speed limit: ${get_vmax_akt()}
-		|Cruise control lever implausible: ${get_wh_up()}
-		|Terminal 50: ${get_kl_50()}
-		|Terminal 15: ${get_kl_15()}
-		|brake switch for shift lock: ${get_bs_sl()}
-		|reverse gear engaged (only manual transmission): ${get_rg_schalt()}
-		|left-hand drive / right-hand drive: ${get_ll_rlc()}
-		|Keyles Go event conditions met: ${get_kg_alb_ok()}
-		|Keyless Go terminal control active: ${get_kg_kl_akt()}
-		|message counter: ${get_bz240h()}
-		|Cruise control lever parity (even parity): ${get_wh_pa()}
-		|crash signal from Airbag-SG: ${get_crash()}
-		|CRASH confirmbit: ${get_crash_cnf()}
-		|ASG sport mode on / off activated (ST2_LED_DL if ABC is available): ${get_asg_sport_bet()}
-		|direction flashing left: ${get_bli_li()}
-		|direction flashing right: ${get_bli_re()}
-		|wiper outside of parking position: ${get_kl_31b()}
-		|handbrake applied (control lamp): ${get_has_kl()}
-		|ESP on / off actuated: ${get_esp_bet()}
-		|On-board network emergency operation: Prio1 and Prio2 consumers off, second battery supports: ${get_bn_ntlf()}
-		|Terminal 54 hardware active: ${get_kl54_rm()}
-		|Switch on low beam: ${get_abl_ein()}
-		|ART distance warning on / off activated: ${get_art_abw_bet()}
-		|LF / ABC 3-stage switch actuated: ${get_st3_bet()}
-		|LF / ABC 2-stage switch actuated: ${get_st2_bet()}
-		|distance factor: ${get_art_abstand()}
-		|country code: ${get_ldc()}
-		|model-dependent vehicle version (only 220/215/230): ${get_fzgversn()}
-		|E-suction fan: basic ventilation off: ${get_gbl_aus()}
-		|ART available: ${get_art_vh()}
+		|Frame EZS_240h (0x0240):
+		|	Cruise control lever: "Switch off": ${get_off()}
+		|	Cruise control lever: "Resume": ${get_wa()}
+		|	Cruise control lever: "Set and accelerate level0": ${get_s_plus_b()}
+		|	Cruise control lever: "Set and decelerate level0": ${get_s_minus_b()}
+		|	Operation variable speed limit: ${get_vmax_akt()}
+		|	Cruise control lever implausible: ${get_wh_up()}
+		|	Terminal 50: ${get_kl_50()}
+		|	Terminal 15: ${get_kl_15()}
+		|	brake switch for shift lock: ${get_bs_sl()}
+		|	reverse gear engaged (only manual transmission): ${get_rg_schalt()}
+		|	left-hand drive / right-hand drive: ${get_ll_rlc()}
+		|	Keyles Go event conditions met: ${get_kg_alb_ok()}
+		|	Keyless Go terminal control active: ${get_kg_kl_akt()}
+		|	message counter: ${get_bz240h()}
+		|	Cruise control lever parity (even parity): ${get_wh_pa()}
+		|	crash signal from Airbag-SG: ${get_crash()}
+		|	CRASH confirmbit: ${get_crash_cnf()}
+		|	ASG sport mode on / off activated (ST2_LED_DL if ABC is available): ${get_asg_sport_bet()}
+		|	direction flashing left: ${get_bli_li()}
+		|	direction flashing right: ${get_bli_re()}
+		|	wiper outside of parking position: ${get_kl_31b()}
+		|	handbrake applied (control lamp): ${get_has_kl()}
+		|	ESP on / off actuated: ${get_esp_bet()}
+		|	On-board network emergency operation: Prio1 and Prio2 consumers off, second battery supports: ${get_bn_ntlf()}
+		|	Terminal 54 hardware active: ${get_kl54_rm()}
+		|	Switch on low beam: ${get_abl_ein()}
+		|	ART distance warning on / off activated: ${get_art_abw_bet()}
+		|	LF / ABC 3-stage switch actuated: ${get_st3_bet()}
+		|	LF / ABC 2-stage switch actuated: ${get_st2_bet()}
+		|	distance factor: ${get_art_abstand()}
+		|	country code: ${get_ldc()}
+		|	model-dependent vehicle version (only 220/215/230): ${get_fzgversn()}
+		|	E-suction fan: basic ventilation off: ${get_gbl_aus()}
+		|	ART available: ${get_art_vh()}
 	""".trimMargin("|")
 }

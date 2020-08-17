@@ -75,8 +75,9 @@ object EZS_A6 {
     }
 
 	override fun toString() = """
-		|year of change: ${get_ver_ae()}
-		|year specification: ${get_ver_jahr()}
-		|Tire pressure module available: ${get_tpm_vh()}
+		|Frame EZS_A6 (0x001E):
+		|	year of change: ${get_ver_ae()}
+		|	year specification: ${get_ver_jahr()}
+		|	Tire pressure module available: ${get_tpm_vh()}
 	""".trimMargin("|")
 }
