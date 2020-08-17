@@ -1,6 +1,7 @@
 
+@file:Suppress("unused", "FunctionName")
 package com.rndash.mbheadunit.nativeCan.canB
-
+import com.rndash.mbheadunit.CanFrame // AUTO GEN
 import com.rndash.mbheadunit.nativeCan.CanBusNative // AUTO GEN
 
 /**
@@ -13,8 +14,14 @@ object KLA_A3 {
     	/** Gets Request heating power UNIT:% **/
 	fun get_hzl_anf() : Int = CanBusNative.getECUParameterB(CanBAddrs.KLA_A3, 0, 8)
 	
+	/** Sets Request heating power UNIT:% **/
+	fun set_hzl_anf(f: CanFrame, p: Int) = CanBusNative.setFrameParameter(f, 0, 8, p)
+	
 	/** Gets Outside air temperature for heat management UNIT: ° C **/
 	fun get_t_aussen_wm() : Int = CanBusNative.getECUParameterB(CanBAddrs.KLA_A3, 8, 8)
+	
+	/** Sets Outside air temperature for heat management UNIT: ° C **/
+	fun set_t_aussen_wm(f: CanFrame, p: Int) = CanBusNative.setFrameParameter(f, 8, 8, p)
 	
 	
 }

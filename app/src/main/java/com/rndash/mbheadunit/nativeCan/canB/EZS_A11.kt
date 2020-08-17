@@ -1,6 +1,7 @@
 
+@file:Suppress("unused", "FunctionName")
 package com.rndash.mbheadunit.nativeCan.canB
-
+import com.rndash.mbheadunit.CanFrame // AUTO GEN
 import com.rndash.mbheadunit.nativeCan.CanBusNative // AUTO GEN
 
 /**
@@ -12,6 +13,9 @@ object EZS_A11 {
 
     	/** Gets Battery voltage UNIT: V **/
 	fun get_u_batt() : Int = CanBusNative.getECUParameterB(CanBAddrs.EZS_A11, 0, 8)
+	
+	/** Sets Battery voltage UNIT: V **/
+	fun set_u_batt(f: CanFrame, p: Int) = CanBusNative.setFrameParameter(f, 0, 8, p)
 	
 	
 }

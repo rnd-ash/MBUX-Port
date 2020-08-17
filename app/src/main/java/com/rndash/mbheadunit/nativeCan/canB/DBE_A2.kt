@@ -1,6 +1,7 @@
 
+@file:Suppress("unused", "FunctionName")
 package com.rndash.mbheadunit.nativeCan.canB
-
+import com.rndash.mbheadunit.CanFrame // AUTO GEN
 import com.rndash.mbheadunit.nativeCan.CanBusNative // AUTO GEN
 
 /**
@@ -12,6 +13,9 @@ object DBE_A2 {
 
     	/** Gets Wiper request **/
 	fun get_wiper_on() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.DBE_A2, 7, 1) != 0
+	
+	/** Sets Wiper request **/
+	fun set_wiper_on(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 7, 1, if(p) 1 else 0)
 	
 	/** Gets error coding **/
 	fun get_error_rs() : ERROR_RS = when(CanBusNative.getECUParameterB(CanBAddrs.DBE_A2, 4, 3)) {
@@ -26,35 +30,68 @@ object DBE_A2 {
 		 else -> throw Exception("Invalid raw value for ERROR_RS")
 	}
 	
+	/** Sets error coding **/
+	fun set_error_rs(f: CanFrame, p: ERROR_RS) = CanBusNative.setFrameParameter(f, 4, 3, p.raw)
+	
 	/** Gets reinitialization done **/
 	fun get_neu_ini_fertig() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.DBE_A2, 3, 1) != 0
+	
+	/** Sets reinitialization done **/
+	fun set_neu_ini_fertig(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 3, 1, if(p) 1 else 0)
 	
 	/** Gets request not understood **/
 	fun get_sende_wieder() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.DBE_A2, 2, 1) != 0
 	
+	/** Sets request not understood **/
+	fun set_sende_wieder(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 2, 1, if(p) 1 else 0)
+	
 	/** Gets Parity from bit 0 to bit 6 (even) **/
 	fun get_parity_dbe() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.DBE_A2, 0, 1) != 0
+	
+	/** Sets Parity from bit 0 to bit 6 (even) **/
+	fun set_parity_dbe(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 0, 1, if(p) 1 else 0)
 	
 	/** Gets Wiper levels UNIT: levels **/
 	fun get_wiper_st() : Int = CanBusNative.getECUParameterB(CanBAddrs.DBE_A2, 12, 4)
 	
+	/** Sets Wiper levels UNIT: levels **/
+	fun set_wiper_st(f: CanFrame, p: Int) = CanBusNative.setFrameParameter(f, 12, 4, p)
+	
 	/** Gets Flood detection **/
 	fun get_flood() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.DBE_A2, 11, 1) != 0
+	
+	/** Sets Flood detection **/
+	fun set_flood(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 11, 1, if(p) 1 else 0)
 	
 	/** Gets rain sensor defective **/
 	fun get_rs_def() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.DBE_A2, 9, 1) != 0
 	
+	/** Sets rain sensor defective **/
+	fun set_rs_def(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 9, 1, if(p) 1 else 0)
+	
 	/** Gets byte identifier rain sensor **/
 	fun get_kenn_rs() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.DBE_A2, 8, 1) != 0
+	
+	/** Sets byte identifier rain sensor **/
+	fun set_kenn_rs(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 8, 1, if(p) 1 else 0)
 	
 	/** Gets Diagnostics rain / light sensor on **/
 	fun get_diag_rls_ein() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.DBE_A2, 23, 1) != 0
 	
+	/** Sets Diagnostics rain / light sensor on **/
+	fun set_diag_rls_ein(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 23, 1, if(p) 1 else 0)
+	
 	/** Gets Communication error to the rain / light sensor **/
 	fun get_kom_rls_fehl() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.DBE_A2, 22, 1) != 0
 	
+	/** Sets Communication error to the rain / light sensor **/
+	fun set_kom_rls_fehl(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 22, 1, if(p) 1 else 0)
+	
 	/** Gets Measured values ​​RLS not available **/
 	fun get_mess_rls_nv() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.DBE_A2, 21, 1) != 0
+	
+	/** Sets Measured values ​​RLS not available **/
+	fun set_mess_rls_nv(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 21, 1, if(p) 1 else 0)
 	
 	
 }

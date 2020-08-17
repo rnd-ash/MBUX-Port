@@ -1,6 +1,7 @@
 
+@file:Suppress("unused", "FunctionName")
 package com.rndash.mbheadunit.nativeCan.canB
-
+import com.rndash.mbheadunit.CanFrame // AUTO GEN
 import com.rndash.mbheadunit.nativeCan.CanBusNative // AUTO GEN
 
 /**
@@ -13,11 +14,20 @@ object KOMBI_A3 {
     	/** Gets Current time UNIT: s **/
 	fun get_a_zeit() : Int = CanBusNative.getECUParameterB(CanBAddrs.KOMBI_A3, 0, 16)
 	
+	/** Sets Current time UNIT: s **/
+	fun set_a_zeit(f: CanFrame, p: Int) = CanBusNative.setFrameParameter(f, 0, 16, p)
+	
 	/** Gets Mileage UNIT: km **/
 	fun get_km() : Int = CanBusNative.getECUParameterB(CanBAddrs.KOMBI_A3, 16, 24)
 	
+	/** Sets Mileage UNIT: km **/
+	fun set_km(f: CanFrame, p: Int) = CanBusNative.setFrameParameter(f, 16, 24, p)
+	
 	/** Gets Range UNIT: km (miles) **/
 	fun get_rw() : Int = CanBusNative.getECUParameterB(CanBAddrs.KOMBI_A3, 40, 16)
+	
+	/** Sets Range UNIT: km (miles) **/
+	fun set_rw(f: CanFrame, p: Int) = CanBusNative.setFrameParameter(f, 40, 16, p)
 	
 	
 }

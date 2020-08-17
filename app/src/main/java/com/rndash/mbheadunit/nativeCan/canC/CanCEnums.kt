@@ -628,6 +628,76 @@ enum class PFW(val raw: Int) {
 	 SNV(3),
 }
 
+enum class GIC(val raw: Int) {
+	 /** actual gear "N" **/
+	 N(0),
+	 /** actual gear "1" **/
+	 D1(1),
+	 /** actual gear "2" **/
+	 D2(2),
+	 /** actual gear "3" **/
+	 D3(3),
+	 /** actual gear "4" **/
+	 D4(4),
+	 /** actual gear "5" **/
+	 D5(5),
+	 /** actual gear "6" **/
+	 D6(6),
+	 /** actual gear "7" **/
+	 D7(7),
+	 /** actual gear "continuously forward **/
+	 D_CVT(8),
+	 /** actual gear "continuously backwards" **/
+	 R_CVT(9),
+	 /** actual gear "R3" **/
+	 R3(10),
+	 /** Actual gear "R" **/
+	 R(11),
+	 /** actual gear "R2" **/
+	 R2(12),
+	 /** actual gear "P" **/
+	 P(13),
+	 /** No Force **/
+	 No_Force(14),
+	 /** signal not available **/
+	 SNV(15),
+}
+
+enum class GZC(val raw: Int) {
+	 /** target gear "N" **/
+	 N(0),
+	 /** target gear "1" **/
+	 D1(1),
+	 /** target gear "2" **/
+	 D2(2),
+	 /** target gear "3" **/
+	 D3(3),
+	 /** target gear "4" **/
+	 D4(4),
+	 /** target gear "5" **/
+	 D5(5),
+	 /** target gear "6" **/
+	 D6(6),
+	 /** target gear "7" **/
+	 D7(7),
+	 /** target gear "stepless forward **/
+	 D_CVT(8),
+	 /** target gear "continuously backwards" **/
+	 R_CVT(9),
+	 /** target gear "R3" **/
+	 R3(10),
+	 /** Target gear "R" **/
+	 R(11),
+	 /** target gear "R2" **/
+	 R2(12),
+	 /** Target gear "P" **/
+	 P(13),
+	 /** circuit termination **/
+	 CANCEL(14),
+	 /** signal not available **/
+	 SNV(15),
+}
+
 enum class FPC_AAD(val raw: Int) {
 	 /** Sport (default) **/
 	 SPORT(0),
@@ -777,76 +847,6 @@ enum class MECH(val raw: Int) {
 	 GROSS2(2),
 	 /** NAG2, Small Gear **/
 	 KLEIN2(3),
-}
-
-enum class GIC(val raw: Int) {
-	 /** actual gear "N" **/
-	 N(0),
-	 /** actual gear "1" **/
-	 D1(1),
-	 /** actual gear "2" **/
-	 D2(2),
-	 /** actual gear "3" **/
-	 D3(3),
-	 /** actual gear "4" **/
-	 D4(4),
-	 /** actual gear "5" **/
-	 D5(5),
-	 /** actual gear "6" **/
-	 D6(6),
-	 /** actual gear "7" **/
-	 D7(7),
-	 /** actual gear "continuously forward **/
-	 D_CVT(8),
-	 /** actual gear "continuously backwards" **/
-	 R_CVT(9),
-	 /** actual gear "R3" **/
-	 R3(10),
-	 /** Actual gear "R" **/
-	 R(11),
-	 /** actual gear "R2" **/
-	 R2(12),
-	 /** actual gear "P" **/
-	 P(13),
-	 /** No Force **/
-	 No_Force(14),
-	 /** signal not available **/
-	 SNV(15),
-}
-
-enum class GZC(val raw: Int) {
-	 /** target gear "N" **/
-	 N(0),
-	 /** target gear "1" **/
-	 D1(1),
-	 /** target gear "2" **/
-	 D2(2),
-	 /** target gear "3" **/
-	 D3(3),
-	 /** target gear "4" **/
-	 D4(4),
-	 /** target gear "5" **/
-	 D5(5),
-	 /** target gear "6" **/
-	 D6(6),
-	 /** target gear "7" **/
-	 D7(7),
-	 /** target gear "stepless forward **/
-	 D_CVT(8),
-	 /** target gear "continuously backwards" **/
-	 R_CVT(9),
-	 /** target gear "R3" **/
-	 R3(10),
-	 /** Target gear "R" **/
-	 R(11),
-	 /** target gear "R2" **/
-	 R2(12),
-	 /** Target gear "P" **/
-	 P(13),
-	 /** circuit termination **/
-	 CANCEL(14),
-	 /** signal not available **/
-	 SNV(15),
 }
 
 enum class WHST(val raw: Int) {

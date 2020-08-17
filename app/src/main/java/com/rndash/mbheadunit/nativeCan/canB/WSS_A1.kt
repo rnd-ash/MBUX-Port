@@ -1,6 +1,7 @@
 
+@file:Suppress("unused", "FunctionName")
 package com.rndash.mbheadunit.nativeCan.canB
-
+import com.rndash.mbheadunit.CanFrame // AUTO GEN
 import com.rndash.mbheadunit.nativeCan.CanBusNative // AUTO GEN
 
 /**
@@ -21,8 +22,14 @@ object WSS_A1 {
 		 else -> throw Exception("Invalid raw value for WSS_PSG")
 	}
 	
+	/** Sets Weight classification passenger **/
+	fun set_wss_psg(f: CanFrame, p: WSS_PSG) = CanBusNative.setFrameParameter(f, 5, 3, p.raw)
+	
 	/** Gets Weight classification passenger fault **/
 	fun get_wss_psg_fault() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.WSS_A1, 4, 1) != 0
+	
+	/** Sets Weight classification passenger fault **/
+	fun set_wss_psg_fault(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 4, 1, if(p) 1 else 0)
 	
 	/** Gets Passenger Detection Fast **/
 	fun get_psg_detect_fast() : PSG_DETECT_FAST = when(CanBusNative.getECUParameterB(CanBAddrs.WSS_A1, 2, 2)) {
@@ -32,6 +39,9 @@ object WSS_A1 {
 		 3 -> PSG_DETECT_FAST.SNA
 		 else -> throw Exception("Invalid raw value for PSG_DETECT_FAST")
 	}
+	
+	/** Sets Passenger Detection Fast **/
+	fun set_psg_detect_fast(f: CanFrame, p: PSG_DETECT_FAST) = CanBusNative.setFrameParameter(f, 2, 2, p.raw)
 	
 	/** Gets WSS Identification **/
 	fun get_wss_id() : WSS_ID = when(CanBusNative.getECUParameterB(CanBAddrs.WSS_A1, 16, 8)) {
@@ -43,6 +53,9 @@ object WSS_A1 {
 		 else -> throw Exception("Invalid raw value for WSS_ID")
 	}
 	
+	/** Sets WSS Identification **/
+	fun set_wss_id(f: CanFrame, p: WSS_ID) = CanBusNative.setFrameParameter(f, 16, 8, p.raw)
+	
 	/** Gets WSS display in the combi **/
 	fun get_wss_anz() : WSS_ANZ = when(CanBusNative.getECUParameterB(CanBAddrs.WSS_A1, 30, 2)) {
 		 0 -> WSS_ANZ.NO_MSG
@@ -51,6 +64,9 @@ object WSS_A1 {
 		 3 -> WSS_ANZ.AB_EIN
 		 else -> throw Exception("Invalid raw value for WSS_ANZ")
 	}
+	
+	/** Sets WSS display in the combi **/
+	fun set_wss_anz(f: CanFrame, p: WSS_ANZ) = CanBusNative.setFrameParameter(f, 30, 2, p.raw)
 	
 	
 }

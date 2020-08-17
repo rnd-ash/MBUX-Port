@@ -1,6 +1,7 @@
 
+@file:Suppress("unused", "FunctionName")
 package com.rndash.mbheadunit.nativeCan.canC
-
+import com.rndash.mbheadunit.CanFrame // AUTO GEN
 import com.rndash.mbheadunit.nativeCan.CanBusNative // AUTO GEN
 
 /**
@@ -13,20 +14,38 @@ object CONFIG_6FFh {
     	/** Gets E-suction fan: basic ventilation off **/
 	fun get_gbl_aus() : Boolean = CanBusNative.getECUParameterC(CanCAddrs.CONFIG_6FFh, 0, 1) != 0
 	
+	/** Sets E-suction fan: basic ventilation off **/
+	fun set_gbl_aus(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 0, 1, if(p) 1 else 0)
+	
 	/** Gets air conditioning available **/
 	fun get_kla_vh() : Boolean = CanBusNative.getECUParameterC(CanCAddrs.CONFIG_6FFh, 50, 1) != 0
+	
+	/** Sets air conditioning available **/
+	fun set_kla_vh(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 50, 1, if(p) 1 else 0)
 	
 	/** Gets transfer case control available **/
 	fun get_vg_vh() : Boolean = CanBusNative.getECUParameterC(CanCAddrs.CONFIG_6FFh, 63, 1) != 0
 	
+	/** Sets transfer case control available **/
+	fun set_vg_vh(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 63, 1, if(p) 1 else 0)
+	
 	/** Gets Front differential lock available **/
 	fun get_dsv_vh() : Boolean = CanBusNative.getECUParameterC(CanCAddrs.CONFIG_6FFh, 62, 1) != 0
+	
+	/** Sets Front differential lock available **/
+	fun set_dsv_vh(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 62, 1, if(p) 1 else 0)
 	
 	/** Gets Center differential lock available **/
 	fun get_dsm_vh() : Boolean = CanBusNative.getECUParameterC(CanCAddrs.CONFIG_6FFh, 61, 1) != 0
 	
+	/** Sets Center differential lock available **/
+	fun set_dsm_vh(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 61, 1, if(p) 1 else 0)
+	
 	/** Gets Rear differential lock available **/
 	fun get_dsh_vh() : Boolean = CanBusNative.getECUParameterC(CanCAddrs.CONFIG_6FFh, 60, 1) != 0
+	
+	/** Sets Rear differential lock available **/
+	fun set_dsh_vh(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 60, 1, if(p) 1 else 0)
 	
 	
 }

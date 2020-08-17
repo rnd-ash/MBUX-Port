@@ -1,6 +1,7 @@
 
+@file:Suppress("unused", "FunctionName")
 package com.rndash.mbheadunit.nativeCan.canC
-
+import com.rndash.mbheadunit.CanFrame // AUTO GEN
 import com.rndash.mbheadunit.nativeCan.CanBusNative // AUTO GEN
 
 /**
@@ -23,6 +24,9 @@ object SBW_232h {
 		 else -> throw Exception("Invalid raw value for LRT_PM3")
 	}
 	
+	/** Sets Steering wheel buttons "+", "-" pressed **/
+	fun set_lrt_pm3(f: CanFrame, p: LRT_PM3) = CanBusNative.setFrameParameter(f, 5, 3, p.raw)
+	
 	/** Gets sender identification **/
 	fun get_sid_sbw() : SID_SBW = when(CanBusNative.getECUParameterC(CanCAddrs.SBW_232h, 0, 2)) {
 		 0 -> SID_SBW.EWM
@@ -31,6 +35,9 @@ object SBW_232h {
 		 3 -> SID_SBW.NOT_DEFINED_3
 		 else -> throw Exception("Invalid raw value for SID_SBW")
 	}
+	
+	/** Sets sender identification **/
+	fun set_sid_sbw(f: CanFrame, p: SID_SBW) = CanBusNative.setFrameParameter(f, 0, 2, p.raw)
 	
 	/** Gets Shift-by-wire control element Status RND **/
 	fun get_sbwb_st_rnd() : SBWB_ST_RND = when(CanBusNative.getECUParameterC(CanCAddrs.SBW_232h, 12, 4)) {
@@ -44,6 +51,9 @@ object SBW_232h {
 		 else -> throw Exception("Invalid raw value for SBWB_ST_RND")
 	}
 	
+	/** Sets Shift-by-wire control element Status RND **/
+	fun set_sbwb_st_rnd(f: CanFrame, p: SBWB_ST_RND) = CanBusNative.setFrameParameter(f, 12, 4, p.raw)
+	
 	/** Gets Shift-by-wire control element P button **/
 	fun get_sbwb_st_p() : SBWB_ST_P = when(CanBusNative.getECUParameterC(CanCAddrs.SBW_232h, 10, 2)) {
 		 0 -> SBWB_ST_P.IDLE
@@ -53,6 +63,9 @@ object SBW_232h {
 		 else -> throw Exception("Invalid raw value for SBWB_ST_P")
 	}
 	
+	/** Sets Shift-by-wire control element P button **/
+	fun set_sbwb_st_p(f: CanFrame, p: SBWB_ST_P) = CanBusNative.setFrameParameter(f, 10, 2, p.raw)
+	
 	/** Gets Shift-by-wire control element identification **/
 	fun get_sbwb_id() : SBWB_ID = when(CanBusNative.getECUParameterC(CanCAddrs.SBW_232h, 8, 2)) {
 		 0 -> SBWB_ID.GWHST_LR
@@ -61,8 +74,14 @@ object SBW_232h {
 		 else -> throw Exception("Invalid raw value for SBWB_ID")
 	}
 	
+	/** Sets Shift-by-wire control element identification **/
+	fun set_sbwb_id(f: CanFrame, p: SBWB_ID) = CanBusNative.setFrameParameter(f, 8, 2, p.raw)
+	
 	/** Gets message counter **/
 	fun get_bz232h() : Int = CanBusNative.getECUParameterC(CanCAddrs.SBW_232h, 16, 4)
+	
+	/** Sets message counter **/
+	fun set_bz232h(f: CanFrame, p: Int) = CanBusNative.setFrameParameter(f, 16, 4, p)
 	
 	
 }

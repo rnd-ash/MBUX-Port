@@ -1,6 +1,7 @@
 
+@file:Suppress("unused", "FunctionName")
 package com.rndash.mbheadunit.nativeCan.canB
-
+import com.rndash.mbheadunit.CanFrame // AUTO GEN
 import com.rndash.mbheadunit.nativeCan.CanBusNative // AUTO GEN
 
 /**
@@ -13,17 +14,32 @@ object THR_A1 {
     	/** Gets rear right window regulator larger short stroke position **/
 	fun get_fhr_kzhb() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.THR_A1, 3, 1) != 0
 	
+	/** Sets rear right window regulator larger short stroke position **/
+	fun set_fhr_kzhb(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 3, 1, if(p) 1 else 0)
+	
 	/** Gets window rear right open **/
 	fun get_fhr_auf() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.THR_A1, 2, 1) != 0
+	
+	/** Sets window rear right open **/
+	fun set_fhr_auf(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 2, 1, if(p) 1 else 0)
 	
 	/** Gets Window lifter blocked at the rear right **/
 	fun get_fhr_block() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.THR_A1, 1, 1) != 0
 	
+	/** Sets Window lifter blocked at the rear right **/
+	fun set_fhr_block(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 1, 1, if(p) 1 else 0)
+	
 	/** Gets Window lifter standardized at the rear right **/
 	fun get_fhr_norm() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.THR_A1, 0, 1) != 0
 	
+	/** Sets Window lifter standardized at the rear right **/
+	fun set_fhr_norm(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 0, 1, if(p) 1 else 0)
+	
 	/** Gets window position rear right UNIT: 1 / anchor turn **/
 	fun get_feste_hr() : Int = CanBusNative.getECUParameterB(CanBAddrs.THR_A1, 4, 12)
+	
+	/** Sets window position rear right UNIT: 1 / anchor turn **/
+	fun set_feste_hr(f: CanFrame, p: Int) = CanBusNative.setFrameParameter(f, 4, 12, p)
 	
 	
 }

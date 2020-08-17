@@ -1,6 +1,7 @@
 
+@file:Suppress("unused", "FunctionName")
 package com.rndash.mbheadunit.nativeCan.canB
-
+import com.rndash.mbheadunit.CanFrame // AUTO GEN
 import com.rndash.mbheadunit.nativeCan.CanBusNative // AUTO GEN
 
 /**
@@ -19,8 +20,14 @@ object GW_C_B7 {
 		 else -> throw Exception("Invalid raw value for DRTGVR")
 	}
 	
+	/** Sets direction of rotation of the front right wheel **/
+	fun set_drtgvr(f: CanFrame, p: DRTGVR) = CanBusNative.setFrameParameter(f, 32, 2, p.raw)
+	
 	/** Gets wheel speed front right UNIT: 1 / min **/
 	fun get_dvr() : Int = CanBusNative.getECUParameterB(CanBAddrs.GW_C_B7, 34, 14)
+	
+	/** Sets wheel speed front right UNIT: 1 / min **/
+	fun set_dvr(f: CanFrame, p: Int) = CanBusNative.setFrameParameter(f, 34, 14, p)
 	
 	
 }

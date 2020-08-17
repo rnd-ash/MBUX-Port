@@ -1,6 +1,7 @@
 
+@file:Suppress("unused", "FunctionName")
 package com.rndash.mbheadunit.nativeCan.canB
-
+import com.rndash.mbheadunit.CanFrame // AUTO GEN
 import com.rndash.mbheadunit.nativeCan.CanBusNative // AUTO GEN
 
 /**
@@ -13,8 +14,14 @@ object TELEAID_POS4 {
     	/** Gets Dead reckoning / map matching latitude (- means south) UNIT: mas **/
 	fun get_dr_mm_lat() : Int = CanBusNative.getECUParameterB(CanBAddrs.TELEAID_POS4, 0, 32)
 	
+	/** Sets Dead reckoning / map matching latitude (- means south) UNIT: mas **/
+	fun set_dr_mm_lat(f: CanFrame, p: Int) = CanBusNative.setFrameParameter(f, 0, 32, p)
+	
 	/** Gets Dead reckoning / map matching longtitude (- means west) UNIT: mas **/
 	fun get_dr_mm_long() : Int = CanBusNative.getECUParameterB(CanBAddrs.TELEAID_POS4, 32, 32)
+	
+	/** Sets Dead reckoning / map matching longtitude (- means west) UNIT: mas **/
+	fun set_dr_mm_long(f: CanFrame, p: Int) = CanBusNative.setFrameParameter(f, 32, 32, p)
 	
 	
 }

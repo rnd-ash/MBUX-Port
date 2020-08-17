@@ -1,6 +1,7 @@
 
+@file:Suppress("unused", "FunctionName")
 package com.rndash.mbheadunit.nativeCan.canB
-
+import com.rndash.mbheadunit.CanFrame // AUTO GEN
 import com.rndash.mbheadunit.nativeCan.CanBusNative // AUTO GEN
 
 /**
@@ -13,14 +14,26 @@ object TELEAID_POS2 {
     	/** Gets GPS velocity UNIT: cm / s **/
 	fun get_gps_vel() : Int = CanBusNative.getECUParameterB(CanBAddrs.TELEAID_POS2, 0, 16)
 	
+	/** Sets GPS velocity UNIT: cm / s **/
+	fun set_gps_vel(f: CanFrame, p: Int) = CanBusNative.setFrameParameter(f, 0, 16, p)
+	
 	/** Gets GPS heading UNIT: ° **/
 	fun get_gps_head() : Int = CanBusNative.getECUParameterB(CanBAddrs.TELEAID_POS2, 16, 16)
+	
+	/** Sets GPS heading UNIT: ° **/
+	fun set_gps_head(f: CanFrame, p: Int) = CanBusNative.setFrameParameter(f, 16, 16, p)
 	
 	/** Gets GPS ellipsoid height UNIT: m **/
 	fun get_gps_ellip() : Int = CanBusNative.getECUParameterB(CanBAddrs.TELEAID_POS2, 32, 16)
 	
+	/** Sets GPS ellipsoid height UNIT: m **/
+	fun set_gps_ellip(f: CanFrame, p: Int) = CanBusNative.setFrameParameter(f, 32, 16, p)
+	
 	/** Gets GPS altitude UNIT: m **/
 	fun get_gps_alt() : Int = CanBusNative.getECUParameterB(CanBAddrs.TELEAID_POS2, 48, 16)
+	
+	/** Sets GPS altitude UNIT: m **/
+	fun set_gps_alt(f: CanFrame, p: Int) = CanBusNative.setFrameParameter(f, 48, 16, p)
 	
 	
 }

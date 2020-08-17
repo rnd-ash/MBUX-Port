@@ -85,4 +85,9 @@ object CanBusNative {
 
     private external fun getECUParam(ecuAddr: Int, bus_id: Char, offset: Int, len: Int) : Int
     private external fun getNativeFrame(ecuAddr: Int, bus_id: Char) : ByteArray
+
+    fun setFrameParameter(f: CanFrame, offset: Int, len: Int, raw: Int): CanFrame {
+        f.setBitRange(offset, len, raw)
+        return f
+    }
 }

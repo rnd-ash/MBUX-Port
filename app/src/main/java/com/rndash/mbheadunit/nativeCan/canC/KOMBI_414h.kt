@@ -1,6 +1,7 @@
 
+@file:Suppress("unused", "FunctionName")
 package com.rndash.mbheadunit.nativeCan.canC
-
+import com.rndash.mbheadunit.CanFrame // AUTO GEN
 import com.rndash.mbheadunit.nativeCan.CanBusNative // AUTO GEN
 
 /**
@@ -12,6 +13,9 @@ object KOMBI_414h {
 
     	/** Gets filtered outside temperature combi **/
 	fun get_t_aussen_k() : Int = CanBusNative.getECUParameterC(CanCAddrs.KOMBI_414h, 0, 8)
+	
+	/** Sets filtered outside temperature combi **/
+	fun set_t_aussen_k(f: CanFrame, p: Int) = CanBusNative.setFrameParameter(f, 0, 8, p)
 	
 	
 }

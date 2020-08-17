@@ -1,6 +1,7 @@
 
+@file:Suppress("unused", "FunctionName")
 package com.rndash.mbheadunit.nativeCan.canB
-
+import com.rndash.mbheadunit.CanFrame // AUTO GEN
 import com.rndash.mbheadunit.nativeCan.CanBusNative // AUTO GEN
 
 /**
@@ -12,6 +13,9 @@ object TP_TELEAID_KOMBI4 {
 
     	/** Gets Communication TELEAID to KOMBI **/
 	fun get_tp_teleaid_kombi() : Int = CanBusNative.getECUParameterB(CanBAddrs.TP_TELEAID_KOMBI4, 0, 64)
+	
+	/** Sets Communication TELEAID to KOMBI **/
+	fun set_tp_teleaid_kombi(f: CanFrame, p: Int) = CanBusNative.setFrameParameter(f, 0, 64, p)
 	
 	
 }

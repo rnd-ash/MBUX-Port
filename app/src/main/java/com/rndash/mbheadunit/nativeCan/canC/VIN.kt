@@ -1,6 +1,7 @@
 
+@file:Suppress("unused", "FunctionName")
 package com.rndash.mbheadunit.nativeCan.canC
-
+import com.rndash.mbheadunit.CanFrame // AUTO GEN
 import com.rndash.mbheadunit.nativeCan.CanBusNative // AUTO GEN
 
 /**
@@ -19,8 +20,14 @@ object VIN {
 		 else -> throw Exception("Invalid raw value for VIN_MSG")
 	}
 	
+	/** Sets VIN signal part **/
+	fun set_vin_msg(f: CanFrame, p: VIN_MSG) = CanBusNative.setFrameParameter(f, 6, 2, p.raw)
+	
 	/** Gets VIN data **/
 	fun get_vin_data() : Int = CanBusNative.getECUParameterC(CanCAddrs.VIN, 8, 56)
+	
+	/** Sets VIN data **/
+	fun set_vin_data(f: CanFrame, p: Int) = CanBusNative.setFrameParameter(f, 8, 56, p)
 	
 	
 }

@@ -1,6 +1,7 @@
 
+@file:Suppress("unused", "FunctionName")
 package com.rndash.mbheadunit.nativeCan.canC
-
+import com.rndash.mbheadunit.CanFrame // AUTO GEN
 import com.rndash.mbheadunit.nativeCan.CanBusNative // AUTO GEN
 
 /**
@@ -13,8 +14,14 @@ object MS_268h {
     	/** Gets target ratio, lower limit (FCVT) **/
 	fun get_imin_ms() : Int = CanBusNative.getECUParameterC(CanCAddrs.MS_268h, 0, 8)
 	
+	/** Sets target ratio, lower limit (FCVT) **/
+	fun set_imin_ms(f: CanFrame, p: Int) = CanBusNative.setFrameParameter(f, 0, 8, p)
+	
 	/** Gets target ratio, upper limit (FCVT) **/
 	fun get_imax_ms() : Int = CanBusNative.getECUParameterC(CanCAddrs.MS_268h, 8, 8)
+	
+	/** Sets target ratio, upper limit (FCVT) **/
+	fun set_imax_ms(f: CanFrame, p: Int) = CanBusNative.setFrameParameter(f, 8, 8, p)
 	
 	/** Gets Status of heating output **/
 	fun get_hzl_st() : HZL_ST = when(CanBusNative.getECUParameterC(CanCAddrs.MS_268h, 22, 2)) {
@@ -25,29 +32,56 @@ object MS_268h {
 		 else -> throw Exception("Invalid raw value for HZL_ST")
 	}
 	
+	/** Sets Status of heating output **/
+	fun set_hzl_st(f: CanFrame, p: HZL_ST) = CanBusNative.setFrameParameter(f, 22, 2, p.raw)
+	
 	/** Gets shut-off valve cooling circuit M266 ATL **/
 	fun get_asv_kkl_169() : Boolean = CanBusNative.getECUParameterC(CanCAddrs.MS_268h, 18, 1) != 0
+	
+	/** Sets shut-off valve cooling circuit M266 ATL **/
+	fun set_asv_kkl_169(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 18, 1, if(p) 1 else 0)
 	
 	/** Gets Oil info, reserved M266 **/
 	fun get_oel_info_169() : Boolean = CanBusNative.getECUParameterC(CanCAddrs.MS_268h, 17, 1) != 0
 	
+	/** Sets Oil info, reserved M266 **/
+	fun set_oel_info_169(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 17, 1, if(p) 1 else 0)
+	
 	/** Gets Terminal 61 **/
 	fun get_kl_61_ein() : Boolean = CanBusNative.getECUParameterC(CanCAddrs.MS_268h, 16, 1) != 0
+	
+	/** Sets Terminal 61 **/
+	fun set_kl_61_ein(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 16, 1, if(p) 1 else 0)
 	
 	/** Gets Generator utilization (only with LIN generators!) **/
 	fun get_last_gen() : Int = CanBusNative.getECUParameterC(CanCAddrs.MS_268h, 26, 6)
 	
+	/** Sets Generator utilization (only with LIN generators!) **/
+	fun set_last_gen(f: CanFrame, p: Int) = CanBusNative.setFrameParameter(f, 26, 6, p)
+	
 	/** Gets Air control system mode **/
 	fun get_lrs_mode() : Boolean = CanBusNative.getECUParameterC(CanCAddrs.MS_268h, 25, 1) != 0
+	
+	/** Sets Air control system mode **/
+	fun set_lrs_mode(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 25, 1, if(p) 1 else 0)
 	
 	/** Gets Request force-free in "D" (FCVT) **/
 	fun get_kid_ms() : Boolean = CanBusNative.getECUParameterC(CanCAddrs.MS_268h, 24, 1) != 0
 	
+	/** Sets Request force-free in "D" (FCVT) **/
+	fun set_kid_ms(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 24, 1, if(p) 1 else 0)
+	
 	/** Gets Max. Air conditioning compressor torque **/
 	fun get_m_komp_max() : Int = CanBusNative.getECUParameterC(CanCAddrs.MS_268h, 32, 8)
 	
+	/** Sets Max. Air conditioning compressor torque **/
+	fun set_m_komp_max(f: CanFrame, p: Int) = CanBusNative.setFrameParameter(f, 32, 8, p)
+	
 	/** Gets pedal value driver (only 169) **/
 	fun get_pw_f() : Int = CanBusNative.getECUParameterC(CanCAddrs.MS_268h, 40, 8)
+	
+	/** Sets pedal value driver (only 169) **/
+	fun set_pw_f(f: CanFrame, p: Int) = CanBusNative.setFrameParameter(f, 40, 8, p)
 	
 	
 }

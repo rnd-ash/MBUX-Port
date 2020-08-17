@@ -80,6 +80,8 @@ enum class CanCAddrs(val addr: Int) {
 	D_RQ_RGS_R(0x07B4),
 	D_RQ_UP28(0x07A2),
 	GS_APPL2(0x06E4),
+	MS_APPL1(0x074A),
+	MS_APPL3(0x06E0),
 	EZS_MESS1(0x060E),
 	DG_RQ_OBD(0x07DF),
 	VIN(0x06FA),

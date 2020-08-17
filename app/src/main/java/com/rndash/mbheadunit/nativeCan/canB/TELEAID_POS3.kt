@@ -1,6 +1,7 @@
 
+@file:Suppress("unused", "FunctionName")
 package com.rndash.mbheadunit.nativeCan.canB
-
+import com.rndash.mbheadunit.CanFrame // AUTO GEN
 import com.rndash.mbheadunit.nativeCan.CanBusNative // AUTO GEN
 
 /**
@@ -13,20 +14,38 @@ object TELEAID_POS3 {
     	/** Gets GPS date year UNIT: years **/
 	fun get_gps_date_year() : Int = CanBusNative.getECUParameterB(CanBAddrs.TELEAID_POS3, 0, 16)
 	
+	/** Sets GPS date year UNIT: years **/
+	fun set_gps_date_year(f: CanFrame, p: Int) = CanBusNative.setFrameParameter(f, 0, 16, p)
+	
 	/** Gets GPS date month UNIT: months **/
 	fun get_gps_date_month() : Int = CanBusNative.getECUParameterB(CanBAddrs.TELEAID_POS3, 16, 8)
+	
+	/** Sets GPS date month UNIT: months **/
+	fun set_gps_date_month(f: CanFrame, p: Int) = CanBusNative.setFrameParameter(f, 16, 8, p)
 	
 	/** Gets GPS date day UNIT: days **/
 	fun get_gps_date_day() : Int = CanBusNative.getECUParameterB(CanBAddrs.TELEAID_POS3, 24, 8)
 	
+	/** Sets GPS date day UNIT: days **/
+	fun set_gps_date_day(f: CanFrame, p: Int) = CanBusNative.setFrameParameter(f, 24, 8, p)
+	
 	/** Gets GPS UTC hour UNIT: h **/
 	fun get_gps_utc_hour() : Int = CanBusNative.getECUParameterB(CanBAddrs.TELEAID_POS3, 32, 8)
+	
+	/** Sets GPS UTC hour UNIT: h **/
+	fun set_gps_utc_hour(f: CanFrame, p: Int) = CanBusNative.setFrameParameter(f, 32, 8, p)
 	
 	/** Gets GPS UTC minute UNIT: min **/
 	fun get_gps_utc_minute() : Int = CanBusNative.getECUParameterB(CanBAddrs.TELEAID_POS3, 40, 8)
 	
+	/** Sets GPS UTC minute UNIT: min **/
+	fun set_gps_utc_minute(f: CanFrame, p: Int) = CanBusNative.setFrameParameter(f, 40, 8, p)
+	
 	/** Gets GPS UTC second UNIT: s **/
 	fun get_gps_utc_second() : Int = CanBusNative.getECUParameterB(CanBAddrs.TELEAID_POS3, 48, 16)
+	
+	/** Sets GPS UTC second UNIT: s **/
+	fun set_gps_utc_second(f: CanFrame, p: Int) = CanBusNative.setFrameParameter(f, 48, 16, p)
 	
 	
 }

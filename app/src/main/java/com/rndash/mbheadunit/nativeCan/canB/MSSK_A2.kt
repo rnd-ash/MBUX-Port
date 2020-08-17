@@ -1,6 +1,7 @@
 
+@file:Suppress("unused", "FunctionName")
 package com.rndash.mbheadunit.nativeCan.canB
-
+import com.rndash.mbheadunit.CanFrame // AUTO GEN
 import com.rndash.mbheadunit.nativeCan.CanBusNative // AUTO GEN
 
 /**
@@ -13,11 +14,20 @@ object MSSK_A2 {
     	/** Gets passenger seat **/
 	fun get_sbf_vor_k() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.MSSK_A2, 7, 1) != 0
 	
+	/** Sets passenger seat **/
+	fun set_sbf_vor_k(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 7, 1, if(p) 1 else 0)
+	
 	/** Gets passenger seat **/
 	fun get_sbf_zur_k() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.MSSK_A2, 6, 1) != 0
 	
+	/** Sets passenger seat **/
+	fun set_sbf_zur_k(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 6, 1, if(p) 1 else 0)
+	
 	/** Gets passenger seat **/
 	fun get_sbf_k_tgl() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.MSSK_A2, 0, 1) != 0
+	
+	/** Sets passenger seat **/
+	fun set_sbf_k_tgl(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 0, 1, if(p) 1 else 0)
 	
 	
 }

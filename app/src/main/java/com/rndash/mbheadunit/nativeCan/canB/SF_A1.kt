@@ -1,6 +1,7 @@
 
+@file:Suppress("unused", "FunctionName")
 package com.rndash.mbheadunit.nativeCan.canB
-
+import com.rndash.mbheadunit.CanFrame // AUTO GEN
 import com.rndash.mbheadunit.nativeCan.CanBusNative // AUTO GEN
 
 /**
@@ -13,14 +14,26 @@ object SF_A1 {
     	/** Gets Driver seat backrest unlocked **/
 	fun get_le_f_ent() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.SF_A1, 4, 1) != 0
 	
+	/** Sets Driver seat backrest unlocked **/
+	fun set_le_f_ent(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 4, 1, if(p) 1 else 0)
+	
 	/** Gets Save manually set position (redundant) **/
 	fun get_mf_man_sp1() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.SF_A1, 0, 1) != 0
+	
+	/** Sets Save manually set position (redundant) **/
+	fun set_mf_man_sp1(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 0, 1, if(p) 1 else 0)
 	
 	/** Gets Driver seat position UNIT: Sections **/
 	fun get_sf_pos() : Int = CanBusNative.getECUParameterB(CanBAddrs.SF_A1, 8, 8)
 	
+	/** Sets Driver seat position UNIT: Sections **/
+	fun set_sf_pos(f: CanFrame, p: Int) = CanBusNative.setFrameParameter(f, 8, 8, p)
+	
 	/** Gets Default position for driver's seat with I / O help UNIT: Sections **/
 	fun get_sf_ea_def() : Int = CanBusNative.getECUParameterB(CanBAddrs.SF_A1, 16, 8)
+	
+	/** Sets Default position for driver's seat with I / O help UNIT: Sections **/
+	fun set_sf_ea_def(f: CanFrame, p: Int) = CanBusNative.setFrameParameter(f, 16, 8, p)
 	
 	
 }

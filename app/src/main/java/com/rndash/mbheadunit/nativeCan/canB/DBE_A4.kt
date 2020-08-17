@@ -1,6 +1,7 @@
 
+@file:Suppress("unused", "FunctionName")
 package com.rndash.mbheadunit.nativeCan.canB
-
+import com.rndash.mbheadunit.CanFrame // AUTO GEN
 import com.rndash.mbheadunit.nativeCan.CanBusNative // AUTO GEN
 
 /**
@@ -12,6 +13,9 @@ object DBE_A4 {
 
     	/** Gets Sliding / tilting roof closed when it rains **/
 	fun get_shd_zu_rs() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.DBE_A4, 0, 1) != 0
+	
+	/** Sets Sliding / tilting roof closed when it rains **/
+	fun set_shd_zu_rs(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 0, 1, if(p) 1 else 0)
 	
 	
 }

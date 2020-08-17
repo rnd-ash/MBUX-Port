@@ -1,6 +1,7 @@
 
+@file:Suppress("unused", "FunctionName")
 package com.rndash.mbheadunit.nativeCan.canC
-
+import com.rndash.mbheadunit.CanFrame // AUTO GEN
 import com.rndash.mbheadunit.nativeCan.CanBusNative // AUTO GEN
 
 /**
@@ -13,8 +14,14 @@ object MS_210h {
     	/** Gets MS request: "Approach 1st gear" **/
 	fun get_anf1() : Boolean = CanBusNative.getECUParameterC(CanCAddrs.MS_210h, 7, 1) != 0
 	
+	/** Sets MS request: "Approach 1st gear" **/
+	fun set_anf1(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 7, 1, if(p) 1 else 0)
+	
 	/** Gets Switch off KSG creep **/
 	fun get_creep_aus() : Boolean = CanBusNative.getECUParameterC(CanCAddrs.MS_210h, 6, 1) != 0
+	
+	/** Sets Switch off KSG creep **/
+	fun set_creep_aus(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 6, 1, if(p) 1 else 0)
 	
 	/** Gets switching line shift MS **/
 	fun get_slv_ms() : SLV_MS = when(CanBusNative.getECUParameterC(CanCAddrs.MS_210h, 1, 4)) {
@@ -32,8 +39,14 @@ object MS_210h {
 		 else -> throw Exception("Invalid raw value for SLV_MS")
 	}
 	
+	/** Sets switching line shift MS **/
+	fun set_slv_ms(f: CanFrame, p: SLV_MS) = CanBusNative.setFrameParameter(f, 1, 4, p.raw)
+	
 	/** Gets Air conditioning compressor emergency shutdown **/
 	fun get_komp_notaus() : Boolean = CanBusNative.getECUParameterC(CanCAddrs.MS_210h, 0, 1) != 0
+	
+	/** Sets Air conditioning compressor emergency shutdown **/
+	fun set_komp_notaus(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 0, 1, if(p) 1 else 0)
 	
 	/** Gets target gear, lower limit **/
 	fun get_gmin_ms() : GMIN_MS = when(CanBusNative.getECUParameterC(CanCAddrs.MS_210h, 13, 3)) {
@@ -48,6 +61,9 @@ object MS_210h {
 		 else -> throw Exception("Invalid raw value for GMIN_MS")
 	}
 	
+	/** Sets target gear, lower limit **/
+	fun set_gmin_ms(f: CanFrame, p: GMIN_MS) = CanBusNative.setFrameParameter(f, 13, 3, p.raw)
+	
 	/** Gets target gear, upper limit **/
 	fun get_gmax_ms() : GMAX_MS = when(CanBusNative.getECUParameterC(CanCAddrs.MS_210h, 10, 3)) {
 		 0 -> GMAX_MS.PASSIVE
@@ -61,92 +77,182 @@ object MS_210h {
 		 else -> throw Exception("Invalid raw value for GMAX_MS")
 	}
 	
+	/** Sets target gear, upper limit **/
+	fun set_gmax_ms(f: CanFrame, p: GMAX_MS) = CanBusNative.setFrameParameter(f, 10, 3, p.raw)
+	
 	/** Gets switch off auxiliary heater **/
 	fun get_zh_aus_ms() : Boolean = CanBusNative.getECUParameterC(CanCAddrs.MS_210h, 9, 1) != 0
+	
+	/** Sets switch off auxiliary heater **/
+	fun set_zh_aus_ms(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 9, 1, if(p) 1 else 0)
 	
 	/** Gets MS request: "Active downshift" **/
 	fun get_akt_r_ms() : Boolean = CanBusNative.getECUParameterC(CanCAddrs.MS_210h, 8, 1) != 0
 	
+	/** Sets MS request: "Active downshift" **/
+	fun set_akt_r_ms(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 8, 1, if(p) 1 else 0)
+	
 	/** Gets pedal value **/
 	fun get_pw() : Int = CanBusNative.getECUParameterC(CanCAddrs.MS_210h, 16, 8)
+	
+	/** Sets pedal value **/
+	fun set_pw(f: CanFrame, p: Int) = CanBusNative.setFrameParameter(f, 16, 8, p)
 	
 	/** Gets crash signal from engine control **/
 	fun get_crash_ms() : Boolean = CanBusNative.getECUParameterC(CanCAddrs.MS_210h, 31, 1) != 0
 	
+	/** Sets crash signal from engine control **/
+	fun set_crash_ms(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 31, 1, if(p) 1 else 0)
+	
 	/** Gets Switch off air conditioning compressor: acceleration **/
 	fun get_komp_baus() : Boolean = CanBusNative.getECUParameterC(CanCAddrs.MS_210h, 30, 1) != 0
+	
+	/** Sets Switch off air conditioning compressor: acceleration **/
+	fun set_komp_baus(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 30, 1, if(p) 1 else 0)
 	
 	/** Gets Motor start / stop system active **/
 	fun get_mss_akt() : Boolean = CanBusNative.getECUParameterC(CanCAddrs.MS_210h, 29, 1) != 0
 	
+	/** Sets Motor start / stop system active **/
+	fun set_mss_akt(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 29, 1, if(p) 1 else 0)
+	
 	/** Gets Motor start / stop system control lamp **/
 	fun get_mss_kl() : Boolean = CanBusNative.getECUParameterC(CanCAddrs.MS_210h, 28, 1) != 0
+	
+	/** Sets Motor start / stop system control lamp **/
+	fun set_mss_kl(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 28, 1, if(p) 1 else 0)
 	
 	/** Gets Motor start / stop system defective **/
 	fun get_mss_def() : Boolean = CanBusNative.getECUParameterC(CanCAddrs.MS_210h, 27, 1) != 0
 	
+	/** Sets Motor start / stop system defective **/
+	fun set_mss_def(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 27, 1, if(p) 1 else 0)
+	
 	/** Gets preheating status **/
 	fun get_vgl_st() : Boolean = CanBusNative.getECUParameterC(CanCAddrs.MS_210h, 26, 1) != 0
+	
+	/** Sets preheating status **/
+	fun set_vgl_st(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 26, 1, if(p) 1 else 0)
 	
 	/** Gets idle is stable **/
 	fun get_ll_stbl() : Boolean = CanBusNative.getECUParameterC(CanCAddrs.MS_210h, 25, 1) != 0
 	
+	/** Sets idle is stable **/
+	fun set_ll_stbl(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 25, 1, if(p) 1 else 0)
+	
 	/** Gets retrigger the minimum display time **/
 	fun get_v_dspl_neu() : Boolean = CanBusNative.getECUParameterC(CanCAddrs.MS_210h, 24, 1) != 0
+	
+	/** Sets retrigger the minimum display time **/
+	fun set_v_dspl_neu(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 24, 1, if(p) 1 else 0)
 	
 	/** Gets warning buzzer on **/
 	fun get_v_max_sum() : Boolean = CanBusNative.getECUParameterC(CanCAddrs.MS_210h, 39, 1) != 0
 	
+	/** Sets warning buzzer on **/
+	fun set_v_max_sum(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 39, 1, if(p) 1 else 0)
+	
 	/** Gets emergency operation **/
 	fun get_notl() : Boolean = CanBusNative.getECUParameterC(CanCAddrs.MS_210h, 38, 1) != 0
+	
+	/** Sets emergency operation **/
+	fun set_notl(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 38, 1, if(p) 1 else 0)
 	
 	/** Gets Kickdown (changeover scenario open!) **/
 	fun get_kd_ms() : Boolean = CanBusNative.getECUParameterC(CanCAddrs.MS_210h, 37, 1) != 0
 	
+	/** Sets Kickdown (changeover scenario open!) **/
+	fun set_kd_ms(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 37, 1, if(p) 1 else 0)
+	
 	/** Gets speed limit switched on **/
 	fun get_v_max_ein() : Boolean = CanBusNative.getECUParameterC(CanCAddrs.MS_210h, 36, 1) != 0
+	
+	/** Sets speed limit switched on **/
+	fun set_v_max_ein(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 36, 1, if(p) 1 else 0)
 	
 	/** Gets Tempomat regulates **/
 	fun get_tm_reg() : Boolean = CanBusNative.getECUParameterC(CanCAddrs.MS_210h, 35, 1) != 0
 	
+	/** Sets Tempomat regulates **/
+	fun set_tm_reg(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 35, 1, if(p) 1 else 0)
+	
 	/** Gets Req. Converter lock-up clutch "slip" **/
 	fun get_kueb_s_a() : Boolean = CanBusNative.getECUParameterC(CanCAddrs.MS_210h, 34, 1) != 0
+	
+	/** Sets Req. Converter lock-up clutch "slip" **/
+	fun set_kueb_s_a(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 34, 1, if(p) 1 else 0)
 	
 	/** Gets idle **/
 	fun get_ll() : Boolean = CanBusNative.getECUParameterC(CanCAddrs.MS_210h, 33, 1) != 0
 	
+	/** Sets idle **/
+	fun set_ll(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 33, 1, if(p) 1 else 0)
+	
 	/** Gets Pedal encoder error **/
 	fun get_pwg_err() : Boolean = CanBusNative.getECUParameterC(CanCAddrs.MS_210h, 32, 1) != 0
+	
+	/** Sets Pedal encoder error **/
+	fun set_pwg_err(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 32, 1, if(p) 1 else 0)
 	
 	/** Gets Speed ​​limiter / cruise control display on **/
 	fun get_v_dspl_ein() : Boolean = CanBusNative.getECUParameterC(CanCAddrs.MS_210h, 47, 1) != 0
 	
+	/** Sets Speed ​​limiter / cruise control display on **/
+	fun set_v_dspl_ein(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 47, 1, if(p) 1 else 0)
+	
 	/** Gets display flashes **/
 	fun get_v_dspl_bl() : Boolean = CanBusNative.getECUParameterC(CanCAddrs.MS_210h, 46, 1) != 0
+	
+	/** Sets display flashes **/
+	fun set_v_dspl_bl(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 46, 1, if(p) 1 else 0)
 	
 	/** Gets "Error" indication on the display **/
 	fun get_v_dspl_err() : Boolean = CanBusNative.getECUParameterC(CanCAddrs.MS_210h, 45, 1) != 0
 	
+	/** Sets "Error" indication on the display **/
+	fun set_v_dspl_err(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 45, 1, if(p) 1 else 0)
+	
 	/** Gets Display "Limit?" on the display **/
 	fun get_v_dspl_lim() : Boolean = CanBusNative.getECUParameterC(CanCAddrs.MS_210h, 44, 1) != 0
+	
+	/** Sets Display "Limit?" on the display **/
+	fun set_v_dspl_lim(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 44, 1, if(p) 1 else 0)
 	
 	/** Gets speed limiter regulates **/
 	fun get_v_max_reg() : Boolean = CanBusNative.getECUParameterC(CanCAddrs.MS_210h, 43, 1) != 0
 	
+	/** Sets speed limiter regulates **/
+	fun set_v_max_reg(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 43, 1, if(p) 1 else 0)
+	
 	/** Gets Tempomat switched on **/
 	fun get_tm_ein() : Boolean = CanBusNative.getECUParameterC(CanCAddrs.MS_210h, 42, 1) != 0
+	
+	/** Sets Tempomat switched on **/
+	fun set_tm_ein(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 42, 1, if(p) 1 else 0)
 	
 	/** Gets "Winter tire limit reached" on the display **/
 	fun get_v_dspl_pgb() : Boolean = CanBusNative.getECUParameterC(CanCAddrs.MS_210h, 41, 1) != 0
 	
+	/** Sets "Winter tire limit reached" on the display **/
+	fun set_v_dspl_pgb(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 41, 1, if(p) 1 else 0)
+	
 	/** Gets FBS: Start Error **/
 	fun get_fbs_se() : Boolean = CanBusNative.getECUParameterC(CanCAddrs.MS_210h, 40, 1) != 0
+	
+	/** Sets FBS: Start Error **/
+	fun set_fbs_se(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 40, 1, if(p) 1 else 0)
 	
 	/** Gets factor for depreciation. d. Max. Mom. When decreasing A. pressure **/
 	fun get_fmmotmax() : Int = CanBusNative.getECUParameterC(CanCAddrs.MS_210h, 48, 8)
 	
+	/** Sets factor for depreciation. d. Max. Mom. When decreasing A. pressure **/
+	fun set_fmmotmax(f: CanFrame, p: Int) = CanBusNative.setFrameParameter(f, 48, 8, p)
+	
 	/** Gets Set maximum or cruise control speed **/
 	fun get_v_max_tm() : Int = CanBusNative.getECUParameterC(CanCAddrs.MS_210h, 56, 8)
+	
+	/** Sets Set maximum or cruise control speed **/
+	fun set_v_max_tm(f: CanFrame, p: Int) = CanBusNative.setFrameParameter(f, 56, 8, p)
 	
 	
 }

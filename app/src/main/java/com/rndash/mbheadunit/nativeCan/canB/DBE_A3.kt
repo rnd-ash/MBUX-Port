@@ -1,6 +1,7 @@
 
+@file:Suppress("unused", "FunctionName")
 package com.rndash.mbheadunit.nativeCan.canB
-
+import com.rndash.mbheadunit.CanFrame // AUTO GEN
 import com.rndash.mbheadunit.nativeCan.CanBusNative // AUTO GEN
 
 /**
@@ -12,6 +13,9 @@ object DBE_A3 {
 
     	/** Gets mirror dimming UNIT: levels **/
 	fun get_sp_abblend() : Int = CanBusNative.getECUParameterB(CanBAddrs.DBE_A3, 3, 5)
+	
+	/** Sets mirror dimming UNIT: levels **/
+	fun set_sp_abblend(f: CanFrame, p: Int) = CanBusNative.setFrameParameter(f, 3, 5, p)
 	
 	
 }

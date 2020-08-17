@@ -1,6 +1,7 @@
 
+@file:Suppress("unused", "FunctionName")
 package com.rndash.mbheadunit.nativeCan.canB
-
+import com.rndash.mbheadunit.CanFrame // AUTO GEN
 import com.rndash.mbheadunit.nativeCan.CanBusNative // AUTO GEN
 
 /**
@@ -12,6 +13,9 @@ object SB_A1 {
 
     	/** Gets passenger seat backrest unlocked **/
 	fun get_le_b_ent() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.SB_A1, 4, 1) != 0
+	
+	/** Sets passenger seat backrest unlocked **/
+	fun set_le_b_ent(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 4, 1, if(p) 1 else 0)
 	
 	
 }

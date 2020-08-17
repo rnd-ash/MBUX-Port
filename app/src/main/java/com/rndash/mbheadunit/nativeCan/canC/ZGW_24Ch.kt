@@ -1,6 +1,7 @@
 
+@file:Suppress("unused", "FunctionName")
 package com.rndash.mbheadunit.nativeCan.canC
-
+import com.rndash.mbheadunit.CanFrame // AUTO GEN
 import com.rndash.mbheadunit.nativeCan.CanBusNative // AUTO GEN
 
 /**
@@ -13,8 +14,14 @@ object ZGW_24Ch {
     	/** Gets low beam defective driver / left (depending on BR) **/
 	fun get_abl_def_f_l() : Boolean = CanBusNative.getECUParameterC(CanCAddrs.ZGW_24Ch, 39, 1) != 0
 	
+	/** Sets low beam defective driver / left (depending on BR) **/
+	fun set_abl_def_f_l(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 39, 1, if(p) 1 else 0)
+	
 	/** Gets dipped beam defective passenger / right (depending on BR) **/
 	fun get_abl_def_bf_r() : Boolean = CanBusNative.getECUParameterC(CanCAddrs.ZGW_24Ch, 38, 1) != 0
+	
+	/** Sets dipped beam defective passenger / right (depending on BR) **/
+	fun set_abl_def_bf_r(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 38, 1, if(p) 1 else 0)
 	
 	
 }

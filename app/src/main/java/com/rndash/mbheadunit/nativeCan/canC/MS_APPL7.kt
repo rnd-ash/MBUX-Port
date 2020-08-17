@@ -1,6 +1,7 @@
 
+@file:Suppress("unused", "FunctionName")
 package com.rndash.mbheadunit.nativeCan.canC
-
+import com.rndash.mbheadunit.CanFrame // AUTO GEN
 import com.rndash.mbheadunit.nativeCan.CanBusNative // AUTO GEN
 
 /**
@@ -12,6 +13,9 @@ object MS_APPL7 {
 
     	/** Gets application **/
 	fun get_appl7() : Int = CanBusNative.getECUParameterC(CanCAddrs.MS_APPL7, 0, 64)
+	
+	/** Sets application **/
+	fun set_appl7(f: CanFrame, p: Int) = CanBusNative.setFrameParameter(f, 0, 64, p)
 	
 	
 }

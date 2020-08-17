@@ -1,6 +1,7 @@
 
+@file:Suppress("unused", "FunctionName")
 package com.rndash.mbheadunit.nativeCan.canC
-
+import com.rndash.mbheadunit.CanFrame // AUTO GEN
 import com.rndash.mbheadunit.nativeCan.CanBusNative // AUTO GEN
 
 /**
@@ -31,6 +32,9 @@ object MS_ANZ {
 		 else -> throw Exception("Invalid raw value for ASS_DSPL")
 	}
 	
+	/** Sets number of the ASS status message **/
+	fun set_ass_dspl(f: CanFrame, p: ASS_DSPL) = CanBusNative.setFrameParameter(f, 20, 4, p.raw)
+	
 	/** Gets number of the ASS warning message **/
 	fun get_ass_warn() : ASS_WARN = when(CanBusNative.getECUParameterC(CanCAddrs.MS_ANZ, 16, 4)) {
 		 0 -> ASS_WARN.IDLE
@@ -52,8 +56,14 @@ object MS_ANZ {
 		 else -> throw Exception("Invalid raw value for ASS_WARN")
 	}
 	
+	/** Sets number of the ASS warning message **/
+	fun set_ass_warn(f: CanFrame, p: ASS_WARN) = CanBusNative.setFrameParameter(f, 16, 4, p.raw)
+	
 	/** Gets Suppression of lamp test during the stop phase **/
 	fun get_ass_ltest_aus() : Boolean = CanBusNative.getECUParameterC(CanCAddrs.MS_ANZ, 24, 1) != 0
+	
+	/** Sets Suppression of lamp test during the stop phase **/
+	fun set_ass_ltest_aus(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 24, 1, if(p) 1 else 0)
 	
 	
 }

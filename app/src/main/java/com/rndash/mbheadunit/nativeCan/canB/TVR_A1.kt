@@ -1,6 +1,7 @@
 
+@file:Suppress("unused", "FunctionName")
 package com.rndash.mbheadunit.nativeCan.canB
-
+import com.rndash.mbheadunit.CanFrame // AUTO GEN
 import com.rndash.mbheadunit.nativeCan.CanBusNative // AUTO GEN
 
 /**
@@ -13,92 +14,182 @@ object TVR_A1 {
     	/** Gets seat front right **/
 	fun get_svr_vor() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.TVR_A1, 7, 1) != 0
 	
+	/** Sets seat front right **/
+	fun set_svr_vor(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 7, 1, if(p) 1 else 0)
+	
 	/** Gets seat front right **/
 	fun get_svr_zur() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.TVR_A1, 6, 1) != 0
+	
+	/** Sets seat front right **/
+	fun set_svr_zur(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 6, 1, if(p) 1 else 0)
 	
 	/** Gets seat front right **/
 	fun get_svr_hi_auf() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.TVR_A1, 5, 1) != 0
 	
+	/** Sets seat front right **/
+	fun set_svr_hi_auf(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 5, 1, if(p) 1 else 0)
+	
 	/** Gets seat front right **/
 	fun get_svr_hi_ab() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.TVR_A1, 4, 1) != 0
+	
+	/** Sets seat front right **/
+	fun set_svr_hi_ab(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 4, 1, if(p) 1 else 0)
 	
 	/** Gets front right seat **/
 	fun get_svr_tgl() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.TVR_A1, 0, 1) != 0
 	
+	/** Sets front right seat **/
+	fun set_svr_tgl(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 0, 1, if(p) 1 else 0)
+	
 	/** Gets seat front right **/
 	fun get_svr_le_vor() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.TVR_A1, 13, 1) != 0
+	
+	/** Sets seat front right **/
+	fun set_svr_le_vor(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 13, 1, if(p) 1 else 0)
 	
 	/** Gets front right seat **/
 	fun get_svr_le_zur() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.TVR_A1, 12, 1) != 0
 	
+	/** Sets front right seat **/
+	fun set_svr_le_zur(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 12, 1, if(p) 1 else 0)
+	
 	/** Gets seat front right **/
 	fun get_svr_vo_auf() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.TVR_A1, 11, 1) != 0
+	
+	/** Sets seat front right **/
+	fun set_svr_vo_auf(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 11, 1, if(p) 1 else 0)
 	
 	/** Gets seat in front right **/
 	fun get_svr_vo_ab() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.TVR_A1, 10, 1) != 0
 	
+	/** Sets seat in front right **/
+	fun set_svr_vo_ab(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 10, 1, if(p) 1 else 0)
+	
 	/** Gets front right seat **/
 	fun get_svr_kst_auf() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.TVR_A1, 9, 1) != 0
+	
+	/** Sets front right seat **/
+	fun set_svr_kst_auf(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 9, 1, if(p) 1 else 0)
 	
 	/** Gets front right seat **/
 	fun get_svr_kst_ab() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.TVR_A1, 8, 1) != 0
 	
+	/** Sets front right seat **/
+	fun set_svr_kst_ab(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 8, 1, if(p) 1 else 0)
+	
 	/** Gets steering column up **/
 	fun get_ls_auf_rl() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.TVR_A1, 19, 1) != 0
+	
+	/** Sets steering column up **/
+	fun set_ls_auf_rl(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 19, 1, if(p) 1 else 0)
 	
 	/** Gets steering column down **/
 	fun get_ls_ab_rl() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.TVR_A1, 18, 1) != 0
 	
+	/** Sets steering column down **/
+	fun set_ls_ab_rl(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 18, 1, if(p) 1 else 0)
+	
 	/** Gets steering column forward **/
 	fun get_ls_vor_rl() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.TVR_A1, 17, 1) != 0
+	
+	/** Sets steering column forward **/
+	fun set_ls_vor_rl(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 17, 1, if(p) 1 else 0)
 	
 	/** Gets steering column to the rear (towards the driver) **/
 	fun get_ls_zurueck_rl() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.TVR_A1, 16, 1) != 0
 	
+	/** Sets steering column to the rear (towards the driver) **/
+	fun set_ls_zurueck_rl(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 16, 1, if(p) 1 else 0)
+	
 	/** Gets memory front right **/
 	fun get_mvr_p1_en() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.TVR_A1, 31, 1) != 0
+	
+	/** Sets memory front right **/
+	fun set_mvr_p1_en(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 31, 1, if(p) 1 else 0)
 	
 	/** Gets memory front right **/
 	fun get_mvr_p2_en() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.TVR_A1, 30, 1) != 0
 	
+	/** Sets memory front right **/
+	fun set_mvr_p2_en(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 30, 1, if(p) 1 else 0)
+	
 	/** Gets memory front right **/
 	fun get_mvr_p3_en() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.TVR_A1, 29, 1) != 0
+	
+	/** Sets memory front right **/
+	fun set_mvr_p3_en(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 29, 1, if(p) 1 else 0)
 	
 	/** Gets front right memory **/
 	fun get_mvr_p1_sp() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.TVR_A1, 28, 1) != 0
 	
+	/** Sets front right memory **/
+	fun set_mvr_p1_sp(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 28, 1, if(p) 1 else 0)
+	
 	/** Gets memory front right **/
 	fun get_mvr_p2_sp() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.TVR_A1, 27, 1) != 0
+	
+	/** Sets memory front right **/
+	fun set_mvr_p2_sp(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 27, 1, if(p) 1 else 0)
 	
 	/** Gets memory front right **/
 	fun get_mvr_p3_sp() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.TVR_A1, 26, 1) != 0
 	
+	/** Sets memory front right **/
+	fun set_mvr_p3_sp(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 26, 1, if(p) 1 else 0)
+	
 	/** Gets Save left exterior mirror parking position **/
 	fun get_spi_li_sp() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.TVR_A1, 25, 1) != 0
+	
+	/** Sets Save left exterior mirror parking position **/
+	fun set_spi_li_sp(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 25, 1, if(p) 1 else 0)
 	
 	/** Gets front right memory **/
 	fun get_mvr_tgl() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.TVR_A1, 24, 1) != 0
 	
+	/** Sets front right memory **/
+	fun set_mvr_tgl(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 24, 1, if(p) 1 else 0)
+	
 	/** Gets outside mirror left to left (not 203) **/
 	fun get_spi_li_n_li() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.TVR_A1, 39, 1) != 0
+	
+	/** Sets outside mirror left to left (not 203) **/
+	fun set_spi_li_n_li(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 39, 1, if(p) 1 else 0)
 	
 	/** Gets outside mirror left to right (not 203) **/
 	fun get_spi_li_n_re() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.TVR_A1, 38, 1) != 0
 	
+	/** Sets outside mirror left to right (not 203) **/
+	fun set_spi_li_n_re(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 38, 1, if(p) 1 else 0)
+	
 	/** Gets Left outside mirror up (not 203) **/
 	fun get_spi_li_n_ob() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.TVR_A1, 37, 1) != 0
+	
+	/** Sets Left outside mirror up (not 203) **/
+	fun set_spi_li_n_ob(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 37, 1, if(p) 1 else 0)
 	
 	/** Gets Left outside mirror down (not 203) **/
 	fun get_spi_li_n_un() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.TVR_A1, 36, 1) != 0
 	
+	/** Sets Left outside mirror down (not 203) **/
+	fun set_spi_li_n_un(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 36, 1, if(p) 1 else 0)
+	
 	/** Gets outside mirror left after garage position (not 203) **/
 	fun get_spi_li_garage() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.TVR_A1, 35, 1) != 0
+	
+	/** Sets outside mirror left after garage position (not 203) **/
+	fun set_spi_li_garage(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 35, 1, if(p) 1 else 0)
 	
 	/** Gets Outside mirror left after driving position (not 203) **/
 	fun get_spi_li_fahren() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.TVR_A1, 34, 1) != 0
 	
+	/** Sets Outside mirror left after driving position (not 203) **/
+	fun set_spi_li_fahren(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 34, 1, if(p) 1 else 0)
+	
 	/** Gets Mirror adjustment switch actuated **/
 	fun get_spvs_bet_rl() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.TVR_A1, 32, 1) != 0
+	
+	/** Sets Mirror adjustment switch actuated **/
+	fun set_spvs_bet_rl(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 32, 1, if(p) 1 else 0)
 	
 	
 }

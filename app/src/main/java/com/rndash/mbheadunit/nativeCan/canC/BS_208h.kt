@@ -1,6 +1,7 @@
 
+@file:Suppress("unused", "FunctionName")
 package com.rndash.mbheadunit.nativeCan.canC
-
+import com.rndash.mbheadunit.CanFrame // AUTO GEN
 import com.rndash.mbheadunit.nativeCan.CanBusNative // AUTO GEN
 
 /**
@@ -23,6 +24,9 @@ object BS_208h {
 		 else -> throw Exception("Invalid raw value for GMIN_ESP")
 	}
 	
+	/** Sets target gear, lower limit **/
+	fun set_gmin_esp(f: CanFrame, p: GMIN_ESP) = CanBusNative.setFrameParameter(f, 5, 3, p.raw)
+	
 	/** Gets target gear, upper limit **/
 	fun get_gmax_esp() : GMAX_ESP = when(CanBusNative.getECUParameterC(CanCAddrs.BS_208h, 2, 3)) {
 		 0 -> GMAX_ESP.PASSIVE
@@ -36,11 +40,20 @@ object BS_208h {
 		 else -> throw Exception("Invalid raw value for GMAX_ESP")
 	}
 	
+	/** Sets target gear, upper limit **/
+	fun set_gmax_esp(f: CanFrame, p: GMAX_ESP) = CanBusNative.setFrameParameter(f, 2, 3, p.raw)
+	
 	/** Gets Target gear request from ART **/
 	fun get_minmax_art() : Boolean = CanBusNative.getECUParameterC(CanCAddrs.BS_208h, 1, 1) != 0
 	
+	/** Sets Target gear request from ART **/
+	fun set_minmax_art(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 1, 1, if(p) 1 else 0)
+	
 	/** Gets ESP / ART request: "Active downshift" **/
 	fun get_akt_r_esp() : Boolean = CanBusNative.getECUParameterC(CanCAddrs.BS_208h, 0, 1) != 0
+	
+	/** Sets ESP / ART request: "Active downshift" **/
+	fun set_akt_r_esp(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 0, 1, if(p) 1 else 0)
 	
 	/** Gets switching line shift ESP **/
 	fun get_slv_esp() : SLV_ESP = when(CanBusNative.getECUParameterC(CanCAddrs.BS_208h, 12, 4)) {
@@ -58,8 +71,14 @@ object BS_208h {
 		 else -> throw Exception("Invalid raw value for SLV_ESP")
 	}
 	
+	/** Sets switching line shift ESP **/
+	fun set_slv_esp(f: CanFrame, p: SLV_ESP) = CanBusNative.setFrameParameter(f, 12, 4, p.raw)
+	
 	/** Gets Cruise control mode off **/
 	fun get_tm_aus() : Boolean = CanBusNative.getECUParameterC(CanCAddrs.BS_208h, 11, 1) != 0
+	
+	/** Sets Cruise control mode off **/
+	fun set_tm_aus(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 11, 1, if(p) 1 else 0)
 	
 	/** Gets system status **/
 	fun get_szs() : SZS = when(CanBusNative.getECUParameterC(CanCAddrs.BS_208h, 9, 2)) {
@@ -70,11 +89,20 @@ object BS_208h {
 		 else -> throw Exception("Invalid raw value for SZS")
 	}
 	
+	/** Sets system status **/
+	fun set_szs(f: CanFrame, p: SZS) = CanBusNative.setFrameParameter(f, 9, 2, p.raw)
+	
 	/** Gets Suppression of dynamic full load downshift **/
 	fun get_ddyn_unt() : Boolean = CanBusNative.getECUParameterC(CanCAddrs.BS_208h, 8, 1) != 0
 	
+	/** Sets Suppression of dynamic full load downshift **/
+	fun set_ddyn_unt(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 8, 1, if(p) 1 else 0)
+	
 	/** Gets ART brake intervention active **/
 	fun get_bre_akt_art() : Boolean = CanBusNative.getECUParameterC(CanCAddrs.BS_208h, 19, 1) != 0
+	
+	/** Sets ART brake intervention active **/
+	fun set_bre_akt_art(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 19, 1, if(p) 1 else 0)
 	
 	/** Gets ESP request: insert "N" **/
 	fun get_anfn() : ANFN = when(CanBusNative.getECUParameterC(CanCAddrs.BS_208h, 17, 2)) {
@@ -85,11 +113,20 @@ object BS_208h {
 		 else -> throw Exception("Invalid raw value for ANFN")
 	}
 	
+	/** Sets ESP request: insert "N" **/
+	fun set_anfn(f: CanFrame, p: ANFN) = CanBusNative.setFrameParameter(f, 17, 2, p.raw)
+	
 	/** Gets ESP brake intervention active **/
 	fun get_bre_akt_esp() : Boolean = CanBusNative.getECUParameterC(CanCAddrs.BS_208h, 16, 1) != 0
 	
+	/** Sets ESP brake intervention active **/
+	fun set_bre_akt_esp(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 16, 1, if(p) 1 else 0)
+	
 	/** Gets Set braking torque (BR240 factor 1.8 greater) **/
 	fun get_mbre_esp() : Int = CanBusNative.getECUParameterC(CanCAddrs.BS_208h, 20, 12)
+	
+	/** Sets Set braking torque (BR240 factor 1.8 greater) **/
+	fun set_mbre_esp(f: CanFrame, p: Int) = CanBusNative.setFrameParameter(f, 20, 12, p)
 	
 	/** Gets direction of rotation of rear wheel right **/
 	fun get_drtghr() : DRTGHR = when(CanBusNative.getECUParameterC(CanCAddrs.BS_208h, 32, 2)) {
@@ -100,8 +137,14 @@ object BS_208h {
 		 else -> throw Exception("Invalid raw value for DRTGHR")
 	}
 	
+	/** Sets direction of rotation of rear wheel right **/
+	fun set_drtghr(f: CanFrame, p: DRTGHR) = CanBusNative.setFrameParameter(f, 32, 2, p.raw)
+	
 	/** Gets wheel speed rear right **/
 	fun get_dhr() : Int = CanBusNative.getECUParameterC(CanCAddrs.BS_208h, 34, 14)
+	
+	/** Sets wheel speed rear right **/
+	fun set_dhr(f: CanFrame, p: Int) = CanBusNative.setFrameParameter(f, 34, 14, p)
 	
 	/** Gets direction of rotation of rear left wheel **/
 	fun get_drtghl() : DRTGHL = when(CanBusNative.getECUParameterC(CanCAddrs.BS_208h, 48, 2)) {
@@ -112,8 +155,14 @@ object BS_208h {
 		 else -> throw Exception("Invalid raw value for DRTGHL")
 	}
 	
+	/** Sets direction of rotation of rear left wheel **/
+	fun set_drtghl(f: CanFrame, p: DRTGHL) = CanBusNative.setFrameParameter(f, 48, 2, p.raw)
+	
 	/** Gets rear left wheel speed **/
 	fun get_dhl() : Int = CanBusNative.getECUParameterC(CanCAddrs.BS_208h, 50, 14)
+	
+	/** Sets rear left wheel speed **/
+	fun set_dhl(f: CanFrame, p: Int) = CanBusNative.setFrameParameter(f, 50, 14, p)
 	
 	
 }

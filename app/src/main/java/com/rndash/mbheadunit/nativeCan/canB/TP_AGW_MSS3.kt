@@ -1,6 +1,7 @@
 
+@file:Suppress("unused", "FunctionName")
 package com.rndash.mbheadunit.nativeCan.canB
-
+import com.rndash.mbheadunit.CanFrame // AUTO GEN
 import com.rndash.mbheadunit.nativeCan.CanBusNative // AUTO GEN
 
 /**
@@ -12,6 +13,9 @@ object TP_AGW_MSS3 {
 
     	/** Gets communication AGW to MSS **/
 	fun get_tp_agw_mss3() : Int = CanBusNative.getECUParameterB(CanBAddrs.TP_AGW_MSS3, 0, 64)
+	
+	/** Sets communication AGW to MSS **/
+	fun set_tp_agw_mss3(f: CanFrame, p: Int) = CanBusNative.setFrameParameter(f, 0, 64, p)
 	
 	
 }

@@ -1,6 +1,7 @@
 
+@file:Suppress("unused", "FunctionName")
 package com.rndash.mbheadunit.nativeCan.canB
-
+import com.rndash.mbheadunit.CanFrame // AUTO GEN
 import com.rndash.mbheadunit.nativeCan.CanBusNative // AUTO GEN
 
 /**
@@ -13,8 +14,14 @@ object GPS_A1 {
     	/** Gets GPS Latitude (+ = North) UNIT: ms **/
 	fun get_latitude() : Int = CanBusNative.getECUParameterB(CanBAddrs.GPS_A1, 0, 32)
 	
+	/** Sets GPS Latitude (+ = North) UNIT: ms **/
+	fun set_latitude(f: CanFrame, p: Int) = CanBusNative.setFrameParameter(f, 0, 32, p)
+	
 	/** Gets GPS Longitude (+ = East) UNIT: ms **/
 	fun get_longitude() : Int = CanBusNative.getECUParameterB(CanBAddrs.GPS_A1, 32, 32)
+	
+	/** Sets GPS Longitude (+ = East) UNIT: ms **/
+	fun set_longitude(f: CanFrame, p: Int) = CanBusNative.setFrameParameter(f, 32, 32, p)
 	
 	
 }

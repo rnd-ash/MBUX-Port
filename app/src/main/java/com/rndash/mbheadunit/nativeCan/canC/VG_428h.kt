@@ -1,6 +1,7 @@
 
+@file:Suppress("unused", "FunctionName")
 package com.rndash.mbheadunit.nativeCan.canC
-
+import com.rndash.mbheadunit.CanFrame // AUTO GEN
 import com.rndash.mbheadunit.nativeCan.CanBusNative // AUTO GEN
 
 /**
@@ -20,8 +21,14 @@ object VG_428h {
 		 else -> throw Exception("Invalid raw value for VG_GANG")
 	}
 	
+	/** Sets Current gear transfer case **/
+	fun set_vg_gang(f: CanFrame, p: VG_GANG) = CanBusNative.setFrameParameter(f, 5, 3, p.raw)
+	
 	/** Gets VG error (ECU failure detected) **/
 	fun get_vg_err() : Boolean = CanBusNative.getECUParameterC(CanCAddrs.VG_428h, 2, 1) != 0
+	
+	/** Sets VG error (ECU failure detected) **/
+	fun set_vg_err(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 2, 1, if(p) 1 else 0)
 	
 	/** Gets VG **/
 	fun get_anfn_vg() : ANFN_VG = when(CanBusNative.getECUParameterC(CanCAddrs.VG_428h, 14, 2)) {
@@ -32,11 +39,20 @@ object VG_428h {
 		 else -> throw Exception("Invalid raw value for ANFN_VG")
 	}
 	
+	/** Sets VG **/
+	fun set_anfn_vg(f: CanFrame, p: ANFN_VG) = CanBusNative.setFrameParameter(f, 14, 2, p.raw)
+	
 	/** Gets VG **/
 	fun get_anfntgl_vg() : Boolean = CanBusNative.getECUParameterC(CanCAddrs.VG_428h, 13, 1) != 0
 	
+	/** Sets VG **/
+	fun set_anfntgl_vg(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 13, 1, if(p) 1 else 0)
+	
 	/** Gets VG **/
 	fun get_anfnpar_vg() : Boolean = CanBusNative.getECUParameterC(CanCAddrs.VG_428h, 12, 1) != 0
+	
+	/** Sets VG **/
+	fun set_anfnpar_vg(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 12, 1, if(p) 1 else 0)
 	
 	
 }

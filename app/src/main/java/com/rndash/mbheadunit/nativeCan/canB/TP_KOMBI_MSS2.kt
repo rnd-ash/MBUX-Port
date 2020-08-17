@@ -1,6 +1,7 @@
 
+@file:Suppress("unused", "FunctionName")
 package com.rndash.mbheadunit.nativeCan.canB
-
+import com.rndash.mbheadunit.CanFrame // AUTO GEN
 import com.rndash.mbheadunit.nativeCan.CanBusNative // AUTO GEN
 
 /**
@@ -12,6 +13,9 @@ object TP_KOMBI_MSS2 {
 
     	/** Gets COMBI communication to the MSS **/
 	fun get_tp_kombi_mss() : Int = CanBusNative.getECUParameterB(CanBAddrs.TP_KOMBI_MSS2, 0, 64)
+	
+	/** Sets COMBI communication to the MSS **/
+	fun set_tp_kombi_mss(f: CanFrame, p: Int) = CanBusNative.setFrameParameter(f, 0, 64, p)
 	
 	
 }

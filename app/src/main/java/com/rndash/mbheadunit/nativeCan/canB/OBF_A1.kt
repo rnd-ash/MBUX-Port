@@ -1,6 +1,7 @@
 
+@file:Suppress("unused", "FunctionName")
 package com.rndash.mbheadunit.nativeCan.canB
-
+import com.rndash.mbheadunit.CanFrame // AUTO GEN
 import com.rndash.mbheadunit.nativeCan.CanBusNative // AUTO GEN
 
 /**
@@ -19,32 +20,62 @@ object OBF_A1 {
 		 else -> throw Exception("Invalid raw value for ESP_BET")
 	}
 	
+	/** Sets ESP on / off actuated **/
+	fun set_esp_bet(f: CanFrame, p: ESP_BET) = CanBusNative.setFrameParameter(f, 6, 2, p.raw)
+	
 	/** Gets Rear head restraints raised / lowered actuated **/
 	fun get_fks_bet() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.OBF_A1, 4, 1) != 0
+	
+	/** Sets Rear head restraints raised / lowered actuated **/
+	fun set_fks_bet(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 4, 1, if(p) 1 else 0)
 	
 	/** Gets Rear blind button pressed **/
 	fun get_hr_bet() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.OBF_A1, 2, 1) != 0
 	
+	/** Sets Rear blind button pressed **/
+	fun set_hr_bet(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 2, 1, if(p) 1 else 0)
+	
 	/** Gets unlock ZV (internal switch activated) **/
 	fun get_zv_entri_is() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.OBF_A1, 1, 1) != 0
+	
+	/** Sets unlock ZV (internal switch activated) **/
+	fun set_zv_entri_is(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 1, 1, if(p) 1 else 0)
 	
 	/** Gets lock ZV (internal switch actuated) **/
 	fun get_zv_verri_is() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.OBF_A1, 0, 1) != 0
 	
+	/** Sets lock ZV (internal switch actuated) **/
+	fun set_zv_verri_is(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 0, 1, if(p) 1 else 0)
+	
 	/** Gets EDW glove box contact triggered **/
 	fun get_edw_hand_auf() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.OBF_A1, 15, 1) != 0
+	
+	/** Sets EDW glove box contact triggered **/
+	fun set_edw_hand_auf(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 15, 1, if(p) 1 else 0)
 	
 	/** Gets Deselect EDW interior protection **/
 	fun get_edw_irs_abw() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.OBF_A1, 14, 1) != 0
 	
+	/** Sets Deselect EDW interior protection **/
+	fun set_edw_irs_abw(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 14, 1, if(p) 1 else 0)
+	
 	/** Gets EDW deselect towing protection **/
 	fun get_edw_as_abw() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.OBF_A1, 13, 1) != 0
+	
+	/** Sets EDW deselect towing protection **/
+	fun set_edw_as_abw(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 13, 1, if(p) 1 else 0)
 	
 	/** Gets Hazard warning lights on **/
 	fun get_wbl_ein() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.OBF_A1, 10, 1) != 0
 	
+	/** Sets Hazard warning lights on **/
+	fun set_wbl_ein(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 10, 1, if(p) 1 else 0)
+	
 	/** Gets Parktronic button pressed **/
 	fun get_pts_bet() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.OBF_A1, 16, 1) != 0
+	
+	/** Sets Parktronic button pressed **/
+	fun set_pts_bet(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 16, 1, if(p) 1 else 0)
 	
 	
 }

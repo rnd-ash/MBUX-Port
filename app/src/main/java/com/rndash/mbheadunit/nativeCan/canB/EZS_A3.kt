@@ -1,6 +1,7 @@
 
+@file:Suppress("unused", "FunctionName")
 package com.rndash.mbheadunit.nativeCan.canB
-
+import com.rndash.mbheadunit.CanFrame // AUTO GEN
 import com.rndash.mbheadunit.nativeCan.CanBusNative // AUTO GEN
 
 /**
@@ -12,6 +13,9 @@ object EZS_A3 {
 
     	/** Gets Mileage (up to AY 2002/1) UNIT: km **/
 	fun get_km_ezs_alt() : Int = CanBusNative.getECUParameterB(CanBAddrs.EZS_A3, 0, 24)
+	
+	/** Sets Mileage (up to AY 2002/1) UNIT: km **/
+	fun set_km_ezs_alt(f: CanFrame, p: Int) = CanBusNative.setFrameParameter(f, 0, 24, p)
 	
 	
 }

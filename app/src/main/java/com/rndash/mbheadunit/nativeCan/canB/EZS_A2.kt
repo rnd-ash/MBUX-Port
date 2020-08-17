@@ -1,6 +1,7 @@
 
+@file:Suppress("unused", "FunctionName")
 package com.rndash.mbheadunit.nativeCan.canB
-
+import com.rndash.mbheadunit.CanFrame // AUTO GEN
 import com.rndash.mbheadunit.nativeCan.CanBusNative // AUTO GEN
 
 /**
@@ -13,14 +14,26 @@ object EZS_A2 {
     	/** Gets Pulse ring counter, front left wheel (48 per revolution) UNIT: Pulse **/
 	fun get_riz_vl() : Int = CanBusNative.getECUParameterB(CanBAddrs.EZS_A2, 0, 8)
 	
+	/** Sets Pulse ring counter, front left wheel (48 per revolution) UNIT: Pulse **/
+	fun set_riz_vl(f: CanFrame, p: Int) = CanBusNative.setFrameParameter(f, 0, 8, p)
+	
 	/** Gets Pulse ring counter, front right wheel (48 per revolution) UNIT: Pulse **/
 	fun get_riz_vr() : Int = CanBusNative.getECUParameterB(CanBAddrs.EZS_A2, 8, 8)
+	
+	/** Sets Pulse ring counter, front right wheel (48 per revolution) UNIT: Pulse **/
+	fun set_riz_vr(f: CanFrame, p: Int) = CanBusNative.setFrameParameter(f, 8, 8, p)
 	
 	/** Gets Motor speed UNIT: 1 / min **/
 	fun get_n_mot() : Int = CanBusNative.getECUParameterB(CanBAddrs.EZS_A2, 16, 16)
 	
+	/** Sets Motor speed UNIT: 1 / min **/
+	fun set_n_mot(f: CanFrame, p: Int) = CanBusNative.setFrameParameter(f, 16, 16, p)
+	
 	/** Gets engine coolant temperature UNIT: ° C **/
 	fun get_t_mot() : Int = CanBusNative.getECUParameterB(CanBAddrs.EZS_A2, 32, 8)
+	
+	/** Sets engine coolant temperature UNIT: ° C **/
+	fun set_t_mot(f: CanFrame, p: Int) = CanBusNative.setFrameParameter(f, 32, 8, p)
 	
 	
 }

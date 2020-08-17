@@ -1,6 +1,7 @@
 
+@file:Suppress("unused", "FunctionName")
 package com.rndash.mbheadunit.nativeCan.canB
-
+import com.rndash.mbheadunit.CanFrame // AUTO GEN
 import com.rndash.mbheadunit.nativeCan.CanBusNative // AUTO GEN
 
 /**
@@ -24,6 +25,9 @@ object TPM_A1 {
 		 else -> throw Exception("Invalid raw value for TPM_STAT")
 	}
 	
+	/** Sets TPM state **/
+	fun set_tpm_stat(f: CanFrame, p: TPM_STAT) = CanBusNative.setFrameParameter(f, 4, 4, p.raw)
+	
 	/** Gets TPM message display request **/
 	fun get_tpm_msgdisp_rq() : TPM_MSGDISP_RQ = when(CanBusNative.getECUParameterB(CanBAddrs.TPM_A1, 0, 4)) {
 		 0 -> TPM_MSGDISP_RQ.NO_MESS
@@ -42,6 +46,9 @@ object TPM_A1 {
 		 else -> throw Exception("Invalid raw value for TPM_MSGDISP_RQ")
 	}
 	
+	/** Sets TPM message display request **/
+	fun set_tpm_msgdisp_rq(f: CanFrame, p: TPM_MSGDISP_RQ) = CanBusNative.setFrameParameter(f, 0, 4, p.raw)
+	
 	/** Gets TPM warning display request **/
 	fun get_tpm_warndisp_rq() : TPM_WARNDISP_RQ = when(CanBusNative.getECUParameterB(CanBAddrs.TPM_A1, 13, 3)) {
 		 0 -> TPM_WARNDISP_RQ.NO_WARN
@@ -52,32 +59,62 @@ object TPM_A1 {
 		 else -> throw Exception("Invalid raw value for TPM_WARNDISP_RQ")
 	}
 	
+	/** Sets TPM warning display request **/
+	fun set_tpm_warndisp_rq(f: CanFrame, p: TPM_WARNDISP_RQ) = CanBusNative.setFrameParameter(f, 13, 3, p.raw)
+	
 	/** Gets Tire pressure module indication lamp on request **/
 	fun get_tpm_indlmp_on_rq() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.TPM_A1, 12, 1) != 0
+	
+	/** Sets Tire pressure module indication lamp on request **/
+	fun set_tpm_indlmp_on_rq(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 12, 1, if(p) 1 else 0)
 	
 	/** Gets Tire in limp-home operation mode **/
 	fun get_tire_lhom() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.TPM_A1, 11, 1) != 0
 	
+	/** Sets Tire in limp-home operation mode **/
+	fun set_tire_lhom(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 11, 1, if(p) 1 else 0)
+	
 	/** Gets Tire pressure module malfunction lamp on request **/
 	fun get_tpm_malflmp_on_rq() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.TPM_A1, 10, 1) != 0
+	
+	/** Sets Tire pressure module malfunction lamp on request **/
+	fun set_tpm_malflmp_on_rq(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 10, 1, if(p) 1 else 0)
 	
 	/** Gets Tire pressure module display on request **/
 	fun get_tpm_disp_on_rq() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.TPM_A1, 9, 1) != 0
 	
+	/** Sets Tire pressure module display on request **/
+	fun set_tpm_disp_on_rq(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 9, 1, if(p) 1 else 0)
+	
 	/** Gets Tire front left **/
 	fun get_tire_fl() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.TPM_A1, 20, 1) != 0
+	
+	/** Sets Tire front left **/
+	fun set_tire_fl(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 20, 1, if(p) 1 else 0)
 	
 	/** Gets Tire front right **/
 	fun get_tire_fr() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.TPM_A1, 19, 1) != 0
 	
+	/** Sets Tire front right **/
+	fun set_tire_fr(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 19, 1, if(p) 1 else 0)
+	
 	/** Gets Tire rear left **/
 	fun get_tire_rl() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.TPM_A1, 18, 1) != 0
+	
+	/** Sets Tire rear left **/
+	fun set_tire_rl(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 18, 1, if(p) 1 else 0)
 	
 	/** Gets Tire rear right **/
 	fun get_tire_rr() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.TPM_A1, 17, 1) != 0
 	
+	/** Sets Tire rear right **/
+	fun set_tire_rr(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 17, 1, if(p) 1 else 0)
+	
 	/** Gets Spare tire **/
 	fun get_tire_spr() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.TPM_A1, 16, 1) != 0
+	
+	/** Sets Spare tire **/
+	fun set_tire_spr(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 16, 1, if(p) 1 else 0)
 	
 	/** Gets Tire pressure front left UNIT: bar **/
 	fun get_tirepress_fl() : TIREPRESS_FL = when(CanBusNative.getECUParameterB(CanBAddrs.TPM_A1, 24, 8)) {
@@ -86,12 +123,18 @@ object TPM_A1 {
 		 else -> throw Exception("Invalid raw value for TIREPRESS_FL")
 	}
 	
+	/** Sets Tire pressure front left UNIT: bar **/
+	fun set_tirepress_fl(f: CanFrame, p: TIREPRESS_FL) = CanBusNative.setFrameParameter(f, 24, 8, p.raw)
+	
 	/** Gets Tire pressure front right UNIT: bar **/
 	fun get_tirepress_fr() : TIREPRESS_FR = when(CanBusNative.getECUParameterB(CanBAddrs.TPM_A1, 32, 8)) {
 		 254 -> TIREPRESS_FR.NO_IND
 		 255 -> TIREPRESS_FR.SNA
 		 else -> throw Exception("Invalid raw value for TIREPRESS_FR")
 	}
+	
+	/** Sets Tire pressure front right UNIT: bar **/
+	fun set_tirepress_fr(f: CanFrame, p: TIREPRESS_FR) = CanBusNative.setFrameParameter(f, 32, 8, p.raw)
 	
 	/** Gets Tire pressure rear left UNIT: bar **/
 	fun get_tirepress_rl() : TIREPRESS_RL = when(CanBusNative.getECUParameterB(CanBAddrs.TPM_A1, 40, 8)) {
@@ -100,6 +143,9 @@ object TPM_A1 {
 		 else -> throw Exception("Invalid raw value for TIREPRESS_RL")
 	}
 	
+	/** Sets Tire pressure rear left UNIT: bar **/
+	fun set_tirepress_rl(f: CanFrame, p: TIREPRESS_RL) = CanBusNative.setFrameParameter(f, 40, 8, p.raw)
+	
 	/** Gets Tire pressure rear right UNIT: bar **/
 	fun get_tirepress_rr() : TIREPRESS_RR = when(CanBusNative.getECUParameterB(CanBAddrs.TPM_A1, 48, 8)) {
 		 254 -> TIREPRESS_RR.NO_IND
@@ -107,12 +153,18 @@ object TPM_A1 {
 		 else -> throw Exception("Invalid raw value for TIREPRESS_RR")
 	}
 	
+	/** Sets Tire pressure rear right UNIT: bar **/
+	fun set_tirepress_rr(f: CanFrame, p: TIREPRESS_RR) = CanBusNative.setFrameParameter(f, 48, 8, p.raw)
+	
 	/** Gets Tire pressure spare tire UNIT: bar **/
 	fun get_tirepress_spr() : TIREPRESS_SPR = when(CanBusNative.getECUParameterB(CanBAddrs.TPM_A1, 56, 8)) {
 		 254 -> TIREPRESS_SPR.NO_IND
 		 255 -> TIREPRESS_SPR.SNA
 		 else -> throw Exception("Invalid raw value for TIREPRESS_SPR")
 	}
+	
+	/** Sets Tire pressure spare tire UNIT: bar **/
+	fun set_tirepress_spr(f: CanFrame, p: TIREPRESS_SPR) = CanBusNative.setFrameParameter(f, 56, 8, p.raw)
 	
 	
 }

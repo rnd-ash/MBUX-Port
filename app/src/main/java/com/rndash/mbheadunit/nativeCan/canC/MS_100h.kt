@@ -1,6 +1,7 @@
 
+@file:Suppress("unused", "FunctionName")
 package com.rndash.mbheadunit.nativeCan.canC
-
+import com.rndash.mbheadunit.CanFrame // AUTO GEN
 import com.rndash.mbheadunit.nativeCan.CanBusNative // AUTO GEN
 
 /**
@@ -12,6 +13,9 @@ object MS_100h {
 
     	/** Gets FBS message to EZS (8 bytes) **/
 	fun get_fbs() : Int = CanBusNative.getECUParameterC(CanCAddrs.MS_100h, 0, 64)
+	
+	/** Sets FBS message to EZS (8 bytes) **/
+	fun set_fbs(f: CanFrame, p: Int) = CanBusNative.setFrameParameter(f, 0, 64, p)
 	
 	
 }

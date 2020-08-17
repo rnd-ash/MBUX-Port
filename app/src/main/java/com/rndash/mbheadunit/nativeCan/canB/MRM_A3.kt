@@ -1,6 +1,7 @@
 
+@file:Suppress("unused", "FunctionName")
 package com.rndash.mbheadunit.nativeCan.canB
-
+import com.rndash.mbheadunit.CanFrame // AUTO GEN
 import com.rndash.mbheadunit.nativeCan.CanBusNative // AUTO GEN
 
 /**
@@ -13,20 +14,38 @@ object MRM_A3 {
     	/** Gets Steering column adjustment lever turned up **/
 	fun get_lsvh_ob() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.MRM_A3, 5, 1) != 0
 	
+	/** Sets Steering column adjustment lever turned up **/
+	fun set_lsvh_ob(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 5, 1, if(p) 1 else 0)
+	
 	/** Gets Steering column adjustment lever turned down **/
 	fun get_lsvh_un() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.MRM_A3, 4, 1) != 0
+	
+	/** Sets Steering column adjustment lever turned down **/
+	fun set_lsvh_un(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 4, 1, if(p) 1 else 0)
 	
 	/** Gets steering column up **/
 	fun get_ls_auf_mrm() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.MRM_A3, 3, 1) != 0
 	
+	/** Sets steering column up **/
+	fun set_ls_auf_mrm(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 3, 1, if(p) 1 else 0)
+	
 	/** Gets steering column down **/
 	fun get_ls_ab_mrm() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.MRM_A3, 2, 1) != 0
+	
+	/** Sets steering column down **/
+	fun set_ls_ab_mrm(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 2, 1, if(p) 1 else 0)
 	
 	/** Gets steering column forward **/
 	fun get_ls_vor_mrm() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.MRM_A3, 1, 1) != 0
 	
+	/** Sets steering column forward **/
+	fun set_ls_vor_mrm(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 1, 1, if(p) 1 else 0)
+	
 	/** Gets steering column to the rear (towards the driver) **/
 	fun get_ls_zur_mrm() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.MRM_A3, 0, 1) != 0
+	
+	/** Sets steering column to the rear (towards the driver) **/
+	fun set_ls_zur_mrm(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 0, 1, if(p) 1 else 0)
 	
 	
 }

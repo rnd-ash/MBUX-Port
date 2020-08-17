@@ -1,6 +1,7 @@
 
+@file:Suppress("unused", "FunctionName")
 package com.rndash.mbheadunit.nativeCan.canC
-
+import com.rndash.mbheadunit.CanFrame // AUTO GEN
 import com.rndash.mbheadunit.nativeCan.CanBusNative // AUTO GEN
 
 /**
@@ -12,6 +13,9 @@ object EWM_MESS2 {
 
     	/** Gets measured values **/
 	fun get_mess2() : Int = CanBusNative.getECUParameterC(CanCAddrs.EWM_MESS2, 0, 64)
+	
+	/** Sets measured values **/
+	fun set_mess2(f: CanFrame, p: Int) = CanBusNative.setFrameParameter(f, 0, 64, p)
 	
 	
 }

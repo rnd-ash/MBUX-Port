@@ -1,6 +1,7 @@
 
+@file:Suppress("unused", "FunctionName")
 package com.rndash.mbheadunit.nativeCan.canB
-
+import com.rndash.mbheadunit.CanFrame // AUTO GEN
 import com.rndash.mbheadunit.nativeCan.CanBusNative // AUTO GEN
 
 /**
@@ -18,6 +19,9 @@ object UBF_A2 {
 		 3 -> VDK_ANF.NDEF
 		 else -> throw Exception("Invalid raw value for VDK_ANF")
 	}
+	
+	/** Sets convertible top actuation **/
+	fun set_vdk_anf(f: CanFrame, p: VDK_ANF) = CanBusNative.setFrameParameter(f, 0, 2, p.raw)
 	
 	
 }

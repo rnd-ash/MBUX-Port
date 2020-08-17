@@ -1,6 +1,7 @@
 
+@file:Suppress("unused", "FunctionName")
 package com.rndash.mbheadunit.nativeCan.canC
-
+import com.rndash.mbheadunit.CanFrame // AUTO GEN
 import com.rndash.mbheadunit.nativeCan.CanBusNative // AUTO GEN
 
 /**
@@ -30,6 +31,9 @@ object MS_2F3h {
 		 else -> throw Exception("Invalid raw value for FSC_IST")
 	}
 	
+	/** Sets Gear step shift recommendation "Actual" **/
+	fun set_fsc_ist(f: CanFrame, p: FSC_IST) = CanBusNative.setFrameParameter(f, 0, 8, p.raw)
+	
 	/** Gets Gear step shift recommendation "target" **/
 	fun get_fsc_soll() : FSC_SOLL = when(CanBusNative.getECUParameterC(CanCAddrs.MS_2F3h, 40, 8)) {
 		 1 -> FSC_SOLL.UP
@@ -51,6 +55,9 @@ object MS_2F3h {
 		 255 -> FSC_SOLL.SNV
 		 else -> throw Exception("Invalid raw value for FSC_SOLL")
 	}
+	
+	/** Sets Gear step shift recommendation "target" **/
+	fun set_fsc_soll(f: CanFrame, p: FSC_SOLL) = CanBusNative.setFrameParameter(f, 40, 8, p.raw)
 	
 	
 }

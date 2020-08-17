@@ -1,6 +1,7 @@
 
+@file:Suppress("unused", "FunctionName")
 package com.rndash.mbheadunit.nativeCan.canB
-
+import com.rndash.mbheadunit.CanFrame // AUTO GEN
 import com.rndash.mbheadunit.nativeCan.CanBusNative // AUTO GEN
 
 /**
@@ -12,6 +13,9 @@ object TVR_A4 {
 
     	/** Gets Access authorization code **/
 	fun get_zbc_tvr() : Int = CanBusNative.getECUParameterB(CanBAddrs.TVR_A4, 0, 64)
+	
+	/** Sets Access authorization code **/
+	fun set_zbc_tvr(f: CanFrame, p: Int) = CanBusNative.setFrameParameter(f, 0, 64, p)
 	
 	
 }

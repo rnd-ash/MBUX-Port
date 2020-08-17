@@ -1,6 +1,7 @@
 
+@file:Suppress("unused", "FunctionName")
 package com.rndash.mbheadunit.nativeCan.canC
-
+import com.rndash.mbheadunit.CanFrame // AUTO GEN
 import com.rndash.mbheadunit.nativeCan.CanBusNative // AUTO GEN
 
 /**
@@ -26,53 +27,104 @@ object ART_258h {
 		 else -> throw Exception("Invalid raw value for ART_ERR")
 	}
 	
+	/** Sets ART error code **/
+	fun set_art_err(f: CanFrame, p: ART_ERR) = CanBusNative.setFrameParameter(f, 4, 4, p.raw)
+	
 	/** Gets ART info lamp **/
 	fun get_art_info() : Boolean = CanBusNative.getECUParameterC(CanCAddrs.ART_258h, 3, 1) != 0
+	
+	/** Sets ART info lamp **/
+	fun set_art_info(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 3, 1, if(p) 1 else 0)
 	
 	/** Gets ART warning tone **/
 	fun get_art_wt() : Boolean = CanBusNative.getECUParameterC(CanCAddrs.ART_258h, 2, 1) != 0
 	
+	/** Sets ART warning tone **/
+	fun set_art_wt(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 2, 1, if(p) 1 else 0)
+	
 	/** Gets Detection of stationary object **/
 	fun get_s_obj() : Boolean = CanBusNative.getECUParameterC(CanCAddrs.ART_258h, 1, 1) != 0
+	
+	/** Sets Detection of stationary object **/
+	fun set_s_obj(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 1, 1, if(p) 1 else 0)
 	
 	/** Gets Switch display to ART display **/
 	fun get_art_dspl_ein() : Boolean = CanBusNative.getECUParameterC(CanCAddrs.ART_258h, 0, 1) != 0
 	
+	/** Sets Switch display to ART display **/
+	fun set_art_dspl_ein(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 0, 1, if(p) 1 else 0)
+	
 	/** Gets set ART speed **/
 	fun get_v_art() : Int = CanBusNative.getECUParameterC(CanCAddrs.ART_258h, 8, 8)
+	
+	/** Sets set ART speed **/
+	fun set_v_art(f: CanFrame, p: Int) = CanBusNative.setFrameParameter(f, 8, 8, p)
 	
 	/** Gets Distance relevant object **/
 	fun get_abst_r_obj() : Int = CanBusNative.getECUParameterC(CanCAddrs.ART_258h, 16, 8)
 	
+	/** Sets Distance relevant object **/
+	fun set_abst_r_obj(f: CanFrame, p: Int) = CanBusNative.setFrameParameter(f, 16, 8, p)
+	
 	/** Gets driver's desired distance **/
 	fun get_soll_abst() : Int = CanBusNative.getECUParameterC(CanCAddrs.ART_258h, 24, 8)
+	
+	/** Sets driver's desired distance **/
+	fun set_soll_abst(f: CanFrame, p: Int) = CanBusNative.setFrameParameter(f, 24, 8, p)
 	
 	/** Gets ART-Tempomat switched on **/
 	fun get_tm_ein_art() : Boolean = CanBusNative.getECUParameterC(CanCAddrs.ART_258h, 39, 1) != 0
 	
+	/** Sets ART-Tempomat switched on **/
+	fun set_tm_ein_art(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 39, 1, if(p) 1 else 0)
+	
 	/** Gets speed display flashing **/
 	fun get_art_dspl_bl() : Boolean = CanBusNative.getECUParameterC(CanCAddrs.ART_258h, 38, 1) != 0
+	
+	/** Sets speed display flashing **/
+	fun set_art_dspl_bl(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 38, 1, if(p) 1 else 0)
 	
 	/** Gets Switch on ART segment display **/
 	fun get_art_seg_ein() : Boolean = CanBusNative.getECUParameterC(CanCAddrs.ART_258h, 37, 1) != 0
 	
+	/** Sets Switch on ART segment display **/
+	fun set_art_seg_ein(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 37, 1, if(p) 1 else 0)
+	
 	/** Gets Relevant object recognized **/
 	fun get_obj_erk() : Boolean = CanBusNative.getECUParameterC(CanCAddrs.ART_258h, 36, 1) != 0
+	
+	/** Sets Relevant object recognized **/
+	fun set_obj_erk(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 36, 1, if(p) 1 else 0)
 	
 	/** Gets Adaptive cruise control switched on **/
 	fun get_art_ein() : Boolean = CanBusNative.getECUParameterC(CanCAddrs.ART_258h, 35, 1) != 0
 	
+	/** Sets Adaptive cruise control switched on **/
+	fun set_art_ein(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 35, 1, if(p) 1 else 0)
+	
 	/** Gets Indication "---" on the display **/
 	fun get_art_dspl_lim() : Boolean = CanBusNative.getECUParameterC(CanCAddrs.ART_258h, 34, 1) != 0
+	
+	/** Sets Indication "---" on the display **/
+	fun set_art_dspl_lim(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 34, 1, if(p) 1 else 0)
 	
 	/** Gets Indication "DTR AUS [0]" on the display **/
 	fun get_art_vfbr() : Boolean = CanBusNative.getECUParameterC(CanCAddrs.ART_258h, 33, 1) != 0
 	
+	/** Sets Indication "DTR AUS [0]" on the display **/
+	fun set_art_vfbr(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 33, 1, if(p) 1 else 0)
+	
 	/** Gets "Winter tire limit reached" on the display **/
 	fun get_art_dspl_pgb() : Boolean = CanBusNative.getECUParameterC(CanCAddrs.ART_258h, 32, 1) != 0
 	
+	/** Sets "Winter tire limit reached" on the display **/
+	fun set_art_dspl_pgb(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 32, 1, if(p) 1 else 0)
+	
 	/** Gets speed of detected target vehicle **/
 	fun get_v_ziel() : Int = CanBusNative.getECUParameterC(CanCAddrs.ART_258h, 40, 8)
+	
+	/** Sets speed of detected target vehicle **/
+	fun set_v_ziel(f: CanFrame, p: Int) = CanBusNative.setFrameParameter(f, 40, 8, p)
 	
 	/** Gets Active function **/
 	fun get_assist_fkt_akt() : ASSIST_FKT_AKT = when(CanBusNative.getECUParameterC(CanCAddrs.ART_258h, 54, 2)) {
@@ -83,23 +135,44 @@ object ART_258h {
 		 else -> throw Exception("Invalid raw value for ASSIST_FKT_AKT")
 	}
 	
+	/** Sets Active function **/
+	fun set_assist_fkt_akt(f: CanFrame, p: ASSIST_FKT_AKT) = CanBusNative.setFrameParameter(f, 54, 2, p.raw)
+	
 	/** Gets LED distance assistant flash **/
 	fun get_aas_led_bl() : Boolean = CanBusNative.getECUParameterC(CanCAddrs.ART_258h, 53, 1) != 0
+	
+	/** Sets LED distance assistant flash **/
+	fun set_aas_led_bl(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 53, 1, if(p) 1 else 0)
 	
 	/** Gets Object offer distance assistant **/
 	fun get_obj_agb() : Boolean = CanBusNative.getECUParameterC(CanCAddrs.ART_258h, 52, 1) != 0
 	
+	/** Sets Object offer distance assistant **/
+	fun set_obj_agb(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 52, 1, if(p) 1 else 0)
+	
 	/** Gets ART distance warning is switched on **/
 	fun get_art_abw_akt() : Boolean = CanBusNative.getECUParameterC(CanCAddrs.ART_258h, 51, 1) != 0
+	
+	/** Sets ART distance warning is switched on **/
+	fun set_art_abw_akt(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 51, 1, if(p) 1 else 0)
 	
 	/** Gets Display of the system availability after system errors **/
 	fun get_art_reakt() : Boolean = CanBusNative.getECUParameterC(CanCAddrs.ART_258h, 50, 1) != 0
 	
+	/** Sets Display of the system availability after system errors **/
+	fun set_art_reakt(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 50, 1, if(p) 1 else 0)
+	
 	/** Gets ART is overridden by the driver **/
 	fun get_art_uebersp() : Boolean = CanBusNative.getECUParameterC(CanCAddrs.ART_258h, 49, 1) != 0
 	
+	/** Sets ART is overridden by the driver **/
+	fun set_art_uebersp(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 49, 1, if(p) 1 else 0)
+	
 	/** Gets Re-trigger the minimum display time **/
 	fun get_art_dspl_neu() : Boolean = CanBusNative.getECUParameterC(CanCAddrs.ART_258h, 48, 1) != 0
+	
+	/** Sets Re-trigger the minimum display time **/
+	fun set_art_dspl_neu(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 48, 1, if(p) 1 else 0)
 	
 	/** Gets assistance system display request **/
 	fun get_assist_anz_v2() : ASSIST_ANZ_V2 = when(CanBusNative.getECUParameterC(CanCAddrs.ART_258h, 59, 5)) {
@@ -124,6 +197,9 @@ object ART_258h {
 		 else -> throw Exception("Invalid raw value for ASSIST_ANZ_V2")
 	}
 	
+	/** Sets assistance system display request **/
+	fun set_assist_anz_v2(f: CanFrame, p: ASSIST_ANZ_V2) = CanBusNative.setFrameParameter(f, 59, 5, p.raw)
+	
 	/** Gets CAS display request **/
 	fun get_cas_err_anz_v2() : CAS_ERR_ANZ_V2 = when(CanBusNative.getECUParameterC(CanCAddrs.ART_258h, 56, 3)) {
 		 0 -> CAS_ERR_ANZ_V2.IDLE
@@ -132,6 +208,9 @@ object ART_258h {
 		 3 -> CAS_ERR_ANZ_V2.CAS_ERR_W
 		 else -> throw Exception("Invalid raw value for CAS_ERR_ANZ_V2")
 	}
+	
+	/** Sets CAS display request **/
+	fun set_cas_err_anz_v2(f: CanFrame, p: CAS_ERR_ANZ_V2) = CanBusNative.setFrameParameter(f, 56, 3, p.raw)
 	
 	
 }

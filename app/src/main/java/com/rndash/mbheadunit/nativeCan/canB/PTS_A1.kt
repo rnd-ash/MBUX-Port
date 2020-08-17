@@ -1,6 +1,7 @@
 
+@file:Suppress("unused", "FunctionName")
 package com.rndash.mbheadunit.nativeCan.canB
-
+import com.rndash.mbheadunit.CanFrame // AUTO GEN
 import com.rndash.mbheadunit.nativeCan.CanBusNative // AUTO GEN
 
 /**
@@ -12,6 +13,9 @@ object PTS_A1 {
 
     	/** Gets PTS is completely switched off **/
 	fun get_pts_st_aus() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.PTS_A1, 0, 1) != 0
+	
+	/** Sets PTS is completely switched off **/
+	fun set_pts_st_aus(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 0, 1, if(p) 1 else 0)
 	
 	
 }

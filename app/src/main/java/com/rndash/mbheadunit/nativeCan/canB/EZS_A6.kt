@@ -1,6 +1,7 @@
 
+@file:Suppress("unused", "FunctionName")
 package com.rndash.mbheadunit.nativeCan.canB
-
+import com.rndash.mbheadunit.CanFrame // AUTO GEN
 import com.rndash.mbheadunit.nativeCan.CanBusNative // AUTO GEN
 
 /**
@@ -19,6 +20,9 @@ object EZS_A6 {
 		 else -> throw Exception("Invalid raw value for VER_AE")
 	}
 	
+	/** Sets year of change **/
+	fun set_ver_ae(f: CanFrame, p: VER_AE) = CanBusNative.setFrameParameter(f, 6, 2, p.raw)
+	
 	/** Gets year specification **/
 	fun get_ver_jahr() : VER_JAHR = when(CanBusNative.getECUParameterB(CanBAddrs.EZS_A6, 1, 5)) {
 		 0 -> VER_JAHR.YEAR00
@@ -29,6 +33,9 @@ object EZS_A6 {
 		 else -> throw Exception("Invalid raw value for VER_JAHR")
 	}
 	
+	/** Sets year specification **/
+	fun set_ver_jahr(f: CanFrame, p: VER_JAHR) = CanBusNative.setFrameParameter(f, 1, 5, p.raw)
+	
 	/** Gets Tire pressure module available **/
 	fun get_tpm_vh() : TPM_VH = when(CanBusNative.getECUParameterB(CanBAddrs.EZS_A6, 30, 2)) {
 		 0 -> TPM_VH.NO_TPM
@@ -37,6 +44,9 @@ object EZS_A6 {
 		 3 -> TPM_VH.SNV
 		 else -> throw Exception("Invalid raw value for TPM_VH")
 	}
+	
+	/** Sets Tire pressure module available **/
+	fun set_tpm_vh(f: CanFrame, p: TPM_VH) = CanBusNative.setFrameParameter(f, 30, 2, p.raw)
 	
 	
 }

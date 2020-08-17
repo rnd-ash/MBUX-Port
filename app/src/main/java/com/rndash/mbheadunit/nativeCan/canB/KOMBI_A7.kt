@@ -1,6 +1,7 @@
 
+@file:Suppress("unused", "FunctionName")
 package com.rndash.mbheadunit.nativeCan.canB
-
+import com.rndash.mbheadunit.CanFrame // AUTO GEN
 import com.rndash.mbheadunit.nativeCan.CanBusNative // AUTO GEN
 
 /**
@@ -13,11 +14,20 @@ object KOMBI_A7 {
     	/** Gets Display dimming UNIT:% **/
 	fun get_disp_dimm() : Int = CanBusNative.getECUParameterB(CanBAddrs.KOMBI_A7, 0, 8)
 	
+	/** Sets Display dimming UNIT:% **/
+	fun set_disp_dimm(f: CanFrame, p: Int) = CanBusNative.setFrameParameter(f, 0, 8, p)
+	
 	/** Gets trunk lid limitation on **/
 	fun get_hd_begrenz() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.KOMBI_A7, 10, 1) != 0
 	
+	/** Sets trunk lid limitation on **/
+	fun set_hd_begrenz(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 10, 1, if(p) 1 else 0)
+	
 	/** Gets Radio data menu activated **/
 	fun get_datenf_menu_akt() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.KOMBI_A7, 9, 1) != 0
+	
+	/** Sets Radio data menu activated **/
+	fun set_datenf_menu_akt(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 9, 1, if(p) 1 else 0)
 	
 	
 }

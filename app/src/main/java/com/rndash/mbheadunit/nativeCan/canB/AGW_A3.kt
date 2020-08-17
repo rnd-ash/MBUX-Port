@@ -1,6 +1,7 @@
 
+@file:Suppress("unused", "FunctionName")
 package com.rndash.mbheadunit.nativeCan.canB
-
+import com.rndash.mbheadunit.CanFrame // AUTO GEN
 import com.rndash.mbheadunit.nativeCan.CanBusNative // AUTO GEN
 
 /**
@@ -26,14 +27,26 @@ object AGW_A3 {
 		 else -> throw Exception("Invalid raw value for ZIFFER_HU")
 	}
 	
+	/** Sets Numeric keypad head unit **/
+	fun set_ziffer_hu(f: CanFrame, p: ZIFFER_HU) = CanBusNative.setFrameParameter(f, 4, 4, p.raw)
+	
 	/** Gets Diamond key pressed **/
 	fun get_raute_hu() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.AGW_A3, 3, 1) != 0
+	
+	/** Sets Diamond key pressed **/
+	fun set_raute_hu(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 3, 1, if(p) 1 else 0)
 	
 	/** Gets star key pressed **/
 	fun get_stern_hu() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.AGW_A3, 2, 1) != 0
 	
+	/** Sets star key pressed **/
+	fun set_stern_hu(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 2, 1, if(p) 1 else 0)
+	
 	/** Gets Rejection of numeric entry HU **/
 	fun get_cancel_hu() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.AGW_A3, 1, 1) != 0
+	
+	/** Sets Rejection of numeric entry HU **/
+	fun set_cancel_hu(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 1, 1, if(p) 1 else 0)
 	
 	/** Gets Active application **/
 	fun get_akt_sys() : AKT_SYS = when(CanBusNative.getECUParameterB(CanBAddrs.AGW_A3, 13, 3)) {
@@ -41,6 +54,9 @@ object AGW_A3 {
 		 1 -> AKT_SYS.radio_data_transmission
 		 else -> throw Exception("Invalid raw value for AKT_SYS")
 	}
+	
+	/** Sets Active application **/
+	fun set_akt_sys(f: CanFrame, p: AKT_SYS) = CanBusNative.setFrameParameter(f, 13, 3, p.raw)
 	
 	/** Gets function keys **/
 	fun get_function_keys() : FUNCTION_KEYS = when(CanBusNative.getECUParameterB(CanBAddrs.AGW_A3, 10, 3)) {
@@ -54,6 +70,9 @@ object AGW_A3 {
 		 7 -> FUNCTION_KEYS.F7
 		 else -> throw Exception("Invalid raw value for FUNCTION_KEYS")
 	}
+	
+	/** Sets function keys **/
+	fun set_function_keys(f: CanFrame, p: FUNCTION_KEYS) = CanBusNative.setFrameParameter(f, 10, 3, p.raw)
 	
 	
 }

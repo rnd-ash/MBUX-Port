@@ -1,6 +1,7 @@
 
+@file:Suppress("unused", "FunctionName")
 package com.rndash.mbheadunit.nativeCan.canC
-
+import com.rndash.mbheadunit.CanFrame // AUTO GEN
 import com.rndash.mbheadunit.nativeCan.CanBusNative // AUTO GEN
 
 /**
@@ -12,6 +13,9 @@ object KLA_40Eh {
 
     	/** Gets Heating power requirement **/
 	fun get_hzl_anf() : Int = CanBusNative.getECUParameterC(CanCAddrs.KLA_40Eh, 0, 8)
+	
+	/** Sets Heating power requirement **/
+	fun set_hzl_anf(f: CanFrame, p: Int) = CanBusNative.setFrameParameter(f, 0, 8, p)
 	
 	
 }

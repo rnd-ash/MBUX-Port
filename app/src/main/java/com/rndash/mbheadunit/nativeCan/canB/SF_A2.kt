@@ -1,6 +1,7 @@
 
+@file:Suppress("unused", "FunctionName")
 package com.rndash.mbheadunit.nativeCan.canB
-
+import com.rndash.mbheadunit.CanFrame // AUTO GEN
 import com.rndash.mbheadunit.nativeCan.CanBusNative // AUTO GEN
 
 /**
@@ -13,14 +14,26 @@ object SF_A2 {
     	/** Gets Perform mirror positioning **/
 	fun get_esh_auto_rest() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.SF_A2, 5, 1) != 0
 	
+	/** Sets Perform mirror positioning **/
+	fun set_esh_auto_rest(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 5, 1, if(p) 1 else 0)
+	
 	/** Gets Save manually set position **/
 	fun get_mf_man_sp() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.SF_A2, 2, 1) != 0
+	
+	/** Sets Save manually set position **/
+	fun set_mf_man_sp(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 2, 1, if(p) 1 else 0)
 	
 	/** Gets Approach travel position active **/
 	fun get_auto_akt() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.SF_A2, 1, 1) != 0
 	
+	/** Sets Approach travel position active **/
+	fun set_auto_akt(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 1, 1, if(p) 1 else 0)
+	
 	/** Gets Approach entry / exit position active **/
 	fun get_esh_akt() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.SF_A2, 0, 1) != 0
+	
+	/** Sets Approach entry / exit position active **/
+	fun set_esh_akt(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 0, 1, if(p) 1 else 0)
 	
 	
 }

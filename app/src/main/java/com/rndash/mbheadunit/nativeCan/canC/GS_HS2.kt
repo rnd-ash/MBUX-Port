@@ -1,6 +1,7 @@
 
+@file:Suppress("unused", "FunctionName")
 package com.rndash.mbheadunit.nativeCan.canC
-
+import com.rndash.mbheadunit.CanFrame // AUTO GEN
 import com.rndash.mbheadunit.nativeCan.CanBusNative // AUTO GEN
 
 /**
@@ -12,6 +13,9 @@ object GS_HS2 {
 
     	/** Gets manual control on the test bench **/
 	fun get_hs2() : Int = CanBusNative.getECUParameterC(CanCAddrs.GS_HS2, 0, 64)
+	
+	/** Sets manual control on the test bench **/
+	fun set_hs2(f: CanFrame, p: Int) = CanBusNative.setFrameParameter(f, 0, 64, p)
 	
 	
 }

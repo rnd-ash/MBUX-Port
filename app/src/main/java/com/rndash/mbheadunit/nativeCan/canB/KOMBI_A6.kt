@@ -1,6 +1,7 @@
 
+@file:Suppress("unused", "FunctionName")
 package com.rndash.mbheadunit.nativeCan.canB
-
+import com.rndash.mbheadunit.CanFrame // AUTO GEN
 import com.rndash.mbheadunit.nativeCan.CanBusNative // AUTO GEN
 
 /**
@@ -13,8 +14,14 @@ object KOMBI_A6 {
     	/** Gets Identification key for pre-filtering **/
 	fun get_schlue_id_ki() : Int = CanBusNative.getECUParameterB(CanBAddrs.KOMBI_A6, 0, 32)
 	
+	/** Sets Identification key for pre-filtering **/
+	fun set_schlue_id_ki(f: CanFrame, p: Int) = CanBusNative.setFrameParameter(f, 0, 32, p)
+	
 	/** Gets Mileage UNIT: km **/
 	fun get_km_ki() : Int = CanBusNative.getECUParameterB(CanBAddrs.KOMBI_A6, 32, 24)
+	
+	/** Sets Mileage UNIT: km **/
+	fun set_km_ki(f: CanFrame, p: Int) = CanBusNative.setFrameParameter(f, 32, 24, p)
 	
 	
 }

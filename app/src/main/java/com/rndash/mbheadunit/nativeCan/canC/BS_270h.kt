@@ -1,6 +1,7 @@
 
+@file:Suppress("unused", "FunctionName")
 package com.rndash.mbheadunit.nativeCan.canC
-
+import com.rndash.mbheadunit.CanFrame // AUTO GEN
 import com.rndash.mbheadunit.nativeCan.CanBusNative // AUTO GEN
 
 /**
@@ -13,8 +14,14 @@ object BS_270h {
     	/** Gets Pulse ring counter, rear left wheel (48 per revolution) **/
 	fun get_riz_hl() : Int = CanBusNative.getECUParameterC(CanCAddrs.BS_270h, 0, 8)
 	
+	/** Sets Pulse ring counter, rear left wheel (48 per revolution) **/
+	fun set_riz_hl(f: CanFrame, p: Int) = CanBusNative.setFrameParameter(f, 0, 8, p)
+	
 	/** Gets Pulse ring counter, rear right wheel (48 per revolution) **/
 	fun get_riz_hr() : Int = CanBusNative.getECUParameterC(CanCAddrs.BS_270h, 8, 8)
+	
+	/** Sets Pulse ring counter, rear right wheel (48 per revolution) **/
+	fun set_riz_hr(f: CanFrame, p: Int) = CanBusNative.setFrameParameter(f, 8, 8, p)
 	
 	/** Gets Flat roll warning status **/
 	fun get_prw_st() : PRW_ST = when(CanBusNative.getECUParameterC(CanCAddrs.BS_270h, 21, 3)) {
@@ -28,6 +35,9 @@ object BS_270h {
 		 7 -> PRW_ST.SNV
 		 else -> throw Exception("Invalid raw value for PRW_ST")
 	}
+	
+	/** Sets Flat roll warning status **/
+	fun set_prw_st(f: CanFrame, p: PRW_ST) = CanBusNative.setFrameParameter(f, 21, 3, p.raw)
 	
 	/** Gets Warning messages flat roll warner **/
 	fun get_prw_warn() : PRW_WARN = when(CanBusNative.getECUParameterC(CanCAddrs.BS_270h, 16, 4)) {
@@ -44,6 +54,9 @@ object BS_270h {
 		 15 -> PRW_WARN.SNV
 		 else -> throw Exception("Invalid raw value for PRW_WARN")
 	}
+	
+	/** Sets Warning messages flat roll warner **/
+	fun set_prw_warn(f: CanFrame, p: PRW_WARN) = CanBusNative.setFrameParameter(f, 16, 4, p.raw)
 	
 	
 }

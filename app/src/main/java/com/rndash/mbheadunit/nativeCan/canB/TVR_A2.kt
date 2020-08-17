@@ -1,6 +1,7 @@
 
+@file:Suppress("unused", "FunctionName")
 package com.rndash.mbheadunit.nativeCan.canB
-
+import com.rndash.mbheadunit.CanFrame // AUTO GEN
 import com.rndash.mbheadunit.nativeCan.CanBusNative // AUTO GEN
 
 /**
@@ -13,59 +14,116 @@ object TVR_A2 {
     	/** Gets Comfort control mode **/
 	fun get_kb_mod_tvr() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.TVR_A2, 14, 1) != 0
 	
+	/** Sets Comfort control mode **/
+	fun set_kb_mod_tvr(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 14, 1, if(p) 1 else 0)
+	
 	/** Gets direction of comfort actuation **/
 	fun get_kb_ri_tvr() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.TVR_A2, 13, 1) != 0
+	
+	/** Sets direction of comfort actuation **/
+	fun set_kb_ri_tvr(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 13, 1, if(p) 1 else 0)
 	
 	/** Gets SHD / open / close convertible top **/
 	fun get_shd_tvr() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.TVR_A2, 12, 1) != 0
 	
+	/** Sets SHD / open / close convertible top **/
+	fun set_shd_tvr(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 12, 1, if(p) 1 else 0)
+	
 	/** Gets Open / close front left window **/
 	fun get_fvl_tvr() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.TVR_A2, 11, 1) != 0
+	
+	/** Sets Open / close front left window **/
+	fun set_fvl_tvr(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 11, 1, if(p) 1 else 0)
 	
 	/** Gets Open / close front right window **/
 	fun get_fvr_tvr() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.TVR_A2, 10, 1) != 0
 	
+	/** Sets Open / close front right window **/
+	fun set_fvr_tvr(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 10, 1, if(p) 1 else 0)
+	
 	/** Gets Open / close rear left window **/
 	fun get_fhl_tvr() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.TVR_A2, 9, 1) != 0
+	
+	/** Sets Open / close rear left window **/
+	fun set_fhl_tvr(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 9, 1, if(p) 1 else 0)
 	
 	/** Gets Open / close rear right window **/
 	fun get_fhr_tvr() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.TVR_A2, 8, 1) != 0
 	
+	/** Sets Open / close rear right window **/
+	fun set_fhr_tvr(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 8, 1, if(p) 1 else 0)
+	
 	/** Gets rear left window **/
 	fun get_fhl_aoe_rl() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.TVR_A2, 23, 1) != 0
+	
+	/** Sets rear left window **/
+	fun set_fhl_aoe_rl(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 23, 1, if(p) 1 else 0)
 	
 	/** Gets rear left window **/
 	fun get_fhl_moe_rl() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.TVR_A2, 22, 1) != 0
 	
+	/** Sets rear left window **/
+	fun set_fhl_moe_rl(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 22, 1, if(p) 1 else 0)
+	
 	/** Gets rear left window **/
 	fun get_fhl_ms_rl() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.TVR_A2, 21, 1) != 0
+	
+	/** Sets rear left window **/
+	fun set_fhl_ms_rl(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 21, 1, if(p) 1 else 0)
 	
 	/** Gets rear left window **/
 	fun get_fhl_as_rl() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.TVR_A2, 20, 1) != 0
 	
+	/** Sets rear left window **/
+	fun set_fhl_as_rl(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 20, 1, if(p) 1 else 0)
+	
 	/** Gets rear right window **/
 	fun get_fhr_aoe_rl() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.TVR_A2, 19, 1) != 0
+	
+	/** Sets rear right window **/
+	fun set_fhr_aoe_rl(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 19, 1, if(p) 1 else 0)
 	
 	/** Gets rear right window **/
 	fun get_fhr_moe_rl() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.TVR_A2, 18, 1) != 0
 	
+	/** Sets rear right window **/
+	fun set_fhr_moe_rl(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 18, 1, if(p) 1 else 0)
+	
 	/** Gets rear right window **/
 	fun get_fhr_ms_rl() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.TVR_A2, 17, 1) != 0
+	
+	/** Sets rear right window **/
+	fun set_fhr_ms_rl(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 17, 1, if(p) 1 else 0)
 	
 	/** Gets rear right window **/
 	fun get_fhr_as_rl() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.TVR_A2, 16, 1) != 0
 	
+	/** Sets rear right window **/
+	fun set_fhr_as_rl(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 16, 1, if(p) 1 else 0)
+	
 	/** Gets window front left **/
 	fun get_fvl_aoe() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.TVR_A2, 31, 1) != 0
+	
+	/** Sets window front left **/
+	fun set_fvl_aoe(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 31, 1, if(p) 1 else 0)
 	
 	/** Gets front left window **/
 	fun get_fvl_moe() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.TVR_A2, 30, 1) != 0
 	
+	/** Sets front left window **/
+	fun set_fvl_moe(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 30, 1, if(p) 1 else 0)
+	
 	/** Gets front left window **/
 	fun get_fvl_ms() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.TVR_A2, 29, 1) != 0
 	
+	/** Sets front left window **/
+	fun set_fvl_ms(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 29, 1, if(p) 1 else 0)
+	
 	/** Gets front left window **/
 	fun get_fvl_as() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.TVR_A2, 28, 1) != 0
+	
+	/** Sets front left window **/
+	fun set_fvl_as(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 28, 1, if(p) 1 else 0)
 	
 	
 }

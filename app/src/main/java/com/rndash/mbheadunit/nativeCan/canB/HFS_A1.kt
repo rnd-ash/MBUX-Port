@@ -1,6 +1,7 @@
 
+@file:Suppress("unused", "FunctionName")
 package com.rndash.mbheadunit.nativeCan.canB
-
+import com.rndash.mbheadunit.CanFrame // AUTO GEN
 import com.rndash.mbheadunit.nativeCan.CanBusNative // AUTO GEN
 
 /**
@@ -13,6 +14,9 @@ object HFS_A1 {
     	/** Gets Close and secure trunk lid actuated **/
 	fun get_hd_sich_hfs() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.HFS_A1, 3, 1) != 0
 	
+	/** Sets Close and secure trunk lid actuated **/
+	fun set_hd_sich_hfs(f: CanFrame, p: Boolean) = CanBusNative.setFrameParameter(f, 3, 1, if(p) 1 else 0)
+	
 	/** Gets Status trunk lid **/
 	fun get_hd_st() : HD_ST = when(CanBusNative.getECUParameterB(CanBAddrs.HFS_A1, 0, 3)) {
 		 0 -> HD_ST.N_DEF
@@ -24,6 +28,9 @@ object HFS_A1 {
 		 7 -> HD_ST.SNV
 		 else -> throw Exception("Invalid raw value for HD_ST")
 	}
+	
+	/** Sets Status trunk lid **/
+	fun set_hd_st(f: CanFrame, p: HD_ST) = CanBusNative.setFrameParameter(f, 0, 3, p.raw)
 	
 	
 }

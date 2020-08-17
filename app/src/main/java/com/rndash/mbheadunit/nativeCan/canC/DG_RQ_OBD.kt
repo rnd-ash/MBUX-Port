@@ -1,6 +1,7 @@
 
+@file:Suppress("unused", "FunctionName")
 package com.rndash.mbheadunit.nativeCan.canC
-
+import com.rndash.mbheadunit.CanFrame // AUTO GEN
 import com.rndash.mbheadunit.nativeCan.CanBusNative // AUTO GEN
 
 /**
@@ -12,6 +13,9 @@ object DG_RQ_OBD {
 
     	/** Gets KWP2000 diagnosis request **/
 	fun get_d_rq() : Int = CanBusNative.getECUParameterC(CanCAddrs.DG_RQ_OBD, 0, 64)
+	
+	/** Sets KWP2000 diagnosis request **/
+	fun set_d_rq(f: CanFrame, p: Int) = CanBusNative.setFrameParameter(f, 0, 64, p)
 	
 	
 }

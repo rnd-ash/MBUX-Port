@@ -1,6 +1,7 @@
 
+@file:Suppress("unused", "FunctionName")
 package com.rndash.mbheadunit.nativeCan.canC
-
+import com.rndash.mbheadunit.CanFrame // AUTO GEN
 import com.rndash.mbheadunit.nativeCan.CanBusNative // AUTO GEN
 
 /**
@@ -12,6 +13,9 @@ object GS_HS6 {
 
     	/** UNKNOWN DESCRIPTION **/
 	fun get_hs6() : Int = CanBusNative.getECUParameterC(CanCAddrs.GS_HS6, 0, 64)
+	
+	/** UNKNOWN DESCRIPTION **/
+	fun set_hs6(f: CanFrame, p: Int) = CanBusNative.setFrameParameter(f, 0, 64, p)
 	
 	
 }
