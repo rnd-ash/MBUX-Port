@@ -1,0 +1,1861 @@
+EZS
+	FRAME EZS_A1 (0x0000)
+		B: KL_15C_EIN, OFFSET 7 LEN 1 - Authentic key is inserted (position 0)
+		B: KL_15R_EIN, OFFSET 6 LEN 1 - Terminal 15R is switched on
+		B: KL_15_EIN, OFFSET 5 LEN 1 - Terminal 15 is switched on
+		B: KL_15X_EIN, OFFSET 4 LEN 1 - Terminal 15X is switched on
+		B: KL_50_EIN, OFFSET 3 LEN 1 - Terminal 50 is switched on
+		B: KG_KL_AKT, OFFSET 0 LEN 1 - Keyless Go terminal control active
+		B: FERN_ALARM, OFFSET 13 LEN 1 - Remote triggering of the MSS alarm
+		B: PNK_ALM_EIN, OFFSET 12 LEN 1 - Panic alarm by key on
+		B: PNK_ALM_AUS, OFFSET 11 LEN 1 - Panic alarm by key off
+		B: APPL_AUS, OFFSET 10 LEN 1 - Do not send application IDs, only NM IDs
+		B: DIAG_TGL, OFFSET 9 LEN 1 - Diagnosis toggle bit
+		B: FZG_RECH, OFFSET 8 LEN 1 - Message: "Vehicle is calculating, please wait"
+		E: SPEI_NR, OFFSET 21 LEN 3 - Current memory block number
+			RAW: 0 - memory block 1 / MEMORY1
+			RAW: 1 - memory block 2 / MEMORY2
+			RAW: 2 - memory block 3 / MEMORY3
+			RAW: 3 - not defined
+			RAW: 4 - not defined
+			RAW: 5 - not defined
+			RAW: 6 - not defined
+			RAW: 7 - signal not available / SNV
+		B: HD_STOPP, OFFSET 19 LEN 1 - Stop the trunk lid
+		B: ZV_SPIEL, OFFSET 18 LEN 1 - Backlash protection active
+		B: ZV_PASSIV, OFFSET 17 LEN 1 - Passive locking
+		B: SCHLUE_NEU, OFFSET 16 LEN 1 - Message: Renew key
+		B: BLI_ENTSI, OFFSET 27 LEN 1 - Unlock ZV blinker feedback
+		B: BLI_SICH, OFFSET 26 LEN 1 - ZV secure blinker feedback
+		B: AUSS_ENTSI, OFFSET 25 LEN 1 - External release
+		B: AUSS_SICH, OFFSET 24 LEN 1 - external security
+		B: SCHL_BEF, OFFSET 39 LEN 1 - Mechanical / FB key active
+		B: ZV_NV, OFFSET 38 LEN 1 - ZV post-locking
+		B: TD_ENTRI, OFFSET 36 LEN 1 - Unlock the tank lid (HSF / storage compartments)
+		B: TD_VERRI, OFFSET 35 LEN 1 - Lock the tank lid (HSF / storage compartments)
+		B: HD_ENTSI, OFFSET 34 LEN 1 - Unlock the trunk lid
+		B: HD_SICH, OFFSET 33 LEN 1 - secure trunk lid
+		B: HFE_EZS, OFFSET 32 LEN 1 - trunk lid remote unlocking
+		B: TVL_ENTRI, OFFSET 47 LEN 1 - Unlock the front left door
+		B: TVL_VERRI, OFFSET 46 LEN 1 - lock the front left door
+		B: TVR_ENTRI, OFFSET 45 LEN 1 - Unlock the front right door
+		B: TVR_VERRI, OFFSET 44 LEN 1 - lock the front right door
+		B: THL_ENTRI, OFFSET 43 LEN 1 - Unlock the rear left door
+		B: THL_VERRI, OFFSET 42 LEN 1 - Lock the rear left door
+		B: THR_ENTRI, OFFSET 41 LEN 1 - Unlock the rear right door
+		B: THR_VERRI, OFFSET 40 LEN 1 - Lock the rear right door
+	FRAME EZS_A10 (0x010A)
+		I: RIZ_HL, OFFSET 0 LEN 8 - Pulse ring counter, rear left wheel (48 per revolution) UNIT: Pulse
+		I: RIZ_HR, OFFSET 8 LEN 8 - Pulse ring counter, rear right wheel (48 per revolution) UNIT: Pulse
+		E: DRTGHR, OFFSET 16 LEN 2 - direction of rotation of the rear wheel right
+			RAW: 0 - No direction of rotation detection / PASSIVE
+			RAW: 1 - direction of rotation forward / FORWARD
+			RAW: 2 - direction of rotation backwards / REVERSE
+			RAW: 3 - signal not available / SNV
+		I: DHR, OFFSET 18 LEN 14 - wheel speed rear right UNIT: 1 / min
+		E: DRTGHL, OFFSET 32 LEN 2 - direction of rotation of rear left wheel
+			RAW: 0 - No direction of rotation detection / PASSIVE
+			RAW: 1 - direction of rotation forward / FORWARD
+			RAW: 2 - direction of rotation backwards / REVERSE
+			RAW: 3 - signal not available / SNV
+		I: DHL, OFFSET 34 LEN 14 - wheel speed rear left UNIT: 1 / min
+	FRAME EZS_A11 (0x0016)
+		I: U_BATT, OFFSET 0 LEN 8 - Battery voltage UNIT: V
+	FRAME EZS_A2 (0x0002)
+		I: RIZ_VL, OFFSET 0 LEN 8 - Pulse ring counter, front left wheel (48 per revolution) UNIT: Pulse
+		I: RIZ_VR, OFFSET 8 LEN 8 - Pulse ring counter, front right wheel (48 per revolution) UNIT: Pulse
+		I: N_MOT, OFFSET 16 LEN 16 - Motor speed UNIT: 1 / min
+		I: T_MOT, OFFSET 32 LEN 8 - engine coolant temperature UNIT: ° C
+	FRAME EZS_A4 (0x0058)
+		I: SCHLUE_ID, OFFSET 0 LEN 32 - Identification key for pre-filtering
+		I: KM_EZS, OFFSET 32 LEN 24 - Mileage UNIT: km
+	FRAME EZS_A5 (0x001F)
+		E: LL_RL, OFFSET 6 LEN 2 - left / right hand drive
+			RAW: 1 - left hand drive / LL
+			RAW: 2 - right hand drive / RL
+			RAW: 3 - SG not programmed / SNV
+		E: LAND, OFFSET 0 LEN 4 - Country-specific SA coding
+			RAW: 0 - rest of the world / RDW
+			RAW: 1 - USA version (CODE 494) / C494
+			RAW: 2 - Canada (CODE 460) / C460
+			RAW: 3 - Japan (CODE 498) / C498
+			RAW: 4 - Switzerland (CODE 823) / C823
+			RAW: 5 - Australia (CODE 625) / C625
+			RAW: 6 - Gulf States (CODE 623) / C623
+			RAW: 15 - SG not programmed / SNV
+		B: TAXI_INT, OFFSET 15 LEN 1 - Taxi International
+		B: TAXI_NOTALM, OFFSET 14 LEN 1 - Taxi emergency alarm system
+		B: TAXI_DZ, OFFSET 13 LEN 1 - connection for roof signs
+		B: TAXI_HIRU, OFFSET 12 LEN 1 - taxi call for help
+		B: SO_FZG, OFFSET 11 LEN 1 - special vehicle
+		B: TAXI_FUNKAUF, OFFSET 10 LEN 1 - radio activation taxi
+		B: BEHI_FZG, OFFSET 9 LEN 1 - Conversion for the disabled (only via tester)
+		B: GUARD_B4, OFFSET 8 LEN 1 - special protection Guard B4
+		B: GUARD_B6, OFFSET 23 LEN 1 - special protection Guard B6 / 7
+		B: DATENF, OFFSET 22 LEN 1 - radio data transmission available
+		B: FL_ZU_MS, OFFSET 21 LEN 1 - close fresh air flap when the engine starts
+		B: FH_SPERR_HI, OFFSET 20 LEN 1 - Lock automatic startup FH-rear
+		B: FH_SPERR_VO, OFFSET 19 LEN 1 - Block automatic start-up FH-front
+		B: KB_AUTO, OFFSET 18 LEN 1 - Comfort run mode
+		B: KB_MAN_KLA, OFFSET 17 LEN 1 - Comfort circulating air mode
+		B: KB_SPERR_KLA, OFFSET 16 LEN 1 - Block recirculated air comfort actuation
+		E: FCOD_BR, OFFSET 27 LEN 5 - vehicle code series
+			RAW: 0 - BR 221 or BR 140 / BR221
+			RAW: 1 - BR 129 / BR129
+			RAW: 2 - BR 210 or BR 212 / BR210
+			RAW: 3 - BR 202 or BR 204 / BR202
+			RAW: 4 - BR 220 / BR220
+			RAW: 5 - BR 170 / BR170
+			RAW: 6 - BR 203 / BR203
+			RAW: 7 - BR 168 / BR168
+			RAW: 8 - BR 163 / BR163
+			RAW: 9 - BR 208 / BR208
+			RAW: 10 - BR 463 / BR463
+			RAW: 11 - BR 215 / BR215
+			RAW: 12 - BR 230 / BR230
+			RAW: 13 - BR 211 / BR211
+			RAW: 14 - BR 209 / BR209
+			RAW: 15 - BR 461 / BR461
+			RAW: 16 - BR 240 / BR240
+			RAW: 17 - BR 251 / BR251
+			RAW: 18 - BR 171 / BR171
+			RAW: 19 - BR 164 / BR164
+			RAW: 20 - BR 169 or BR 245 / BR169
+			RAW: 21 - BR 199 / BR199
+			RAW: 22 - BR 216 / BR216
+			RAW: 23 - BR 219 / BR219
+			RAW: 24 - BR 454 (z-car) / BR454
+			RAW: 25 - NCV2 / NCV2
+			RAW: 26 - V-Class / Vito / VITO
+			RAW: 27 - Sprinter / SPRINTER
+			RAW: 28 - NCV3 / NCV3
+			RAW: 29 - NCV1 / NCV1
+			RAW: 30 - all other BR / REST
+			RAW: 31 - code does not exist / SNV
+		E: FCOD_KAR, OFFSET 24 LEN 3 - vehicle code body (203/209)
+			RAW: 0 - W - Sedan / W
+			RAW: 1 - V - sedan long / V
+			RAW: 2 - C - Coupé / C
+			RAW: 3 - S - Kombi or BM6 with BR463 / S
+			RAW: 4 - A - Cabriolet or BM1 for BR463 / A
+			RAW: 5 - R - Roadster / R
+			RAW: 6 - CL for BR 203 or BM3 for BR463 / CL
+			RAW: 7 - SG not programmed / SNV
+		E: FCOD_MOT7, OFFSET 33 LEN 7 - Vehicle code engine
+			RAW: 0 - M272 E35 / M272E35
+			RAW: 1 - M271 E18 ML red. (105 kW) / M271E18ML105
+			RAW: 2 - M271 E18 ML (120 kW) / M271E18ML120
+			RAW: 3 - M112 E37 / M112E37
+			RAW: 4 - M272 E25 / M272E25
+			RAW: 5 - M272 E30 / M272E30
+			RAW: 7 - M112 E28 / M112E28
+			RAW: 8 - M112 E32 / M112E32
+			RAW: 10 - M273 E46 / M273E46
+			RAW: 11 - M273 E55 / M273E55
+			RAW: 12 - M112 E26 / M112E26
+			RAW: 13 - M113 E43 / M113E43
+			RAW: 14 - M113 E50 / M113E50
+			RAW: 18 - M271 E18 ML / 1 (135/140 kW) / M271E18ML135_140
+			RAW: 19 - M271 DE18 ML red. (105 kW) / M271DE18ML105
+			RAW: 20 - M271 DE18 ML (125 kW) / M271DE18ML125
+			RAW: 22 - M111E E23 ML / M111E_E23ML
+			RAW: 23 - M111E E20 / M111E_E20
+			RAW: 24 - M111E E20 ML / M111E_E20ML
+			RAW: 25 - M112 E32 red. (140 kW) / M112E32_140
+			RAW: 26 - M266 E20 ATL / M266E20ATL
+			RAW: 27 - M266 E15 / M266E15
+			RAW: 28 - M266 E17 / M266E17
+			RAW: 29 - M266 E20 / M266E20
+			RAW: 30 - M275 E55 or M285 E55 / M275E55
+			RAW: 31 - M137 E58 / M137E58
+			RAW: 32 - OM 640 DE20 LA (60 kW) / OM640DE20LA60
+			RAW: 34 - OM 640 DE20 LA (80 kW) / OM640DE20LA80
+			RAW: 35 - OM642 DE30 LA (155/165 kW) / OM642DE30LA155_160
+			RAW: 36 - OM 640 DE20 LA (100 kW) / OM640DE20LA100
+			RAW: 37 - OM613 DE32 LA or OM648 DE32 LA / OM613DE32LA
+			RAW: 38 - OM 639 DE15 LA (70/50 kW) / OM639DE15LA
+			RAW: 39 - OM628 DE40 LA / OM628DE40LA
+			RAW: 40 - OM642 DE30 LA (140 kW) / OM642DE30LA140
+			RAW: 43 - OM612 DE27 LA or OM647 DE27 LA (120/130 kW) / OM612DE27LA
+			RAW: 44 - OM611 DE22 LA (105/100 kW) or OM646 DE22 LA (100/105/110 kW) / OM611DE22LA100
+			RAW: 45 - OM611 DE22 LA (85 kW) or OM646 DE22 LA (90 kW) / OM611DE22LA85
+			RAW: 46 - OM611 DE22 LA (75 kW) or OM646 DE22 LA (75 kW) / OM611DE22LA75
+			RAW: 48 - AMG M112 E32 ML / AMGM112E32ML
+			RAW: 49 - AMG M113 E55 ML / AMGM113E55ML
+			RAW: 51 - AMG M275 E60 or AMG M285 E60 / AMGM275E60
+			RAW: 56 - AMG M137 E63 / AMGM137E63
+			RAW: 57 - AMG M113 E55 / AMGM113E55
+			RAW: 60 - AMG M157 E60 LA / AMGM157E60LA
+			RAW: 61 - AMG M156 E63 / AMGM156E63
+			RAW: 64 - M134 E11 (3A91) / M134E11
+			RAW: 65 - M135 E13 (4A90) / M135E13
+			RAW: 66 - M135 E15 (4A91) / M135E15
+			RAW: 67 - M135 E15 ATL / M135E15ATL
+			RAW: 68 - M272 DE25 / M272DE25
+			RAW: 69 - M272 DE30 / M272DE30
+			RAW: 70 - M272 DE35 / M272DE35
+			RAW: 71 - M273 DE46 / M273DE46
+			RAW: 72 - M273 DE55 / M273DE55
+			RAW: 79 - M271 E18 ML Attr. (115kW) / M271E18MLATTR115
+			RAW: 80 - M271 E18 ML Attr. (141kW) / M271E18MLATTR141
+			RAW: 96 - OM629 DE40 LA / OM629DE40LA
+			RAW: 97 - OM646 DE22 EVO (120 / 125kW) / OM646DE22EVO120
+			RAW: 98 - OM646 DE22 LA EVO (100kW) / OM646DE22LAEVO100
+			RAW: 99 - OM646 DE22 LA EVO (85KW) / OM646DE22LAEVO85
+		B: PRW_VH, OFFSET 32 LEN 1 - Flat roll warning device available
+		B: KP_VH, OFFSET 47 LEN 1 - communication platform available
+		B: MEMORY_VH, OFFSET 46 LEN 1 - driver's seat memory available
+		B: KSG_VH, OFFSET 45 LEN 1 - comfort manual transmission available
+		B: NAG_VH, OFFSET 44 LEN 1 - automatic transmission available
+		B: KLA_VH, OFFSET 43 LEN 1 - air conditioning available
+		B: SRA_VH, OFFSET 42 LEN 1 - headlight cleaning system available
+		B: XEN_VH, OFFSET 41 LEN 1 - Xenon light available
+		B: RS_VH, OFFSET 40 LEN 1 - rain sensor available
+		B: SOUND_VH, OFFSET 55 LEN 1 - sound system available
+		B: NIV_VH, OFFSET 53 LEN 1 - level control available
+		B: BOOSTER_NVH, OFFSET 52 LEN 1 - Booster fan not available
+		B: FUK_SCHL, OFFSET 51 LEN 1 - Footwell flaps in cooling mode, closed. (only G463)
+		B: FSB_HZG_VH, OFFSET 50 LEN 1 - windshield heater. existing
+		B: CVT_VH, OFFSET 49 LEN 1 - CVT available
+		B: ART_VH, OFFSET 48 LEN 1 - ART available
+		B: SWB_VH, OFFSET 63 LEN 1 - heated windscreen washer system available
+		B: ERS_LICHT, OFFSET 62 LEN 1 - Complete replacement light allowed
+		B: KG_VH, OFFSET 61 LEN 1 - Keyless Go available
+		B: IRS_VH, OFFSET 60 LEN 1 - interior protection available
+		B: EDW_VH, OFFSET 59 LEN 1 - anti-theft alarm system available
+		B: HR_VH, OFFSET 58 LEN 1 - rear roller blind available
+		B: AHK_VH, OFFSET 57 LEN 1 - trailer coupling available
+		B: PTS_VH, OFFSET 56 LEN 1 - Parktronics system available
+	FRAME EZS_A6 (0x001E)
+		E: VER_AE, OFFSET 6 LEN 2 - year of change
+			RAW: 0 - change year "/ 1" / AE1
+			RAW: 1 - change year "/ X" / AEX
+			RAW: 2 - change year "/ 2" / AE2
+			RAW: 3 - start of series production / SB
+		E: VER_JAHR, OFFSET 1 LEN 5 - year specification
+			RAW: 0 - year 0 (beginning of year 2000) / YEAR00
+			RAW: 1 - year 1 / YEAR01
+			RAW: 29 - Year 29 / YEAR29
+			RAW: 30 - not defined / N_DEF
+			RAW: 31 - start of series production / SB
+		E: TPM_VH, OFFSET 30 LEN 2 - Tire pressure module available
+			RAW: 0 - no TPM installed / NO_TPM
+			RAW: 1 - TPM - Low Line / LOWLINE
+			RAW: 2 - TPM - Mid Line / MIDLINE
+			RAW: 3 - signal not available / SNV
+	FRAME EZS_A7 (0x0003)
+		E: BLS_ST, OFFSET 6 LEN 2 - Brake light switch status
+			RAW: 0 - brake not applied / BREMSE_NBET
+			RAW: 1 - brake applied / BREMSE_BET
+			RAW: 2 - not defined
+			RAW: 3 - signal not available / SNV
+		B: BLS_UNT, OFFSET 5 LEN 1 - brake light suppression
+		B: ZWP_EIN_MS, OFFSET 4 LEN 1 - switch on additional water pump
+		B: LUEFT_MOT_KL, OFFSET 3 LEN 1 - motor fan defective control lamp
+		B: KOMP_NOTAUS, OFFSET 2 LEN 1 - Air conditioning compressor emergency shutdown
+		B: KOMP_BAUS, OFFSET 1 LEN 1 - switch off air conditioning compressor: acceleration
+		B: LL_STBL, OFFSET 0 LEN 1 - idle is stable
+		E: WHC, OFFSET 12 LEN 4 - gear selector lever position (only NAG)
+			RAW: 5 - Selector lever in position "D" / D
+			RAW: 6 - Selector lever in position "N" / N
+			RAW: 7 - Selector lever in position "R" / R
+			RAW: 8 - Selector lever in position "P" / P
+			RAW: 9 - Selector lever in position "+" / PLUS
+			RAW: 10 - Selector lever in position "-" / MINUS
+			RAW: 11 - Selector lever in intermediate position "N-D" / N_ZW_D
+			RAW: 12 - Selector lever in intermediate position "R-N" / R_ZW_N
+			RAW: 13 - Selector lever in intermediate position "P-R" / P_ZW_R
+			RAW: 15 - Selector lever position implausible / SNV
+		E: HZL_ST, OFFSET 10 LEN 2 - Status of heating output
+			RAW: 0 - Heater shut-off valve is closed
+			RAW: 1 - Heater shut-off valve is on / OPEN
+			RAW: 2 - Heating shut-off valve is clocked / TAKT
+			RAW: 3 - signal not available / SNV
+		B: P, OFFSET 9 LEN 1 - Parking position engaged
+		B: RG, OFFSET 8 LEN 1 - reverse gear engaged (all transmissions)
+		E: DRTGVL, OFFSET 16 LEN 2 - direction of rotation of front left wheel
+			RAW: 0 - No direction of rotation detection / PASSIVE
+			RAW: 1 - direction of rotation forward / FORWARD
+			RAW: 2 - direction of rotation backwards / REVERSE
+			RAW: 3 - signal not available / SNV
+		I: DVL, OFFSET 18 LEN 14 - wheel speed front left UNIT: 1 / min
+		B: KPL, OFFSET 39 LEN 1 - clutch pressed
+		B: UEHITZ, OFFSET 38 LEN 1 - engine oil temperature too high (overheating)
+		B: BBV_KL, OFFSET 37 LEN 1 - Brake pad wear indicator lamp
+		B: ABS_KL, OFFSET 36 LEN 1 - ABS defective control lamp
+		B: ESP_KL, OFFSET 35 LEN 1 - ESP defective control lamp
+		B: BAS_KL, OFFSET 34 LEN 1 - BAS defective control lamp
+		B: DIAG_KL, OFFSET 33 LEN 1 - Diagnostic control lamp (OBD II)
+		B: OEL_KL, OFFSET 32 LEN 1 - Oil level / oil pressure control lamp
+		B: SUB_ABL_R, OFFSET 46 LEN 1 - Substitution of right low beam
+		B: SUB_ABL_L, OFFSET 45 LEN 1 - Substitution of left low beam
+		B: ART_ABW_AKT, OFFSET 44 LEN 1 - ART distance warning is switched on
+		B: NOTBRE, OFFSET 43 LEN 1 - emergency braking (brake light flashing)
+		E: WHST, OFFSET 40 LEN 3 - Gear selector lever position (NAG, KSG, CVT)
+			RAW: 0 - Gear selector lever in position "P" / P
+			RAW: 1 - Gear selector lever in position "R" / R
+			RAW: 2 - Gear selector lever in position "N" / N
+			RAW: 4 - Gear selector lever in position "D" / D
+			RAW: 7 - signal not available / SNV
+	FRAME EZS_A8 (0x0390)
+		B: KFK_AUS, OFFSET 7 LEN 1 - refrigerant level control inactive
+		B: SUS_AUS, OFFSET 6 LEN 1 - Corrosive gas-dependent air recirculation switch off
+		B: SUS_EIN, OFFSET 5 LEN 1 - Corrosive gas-dependent recirculation switch generally on
+		B: GBL_40, OFFSET 4 LEN 1 - 40% basic ventilation
+		B: GBA_MAN, OFFSET 3 LEN 1 - Fan bar display only in manual mode
+		B: RHT_EIN, OFFSET 2 LEN 1 - always REHEAT operation
+		B: UMLUFT_UBG, OFFSET 1 LEN 1 - manual recirculation switching for an unlimited period
+		B: ZWP_NVH, OFFSET 0 LEN 1 - additional water pump not installed
+		B: HEISSLAND_1, OFFSET 15 LEN 1 - "-1 ° C" hot countries
+		B: SOL_AUS, OFFSET 14 LEN 1 - Solar influence not active
+		B: UMLUFT_AUS, OFFSET 13 LEN 1 - Recirculation flap open in OFF operation
+		B: ESAUGBEL_EIN, OFFSET 12 LEN 1 - 20% basic ventilation E-suction fan on
+		B: CIRCULATION_ON, OFFSET 11 LEN 1 - Completely close the recirculation flap from <20%
+		B: KALTLAND_2, OFFSET 10 LEN 1 - "+ 2 ° C" increase
+		B: HEISSLAND_2, OFFSET 9 LEN 1 - "- 2 ° C" reduction
+		B: KALTLAND_1, OFFSET 8 LEN 1 - "+ 1 ° C" increase
+		E: P_KNL, OFFSET 20 LEN 4 - pressure characteristic
+			RAW: 0 - 20bar / 100% characteristic / P_KNL0
+			RAW: 1 - 20bar / 90% characteristic / P_KNL1
+			RAW: 2 - 20bar / 80% or 28bar / 100% characteristic / P_KNL2
+			RAW: 3 - 18bar / 100% characteristic / P_KNL3
+			RAW: 4 - 18bar / 90% characteristic / P_KNL4
+			RAW: 15 - SG not programmed / SNV
+		E: GBL_KNL, OFFSET 17 LEN 3 - basic ventilation characteristic
+			RAW: 0 - 25% basic ventilation / GBL_KNL0
+			RAW: 1 - 40% basic ventilation / GBL_KNL1
+			RAW: 2 - 30% basic ventilation / GBL_KNL2
+			RAW: 7 - SG not programmed / SNV
+		B: DESERT COUNTRY, OFFSET 16 LEN 1 - desert lands with sand
+		B: ASL_GBL, OFFSET 31 LEN 1 - Autom. Standard logic fan
+		B: ASL_LVT, OFFSET 30 LEN 1 - Autom. Standard logic air distribution
+		B: MAXCOOL, OFFSET 29 LEN 1 - "MAXCOOL" display (USA only)
+		B: REST_VH, OFFSET 28 LEN 1 - residual heat utilization available
+		B: IFDBE_VH, OFFSET 27 LEN 1 - Inside sensor available in DBE
+		B: TPS_NVH, OFFSET 26 LEN 1 - dew point sensor not available
+		B: GSPA_KLA_HEIZ, OFFSET 25 LEN 1 - Gear shift point increase in case of heating power deficit
+		B: GSPA_KLA_KUEHL, OFFSET 24 LEN 1 - Gear shift point increase in case of cooling power deficit
+	FRAME EZS_A9 (0x00B2)
+		E: VIN_MSG, OFFSET 6 LEN 2 - VIN signal part
+			RAW: 0 - not defined / N_DEF
+			RAW: 1 - VIN characters 1 - 7 / LO
+			RAW: 2 - VIN characters 8 - 14 / MID
+			RAW: 3 - VIN characters 15 - 17 / HI
+		I: VIN_DATA, OFFSET 8 LEN 56 - VIN data
+	FRAME KG_A1 (0x01B2)
+		B: WARNTON_KG, OFFSET 6 LEN 1 - switch on the warning tone
+		B: M0, OFFSET 5 LEN 1 - Messg. 0: "Chip card / key not recognized" (red)
+		B: M1, OFFSET 4 LEN 1 - Messg. 1: "Chip card / key not recognized" (white)
+		B: M2, OFFSET 3 LEN 1 - Messg. 2: "Chip card / key recognized in vehicle" (white)
+		B: M3, OFFSET 2 LEN 1 - Messg. 3: "Selector lever to P" (red, continuous tone)
+		B: M4, OFFSET 1 LEN 1 - Messg. 4: "Check chip card / key battery" (white)
+		B: M5, OFFSET 0 LEN 1 - Messg. 5: "Selector lever please in P or N position"
+		B: M6, OFFSET 15 LEN 1 - message. 6: "No driving authorization"
+		B: M7, OFFSET 14 LEN 1 - message. 7: Reserved
+		B: M8, OFFSET 13 LEN 1 - Messg. 8: "door open"
+		B: M9, OFFSET 12 LEN 1 - message. 9: "Keyless Go in Diagnosis"
+		B: M10, OFFSET 11 LEN 1 - message. 10: "Key calculates"
+		B: M11, OFFSET 10 LEN 1 - message. 11: "Please leave the key in"
+		B: M12, OFFSET 9 LEN 1 - message. 12: "Take your chip card / key with you!"
+		I: KM_REST_KG, OFFSET 16 LEN 8 - Keyless Go UNIT path indication: km
+	FRAME KG_A2 (0x0050)
+		B: KB_MOD_KG, OFFSET 6 LEN 1 - Comfort control mode
+		B: KB_RI_KG, OFFSET 5 LEN 1 - direction of comfort actuation
+		B: SHD_KG, OFFSET 4 LEN 1 - SHD / open / close convertible top
+		B: FVL_KG, OFFSET 3 LEN 1 - Open / close front left window
+		B: FVR_KG, OFFSET 2 LEN 1 - Open / close front right window
+		B: FHL_KG, OFFSET 1 LEN 1 - Open / close rear left window
+		B: FHR_KG, OFFSET 0 LEN 1 - Open / close rear right window
+	FRAME TELEAID_A2 (0x018D)
+		B: LIVE_TELEAID, OFFSET 4 LEN 1 - Alive message TELEAID
+		B: MK_ATRSRT, OFFSET 0 LEN 1 - mobility account authorized
+	FRAME TELEAID_POS1 (0x03E5)
+		I: GPS_LAT, OFFSET 0 LEN 32 - GPS latitude (- means south) UNIT: mas
+		I: GPS_LONG, OFFSET 32 LEN 32 - GPS longitude (- means west) UNIT: mas
+	FRAME TELEAID_POS2 (0x03E6)
+		I: GPS_VEL, OFFSET 0 LEN 16 - GPS velocity UNIT: cm / s
+		I: GPS_HEAD, OFFSET 16 LEN 16 - GPS heading UNIT: °
+		I: GPS_ELLIP, OFFSET 32 LEN 16 - GPS ellipsoid height UNIT: m
+		I: GPS_ALT, OFFSET 48 LEN 16 - GPS altitude UNIT: m
+	FRAME TELEAID_POS3 (0x03E7)
+		I: GPS_DATE_YEAR, OFFSET 0 LEN 16 - GPS date year UNIT: years
+		I: GPS_DATE_MONTH, OFFSET 16 LEN 8 - GPS date month UNIT: months
+		I: GPS_DATE_DAY, OFFSET 24 LEN 8 - GPS date day UNIT: days
+		I: GPS_UTC_HOUR, OFFSET 32 LEN 8 - GPS UTC hour UNIT: h
+		I: GPS_UTC_MINUTE, OFFSET 40 LEN 8 - GPS UTC minute UNIT: min
+		I: GPS_UTC_SECOND, OFFSET 48 LEN 16 - GPS UTC second UNIT: s
+	FRAME TELEAID_POS4 (0x03E8)
+		I: DR_MM_LAT, OFFSET 0 LEN 32 - Dead reckoning / map matching latitude (- means south) UNIT: mas
+		I: DR_MM_LONG, OFFSET 32 LEN 32 - Dead reckoning / map matching longtitude (- means west) UNIT: mas
+	FRAME TELEAID_POS5 (0x03E9)
+		I: GPS_VSBL_SAT, OFFSET 4 LEN 4 - GPS visible satellites
+		I: GPS_TRCK_SAT, OFFSET 0 LEN 4 - GPS tracked satellites
+		I: GPS_VDOP, OFFSET 8 LEN 8 - GPS vertical dilution of position
+		I: GPS_HDOP, OFFSET 16 LEN 8 - GPS horizontal dilution of position
+		I: GPS_PDOP, OFFSET 24 LEN 8 - GPS dilution of position
+		E: GPS_FIX, OFFSET 36 LEN 4 - GPS fix
+			RAW: 0 - Reserved / RES
+			RAW: 1 - not available / NAV
+			RAW: 2 - No fix / NO_FIX
+			RAW: 3 - 2D fix / FIX_2D
+			RAW: 4 - 3D fix / FIX_3D
+		I: DR_MM_REL, OFFSET 40 LEN 8 - Dead reckoning / map matching position reliablity UNIT:%
+		E: DR_MM_STAT, OFFSET 54 LEN 2 - Dead reckoning / map matching state
+			RAW: 0 - DR and MM not available / NONE
+			RAW: 1 - DR ok, MM not available / DR
+			RAW: 2 - DR ok, MM ok / MM
+			RAW: 3 - Signal not available / SNA
+		E: MM_ROUTE_STAT, OFFSET 52 LEN 2 - Map matching route state
+			RAW: 0 - Route calculation possible / ROUTE_OK
+			RAW: 1 - No route / NO_ROUTE
+			RAW: 2 - Not defined / NDEF
+			RAW: 3 - Signal not available / SNA
+		E: MM_ROAD_STAT, OFFSET 50 LEN 2 - Map matching road state
+			RAW: 0 - On road / ON_RD
+			RAW: 1 - Off road / OFF_RD
+			RAW: 2 - Not defined / NDEF
+			RAW: 3 - Signal not available / SNA
+		E: MM_MAP_STAT, OFFSET 48 LEN 2 - Map matching map state
+			RAW: 0 - On map / ON_MAP
+			RAW: 1 - Off map / OFF_MAP
+			RAW: 2 - Not defined / NDEF
+			RAW: 3 - Signal not available / SNA
+	FRAME GW_C_B7 (0x0005)
+		E: DRTGVR, OFFSET 32 LEN 2 - direction of rotation of the front right wheel
+			RAW: 0 - No direction of rotation detection / PASSIVE
+			RAW: 1 - direction of rotation forward / FORWARD
+			RAW: 2 - direction of rotation backwards / REVERSE
+			RAW: 3 - signal not available / SNV
+		I: DVR, OFFSET 34 LEN 14 - wheel speed front right UNIT: 1 / min
+	FRAME TP_TELEAID_AGW6 (0x0209)
+		I: TP_TELEAID_AGW, OFFSET 0 LEN 64 - Communication TELEAID to AGW
+	FRAME TP_TELEAID_KOMBI4 (0x01A1)
+		I: TP_TELEAID_KOMBI, OFFSET 0 LEN 64 - Communication TELEAID to KOMBI
+	FRAME NM_EZS (0x0400)
+		I: NM, OFFSET 0 LEN 64 - network management
+	FRAME D_RS_EZS (0x05FF)
+		I: D_RS, OFFSET 0 LEN 64 - KWP2000 diagnostic response
+	FRAME SG_APPL_EZS (0x0760)
+		I: SG_APPL, OFFSET 0 LEN 64 - control device to external application
+	FRAME D_RQ_AAG (0x0730)
+		I: D_RQ, OFFSET 0 LEN 64 - KWP2000 diagnosis request
+	FRAME D_RQ_AGW (0x05D6)
+		I: D_RQ, OFFSET 0 LEN 64 - KWP2000 diagnosis request
+	FRAME D_RQ_ARMADA (0x06BC)
+		I: D_RQ, OFFSET 0 LEN 64 - KWP2000 diagnosis request
+	FRAME D_RQ_DBE (0x0667)
+		I: D_RQ, OFFSET 0 LEN 64 - KWP2000 diagnosis request
+	FRAME D_RQ_FDSVL (0x06BE)
+		I: D_RQ, OFFSET 0 LEN 64 - KWP2000 diagnosis request
+	FRAME D_RQ_FDSVR (0x06BF)
+		I: D_RQ, OFFSET 0 LEN 64 - KWP2000 diagnosis request
+	FRAME D_RQ_HFS (0x0577)
+		I: D_RQ, OFFSET 0 LEN 64 - KWP2000 diagnosis request
+	FRAME D_RQ_ICANI (0x07DA)
+		I: D_RQ_ICANI, OFFSET 0 LEN 64 - KWP2000 diagnosis request
+	FRAME D_RQ_KLA (0x0791)
+		I: D_RQ, OFFSET 0 LEN 64 - KWP2000 diagnosis request
+	FRAME D_RQ_KOMBI (0x05B4)
+		I: D_RQ, OFFSET 0 LEN 64 - KWP2000 diagnosis request
+	FRAME D_RQ_LRK (0x06AF)
+		I: D_RQ, OFFSET 0 LEN 64 - KWP2000 diagnosis request
+	FRAME D_RQ_MOST0 (0x0640)
+		I: D_RQ, OFFSET 0 LEN 64 - KWP2000 diagnosis request
+	FRAME D_RQ_MOST1 (0x0641)
+		I: D_RQ, OFFSET 0 LEN 64 - KWP2000 diagnosis request
+	FRAME D_RQ_MOST10 (0x064A)
+		I: D_RQ, OFFSET 0 LEN 64 - KWP2000 diagnosis request
+	FRAME D_RQ_MOST11 (0x064B)
+		I: D_RQ, OFFSET 0 LEN 64 - KWP2000 diagnosis request
+	FRAME D_RQ_MOST12 (0x064C)
+		I: D_RQ, OFFSET 0 LEN 64 - KWP2000 diagnosis request
+	FRAME D_RQ_MOST13 (0x064D)
+		I: D_RQ, OFFSET 0 LEN 64 - KWP2000 diagnosis request
+	FRAME D_RQ_MOST14 (0x064E)
+		I: D_RQ, OFFSET 0 LEN 64 - KWP2000 diagnosis request
+	FRAME D_RQ_MOST15 (0x064F)
+		I: D_RQ, OFFSET 0 LEN 64 - KWP2000 diagnosis request
+	FRAME D_RQ_MOST2 (0x0642)
+		I: D_RQ, OFFSET 0 LEN 64 - KWP2000 diagnosis request
+	FRAME D_RQ_MOST3 (0x0643)
+		I: D_RQ, OFFSET 0 LEN 64 - KWP2000 diagnosis request
+	FRAME D_RQ_MOST4 (0x0644)
+		I: D_RQ, OFFSET 0 LEN 64 - KWP2000 diagnosis request
+	FRAME D_RQ_MOST5 (0x0645)
+		I: D_RQ, OFFSET 0 LEN 64 - KWP2000 diagnosis request
+	FRAME D_RQ_MOST6 (0x0646)
+		I: D_RQ, OFFSET 0 LEN 64 - KWP2000 diagnosis request
+	FRAME D_RQ_MOST7 (0x0647)
+		I: D_RQ, OFFSET 0 LEN 64 - KWP2000 diagnosis request
+	FRAME D_RQ_MOST8 (0x0648)
+		I: D_RQ, OFFSET 0 LEN 64 - KWP2000 diagnosis request
+	FRAME D_RQ_MOST9 (0x0649)
+		I: D_RQ, OFFSET 0 LEN 64 - KWP2000 diagnosis request
+	FRAME D_RQ_MRM (0x06D5)
+		I: D_RQ, OFFSET 0 LEN 64 - KWP2000 diagnosis request
+	FRAME D_RQ_MSS (0x0726)
+		I: D_RQ, OFFSET 0 LEN 64 - KWP2000 diagnosis request
+	FRAME D_RQ_NAVI (0x054A)
+		I: D_RQ_NAVI, OFFSET 0 LEN 64 - KWP2000 diagnosis request
+	FRAME D_RQ_OBF (0x06A5)
+		I: D_RQ, OFFSET 0 LEN 64 - KWP2000 diagnosis request
+	FRAME D_RQ_PFDS (0x072E)
+		I: D_RQ, OFFSET 0 LEN 64 - KWP2000 diagnosis request
+	FRAME D_RQ_PTS (0x0733)
+		I: D_RQ, OFFSET 0 LEN 64 - KWP2000 diagnosis request
+	FRAME D_RQ_SAM_H (0x0563)
+		I: D_RQ, OFFSET 0 LEN 64 - KWP2000 diagnosis request
+	FRAME D_RQ_SAM_V (0x0662)
+		I: D_RQ, OFFSET 0 LEN 64 - KWP2000 diagnosis request
+	FRAME D_RQ_SB (0x06AD)
+		I: D_RQ, OFFSET 0 LEN 64 - KWP2000 diagnosis request
+	FRAME D_RQ_SF (0x06AC)
+		I: D_RQ, OFFSET 0 LEN 64 - KWP2000 diagnosis request
+	FRAME D_RQ_SHZ (0x057B)
+		I: D_RQ, OFFSET 0 LEN 64 - KWP2000 diagnosis request
+	FRAME D_RQ_STH (0x0739)
+		I: D_RQ, OFFSET 0 LEN 64 - KWP2000 diagnosis request
+	FRAME D_RQ_THL (0x0749)
+		I: D_RQ, OFFSET 0 LEN 64 - KWP2000 diagnosis request
+	FRAME D_RQ_THR (0x074B)
+		I: D_RQ, OFFSET 0 LEN 64 - KWP2000 diagnosis request
+	FRAME D_RQ_TLM (0x05DA)
+		I: D_RQ, OFFSET 0 LEN 64 - KWP2000 diagnosis request
+	FRAME D_RQ_TPM (0x06B8)
+		I: D_RQ_TPM, OFFSET 0 LEN 64 - KWP2000 diagnosis request
+	FRAME D_RQ_TVL (0x06C8)
+		I: D_RQ, OFFSET 0 LEN 64 - KWP2000 diagnosis request
+	FRAME D_RQ_TVR (0x06CA)
+		I: D_RQ, OFFSET 0 LEN 64 - KWP2000 diagnosis request
+	FRAME D_RQ_UBF (0x073D)
+		I: D_RQ, OFFSET 0 LEN 64 - KWP2000 diagnosis request
+	FRAME D_RQ_WSS (0x06A8)
+		I: D_RQ, OFFSET 0 LEN 64 - KWP2000 diagnosis request
+	FRAME D_RQ_GLOBAL (0x001C)
+		I: D_RQ, OFFSET 0 LEN 64 - Global KWP2000 diagnosis request
+
+KOMBI
+	FRAME KOMBI_A1 (0x000C)
+		I: KL_58D_B, OFFSET 0 LEN 8 - Brightness of instrument lighting UNIT:%
+		I: V_SIGNAL, OFFSET 8 LEN 8 - vehicle speed UNIT: km / h
+		B: SP_PARK_SPERR, OFFSET 23 LEN 1 - mirror in parking position
+		B: SCHLUE_ABH_EIN, OFFSET 22 LEN 1 - key dependency on
+		B: ANH_UEBW, OFFSET 21 LEN 1 - Switch on trailer monitoring
+		B: TFL_EIN, OFFSET 20 LEN 1 - daytime running lights on
+		B: T_C, OFFSET 19 LEN 1 - temperature unit
+		B: AUTO_TUER, OFFSET 18 LEN 1 - Automatic door locking
+		B: TFSM_B, OFFSET 17 LEN 1 - minimum tank level
+		B: DZ_EIN, OFFSET 16 LEN 1 - switch on roof sign (taxi)
+		B: ESH_AUTO_EIN, OFFSET 31 LEN 1 - entry aid / autom. Positioning a
+		B: ESH_LENK_EIN, OFFSET 30 LEN 1 - steering column adjustment with I / O help on
+		B: ESH_SITZ_EIN, OFFSET 29 LEN 1 - Seat adjustment with I / O help on
+		B: ESH_POS_STD, OFFSET 28 LEN 1 - Seat adjustment path with I / O help on standard
+		B: SP_ANKL_SPERR, OFFSET 25 LEN 1 - Mirror folding in with vehicle locking
+		B: ESH_POS_SP, OFFSET 24 LEN 1 - Save longitudinal seat position for I / O help
+		E: LANGUAGE, OFFSET 36 LEN 4 - language
+			RAW: 0 - German / GERMAN
+			RAW: 1 - English / ENGLISH
+			RAW: 2 - FRENCH / FRENCH
+			RAW: 3 - Italian / ITALIAN
+			RAW: 4 - Spanish / SPANISH
+			RAW: 5 - Japanese / JAPANESE
+			RAW: 6 - Dutch / DUTCH
+			RAW: 7 - Danish / DAENISH
+			RAW: 8 - Swedish / SWEDISH
+			RAW: 9 - Portuguese / PORTUGUESE
+			RAW: 10 - Turkish / TURKISH
+			RAW: 11 - Russian / RUSSIAN
+			RAW: 15 - signal not available / SNV
+		B: UFB_EIN, OFFSET 35 LEN 1 - Surrounding lighting on
+		B: FL_OK, OFFSET 34 LEN 1 - Switching on the high beam is permitted
+		B: RR_KM, OFFSET 33 LEN 1 - trip computer distance unit
+		B: SLF, OFFSET 32 LEN 1 - search run
+		B: RDK_AKT, OFFSET 47 LEN 1 - activate RDK
+		B: IRS_VDK_EIN, OFFSET 46 LEN 1 - Interior protection on when the convertible top is open
+		B: VWZ_AUS_MFL, OFFSET 42 LEN 1 - Preselection time deactivated via MFL (LED off)
+		B: VWZ_AKT, OFFSET 41 LEN 1 - preset time activated (LED on)
+		B: STHL_EIN_KOMBI, OFFSET 40 LEN 1 - switch on auxiliary heating / ventilation
+		I: INLI_NLZ, OFFSET 48 LEN 8 - interior lighting afterglow time UNIT: s
+		I: ABL_NLZ, OFFSET 56 LEN 8 - parking light or fog light afterglow time (SWA) UNIT: s
+	FRAME KOMBI_A3 (0x00D4)
+		I: A_ZEIT, OFFSET 0 LEN 16 - Current time UNIT: s
+		I: KM, OFFSET 16 LEN 24 - Mileage UNIT: km
+		I: RW, OFFSET 40 LEN 16 - Range UNIT: km (miles)
+	FRAME KOMBI_A5 (0x01CA)
+		E: KI_STAT, OFFSET 0 LEN 8 - Status combi
+			RAW: 0 - reserved
+			RAW: 1 - reserved
+			RAW: 2 - Neutral
+			RAW: 3 - Audio / AUDIO
+			RAW: 4 - Navigation / NAVI
+			RAW: 5 - PHONE / TEL
+			RAW: 6 - New Services / NEW_SER
+			RAW: 19 - Voice radio KI Dlg closed / SPR_FNK_DLG_CLO
+			RAW: 20 - Radio data transmission KI Dlg closed / DAT_FNK_DLG_CLO
+			RAW: 21 - Sprachfunk-KI Dlg opened / SPR_FNK_DLG_OPN
+			RAW: 22 - Radio data transmission KI Dlg opened / DAT_FNK_DLG_OPN
+			RAW: 255 - signal not available / SNV
+		B: BUTTON_1_1, OFFSET 15 LEN 1 - Next display
+		B: BUTTON_1_2, OFFSET 14 LEN 1 - Previous display
+		B: BUTTON_2_1, OFFSET 13 LEN 1 - reserve
+		B: BUTTON_2_2, OFFSET 12 LEN 1 - reserve
+		B: BUTTON_3_1, OFFSET 11 LEN 1 - "+" button
+		B: BUTTON_3_2, OFFSET 10 LEN 1 - button "-"
+		B: BUTTON_4_1, OFFSET 9 LEN 1 - Telephone send
+		B: BUTTON_4_2, OFFSET 8 LEN 1 - Telephone End
+		B: BUTTON_5_1, OFFSET 23 LEN 1 - reserve
+		B: BUTTON_5_2, OFFSET 22 LEN 1 - reserve
+		B: BUTTON_6_1, OFFSET 21 LEN 1 - reserve
+		B: BUTTON_6_2, OFFSET 20 LEN 1 - reserve
+		B: BUTTON_7_1, OFFSET 19 LEN 1 - reserve
+		B: BUTTON_7_2, OFFSET 18 LEN 1 - reserve
+		B: BUTTON_8_1, OFFSET 17 LEN 1 - reserve
+		B: BUTTON_8_2, OFFSET 16 LEN 1 - reserve
+		B: PTT_1_1, OFFSET 31 LEN 1 - Activate Linguatronic
+		B: PTT_1_2, OFFSET 30 LEN 1 - Deactivate Linguatronic
+		B: PTT_2_1, OFFSET 29 LEN 1 - reserve
+		B: PTT_2_2, OFFSET 28 LEN 1 - reserve
+		B: PTT_3_1, OFFSET 27 LEN 1 - reserve
+		B: PTT_3_2, OFFSET 26 LEN 1 - reserve
+		B: PTT_4_1, OFFSET 25 LEN 1 - reserve
+		B: PTT_4_2, OFFSET 24 LEN 1 - reserve
+	FRAME KOMBI_A6 (0x009E)
+		I: SCHLUE_ID_KI, OFFSET 0 LEN 32 - Identification key for pre-filtering
+		I: KM_KI, OFFSET 32 LEN 24 - Mileage UNIT: km
+	FRAME KOMBI_A7 (0x0194)
+		I: DISP_DIMM, OFFSET 0 LEN 8 - Display dimming UNIT:%
+		B: HD_BEGRENZ, OFFSET 10 LEN 1 - trunk lid limitation on
+		B: DATENF_MENU_AKT, OFFSET 9 LEN 1 - Radio data menu activated
+	FRAME KOMBI_A8 (0x032A)
+		E: KI_STAT_MSS, OFFSET 0 LEN 8 - Status combi
+			RAW: 0 - reserved
+			RAW: 1 - reserved
+			RAW: 2 - Neutral
+			RAW: 3 - Audio / AUDIO
+			RAW: 4 - Navigation / NAVI
+			RAW: 5 - PHONE / TEL
+			RAW: 6 - New Services / NEW_SER
+			RAW: 19 - Voice radio KI Dlg closed / SPR_FNK_DLG_CLO
+			RAW: 20 - Radio data transmission KI Dlg closed / DAT_FNK_DLG_CLO
+			RAW: 21 - Sprachfunk-KI Dlg opened / SPR_FNK_DLG_OPN
+			RAW: 22 - Radio data transmission KI Dlg opened / DAT_FNK_DLG_OPN
+			RAW: 255 - signal not available / SNV
+		B: BUTTON_1_1_MSS, OFFSET 15 LEN 1 - Next display
+		B: BUTTON_1_2_MSS, OFFSET 14 LEN 1 - previous display
+		B: BUTTON_2_1_MSS, OFFSET 13 LEN 1 - reserve
+		B: BUTTON_2_2_MSS, OFFSET 12 LEN 1 - reserve
+		B: BUTTON_3_1_MSS, OFFSET 11 LEN 1 - "+" button
+		B: BUTTON_3_2_MSS, OFFSET 10 LEN 1 - button "-"
+		B: BUTTON_4_1_MSS, OFFSET 9 LEN 1 - Telephone Send
+		B: BUTTON_4_2_MSS, OFFSET 8 LEN 1 - Telephone End
+		B: BUTTON_5_1_MSS, OFFSET 23 LEN 1 - reserve
+		B: BUTTON_5_2_MSS, OFFSET 22 LEN 1 - reserve
+		B: BUTTON_6_1_MSS, OFFSET 21 LEN 1 - reserve
+		B: BUTTON_6_2_MSS, OFFSET 20 LEN 1 - reserve
+		B: BUTTON_7_1_MSS, OFFSET 19 LEN 1 - reserve
+		B: BUTTON_7_2_MSS, OFFSET 18 LEN 1 - reserve
+		B: BUTTON_8_1_MSS, OFFSET 17 LEN 1 - reserve
+		B: BUTTON_8_2_MSS, OFFSET 16 LEN 1 - reserve
+		B: PTT_1_1_MSS, OFFSET 31 LEN 1 - Activate Linguatronic
+		B: PTT_1_2_MSS, OFFSET 30 LEN 1 - Deactivate Linguatronic
+		B: PTT_2_1_MSS, OFFSET 29 LEN 1 - reserve
+		B: PTT_2_2_MSS, OFFSET 28 LEN 1 - reserve
+		B: PTT_3_1_MSS, OFFSET 27 LEN 1 - reserve
+		B: PTT_3_2_MSS, OFFSET 26 LEN 1 - reserve
+		B: PTT_4_1_MSS, OFFSET 25 LEN 1 - reserve
+		B: PTT_4_2_MSS, OFFSET 24 LEN 1 - reserve
+	FRAME TP_KOMBI_AGW1 (0x01D0)
+		I: TP_KOMBI_AGW, OFFSET 0 LEN 64 - COMBI communication to the AGW
+	FRAME TP_KOMBI_MSS2 (0x0330)
+		I: TP_KOMBI_MSS, OFFSET 0 LEN 64 - COMBI communication to the MSS
+	FRAME TP_KOMBI_TELEAID4 (0x03E1)
+		I: TP_KOMBI_TELEAID, OFFSET 0 LEN 64 - communication KOMBI to TELEAID
+	FRAME NM_KOMBI (0x0414)
+		I: NM, OFFSET 0 LEN 64 - network management
+	FRAME D_RS_KOMBI (0x04F4)
+		I: D_RS, OFFSET 0 LEN 64 - KWP2000 diagnostic response
+	FRAME SG_APPL_KOMBI (0x0774)
+		I: SG_APPL, OFFSET 0 LEN 64 - control device to external application
+
+MRM
+	FRAME MRM_A1 (0x0006)
+		B: BLI_LI, OFFSET 4 LEN 1 - direction flashing left
+		B: BLI_RE, OFFSET 3 LEN 1 - right direction flashing
+		B: FL_EIN, OFFSET 2 LEN 1 - switch on high beam
+		B: LHP_EIN, OFFSET 1 LEN 1 - switch on headlight flasher
+		B: SGH_EIN_LR, OFFSET 0 LEN 1 - switch on the horn
+		B: HECK_WISCH_MRM, OFFSET 14 LEN 1 - Wipe / wash the rear window
+		B: HECK_INT_MRM, OFFSET 13 LEN 1 - Intermittent wiping of the rear window
+		B: TIPP_WISCH, OFFSET 12 LEN 1 - Tip wipe actuated
+		B: WASHING, OFFSET 11 LEN 1 - washing actuated
+		B: SCH_WI_INT, OFFSET 10 LEN 1 - LSS in position I (rain sensor operation)
+		B: SCH_WI_1, OFFSET 9 LEN 1 - LSS in position II (level 1)
+		B: SCH_WI_2, OFFSET 8 LEN 1 - LSS in position III (level 2)
+		B: SBS_AUS, OFFSET 23 LEN 1 - switch off voice control (abort)
+		B: SBS_EIN, OFFSET 22 LEN 1 - Activate voice control (push to talk)
+		B: ESH_EIN_MRM, OFFSET 17 LEN 1 - switch on the entry aid (if rotary knob)
+		B: LS_ST_VER, OFFSET 16 LEN 1 - steering column is locked [0] (only USA)
+		B: LW_VZ_B, OFFSET 28 LEN 1 - steering angle sign
+		B: LW_INI_B, OFFSET 27 LEN 1 - Steering angle sensor: not initialized
+		B: LW_CF_B, OFFSET 26 LEN 1 - Steering angle sensor: Code error
+		B: LW_OV_B, OFFSET 25 LEN 1 - Steering angle sensor: overflow
+		B: LW_PA_B, OFFSET 24 LEN 1 - Steering angle parity bit (even parity)
+		I: LW_B, OFFSET 29 LEN 11 - Steering angle UNIT: °
+	FRAME MRM_A2 (0x01A8)
+		B: WIPPE_1_1, OFFSET 7 LEN 1 - button top left to top
+		B: WIPPE_1_2, OFFSET 6 LEN 1 - button top left to bottom
+		B: WIPPE_2_1, OFFSET 5 LEN 1 - button left bottom up
+		B: WIPPE_2_2, OFFSET 4 LEN 1 - button left bottom down
+		B: WIPPE_3_1, OFFSET 3 LEN 1 - button top right up
+		B: WIPPE_3_2, OFFSET 2 LEN 1 - button top right to bottom
+		B: WIPPE_4_1, OFFSET 1 LEN 1 - button bottom right up
+		B: WIPPE_4_2, OFFSET 0 LEN 1 - button bottom right down
+		B: WIPPE_5_1, OFFSET 15 LEN 1 - reserve
+		B: WIPPE_5_2, OFFSET 14 LEN 1 - reserve
+		B: WIPPE_6_1, OFFSET 13 LEN 1 - reserve
+		B: WIPPE_6_2, OFFSET 12 LEN 1 - reserve
+		B: WIPPE_7_1, OFFSET 11 LEN 1 - reserve
+		B: WIPPE_7_2, OFFSET 10 LEN 1 - reserve
+		B: WIPPE_8_1, OFFSET 9 LEN 1 - reserve
+		B: WIPPE_8_2, OFFSET 8 LEN 1 - reserve
+	FRAME MRM_A3 (0x0296)
+		B: LSVH_OB, OFFSET 5 LEN 1 - Steering column adjustment lever turned up
+		B: LSVH_UN, OFFSET 4 LEN 1 - Steering column adjustment lever turned down
+		B: LS_AUF_MRM, OFFSET 3 LEN 1 - steering column up
+		B: LS_AB_MRM, OFFSET 2 LEN 1 - steering column down
+		B: LS_VOR_MRM, OFFSET 1 LEN 1 - steering column forward
+		B: LS_ZUR_MRM, OFFSET 0 LEN 1 - steering column to the rear (towards the driver)
+	FRAME NM_MRM (0x0415)
+		I: NM, OFFSET 0 LEN 64 - network management
+	FRAME D_RS_MRM (0x04F5)
+		I: D_RS, OFFSET 0 LEN 64 - KWP2000 diagnostic response
+	FRAME SG_APPL_MRM (0x0775)
+		I: SG_APPL, OFFSET 0 LEN 64 - control device to external application
+	FRAME SD_RS_MRM (0x07D5)
+		I: SD_RS, OFFSET 0 LEN 64 - System diagnosis response
+
+SAM_V
+	FRAME SAM_V_A1 (0x000A)
+		B: AFL_AKT, OFFSET 7 LEN 1 - Outside light activated by light sensor
+		B: NSW_ST_EIN, OFFSET 6 LEN 1 - Fog lights are switched on
+		B: FL_ST_EIN, OFFSET 5 LEN 1 - high beam is switched on
+		B: SGH_ST_EIN, OFFSET 4 LEN 1 - Signal horn is switched on
+		B: SPVS_ST_R, OFFSET 3 LEN 1 - Mirror adjustment switch in the right position
+		B: RG_SAM_V, OFFSET 2 LEN 1 - reverse gear engaged (only with NSG / KSG)
+		B: SWA_AKT, OFFSET 1 LEN 1 - headlight activation active
+		B: KL_61_EIN, OFFSET 0 LEN 1 - Terminal 61
+		B: PL_LI_EIN, OFFSET 14 LEN 1 - Switch on left parking light
+		B: PL_RE_EIN, OFFSET 13 LEN 1 - Switch on right parking light
+		B: STL_EIN, OFFSET 11 LEN 1 - switch on parking lights
+		B: ABL_EIN, OFFSET 10 LEN 1 - switch on low beam
+		B: NSL_EIN, OFFSET 8 LEN 1 - switch on rear fog light
+		B: DIAG_15R_EIN, OFFSET 22 LEN 1 - Terminal 15R activated via diagnosis
+		B: DIAG_15_EIN, OFFSET 21 LEN 1 - Terminal 15 activated via diagnosis
+		B: KOMP_DEF, OFFSET 20 LEN 1 - Refrigeration compressor control, current output defective
+		B: KOMP_EIN, OFFSET 19 LEN 1 - Air conditioning compressor switched on
+		B: HAS_KL, OFFSET 18 LEN 1 - handbrake applied (control lamp)
+		B: KOMP_LFT, OFFSET 17 LEN 1 - refrigeration compressor is running
+		B: ZWP_LFT, OFFSET 16 LEN 1 - auxiliary water pump is running
+		B: KWS_KL, OFFSET 26 LEN 1 - cooling water level too low control lamp
+		B: WWS_KL, OFFSET 25 LEN 1 - wash water level too low control lamp
+		B: BFL_KL, OFFSET 24 LEN 1 - Brake fluid level indicator lamp
+		B: INSTR_AUS, OFFSET 39 LEN 1 - Instrument lighting off
+		B: SM_DEF_VL, OFFSET 37 LEN 1 - Sidemarker front left defective
+		B: BLI_DEF_VL, OFFSET 36 LEN 1 - Front left turn signal defective
+		B: PL_DEF_VL, OFFSET 35 LEN 1 - Front left parking light defective
+		B: ABL_DEF_L, OFFSET 34 LEN 1 - Left low beam defective
+		B: FL_DEF_L, OFFSET 33 LEN 1 - left high beam defective
+		B: NSW_DEF_L, OFFSET 32 LEN 1 - Left fog light defective
+		B: LENK_OEL_KL, OFFSET 47 LEN 1 - message. Steering oil too low
+		B: SM_DEF_VR, OFFSET 45 LEN 1 - Front right side marker defective
+		B: BLI_DEF_VR, OFFSET 44 LEN 1 - Front right turn signal defective
+		B: PL_DEF_VR, OFFSET 43 LEN 1 - Front right parking light defective
+		B: ABL_DEF_R, OFFSET 42 LEN 1 - Right low beam defective
+		B: FL_DEF_R, OFFSET 41 LEN 1 - right high beam defective
+		B: NSW_DEF_R, OFFSET 40 LEN 1 - Right fog light defective
+		B: DIAG_X4_B, OFFSET 54 LEN 1 - Start Xenon4 diagnostic procedure on the passenger side
+		B: PL_ERS_VR, OFFSET 53 LEN 1 - Replacement parking light front right active
+		B: BLI_ERS_VR, OFFSET 52 LEN 1 - Replacement blinker active at the front right
+		B: DIAG_X4_F, OFFSET 50 LEN 1 - Start Xenon4 diagnostic procedure on the driver's side
+		B: PL_ERS_VL, OFFSET 49 LEN 1 - Replacement parking light front left active
+		B: BLI_ERS_VL, OFFSET 48 LEN 1 - Replacement turn signal front left active
+	FRAME SAM_V_A2 (0x0017)
+		I: T_AUSSEN_B, OFFSET 0 LEN 8 - outside air temperature UNIT: ° C
+		I: P_KAELTE, OFFSET 8 LEN 16 - pressure refrigerant R134a UNIT: bar
+		I: T_KAELTE, OFFSET 24 LEN 16 - temperature refrigerant R134a UNIT: ° C
+		I: I_KOMP, OFFSET 40 LEN 8 - Current compressor main control valve UNIT: mA
+	FRAME SAM_V_A3 (0x0070)
+		B: RS_AKT, OFFSET 7 LEN 1 - rain sensor activated
+		B: KL_31B_EIN, OFFSET 6 LEN 1 - wiper outside parking position
+		B: KL_86_EIN, OFFSET 5 LEN 1 - washing activated
+		E: KONFIG_RS, OFFSET 2 LEN 3 - configuration of rain sensor
+			RAW: 0 - insensitive levels / UEMPF0
+			RAW: 1 - insensitive levels / UEMPF1
+			RAW: 2 - insensitive levels / UEMPF2
+			RAW: 3 - preset Rec. / VOR_EMPF
+			RAW: 4 - more sensitive levels / EMPF0
+			RAW: 5 - more sensitive levels / EMPF1
+			RAW: 6 - more sensitive levels / EMPF2
+			RAW: 7 - Reinitialization / NEW_INI
+		B: PARITY_SAM_V, OFFSET 0 LEN 1 - Parity from bit 0 to 6 (even)
+		B: RS_INT, OFFSET 15 LEN 1 - rain sensor on / off (position interval)
+		B: KL_31B_RS, OFFSET 14 LEN 1 - wiper outside of parking position
+		B: KL_86_RS, OFFSET 13 LEN 1 - washing activated
+		B: SAM_V_INIT, OFFSET 12 LEN 1 - SAM_V initialization
+		B: RS_NM, OFFSET 11 LEN 1 - rain sensor operation not possible
+		B: DIAG_RS, OFFSET 10 LEN 1 - Rain sensor diagnosis
+		I: BYTE_KENN, OFFSET 8 LEN 2 - byte identifier
+	FRAME SAM_V_A4 (0x02CC)
+		B: SP_N_LI, OFFSET 7 LEN 1 - outside mirror glass to the left
+		B: SP_N_RE, OFFSET 6 LEN 1 - Outside mirror glass to the right
+		B: SP_N_OB, OFFSET 5 LEN 1 - outside mirror glass upwards
+		B: SP_N_UN, OFFSET 4 LEN 1 - Outside mirror glass down
+		B: SP_GARAGE, OFFSET 3 LEN 1 - Outside mirror after garage position
+		B: SP_FAHREN, OFFSET 2 LEN 1 - Outside mirror according to driving position
+		B: SPVS_ST, OFFSET 0 LEN 1 - Mirror adjustment switch setting
+	FRAME NM_SAM_V (0x0402)
+		I: NM, OFFSET 0 LEN 64 - network management
+	FRAME D_RS_SAM_V (0x04E2)
+		I: D_RS, OFFSET 0 LEN 64 - KWP2000 diagnostic response
+	FRAME SG_APPL_SAM_V (0x0762)
+		I: SG_APPL, OFFSET 0 LEN 64 - control device to external application
+
+SAM_H
+	FRAME SAM_H_A1 (0x0004)
+		B: TVL_AUF, OFFSET 7 LEN 1 - front left door is open
+		B: TVR_AUF, OFFSET 6 LEN 1 - front right door is open
+		B: THL_AUF, OFFSET 5 LEN 1 - rear left door is open
+		B: THR_AUF, OFFSET 4 LEN 1 - rear right door is open
+		B: HD_AUF, OFFSET 3 LEN 1 - trunk lid is open
+		B: HDK_BET, OFFSET 2 LEN 1 - trunk lid contact pressed
+		B: KL54_RM, OFFSET 1 LEN 1 - Terminal 54 hardware active
+		B: PNK_AKT, OFFSET 0 LEN 1 - Panic alarm is active
+		B: HD_SK_SAM_H, OFFSET 15 LEN 1 - trunk lid pawl activated
+		B: HSCHL_ZU, OFFSET 14 LEN 1 - rear lock in 90 ° position
+		B: HSCHL_ST_SICH, OFFSET 13 LEN 1 - The rear lock is secured
+		B: HHS_ST_EIN, OFFSET 12 LEN 1 - heated rear window is switched on
+		B: HHS_ST_USPG, OFFSET 11 LEN 1 - Heizb. Rear window is switched off due to under voltage.
+		B: HVST_F_ENT, OFFSET 10 LEN 1 - Height adjuster driver unlocked
+		B: HVST_BF_ENT, OFFSET 9 LEN 1 - passenger height adjuster unlocked
+		B: MOT_AUF, OFFSET 8 LEN 1 - engine hood is open
+		B: EDW_ALARM, OFFSET 20 LEN 1 - EDW alarm triggered
+		B: EDW_AAG_AKT, OFFSET 19 LEN 1 - Activate EDW trailer monitoring
+		B: EDW_IRS_AKT, OFFSET 18 LEN 1 - Activate EDW interior protection
+		B: EDW_AKT, OFFSET 17 LEN 1 - EDW sharpened
+		B: EDW_IL_EIN, OFFSET 16 LEN 1 - Switch on EDW interior light
+		B: KL_54_DEF, OFFSET 31 LEN 1 - Terminal 54 error
+		B: BL3_DEF, OFFSET 30 LEN 1 - 3rd brake light defective
+		B: NSL_DEF, OFFSET 29 LEN 1 - rear fog light defective
+		B: BLI_DEF_HL, OFFSET 28 LEN 1 - Rear left turn signal defective
+		B: SL_DEF_L, OFFSET 27 LEN 1 - Left tail light defective
+		B: BL_DEF_L, OFFSET 26 LEN 1 - Left brake light defective
+		B: RFL_DEF_L, OFFSET 25 LEN 1 - Left reversing light defective
+		B: KZL_DEF_L, OFFSET 24 LEN 1 - Left license plate light defective
+		B: SM_DEF_HL, OFFSET 39 LEN 1 - Sidemarker at the rear left defective
+		B: SM_DEF_HR, OFFSET 38 LEN 1 - Rear right side marker defective
+		B: BLI_DEF_HR, OFFSET 36 LEN 1 - Rear right turn signal defective
+		B: SL_DEF_R, OFFSET 35 LEN 1 - Right tail light defective
+		B: BL_DEF_R, OFFSET 34 LEN 1 - Right brake light defective
+		B: RFL_DEF_R, OFFSET 33 LEN 1 - Right reversing light defective
+		B: KZL_DEF_R, OFFSET 32 LEN 1 - Right license plate light defective
+		B: BLI_ERS_HL, OFFSET 47 LEN 1 - Spare light turn signal rear left active
+		B: SL_ERS_HL, OFFSET 46 LEN 1 - Replacement light tail light rear left active
+		B: BLI_ERS_HR, OFFSET 43 LEN 1 - Spare light, turn signal, rear right active
+		B: SL_ERS_HR, OFFSET 42 LEN 1 - Replacement light tail light rear right active
+		B: NSL_ERS, OFFSET 40 LEN 1 - Replacement light rear fog lamp (s) active
+		B: HD_SICH_SAM_H, OFFSET 53 LEN 1 - Rear door button. close & secure pressed
+		B: HD_SCHLIESS_SAM_H, OFFSET 52 LEN 1 - Rear door button. close pressed
+		B: HFS_SB_EIN, OFFSET 51 LEN 1 - Switch on the HFS search light
+		B: SRS_KL_HW, OFFSET 50 LEN 1 - SRS control lamp (for G463)
+		B: GURT_KL_HW, OFFSET 49 LEN 1 - switch on Gurt-KL (for G463)
+		B: HW_INT_AKT, OFFSET 48 LEN 1 - rear wiper in intermittent operation
+	FRAME SAM_H_A2 (0x0090)
+		I: TANK_FS_B, OFFSET 0 LEN 8 - Tank level UNIT:%
+		I: TANK_GE_RE, OFFSET 8 LEN 8 - Tank sensor value right UNIT:%
+		I: TANK_GE_LI, OFFSET 16 LEN 8 - Tank sensor value left UNIT:%
+	FRAME SAM_H_A3 (0x000E)
+		B: WARN_AKT, OFFSET 2 LEN 1 - Hazard warning lights active
+		B: BLI_LI_EIN, OFFSET 1 LEN 1 - Switch on the left turn signal
+		B: BLI_RE_EIN, OFFSET 0 LEN 1 - Switch on the right turn signal
+		I: HELL_BLINK, OFFSET 8 LEN 8 - Flashing-light-bright phase UNIT: ms
+	FRAME SAM_H_A4 (0x0041)
+		B: ZV_NOTOEFF, OFFSET 7 LEN 1 - ZV emergency opening
+		B: SN1_SAM_H, OFFSET 1 LEN 1 - lock follower 1 (unlock)
+	FRAME SAM_H_A5 (0x0230)
+		B: SL_EIN_EDW, OFFSET 2 LEN 1 - switch on tail light
+		B: ABL_EIN_EDW, OFFSET 1 LEN 1 - switch on low beam
+		B: NSW_EIN_EDW, OFFSET 0 LEN 1 - switch on fog lights
+		I: HELL_EDW, OFFSET 8 LEN 8 - Duration light-bright phase UNIT: ms
+	FRAME SAM_H_A6 (0x00CC)
+		I: ZBC_SAM_H, OFFSET 0 LEN 64 - code access authorization
+	FRAME NM_SAM_H (0x0403)
+		I: NM, OFFSET 0 LEN 64 - network management
+	FRAME D_RS_SAM_H (0x04E3)
+		I: D_RS, OFFSET 0 LEN 64 - KWP2000 diagnostic response
+	FRAME SG_APPL_SAM_H (0x0763)
+		I: SG_APPL, OFFSET 0 LEN 64 - control device to external application
+
+AAG
+	FRAME AAG_A1 (0x0130)
+		B: ANHBL_DEF, OFFSET 7 LEN 1 - Trailer brake light defective
+		B: EDW_ANH_ALM, OFFSET 3 LEN 1 - EDW trailer monitoring alarm triggered
+		B: ANHKL_54_DEF, OFFSET 2 LEN 1 - Trailer terminal 54 error
+		B: AHK_NOK, OFFSET 1 LEN 1 - Trailer coupling not locked
+		B: ANH_ERK, OFFSET 0 LEN 1 - Trailer operation detected
+		B: ANHBLI_DEF_R, OFFSET 13 LEN 1 - Right trailer turn signal defective
+		B: ANHSL_DEF_R, OFFSET 12 LEN 1 - Right trailer tail light defective
+		B: ANHBLI_DEF_L, OFFSET 9 LEN 1 - Left trailer turn signal defective
+		B: ANHSL_DEF_L, OFFSET 8 LEN 1 - Trailer tail light on the left defective
+	FRAME NM_AAG (0x0410)
+		I: NM, OFFSET 0 LEN 64 - network management
+	FRAME D_RS_AAG (0x04F0)
+		I: D_RS, OFFSET 0 LEN 64 - KWP2000 diagnostic response
+	FRAME SG_APPL_AAG (0x0770)
+		I: SG_APPL, OFFSET 0 LEN 64 - control device to external application
+	FRAME SD_RS_AAG (0x07D0)
+		I: SD_RS, OFFSET 0 LEN 64 - System diagnosis response
+
+TVL
+	FRAME TVL_A1 (0x028C)
+		B: SVL_VOR, OFFSET 7 LEN 1 - seat front left - lengthways forward
+		B: SVL_ZUR, OFFSET 6 LEN 1 - seat front left - lengthways back
+		B: SVL_HI_AUF, OFFSET 5 LEN 1 - seat front left - height rear up
+		B: SVL_HI_AB, OFFSET 4 LEN 1 - seat front left - height at the back
+		B: SVL_TGL, OFFSET 0 LEN 1 - front left seat - toggle bit
+		B: SVL_LE_VOR, OFFSET 13 LEN 1 - front left seat - backrest forward
+		B: SVL_LE_ZUR, OFFSET 12 LEN 1 - front left seat - backrest to the rear
+		B: SVL_VO_AUF, OFFSET 11 LEN 1 - seat front left - height front up
+		B: SVL_VO_AB, OFFSET 10 LEN 1 - seat front left - height front from
+		B: SVL_KST_AUF, OFFSET 9 LEN 1 - front left seat - headrest up
+		B: SVL_KST_AB, OFFSET 8 LEN 1 - front left seat - headrest down
+		B: LS_AUF_LL, OFFSET 19 LEN 1 - steering column up
+		B: LS_AB_LL, OFFSET 18 LEN 1 - steering column down
+		B: LS_VOR_LL, OFFSET 17 LEN 1 - steering column forward
+		B: LS_ZURUECK_LL, OFFSET 16 LEN 1 - steering column to the rear (towards the driver)
+		B: MVL_P1_EN, OFFSET 31 LEN 1 - memory front left - take position 1
+		B: MVL_P2_EN, OFFSET 30 LEN 1 - memory front left - take position 2
+		B: MVL_P3_EN, OFFSET 29 LEN 1 - memory front left - take position 3
+		B: MVL_P1_SP, OFFSET 28 LEN 1 - front left memory - save position 1
+		B: MVL_P2_SP, OFFSET 27 LEN 1 - memory front left - save position 2
+		B: MVL_P3_SP, OFFSET 26 LEN 1 - memory front left - save position 3
+		B: SPI_RE_SP, OFFSET 25 LEN 1 - Save right outside mirror parking position
+		B: MVL_TGL, OFFSET 24 LEN 1 - front left memory - toggle bit
+		B: SPI_RE_N_LI, OFFSET 39 LEN 1 - outside mirror right to left (not 203)
+		B: SPI_RE_N_RE, OFFSET 38 LEN 1 - Outside mirror right to right (not 203)
+		B: SPI_RE_N_OB, OFFSET 37 LEN 1 - Outside mirror right up (not 203)
+		B: SPI_RE_N_UN, OFFSET 36 LEN 1 - Outside mirror right down (not 203)
+		B: SPI_RE_GARAGE, OFFSET 35 LEN 1 - Outside mirror right after garage position (not 203)
+		B: SPI_RE_FAHREN, OFFSET 34 LEN 1 - Outside mirror right after driving position (not 203)
+		B: SPVS_BET_LL, OFFSET 32 LEN 1 - Mirror adjustment switch actuated
+	FRAME TVL_A2 (0x0044)
+		B: KB_MOD_TVL, OFFSET 14 LEN 1 - Comfort control mode
+		B: KB_RI_TVL, OFFSET 13 LEN 1 - direction of comfort actuation
+		B: SHD_TVL, OFFSET 12 LEN 1 - SHD / open / close convertible top
+		B: FVL_TVL, OFFSET 11 LEN 1 - Open / close front left window
+		B: FVR_TVL, OFFSET 10 LEN 1 - Open / close front right window
+		B: FHL_TVL, OFFSET 9 LEN 1 - Open / close rear left window
+		B: FHR_TVL, OFFSET 8 LEN 1 - Open / close rear right window
+		B: FHL_AOE_LL, OFFSET 23 LEN 1 - rear left window - open automatically
+		B: FHL_MOE_LL, OFFSET 22 LEN 1 - rear left window - open manually
+		B: FHL_MS_LL, OFFSET 21 LEN 1 - rear left window - close manually
+		B: FHL_AS_LL, OFFSET 20 LEN 1 - rear left window - close automatically
+		B: FHR_AOE_LL, OFFSET 19 LEN 1 - rear right window - open automatically
+		B: FHR_MOE_LL, OFFSET 18 LEN 1 - rear right window - open manually
+		B: FHR_MS_LL, OFFSET 17 LEN 1 - rear right window - close manually
+		B: FHR_AS_LL, OFFSET 16 LEN 1 - rear right window - close automatically
+		B: FVR_AOE, OFFSET 27 LEN 1 - window in front right - open automatically
+		B: FVR_MOE, OFFSET 26 LEN 1 - front right window - open manually
+		B: FVR_MS, OFFSET 25 LEN 1 - window front right - close manually
+		B: FVR_AS, OFFSET 24 LEN 1 - window front right - close automatically
+	FRAME TVL_A3 (0x0018)
+		B: HFS_LL, OFFSET 4 LEN 1 - trunk lid remote locking
+		B: ZBLL_DEF, OFFSET 3 LEN 1 - additional left turn signal defective
+		B: KISI_EIN_LL, OFFSET 2 LEN 1 - child lock on
+		B: HFE_LL, OFFSET 1 LEN 1 - Remote trunk lid unlocking
+		B: SPVS_BF_LL, OFFSET 0 LEN 1 - Mirror adjustment switch. in position. right (not 203)
+		B: FVL_KZHB, OFFSET 11 LEN 1 - Front left window regulator larger short stroke position
+		B: FVL_AUF, OFFSET 10 LEN 1 - window open
+		B: FVL_BLOCK, OFFSET 9 LEN 1 - Front left window blocked
+		B: FVL_NORM, OFFSET 8 LEN 1 - Front left window normalized
+		I: FESTE_VL, OFFSET 12 LEN 12 - window position front left UNIT: 1 / anchor turn
+	FRAME TVL_A4 (0x00E8)
+		I: ZBC_TVL, OFFSET 0 LEN 64 - code access authorization
+	FRAME NM_TVL (0x0408)
+		I: NM, OFFSET 0 LEN 64 - network management
+	FRAME D_RS_TVL (0x04E8)
+		I: D_RS, OFFSET 0 LEN 64 - KWP2000 diagnostic response
+	FRAME SG_APPL_TVL (0x0768)
+		I: SG_APPL, OFFSET 0 LEN 64 - control device to external application
+
+TVR
+	FRAME TVR_A1 (0x0290)
+		B: SVR_VOR, OFFSET 7 LEN 1 - seat front right - lengthways forward
+		B: SVR_ZUR, OFFSET 6 LEN 1 - seat front right - lengthways back
+		B: SVR_HI_AUF, OFFSET 5 LEN 1 - seat front right - height back up
+		B: SVR_HI_AB, OFFSET 4 LEN 1 - seat front right - height at the back
+		B: SVR_TGL, OFFSET 0 LEN 1 - front right seat - toggle bit
+		B: SVR_LE_VOR, OFFSET 13 LEN 1 - seat front right - backrest forward
+		B: SVR_LE_ZUR, OFFSET 12 LEN 1 - front right seat - backrest to the rear
+		B: SVR_VO_AUF, OFFSET 11 LEN 1 - seat front right - height front up
+		B: SVR_VO_AB, OFFSET 10 LEN 1 - seat in front right - height in front
+		B: SVR_KST_AUF, OFFSET 9 LEN 1 - front right seat - headrest up
+		B: SVR_KST_AB, OFFSET 8 LEN 1 - front right seat - headrest down
+		B: LS_AUF_RL, OFFSET 19 LEN 1 - steering column up
+		B: LS_AB_RL, OFFSET 18 LEN 1 - steering column down
+		B: LS_VOR_RL, OFFSET 17 LEN 1 - steering column forward
+		B: LS_ZURUECK_RL, OFFSET 16 LEN 1 - steering column to the rear (towards the driver)
+		B: MVR_P1_EN, OFFSET 31 LEN 1 - memory front right - take position 1
+		B: MVR_P2_EN, OFFSET 30 LEN 1 - memory front right - take position 2
+		B: MVR_P3_EN, OFFSET 29 LEN 1 - memory front right - take position 3
+		B: MVR_P1_SP, OFFSET 28 LEN 1 - front right memory - save position 1
+		B: MVR_P2_SP, OFFSET 27 LEN 1 - memory front right - save position 2
+		B: MVR_P3_SP, OFFSET 26 LEN 1 - memory front right - save position 3
+		B: SPI_LI_SP, OFFSET 25 LEN 1 - Save left exterior mirror parking position
+		B: MVR_TGL, OFFSET 24 LEN 1 - front right memory - toggle bit
+		B: SPI_LI_N_LI, OFFSET 39 LEN 1 - outside mirror left to left (not 203)
+		B: SPI_LI_N_RE, OFFSET 38 LEN 1 - outside mirror left to right (not 203)
+		B: SPI_LI_N_OB, OFFSET 37 LEN 1 - Left outside mirror up (not 203)
+		B: SPI_LI_N_UN, OFFSET 36 LEN 1 - Left outside mirror down (not 203)
+		B: SPI_LI_GARAGE, OFFSET 35 LEN 1 - outside mirror left after garage position (not 203)
+		B: SPI_LI_FAHREN, OFFSET 34 LEN 1 - Outside mirror left after driving position (not 203)
+		B: SPVS_BET_RL, OFFSET 32 LEN 1 - Mirror adjustment switch actuated
+	FRAME TVR_A2 (0x0045)
+		B: KB_MOD_TVR, OFFSET 14 LEN 1 - Comfort control mode
+		B: KB_RI_TVR, OFFSET 13 LEN 1 - direction of comfort actuation
+		B: SHD_TVR, OFFSET 12 LEN 1 - SHD / open / close convertible top
+		B: FVL_TVR, OFFSET 11 LEN 1 - Open / close front left window
+		B: FVR_TVR, OFFSET 10 LEN 1 - Open / close front right window
+		B: FHL_TVR, OFFSET 9 LEN 1 - Open / close rear left window
+		B: FHR_TVR, OFFSET 8 LEN 1 - Open / close rear right window
+		B: FHL_AOE_RL, OFFSET 23 LEN 1 - rear left window - open automatically
+		B: FHL_MOE_RL, OFFSET 22 LEN 1 - rear left window - open manually
+		B: FHL_MS_RL, OFFSET 21 LEN 1 - rear left window - close manually
+		B: FHL_AS_RL, OFFSET 20 LEN 1 - rear left window - close automatically
+		B: FHR_AOE_RL, OFFSET 19 LEN 1 - rear right window - open automatically
+		B: FHR_MOE_RL, OFFSET 18 LEN 1 - rear right window - open manually
+		B: FHR_MS_RL, OFFSET 17 LEN 1 - rear right window - close manually
+		B: FHR_AS_RL, OFFSET 16 LEN 1 - rear right window - close automatically
+		B: FVL_AOE, OFFSET 31 LEN 1 - window front left - open automatically
+		B: FVL_MOE, OFFSET 30 LEN 1 - front left window - open manually
+		B: FVL_MS, OFFSET 29 LEN 1 - front left window - close manually
+		B: FVL_AS, OFFSET 28 LEN 1 - front left window - close automatically
+	FRAME TVR_A3 (0x0019)
+		B: HFS_RL, OFFSET 4 LEN 1 - trunk lid remote locking
+		B: ZBLR_DEF, OFFSET 3 LEN 1 - additional right turn signal defective
+		B: KISI_EIN_RL, OFFSET 2 LEN 1 - parental controls on
+		B: HFE_RL, OFFSET 1 LEN 1 - trunk lid remote release
+		B: SPVS_BF_RL, OFFSET 0 LEN 1 - Mirror adjustment switch. in position. left (not 203)
+		B: FVR_KZHB, OFFSET 11 LEN 1 - Front right window regulator larger short stroke position
+		B: FVR_AUF, OFFSET 10 LEN 1 - window open
+		B: FVR_BLOCK, OFFSET 9 LEN 1 - Front right window blocked
+		B: FVR_NORM, OFFSET 8 LEN 1 - normalized front right window
+		I: FESTE_VR, OFFSET 12 LEN 12 - window position front right UNIT: 1 / anchor turn
+	FRAME TVR_A4 (0x00EC)
+		I: ZBC_TVR, OFFSET 0 LEN 64 - Access authorization code
+	FRAME NM_TVR (0x040A)
+		I: NM, OFFSET 0 LEN 64 - network management
+	FRAME D_RS_TVR (0x04EA)
+		I: D_RS, OFFSET 0 LEN 64 - KWP2000 diagnostic response
+	FRAME SG_APPL_TVR (0x076A)
+		I: SG_APPL, OFFSET 0 LEN 64 - control device to external application
+
+THL
+	FRAME THL_A1 (0x009A)
+		B: FHL_KZHB, OFFSET 3 LEN 1 - rear left window regulator larger short stroke position
+		B: FHL_AUF, OFFSET 2 LEN 1 - rear left window open
+		B: FHL_BLOCK, OFFSET 1 LEN 1 - Window lifter blocked at the rear left
+		B: FHL_NORM, OFFSET 0 LEN 1 - Window lifter at the rear left standardized
+		I: FESTE_HL, OFFSET 4 LEN 12 - window position rear left UNIT: 1 / anchor turn
+	FRAME NM_THL (0x0409)
+		I: NM, OFFSET 0 LEN 64 - network management
+	FRAME D_RS_THL (0x04E9)
+		I: D_RS, OFFSET 0 LEN 64 - KWP2000 diagnostic response
+	FRAME SG_APPL_THL (0x0769)
+		I: SG_APPL, OFFSET 0 LEN 64 - control device to external application
+
+THR
+	FRAME THR_A1 (0x009C)
+		B: FHR_KZHB, OFFSET 3 LEN 1 - rear right window regulator larger short stroke position
+		B: FHR_AUF, OFFSET 2 LEN 1 - window rear right open
+		B: FHR_BLOCK, OFFSET 1 LEN 1 - Window lifter blocked at the rear right
+		B: FHR_NORM, OFFSET 0 LEN 1 - Window lifter standardized at the rear right
+		I: FESTE_HR, OFFSET 4 LEN 12 - window position rear right UNIT: 1 / anchor turn
+	FRAME NM_THR (0x040B)
+		I: NM, OFFSET 0 LEN 64 - network management
+	FRAME D_RS_THR (0x04EB)
+		I: D_RS, OFFSET 0 LEN 64 - KWP2000 diagnostic response
+	FRAME SG_APPL_THR (0x076B)
+		I: SG_APPL, OFFSET 0 LEN 64 - control device to external application
+
+HFS
+	FRAME HFS_A1 (0x0078)
+		B: HD_SICH_HFS, OFFSET 3 LEN 1 - Close and secure trunk lid actuated
+		E: HD_ST, OFFSET 0 LEN 3 - Status trunk lid
+			RAW: 0 - not defined / N_DEF
+			RAW: 1 - trunk lid closes / HD_RI_ZU
+			RAW: 2 - trunk lid opens / HD_RI_AUF
+			RAW: 3 - trunk lid is completely open / HD_ST_AUF
+			RAW: 4 - trunk lid in intermediate position / HD_ST_ZW
+			RAW: 5 - trunk lid is completely closed / HD_ST_ZU
+			RAW: 7 - signal not available / SNV
+	FRAME NM_HFS (0x0417)
+		I: NM, OFFSET 0 LEN 64 - network management
+	FRAME D_RS_HFS (0x04F7)
+		I: D_RS, OFFSET 0 LEN 64 - KWP2000 diagnostic response
+	FRAME SG_APPL_HFS (0x0777)
+		I: SG_APPL, OFFSET 0 LEN 64 - control device to external application
+	FRAME SD_RS_HFS (0x07D7)
+		I: SD_RS, OFFSET 0 LEN 64 - System diagnosis response
+
+FS
+	FRAME THL_A1 (0x009A)
+		B: FHL_KZHB, OFFSET 3 LEN 1 - rear left window regulator larger short stroke position
+		B: FHL_AUF, OFFSET 2 LEN 1 - rear left window open
+		B: FHL_BLOCK, OFFSET 1 LEN 1 - Window lifter blocked at the rear left
+		B: FHL_NORM, OFFSET 0 LEN 1 - Window lifter at the rear left standardized
+		I: FESTE_HL, OFFSET 4 LEN 12 - window position rear left UNIT: 1 / anchor turn
+	FRAME THR_A1 (0x009C)
+		B: FHR_KZHB, OFFSET 3 LEN 1 - rear right window regulator larger short stroke position
+		B: FHR_AUF, OFFSET 2 LEN 1 - window rear right open
+		B: FHR_BLOCK, OFFSET 1 LEN 1 - Window lifter blocked at the rear right
+		B: FHR_NORM, OFFSET 0 LEN 1 - Window lifter standardized at the rear right
+		I: FESTE_HR, OFFSET 4 LEN 12 - window position rear right UNIT: 1 / anchor turn
+	FRAME NM_THL (0x0409)
+		I: NM, OFFSET 0 LEN 64 - network management
+	FRAME D_RS_VS (0x00FD)
+		I: D_RS, OFFSET 0 LEN 64 - KWP2000 diagnostic response
+	FRAME SG_APPL_THL (0x0769)
+		I: SG_APPL, OFFSET 0 LEN 64 - control device to external application
+
+VS
+	FRAME HFS_A1 (0x0078)
+		B: HD_SICH_HFS, OFFSET 3 LEN 1 - Close and secure trunk lid actuated
+		E: HD_ST, OFFSET 0 LEN 3 - Status trunk lid
+			RAW: 0 - not defined / N_DEF
+			RAW: 1 - trunk lid closes / HD_RI_ZU
+			RAW: 2 - trunk lid opens / HD_RI_AUF
+			RAW: 3 - trunk lid is completely open / HD_ST_AUF
+			RAW: 4 - trunk lid in intermediate position / HD_ST_ZW
+			RAW: 5 - trunk lid is completely closed / HD_ST_ZU
+			RAW: 7 - signal not available / SNV
+	FRAME THL_A1 (0x009A)
+		B: FHL_KZHB, OFFSET 3 LEN 1 - rear left window regulator larger short stroke position
+		B: FHL_AUF, OFFSET 2 LEN 1 - rear left window open
+		B: FHL_BLOCK, OFFSET 1 LEN 1 - Window lifter blocked at the rear left
+		B: FHL_NORM, OFFSET 0 LEN 1 - Window lifter at the rear left standardized
+		I: FESTE_HL, OFFSET 4 LEN 12 - window position rear left UNIT: 1 / anchor turn
+	FRAME THR_A1 (0x009C)
+		B: FHR_KZHB, OFFSET 3 LEN 1 - rear right window regulator larger short stroke position
+		B: FHR_AUF, OFFSET 2 LEN 1 - window rear right open
+		B: FHR_BLOCK, OFFSET 1 LEN 1 - Window lifter blocked at the rear right
+		B: FHR_NORM, OFFSET 0 LEN 1 - Window lifter standardized at the rear right
+		I: FESTE_HR, OFFSET 4 LEN 12 - window position rear right UNIT: 1 / anchor turn
+	FRAME VS_A1 (0x000B)
+		E: VDK_STAT, OFFSET 6 LEN 2 - convertible top status
+			RAW: 0 - Convertible top unlocked (intermediate position) / VD_ENTR_ZW
+			RAW: 1 - convertible top open and locked / VD_OFFEN
+			RAW: 2 - Convertible top closed and locked / VD_GESCHL
+			RAW: 3 - top position unknown / SNV
+		B: VDK_AKTIV, OFFSET 5 LEN 1 - convertible top is active
+		B: FH_VL_KH, OFFSET 4 LEN 1 - Approach short stroke front left window regulator
+		B: VDK_WARN, OFFSET 3 LEN 1 - switch on the warning tone
+		B: UERB_KL, OFFSET 2 LEN 1 - control lamp roll bar
+		B: HD_SPERR, OFFSET 1 LEN 1 - opening trunk lid blocked
+		B: FH_VR_KH, OFFSET 0 LEN 1 - Approach short stroke front right window regulator
+		B: VS_M1, OFFSET 15 LEN 1 - Message 1: "Close trunk lid"
+		B: VS_M2, OFFSET 14 LEN 1 - Message 2: "Close trunk partition / ski bag"
+		B: VS_M3, OFFSET 13 LEN 1 - Message 3: "Start engine for convertible top operation"
+		B: VS_M4, OFFSET 12 LEN 1 - Message 4: "Lock convertible top"
+		B: VS_M5, OFFSET 11 LEN 1 - Message 5: "Trigger roll bar"
+		B: VS_M6, OFFSET 10 LEN 1 - Message 6: "Lower roll bar"
+		B: VS_M7, OFFSET 9 LEN 1 - Message 7: "Convertible top in operation"
+		B: VS_M8, OFFSET 8 LEN 1 - Message 8: "Convertible top is falling"
+		B: VS_M9, OFFSET 23 LEN 1 - Message 9: "Visit convertible top workshop"
+		B: VS_M10, OFFSET 22 LEN 1 - Message 10: "Convertible top blocked due to driving"
+		B: VS_M11, OFFSET 21 LEN 1 - Message 11: "Convertible top operation please wait"
+		B: VS_M12, OFFSET 20 LEN 1 - Message 12: "Convertible top open"
+		B: VS_M13, OFFSET 19 LEN 1 - Message 13: "Convertible top closed"
+		B: VS_M14, OFFSET 18 LEN 1 - Message 14: "Please close ski bag"
+		B: HD_SK_VS, OFFSET 17 LEN 1 - Rear lid locking pawl activated
+		B: FHS_V_SPERR, OFFSET 16 LEN 1 - Front window regulator block FHS commands
+		E: VDK_KL_ANF, OFFSET 30 LEN 2 - Request for convertible top control lamp
+			RAW: 0 - Off / OFF
+			RAW: 1 - steady light / DL
+			RAW: 2 - flashing light / BL
+			RAW: 3 - not defined
+	FRAME VS_A2 (0x0010)
+		B: FH_LH_BEGR, OFFSET 7 LEN 1 - FH travel limitation long stroke active
+		B: FH_MOD_VS, OFFSET 6 LEN 1 - window lifter run
+		B: FH_RI_VS, OFFSET 5 LEN 1 - Direction to operate the window regulator
+		B: FVL_VS, OFFSET 3 LEN 1 - Open / close front left window
+		B: FVR_VS, OFFSET 2 LEN 1 - Open / close front right window
+		B: UEB_ERK, OFFSET 8 LEN 1 - rollover detected
+	FRAME NM_THL (0x0409)
+		I: NM, OFFSET 0 LEN 64 - network management
+	FRAME D_RS_VS (0x00FD)
+		I: D_RS, OFFSET 0 LEN 64 - KWP2000 diagnostic response
+	FRAME SG_APPL_THL (0x0769)
+		I: SG_APPL, OFFSET 0 LEN 64 - control device to external application
+
+DBE
+	FRAME DBE_A1 (0x0014)
+		B: AL_HR, OFFSET 3 LEN 1 - Switch on the exit light at the rear right
+		B: AL_HL, OFFSET 2 LEN 1 - Switch on the exit light at the rear left
+		B: AL_VR, OFFSET 1 LEN 1 - Switch on the exit light at the front right
+		B: AL_VL, OFFSET 0 LEN 1 - Switch on the exit light at the front left
+		I: T_INNEN, OFFSET 8 LEN 8 - Inside temperature UNIT: ° C
+		B: INIT_LS_AKT, OFFSET 23 LEN 1 - LS initialization is running
+		B: DAEMMER, OFFSET 21 LEN 1 - Light sensor: Dusk
+		B: TUNNEL, OFFSET 20 LEN 1 - Light sensor: tunnel
+		B: LISR_DEF, OFFSET 18 LEN 1 - light sensor defective
+		B: NIGHT, OFFSET 17 LEN 1 - day / night signal
+		B: AFL_ABL_EIN, OFFSET 16 LEN 1 - AFL request: switch on low beam
+		E: SHD_ST, OFFSET 29 LEN 3 - Sunroof status
+			RAW: 0 - SHD to / SHD_ST_ZU
+			RAW: 1 - Sunroof is fully open / SHD_ST_AUF
+			RAW: 2 - lifting roof is on / HUB_ST_AUF
+			RAW: 3 - sliding / lifting roof running / SHD_ST_ST
+			RAW: 4 - SHD in anti-boom position / SHD_ST_AW
+			RAW: 5 - Sunroof in intermediate position / SHD_ST_ZW
+			RAW: 6 - lifting roof in intermediate position / HUB_ST_ZW
+			RAW: 7 - SHD denormalized / SNV
+		B: LADE_EIN, OFFSET 27 LEN 1 - Switch on the charging lamp
+		B: VERD_ZU, OFFSET 26 LEN 1 - convertible top locked (with W, S, C, CL = [1])
+		B: VERD_FANGPOS, OFFSET 25 LEN 1 - Convertible top in catch position
+		B: IRS_GB, OFFSET 33 LEN 1 - Interior protection glass breakage triggered
+		B: IRS_ALM, OFFSET 32 LEN 1 - Interior protection triggered
+		B: FRBL_VL, OFFSET 52 LEN 1 - front left footwell lighting on
+		I: FRBL_HELL, OFFSET 56 LEN 8 - Brightness of footwell lighting UNIT:%
+	FRAME DBE_A2 (0x0270)
+		B: WIPER_ON, OFFSET 7 LEN 1 - Wiper request
+		E: ERROR_RS, OFFSET 4 LEN 3 - error coding
+			RAW: 0 - No error / NO_ERROR
+			RAW: 1 - Error 1 / ERROR_1
+			RAW: 2 - Error 2 / ERROR_2
+			RAW: 3 - Error 3 / ERROR_3
+			RAW: 4 - Error 4 / ERROR_4
+			RAW: 5 - Error 5 / ERROR_5
+			RAW: 6 - Error 6 / ERROR_6
+			RAW: 7 - Error 7 / ERROR_7
+		B: NEU_INI_FERTIG, OFFSET 3 LEN 1 - reinitialization done
+		B: SENDE_WIEDER, OFFSET 2 LEN 1 - request not understood
+		B: PARITY_DBE, OFFSET 0 LEN 1 - Parity from bit 0 to bit 6 (even)
+		I: WIPER_ST, OFFSET 12 LEN 4 - Wiper levels UNIT: levels
+		B: FLOOD, OFFSET 11 LEN 1 - Flood detection
+		B: RS_DEF, OFFSET 9 LEN 1 - rain sensor defective
+		B: KENN_RS, OFFSET 8 LEN 1 - byte identifier rain sensor
+		B: DIAG_RLS_EIN, OFFSET 23 LEN 1 - Diagnostics rain / light sensor on
+		B: KOM_RLS_FEHL, OFFSET 22 LEN 1 - Communication error to the rain / light sensor
+		B: MESS_RLS_NV, OFFSET 21 LEN 1 - Measured values ​​RLS not available
+	FRAME DBE_A3 (0x02D4)
+		I: SP_ABBLEND, OFFSET 3 LEN 5 - mirror dimming UNIT: levels
+	FRAME DBE_A4 (0x0174)
+		B: SHD_ZU_RS, OFFSET 0 LEN 1 - Sliding / tilting roof closed when it rains
+	FRAME NM_DBE (0x0407)
+		I: NM, OFFSET 0 LEN 64 - network management
+	FRAME D_RS_DBE (0x04E7)
+		I: D_RS, OFFSET 0 LEN 64 - KWP2000 diagnostic response
+	FRAME SG_APPL_DBE (0x0767)
+		I: SG_APPL, OFFSET 0 LEN 64 - control device to external application
+
+OBF
+	FRAME LRK_A1 (0x0288)
+		B: LRK_STOERG, OFFSET 2 LEN 1 - LRK LEDs flash due to Disorder
+		B: LHZG_LED_EIN, OFFSET 1 LEN 1 - Switch on the LED steering wheel heating
+	FRAME OBF_A1 (0x002C)
+		E: ESP_BET, OFFSET 6 LEN 2 - ESP on / off actuated
+			RAW: 0 - Not pressed (rocker and push push) / NBET
+			RAW: 1 - ESP on pressed (rocker), not defined (push push) / EIN_NDEF
+			RAW: 2 - ESP off actuated (rocker), actuated (Push Push) / AUS_BET
+			RAW: 3 - signal not available (rocker and push push) / SNV
+		B: FKS_BET, OFFSET 4 LEN 1 - Rear head restraints raised / lowered actuated
+		B: HR_BET, OFFSET 2 LEN 1 - Rear blind button pressed
+		B: ZV_ENTRI_IS, OFFSET 1 LEN 1 - unlock ZV (internal switch activated)
+		B: ZV_VERRI_IS, OFFSET 0 LEN 1 - lock ZV (internal switch actuated)
+		B: EDW_HAND_AUF, OFFSET 15 LEN 1 - EDW glove box contact triggered
+		B: EDW_IRS_ABW, OFFSET 14 LEN 1 - Deselect EDW interior protection
+		B: EDW_AS_ABW, OFFSET 13 LEN 1 - EDW deselect towing protection
+		B: WBL_EIN, OFFSET 10 LEN 1 - Hazard warning lights on
+		B: PTS_BET, OFFSET 16 LEN 1 - Parktronic button pressed
+	FRAME NM_OBF (0x0405)
+		I: NM, OFFSET 0 LEN 64 - network management
+	FRAME D_RS_OBF (0x04E5)
+		I: D_RS, OFFSET 0 LEN 64 - KWP2000 diagnostic response
+	FRAME SG_APPL_OBF (0x0765)
+		I: SG_APPL, OFFSET 0 LEN 64 - control device to external application
+
+UBF
+	FRAME UBF_A1 (0x001A)
+		B: FU_FRSP_BET, OFFSET 7 LEN 1 - Radio activation button pressed
+		B: ASG_SPORT_BET, OFFSET 4 LEN 1 - ASG sport mode on / off activated (ST2_LED_DL if ABC is available)
+		E: ART_ABW_BET, OFFSET 2 LEN 2 - ART distance warning on / off activated
+			RAW: 0 - not defined (rocker), not actuated (push push) / NDEF_NBET
+			RAW: 1 - Distance warning off (rocker), not defined (Push Push) / AUS_NDEF
+			RAW: 2 - Distance warning on (rocker), activated (Push Push) / ON_BET
+			RAW: 3 - signal not available (rocker and push push) / SNV
+		I: ART_ABSTAND, OFFSET 8 LEN 8 - distance factor
+		B: BH_FUNK_BET, OFFSET 18 LEN 1 - Authority radio button pressed
+		B: LED_STH_DEF, OFFSET 26 LEN 1 - LEDs for auxiliary heater defective
+		B: STHL_BET, OFFSET 24 LEN 1 - Auxiliary heating switch actuated
+	FRAME UBF_A2 (0x035B)
+		E: VDK_ANF, OFFSET 0 LEN 2 - convertible top actuation
+			RAW: 0 - no actuation / NBET
+			RAW: 1 - open / OEFF
+			RAW: 2 - close / CLOSE
+			RAW: 3 - undefined / NDEF
+	FRAME NM_UBF (0x041D)
+		I: NM, OFFSET 0 LEN 64 - network management
+	FRAME D_RS_UBF (0x04FD)
+		I: D_RS, OFFSET 0 LEN 64 - KWP2000 diagnostic response
+	FRAME SG_APPL_UBF (0x077D)
+		I: SG_APPL, OFFSET 0 LEN 64 - control device to external application
+
+ARMADA
+	FRAME ARMADA_A1 (0x0012)
+		B: SRS_WERK, OFFSET 7 LEN 1 - SRS control lamp (workshop)
+		B: SRS_SERV, OFFSET 6 LEN 1 - SRS control lamp (service)
+		B: SRS_BLINK, OFFSET 5 LEN 1 - SRS control lamps flash
+		B: SRS_KL, OFFSET 4 LEN 1 - SRS control lamp
+		B: AKSE_BLINK, OFFSET 1 LEN 1 - AKSE lights are flashing
+		B: AKSE_EIN, OFFSET 0 LEN 1 - switch on the AKSE lamp
+		E: KISI_ST, OFFSET 13 LEN 3 - Child seat status
+			RAW: 0 - No child seat recognized / NO_KISI
+			RAW: 1 - child seat detected (installed forward) / KISI_V_ERK
+			RAW: 2 - child seat detected (installed backwards) / KISI_R_ERK
+			RAW: 4 - child seat incorrect position / KISI_FPOS
+			RAW: 6 - Child seat detection error / KISI_FEHLER
+			RAW: 7 - signal not available / SNV
+		E: SBE_BF, OFFSET 21 LEN 3 - SBE class passenger
+			RAW: 0 - class 0 (not used) / CLASS0
+			RAW: 1 - Class 1 / CLASS 1
+			RAW: 2 - Class 2 / CLASS2
+			RAW: 3 - Class 3 / CLASS 3
+			RAW: 4 - Class 4 / CLASS 4
+			RAW: 5 - Class 5 / CLASS 5
+			RAW: 6 - Error SBE / SBE_FEHLER
+			RAW: 7 - signal not available / SNV
+		E: PSG_DETEC_FAST, OFFSET 19 LEN 2 - Passenger detection fast
+			RAW: 0 - Signal not available / SNA
+			RAW: 1 - Passenger present / PSG_PRESENT
+			RAW: 2 - Fault / FAULT
+			RAW: 3 - Passenger absent / PSG_ABSENT
+		E: GS_BF, OFFSET 16 LEN 2 - seat belt buckle front passenger
+			RAW: 0 - seat belt buckle inserted / GS_OK
+			RAW: 1 - seat belt buckle not inserted / GS_NOK
+			RAW: 2 - Belt buckle error / GS_FEHLER
+			RAW: 3 - signal not available / SNV
+		E: SBE_F, OFFSET 29 LEN 3 - SBE class driver
+			RAW: 0 - class 0 (not used) / CLASS0
+			RAW: 1 - Class 1 / CLASS 1
+			RAW: 2 - Class 2 / CLASS2
+			RAW: 3 - Class 3 / CLASS 3
+			RAW: 4 - Class 4 / CLASS 4
+			RAW: 5 - Class 5 / CLASS 5
+			RAW: 6 - Error SBE / SBE_FEHLER
+			RAW: 7 - signal not available / SNV
+		E: GS_F, OFFSET 24 LEN 2 - seat belt buckle driver
+			RAW: 0 - seat belt buckle inserted / GS_OK
+			RAW: 1 - seat belt buckle not inserted / GS_NOK
+			RAW: 2 - Belt buckle error / GS_FEHLER
+			RAW: 3 - signal not available / SNV
+	FRAME ARMADA_A2 (0x0040)
+		B: CRASH_A, OFFSET 7 LEN 1 - frontal event 1
+		B: CRASH_B, OFFSET 6 LEN 1 - rear event 1
+		B: CRASH_C, OFFSET 5 LEN 1 - frontal event 5
+		B: CRASH_D, OFFSET 4 LEN 1 - side event 1
+		B: CRASH_E, OFFSET 3 LEN 1 - rear event 2
+		B: CRASH_F, OFFSET 2 LEN 1 - frontal event 2
+		B: CRASH_G, OFFSET 1 LEN 1 - rollover event 1
+		B: CONF_CRASH, OFFSET 0 LEN 1 - Confirm bit for all crash events, toggling
+		B: CRASH_H, OFFSET 15 LEN 1 - rollover event 2
+		B: CRASH_I, OFFSET 14 LEN 1 - rollover event 3
+		B: CRASH_K, OFFSET 13 LEN 1 - rear event 3
+		B: CRASH_L, OFFSET 12 LEN 1 - side event 2
+		B: CRASH_M, OFFSET 11 LEN 1 - event tbd
+		B: CRASH_N, OFFSET 10 LEN 1 - event tbd
+		B: CRASH_O, OFFSET 9 LEN 1 - event tbd
+		B: X_CRASH, OFFSET 8 LEN 1 - Any crash event
+	FRAME NM_ARMADA (0x041C)
+		I: NM, OFFSET 0 LEN 64 - network management
+	FRAME D_RS_ARMADA (0x04FC)
+		I: D_RS, OFFSET 0 LEN 64 - KWP2000 diagnostic response
+	FRAME SG_APPL_ARMADA (0x077C)
+		I: SG_APPL, OFFSET 0 LEN 64 - control device to external application
+
+WSS
+	FRAME WSS_A1 (0x02A4)
+		E: WSS_PSG, OFFSET 5 LEN 3 - Weight classification passenger
+			RAW: 0 - Class 0 / CLASS0
+			RAW: 1 - Class 1 / CLASS1
+			RAW: 2 - Class 2 / CLASS2
+			RAW: 3 - Class 3 / CLASS3
+			RAW: 4 - Class 4 / CLASS4
+			RAW: 7 - Signal not available / SNA
+		B: WSS_PSG_FAULT, OFFSET 4 LEN 1 - Weight classification passenger fault
+		E: PSG_DETECT_FAST, OFFSET 2 LEN 2 - Passenger Detection Fast
+			RAW: 0 - Occupant Present / OP_PRESENT
+			RAW: 1 - Occupant Absent / OP_ABSENT
+			RAW: 2 - Failure / OP_FAIL
+			RAW: 3 - Signal not available / SNA
+		E: WSS_ID, OFFSET 16 LEN 8 - WSS Identification
+			RAW: 16 - Texas Instruments Start / TEXAS_INSTRUMENTS_START
+			RAW: 32 - Bizerba Start / BIZERBA_START
+			RAW: 64 - Bladder Start / BLADDER_START
+			RAW: 96 - Panasonic Start / PANASONIC_START
+			RAW: 255 - Signal not available / SNA
+		E: WSS_ANZ, OFFSET 30 LEN 2 - WSS display in the combi
+			RAW: 0 - no combined message / NO_MSG
+			RAW: 1 - low weight recognized BF airbag cut off / GW_SMALL
+			RAW: 2 - BF airbag shut off see operating instructions. / AB_AUS
+			RAW: 3 - BF airbag switched on. see operating instructions. / AB_EIN
+	FRAME NM_WSS (0x0426)
+		I: NM, OFFSET 0 LEN 64 - network management
+	FRAME D_RS_WSS (0x04C6)
+		I: D_RS, OFFSET 0 LEN 64 - KWP2000 diagnostic response
+	FRAME SG_APPL_WSS (0x0706)
+		I: SG_APPL, OFFSET 0 LEN 64 - control device to external application
+
+SF
+	FRAME SF_A1 (0x01AC)
+		B: LE_F_ENT, OFFSET 4 LEN 1 - Driver seat backrest unlocked
+		B: MF_MAN_SP1, OFFSET 0 LEN 1 - Save manually set position (redundant)
+		I: SF_POS, OFFSET 8 LEN 8 - Driver seat position UNIT: Sections
+		I: SF_EA_DEF, OFFSET 16 LEN 8 - Default position for driver's seat with I / O help UNIT: Sections
+	FRAME SF_A2 (0x02D0)
+		B: ESH_AUTO_REST, OFFSET 5 LEN 1 - Perform mirror positioning
+		B: MF_MAN_SP, OFFSET 2 LEN 1 - Save manually set position
+		B: AUTO_AKT, OFFSET 1 LEN 1 - Approach travel position active
+		B: ESH_AKT, OFFSET 0 LEN 1 - Approach entry / exit position active
+	FRAME NM_SF (0x040C)
+		I: NM, OFFSET 0 LEN 64 - network management
+	FRAME D_RS_SF (0x04EC)
+		I: D_RS, OFFSET 0 LEN 64 - KWP2000 diagnostic response
+	FRAME SG_APPL_SF (0x076C)
+		I: SG_APPL, OFFSET 0 LEN 64 - control device to external application
+	FRAME SD_RS_SF (0x07CC)
+		I: SD_RS, OFFSET 0 LEN 64 - System diagnosis response
+
+SB
+	FRAME SB_A1 (0x01B6)
+		B: LE_B_ENT, OFFSET 4 LEN 1 - passenger seat backrest unlocked
+	FRAME NM_SB (0x040D)
+		I: NM, OFFSET 0 LEN 64 - network management
+	FRAME D_RS_SB (0x04ED)
+		I: D_RS, OFFSET 0 LEN 64 - KWP2000 diagnostic response
+	FRAME SG_APPL_SB (0x076D)
+		I: SG_APPL, OFFSET 0 LEN 64 - control device to external application
+	FRAME SD_RS_SB (0x07CD)
+		I: SD_RS, OFFSET 0 LEN 64 - System diagnosis response
+
+STH
+	FRAME STH_A1 (0x0094)
+		B: SENDLM_EIN, OFFSET 7 LEN 1 - transmitter learning mode on
+		B: ZH_LED_EIN, OFFSET 6 LEN 1 - Switch on auxiliary heater LED
+		B: VWZ_MENUE, OFFSET 5 LEN 1 - Open the preset time menu
+		B: FAN_ON, OFFSET 4 LEN 1 - Switch on the vehicle fan
+		B: STHZG_EIN, OFFSET 3 LEN 1 - Switching on heating manually
+		B: STLFT_EIN, OFFSET 2 LEN 1 - Switch on ventilation manually
+		B: STHL_AUS, OFFSET 1 LEN 1 - switch off auxiliary heating / ventilation
+		B: STHL_EIN, OFFSET 0 LEN 1 - switch on auxiliary heating / ventilation
+	FRAME NM_STH (0x0419)
+		I: NM, OFFSET 0 LEN 64 - network management
+	FRAME D_RS_STH (0x04F9)
+		I: D_RS, OFFSET 0 LEN 64 - KWP2000 diagnostic response
+	FRAME SG_APPL_STH (0x0779)
+		I: SG_APPL, OFFSET 0 LEN 64 - control device to external application
+
+KLA
+	FRAME KLA_A1 (0x0030)
+		B: VENTILATE, OFFSET 7 LEN 1 - Ventilate auxiliary heating
+		B: HEATING, OFFSET 6 LEN 1 - heating auxiliary heating
+		B: LL_DZA, OFFSET 5 LEN 1 - Idle speed increase to increase the cooling capacity
+		B: ZH_EIN_OK, OFFSET 4 LEN 1 - Switching on auxiliary heater allowed
+		B: ZWP_EIN, OFFSET 3 LEN 1 - switch on additional water pump
+		B: IFG_EIN, OFFSET 2 LEN 1 - switch on the indoor sensor fan
+		B: EC_AKT, OFFSET 1 LEN 1 - EC mode active
+		B: HHS_EIN, OFFSET 0 LEN 1 - Switch on the heated rear window
+		I: NLFTS, OFFSET 8 LEN 8 - Motor fan setpoint speed UNIT:%
+		I: M_KOMP, OFFSET 16 LEN 8 - Torque absorption refrigeration compressor UNIT: Nm
+		I: KOMP_STELL, OFFSET 24 LEN 8 - Cooling compressor control signal UNIT:%
+		B: G_ANF_KUEHL_KLA, OFFSET 33 LEN 1 - Switching point increase in case of cooling power deficit
+		B: FSB_HZG_EIN, OFFSET 32 LEN 1 - windshield heater. switch on (for G463)
+		I: GEB_LSTG, OFFSET 40 LEN 8 - Fan output UNIT:%
+		E: LKU_VORN, OFFSET 54 LEN 2 - position ventilation flap down
+			RAW: 0 - middle position / CENTER
+			RAW: 1 - position up / UP
+			RAW: 2 - position closed / closed
+			RAW: 3 - signal invalid / SNV
+		E: LKM_VORN, OFFSET 52 LEN 2 - Position ventilation flap center
+			RAW: 0 - middle position / CENTER
+			RAW: 1 - position up / UP
+			RAW: 2 - position closed / closed
+			RAW: 3 - signal invalid / SNV
+		E: LKO_VORN, OFFSET 50 LEN 2 - position ventilation flap up
+			RAW: 0 - middle position / CENTER
+			RAW: 1 - position up / UP
+			RAW: 2 - position closed / closed
+			RAW: 3 - signal invalid / SNV
+		B: G_ANF_KLA, OFFSET 49 LEN 1 - Switching point increase in case of heating power deficit
+		B: UL_AKT_KLA, OFFSET 48 LEN 1 - circulating air active
+		I: T_INNEN_KLA, OFFSET 56 LEN 8 - Inside temperature UNIT: ° C
+	FRAME KLA_A2 (0x0250)
+		B: KB_MOD_KLA, OFFSET 6 LEN 1 - Comfort operation mode
+		B: KB_RI_KLA, OFFSET 5 LEN 1 - Direction of comfort actuation
+		B: SHD_KLA, OFFSET 4 LEN 1 - SHD / open / close convertible top
+		B: FVL_KLA, OFFSET 3 LEN 1 - Open / close front left window
+		B: FVR_KLA, OFFSET 2 LEN 1 - Open / close front right window
+		B: FHL_KLA, OFFSET 1 LEN 1 - Open / close rear left window
+		B: FHR_KLA, OFFSET 0 LEN 1 - Open / close rear right window
+	FRAME KLA_A3 (0x00F1)
+		I: HZL_ANF, OFFSET 0 LEN 8 - Request heating power UNIT:%
+		I: T_AUSSEN_WM, OFFSET 8 LEN 8 - Outside air temperature for heat management UNIT: ° C
+	FRAME NM_KLA (0x0411)
+		I: NM, OFFSET 0 LEN 64 - network management
+	FRAME D_RS_KLA (0x04F1)
+		I: D_RS, OFFSET 0 LEN 64 - KWP2000 diagnostic response
+	FRAME SG_APPL_KLA (0x0771)
+		I: SG_APPL, OFFSET 0 LEN 64 - control device to external application
+
+MSS
+	FRAME MSS_A1 (0x0015)
+		B: ZV_ZU_MSS, OFFSET 7 LEN 1 - Close central locking
+		B: IL_EIN_MSS, OFFSET 6 LEN 1 - switch on the interior light
+		B: UMLUFT_MSS, OFFSET 5 LEN 1 - Close the recirculation flaps
+		B: T_HIRU_EIN, OFFSET 4 LEN 1 - Send taxi call for help
+		B: BLI_EIN_MSS, OFFSET 3 LEN 1 - MSS flashing on
+		B: SGH_EIN_MSS, OFFSET 2 LEN 1 - switch on the horn
+		B: NSW_EIN_MSS, OFFSET 1 LEN 1 - switch on fog lights
+		B: FL_EIN_MSS, OFFSET 0 LEN 1 - switch on high beam
+		I: BLI_HELL_MSS, OFFSET 8 LEN 8 - Duration of blinker light phase UNIT: ms
+		I: SGH_AN_MSS, OFFSET 16 LEN 8 - Duration of the horn UNIT: ms
+		I: NSW_HELL_MSS, OFFSET 24 LEN 8 - Duration of fog lamp light phase UNIT: ms
+		I: FL_HELL_MSS, OFFSET 32 LEN 8 - Duration high beam light phase UNIT: ms
+		B: AUDIO_MUTE1, OFFSET 46 LEN 1 - Audio Mute
+		B: AUDIO_MUTE2, OFFSET 45 LEN 1 - Muting the audio source during radio reception
+		B: LADEN_AKT, OFFSET 44 LEN 1 - 220V external charge is connected
+		B: ANF_ZT, OFFSET 43 LEN 1 - Request numeric keypad HU
+		B: BHF_LED_AKT, OFFSET 42 LEN 1 - Switch on the LED authority radio
+		B: ANF_FBAS, OFFSET 41 LEN 1 - Request FBAS input Comand
+		B: FU_FRSP_AKT, OFFSET 40 LEN 1 - radio activation active
+	FRAME MSS_A2 (0x01AE)
+		B: MSS_EE_DEF, OFFSET 7 LEN 1 - Electronics on the MSS defective
+		B: NOTALM_DEF, OFFSET 6 LEN 1 - Emergency alarm system defective
+		B: MSS_ALM, OFFSET 5 LEN 1 - Silent alarm triggered
+		B: MSS_USPG, OFFSET 4 LEN 1 - MSS detects undervoltage
+		B: DZ_DEF, OFFSET 3 LEN 1 - roof sign defective (short circuit)
+		B: DZ_PRF, OFFSET 2 LEN 1 - check roof sign (interruption)
+		B: DZ_LA_DEF, OFFSET 1 LEN 1 - Roof sign lamp defect
+		B: DZ_KL, OFFSET 0 LEN 1 - Roof sign control lamp on
+		B: NP_LEER, OFFSET 15 LEN 1 - fog cartridge empty
+		B: NEBEL_AKT, OFFSET 14 LEN 1 - Fog system activated
+		B: NEBEL_AUS, OFFSET 13 LEN 1 - Fog system out of order
+		B: O2_LEER, OFFSET 12 LEN 1 - fresh air bottle empty
+		B: O2_AKT, OFFSET 11 LEN 1 - fresh air system activated
+		B: O2_AUS, OFFSET 10 LEN 1 - fresh air system out of order
+		B: MSS_SUMMER, OFFSET 9 LEN 1 - control buzzer in combi
+		B: FNK_STAT, OFFSET 8 LEN 1 - radio status
+		B: MSS_USPG_MO, OFFSET 21 LEN 1 - MSS detects undervoltage when the motor is running
+	FRAME MSS_A3 (0x01CE)
+		I: DEST_LAT, OFFSET 0 LEN 32 - GPS Latitude, South = [-]; North = [+] UNIT: ms
+		I: DEST_LONG, OFFSET 32 LEN 32 - GPS Longitude, West = [-]; East = [+] UNIT: ms
+	FRAME MSS_A4 (0x0248)
+		B: MOD_ALARM, OFFSET 6 LEN 1 - SHD / power window run
+		B: RI_ALARM, OFFSET 5 LEN 1 - Direction of alarm activation
+		B: SHD_ALARM, OFFSET 4 LEN 1 - SHD close
+		B: FVL_ALARM, OFFSET 3 LEN 1 - Close the front left window
+		B: FVR_ALARM, OFFSET 2 LEN 1 - Close the front right window
+		B: FHL_ALARM, OFFSET 1 LEN 1 - Close the rear left window
+		B: FHR_ALARM, OFFSET 0 LEN 1 - Close the rear right window
+	FRAME MSSK_A1 (0x0046)
+		B: BLI_LI_K, OFFSET 4 LEN 1 - direction flashing left
+		B: BLI_RE_K, OFFSET 3 LEN 1 - right direction flashing
+		B: FL_EIN_K, OFFSET 2 LEN 1 - switch on high beam
+		B: LHP_EIN_K, OFFSET 1 LEN 1 - switch on headlight flasher
+		B: SGH_EIN_K, OFFSET 0 LEN 1 - switch on the horn
+		B: TIPP_WISCH_K, OFFSET 12 LEN 1 - Switch on tap wiping
+		B: WASCHEN_K, OFFSET 11 LEN 1 - Switch on washing
+		B: SCH_WI_INT_K, OFFSET 10 LEN 1 - MSSK in position I (rain sensor operation)
+		B: SCH_WI_1_K, OFFSET 9 LEN 1 - MSSK in position II (level 1)
+		B: SCH_WI_2_K, OFFSET 8 LEN 1 - MSSK in position III (level 2)
+		B: NSL_EIN_K, OFFSET 22 LEN 1 - Switch on the rear fog light
+		B: NSW_EIN_K, OFFSET 21 LEN 1 - Switch on the fog lights
+		B: ABL_EIN_K, OFFSET 20 LEN 1 - switch on low beam
+		B: STL_EIN_K, OFFSET 19 LEN 1 - switch on parking lights
+		B: WBL_EIN_K, OFFSET 18 LEN 1 - Hazard warning lights on
+		B: HECK_WISCH_K, OFFSET 17 LEN 1 - Wipe / wash the rear window
+		B: HECK_INT_K, OFFSET 16 LEN 1 - Intermittent wiping of the rear window
+		B: SHD_AUF_K, OFFSET 27 LEN 1 - Open the sunroof
+		B: SHD_ZU_K, OFFSET 26 LEN 1 - Close the sunroof
+		B: HD_AUF_K, OFFSET 25 LEN 1 - Open the lifting roof
+		B: SHD_STOP, OFFSET 24 LEN 1 - Sunroof stop
+	FRAME MSSK_A2 (0x0208)
+		B: SBF_VOR_K, OFFSET 7 LEN 1 - passenger seat - lengthways forward
+		B: SBF_ZUR_K, OFFSET 6 LEN 1 - passenger seat - lengthways back
+		B: SBF_K_TGL, OFFSET 0 LEN 1 - passenger seat - toggle bit
+	FRAME TP_MSS_AGW3 (0x01D8)
+		I: TP_MSS_AGW3, OFFSET 0 LEN 64 - communication from the MSS to the AGW
+	FRAME TP_MSS_KOMBI2 (0x01A6)
+		I: TP_MSS_KOMBI, OFFSET 0 LEN 64 - Communication from the MSS to the KOMBI
+	FRAME NM_MSS (0x0406)
+		I: NM, OFFSET 0 LEN 64 - network management
+	FRAME D_RS_MSS (0x04E6)
+		I: D_RS, OFFSET 0 LEN 64 - KWP2000 diagnostic response
+	FRAME SG_APPL_MSS (0x0766)
+		I: SG_APPL, OFFSET 0 LEN 64 - control device to external application
+
+PTS
+	FRAME PTS_A1 (0x02B0)
+		B: PTS_ST_AUS, OFFSET 0 LEN 1 - PTS is completely switched off
+	FRAME NM_PTS (0x0413)
+		I: NM, OFFSET 0 LEN 64 - network management
+	FRAME D_RS_PTS (0x04F3)
+		I: D_RS, OFFSET 0 LEN 64 - KWP2000 diagnostic response
+	FRAME SG_APPL_PTS (0x0773)
+		I: SG_APPL, OFFSET 0 LEN 64 - control device to external application
+
+TPM
+	FRAME TPM_A1 (0x02FF)
+		E: TPM_Stat, OFFSET 4 LEN 4 - TPM state
+			RAW: 0 - Display pressure values ​​/ DISP_VAL
+			RAW: 1 - Measurement ongoing / MEASURE
+			RAW: 2 - Waiting for pressure values ​​/ WAIT
+			RAW: 3 - TPM switched off / OFF
+			RAW: 4 - TPM diagnostic mode / DIAG
+			RAW: 5 - TPM error / ERROR
+			RAW: 6 - TPM low line active / ACTIVE
+			RAW: 7 - No wheel electronics / NO_WE
+			RAW: 15 - Signal not available / SNA
+		E: TPM_MsgDisp_Rq, OFFSET 0 LEN 4 - TPM message display request
+			RAW: 0 - No message / NO_MESS
+			RAW: 1 - New pressure values ​​/ NEW_VAL
+			RAW: 2 - Implausible pressure / UNPLAUSIBLE
+			RAW: 3 - No wheel electronics / NO_WE
+			RAW: 4 - TPM switched off / OFF
+			RAW: 5 - TPM error / ERROR
+			RAW: 6 - TPM temporarily not available / TNA
+			RAW: 7 - Warning last ignition / WLI
+			RAW: 8 - Missing some wheel electronics / WE_MISS
+			RAW: 9 - TPM new activated / NEW_ACT
+			RAW: 10 - New pressure values ​​(Low Line) / NEW_VAL_L
+			RAW: 11 - Implausible pressure (Low Line) / UNPLAUSI_L
+			RAW: 15 - Signal not available / SNA
+		E: TPM_WarnDisp_Rq, OFFSET 13 LEN 3 - TPM warning display request
+			RAW: 0 - No warning / NO_WARN
+			RAW: 1 - Soft warning / SOFT
+			RAW: 2 - Low pressure / LOW_P
+			RAW: 3 - Fast pressure lost / FAST
+			RAW: 7 - Signal not available / SNA
+		B: TPM_IndLmp_On_Rq, OFFSET 12 LEN 1 - Tire pressure module indication lamp on request
+		B: Tire_LHOM, OFFSET 11 LEN 1 - Tire in limp-home operation mode
+		B: TPM_MalfLmp_On_Rq, OFFSET 10 LEN 1 - Tire pressure module malfunction lamp on request
+		B: TPM_Disp_On_Rq, OFFSET 9 LEN 1 - Tire pressure module display on request
+		B: Tire_FL, OFFSET 20 LEN 1 - Tire front left
+		B: Tire_FR, OFFSET 19 LEN 1 - Tire front right
+		B: Tire_RL, OFFSET 18 LEN 1 - Tire rear left
+		B: Tire_RR, OFFSET 17 LEN 1 - Tire rear right
+		B: Tire_Spr, OFFSET 16 LEN 1 - Spare tire
+		E: TirePress_FL, OFFSET 24 LEN 8 - Tire pressure front left UNIT: bar
+			RAW: 254 - No pressure indication / NO_IND
+			RAW: 255 - Signal not available / SNA
+		E: TirePress_FR, OFFSET 32 LEN 8 - Tire pressure front right UNIT: bar
+			RAW: 254 - No pressure indication / NO_IND
+			RAW: 255 - Signal not available / SNA
+		E: TirePress_RL, OFFSET 40 LEN 8 - Tire pressure rear left UNIT: bar
+			RAW: 254 - No pressure indication / NO_IND
+			RAW: 255 - Signal not available / SNA
+		E: TirePress_RR, OFFSET 48 LEN 8 - Tire pressure rear right UNIT: bar
+			RAW: 254 - No pressure indication / NO_IND
+			RAW: 255 - Signal not available / SNA
+		E: TirePress_Spr, OFFSET 56 LEN 8 - Tire pressure spare tire UNIT: bar
+			RAW: 254 - No pressure indication / NO_IND
+			RAW: 255 - Signal not available / SNA
+	FRAME NM_TPM (0x0418)
+		I: NM, OFFSET 0 LEN 64 - network management
+	FRAME D_RS_TPM (0x04F8)
+		I: D_RS_TPM, OFFSET 0 LEN 64 - KWP2000 diagnostic response
+	FRAME SG_APPL_TPM (0x0778)
+		I: SG_APPL, OFFSET 0 LEN 64 - control device to external application
+	FRAME MESS_TPM1 (0x0607)
+		I: MESS_TPM1, OFFSET 0 LEN 64 - Measurement data
+
+AGW
+	FRAME AGW_A3 (0x0138)
+		E: ZIFFER_HU, OFFSET 4 LEN 4 - Numeric keypad head unit
+			RAW: 0 - no key pressed / N_BET
+			RAW: 1 - 1 / T1 key
+			RAW: 2 - button 2 / T2
+			RAW: 3 - button 3 / T3
+			RAW: 4 - button 4 / T4
+			RAW: 5 - key 5 / T5
+			RAW: 6 - key 6 / T6
+			RAW: 7 - button 7 / T7
+			RAW: 8 - key 8 / T8
+			RAW: 9 - 9 / T9 key
+			RAW: 10 - 0 / T10 button
+		B: RAUTE_HU, OFFSET 3 LEN 1 - Diamond key pressed
+		B: STERN_HU, OFFSET 2 LEN 1 - star key pressed
+		B: CANCEL_HU, OFFSET 1 LEN 1 - Rejection of numeric entry HU
+		E: AKT_SYS, OFFSET 13 LEN 3 - Active application
+			RAW: 0 - no active application / IDLE
+			RAW: 1 - radio data active / radio data transmission
+		E: FUNCTION KEYS, OFFSET 10 LEN 3 - function keys
+			RAW: 0 - no key pressed / N_BET
+			RAW: 1 - function key 1 / F1
+			RAW: 2 - function key 2 / F2
+			RAW: 3 - function key 3 / F3
+			RAW: 4 - Function key 4 / F4
+			RAW: 5 - function key 5 / F5
+			RAW: 6 - Function key 6 / F6
+			RAW: 7 - Function key 7 / F7
+	FRAME GPS_A1 (0x0338)
+		I: LATITUDE, OFFSET 0 LEN 32 - GPS Latitude (+ = North) UNIT: ms
+		I: LONGITUDE, OFFSET 32 LEN 32 - GPS Longitude (+ = East) UNIT: ms
+	FRAME GPS_A2 (0x0339)
+		I: UTC_YEARS, OFFSET 0 LEN 16 - UTC years UNIT: years
+		I: UTC_MONTHS, OFFSET 16 LEN 8 - UTC months UNIT: months
+		I: UTC_DAYS, OFFSET 24 LEN 8 - UTC days UNIT: days
+		I: UTC_HOURS, OFFSET 32 LEN 8 - UTC hours UNIT: h
+		I: UTC_MINUTES, OFFSET 40 LEN 8 - UTC minutes UNIT: min
+		I: UTC_SECONDS, OFFSET 48 LEN 16 - UTC seconds UNIT: s
+	FRAME GPS_A3 (0x033A)
+		I: GPS_SPEED, OFFSET 0 LEN 16 - GPS Speed ​​UNIT: cm / s
+		I: GPS_HEADING, OFFSET 16 LEN 8 - GPS Heading (0 ° = North) UNIT: °
+		I: GPS_HEIGHT, OFFSET 24 LEN 8 - GPS height UNIT: m
+		E: GPS_FIX, OFFSET 37 LEN 3 - GPS fix
+			RAW: 0 - Reserved / RES
+			RAW: 1 - not available / NAV
+			RAW: 2 - No fix / NO_FIX
+			RAW: 3 - 2D fix / FIX_2D
+			RAW: 4 - 3D fix / FIX_3D
+		B: CALI, OFFSET 46 LEN 1 - Calibrated
+		B: MDM, OFFSET 45 LEN 1 - Matched to digital map
+		B: FDG, OFFSET 44 LEN 1 - Fully digitalized area
+		B: IDG, OFFSET 43 LEN 1 - Inside digitalized area (on map)
+		B: DEAD_RCK, OFFSET 42 LEN 1 - Dead reckoning available
+		B: DIFF_POS_AVLB, OFFSET 41 LEN 1 - Differential GPS position data available
+		B: POS_AVLB, OFFSET 40 LEN 1 - GPS position avilable
+		I: V_DOP, OFFSET 48 LEN 8 - Vertical dilution of position
+		I: H_DOP, OFFSET 56 LEN 8 - Horizontal dilution of position
+	FRAME TP_AGW_KOMBI1 (0x01A4)
+		I: TP_AGW_KOMBI, OFFSET 0 LEN 64 - communication AGW to KOMBI
+	FRAME TP_AGW_MSS3 (0x0334)
+		I: TP_AGW_MSS3, OFFSET 0 LEN 64 - communication AGW to MSS
+	FRAME TP_AGW_TELEAID6 (0x03E3)
+		I: TP_AGW_TELEAID, OFFSET 0 LEN 64 - communication AGW to TELEAID
+	FRAME NM_AGW (0x0416)
+		I: NM, OFFSET 0 LEN 64 - network management
+	FRAME D_RS_AGW (0x04F6)
+		I: D_RS, OFFSET 0 LEN 64 - KWP2000 diagnostic response
+	FRAME D_RS_MOST0 (0x0680)
+		I: D_RS, OFFSET 0 LEN 64 - KWP2000 diagnostic response
+	FRAME D_RS_MOST1 (0x0681)
+		I: D_RS, OFFSET 0 LEN 64 - KWP2000 diagnostic response
+	FRAME D_RS_MOST10 (0x068A)
+		I: D_RS, OFFSET 0 LEN 64 - KWP2000 diagnostic response
+	FRAME D_RS_MOST11 (0x068B)
+		I: D_RS, OFFSET 0 LEN 64 - KWP2000 diagnostic response
+	FRAME D_RS_MOST12 (0x068C)
+		I: D_RS, OFFSET 0 LEN 64 - KWP2000 diagnostic response
+	FRAME D_RS_MOST13 (0x068D)
+		I: D_RS, OFFSET 0 LEN 64 - KWP2000 diagnostic response
+	FRAME D_RS_MOST14 (0x068E)
+		I: D_RS, OFFSET 0 LEN 64 - KWP2000 diagnostic response
+	FRAME D_RS_MOST15 (0x068F)
+		I: D_RS, OFFSET 0 LEN 64 - KWP2000 diagnostic response
+	FRAME D_RS_MOST2 (0x0682)
+		I: D_RS, OFFSET 0 LEN 64 - KWP2000 diagnostic response
+	FRAME D_RS_MOST3 (0x0683)
+		I: D_RS, OFFSET 0 LEN 64 - KWP2000 diagnostic response
+	FRAME D_RS_MOST4 (0x0684)
+		I: D_RS, OFFSET 0 LEN 64 - KWP2000 diagnostic response
+	FRAME D_RS_MOST5 (0x0685)
+		I: D_RS, OFFSET 0 LEN 64 - KWP2000 diagnostic response
+	FRAME D_RS_MOST6 (0x0686)
+		I: D_RS, OFFSET 0 LEN 64 - KWP2000 diagnostic response
+	FRAME D_RS_MOST7 (0x0687)
+		I: D_RS, OFFSET 0 LEN 64 - KWP2000 diagnostic response
+	FRAME D_RS_MOST8 (0x0688)
+		I: D_RS, OFFSET 0 LEN 64 - KWP2000 diagnostic response
+	FRAME D_RS_MOST9 (0x0689)
+		I: D_RS, OFFSET 0 LEN 64 - KWP2000 diagnostic response
+	FRAME D_RS_NAVI (0x058A)
+		I: D_RS_NAVI, OFFSET 0 LEN 64 - KWP2000 diagnostic response
+	FRAME SG_APPL_AGW (0x0776)
+		I: SG_APPL, OFFSET 0 LEN 64 - control device to external application
+	FRAME SD_RS_AGW (0x07D6)
+		I: SD_RS, OFFSET 0 LEN 64 - System diagnosis response
+
+ICANI
+	FRAME NM_ICANI (0x043B)
+		I: NM, OFFSET 0 LEN 64 - network management
+	FRAME D_RS_ICANI (0x04BB)
+		I: D_RS_ICANI, OFFSET 0 LEN 64 - KWP2000 diagnostic response
+	FRAME SD_RS_ICANI (0x05BB)
+		I: SD_RS_ICANI, OFFSET 0 LEN 64 - System diagnosis response
+
+ 
+	FRAME EZS_A3 (0x01B8)
+		I: KM_EZS_ALT, OFFSET 0 LEN 24 - Mileage (up to AY 2002/1) UNIT: km
+	FRAME D_RS_FDSVL (0x04FE)
+		I: D_RS, OFFSET 0 LEN 64 - KWP2000 diagnostic response
+	FRAME D_RS_FDSVR (0x04FF)
+		I: D_RS, OFFSET 0 LEN 64 - KWP2000 diagnostic response
+	FRAME D_RS_LRK (0x04EF)
+		I: D_RS, OFFSET 0 LEN 64 - KWP2000 diagnostic response
+	FRAME D_RS_PFDS (0x04EE)
+		I: D_RS, OFFSET 0 LEN 64 - KWP2000 diagnostic response
+	FRAME D_RS_SHZ (0x04FB)
+		I: D_RS, OFFSET 0 LEN 64 - KWP2000 diagnostic response
+	FRAME D_RS_TLM (0x04FA)
+		I: D_RS, OFFSET 0 LEN 64 - KWP2000 diagnostic response
+	FRAME APPL_SG_AAG (0x072F)
+		I: APPL_SG, OFFSET 0 LEN 64 - External application for control unit
+	FRAME APPL_SG_AGW (0x05C9)
+		I: APPL_SG, OFFSET 0 LEN 64 - External application for control unit
+	FRAME APPL_SG_ARMADA (0x06A3)
+		I: APPL_SG, OFFSET 0 LEN 64 - External application for control unit
+	FRAME APPL_SG_DBE (0x0678)
+		I: APPL_SG, OFFSET 0 LEN 64 - External application for control unit
+	FRAME APPL_SG_EZS (0x04DF)
+		I: APPL_SG, OFFSET 0 LEN 64 - External application for control unit
+	FRAME APPL_SG_HFS (0x0568)
+		I: APPL_SG, OFFSET 0 LEN 64 - External application for control unit
+	FRAME APPL_SG_KLA (0x078E)
+		I: APPL_SG, OFFSET 0 LEN 64 - External application for control unit
+	FRAME APPL_SG_KOMBI (0x05AB)
+		I: APPL_SG, OFFSET 0 LEN 64 - External application for control unit
+	FRAME APPL_SG_MRM (0x06C1)
+		I: APPL_SG, OFFSET 0 LEN 64 - External application for control unit
+	FRAME APPL_SG_MSS (0x0720)
+		I: APPL_SG, OFFSET 0 LEN 64 - External application for control unit
+	FRAME APPL_SG_OBF (0x06BA)
+		I: APPL_SG, OFFSET 0 LEN 64 - External application for control unit
+	FRAME APPL_SG_PTS ​​(0x072C)
+		I: APPL_SG, OFFSET 0 LEN 64 - External application for control unit
+	FRAME APPL_SG_SAM_H (0x057C)
+		I: APPL_SG, OFFSET 0 LEN 64 - External application for control unit
+	FRAME APPL_SG_SAM_V (0x067D)
+		I: APPL_SG, OFFSET 0 LEN 64 - External application for control unit
+	FRAME APPL_SG_SB (0x06B2)
+		I: APPL_SG, OFFSET 0 LEN 64 - External application for control unit
+	FRAME APPL_SG_SF (0x06B3)
+		I: APPL_SG, OFFSET 0 LEN 64 - External application for control unit
+	FRAME APPL_SG_STH (0x073F)
+		I: APPL_SG, OFFSET 0 LEN 64 - External application for control unit
+	FRAME APPL_SG_THL (0x0756)
+		I: APPL_SG, OFFSET 0 LEN 64 - External application for control unit
+	FRAME APPL_SG_THR (0x0754)
+		I: APPL_SG, OFFSET 0 LEN 64 - External application for control unit
+	FRAME APPL_SG_TPM (0x06A7)
+		I: APPL_SG, OFFSET 0 LEN 64 - External application for control unit
+	FRAME APPL_SG_TVL (0x06D7)
+		I: APPL_SG, OFFSET 0 LEN 64 - External application for control unit
+	FRAME APPL_SG_TVR (0x06C0)
+		I: APPL_SG, OFFSET 0 LEN 64 - External application for control unit
+	FRAME APPL_SG_UBF (0x0722)
+		I: APPL_SG, OFFSET 0 LEN 64 - External application for control unit
+	FRAME APPL_SG_WSS (0x06B7)
+		I: APPL_SG, OFFSET 0 LEN 64 - External application for control unit
+	FRAME D_RQ_EZS (0x04E0)
+		I: D_RQ, OFFSET 0 LEN 64 - KWP2000 diagnosis request
+
