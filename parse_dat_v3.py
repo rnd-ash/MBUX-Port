@@ -185,7 +185,7 @@ class Parser:
         frame_id = int(struct.unpack("<H", self.read_range(2))[0])
         print("\tFRAME: {0} ({1})".format(frame_name, "0x%04X" % frame_id))
         r = self.read_range(8)
-        print(r)
+        #print(r)
         frame_signal_count = r[4]
         if not self.__read_first_ecu__:
             print(self.read_range(2))
@@ -197,12 +197,13 @@ class Parser:
             signal_count += 1
             signals.append(self.readSignalBlock())
             signal_end = self.read_range(2) # End for signal
+            print("SIG END: {0}".format(signal_end))
             if signal_end == bytearray([0x05, 0x80]): # End of Signal entry
                 break
             elif signal_end == bytearray([0x03, 0x80]): # End of Frame entry
                 ret = True
                 break
-            elif signal_end[1] == 0x00: # End of ECU Table
+            elif signal_end[1] != 0x80: # End of ECU Table
                 ret = True
                 break
         if not self.__read_first_ecu__:
