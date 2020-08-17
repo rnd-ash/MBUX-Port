@@ -14,7 +14,7 @@ object AGW_A3 {
     	/** Gets Numeric keypad head unit **/
 	fun get_ziffer_hu() : ZIFFER_HU = when(CanBusNative.getECUParameterB(CanBAddrs.AGW_A3, 4, 4)) {
 		 0 -> ZIFFER_HU.N_BET
-		 1 -> ZIFFER_HU.T1_key
+		 1 -> ZIFFER_HU.T1_KEY
 		 2 -> ZIFFER_HU.T2
 		 3 -> ZIFFER_HU.T3
 		 4 -> ZIFFER_HU.T4
@@ -22,8 +22,8 @@ object AGW_A3 {
 		 6 -> ZIFFER_HU.T6
 		 7 -> ZIFFER_HU.T7
 		 8 -> ZIFFER_HU.T8
-		 9 -> ZIFFER_HU.T9_key
-		 10 -> ZIFFER_HU.T10_button
+		 9 -> ZIFFER_HU.T9_KEY
+		 10 -> ZIFFER_HU.T10_BUTTON
 		 else -> throw Exception("Invalid raw value for ZIFFER_HU")
 	}
 	
@@ -51,7 +51,7 @@ object AGW_A3 {
 	/** Gets Active application **/
 	fun get_akt_sys() : AKT_SYS = when(CanBusNative.getECUParameterB(CanBAddrs.AGW_A3, 13, 3)) {
 		 0 -> AKT_SYS.IDLE
-		 1 -> AKT_SYS.radio_data_transmission
+		 1 -> AKT_SYS.RADIO_DATA_TRANSMISSION
 		 else -> throw Exception("Invalid raw value for AKT_SYS")
 	}
 	

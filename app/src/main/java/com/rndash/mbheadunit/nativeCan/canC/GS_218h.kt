@@ -51,7 +51,7 @@ object GS_218h {
 		 11 -> GIC.R
 		 12 -> GIC.R2
 		 13 -> GIC.P
-		 14 -> GIC.No_Force
+		 14 -> GIC.NO_FORCE
 		 15 -> GIC.SNV
 		 else -> throw Exception("Invalid raw value for GIC")
 	}

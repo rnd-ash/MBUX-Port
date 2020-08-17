@@ -99,7 +99,7 @@ object KLA_A1 {
 	fun get_lku_vorn() : LKU_VORN = when(CanBusNative.getECUParameterB(CanBAddrs.KLA_A1, 54, 2)) {
 		 0 -> LKU_VORN.CENTER
 		 1 -> LKU_VORN.UP
-		 2 -> LKU_VORN.closed
+		 2 -> LKU_VORN.CLOSED
 		 3 -> LKU_VORN.SNV
 		 else -> throw Exception("Invalid raw value for LKU_VORN")
 	}
@@ -111,7 +111,7 @@ object KLA_A1 {
 	fun get_lkm_vorn() : LKM_VORN = when(CanBusNative.getECUParameterB(CanBAddrs.KLA_A1, 52, 2)) {
 		 0 -> LKM_VORN.CENTER
 		 1 -> LKM_VORN.UP
-		 2 -> LKM_VORN.closed
+		 2 -> LKM_VORN.CLOSED
 		 3 -> LKM_VORN.SNV
 		 else -> throw Exception("Invalid raw value for LKM_VORN")
 	}
@@ -123,7 +123,7 @@ object KLA_A1 {
 	fun get_lko_vorn() : LKO_VORN = when(CanBusNative.getECUParameterB(CanBAddrs.KLA_A1, 50, 2)) {
 		 0 -> LKO_VORN.CENTER
 		 1 -> LKO_VORN.UP
-		 2 -> LKO_VORN.closed
+		 2 -> LKO_VORN.CLOSED
 		 3 -> LKO_VORN.SNV
 		 else -> throw Exception("Invalid raw value for LKO_VORN")
 	}

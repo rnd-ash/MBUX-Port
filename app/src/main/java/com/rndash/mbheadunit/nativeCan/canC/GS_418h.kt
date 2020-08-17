@@ -23,7 +23,7 @@ object GS_418h {
 		 55 -> FSC.SEVEN
 		 65 -> FSC.A
 		 68 -> FSC.D
-		 70 -> FSC.F_error_mark
+		 70 -> FSC.F_ERROR_MARK
 		 78 -> FSC.N
 		 80 -> FSC.P
 		 82 -> FSC.R
@@ -57,7 +57,7 @@ object GS_418h {
 		 64 -> FPC.BLANK_MGN
 		 65 -> FPC.A
 		 67 -> FPC.C
-		 70 -> FPC.F_error_mark
+		 70 -> FPC.F_ERROR_MARK
 		 77 -> FPC.M
 		 83 -> FPC.S
 		 87 -> FPC.W
@@ -153,7 +153,7 @@ object GS_418h {
 		 11 -> GIC.R
 		 12 -> GIC.R2
 		 13 -> GIC.P
-		 14 -> GIC.No_Force
+		 14 -> GIC.NO_FORCE
 		 15 -> GIC.SNV
 		 else -> throw Exception("Invalid raw value for GIC")
 	}

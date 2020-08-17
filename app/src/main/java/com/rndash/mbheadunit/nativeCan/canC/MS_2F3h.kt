@@ -23,7 +23,7 @@ object MS_2F3h {
 		 55 -> FSC_IST.SEVEN
 		 65 -> FSC_IST.A
 		 68 -> FSC_IST.D
-		 70 -> FSC_IST.F_error_mark
+		 70 -> FSC_IST.F_ERROR_MARK
 		 78 -> FSC_IST.N
 		 80 -> FSC_IST.P
 		 82 -> FSC_IST.R
@@ -48,7 +48,7 @@ object MS_2F3h {
 		 55 -> FSC_SOLL.SEVEN
 		 65 -> FSC_SOLL.A
 		 68 -> FSC_SOLL.D
-		 70 -> FSC_SOLL.F_error_mark
+		 70 -> FSC_SOLL.F_ERROR_MARK
 		 78 -> FSC_SOLL.N
 		 80 -> FSC_SOLL.P
 		 82 -> FSC_SOLL.R

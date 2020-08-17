@@ -235,7 +235,7 @@ object EZS_240h {
 	
 	/** Gets model-dependent vehicle version (only 220/215/230) **/
 	fun get_fzgversn() : FZGVERSN = when(CanBusNative.getECUParameterC(CanCAddrs.EZS_240h, 59, 3)) {
-		 0 -> FZGVERSN.START_was_launched
+		 0 -> FZGVERSN.START_WAS_LAUNCHED
 		 1 -> FZGVERSN.V1
 		 2 -> FZGVERSN.V2
 		 3 -> FZGVERSN.V3
