@@ -82,7 +82,7 @@ Java_com_rndash_mbheadunit_nativeCan_CanBusNative_getNativeFrame(JNIEnv *env, jo
             env->ThrowNew(env->FindClass("java/lang/IllegalArgumentException"), "Null ECU Frame!");
         } else {
             uint8_t* temp = new uint8_t [f->dlc+2];
-            temp[0] = f->id << 8;
+            temp[0] = f->id >> 8;
             temp[1] = f->id;
             memcpy(&temp[2], &f->data[0], f->dlc);
 
