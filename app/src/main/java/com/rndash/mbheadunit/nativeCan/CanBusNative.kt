@@ -31,7 +31,7 @@ object CanBusNative {
      *
      * If return size is 0, then there is nothing to send
      */
-    external fun getSendFrame() : ByteArray
+    external fun getSendFrame() : ByteArray?
 
 
     /**
@@ -75,16 +75,18 @@ object CanBusNative {
      */
     private fun getECUFrame(ecuAddr: Int, bus_id: Char) : CanFrame? {
         return try {
-            val data = getNativeFrame(ecuAddr, bus_id)
-            val id = (data[0].toInt() shl 8) or data[1].toInt()
-            CanFrame(id, bus_id, data.drop(2).toByteArray())
+            getNativeFrame(ecuAddr, bus_id)?.let {
+                val id = (it[0].toInt() shl 8) or it[1].toInt()
+                return CanFrame(id, bus_id, it.drop(2).toByteArray())
+            }
+            return null
         } catch (e: Exception) {
             null
         }
     }
 
     private external fun getECUParam(ecuAddr: Int, bus_id: Char, offset: Int, len: Int) : Int
-    private external fun getNativeFrame(ecuAddr: Int, bus_id: Char) : ByteArray
+    private external fun getNativeFrame(ecuAddr: Int, bus_id: Char) : ByteArray?
 
     fun setFrameParameter(f: CanFrame, offset: Int, len: Int, raw: Int): CanFrame {
         return f.apply { setBitRange(offset, len, raw) }

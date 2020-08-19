@@ -26,15 +26,20 @@ class CarComm(device: UsbDevice, manager: UsbManager) {
     // This thread polls for can frames from JNI. If a frame is available, it is sent to arduino
     private val frameQueue = ArrayDeque<CanFrame>()
     val sendThread = Thread {
+        var hasFrame = false
         while(true) {
             // Check JVM frame queue
             if (frameQueue.isNotEmpty()) {
                 serialDevice?.write(frameQueue.removeFirst().toStruct(), 100)
+                hasFrame = true
             }
             // Check Native frame queue (Used by AGW<->IC)
-            val nativeSend = CanBusNative.getSendFrame()
-            if (nativeSend.isNotEmpty()) {
-                serialDevice?.write(nativeSend, 100)
+            CanBusNative.getSendFrame()?.let {
+                serialDevice?.write(it, 100)
+                hasFrame = true
+            }
+            if (!hasFrame) {
+                Thread.sleep(1)
             }
         }
     }
@@ -53,13 +58,7 @@ class CarComm(device: UsbDevice, manager: UsbManager) {
         CanBusNative.init()
         port.setParameters(115200, 8, UsbSerialPort.STOPBITS_1, UsbSerialPort.PARITY_NONE)
         serialDevice = port
-        val readThread = object : IOManager(64, serialDevice!!, SerialManager()) {
-            override fun run() {
-                if (SERIAL_INPUT_OUTPUT_MANAGER_THREAD_PRIORITY != null)
-                    Process.setThreadPriority(SERIAL_INPUT_OUTPUT_MANAGER_THREAD_PRIORITY)
-                super.run()
-            }
-        }
+        val readThread = IOManager(64, serialDevice!!)
         // Start polling for data
         Executors.newSingleThreadExecutor().submit(readThread)
         // Start polling for frames to be sent

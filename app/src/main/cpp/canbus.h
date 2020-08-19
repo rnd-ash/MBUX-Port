@@ -96,7 +96,7 @@ Java_com_rndash_mbheadunit_nativeCan_CanBusNative_getNativeFrame(JNIEnv *env, jo
     } catch (InvalidBusException e) {
         env->ThrowNew(env->FindClass("java/lang/IllegalArgumentException"), e.what().c_str());
     }
-    return env->NewByteArray(0);
+    return NULL;
 }
 
 #endif

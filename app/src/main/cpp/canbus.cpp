@@ -1,5 +1,5 @@
 #include "canbus.h"
-
+#include <unistd.h>
 
 char* charreadbuf = new char[50]; // Max size of can frame encoded from Arduino
 extern "C"
@@ -39,7 +39,7 @@ Java_com_rndash_mbheadunit_nativeCan_CanBusNative_getSendFrame(JNIEnv *env, jobj
         sendQueue.pop(); // Pop the queue
         return ret; // Return the populated array
     } else {
-        return env->NewByteArray(0); // No data, return empty jbytearray
+        return NULL; // No data, return empty jbytearray
     }
 }
 
@@ -69,6 +69,8 @@ void processFrames() {
                 nibpos+=2;
             }
             decoder->processFrame(&read);
+        } else {
+            usleep(1000); // Don't destroy the CPU when there is no data!
         }
     }
     __android_log_print(ANDROID_LOG_DEBUG, "ParseThread", "Quitting parser thread");
