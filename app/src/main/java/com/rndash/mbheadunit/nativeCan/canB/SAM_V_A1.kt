@@ -21,387 +21,387 @@ object SAM_V_A1 {
 	fun get_afl_akt() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.SAM_V_A1, 7, 1) != 0
 	
 	/** Sets Outside light activated by light sensor **/
-	fun set_afl_akt(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_afl_akt(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 7, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 7, 1, if(p) 1 else 0)
 	}
 	
 	/** Gets Fog lights are switched on **/
 	fun get_nsw_st_ein() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.SAM_V_A1, 6, 1) != 0
 	
 	/** Sets Fog lights are switched on **/
-	fun set_nsw_st_ein(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_nsw_st_ein(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 6, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 6, 1, if(p) 1 else 0)
 	}
 	
 	/** Gets high beam is switched on **/
 	fun get_fl_st_ein() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.SAM_V_A1, 5, 1) != 0
 	
 	/** Sets high beam is switched on **/
-	fun set_fl_st_ein(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_fl_st_ein(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 5, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 5, 1, if(p) 1 else 0)
 	}
 	
 	/** Gets Signal horn is switched on **/
 	fun get_sgh_st_ein() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.SAM_V_A1, 4, 1) != 0
 	
 	/** Sets Signal horn is switched on **/
-	fun set_sgh_st_ein(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_sgh_st_ein(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 4, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 4, 1, if(p) 1 else 0)
 	}
 	
 	/** Gets Mirror adjustment switch in the right position **/
 	fun get_spvs_st_r() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.SAM_V_A1, 3, 1) != 0
 	
 	/** Sets Mirror adjustment switch in the right position **/
-	fun set_spvs_st_r(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_spvs_st_r(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 3, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 3, 1, if(p) 1 else 0)
 	}
 	
 	/** Gets reverse gear engaged (only with NSG / KSG) **/
 	fun get_rg_sam_v() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.SAM_V_A1, 2, 1) != 0
 	
 	/** Sets reverse gear engaged (only with NSG / KSG) **/
-	fun set_rg_sam_v(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_rg_sam_v(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 2, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 2, 1, if(p) 1 else 0)
 	}
 	
 	/** Gets headlight activation active **/
 	fun get_swa_akt() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.SAM_V_A1, 1, 1) != 0
 	
 	/** Sets headlight activation active **/
-	fun set_swa_akt(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_swa_akt(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 1, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 1, 1, if(p) 1 else 0)
 	}
 	
 	/** Gets Terminal 61 **/
 	fun get_kl_61_ein() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.SAM_V_A1, 0, 1) != 0
 	
 	/** Sets Terminal 61 **/
-	fun set_kl_61_ein(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_kl_61_ein(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 0, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 0, 1, if(p) 1 else 0)
 	}
 	
 	/** Gets Switch on left parking light **/
 	fun get_pl_li_ein() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.SAM_V_A1, 14, 1) != 0
 	
 	/** Sets Switch on left parking light **/
-	fun set_pl_li_ein(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_pl_li_ein(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 14, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 14, 1, if(p) 1 else 0)
 	}
 	
 	/** Gets Switch on right parking light **/
 	fun get_pl_re_ein() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.SAM_V_A1, 13, 1) != 0
 	
 	/** Sets Switch on right parking light **/
-	fun set_pl_re_ein(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_pl_re_ein(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 13, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 13, 1, if(p) 1 else 0)
 	}
 	
 	/** Gets switch on parking lights **/
 	fun get_stl_ein() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.SAM_V_A1, 11, 1) != 0
 	
 	/** Sets switch on parking lights **/
-	fun set_stl_ein(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_stl_ein(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 11, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 11, 1, if(p) 1 else 0)
 	}
 	
 	/** Gets switch on low beam **/
 	fun get_abl_ein() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.SAM_V_A1, 10, 1) != 0
 	
 	/** Sets switch on low beam **/
-	fun set_abl_ein(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_abl_ein(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 10, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 10, 1, if(p) 1 else 0)
 	}
 	
 	/** Gets switch on rear fog light **/
 	fun get_nsl_ein() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.SAM_V_A1, 8, 1) != 0
 	
 	/** Sets switch on rear fog light **/
-	fun set_nsl_ein(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_nsl_ein(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 8, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 8, 1, if(p) 1 else 0)
 	}
 	
 	/** Gets Terminal 15R activated via diagnosis **/
 	fun get_diag_15r_ein() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.SAM_V_A1, 22, 1) != 0
 	
 	/** Sets Terminal 15R activated via diagnosis **/
-	fun set_diag_15r_ein(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_diag_15r_ein(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 22, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 22, 1, if(p) 1 else 0)
 	}
 	
 	/** Gets Terminal 15 activated via diagnosis **/
 	fun get_diag_15_ein() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.SAM_V_A1, 21, 1) != 0
 	
 	/** Sets Terminal 15 activated via diagnosis **/
-	fun set_diag_15_ein(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_diag_15_ein(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 21, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 21, 1, if(p) 1 else 0)
 	}
 	
 	/** Gets Refrigeration compressor control, current output defective **/
 	fun get_komp_def() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.SAM_V_A1, 20, 1) != 0
 	
 	/** Sets Refrigeration compressor control, current output defective **/
-	fun set_komp_def(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_komp_def(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 20, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 20, 1, if(p) 1 else 0)
 	}
 	
 	/** Gets Air conditioning compressor switched on **/
 	fun get_komp_ein() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.SAM_V_A1, 19, 1) != 0
 	
 	/** Sets Air conditioning compressor switched on **/
-	fun set_komp_ein(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_komp_ein(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 19, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 19, 1, if(p) 1 else 0)
 	}
 	
 	/** Gets handbrake applied (control lamp) **/
 	fun get_has_kl() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.SAM_V_A1, 18, 1) != 0
 	
 	/** Sets handbrake applied (control lamp) **/
-	fun set_has_kl(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_has_kl(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 18, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 18, 1, if(p) 1 else 0)
 	}
 	
 	/** Gets refrigeration compressor is running **/
 	fun get_komp_lft() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.SAM_V_A1, 17, 1) != 0
 	
 	/** Sets refrigeration compressor is running **/
-	fun set_komp_lft(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_komp_lft(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 17, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 17, 1, if(p) 1 else 0)
 	}
 	
 	/** Gets auxiliary water pump is running **/
 	fun get_zwp_lft() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.SAM_V_A1, 16, 1) != 0
 	
 	/** Sets auxiliary water pump is running **/
-	fun set_zwp_lft(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_zwp_lft(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 16, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 16, 1, if(p) 1 else 0)
 	}
 	
 	/** Gets cooling water level too low control lamp **/
 	fun get_kws_kl() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.SAM_V_A1, 26, 1) != 0
 	
 	/** Sets cooling water level too low control lamp **/
-	fun set_kws_kl(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_kws_kl(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 26, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 26, 1, if(p) 1 else 0)
 	}
 	
 	/** Gets wash water level too low control lamp **/
 	fun get_wws_kl() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.SAM_V_A1, 25, 1) != 0
 	
 	/** Sets wash water level too low control lamp **/
-	fun set_wws_kl(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_wws_kl(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 25, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 25, 1, if(p) 1 else 0)
 	}
 	
 	/** Gets Brake fluid level indicator lamp **/
 	fun get_bfl_kl() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.SAM_V_A1, 24, 1) != 0
 	
 	/** Sets Brake fluid level indicator lamp **/
-	fun set_bfl_kl(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_bfl_kl(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 24, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 24, 1, if(p) 1 else 0)
 	}
 	
 	/** Gets Instrument lighting off **/
 	fun get_instr_aus() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.SAM_V_A1, 39, 1) != 0
 	
 	/** Sets Instrument lighting off **/
-	fun set_instr_aus(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_instr_aus(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 39, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 39, 1, if(p) 1 else 0)
 	}
 	
 	/** Gets Sidemarker front left defective **/
 	fun get_sm_def_vl() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.SAM_V_A1, 37, 1) != 0
 	
 	/** Sets Sidemarker front left defective **/
-	fun set_sm_def_vl(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_sm_def_vl(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 37, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 37, 1, if(p) 1 else 0)
 	}
 	
 	/** Gets Front left turn signal defective **/
 	fun get_bli_def_vl() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.SAM_V_A1, 36, 1) != 0
 	
 	/** Sets Front left turn signal defective **/
-	fun set_bli_def_vl(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_bli_def_vl(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 36, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 36, 1, if(p) 1 else 0)
 	}
 	
 	/** Gets Front left parking light defective **/
 	fun get_pl_def_vl() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.SAM_V_A1, 35, 1) != 0
 	
 	/** Sets Front left parking light defective **/
-	fun set_pl_def_vl(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_pl_def_vl(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 35, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 35, 1, if(p) 1 else 0)
 	}
 	
 	/** Gets Left low beam defective **/
 	fun get_abl_def_l() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.SAM_V_A1, 34, 1) != 0
 	
 	/** Sets Left low beam defective **/
-	fun set_abl_def_l(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_abl_def_l(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 34, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 34, 1, if(p) 1 else 0)
 	}
 	
 	/** Gets left high beam defective **/
 	fun get_fl_def_l() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.SAM_V_A1, 33, 1) != 0
 	
 	/** Sets left high beam defective **/
-	fun set_fl_def_l(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_fl_def_l(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 33, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 33, 1, if(p) 1 else 0)
 	}
 	
 	/** Gets Left fog light defective **/
 	fun get_nsw_def_l() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.SAM_V_A1, 32, 1) != 0
 	
 	/** Sets Left fog light defective **/
-	fun set_nsw_def_l(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_nsw_def_l(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 32, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 32, 1, if(p) 1 else 0)
 	}
 	
 	/** Gets message. Steering oil too low **/
 	fun get_lenk_oel_kl() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.SAM_V_A1, 47, 1) != 0
 	
 	/** Sets message. Steering oil too low **/
-	fun set_lenk_oel_kl(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_lenk_oel_kl(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 47, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 47, 1, if(p) 1 else 0)
 	}
 	
 	/** Gets Front right side marker defective **/
 	fun get_sm_def_vr() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.SAM_V_A1, 45, 1) != 0
 	
 	/** Sets Front right side marker defective **/
-	fun set_sm_def_vr(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_sm_def_vr(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 45, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 45, 1, if(p) 1 else 0)
 	}
 	
 	/** Gets Front right turn signal defective **/
 	fun get_bli_def_vr() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.SAM_V_A1, 44, 1) != 0
 	
 	/** Sets Front right turn signal defective **/
-	fun set_bli_def_vr(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_bli_def_vr(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 44, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 44, 1, if(p) 1 else 0)
 	}
 	
 	/** Gets Front right parking light defective **/
 	fun get_pl_def_vr() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.SAM_V_A1, 43, 1) != 0
 	
 	/** Sets Front right parking light defective **/
-	fun set_pl_def_vr(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_pl_def_vr(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 43, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 43, 1, if(p) 1 else 0)
 	}
 	
 	/** Gets Right low beam defective **/
 	fun get_abl_def_r() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.SAM_V_A1, 42, 1) != 0
 	
 	/** Sets Right low beam defective **/
-	fun set_abl_def_r(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_abl_def_r(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 42, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 42, 1, if(p) 1 else 0)
 	}
 	
 	/** Gets right high beam defective **/
 	fun get_fl_def_r() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.SAM_V_A1, 41, 1) != 0
 	
 	/** Sets right high beam defective **/
-	fun set_fl_def_r(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_fl_def_r(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 41, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 41, 1, if(p) 1 else 0)
 	}
 	
 	/** Gets Right fog light defective **/
 	fun get_nsw_def_r() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.SAM_V_A1, 40, 1) != 0
 	
 	/** Sets Right fog light defective **/
-	fun set_nsw_def_r(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_nsw_def_r(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 40, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 40, 1, if(p) 1 else 0)
 	}
 	
 	/** Gets Start Xenon4 diagnostic procedure on the passenger side **/
 	fun get_diag_x4_b() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.SAM_V_A1, 54, 1) != 0
 	
 	/** Sets Start Xenon4 diagnostic procedure on the passenger side **/
-	fun set_diag_x4_b(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_diag_x4_b(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 54, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 54, 1, if(p) 1 else 0)
 	}
 	
 	/** Gets Replacement parking light front right active **/
 	fun get_pl_ers_vr() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.SAM_V_A1, 53, 1) != 0
 	
 	/** Sets Replacement parking light front right active **/
-	fun set_pl_ers_vr(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_pl_ers_vr(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 53, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 53, 1, if(p) 1 else 0)
 	}
 	
 	/** Gets Replacement blinker active at the front right **/
 	fun get_bli_ers_vr() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.SAM_V_A1, 52, 1) != 0
 	
 	/** Sets Replacement blinker active at the front right **/
-	fun set_bli_ers_vr(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_bli_ers_vr(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 52, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 52, 1, if(p) 1 else 0)
 	}
 	
 	/** Gets Start Xenon4 diagnostic procedure on the driver's side **/
 	fun get_diag_x4_f() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.SAM_V_A1, 50, 1) != 0
 	
 	/** Sets Start Xenon4 diagnostic procedure on the driver's side **/
-	fun set_diag_x4_f(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_diag_x4_f(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 50, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 50, 1, if(p) 1 else 0)
 	}
 	
 	/** Gets Replacement parking light front left active **/
 	fun get_pl_ers_vl() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.SAM_V_A1, 49, 1) != 0
 	
 	/** Sets Replacement parking light front left active **/
-	fun set_pl_ers_vl(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_pl_ers_vl(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 49, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 49, 1, if(p) 1 else 0)
 	}
 	
 	/** Gets Replacement turn signal front left active **/
 	fun get_bli_ers_vl() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.SAM_V_A1, 48, 1) != 0
 	
 	/** Sets Replacement turn signal front left active **/
-	fun set_bli_ers_vl(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_bli_ers_vl(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 48, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 48, 1, if(p) 1 else 0)
 	}
 	
 	/**

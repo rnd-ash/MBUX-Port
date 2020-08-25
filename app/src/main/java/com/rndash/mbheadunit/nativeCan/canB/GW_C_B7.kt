@@ -27,18 +27,18 @@ object GW_C_B7 {
 	}
 	
 	/** Sets direction of rotation of the front right wheel **/
-	fun set_drtgvr(f: CanFrame, p: DRTGVR) : CanFrame? {
+	fun set_drtgvr(f: CanFrame, p: DRTGVR) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 32, 2, p.raw)
+		CanBusNative.setFrameParameter(f, 32, 2, p.raw)
 	}
 	
 	/** Gets wheel speed front right  **/
 	fun get_dvr() : Int = CanBusNative.getECUParameterB(CanBAddrs.GW_C_B7, 34, 14)
 	
 	/** Sets wheel speed front right  **/
-	fun set_dvr(f: CanFrame, p: Int) : CanFrame? {
+	fun set_dvr(f: CanFrame, p: Int) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 34, 14, p)
+		CanBusNative.setFrameParameter(f, 34, 14, p)
 	}
 	
 	/**

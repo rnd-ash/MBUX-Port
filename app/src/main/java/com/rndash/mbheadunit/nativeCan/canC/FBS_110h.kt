@@ -21,9 +21,9 @@ object FBS_110h {
 	fun get_ifz_st() : Int = CanBusNative.getECUParameterC(CanCAddrs.FBS_110h, 0, 64)
 	
 	/** Sets FBS message to MS (8 bytes) **/
-	fun set_ifz_st(f: CanFrame, p: Int) : CanFrame? {
+	fun set_ifz_st(f: CanFrame, p: Int) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 0, 64, p)
+		CanBusNative.setFrameParameter(f, 0, 64, p)
 	}
 	
 	/**

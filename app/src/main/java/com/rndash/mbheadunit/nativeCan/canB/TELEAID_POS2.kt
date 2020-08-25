@@ -21,36 +21,36 @@ object TELEAID_POS2 {
 	fun get_gps_vel() : Int = CanBusNative.getECUParameterB(CanBAddrs.TELEAID_POS2, 0, 16)
 	
 	/** Sets GPS velocity  **/
-	fun set_gps_vel(f: CanFrame, p: Int) : CanFrame? {
+	fun set_gps_vel(f: CanFrame, p: Int) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 0, 16, p)
+		CanBusNative.setFrameParameter(f, 0, 16, p)
 	}
 	
 	/** Gets GPS heading  **/
 	fun get_gps_head() : Int = CanBusNative.getECUParameterB(CanBAddrs.TELEAID_POS2, 16, 16)
 	
 	/** Sets GPS heading  **/
-	fun set_gps_head(f: CanFrame, p: Int) : CanFrame? {
+	fun set_gps_head(f: CanFrame, p: Int) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 16, 16, p)
+		CanBusNative.setFrameParameter(f, 16, 16, p)
 	}
 	
 	/** Gets GPS ellipsoid height  **/
 	fun get_gps_ellip() : Int = CanBusNative.getECUParameterB(CanBAddrs.TELEAID_POS2, 32, 16)
 	
 	/** Sets GPS ellipsoid height  **/
-	fun set_gps_ellip(f: CanFrame, p: Int) : CanFrame? {
+	fun set_gps_ellip(f: CanFrame, p: Int) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 32, 16, p)
+		CanBusNative.setFrameParameter(f, 32, 16, p)
 	}
 	
 	/** Gets GPS altitude  **/
 	fun get_gps_alt() : Int = CanBusNative.getECUParameterB(CanBAddrs.TELEAID_POS2, 48, 16)
 	
 	/** Sets GPS altitude  **/
-	fun set_gps_alt(f: CanFrame, p: Int) : CanFrame? {
+	fun set_gps_alt(f: CanFrame, p: Int) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 48, 16, p)
+		CanBusNative.setFrameParameter(f, 48, 16, p)
 	}
 	
 	/**

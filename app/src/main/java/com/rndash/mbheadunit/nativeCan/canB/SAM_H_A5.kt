@@ -21,36 +21,36 @@ object SAM_H_A5 {
 	fun get_sl_ein_edw() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.SAM_H_A5, 2, 1) != 0
 	
 	/** Sets switch on tail light **/
-	fun set_sl_ein_edw(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_sl_ein_edw(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 2, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 2, 1, if(p) 1 else 0)
 	}
 	
 	/** Gets switch on low beam **/
 	fun get_abl_ein_edw() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.SAM_H_A5, 1, 1) != 0
 	
 	/** Sets switch on low beam **/
-	fun set_abl_ein_edw(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_abl_ein_edw(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 1, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 1, 1, if(p) 1 else 0)
 	}
 	
 	/** Gets switch on fog lights **/
 	fun get_nsw_ein_edw() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.SAM_H_A5, 0, 1) != 0
 	
 	/** Sets switch on fog lights **/
-	fun set_nsw_ein_edw(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_nsw_ein_edw(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 0, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 0, 1, if(p) 1 else 0)
 	}
 	
 	/** Gets Duration light-bright phase  **/
 	fun get_hell_edw() : Int = CanBusNative.getECUParameterB(CanBAddrs.SAM_H_A5, 8, 8)
 	
 	/** Sets Duration light-bright phase  **/
-	fun set_hell_edw(f: CanFrame, p: Int) : CanFrame? {
+	fun set_hell_edw(f: CanFrame, p: Int) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 8, 8, p)
+		CanBusNative.setFrameParameter(f, 8, 8, p)
 	}
 	
 	/**

@@ -21,9 +21,9 @@ object TP_TELEAID_AGW6 {
 	fun get_tp_teleaid_agw() : Int = CanBusNative.getECUParameterB(CanBAddrs.TP_TELEAID_AGW6, 0, 64)
 	
 	/** Sets Communication TELEAID to AGW **/
-	fun set_tp_teleaid_agw(f: CanFrame, p: Int) : CanFrame? {
+	fun set_tp_teleaid_agw(f: CanFrame, p: Int) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 0, 64, p)
+		CanBusNative.setFrameParameter(f, 0, 64, p)
 	}
 	
 	/**

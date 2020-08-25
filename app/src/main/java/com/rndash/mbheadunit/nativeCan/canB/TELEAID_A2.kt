@@ -21,18 +21,18 @@ object TELEAID_A2 {
 	fun get_live_teleaid() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.TELEAID_A2, 4, 1) != 0
 	
 	/** Sets Alive message TELEAID **/
-	fun set_live_teleaid(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_live_teleaid(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 4, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 4, 1, if(p) 1 else 0)
 	}
 	
 	/** Gets mobility account authorized **/
 	fun get_mk_atrsrt() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.TELEAID_A2, 0, 1) != 0
 	
 	/** Sets mobility account authorized **/
-	fun set_mk_atrsrt(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_mk_atrsrt(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 0, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 0, 1, if(p) 1 else 0)
 	}
 	
 	/**

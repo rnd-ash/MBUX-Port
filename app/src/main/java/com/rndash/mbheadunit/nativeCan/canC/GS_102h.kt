@@ -21,9 +21,9 @@ object GS_102h {
 	fun get_gs_fbs() : Int = CanBusNative.getECUParameterC(CanCAddrs.GS_102h, 0, 64)
 	
 	/** Sets FBS message to EZS (8 bytes) **/
-	fun set_gs_fbs(f: CanFrame, p: Int) : CanFrame? {
+	fun set_gs_fbs(f: CanFrame, p: Int) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 0, 64, p)
+		CanBusNative.setFrameParameter(f, 0, 64, p)
 	}
 	
 	/**

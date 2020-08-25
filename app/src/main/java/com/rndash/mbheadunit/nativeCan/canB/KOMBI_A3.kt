@@ -21,27 +21,27 @@ object KOMBI_A3 {
 	fun get_a_zeit() : Int = CanBusNative.getECUParameterB(CanBAddrs.KOMBI_A3, 0, 16)
 	
 	/** Sets Current time  **/
-	fun set_a_zeit(f: CanFrame, p: Int) : CanFrame? {
+	fun set_a_zeit(f: CanFrame, p: Int) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 0, 16, p)
+		CanBusNative.setFrameParameter(f, 0, 16, p)
 	}
 	
 	/** Gets Mileage  **/
 	fun get_km() : Int = CanBusNative.getECUParameterB(CanBAddrs.KOMBI_A3, 16, 24)
 	
 	/** Sets Mileage  **/
-	fun set_km(f: CanFrame, p: Int) : CanFrame? {
+	fun set_km(f: CanFrame, p: Int) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 16, 24, p)
+		CanBusNative.setFrameParameter(f, 16, 24, p)
 	}
 	
 	/** Gets Range  **/
 	fun get_rw() : Int = CanBusNative.getECUParameterB(CanBAddrs.KOMBI_A3, 40, 16)
 	
 	/** Sets Range  **/
-	fun set_rw(f: CanFrame, p: Int) : CanFrame? {
+	fun set_rw(f: CanFrame, p: Int) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 40, 16, p)
+		CanBusNative.setFrameParameter(f, 40, 16, p)
 	}
 	
 	/**

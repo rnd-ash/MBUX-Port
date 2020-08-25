@@ -21,9 +21,9 @@ object GS_HS6 {
 	fun get_hs6() : Int = CanBusNative.getECUParameterC(CanCAddrs.GS_HS6, 0, 64)
 	
 	/** UNKNOWN DESCRIPTION **/
-	fun set_hs6(f: CanFrame, p: Int) : CanFrame? {
+	fun set_hs6(f: CanFrame, p: Int) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 0, 64, p)
+		CanBusNative.setFrameParameter(f, 0, 64, p)
 	}
 	
 	/**

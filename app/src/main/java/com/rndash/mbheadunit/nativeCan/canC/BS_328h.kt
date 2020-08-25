@@ -21,27 +21,27 @@ object BS_328h {
 	fun get_wms_pa() : Boolean = CanBusNative.getECUParameterC(CanCAddrs.BS_328h, 0, 1) != 0
 	
 	/** Sets WMS Parity (even parity) **/
-	fun set_wms_pa(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_wms_pa(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 0, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 0, 1, if(p) 1 else 0)
 	}
 	
 	/** Gets Set roll torque change **/
 	fun get_wms() : Int = CanBusNative.getECUParameterC(CanCAddrs.BS_328h, 1, 15)
 	
 	/** Sets Set roll torque change **/
-	fun set_wms(f: CanFrame, p: Int) : CanFrame? {
+	fun set_wms(f: CanFrame, p: Int) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 1, 15, p)
+		CanBusNative.setFrameParameter(f, 1, 15, p)
 	}
 	
 	/** Gets vehicle lateral acceleration. in the center of gravity (+ = left) **/
 	fun get_ay_s() : Int = CanBusNative.getECUParameterC(CanCAddrs.BS_328h, 16, 8)
 	
 	/** Sets vehicle lateral acceleration. in the center of gravity (+ = left) **/
-	fun set_ay_s(f: CanFrame, p: Int) : CanFrame? {
+	fun set_ay_s(f: CanFrame, p: Int) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 16, 8, p)
+		CanBusNative.setFrameParameter(f, 16, 8, p)
 	}
 	
 	/** Gets ESP display messages **/
@@ -79,54 +79,54 @@ object BS_328h {
 	}
 	
 	/** Sets ESP display messages **/
-	fun set_esp_dspl(f: CanFrame, p: ESP_DSPL) : CanFrame? {
+	fun set_esp_dspl(f: CanFrame, p: ESP_DSPL) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 35, 5, p.raw)
+		CanBusNative.setFrameParameter(f, 35, 5, p.raw)
 	}
 	
 	/** Gets message counter **/
 	fun get_bz328h() : Int = CanBusNative.getECUParameterC(CanCAddrs.BS_328h, 45, 3)
 	
 	/** Sets message counter **/
-	fun set_bz328h(f: CanFrame, p: Int) : CanFrame? {
+	fun set_bz328h(f: CanFrame, p: Int) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 45, 3, p)
+		CanBusNative.setFrameParameter(f, 45, 3, p)
 	}
 	
 	/** Gets open clutch **/
 	fun get_kpl_oef() : Boolean = CanBusNative.getECUParameterC(CanCAddrs.BS_328h, 44, 1) != 0
 	
 	/** Sets open clutch **/
-	fun set_kpl_oef(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_kpl_oef(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 44, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 44, 1, if(p) 1 else 0)
 	}
 	
 	/** Gets emergency braking (brake light flashing) **/
 	fun get_notbre() : Boolean = CanBusNative.getECUParameterC(CanCAddrs.BS_328h, 41, 1) != 0
 	
 	/** Sets emergency braking (brake light flashing) **/
-	fun set_notbre(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_notbre(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 41, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 41, 1, if(p) 1 else 0)
 	}
 	
 	/** Gets Pulse ring counter, front left wheel (48 per revolution) **/
 	fun get_riz_vl() : Int = CanBusNative.getECUParameterC(CanCAddrs.BS_328h, 48, 8)
 	
 	/** Sets Pulse ring counter, front left wheel (48 per revolution) **/
-	fun set_riz_vl(f: CanFrame, p: Int) : CanFrame? {
+	fun set_riz_vl(f: CanFrame, p: Int) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 48, 8, p)
+		CanBusNative.setFrameParameter(f, 48, 8, p)
 	}
 	
 	/** Gets Pulse ring counter, front right wheel (48 per revolution) **/
 	fun get_riz_vr() : Int = CanBusNative.getECUParameterC(CanCAddrs.BS_328h, 56, 8)
 	
 	/** Sets Pulse ring counter, front right wheel (48 per revolution) **/
-	fun set_riz_vr(f: CanFrame, p: Int) : CanFrame? {
+	fun set_riz_vr(f: CanFrame, p: Int) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 56, 8, p)
+		CanBusNative.setFrameParameter(f, 56, 8, p)
 	}
 	
 	/**

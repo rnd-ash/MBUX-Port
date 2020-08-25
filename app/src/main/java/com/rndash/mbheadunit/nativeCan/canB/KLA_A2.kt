@@ -21,63 +21,63 @@ object KLA_A2 {
 	fun get_kb_mod_kla() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.KLA_A2, 6, 1) != 0
 	
 	/** Sets Comfort operation mode **/
-	fun set_kb_mod_kla(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_kb_mod_kla(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 6, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 6, 1, if(p) 1 else 0)
 	}
 	
 	/** Gets Direction of comfort actuation **/
 	fun get_kb_ri_kla() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.KLA_A2, 5, 1) != 0
 	
 	/** Sets Direction of comfort actuation **/
-	fun set_kb_ri_kla(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_kb_ri_kla(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 5, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 5, 1, if(p) 1 else 0)
 	}
 	
 	/** Gets SHD / open / close convertible top **/
 	fun get_shd_kla() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.KLA_A2, 4, 1) != 0
 	
 	/** Sets SHD / open / close convertible top **/
-	fun set_shd_kla(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_shd_kla(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 4, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 4, 1, if(p) 1 else 0)
 	}
 	
 	/** Gets Open / close front left window **/
 	fun get_fvl_kla() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.KLA_A2, 3, 1) != 0
 	
 	/** Sets Open / close front left window **/
-	fun set_fvl_kla(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_fvl_kla(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 3, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 3, 1, if(p) 1 else 0)
 	}
 	
 	/** Gets Open / close front right window **/
 	fun get_fvr_kla() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.KLA_A2, 2, 1) != 0
 	
 	/** Sets Open / close front right window **/
-	fun set_fvr_kla(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_fvr_kla(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 2, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 2, 1, if(p) 1 else 0)
 	}
 	
 	/** Gets Open / close rear left window **/
 	fun get_fhl_kla() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.KLA_A2, 1, 1) != 0
 	
 	/** Sets Open / close rear left window **/
-	fun set_fhl_kla(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_fhl_kla(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 1, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 1, 1, if(p) 1 else 0)
 	}
 	
 	/** Gets Open / close rear right window **/
 	fun get_fhr_kla() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.KLA_A2, 0, 1) != 0
 	
 	/** Sets Open / close rear right window **/
-	fun set_fhr_kla(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_fhr_kla(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 0, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 0, 1, if(p) 1 else 0)
 	}
 	
 	/**

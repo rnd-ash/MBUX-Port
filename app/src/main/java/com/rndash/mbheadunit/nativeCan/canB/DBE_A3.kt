@@ -21,9 +21,9 @@ object DBE_A3 {
 	fun get_sp_abblend() : Int = CanBusNative.getECUParameterB(CanBAddrs.DBE_A3, 3, 5)
 	
 	/** Sets mirror dimming  **/
-	fun set_sp_abblend(f: CanFrame, p: Int) : CanFrame? {
+	fun set_sp_abblend(f: CanFrame, p: Int) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 3, 5, p)
+		CanBusNative.setFrameParameter(f, 3, 5, p)
 	}
 	
 	/**

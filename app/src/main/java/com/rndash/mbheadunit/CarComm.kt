@@ -18,29 +18,39 @@ class CarComm(device: UsbDevice, manager: UsbManager) {
     }
 
     companion object {
-        private var serialDevice : UsbSerialPort? = null
+        private var serialDevice: UsbSerialPort? = null
         private val SERIAL_INPUT_OUTPUT_MANAGER_THREAD_PRIORITY: Int = Process.THREAD_PRIORITY_URGENT_AUDIO
-    }
+        val frameQueue = ArrayDeque<CanFrame>()
 
+        // This thread polls for can frames from JNI. If a frame is available, it is sent to arduino
+        val sendThread = Thread {
+            var hasFrame = false
+            while (true) {
+                // Check JVM frame queue
+                if (frameQueue.isNotEmpty()) {
+                    val f = frameQueue.removeFirstOrNull()
+                    if (serialDevice != null) {
+                        f?.let {
+                            serialDevice?.write(it.toStruct(), 100)
+                        }
+                    } else {
+                        println("Writing ${frameQueue.removeFirst()} to bus")
+                    }
+                    hasFrame = true
+                }
+                // Check Native frame queue (Used by AGW<->IC)
+                CanBusNative.getSendFrame()?.let {
+                    serialDevice?.write(it, 100)
+                    hasFrame = true
+                }
+                if (!hasFrame) {
+                    Thread.sleep(1)
+                }
+            }
+        }
 
-    // This thread polls for can frames from JNI. If a frame is available, it is sent to arduino
-    private val frameQueue = ArrayDeque<CanFrame>()
-    val sendThread = Thread {
-        var hasFrame = false
-        while(true) {
-            // Check JVM frame queue
-            if (frameQueue.isNotEmpty()) {
-                serialDevice?.write(frameQueue.removeFirst().toStruct(), 100)
-                hasFrame = true
-            }
-            // Check Native frame queue (Used by AGW<->IC)
-            CanBusNative.getSendFrame()?.let {
-                serialDevice?.write(it, 100)
-                hasFrame = true
-            }
-            if (!hasFrame) {
-                Thread.sleep(1)
-            }
+        init {
+            sendThread.start()
         }
     }
 
@@ -62,7 +72,6 @@ class CarComm(device: UsbDevice, manager: UsbManager) {
         // Start polling for data
         Executors.newSingleThreadExecutor().submit(readThread)
         // Start polling for frames to be sent
-        sendThread.start()
         // Send the start signal to arduino
     }
 

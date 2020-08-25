@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import com.rndash.mbheadunit.BTMusic
 import com.rndash.mbheadunit.R
 import com.rndash.mbheadunit.nativeCan.canB.EZS_A11
 import com.rndash.mbheadunit.nativeCan.canC.*
@@ -16,31 +17,6 @@ import java.util.*
 @ExperimentalStdlibApi
 class StatusBar : Fragment() {
 
-    lateinit var gear_display : ImageView
-    lateinit var cruise_img: ImageView
-    lateinit var cruise_text: TextView
-    lateinit var bat_text: TextView
-    lateinit var bat_img: ImageView
-
-    /*
-    fun getCruiseData() : Pair<Int, String> {
-        val state = CanBusC.getCruiseState()
-        return when(state.first) {
-            CanBusC.CruiseState.OFF -> Pair(R.drawable.cruise_off, "__")
-            CanBusC.CruiseState.ON -> Pair(R.drawable.cruise_on, "${state.second}")
-            CanBusC.CruiseState.ARMED -> Pair(R.drawable.cruise_armed, "${state.second}")
-        }
-    }
-
-    fun getLimData() : Pair<Int, String> {
-        val state = CanBusC.getLimState()
-        return when(state.first) {
-            CanBusC.CruiseState.OFF -> Pair(R.drawable.lim_off, "__")
-            CanBusC.CruiseState.ON -> Pair(R.drawable.lim_on, "${state.second}}")
-            CanBusC.CruiseState.ARMED -> Pair(R.drawable.lim_armed, "__")
-        }
-    }
-    */
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.status_bar, container, false)
@@ -48,74 +24,17 @@ class StatusBar : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        gear_display = view.findViewById(R.id.gear_display)
-        cruise_img = view.findViewById(R.id.cruise_display)
-        cruise_text = view.findViewById(R.id.cruise_text)
-        bat_img = view.findViewById(R.id.batt_icon)
-        bat_text = view.findViewById(R.id.batt_text)
-
+        val trackName = view.findViewById<TextView>(R.id.trackName)
         Timer().schedule(object: TimerTask() {
             override fun run() {
-                val resource = try {
-                    when (GS_418h.get_fpc()) {
-                        FPC.M -> {
-                            val x = when (GS_218h.get_gic()) {
-                                GIC.P -> R.drawable.gear_p
-                                GIC.N -> R.drawable.gear_n
-                                GIC.R -> R.drawable.gear_r1
-                                GIC.R2 -> R.drawable.gear_r2
-                                GIC.D1 -> R.drawable.gear_m1
-                                GIC.D2 -> R.drawable.gear_m2
-                                GIC.D3 -> R.drawable.gear_m3
-                                GIC.D4 -> R.drawable.gear_m4
-                                GIC.D5 -> R.drawable.gear_m5
-                                GIC.D6 -> R.drawable.gear_m6
-                                GIC.D7 -> R.drawable.gear_m7
-                                else -> R.drawable.gear_n
-                            }
-                            x
-                        }
-                        FPC.S, FPC.C -> {
-                            val x: Int = when (GS_218h.get_gic()) {
-                                GIC.P -> R.drawable.gear_p
-                                GIC.N -> R.drawable.gear_n
-                                GIC.R2 -> R.drawable.gear_r1
-                                GIC.R3 -> R.drawable.gear_r2
-                                GIC.D1 -> R.drawable.gear_d1
-                                GIC.D2 -> R.drawable.gear_d2
-                                GIC.D3 -> R.drawable.gear_d3
-                                GIC.D4 -> R.drawable.gear_d4
-                                GIC.D5 -> R.drawable.gear_d5
-                                GIC.D6 -> R.drawable.gear_d6
-                                GIC.D7 -> R.drawable.gear_d7
-                                else -> R.drawable.gear_n
-                            }
-                            x
-                        }
-                        else -> R.drawable.gear_unknown
-                    }
-                } catch (e: Exception) {
-                    R.drawable.gear_unknown
-                }
-
-                val bat_voltage = EZS_A11.get_u_batt().toFloat() / 10.0
-                val bat_image : Int = when {
-                    bat_voltage < 12.0 ->  R.drawable.bat_red
-                    bat_voltage < 13.0 -> R.drawable.bat_white
-                    else -> R.drawable.bat_green
-                }
-
-                //val cruise_data = getCruiseData()
                 activity?.runOnUiThread {
-                    gear_display.scaleX = 0.75F
-                    gear_display.scaleY = 0.75F
-                    gear_display.setImageResource(resource)
-                    //cruise_img.setImageResource(cruise_data.first)
-                    //cruise_text.text = cruise_data.second
-                    bat_img.setImageResource(bat_image)
-                    bat_text.text = String.format("%2.2f V", bat_voltage)
+                    if (BTMusic.isPlaying()) {
+                        trackName.text = "Playing ${BTMusic.getTrackName()} by ${BTMusic.getTrackArtist()}"
+                    } else {
+                        trackName.text = "Not Playing BT"
+                    }
                 }
             }
-        }, 0, 200)
+        }, 0, 250)
     }
 }

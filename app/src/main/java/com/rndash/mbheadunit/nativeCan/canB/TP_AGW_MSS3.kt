@@ -21,9 +21,9 @@ object TP_AGW_MSS3 {
 	fun get_tp_agw_mss3() : Int = CanBusNative.getECUParameterB(CanBAddrs.TP_AGW_MSS3, 0, 64)
 	
 	/** Sets communication AGW to MSS **/
-	fun set_tp_agw_mss3(f: CanFrame, p: Int) : CanFrame? {
+	fun set_tp_agw_mss3(f: CanFrame, p: Int) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 0, 64, p)
+		CanBusNative.setFrameParameter(f, 0, 64, p)
 	}
 	
 	/**

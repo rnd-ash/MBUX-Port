@@ -52,10 +52,10 @@ class ACDisplay : Fragment() {
                 if(!isInPage){return}
                 activity?.runOnUiThread {
                     fan_speed_text.text = String.format("Fan speed: %3d %%", KLA_A1.get_geb_lstg())
-                    interior_text.text = String.format("Interior temp: %2.1f C", KLA_A1.get_t_innen_kla().toFloat() - 40)
-                    exterior_text.text = String.format("Exterior temp: %2.1f C", SAM_V_A2.get_t_aussen_b().toFloat() - 40)
-                    //rl_window_text.text = String.format("%3d %%", THL_A1.get_feste_hl())
-                    //rr_window_text.text = String.format("%3d %%", THR_A1.get_feste_hr())
+                    interior_text.text = String.format("Interior temp: %2.1f C", (KLA_A1.get_t_innen_kla().toFloat() / 2.0) - 40)
+                    exterior_text.text = String.format("Exterior temp: %2.1f C", SAM_V_A2.get_t_aussen_b().toFloat() / 4.0)
+                    rl_window_text.text = String.format("%3d %%", THL_A1.get_feste_hl())
+                    rr_window_text.text = String.format("%3d %%", THR_A1.get_feste_hr())
                     fl_window_text.text = String.format("%3d %%", TVL_A3.get_feste_vl())
                     fr_window_text.text = String.format("%3d %%", TVR_A3.get_feste_vr())
                     up_flap_pos.text = "Windshield: ${KLA_A1.get_lko_vorn()}"

@@ -1,11 +1,13 @@
 package com.rndash.mbheadunit
 
+import android.os.Process
 import android.util.Log
 import com.hoho.android.usbserial.driver.UsbSerialPort
 import com.hoho.android.usbserial.util.SerialInputOutputManager
+import com.rndash.mbheadunit.nativeCan.CanBusNative
 import java.nio.ByteBuffer
 
-open class IOManager(readBufSize: Int, private val serialPort: UsbSerialPort, listener: Listener) : SerialInputOutputManager(serialPort, listener) {
+open class IOManager(readBufSize: Int, private val serialPort: UsbSerialPort) : SerialInputOutputManager(serialPort, null) {
     enum class ManagerState {
         STOPPED,
         RUNNING,
@@ -24,6 +26,7 @@ open class IOManager(readBufSize: Int, private val serialPort: UsbSerialPort, li
 
 
     override fun run() {
+        Process.setThreadPriority(Process.THREAD_PRIORITY_URGENT_AUDIO)
         synchronized(this) {
             check(state == ManagerState.STOPPED) { "Already running" }
             state = ManagerState.RUNNING
@@ -59,21 +62,11 @@ open class IOManager(readBufSize: Int, private val serialPort: UsbSerialPort, li
 
     fun step() {
         // Handle incoming data.
-
-        // Handle incoming data.
         var len = serialPort.read(readBuffer.array(), 100)
         if (len > 0) {
-            val listener = listener
-            if (listener != null) {
-                val data = ByteArray(len)
-                readBuffer[data, 0, len]
-                listener.onNewData(data)
-            }
+            CanBusNative.sendBytesToBuffer(readBuffer.array(), len)
             readBuffer.clear()
         }
-
-        // Handle outgoing data.
-
         // Handle outgoing data.
         var outBuff: ByteArray? = null
         synchronized(writeBuffer) {

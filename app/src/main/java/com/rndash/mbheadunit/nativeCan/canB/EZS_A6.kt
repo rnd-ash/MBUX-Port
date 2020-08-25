@@ -27,9 +27,9 @@ object EZS_A6 {
 	}
 	
 	/** Sets year of change **/
-	fun set_ver_ae(f: CanFrame, p: VER_AE) : CanFrame? {
+	fun set_ver_ae(f: CanFrame, p: VER_AE) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 6, 2, p.raw)
+		CanBusNative.setFrameParameter(f, 6, 2, p.raw)
 	}
 	
 	/** Gets year specification **/
@@ -43,9 +43,9 @@ object EZS_A6 {
 	}
 	
 	/** Sets year specification **/
-	fun set_ver_jahr(f: CanFrame, p: VER_JAHR) : CanFrame? {
+	fun set_ver_jahr(f: CanFrame, p: VER_JAHR) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 1, 5, p.raw)
+		CanBusNative.setFrameParameter(f, 1, 5, p.raw)
 	}
 	
 	/** Gets Tire pressure module available **/
@@ -58,9 +58,9 @@ object EZS_A6 {
 	}
 	
 	/** Sets Tire pressure module available **/
-	fun set_tpm_vh(f: CanFrame, p: TPM_VH) : CanFrame? {
+	fun set_tpm_vh(f: CanFrame, p: TPM_VH) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 30, 2, p.raw)
+		CanBusNative.setFrameParameter(f, 30, 2, p.raw)
 	}
 	
 	/**

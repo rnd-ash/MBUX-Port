@@ -21,27 +21,27 @@ object SAM_V_A3 {
 	fun get_rs_akt() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.SAM_V_A3, 7, 1) != 0
 	
 	/** Sets rain sensor activated **/
-	fun set_rs_akt(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_rs_akt(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 7, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 7, 1, if(p) 1 else 0)
 	}
 	
 	/** Gets wiper outside parking position **/
 	fun get_kl_31b_ein() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.SAM_V_A3, 6, 1) != 0
 	
 	/** Sets wiper outside parking position **/
-	fun set_kl_31b_ein(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_kl_31b_ein(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 6, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 6, 1, if(p) 1 else 0)
 	}
 	
 	/** Gets washing activated **/
 	fun get_kl_86_ein() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.SAM_V_A3, 5, 1) != 0
 	
 	/** Sets washing activated **/
-	fun set_kl_86_ein(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_kl_86_ein(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 5, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 5, 1, if(p) 1 else 0)
 	}
 	
 	/** Gets configuration of rain sensor **/
@@ -58,81 +58,81 @@ object SAM_V_A3 {
 	}
 	
 	/** Sets configuration of rain sensor **/
-	fun set_konfig_rs(f: CanFrame, p: KONFIG_RS) : CanFrame? {
+	fun set_konfig_rs(f: CanFrame, p: KONFIG_RS) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 2, 3, p.raw)
+		CanBusNative.setFrameParameter(f, 2, 3, p.raw)
 	}
 	
 	/** Gets Parity from bit 0 to 6 (even) **/
 	fun get_parity_sam_v() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.SAM_V_A3, 0, 1) != 0
 	
 	/** Sets Parity from bit 0 to 6 (even) **/
-	fun set_parity_sam_v(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_parity_sam_v(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 0, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 0, 1, if(p) 1 else 0)
 	}
 	
 	/** Gets rain sensor on / off (position interval) **/
 	fun get_rs_int() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.SAM_V_A3, 15, 1) != 0
 	
 	/** Sets rain sensor on / off (position interval) **/
-	fun set_rs_int(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_rs_int(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 15, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 15, 1, if(p) 1 else 0)
 	}
 	
 	/** Gets wiper outside of parking position **/
 	fun get_kl_31b_rs() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.SAM_V_A3, 14, 1) != 0
 	
 	/** Sets wiper outside of parking position **/
-	fun set_kl_31b_rs(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_kl_31b_rs(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 14, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 14, 1, if(p) 1 else 0)
 	}
 	
 	/** Gets washing activated **/
 	fun get_kl_86_rs() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.SAM_V_A3, 13, 1) != 0
 	
 	/** Sets washing activated **/
-	fun set_kl_86_rs(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_kl_86_rs(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 13, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 13, 1, if(p) 1 else 0)
 	}
 	
 	/** Gets SAM_V initialization **/
 	fun get_sam_v_init() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.SAM_V_A3, 12, 1) != 0
 	
 	/** Sets SAM_V initialization **/
-	fun set_sam_v_init(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_sam_v_init(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 12, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 12, 1, if(p) 1 else 0)
 	}
 	
 	/** Gets rain sensor operation not possible **/
 	fun get_rs_nm() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.SAM_V_A3, 11, 1) != 0
 	
 	/** Sets rain sensor operation not possible **/
-	fun set_rs_nm(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_rs_nm(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 11, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 11, 1, if(p) 1 else 0)
 	}
 	
 	/** Gets Rain sensor diagnosis **/
 	fun get_diag_rs() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.SAM_V_A3, 10, 1) != 0
 	
 	/** Sets Rain sensor diagnosis **/
-	fun set_diag_rs(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_diag_rs(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 10, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 10, 1, if(p) 1 else 0)
 	}
 	
 	/** Gets byte identifier **/
 	fun get_byte_kenn() : Int = CanBusNative.getECUParameterB(CanBAddrs.SAM_V_A3, 8, 2)
 	
 	/** Sets byte identifier **/
-	fun set_byte_kenn(f: CanFrame, p: Int) : CanFrame? {
+	fun set_byte_kenn(f: CanFrame, p: Int) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 8, 2, p)
+		CanBusNative.setFrameParameter(f, 8, 2, p)
 	}
 	
 	/**

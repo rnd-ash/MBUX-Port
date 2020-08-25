@@ -21,9 +21,9 @@ object SB_A1 {
 	fun get_le_b_ent() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.SB_A1, 4, 1) != 0
 	
 	/** Sets passenger seat backrest unlocked **/
-	fun set_le_b_ent(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_le_b_ent(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 4, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 4, 1, if(p) 1 else 0)
 	}
 	
 	/**

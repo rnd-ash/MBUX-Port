@@ -21,36 +21,36 @@ object MS_312h {
 	fun get_m_sta() : Int = CanBusNative.getECUParameterC(CanCAddrs.MS_312h, 3, 13)
 	
 	/** Sets Static motor torque **/
-	fun set_m_sta(f: CanFrame, p: Int) : CanFrame? {
+	fun set_m_sta(f: CanFrame, p: Int) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 3, 13, p)
+		CanBusNative.setFrameParameter(f, 3, 13, p)
 	}
 	
 	/** Gets Maximum motor torque including dyn. Turbocharger share **/
 	fun get_m_max_atl() : Int = CanBusNative.getECUParameterC(CanCAddrs.MS_312h, 19, 13)
 	
 	/** Sets Maximum motor torque including dyn. Turbocharger share **/
-	fun set_m_max_atl(f: CanFrame, p: Int) : CanFrame? {
+	fun set_m_max_atl(f: CanFrame, p: Int) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 19, 13, p)
+		CanBusNative.setFrameParameter(f, 19, 13, p)
 	}
 	
 	/** Gets maximum motor torque **/
 	fun get_m_max() : Int = CanBusNative.getECUParameterC(CanCAddrs.MS_312h, 35, 13)
 	
 	/** Sets maximum motor torque **/
-	fun set_m_max(f: CanFrame, p: Int) : CanFrame? {
+	fun set_m_max(f: CanFrame, p: Int) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 35, 13, p)
+		CanBusNative.setFrameParameter(f, 35, 13, p)
 	}
 	
 	/** Gets minimum motor torque **/
 	fun get_m_min() : Int = CanBusNative.getECUParameterC(CanCAddrs.MS_312h, 51, 13)
 	
 	/** Sets minimum motor torque **/
-	fun set_m_min(f: CanFrame, p: Int) : CanFrame? {
+	fun set_m_min(f: CanFrame, p: Int) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 51, 13, p)
+		CanBusNative.setFrameParameter(f, 51, 13, p)
 	}
 	
 	/**

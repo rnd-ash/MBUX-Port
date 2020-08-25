@@ -69,11 +69,9 @@ void loop() {
         {
         case 'C':
             canC->sendMessage(&io_can_frame);
-            writeFrame('C', &io_can_frame);
             break;
         case 'B':
             canB->sendMessage(&io_can_frame);
-            writeFrame('B', &io_can_frame);
             break;
         default:
             break;

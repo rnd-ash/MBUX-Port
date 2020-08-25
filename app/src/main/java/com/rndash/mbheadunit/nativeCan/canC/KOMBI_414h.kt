@@ -21,9 +21,9 @@ object KOMBI_414h {
 	fun get_t_aussen_k() : Int = CanBusNative.getECUParameterC(CanCAddrs.KOMBI_414h, 0, 8)
 	
 	/** Sets filtered outside temperature combi **/
-	fun set_t_aussen_k(f: CanFrame, p: Int) : CanFrame? {
+	fun set_t_aussen_k(f: CanFrame, p: Int) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 0, 8, p)
+		CanBusNative.setFrameParameter(f, 0, 8, p)
 	}
 	
 	/**

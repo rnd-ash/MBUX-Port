@@ -29,18 +29,18 @@ object WSS_A1 {
 	}
 	
 	/** Sets Weight classification passenger **/
-	fun set_wss_psg(f: CanFrame, p: WSS_PSG) : CanFrame? {
+	fun set_wss_psg(f: CanFrame, p: WSS_PSG) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 5, 3, p.raw)
+		CanBusNative.setFrameParameter(f, 5, 3, p.raw)
 	}
 	
 	/** Gets Weight classification passenger fault **/
 	fun get_wss_psg_fault() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.WSS_A1, 4, 1) != 0
 	
 	/** Sets Weight classification passenger fault **/
-	fun set_wss_psg_fault(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_wss_psg_fault(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 4, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 4, 1, if(p) 1 else 0)
 	}
 	
 	/** Gets Passenger Detection Fast **/
@@ -53,9 +53,9 @@ object WSS_A1 {
 	}
 	
 	/** Sets Passenger Detection Fast **/
-	fun set_psg_detect_fast(f: CanFrame, p: PSG_DETECT_FAST) : CanFrame? {
+	fun set_psg_detect_fast(f: CanFrame, p: PSG_DETECT_FAST) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 2, 2, p.raw)
+		CanBusNative.setFrameParameter(f, 2, 2, p.raw)
 	}
 	
 	/** Gets WSS Identification **/
@@ -69,9 +69,9 @@ object WSS_A1 {
 	}
 	
 	/** Sets WSS Identification **/
-	fun set_wss_id(f: CanFrame, p: WSS_ID) : CanFrame? {
+	fun set_wss_id(f: CanFrame, p: WSS_ID) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 16, 8, p.raw)
+		CanBusNative.setFrameParameter(f, 16, 8, p.raw)
 	}
 	
 	/** Gets WSS display in the combi **/
@@ -84,9 +84,9 @@ object WSS_A1 {
 	}
 	
 	/** Sets WSS display in the combi **/
-	fun set_wss_anz(f: CanFrame, p: WSS_ANZ) : CanFrame? {
+	fun set_wss_anz(f: CanFrame, p: WSS_ANZ) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 30, 2, p.raw)
+		CanBusNative.setFrameParameter(f, 30, 2, p.raw)
 	}
 	
 	/**

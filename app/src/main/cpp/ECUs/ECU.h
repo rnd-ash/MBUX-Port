@@ -46,7 +46,7 @@ public:
         }
         // Shortcut for booleans - just check 1 bit
         if (len == 1) {
-            return (this->data.data[offset / 8] >> offset % 8) & 1;
+            return (this->data.data[offset / 8] >> (7 - (offset % 8))) & 1;
         }
         int start = offset / 8;
         int end = (offset+len-1) / 8; //-1 here as we start inclusive of start

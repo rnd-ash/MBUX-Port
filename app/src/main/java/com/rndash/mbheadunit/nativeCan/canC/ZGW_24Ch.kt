@@ -21,18 +21,18 @@ object ZGW_24Ch {
 	fun get_abl_def_f_l() : Boolean = CanBusNative.getECUParameterC(CanCAddrs.ZGW_24Ch, 39, 1) != 0
 	
 	/** Sets low beam defective driver / left (depending on BR) **/
-	fun set_abl_def_f_l(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_abl_def_f_l(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 39, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 39, 1, if(p) 1 else 0)
 	}
 	
 	/** Gets dipped beam defective passenger / right (depending on BR) **/
 	fun get_abl_def_bf_r() : Boolean = CanBusNative.getECUParameterC(CanCAddrs.ZGW_24Ch, 38, 1) != 0
 	
 	/** Sets dipped beam defective passenger / right (depending on BR) **/
-	fun set_abl_def_bf_r(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_abl_def_bf_r(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 38, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 38, 1, if(p) 1 else 0)
 	}
 	
 	/**

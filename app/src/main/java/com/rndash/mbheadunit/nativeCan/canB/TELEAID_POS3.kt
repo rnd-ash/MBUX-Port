@@ -21,54 +21,54 @@ object TELEAID_POS3 {
 	fun get_gps_date_year() : Int = CanBusNative.getECUParameterB(CanBAddrs.TELEAID_POS3, 0, 16)
 	
 	/** Sets GPS date year  **/
-	fun set_gps_date_year(f: CanFrame, p: Int) : CanFrame? {
+	fun set_gps_date_year(f: CanFrame, p: Int) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 0, 16, p)
+		CanBusNative.setFrameParameter(f, 0, 16, p)
 	}
 	
 	/** Gets GPS date month  **/
 	fun get_gps_date_month() : Int = CanBusNative.getECUParameterB(CanBAddrs.TELEAID_POS3, 16, 8)
 	
 	/** Sets GPS date month  **/
-	fun set_gps_date_month(f: CanFrame, p: Int) : CanFrame? {
+	fun set_gps_date_month(f: CanFrame, p: Int) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 16, 8, p)
+		CanBusNative.setFrameParameter(f, 16, 8, p)
 	}
 	
 	/** Gets GPS date day  **/
 	fun get_gps_date_day() : Int = CanBusNative.getECUParameterB(CanBAddrs.TELEAID_POS3, 24, 8)
 	
 	/** Sets GPS date day  **/
-	fun set_gps_date_day(f: CanFrame, p: Int) : CanFrame? {
+	fun set_gps_date_day(f: CanFrame, p: Int) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 24, 8, p)
+		CanBusNative.setFrameParameter(f, 24, 8, p)
 	}
 	
 	/** Gets GPS UTC hour  **/
 	fun get_gps_utc_hour() : Int = CanBusNative.getECUParameterB(CanBAddrs.TELEAID_POS3, 32, 8)
 	
 	/** Sets GPS UTC hour  **/
-	fun set_gps_utc_hour(f: CanFrame, p: Int) : CanFrame? {
+	fun set_gps_utc_hour(f: CanFrame, p: Int) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 32, 8, p)
+		CanBusNative.setFrameParameter(f, 32, 8, p)
 	}
 	
 	/** Gets GPS UTC minute  **/
 	fun get_gps_utc_minute() : Int = CanBusNative.getECUParameterB(CanBAddrs.TELEAID_POS3, 40, 8)
 	
 	/** Sets GPS UTC minute  **/
-	fun set_gps_utc_minute(f: CanFrame, p: Int) : CanFrame? {
+	fun set_gps_utc_minute(f: CanFrame, p: Int) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 40, 8, p)
+		CanBusNative.setFrameParameter(f, 40, 8, p)
 	}
 	
 	/** Gets GPS UTC second  **/
 	fun get_gps_utc_second() : Int = CanBusNative.getECUParameterB(CanBAddrs.TELEAID_POS3, 48, 16)
 	
 	/** Sets GPS UTC second  **/
-	fun set_gps_utc_second(f: CanFrame, p: Int) : CanFrame? {
+	fun set_gps_utc_second(f: CanFrame, p: Int) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 48, 16, p)
+		CanBusNative.setFrameParameter(f, 48, 16, p)
 	}
 	
 	/**

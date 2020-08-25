@@ -21,54 +21,54 @@ object GPS_A2 {
 	fun get_utc_years() : Int = CanBusNative.getECUParameterB(CanBAddrs.GPS_A2, 0, 16)
 	
 	/** Sets UTC years  **/
-	fun set_utc_years(f: CanFrame, p: Int) : CanFrame? {
+	fun set_utc_years(f: CanFrame, p: Int) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 0, 16, p)
+		CanBusNative.setFrameParameter(f, 0, 16, p)
 	}
 	
 	/** Gets UTC months  **/
 	fun get_utc_months() : Int = CanBusNative.getECUParameterB(CanBAddrs.GPS_A2, 16, 8)
 	
 	/** Sets UTC months  **/
-	fun set_utc_months(f: CanFrame, p: Int) : CanFrame? {
+	fun set_utc_months(f: CanFrame, p: Int) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 16, 8, p)
+		CanBusNative.setFrameParameter(f, 16, 8, p)
 	}
 	
 	/** Gets UTC days  **/
 	fun get_utc_days() : Int = CanBusNative.getECUParameterB(CanBAddrs.GPS_A2, 24, 8)
 	
 	/** Sets UTC days  **/
-	fun set_utc_days(f: CanFrame, p: Int) : CanFrame? {
+	fun set_utc_days(f: CanFrame, p: Int) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 24, 8, p)
+		CanBusNative.setFrameParameter(f, 24, 8, p)
 	}
 	
 	/** Gets UTC hours  **/
 	fun get_utc_hours() : Int = CanBusNative.getECUParameterB(CanBAddrs.GPS_A2, 32, 8)
 	
 	/** Sets UTC hours  **/
-	fun set_utc_hours(f: CanFrame, p: Int) : CanFrame? {
+	fun set_utc_hours(f: CanFrame, p: Int) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 32, 8, p)
+		CanBusNative.setFrameParameter(f, 32, 8, p)
 	}
 	
 	/** Gets UTC minutes  **/
 	fun get_utc_minutes() : Int = CanBusNative.getECUParameterB(CanBAddrs.GPS_A2, 40, 8)
 	
 	/** Sets UTC minutes  **/
-	fun set_utc_minutes(f: CanFrame, p: Int) : CanFrame? {
+	fun set_utc_minutes(f: CanFrame, p: Int) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 40, 8, p)
+		CanBusNative.setFrameParameter(f, 40, 8, p)
 	}
 	
 	/** Gets UTC seconds  **/
 	fun get_utc_seconds() : Int = CanBusNative.getECUParameterB(CanBAddrs.GPS_A2, 48, 16)
 	
 	/** Sets UTC seconds  **/
-	fun set_utc_seconds(f: CanFrame, p: Int) : CanFrame? {
+	fun set_utc_seconds(f: CanFrame, p: Int) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 48, 16, p)
+		CanBusNative.setFrameParameter(f, 48, 16, p)
 	}
 	
 	/**

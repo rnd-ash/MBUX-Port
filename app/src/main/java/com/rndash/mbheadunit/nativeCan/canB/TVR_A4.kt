@@ -21,9 +21,9 @@ object TVR_A4 {
 	fun get_zbc_tvr() : Int = CanBusNative.getECUParameterB(CanBAddrs.TVR_A4, 0, 64)
 	
 	/** Sets Access authorization code **/
-	fun set_zbc_tvr(f: CanFrame, p: Int) : CanFrame? {
+	fun set_zbc_tvr(f: CanFrame, p: Int) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 0, 64, p)
+		CanBusNative.setFrameParameter(f, 0, 64, p)
 	}
 	
 	/**

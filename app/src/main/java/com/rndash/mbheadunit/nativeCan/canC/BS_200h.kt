@@ -21,63 +21,63 @@ object BS_200h {
 	fun get_bbv_kl() : Boolean = CanBusNative.getECUParameterC(CanCAddrs.BS_200h, 7, 1) != 0
 	
 	/** Sets Brake pad wear indicator lamp **/
-	fun set_bbv_kl(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_bbv_kl(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 7, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 7, 1, if(p) 1 else 0)
 	}
 	
 	/** Gets ABS defective control lamp **/
 	fun get_abs_kl() : Boolean = CanBusNative.getECUParameterC(CanCAddrs.BS_200h, 5, 1) != 0
 	
 	/** Sets ABS defective control lamp **/
-	fun set_abs_kl(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_abs_kl(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 5, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 5, 1, if(p) 1 else 0)
 	}
 	
 	/** Gets ESP defective control lamp **/
 	fun get_esp_kl() : Boolean = CanBusNative.getECUParameterC(CanCAddrs.BS_200h, 4, 1) != 0
 	
 	/** Sets ESP defective control lamp **/
-	fun set_esp_kl(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_esp_kl(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 4, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 4, 1, if(p) 1 else 0)
 	}
 	
 	/** Gets ESP info lamp steady light **/
 	fun get_esp_info_dl() : Boolean = CanBusNative.getECUParameterC(CanCAddrs.BS_200h, 3, 1) != 0
 	
 	/** Sets ESP info lamp steady light **/
-	fun set_esp_info_dl(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_esp_info_dl(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 3, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 3, 1, if(p) 1 else 0)
 	}
 	
 	/** Gets ESP info lamp flashing light **/
 	fun get_esp_info_bl() : Boolean = CanBusNative.getECUParameterC(CanCAddrs.BS_200h, 2, 1) != 0
 	
 	/** Sets ESP info lamp flashing light **/
-	fun set_esp_info_bl(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_esp_info_bl(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 2, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 2, 1, if(p) 1 else 0)
 	}
 	
 	/** Gets BAS defective control lamp **/
 	fun get_bas_kl() : Boolean = CanBusNative.getECUParameterC(CanCAddrs.BS_200h, 1, 1) != 0
 	
 	/** Sets BAS defective control lamp **/
-	fun set_bas_kl(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_bas_kl(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 1, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 1, 1, if(p) 1 else 0)
 	}
 	
 	/** Gets brake defective control lamp (EBV_KL at 463/461 / NCV2) **/
 	fun get_bre_kl() : Boolean = CanBusNative.getECUParameterC(CanCAddrs.BS_200h, 0, 1) != 0
 	
 	/** Sets brake defective control lamp (EBV_KL at 463/461 / NCV2) **/
-	fun set_bre_kl(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_bre_kl(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 0, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 0, 1, if(p) 1 else 0)
 	}
 	
 	/** Gets brake light switch **/
@@ -90,36 +90,36 @@ object BS_200h {
 	}
 	
 	/** Sets brake light switch **/
-	fun set_bls(f: CanFrame, p: BLS) : CanFrame? {
+	fun set_bls(f: CanFrame, p: BLS) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 14, 2, p.raw)
+		CanBusNative.setFrameParameter(f, 14, 2, p.raw)
 	}
 	
 	/** Gets message counter **/
 	fun get_bz200h() : Int = CanBusNative.getECUParameterC(CanCAddrs.BS_200h, 10, 4)
 	
 	/** Sets message counter **/
-	fun set_bz200h(f: CanFrame, p: Int) : CanFrame? {
+	fun set_bz200h(f: CanFrame, p: Int) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 10, 4, p)
+		CanBusNative.setFrameParameter(f, 10, 4, p)
 	}
 	
 	/** Gets BLS Parity (even parity) **/
 	fun get_bls_pa() : Boolean = CanBusNative.getECUParameterC(CanCAddrs.BS_200h, 9, 1) != 0
 	
 	/** Sets BLS Parity (even parity) **/
-	fun set_bls_pa(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_bls_pa(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 9, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 9, 1, if(p) 1 else 0)
 	}
 	
 	/** Gets brake light suppression (EBV_KL at 163 / T0 / T1N) **/
 	fun get_bls_unt() : Boolean = CanBusNative.getECUParameterC(CanCAddrs.BS_200h, 8, 1) != 0
 	
 	/** Sets brake light suppression (EBV_KL at 163 / T0 / T1N) **/
-	fun set_bls_unt(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_bls_unt(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 8, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 8, 1, if(p) 1 else 0)
 	}
 	
 	/** Gets direction of rotation of front left wheel **/
@@ -132,18 +132,18 @@ object BS_200h {
 	}
 	
 	/** Sets direction of rotation of front left wheel **/
-	fun set_drtgvl(f: CanFrame, p: DRTGVL) : CanFrame? {
+	fun set_drtgvl(f: CanFrame, p: DRTGVL) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 16, 2, p.raw)
+		CanBusNative.setFrameParameter(f, 16, 2, p.raw)
 	}
 	
 	/** Gets wheel speed front left **/
 	fun get_dvl() : Int = CanBusNative.getECUParameterC(CanCAddrs.BS_200h, 18, 14)
 	
 	/** Sets wheel speed front left **/
-	fun set_dvl(f: CanFrame, p: Int) : CanFrame? {
+	fun set_dvl(f: CanFrame, p: Int) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 18, 14, p)
+		CanBusNative.setFrameParameter(f, 18, 14, p)
 	}
 	
 	/** Gets direction of rotation of the front right wheel **/
@@ -156,18 +156,18 @@ object BS_200h {
 	}
 	
 	/** Sets direction of rotation of the front right wheel **/
-	fun set_drtgvr(f: CanFrame, p: DRTGVR) : CanFrame? {
+	fun set_drtgvr(f: CanFrame, p: DRTGVR) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 32, 2, p.raw)
+		CanBusNative.setFrameParameter(f, 32, 2, p.raw)
 	}
 	
 	/** Gets wheel speed front right **/
 	fun get_dvr() : Int = CanBusNative.getECUParameterC(CanCAddrs.BS_200h, 34, 14)
 	
 	/** Sets wheel speed front right **/
-	fun set_dvr(f: CanFrame, p: Int) : CanFrame? {
+	fun set_dvr(f: CanFrame, p: Int) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 34, 14, p)
+		CanBusNative.setFrameParameter(f, 34, 14, p)
 	}
 	
 	/** Gets direction of rotation wheel left for cruise control **/
@@ -180,18 +180,18 @@ object BS_200h {
 	}
 	
 	/** Sets direction of rotation wheel left for cruise control **/
-	fun set_drtgtm(f: CanFrame, p: DRTGTM) : CanFrame? {
+	fun set_drtgtm(f: CanFrame, p: DRTGTM) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 48, 2, p.raw)
+		CanBusNative.setFrameParameter(f, 48, 2, p.raw)
 	}
 	
 	/** Gets Left wheel speed for cruise control **/
 	fun get_tm_dl() : Int = CanBusNative.getECUParameterC(CanCAddrs.BS_200h, 50, 14)
 	
 	/** Sets Left wheel speed for cruise control **/
-	fun set_tm_dl(f: CanFrame, p: Int) : CanFrame? {
+	fun set_tm_dl(f: CanFrame, p: Int) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 50, 14, p)
+		CanBusNative.setFrameParameter(f, 50, 14, p)
 	}
 	
 	/**

@@ -21,27 +21,27 @@ object ARCADE_A2 {
 	fun get_crash_c() : Boolean = CanBusNative.getECUParameterC(CanCAddrs.ARCADE_A2, 5, 1) != 0
 	
 	/** Sets frontal event 5 **/
-	fun set_crash_c(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_crash_c(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 5, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 5, 1, if(p) 1 else 0)
 	}
 	
 	/** Gets frontal event 2 **/
 	fun get_crash_f() : Boolean = CanBusNative.getECUParameterC(CanCAddrs.ARCADE_A2, 2, 1) != 0
 	
 	/** Sets frontal event 2 **/
-	fun set_crash_f(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_crash_f(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 2, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 2, 1, if(p) 1 else 0)
 	}
 	
 	/** Gets Confirm bit for all crash events, toggling **/
 	fun get_conf_crash() : Boolean = CanBusNative.getECUParameterC(CanCAddrs.ARCADE_A2, 0, 1) != 0
 	
 	/** Sets Confirm bit for all crash events, toggling **/
-	fun set_conf_crash(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_conf_crash(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 0, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 0, 1, if(p) 1 else 0)
 	}
 	
 	/**

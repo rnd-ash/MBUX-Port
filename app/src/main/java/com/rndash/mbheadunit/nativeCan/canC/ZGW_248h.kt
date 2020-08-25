@@ -21,27 +21,27 @@ object ZGW_248h {
 	fun get_abl_ein() : Boolean = CanBusNative.getECUParameterC(CanCAddrs.ZGW_248h, 3, 1) != 0
 	
 	/** Sets switch on low beam **/
-	fun set_abl_ein(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_abl_ein(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 3, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 3, 1, if(p) 1 else 0)
 	}
 	
 	/** Gets Start Xenon4 diagnostic procedure on the driver's side **/
 	fun get_diag_x4_f() : Boolean = CanBusNative.getECUParameterC(CanCAddrs.ZGW_248h, 1, 1) != 0
 	
 	/** Sets Start Xenon4 diagnostic procedure on the driver's side **/
-	fun set_diag_x4_f(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_diag_x4_f(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 1, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 1, 1, if(p) 1 else 0)
 	}
 	
 	/** Gets Start Xenon4 diagnostic procedure on the passenger side **/
 	fun get_diag_x4_b() : Boolean = CanBusNative.getECUParameterC(CanCAddrs.ZGW_248h, 0, 1) != 0
 	
 	/** Sets Start Xenon4 diagnostic procedure on the passenger side **/
-	fun set_diag_x4_b(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_diag_x4_b(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 0, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 0, 1, if(p) 1 else 0)
 	}
 	
 	/** Gets Trailer operation detected **/
@@ -54,27 +54,27 @@ object ZGW_248h {
 	}
 	
 	/** Sets Trailer operation detected **/
-	fun set_anh_erk2(f: CanFrame, p: ANH_ERK2) : CanFrame? {
+	fun set_anh_erk2(f: CanFrame, p: ANH_ERK2) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 14, 2, p.raw)
+		CanBusNative.setFrameParameter(f, 14, 2, p.raw)
 	}
 	
 	/** Gets Auxiliary water pump is running **/
 	fun get_zwp_lft() : Boolean = CanBusNative.getECUParameterC(CanCAddrs.ZGW_248h, 13, 1) != 0
 	
 	/** Sets Auxiliary water pump is running **/
-	fun set_zwp_lft(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_zwp_lft(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 13, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 13, 1, if(p) 1 else 0)
 	}
 	
 	/** Gets AFL request: switch on low beam **/
 	fun get_afl_abl_ein() : Boolean = CanBusNative.getECUParameterC(CanCAddrs.ZGW_248h, 12, 1) != 0
 	
 	/** Sets AFL request: switch on low beam **/
-	fun set_afl_abl_ein(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_afl_abl_ein(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 12, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 12, 1, if(p) 1 else 0)
 	}
 	
 	/**

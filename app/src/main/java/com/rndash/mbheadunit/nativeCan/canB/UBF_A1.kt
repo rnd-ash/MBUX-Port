@@ -21,18 +21,18 @@ object UBF_A1 {
 	fun get_fu_frsp_bet() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.UBF_A1, 7, 1) != 0
 	
 	/** Sets Radio activation button pressed **/
-	fun set_fu_frsp_bet(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_fu_frsp_bet(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 7, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 7, 1, if(p) 1 else 0)
 	}
 	
 	/** Gets ASG sport mode on / off activated (ST2_LED_DL if ABC is available) **/
 	fun get_asg_sport_bet() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.UBF_A1, 4, 1) != 0
 	
 	/** Sets ASG sport mode on / off activated (ST2_LED_DL if ABC is available) **/
-	fun set_asg_sport_bet(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_asg_sport_bet(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 4, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 4, 1, if(p) 1 else 0)
 	}
 	
 	/** Gets ART distance warning on / off activated **/
@@ -45,45 +45,45 @@ object UBF_A1 {
 	}
 	
 	/** Sets ART distance warning on / off activated **/
-	fun set_art_abw_bet(f: CanFrame, p: ART_ABW_BET) : CanFrame? {
+	fun set_art_abw_bet(f: CanFrame, p: ART_ABW_BET) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 2, 2, p.raw)
+		CanBusNative.setFrameParameter(f, 2, 2, p.raw)
 	}
 	
 	/** Gets distance factor **/
 	fun get_art_abstand() : Int = CanBusNative.getECUParameterB(CanBAddrs.UBF_A1, 8, 8)
 	
 	/** Sets distance factor **/
-	fun set_art_abstand(f: CanFrame, p: Int) : CanFrame? {
+	fun set_art_abstand(f: CanFrame, p: Int) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 8, 8, p)
+		CanBusNative.setFrameParameter(f, 8, 8, p)
 	}
 	
 	/** Gets Authority radio button pressed **/
 	fun get_bh_funk_bet() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.UBF_A1, 18, 1) != 0
 	
 	/** Sets Authority radio button pressed **/
-	fun set_bh_funk_bet(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_bh_funk_bet(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 18, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 18, 1, if(p) 1 else 0)
 	}
 	
 	/** Gets LEDs for auxiliary heater defective **/
 	fun get_led_sth_def() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.UBF_A1, 26, 1) != 0
 	
 	/** Sets LEDs for auxiliary heater defective **/
-	fun set_led_sth_def(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_led_sth_def(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 26, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 26, 1, if(p) 1 else 0)
 	}
 	
 	/** Gets Auxiliary heating switch actuated **/
 	fun get_sthl_bet() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.UBF_A1, 24, 1) != 0
 	
 	/** Sets Auxiliary heating switch actuated **/
-	fun set_sthl_bet(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_sthl_bet(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 24, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 24, 1, if(p) 1 else 0)
 	}
 	
 	/**

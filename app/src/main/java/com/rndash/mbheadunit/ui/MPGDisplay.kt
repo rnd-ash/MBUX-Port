@@ -7,6 +7,10 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.rndash.mbheadunit.R
+import com.rndash.mbheadunit.nativeCan.canB.KOMBI_A1
+import com.rndash.mbheadunit.nativeCan.canB.SAM_H_A2
+import com.rndash.mbheadunit.nativeCan.canB.SAM_V_A2
+import com.rndash.mbheadunit.nativeCan.canC.MS_608h
 import java.util.*
 
 @ExperimentalUnsignedTypes
@@ -33,21 +37,17 @@ class MPGDisplay : Fragment() {
 
         Timer().schedule(object: TimerTask() {
             override fun run() {
-                /*
                 if (!isInPage){return}
-                val consumedLitres = CanBusC.getFuelConsumedTotal() / 1000000.0 //ul  to L
+                //val consumedLitres = CanBusC.getFuelConsumedTotal() / 1000000.0 //ul  to L
                 activity?.runOnUiThread {
-                    if(CanBusC.isEngineOn()) {
-                        fuel_consumed_curr.text = String.format("Fuel usage: %4d ul/s", CanBusC.ms608.getFuelConsumption())
-                        fuel_usage.text = String.format("Fuel used: %2.2f L", consumedLitres)
-                        mpg_text.text = String.format("Current: %2.1f MPG", CanBusC.getMPG())
-                    } else {
-                        fuel_consumed_curr.text = "Fuel usage: 0.0 ul/s"
-                        mpg_text.text = "Current: 0.0 MPG"
-                    }
+                    fuel_consumed_curr.text = String.format("Fuel usage: %4d ul/s", MS_608h.get_vb())
+                    fuel_usage.text = String.format("Tank Level: %2.1f%% (R: %3d%% - L: %3d%%)",
+                            SAM_H_A2.get_tank_fs_b().toFloat() / 2,
+                            SAM_H_A2.get_tank_ge_re(),
+                            SAM_H_A2.get_tank_ge_li()
+                    )
+                        //mpg_text.text = String.format("Current: %2.1f MPG", CanBusC.getMPG()
                 }
-
-                 */
             }
         }, 0, 500)
     }

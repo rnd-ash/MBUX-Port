@@ -21,90 +21,90 @@ object TVR_A3 {
 	fun get_hfs_rl() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.TVR_A3, 4, 1) != 0
 	
 	/** Sets trunk lid remote locking **/
-	fun set_hfs_rl(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_hfs_rl(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 4, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 4, 1, if(p) 1 else 0)
 	}
 	
 	/** Gets additional right turn signal defective **/
 	fun get_zblr_def() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.TVR_A3, 3, 1) != 0
 	
 	/** Sets additional right turn signal defective **/
-	fun set_zblr_def(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_zblr_def(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 3, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 3, 1, if(p) 1 else 0)
 	}
 	
 	/** Gets parental controls on **/
 	fun get_kisi_ein_rl() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.TVR_A3, 2, 1) != 0
 	
 	/** Sets parental controls on **/
-	fun set_kisi_ein_rl(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_kisi_ein_rl(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 2, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 2, 1, if(p) 1 else 0)
 	}
 	
 	/** Gets trunk lid remote release **/
 	fun get_hfe_rl() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.TVR_A3, 1, 1) != 0
 	
 	/** Sets trunk lid remote release **/
-	fun set_hfe_rl(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_hfe_rl(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 1, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 1, 1, if(p) 1 else 0)
 	}
 	
 	/** Gets Mirror adjustment switch. in position. left (not 203) **/
 	fun get_spvs_bf_rl() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.TVR_A3, 0, 1) != 0
 	
 	/** Sets Mirror adjustment switch. in position. left (not 203) **/
-	fun set_spvs_bf_rl(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_spvs_bf_rl(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 0, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 0, 1, if(p) 1 else 0)
 	}
 	
 	/** Gets Front right window regulator larger short stroke position **/
 	fun get_fvr_kzhb() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.TVR_A3, 11, 1) != 0
 	
 	/** Sets Front right window regulator larger short stroke position **/
-	fun set_fvr_kzhb(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_fvr_kzhb(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 11, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 11, 1, if(p) 1 else 0)
 	}
 	
 	/** Gets window open **/
 	fun get_fvr_auf() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.TVR_A3, 10, 1) != 0
 	
 	/** Sets window open **/
-	fun set_fvr_auf(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_fvr_auf(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 10, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 10, 1, if(p) 1 else 0)
 	}
 	
 	/** Gets Front right window blocked **/
 	fun get_fvr_block() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.TVR_A3, 9, 1) != 0
 	
 	/** Sets Front right window blocked **/
-	fun set_fvr_block(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_fvr_block(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 9, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 9, 1, if(p) 1 else 0)
 	}
 	
 	/** Gets normalized front right window **/
 	fun get_fvr_norm() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.TVR_A3, 8, 1) != 0
 	
 	/** Sets normalized front right window **/
-	fun set_fvr_norm(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_fvr_norm(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 8, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 8, 1, if(p) 1 else 0)
 	}
 	
 	/** Gets window position front right  **/
 	fun get_feste_vr() : Int = CanBusNative.getECUParameterB(CanBAddrs.TVR_A3, 12, 12)
 	
 	/** Sets window position front right  **/
-	fun set_feste_vr(f: CanFrame, p: Int) : CanFrame? {
+	fun set_feste_vr(f: CanFrame, p: Int) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 12, 12, p)
+		CanBusNative.setFrameParameter(f, 12, 12, p)
 	}
 	
 	/**

@@ -27,63 +27,63 @@ object EZS_A7 {
 	}
 	
 	/** Sets Brake light switch status **/
-	fun set_bls_st(f: CanFrame, p: BLS_ST) : CanFrame? {
+	fun set_bls_st(f: CanFrame, p: BLS_ST) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 6, 2, p.raw)
+		CanBusNative.setFrameParameter(f, 6, 2, p.raw)
 	}
 	
 	/** Gets brake light suppression **/
 	fun get_bls_unt() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.EZS_A7, 5, 1) != 0
 	
 	/** Sets brake light suppression **/
-	fun set_bls_unt(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_bls_unt(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 5, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 5, 1, if(p) 1 else 0)
 	}
 	
 	/** Gets switch on additional water pump **/
 	fun get_zwp_ein_ms() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.EZS_A7, 4, 1) != 0
 	
 	/** Sets switch on additional water pump **/
-	fun set_zwp_ein_ms(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_zwp_ein_ms(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 4, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 4, 1, if(p) 1 else 0)
 	}
 	
 	/** Gets motor fan defective control lamp **/
 	fun get_lueft_mot_kl() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.EZS_A7, 3, 1) != 0
 	
 	/** Sets motor fan defective control lamp **/
-	fun set_lueft_mot_kl(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_lueft_mot_kl(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 3, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 3, 1, if(p) 1 else 0)
 	}
 	
 	/** Gets Air conditioning compressor emergency shutdown **/
 	fun get_komp_notaus() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.EZS_A7, 2, 1) != 0
 	
 	/** Sets Air conditioning compressor emergency shutdown **/
-	fun set_komp_notaus(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_komp_notaus(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 2, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 2, 1, if(p) 1 else 0)
 	}
 	
 	/** Gets switch off air conditioning compressor: acceleration **/
 	fun get_komp_baus() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.EZS_A7, 1, 1) != 0
 	
 	/** Sets switch off air conditioning compressor: acceleration **/
-	fun set_komp_baus(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_komp_baus(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 1, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 1, 1, if(p) 1 else 0)
 	}
 	
 	/** Gets idle is stable **/
 	fun get_ll_stbl() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.EZS_A7, 0, 1) != 0
 	
 	/** Sets idle is stable **/
-	fun set_ll_stbl(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_ll_stbl(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 0, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 0, 1, if(p) 1 else 0)
 	}
 	
 	/** Gets gear selector lever position (only NAG) **/
@@ -102,9 +102,9 @@ object EZS_A7 {
 	}
 	
 	/** Sets gear selector lever position (only NAG) **/
-	fun set_whc(f: CanFrame, p: WHC) : CanFrame? {
+	fun set_whc(f: CanFrame, p: WHC) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 12, 4, p.raw)
+		CanBusNative.setFrameParameter(f, 12, 4, p.raw)
 	}
 	
 	/** Gets Status of heating output **/
@@ -117,27 +117,27 @@ object EZS_A7 {
 	}
 	
 	/** Sets Status of heating output **/
-	fun set_hzl_st(f: CanFrame, p: HZL_ST) : CanFrame? {
+	fun set_hzl_st(f: CanFrame, p: HZL_ST) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 10, 2, p.raw)
+		CanBusNative.setFrameParameter(f, 10, 2, p.raw)
 	}
 	
 	/** Gets Parking position engaged **/
 	fun get_p() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.EZS_A7, 9, 1) != 0
 	
 	/** Sets Parking position engaged **/
-	fun set_p(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_p(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 9, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 9, 1, if(p) 1 else 0)
 	}
 	
 	/** Gets reverse gear engaged (all transmissions) **/
 	fun get_rg() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.EZS_A7, 8, 1) != 0
 	
 	/** Sets reverse gear engaged (all transmissions) **/
-	fun set_rg(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_rg(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 8, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 8, 1, if(p) 1 else 0)
 	}
 	
 	/** Gets direction of rotation of front left wheel **/
@@ -150,126 +150,126 @@ object EZS_A7 {
 	}
 	
 	/** Sets direction of rotation of front left wheel **/
-	fun set_drtgvl(f: CanFrame, p: DRTGVL) : CanFrame? {
+	fun set_drtgvl(f: CanFrame, p: DRTGVL) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 16, 2, p.raw)
+		CanBusNative.setFrameParameter(f, 16, 2, p.raw)
 	}
 	
 	/** Gets wheel speed front left  **/
 	fun get_dvl() : Int = CanBusNative.getECUParameterB(CanBAddrs.EZS_A7, 18, 14)
 	
 	/** Sets wheel speed front left  **/
-	fun set_dvl(f: CanFrame, p: Int) : CanFrame? {
+	fun set_dvl(f: CanFrame, p: Int) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 18, 14, p)
+		CanBusNative.setFrameParameter(f, 18, 14, p)
 	}
 	
 	/** Gets clutch pressed **/
 	fun get_kpl() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.EZS_A7, 39, 1) != 0
 	
 	/** Sets clutch pressed **/
-	fun set_kpl(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_kpl(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 39, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 39, 1, if(p) 1 else 0)
 	}
 	
 	/** Gets engine oil temperature too high (overheating) **/
 	fun get_uehitz() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.EZS_A7, 38, 1) != 0
 	
 	/** Sets engine oil temperature too high (overheating) **/
-	fun set_uehitz(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_uehitz(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 38, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 38, 1, if(p) 1 else 0)
 	}
 	
 	/** Gets Brake pad wear indicator lamp **/
 	fun get_bbv_kl() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.EZS_A7, 37, 1) != 0
 	
 	/** Sets Brake pad wear indicator lamp **/
-	fun set_bbv_kl(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_bbv_kl(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 37, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 37, 1, if(p) 1 else 0)
 	}
 	
 	/** Gets ABS defective control lamp **/
 	fun get_abs_kl() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.EZS_A7, 36, 1) != 0
 	
 	/** Sets ABS defective control lamp **/
-	fun set_abs_kl(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_abs_kl(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 36, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 36, 1, if(p) 1 else 0)
 	}
 	
 	/** Gets ESP defective control lamp **/
 	fun get_esp_kl() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.EZS_A7, 35, 1) != 0
 	
 	/** Sets ESP defective control lamp **/
-	fun set_esp_kl(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_esp_kl(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 35, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 35, 1, if(p) 1 else 0)
 	}
 	
 	/** Gets BAS defective control lamp **/
 	fun get_bas_kl() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.EZS_A7, 34, 1) != 0
 	
 	/** Sets BAS defective control lamp **/
-	fun set_bas_kl(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_bas_kl(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 34, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 34, 1, if(p) 1 else 0)
 	}
 	
 	/** Gets Diagnostic control lamp (OBD II) **/
 	fun get_diag_kl() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.EZS_A7, 33, 1) != 0
 	
 	/** Sets Diagnostic control lamp (OBD II) **/
-	fun set_diag_kl(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_diag_kl(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 33, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 33, 1, if(p) 1 else 0)
 	}
 	
 	/** Gets Oil level / oil pressure control lamp **/
 	fun get_oel_kl() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.EZS_A7, 32, 1) != 0
 	
 	/** Sets Oil level / oil pressure control lamp **/
-	fun set_oel_kl(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_oel_kl(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 32, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 32, 1, if(p) 1 else 0)
 	}
 	
 	/** Gets Substitution of right low beam **/
 	fun get_sub_abl_r() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.EZS_A7, 46, 1) != 0
 	
 	/** Sets Substitution of right low beam **/
-	fun set_sub_abl_r(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_sub_abl_r(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 46, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 46, 1, if(p) 1 else 0)
 	}
 	
 	/** Gets Substitution of left low beam **/
 	fun get_sub_abl_l() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.EZS_A7, 45, 1) != 0
 	
 	/** Sets Substitution of left low beam **/
-	fun set_sub_abl_l(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_sub_abl_l(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 45, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 45, 1, if(p) 1 else 0)
 	}
 	
 	/** Gets ART distance warning is switched on **/
 	fun get_art_abw_akt() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.EZS_A7, 44, 1) != 0
 	
 	/** Sets ART distance warning is switched on **/
-	fun set_art_abw_akt(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_art_abw_akt(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 44, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 44, 1, if(p) 1 else 0)
 	}
 	
 	/** Gets emergency braking (brake light flashing) **/
 	fun get_notbre() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.EZS_A7, 43, 1) != 0
 	
 	/** Sets emergency braking (brake light flashing) **/
-	fun set_notbre(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_notbre(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 43, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 43, 1, if(p) 1 else 0)
 	}
 	
 	/** Gets Gear selector lever position (NAG, KSG, CVT) **/
@@ -283,9 +283,9 @@ object EZS_A7 {
 	}
 	
 	/** Sets Gear selector lever position (NAG, KSG, CVT) **/
-	fun set_whst(f: CanFrame, p: WHST) : CanFrame? {
+	fun set_whst(f: CanFrame, p: WHST) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 40, 3, p.raw)
+		CanBusNative.setFrameParameter(f, 40, 3, p.raw)
 	}
 	
 	/**

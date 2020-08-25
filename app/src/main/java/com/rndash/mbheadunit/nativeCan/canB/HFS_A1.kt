@@ -21,9 +21,9 @@ object HFS_A1 {
 	fun get_hd_sich_hfs() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.HFS_A1, 3, 1) != 0
 	
 	/** Sets Close and secure trunk lid actuated **/
-	fun set_hd_sich_hfs(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_hd_sich_hfs(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 3, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 3, 1, if(p) 1 else 0)
 	}
 	
 	/** Gets Status trunk lid **/
@@ -39,9 +39,9 @@ object HFS_A1 {
 	}
 	
 	/** Sets Status trunk lid **/
-	fun set_hd_st(f: CanFrame, p: HD_ST) : CanFrame? {
+	fun set_hd_st(f: CanFrame, p: HD_ST) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 0, 3, p.raw)
+		CanBusNative.setFrameParameter(f, 0, 3, p.raw)
 	}
 	
 	/**

@@ -1,0 +1,2452 @@
+EZS
+	FRAME EZS_A1 (0x0000)
+		B: KL_15c_ein, OFFSET 7 LEN 1 - Klemme 15c ist eingeschaltet
+		B: KL_15R_ein, OFFSET 6 LEN 1 - Klemme 15R ist eingeschaltet
+		B: KL_15_ein, OFFSET 5 LEN 1 - Klemme 15 ist eingeschaltet
+		B: KL_15x_ein, OFFSET 4 LEN 1 - Klemme 15x ist eingeschaltet
+		B: Schlue_st, OFFSET 3 LEN 1 - Schlüssel steckt
+		B: KL_50_ein, OFFSET 1 LEN 1 - Klemme 50 ist eingeschaltet
+		B: KG_KL_akt, OFFSET 0 LEN 1 - Keyless Go Klemmenansteuerung aktiv
+		B: ZV_N_VER_MW_AKT, OFFSET 12 LEN 1 - ZV nicht verriegeln während SBC-Mehrwert aktiv
+		B: Fzg_rech, OFFSET 11 LEN 1 - Meldung: "Fahrzeug rechnet, Bitte warten"
+		B: Appl_aus, OFFSET 10 LEN 1 - Applikations-ID's nicht senden, nur NM-ID's
+		B: Diag_Tgl, OFFSET 9 LEN 1 - Diagnose Togglebit
+		B: Diag_akt, OFFSET 8 LEN 1 - Diagnosemode aktiv (Diag_akt=1 => Zykluszeit=20ms)
+		I: U_Batt, OFFSET 16 LEN 8 - Batteriespannung
+		E: Spei_Nr, OFFSET 29 LEN 3 - Aktuelle Speicherblock-Nummer 
+			RAW: 0 - Speicherblock 1 / SPEICHER1 
+			RAW: 1 - Speicherblock 2 / SPEICHER2 
+			RAW: 2 - Speicherblock 3 / SPEICHER3 
+			RAW: 3 - nicht definiert 
+			RAW: 7 - Signal nicht vorhanden / SNV
+		B: Fern_Alm, OFFSET 28 LEN 1 - Fernauslösung MSS-Alarm
+		B: Pnk_Alm_aus, OFFSET 27 LEN 1 - Panik-Alarm durch Schlüssel ausschalten
+		B: Pnk_Alm_ein, OFFSET 26 LEN 1 - Panik-Alarm durch Schlüssel einschalten
+		B: BS_SL, OFFSET 25 LEN 1 - Bremsschalter für Shift-Lock
+		B: Schlue_neu, OFFSET 24 LEN 1 - Meldung: "Schlüssel erneuern"
+		I: SD_St1, OFFSET 32 LEN 8 - Systemdiagnose Status (R230)
+	FRAME EZS_A2 (0x0002)
+		E: DRTGVL, OFFSET 0 LEN 2 - Drehrichtung Rad vorne links 
+			RAW: 0 - Keine Drehrichtungserkennung / PASSIV 
+			RAW: 1 - Drehrichtung vorwärts / VOR 
+			RAW: 2 - Drehrichtung rückwärts / RUECK 
+			RAW: 3 - Signal nicht vorhanden / SNV
+		I: DVL, OFFSET 2 LEN 14 - Raddrehzahl vorne links
+		I: N_MOT, OFFSET 16 LEN 16 - Motordrehzahl
+		I: T_MOT, OFFSET 32 LEN 8 - Motorkühlmitteltemperatur
+		I: RIZ_VL, OFFSET 40 LEN 8 - Impuls-Ringzähler Rad vorne links (48 pro Umdrehung)
+		I: RIZ_VR, OFFSET 48 LEN 8 - Impuls-Ringzähler Rad vorne rechts (48 pro Umdrehung)
+	FRAME EZS_A3 (0x0001)
+		B: SN1_Sel_EZS, OFFSET 7 LEN 1 - Schloßnuß 1 (öffnen) selektiv
+		B: SN1_Glo_EZS, OFFSET 6 LEN 1 - Schloßnuß 1 (öffnen) global
+		B: SN2_Glo_EZS, OFFSET 5 LEN 1 - Schloßnuß 2 (schließen) global
+		B: HFE_EZS, OFFSET 4 LEN 1 - Heckdeckelfernentriegelung
+		B: BLi_Stat, OFFSET 3 LEN 1 - Blinkerstatus (Rückmeldung öffnen/schließen)
+		E: ZVQ, OFFSET 0 LEN 3 - Quelle ZV-Anforderung 
+			RAW: 0 - Funk-Empfänger (DBE) / FUNK 
+			RAW: 1 - IR-Empfänger (TVL/TVR) / IR 
+			RAW: 2 - Schloßnußtaster (TVL/TVR/HD) / SN 
+			RAW: 3 - Keyless Go / KG 
+			RAW: 7 - Signal nicht vorhanden / SNV
+		B: HD_stop, OFFSET 8 LEN 1 - Heckdeckel stop
+	FRAME EZS_A4 (0x0150)
+		I: Schlue_ID, OFFSET 0 LEN 32 - Identifikation Schlüssel für Vorfilterung
+		I: KM_EZS, OFFSET 32 LEN 24 - Kilometerstand
+	FRAME EZS_A5 (0x001F)
+		B: LL, OFFSET 7 LEN 1 - Linkslenker
+		B: RL, OFFSET 6 LEN 1 - Rechtslenker
+		E: RDK_Ld, OFFSET 4 LEN 2 - RDK-Ländercodierung 
+			RAW: 0 - Welt / RDW 
+			RAW: 1 - USA / USA 
+			RAW: 2 - nicht definiert 
+			RAW: 3 - SG nicht programmiert / SNV
+		E: MSS_Var, OFFSET 1 LEN 3 - MSS-Variantencodierung 
+			RAW: 0 - SG nicht programmiert / SNV 
+			RAW: 1 - Taxi / TAXI 
+			RAW: 2 - Sonderfahrzeug / SONDER
+		B: ABC_VH, OFFSET 15 LEN 1 -  ABC vorhanden
+		B: Ers_Licht, OFFSET 14 LEN 1 - Komplettes Ersatzlicht erlaubt
+		E: Licht_Ld, OFFSET 12 LEN 2 - Ländercodierung Lichtsteuerung 
+			RAW: 0 - Kanada / CAN 
+			RAW: 1 - Japan / JAP 
+			RAW: 2 - USA / USA 
+			RAW: 3 - Rest der Welt / RDW
+		E: KLA_Ld, OFFSET 10 LEN 2 - KLA-Ländercodierung 
+			RAW: 0 - Europäisches Klima / EURO 
+			RAW: 1 - Heißländer / HEISS 
+			RAW: 2 - Kaltländer / KALT 
+			RAW: 3 - SG nicht programmiert / SNV
+		B: AHLFV_sperr, OFFSET 9 LEN 1 - Fensterheber vorne: Automatischen Hochlauf sperren
+		B: AHLFH_sperr, OFFSET 8 LEN 1 - Fensterheber hinten: Automatischen Hochlauf sperren
+		E: EDW_Var, OFFSET 21 LEN 3 - EDW-Variantencodierung 
+			RAW: 0 - kein IS, kein AS / KIS_KAS 
+			RAW: 1 - IS, kein AS / IS_KAS 
+			RAW: 2 - kein IS, AS / KIS_AS 
+			RAW: 3 - IS, AS / IS_AS 
+			RAW: 7 - SG nicht programmiert / SNV
+		E: Tank_Var, OFFSET 19 LEN 2 - Tank-Variantencodierung 
+			RAW: 0 - Standard-Tank / STD 
+			RAW: 1 - Skisack-Tank / SKI 
+			RAW: 2 - nicht definiert 
+			RAW: 3 - SG nicht programmiert / SNV
+		E: FSB_Var, OFFSET 16 LEN 3 - Frontscheibe-Variantencodierung 
+			RAW: 0 - Sonderschutzverglasung / SONDER 
+			RAW: 2 - Grünglas mit Bandfilter / GRUEN 
+			RAW: 6 - Siglasol mit Bandfilter / SIGLASOL 
+			RAW: 7 - SG nicht programmiert / SNV
+		E: FCOD_BR, OFFSET 27 LEN 5 - Fahrzeugcode Baureihe 
+			RAW: 0 - BR 221 od. BR 140 / BR221 
+			RAW: 1 - BR 129 / BR129 
+			RAW: 2 - BR 210 od. BR 212 / BR210 
+			RAW: 3 - BR 202 od. BR 204 / BR202 
+			RAW: 4 - BR 220 / BR220 
+			RAW: 5 - BR 170 / BR170 
+			RAW: 6 - BR 203 / BR203 
+			RAW: 7 - BR 168 / BR168 
+			RAW: 8 - BR 163 / BR163 
+			RAW: 9 - BR 208 / BR208 
+			RAW: 10 - BR 463 / BR463 
+			RAW: 11 - BR 215 / BR215 
+			RAW: 12 - BR 230 / BR230 
+			RAW: 13 - BR 211 / BR211 
+			RAW: 14 - BR 209 / BR209 
+			RAW: 15 - BR 461 / BR461 
+			RAW: 16 - BR 240 / BR240 
+			RAW: 17 - BR 251 / BR251 
+			RAW: 18 - BR 171 / BR171 
+			RAW: 19 - BR 164 / BR164 
+			RAW: 20 - BR 169 od. BR 245 / BR169 
+			RAW: 21 - BR 199 / BR199 
+			RAW: 22 - BR 216 / BR216 
+			RAW: 23 - BR 219 / BR219 
+			RAW: 24 - BR 454 (z-car) / BR454 
+			RAW: 25 - NCV2 / NCV2 
+			RAW: 26 - V-Klasse/Vito / VITO 
+			RAW: 27 - Sprinter / SPRINTER 
+			RAW: 28 - NCV3 / NCV3 
+			RAW: 29 - NCV1 / NCV1 
+			RAW: 30 - alle anderen BR / REST 
+			RAW: 31 - Code nicht vorhanden / SNV
+		E: FCOD_KAR, OFFSET 24 LEN 3 - Fahrzeugcode Karosserie 
+			RAW: 0 - W - Limousine (bzw. G kurz BM1/3 bei BR 463, G bei 461) / W 
+			RAW: 1 - V - Limousine lang (bzw. VF bei BR 210/211, G lang BM6 bei BR 463) / V 
+			RAW: 2 - C - Coupé (bzw. VV bei BR 210/211/220) / C 
+			RAW: 3 - S - T-Modell (bzw. Sonderschutz B4 bei BR W240, T bei BR 245) / S 
+			RAW: 4 - A - Cabrio (bzw. X bei BR 164) / A 
+			RAW: 5 - R - Roadster (bzw. Sonderschutz B4 bei BR 210/211/220/V240) / R 
+			RAW: 6 - SS - Sonderschutz B6/7 (bzw. CL bei BR 203) / SS 
+			RAW: 7 - Code nicht vorhanden / SNV
+		E: FCOD_MOT, OFFSET 34 LEN 6 - Fahrzeugcode Motor 
+			RAW: 0 - M272 E35 od. M272 DE35 / M272E35_DE35 
+			RAW: 1 - M271 E18 ML red. (105 kW) / M271E18ML105 
+			RAW: 2 - M271 E18 ML (120 kW) / M271E18ML120 
+			RAW: 3 - M112 E37 / M112E37 
+			RAW: 4 - M272 E25 od. M272 DE25 / M272E25_DE25 
+			RAW: 5 - M272 E30 od. M272 DE30 / M272E30_DE30 
+			RAW: 7 - M112 E28 / M112E28 
+			RAW: 8 - M112 E32 / M112E32 
+			RAW: 10 - M273 E46 od. M273 DE46 / M273E46_DE46 
+			RAW: 11 - M273 E55 od. M273 DE55 / M273E55_DE55 
+			RAW: 12 - M112 E26 / M112E26 
+			RAW: 13 - M113 E43 / M113E43 
+			RAW: 14 - M113 E50 / M113E50 
+			RAW: 18 - M271 E18 ML/1 (140 kW) / M271E18ML140 
+			RAW: 19 - M271 DE18 ML red. (105 kW) / M271DE18ML105 
+			RAW: 20 - M271 DE18 ML (125 kW) / M271DE18ML125 
+			RAW: 22 - M111E E23 ML / M111E_E23ML 
+			RAW: 23 - M111E E20 / M111E_E20 
+			RAW: 24 - M111E E20 ML / M111E_E20ML 
+			RAW: 25 - M112 E32 red. (140 kW) / M112E32_140 
+			RAW: 26 - M266 E20 ATL / M266E20ATL 
+			RAW: 27 - M266 E15 / M266E15 
+			RAW: 28 - M266 E17 / M266E17 
+			RAW: 29 - M266 E20 / M266E20 
+			RAW: 30 - M275 E55 od. M285 E55 / M275E55 
+			RAW: 31 - M137 E58 / M137E58 
+			RAW: 32 - OM 640 DE20 LA (60 kW) / OM640DE20LA60 
+			RAW: 34 - OM 640 DE20 LA (80 kW) / OM640DE20LA80 
+			RAW: 35 - OM642 DE30 LA (155/160 kW) / OM642DE30LA160 
+			RAW: 36 - OM 640 DE20 LA (100 kW) / OM640DE20LA100 
+			RAW: 37 - OM613 DE32 LA od. OM648 DE32 LA / OM613DE32LA 
+			RAW: 38 - OM 639 DE15 LA (70/50 kW) / OM639DE15LA 
+			RAW: 39 - OM628 DE40 LA / OM628DE40LA 
+			RAW: 40 - OM642 DE30 LA (140 kW) / OM642DE30LA140 
+			RAW: 43 - OM612 DE27 LA od. OM647 DE27 LA (120/130 kW) / OM612DE27LA 
+			RAW: 44 - OM611 DE22 LA (105/100 kW) od. OM646 DE22 LA (100/105/110 kW) / OM611DE22LA100 
+			RAW: 45 - OM611 DE22 LA (85 kW) od. OM646 DE22 LA (90 kW) / OM611DE22LA85 
+			RAW: 46 - OM611 DE22 LA (75 kW) od. OM646 DE22 LA (75 kW) / OM611DE22LA75 
+			RAW: 48 - AMG M112 E32 ML / AMGM112E32ML 
+			RAW: 49 - AMG M113 E55 ML / AMGM113E55ML 
+			RAW: 50 - AMG M155 E55 ML / AMGM155E55ML 
+			RAW: 51 - AMG M275 E60 / AMGM275E60 
+			RAW: 52 - AMG OM612 DE30 LA / AMGOM612DE30LA 
+			RAW: 56 - AMG M137 E63 / AMGM137E63 
+			RAW: 57 - AMG M113 E55 / AMGM113E55 
+			RAW: 60 - AMG M156 E60 ML / AMGM156E60ML 
+			RAW: 61 - AMG M156 E63 / AMGM156E55ML 
+			RAW: 62 - VR6 von VW / VR6 
+			RAW: 63 - Code nicht vorhanden / SNV
+		B: PRW_VH, OFFSET 32 LEN 1 - Plattrollwarner vorhanden
+		E: FZGVERSN, OFFSET 45 LEN 3 - Baureihenabhängige Fahrzeugversion (nur 220/215/230) 
+			RAW: 0 - Stand bei Markteinführung der jeweiligen Baureihe / START 
+			RAW: 1 - BR 220: ÄJ 99/X, C215: ÄJ 01/1, R230: ÄJ 02/1 / V1 
+			RAW: 2 - BR 220: ÄJ 01/1, C215: ÄJ 02/X, R230: ÄJ 03/X / V2 
+			RAW: 3 - BR 220: ÄJ 02/X, C215: ÄJ 03/X, R230: nicht definiert / V3 
+			RAW: 4 - BR 220: verboten, C215/R230: nicht definiert / V4 
+			RAW: 5 - BR 220: verboten, C215/R230: nicht definiert / V5 
+			RAW: 6 - BR 220: ÄJ 03/X, C215/R230: nicht definiert / V6 
+			RAW: 7 - BR 220/C215/R230: nicht definiert / V7
+		B: KP_VH, OFFSET 44 LEN 1 - Kommunikationsplattform vorhanden
+		B: MSS_vh, OFFSET 42 LEN 1 - SA Multifunktions-SG Sonderfahrzeuge vorhanden
+		B: STH_vh, OFFSET 41 LEN 1 - SA Standheizung vorhanden
+		B: KG_vh, OFFSET 40 LEN 1 - SA Keyless Go vorhanden
+		B: SBS_vh, OFFSET 55 LEN 1 - SA Sprachbediensystem vorhanden
+		B: MFL_vh, OFFSET 54 LEN 1 - SA Mulitfunktionslenkrad vorhanden
+		B: Tel_vh, OFFSET 53 LEN 1 - SA Telefon vorhanden
+		B: OMS_vh, OFFSET 52 LEN 1 - SA OMS vorhanden
+		B: FKSH_vh, OFFSET 51 LEN 1 - SA Kopfstützen Fond heben vorhanden
+		B: ASG_vh, OFFSET 50 LEN 1 - SA Automatisiertes Schaltgetriebe vorhanden
+		B: WWSHZG_vh, OFFSET 49 LEN 1 - SA Waschwasserschlauchheizung vorhanden
+		B: ART_VH, OFFSET 48 LEN 1 - SA ART vorhanden (Code 219)
+		B: RDK_vh, OFFSET 63 LEN 1 - SA Reifendruckkontrolle  vorhanden
+		B: Xen_vh, OFFSET 62 LEN 1 - Xenonlicht vorhanden
+		B: HR_vh, OFFSET 61 LEN 1 - SA Heckrollo  vorhanden
+		B: ZZH_vh, OFFSET 60 LEN 1 - Zuziehhilfe vorhanden
+		B: FKLA_vh, OFFSET 59 LEN 1 - SA Fond-KLA vorhanden
+		B: AHK_vh, OFFSET 58 LEN 1 - SA Anhängerkupplung vorhanden
+		B: PTS_vh, OFFSET 57 LEN 1 - Parktronicsystem vorhanden
+		B: Spi_vh, OFFSET 56 LEN 1 - SA Automatische Spiegelabblendung vorhanden
+	FRAME EZS_A6 (0x01D0)
+		I: ZB_FBC_EZS, OFFSET 0 LEN 64 - Zugangs-/Fahrberechtigungscode
+	FRAME EZS_A7 (0x0003)
+		E: BLS, OFFSET 6 LEN 2 - Bremslichtschalter 
+			RAW: 0 - Bremse nicht betätigt / BREMSE_NBET 
+			RAW: 1 - Bremse betätigt / BREMSE_BET 
+			RAW: 2 - nicht definiert 
+			RAW: 3 - Signal nicht vorhanden / SNV
+		B: BLS_UNT, OFFSET 5 LEN 1 - Bremslichtunterdrückung
+		B: INF_RFE_FSG, OFFSET 4 LEN 1 - FSG: EHB-ASG in Rückfallebene
+		B: LUEFT_MOT_KL, OFFSET 3 LEN 1 - Motorlüfter defekt Kontrolllampe
+		B: KOMP_NOTAUS, OFFSET 2 LEN 1 - Klima-Kompressor Not-Ausschalten
+		B: KOMP_BAUS, OFFSET 1 LEN 1 - Klima-Kompressor ausschalten: Beschleunigung
+		B: ANL_LFT, OFFSET 0 LEN 1 - Anlasser läuft
+		E: WHC, OFFSET 12 LEN 4 - Getriebewählhebelstellung (nur NAG) 
+			RAW: 5 - Wählhebel in Stellung "D" / D 
+			RAW: 6 - Wählhebel in Stellung "N" / N 
+			RAW: 7 - Wählhebel in Stellung "R" / R 
+			RAW: 8 - Wählhebel in Stellung "P" / P 
+			RAW: 9 - Wählhebel in Stellung "+" / PLUS 
+			RAW: 10 - Wählhebel in Stellung "-" / MINUS 
+			RAW: 11 - Wählhebel in Zwischenstellung "N-D" / N_ZW_D 
+			RAW: 12 - Wählhebel in Zwischenstellung "R-N" / N_ZW_R 
+			RAW: 13 - Wählhebel in Zwischenstellung "P-R" / P_ZW_R 
+			RAW: 15 - Wählhebelposition unplausibel / SNV
+		B: LTG_CHK_POS, OFFSET 11 LEN 1 - Leitungsüberwachung möglich
+		B: EHB_PUMPE_LFT, OFFSET 10 LEN 1 - EHB-Pumpe läuft
+		B: VGL_ST, OFFSET 9 LEN 1 - Vorglühstatus
+		B: Rg, OFFSET 8 LEN 1 - Rückwärtsgang eingelegt (alle Getriebe)
+		B: ST3_LEDL_DL, OFFSET 23 LEN 1 - Linke LED 3-stufiger Schalter Dauerlicht
+		B: ST3_LEDL_BL, OFFSET 22 LEN 1 - Linke LED 3-stufiger Schalter Blinklicht
+		B: ST3_LEDR_DL, OFFSET 21 LEN 1 - Rechte LED 3-stufiger Schalter Dauerlicht
+		B: ST3_LEDR_BL, OFFSET 20 LEN 1 - Rechte LED 3-stufiger Schalter Blinklicht
+		B: ST2_LED_DL, OFFSET 19 LEN 1 - LED 2-stufiger Schalter Dauerlicht
+		E: BELAD, OFFSET 17 LEN 2 - Beladung 
+			RAW: 0 - Unbeladen / LEER 
+			RAW: 1 - Halb beladen / HALB 
+			RAW: 2 - Voll beladen / VOLL 
+			RAW: 3 - Beladung nicht erkannt / SNV
+		B: CRASH_MS, OFFSET 16 LEN 1 - Crashsignal von Motorsteuerung
+		E: WHST, OFFSET 29 LEN 3 - Getriebewählhebelstellung (NAG u. KSG) 
+			RAW: 0 - Getriebewählhebel in Stellung "P" / P 
+			RAW: 1 - Getriebewählhebel in Stellung "R" / R 
+			RAW: 2 - Getriebewählhebel in Stellung "N" / N 
+			RAW: 4 - Getriebewählhebel in Stellung "D" / D 
+			RAW: 7 - Signal nicht vorhanden / SNV
+		E: EHB_BN, OFFSET 27 LEN 2 - EHB-Bordnetz Status 
+			RAW: 0 - U_EHB > 10,5 V für t > 500 ms / U_GRUEN 
+			RAW: 1 - 9,5 V < U_EHB <= 10,5 V  für t > 500 ms / U_GELB 
+			RAW: 2 - 8,5 V < U_EHB <= 9,5 V  für t > 500 ms / U_ROT 
+			RAW: 3 - U_EHB <= 8,5 V (nur Bosch: oder Signal nicht vorhanden) / U_MIN
+		B: ART_ABW_AKT, OFFSET 24 LEN 1 - ART-Abstandswarnung ist eingeschaltet
+		B: KPL, OFFSET 38 LEN 1 - Kupplung getreten
+	FRAME EZS_A8 (0x017E)
+		B: KFK_aus, OFFSET 7 LEN 1 - Kältemittel-Füllstandskontrolle inaktiv
+		B: SUS_aus, OFFSET 6 LEN 1 - Schadgasabhängige Umluftschaltung bei AKF inaktiv
+		B: SUS_ein, OFFSET 5 LEN 1 - Schadgasabhängige Umluftschaltung generell aktiv
+		B: Tunnel_aus, OFFSET 4 LEN 1 - Tunnelfunktion inaktiv
+		B: GBA_man, OFFSET 3 LEN 1 - Gebläsebalken-Anzeige nur im Manuellmodus
+		B: RHT_ein, OFFSET 2 LEN 1 - REHEAT-Betrieb (t_Verd_Soll = 0 °C fest)
+		B: Umluft_ubg, OFFSET 1 LEN 1 - manuelle Umluftschaltung unbegrenzte Zeitdauer
+		B: DSPL_neg, OFFSET 0 LEN 1 - Anzeigedisplay immer negativ
+		B: DSPL_pos, OFFSET 15 LEN 1 - Anzeigedisplay immer positiv
+		B: SAS_aus, OFFSET 14 LEN 1 - Schlüsselabhängige Speicherung aus
+		B: MDSL_aus, OFFSET 13 LEN 1 - Mitteldüse Schnelllauf inaktiv
+		B: Umluft_sperr, OFFSET 12 LEN 1 - Umluft 100% nicht möglich
+		B: SGR_aus, OFFSET 11 LEN 1 - Sofortige Gebläsereaktion aus
+		B: AGE_aus, OFFSET 10 LEN 1 - Automatische Grundeinstellung inaktiv
+		B: HLK_auf, OFFSET 9 LEN 1 - Im "OFF"-Betrieb Hauptluftklappe offen
+		B: GBL_aus, OFFSET 8 LEN 1 - E-Sauglüfter: Grundbelüftung aus
+		E: P_KNL, OFFSET 20 LEN 4 - Druckkennlinie 
+			RAW: 0 - 20bar/100%-Kennlinie / P_KNL0 
+			RAW: 1 - 20bar/90%-Kennlinie / P_KNL1 
+			RAW: 2 - 20bar/80%- bzw. 28bar/100%-Kennlinie / P_KNL2 
+			RAW: 3 - 18bar/100%-Kennlinie / P_KNL3 
+			RAW: 4 - 18bar/90%-Kennlinie / P_KNL4 
+			RAW: 15 - SG nicht programmiert / SNV
+		E: GBL_KNL, OFFSET 17 LEN 3 - Grundbelüftungskennlinie 
+			RAW: 0 - 25% Grundbelüftung / GBL_KNL0 
+			RAW: 1 - 40% Grundbelüftung / GBL_KNL1 
+			RAW: 2 - 30 % Grundbelüftung / GBL_KNL2 
+			RAW: 7 - SG nicht programmiert / SNV
+		B: AHLF_aus, OFFSET 16 LEN 1 - Umluft-Komfortfunkt.: Automatischer Tieflauf aus
+		B: FR_COOL, OFFSET 31 LEN 1 - Kühlen als Fußraumspülung inaktiv
+		B: GRSBS_aus, OFFSET 29 LEN 1 - Gebläsereduzierung bei Linguatronik-Anforderung inaktiv
+	FRAME VIN (0x001D)
+		I: VIN, OFFSET 0 LEN 64 - Vehicle Identification Number
+	FRAME EZS_ANZ (0x0332)
+		B: EZS_M0, OFFSET 7 LEN 1 - Meldg.0: "MK Stand reduziert"
+		B: EZS_M1, OFFSET 6 LEN 1 - Meldg.1: "MK unverzüglich nachladen"
+		B: EZS_M2, OFFSET 5 LEN 1 - Meldg.2: "MK abgelaufen, Fzg. gesperrt"
+		B: EZS_M3, OFFSET 4 LEN 1 - Meldg.3: "MK Autorisierungsfehler"
+		B: EZS_M4, OFFSET 3 LEN 1 - Meldg.4: "MK Manuelle Nachladung erfolgt"
+		B: EZS_M5, OFFSET 2 LEN 1 - Meldg.5: "MK Manuelle Nachladung erfolgreich"
+		B: EZS_M6, OFFSET 1 LEN 1 - Meldg.6: "MK Manuelle Nachladung fehlgeschlagen"
+		B: EZS_M7, OFFSET 0 LEN 1 - Meldg.7: "MK "
+	FRAME TP_EZS_TELEAID5 (0x03BE)
+		I: TP_EZS_TELEAID, OFFSET 0 LEN 64 - Kommunikation EZS zum TELEAID
+	FRAME NM_EZS (0x0400)
+		I: NM, OFFSET 0 LEN 64 - Netzwerkmanagement
+	FRAME D_RS_EZS (0x06F0)
+		I: D_RS, OFFSET 0 LEN 64 - KWFB Diagnose-Response
+	FRAME SD_RS_EZS (0x0760)
+		I: SD_RS, OFFSET 0 LEN 64 - Systemdiagnose-Response
+	FRAME SG_APPL_EZS (0x07B1)
+		I: SG_APPL, OFFSET 0 LEN 64 - Steuergerät an externe Applikation
+	FRAME D_RQ_AAG (0x05B0)
+		I: D_RQ, OFFSET 0 LEN 64 - KWFB Diagnose-Request
+	FRAME D_RQ_BNS (0x06BF)
+		I: D_RQ, OFFSET 0 LEN 64 - KWFB Diagnose-Request
+	FRAME D_RQ_DBE (0x0747)
+		I: D_RQ, OFFSET 0 LEN 64 - KWFB Diagnose-Request
+	FRAME D_RQ_FKLA (0x06B2)
+		I: D_RQ, OFFSET 0 LEN 64 - KWFB Diagnose-Request
+	FRAME D_RQ_KG (0x05D7)
+		I: D_RQ, OFFSET 0 LEN 64 - KWFB Diagnose-Request
+	FRAME D_RQ_KLA (0x0571)
+		I: D_RQ, OFFSET 0 LEN 64 - KWFB Diagnose-Request
+	FRAME D_RQ_KOMBI (0x0734)
+		I: D_RQ, OFFSET 0 LEN 64 - KWFB Diagnose-Request
+	FRAME D_RQ_LRK (0x074F)
+		I: D_RQ, OFFSET 0 LEN 64 - KWFB Diagnose-Request
+	FRAME D_RQ_MKLH (0x067E)
+		I: D_RQ, OFFSET 0 LEN 64 - KWFB Diagnose-Request
+	FRAME D_RQ_MKLVL (0x06DC)
+		I: D_RQ, OFFSET 0 LEN 64 - KWFB Diagnose-Request
+	FRAME D_RQ_MKLVR (0x06DD)
+		I: D_RQ, OFFSET 0 LEN 64 - KWFB Diagnose-Request
+	FRAME D_RQ_MRM (0x06B5)
+		I: D_RQ, OFFSET 0 LEN 64 - KWFB Diagnose-Request
+	FRAME D_RQ_MSS (0x06A6)
+		I: D_RQ, OFFSET 0 LEN 64 - KWFB Diagnose-Request
+	FRAME D_RQ_OBF (0x05C5)
+		I: D_RQ, OFFSET 0 LEN 64 - KWFB Diagnose-Request
+	FRAME D_RQ_PTS (0x06B3)
+		I: D_RQ, OFFSET 0 LEN 64 - KWFB Diagnose-Request
+	FRAME D_RQ_RADIO (0x0676)
+		I: D_RQ, OFFSET 0 LEN 64 - KWFB Diagnose-Request
+	FRAME D_RQ_RDK (0x06B8)
+		I: D_RQ, OFFSET 0 LEN 64 - KWFB Diagnose-Request
+	FRAME D_RQ_SAM_B (0x05A1)
+		I: D_RQ, OFFSET 0 LEN 64 - KWFB Diagnose-Request
+	FRAME D_RQ_SAM_F (0x0782)
+		I: D_RQ, OFFSET 0 LEN 64 - KWFB Diagnose-Request
+	FRAME D_RQ_SAM_H (0x05A3)
+		I: D_RQ, OFFSET 0 LEN 64 - KWFB Diagnose-Request
+	FRAME D_RQ_SH (0x066E)
+		I: D_RQ, OFFSET 0 LEN 64 - KWFB Diagnose-Request
+	FRAME D_RQ_STH (0x06B9)
+		I: D_RQ, OFFSET 0 LEN 64 - KWFB Diagnose-Request
+	FRAME D_RQ_SVL (0x06CC)
+		I: D_RQ, OFFSET 0 LEN 64 - KWFB Diagnose-Request
+	FRAME D_RQ_SVR (0x06CD)
+		I: D_RQ, OFFSET 0 LEN 64 - KWFB Diagnose-Request
+	FRAME D_RQ_THL (0x06C9)
+		I: D_RQ, OFFSET 0 LEN 64 - KWFB Diagnose-Request
+	FRAME D_RQ_THR (0x06CB)
+		I: D_RQ, OFFSET 0 LEN 64 - KWFB Diagnose-Request
+	FRAME D_RQ_TVL (0x0748)
+		I: D_RQ, OFFSET 0 LEN 64 - KWFB Diagnose-Request
+	FRAME D_RQ_TVR (0x074A)
+		I: D_RQ, OFFSET 0 LEN 64 - KWFB Diagnose-Request
+	FRAME D_RQ_VS (0x0749)
+		I: D_RQ, OFFSET 0 LEN 64 - KWFB Diagnose-Request
+	FRAME D_RQ_ZVP (0x0564)
+		I: D_RQ, OFFSET 0 LEN 64 - KWFB Diagnose-Request
+
+ZGW
+	FRAME EZS_A5 (0x001F)
+		B: LL, OFFSET 7 LEN 1 - Linkslenker
+		B: RL, OFFSET 6 LEN 1 - Rechtslenker
+		E: RDK_Ld, OFFSET 4 LEN 2 - RDK-Ländercodierung 
+			RAW: 0 - Welt / RDW 
+			RAW: 1 - USA / USA 
+			RAW: 2 - nicht definiert 
+			RAW: 3 - SG nicht programmiert / SNV
+		E: MSS_Var, OFFSET 1 LEN 3 - MSS-Variantencodierung 
+			RAW: 0 - SG nicht programmiert / SNV 
+			RAW: 1 - Taxi / TAXI 
+			RAW: 2 - Sonderfahrzeug / SONDER
+		B: ABC_VH, OFFSET 15 LEN 1 -  ABC vorhanden
+		B: Ers_Licht, OFFSET 14 LEN 1 - Komplettes Ersatzlicht erlaubt
+		E: Licht_Ld, OFFSET 12 LEN 2 - Ländercodierung Lichtsteuerung 
+			RAW: 0 - Kanada / CAN 
+			RAW: 1 - Japan / JAP 
+			RAW: 2 - USA / USA 
+			RAW: 3 - Rest der Welt / RDW
+		E: KLA_Ld, OFFSET 10 LEN 2 - KLA-Ländercodierung 
+			RAW: 0 - Europäisches Klima / EURO 
+			RAW: 1 - Heißländer / HEISS 
+			RAW: 2 - Kaltländer / KALT 
+			RAW: 3 - SG nicht programmiert / SNV
+		B: AHLFV_sperr, OFFSET 9 LEN 1 - Fensterheber vorne: Automatischen Hochlauf sperren
+		B: AHLFH_sperr, OFFSET 8 LEN 1 - Fensterheber hinten: Automatischen Hochlauf sperren
+		E: EDW_Var, OFFSET 21 LEN 3 - EDW-Variantencodierung 
+			RAW: 0 - kein IS, kein AS / KIS_KAS 
+			RAW: 1 - IS, kein AS / IS_KAS 
+			RAW: 2 - kein IS, AS / KIS_AS 
+			RAW: 3 - IS, AS / IS_AS 
+			RAW: 7 - SG nicht programmiert / SNV
+		E: Tank_Var, OFFSET 19 LEN 2 - Tank-Variantencodierung 
+			RAW: 0 - Standard-Tank / STD 
+			RAW: 1 - Skisack-Tank / SKI 
+			RAW: 2 - nicht definiert 
+			RAW: 3 - SG nicht programmiert / SNV
+		E: FSB_Var, OFFSET 16 LEN 3 - Frontscheibe-Variantencodierung 
+			RAW: 0 - Sonderschutzverglasung / SONDER 
+			RAW: 2 - Grünglas mit Bandfilter / GRUEN 
+			RAW: 6 - Siglasol mit Bandfilter / SIGLASOL 
+			RAW: 7 - SG nicht programmiert / SNV
+		E: FCOD_BR, OFFSET 27 LEN 5 - Fahrzeugcode Baureihe 
+			RAW: 0 - BR 221 od. BR 140 / BR221 
+			RAW: 1 - BR 129 / BR129 
+			RAW: 2 - BR 210 od. BR 212 / BR210 
+			RAW: 3 - BR 202 od. BR 204 / BR202 
+			RAW: 4 - BR 220 / BR220 
+			RAW: 5 - BR 170 / BR170 
+			RAW: 6 - BR 203 / BR203 
+			RAW: 7 - BR 168 / BR168 
+			RAW: 8 - BR 163 / BR163 
+			RAW: 9 - BR 208 / BR208 
+			RAW: 10 - BR 463 / BR463 
+			RAW: 11 - BR 215 / BR215 
+			RAW: 12 - BR 230 / BR230 
+			RAW: 13 - BR 211 / BR211 
+			RAW: 14 - BR 209 / BR209 
+			RAW: 15 - BR 461 / BR461 
+			RAW: 16 - BR 240 / BR240 
+			RAW: 17 - BR 251 / BR251 
+			RAW: 18 - BR 171 / BR171 
+			RAW: 19 - BR 164 / BR164 
+			RAW: 20 - BR 169 od. BR 245 / BR169 
+			RAW: 21 - BR 199 / BR199 
+			RAW: 22 - BR 216 / BR216 
+			RAW: 23 - BR 219 / BR219 
+			RAW: 24 - BR 454 (z-car) / BR454 
+			RAW: 25 - NCV2 / NCV2 
+			RAW: 26 - V-Klasse/Vito / VITO 
+			RAW: 27 - Sprinter / SPRINTER 
+			RAW: 28 - NCV3 / NCV3 
+			RAW: 29 - NCV1 / NCV1 
+			RAW: 30 - alle anderen BR / REST 
+			RAW: 31 - Code nicht vorhanden / SNV
+		E: FCOD_KAR, OFFSET 24 LEN 3 - Fahrzeugcode Karosserie 
+			RAW: 0 - W - Limousine (bzw. G kurz BM1/3 bei BR 463, G bei 461) / W 
+			RAW: 1 - V - Limousine lang (bzw. VF bei BR 210/211, G lang BM6 bei BR 463) / V 
+			RAW: 2 - C - Coupé (bzw. VV bei BR 210/211/220) / C 
+			RAW: 3 - S - T-Modell (bzw. Sonderschutz B4 bei BR W240, T bei BR 245) / S 
+			RAW: 4 - A - Cabrio (bzw. X bei BR 164) / A 
+			RAW: 5 - R - Roadster (bzw. Sonderschutz B4 bei BR 210/211/220/V240) / R 
+			RAW: 6 - SS - Sonderschutz B6/7 (bzw. CL bei BR 203) / SS 
+			RAW: 7 - Code nicht vorhanden / SNV
+		E: FCOD_MOT, OFFSET 34 LEN 6 - Fahrzeugcode Motor 
+			RAW: 0 - M272 E35 od. M272 DE35 / M272E35_DE35 
+			RAW: 1 - M271 E18 ML red. (105 kW) / M271E18ML105 
+			RAW: 2 - M271 E18 ML (120 kW) / M271E18ML120 
+			RAW: 3 - M112 E37 / M112E37 
+			RAW: 4 - M272 E25 od. M272 DE25 / M272E25_DE25 
+			RAW: 5 - M272 E30 od. M272 DE30 / M272E30_DE30 
+			RAW: 7 - M112 E28 / M112E28 
+			RAW: 8 - M112 E32 / M112E32 
+			RAW: 10 - M273 E46 od. M273 DE46 / M273E46_DE46 
+			RAW: 11 - M273 E55 od. M273 DE55 / M273E55_DE55 
+			RAW: 12 - M112 E26 / M112E26 
+			RAW: 13 - M113 E43 / M113E43 
+			RAW: 14 - M113 E50 / M113E50 
+			RAW: 18 - M271 E18 ML/1 (140 kW) / M271E18ML140 
+			RAW: 19 - M271 DE18 ML red. (105 kW) / M271DE18ML105 
+			RAW: 20 - M271 DE18 ML (125 kW) / M271DE18ML125 
+			RAW: 22 - M111E E23 ML / M111E_E23ML 
+			RAW: 23 - M111E E20 / M111E_E20 
+			RAW: 24 - M111E E20 ML / M111E_E20ML 
+			RAW: 25 - M112 E32 red. (140 kW) / M112E32_140 
+			RAW: 26 - M266 E20 ATL / M266E20ATL 
+			RAW: 27 - M266 E15 / M266E15 
+			RAW: 28 - M266 E17 / M266E17 
+			RAW: 29 - M266 E20 / M266E20 
+			RAW: 30 - M275 E55 od. M285 E55 / M275E55 
+			RAW: 31 - M137 E58 / M137E58 
+			RAW: 32 - OM 640 DE20 LA (60 kW) / OM640DE20LA60 
+			RAW: 34 - OM 640 DE20 LA (80 kW) / OM640DE20LA80 
+			RAW: 35 - OM642 DE30 LA (155/160 kW) / OM642DE30LA160 
+			RAW: 36 - OM 640 DE20 LA (100 kW) / OM640DE20LA100 
+			RAW: 37 - OM613 DE32 LA od. OM648 DE32 LA / OM613DE32LA 
+			RAW: 38 - OM 639 DE15 LA (70/50 kW) / OM639DE15LA 
+			RAW: 39 - OM628 DE40 LA / OM628DE40LA 
+			RAW: 40 - OM642 DE30 LA (140 kW) / OM642DE30LA140 
+			RAW: 43 - OM612 DE27 LA od. OM647 DE27 LA (120/130 kW) / OM612DE27LA 
+			RAW: 44 - OM611 DE22 LA (105/100 kW) od. OM646 DE22 LA (100/105/110 kW) / OM611DE22LA100 
+			RAW: 45 - OM611 DE22 LA (85 kW) od. OM646 DE22 LA (90 kW) / OM611DE22LA85 
+			RAW: 46 - OM611 DE22 LA (75 kW) od. OM646 DE22 LA (75 kW) / OM611DE22LA75 
+			RAW: 48 - AMG M112 E32 ML / AMGM112E32ML 
+			RAW: 49 - AMG M113 E55 ML / AMGM113E55ML 
+			RAW: 50 - AMG M155 E55 ML / AMGM155E55ML 
+			RAW: 51 - AMG M275 E60 / AMGM275E60 
+			RAW: 52 - AMG OM612 DE30 LA / AMGOM612DE30LA 
+			RAW: 56 - AMG M137 E63 / AMGM137E63 
+			RAW: 57 - AMG M113 E55 / AMGM113E55 
+			RAW: 60 - AMG M156 E60 ML / AMGM156E60ML 
+			RAW: 61 - AMG M156 E63 / AMGM156E55ML 
+			RAW: 62 - VR6 von VW / VR6 
+			RAW: 63 - Code nicht vorhanden / SNV
+		B: PRW_VH, OFFSET 32 LEN 1 - Plattrollwarner vorhanden
+		E: FZGVERSN, OFFSET 45 LEN 3 - Baureihenabhängige Fahrzeugversion (nur 220/215/230) 
+			RAW: 0 - Stand bei Markteinführung der jeweiligen Baureihe / START 
+			RAW: 1 - BR 220: ÄJ 99/X, C215: ÄJ 01/1, R230: ÄJ 02/1 / V1 
+			RAW: 2 - BR 220: ÄJ 01/1, C215: ÄJ 02/X, R230: ÄJ 03/X / V2 
+			RAW: 3 - BR 220: ÄJ 02/X, C215: ÄJ 03/X, R230: nicht definiert / V3 
+			RAW: 4 - BR 220: verboten, C215/R230: nicht definiert / V4 
+			RAW: 5 - BR 220: verboten, C215/R230: nicht definiert / V5 
+			RAW: 6 - BR 220: ÄJ 03/X, C215/R230: nicht definiert / V6 
+			RAW: 7 - BR 220/C215/R230: nicht definiert / V7
+		B: KP_VH, OFFSET 44 LEN 1 - Kommunikationsplattform vorhanden
+		B: MSS_vh, OFFSET 42 LEN 1 - SA Multifunktions-SG Sonderfahrzeuge vorhanden
+		B: STH_vh, OFFSET 41 LEN 1 - SA Standheizung vorhanden
+		B: KG_vh, OFFSET 40 LEN 1 - SA Keyless Go vorhanden
+		B: SBS_vh, OFFSET 55 LEN 1 - SA Sprachbediensystem vorhanden
+		B: MFL_vh, OFFSET 54 LEN 1 - SA Mulitfunktionslenkrad vorhanden
+		B: Tel_vh, OFFSET 53 LEN 1 - SA Telefon vorhanden
+		B: OMS_vh, OFFSET 52 LEN 1 - SA OMS vorhanden
+		B: FKSH_vh, OFFSET 51 LEN 1 - SA Kopfstützen Fond heben vorhanden
+		B: ASG_vh, OFFSET 50 LEN 1 - SA Automatisiertes Schaltgetriebe vorhanden
+		B: WWSHZG_vh, OFFSET 49 LEN 1 - SA Waschwasserschlauchheizung vorhanden
+		B: ART_VH, OFFSET 48 LEN 1 - SA ART vorhanden (Code 219)
+		B: RDK_vh, OFFSET 63 LEN 1 - SA Reifendruckkontrolle  vorhanden
+		B: Xen_vh, OFFSET 62 LEN 1 - Xenonlicht vorhanden
+		B: HR_vh, OFFSET 61 LEN 1 - SA Heckrollo  vorhanden
+		B: ZZH_vh, OFFSET 60 LEN 1 - Zuziehhilfe vorhanden
+		B: FKLA_vh, OFFSET 59 LEN 1 - SA Fond-KLA vorhanden
+		B: AHK_vh, OFFSET 58 LEN 1 - SA Anhängerkupplung vorhanden
+		B: PTS_vh, OFFSET 57 LEN 1 - Parktronicsystem vorhanden
+		B: Spi_vh, OFFSET 56 LEN 1 - SA Automatische Spiegelabblendung vorhanden
+	FRAME EZS_A8 (0x017E)
+		B: KFK_aus, OFFSET 7 LEN 1 - Kältemittel-Füllstandskontrolle inaktiv
+		B: SUS_aus, OFFSET 6 LEN 1 - Schadgasabhängige Umluftschaltung bei AKF inaktiv
+		B: SUS_ein, OFFSET 5 LEN 1 - Schadgasabhängige Umluftschaltung generell aktiv
+		B: Tunnel_aus, OFFSET 4 LEN 1 - Tunnelfunktion inaktiv
+		B: GBA_man, OFFSET 3 LEN 1 - Gebläsebalken-Anzeige nur im Manuellmodus
+		B: RHT_ein, OFFSET 2 LEN 1 - REHEAT-Betrieb (t_Verd_Soll = 0 °C fest)
+		B: Umluft_ubg, OFFSET 1 LEN 1 - manuelle Umluftschaltung unbegrenzte Zeitdauer
+		B: DSPL_neg, OFFSET 0 LEN 1 - Anzeigedisplay immer negativ
+		B: DSPL_pos, OFFSET 15 LEN 1 - Anzeigedisplay immer positiv
+		B: SAS_aus, OFFSET 14 LEN 1 - Schlüsselabhängige Speicherung aus
+		B: MDSL_aus, OFFSET 13 LEN 1 - Mitteldüse Schnelllauf inaktiv
+		B: Umluft_sperr, OFFSET 12 LEN 1 - Umluft 100% nicht möglich
+		B: SGR_aus, OFFSET 11 LEN 1 - Sofortige Gebläsereaktion aus
+		B: AGE_aus, OFFSET 10 LEN 1 - Automatische Grundeinstellung inaktiv
+		B: HLK_auf, OFFSET 9 LEN 1 - Im "OFF"-Betrieb Hauptluftklappe offen
+		B: GBL_aus, OFFSET 8 LEN 1 - E-Sauglüfter: Grundbelüftung aus
+		E: P_KNL, OFFSET 20 LEN 4 - Druckkennlinie 
+			RAW: 0 - 20bar/100%-Kennlinie / P_KNL0 
+			RAW: 1 - 20bar/90%-Kennlinie / P_KNL1 
+			RAW: 2 - 20bar/80%- bzw. 28bar/100%-Kennlinie / P_KNL2 
+			RAW: 3 - 18bar/100%-Kennlinie / P_KNL3 
+			RAW: 4 - 18bar/90%-Kennlinie / P_KNL4 
+			RAW: 15 - SG nicht programmiert / SNV
+		E: GBL_KNL, OFFSET 17 LEN 3 - Grundbelüftungskennlinie 
+			RAW: 0 - 25% Grundbelüftung / GBL_KNL0 
+			RAW: 1 - 40% Grundbelüftung / GBL_KNL1 
+			RAW: 2 - 30 % Grundbelüftung / GBL_KNL2 
+			RAW: 7 - SG nicht programmiert / SNV
+		B: AHLF_aus, OFFSET 16 LEN 1 - Umluft-Komfortfunkt.: Automatischer Tieflauf aus
+		B: FR_COOL, OFFSET 31 LEN 1 - Kühlen als Fußraumspülung inaktiv
+		B: GRSBS_aus, OFFSET 29 LEN 1 - Gebläsereduzierung bei Linguatronik-Anforderung inaktiv
+	FRAME TELEAID_A1 (0x017F)
+		B: RDU, OFFSET 0 LEN 1 - Remote door unlock
+	FRAME TELEAID_A2 (0x023E)
+		B: LIVE_TELEAID, OFFSET 4 LEN 1 - Alivebotschaft TELEAID
+		B: MK_ATRSRT, OFFSET 0 LEN 1 - Mobilitätskonto autorisiert
+	FRAME CONFIG (0x001E)
+		E: VER_AE, OFFSET 6 LEN 2 - Änderungsjahr 
+			RAW: 0 - Änderungsjahr "/1" / AE1 
+			RAW: 1 - Änderungsjahr "/X" / AEX 
+			RAW: 2 - Änderungsjahr "/2" / AE2 
+			RAW: 3 - Stand bei Markteinführung der Baureihe / START
+		E: VER_JAHR, OFFSET 1 LEN 5 - Jahresangabe 
+			RAW: 0 - Jahr 0 (Beginn Jahr 2000) / JAHR00 
+			RAW: 1 - Jahr 1 / JAHR01 
+			RAW: 29 - Jahr 29 / JAHR29 
+			RAW: 30 - nicht definiert 
+			RAW: 31 - Stand bei Markteinführung der Baureihe / START
+		E: LAND, OFFSET 12 LEN 4 - Länderbezogene SA-Codierung 
+			RAW: 0 - Rest der Welt / RDW 
+			RAW: 1 - USA-Ausführung (CODE 494) / C494 
+			RAW: 2 - Kanada (CODE 460) / C460 
+			RAW: 3 - Japan (CODE 498) / C498 
+			RAW: 4 - Schweiz (CODE 823) / C823 
+			RAW: 5 - Australien (CODE 625) / C625 
+			RAW: 6 - Golfstaaten (CODE 623) / C623 
+			RAW: 15 - SG nicht programmiert / SNV
+	FRAME CP_ANZ (0x032A)
+		B: CP_M0, OFFSET 7 LEN 1 - Meldg.0: "MK Stand reduziert"
+		B: CP_M1, OFFSET 6 LEN 1 - Meldg.1: "MK nachladen,Tel. vorüb. n. verf."
+		B: CP_M2, OFFSET 5 LEN 1 - Meldg.2: "MK unverzüglich nachladen"
+		B: CP_M3, OFFSET 4 LEN 1 - Meldg.3: "MK Dienstende in wenigen Tagen"
+		B: CP_M4, OFFSET 3 LEN 1 - Meldg.4: ""
+		B: CP_M5, OFFSET 2 LEN 1 - Meldg.5: ""
+	FRAME GW_M_I1 (0x0098)
+		I: T_GET, OFFSET 0 LEN 8 - Getriebeöltemperatur
+		I: AY_S, OFFSET 8 LEN 8 - Fahrzeugquerbeschleunig. im Schwerpunkt (+ = links)
+		I: FTK_BMI, OFFSET 16 LEN 8 - Kennziffer Beschleunigungstyp (>100: dynamischer)
+		I: FTK_LMI, OFFSET 24 LEN 8 - Kennziffer Querbeschleunigungstyp (>100: dynamischer)
+		I: FTK_VMI, OFFSET 32 LEN 8 - Kennziffer Bremstyp (>100: dynamischer)
+		I: GIER_ROH, OFFSET 40 LEN 16 - Rohsignal Gierrate ohne Abgleich/Filterung (+ = links)
+		I: FMMOTMAX, OFFSET 56 LEN 8 - Faktor für Abwert. d. max. Mom. bei abneh. A.druck
+	FRAME GW_M_I2 (0x0200)
+		B: BRE_AKT_ESP, OFFSET 0 LEN 1 - ESP-Bremseneingriff aktiv
+		I: MBRE_ESP, OFFSET 4 LEN 12 - Eingestelltes Bremsmoment
+		B: LW_VZ, OFFSET 20 LEN 1 - Lenkwinkel-Vorzeichen (rechts [0], links [1])
+		B: LW_INI, OFFSET 19 LEN 1 - Lenkwinkelsensor: nicht initialisiert
+		B: LW_CF, OFFSET 18 LEN 1 - Lenkwinkelsensor: Codefehler
+		B: LW_OV, OFFSET 17 LEN 1 - Lenkwinkelsensor: Überlauf
+		B: LW_PA, OFFSET 16 LEN 1 - Lenkwinkel Parität (gerade Parität)
+		I: LW, OFFSET 21 LEN 11 - Lenkwinkel
+		E: PRESF_L_SVL, OFFSET 38 LEN 2 - Presafe-Verstellung Sitz vorne links 
+			RAW: 0 - Presafe aus / AUS 
+			RAW: 1 - Presafeposition anfahren / PRESAFE 
+			RAW: 2 - Ausgangsposition anfahren / ZURUECK 
+			RAW: 3 - nicht definiert
+		E: PRESF_R_SVR, OFFSET 36 LEN 2 - Presafe-Verstellung Sitz vorne rechts 
+			RAW: 0 - Presafe aus / AUS 
+			RAW: 1 - Presafeposition anfahren / PRESAFE 
+			RAW: 2 - Ausgangsposition anfahren / ZURUECK 
+			RAW: 3 - nicht definiert
+		B: PRESF_TGL, OFFSET 32 LEN 1 - Presafe Togglebit
+		E: PRESF_L_SHD, OFFSET 46 LEN 2 - Presafe-Verstellung Schiebe-/Hebedach 
+			RAW: 0 - Presafe aus / AUS 
+			RAW: 1 - Presafeposition anfahren / PRESAFE 
+			RAW: 2 - Ausgangsposition anfahren / ZURUECK 
+			RAW: 3 - nicht definiert
+		E: PRESF_R_SHD, OFFSET 44 LEN 2 - Presafe-Verstellung Schiebe-/Hebedach 
+			RAW: 0 - Presafe aus / AUS 
+			RAW: 1 - Presafeposition anfahren / PRESAFE 
+			RAW: 2 - Ausgangsposition anfahren / ZURUECK 
+			RAW: 3 - nicht definiert
+		B: ZVB_EIN_MS, OFFSET 51 LEN 1 - Zusatzverbraucher einschalten
+		B: N_VRBT_SBCSH_AKT, OFFSET 50 LEN 1 - SBC-S/H aktiv, ASG darf nicht nach "N" schalten
+		B: NOTBRE, OFFSET 49 LEN 1 - Notbremsung (Bremslicht blinken)
+		B: ASV_KKL_169, OFFSET 48 LEN 1 - Absperrventil Kühlkreislauf M266 ATL
+	FRAME TP_TELEAID_AGW6 (0x01C0)
+		I: TP_TELEAID_AGW, OFFSET 0 LEN 64 - Kommunikation TELEAID zum AGW
+	FRAME TP_TELEAID_EZS5 (0x00F9)
+		I: TP_TELEAID_EZS, OFFSET 0 LEN 64 - Kommunikation TELEAID zum EZS
+	FRAME TP_TELEAID_KOMBI4 (0x033E)
+		I: TP_TELEAID_KOMBI, OFFSET 0 LEN 64 - Kommunikation TELEAID zum KOMBI
+	FRAME NM_ZGW (0x041B)
+		I: NM, OFFSET 0 LEN 64 - Netzwerkmanagement
+	FRAME D_RQ_ACL (0x0560)
+		I: D_RQ, OFFSET 0 LEN 64 - KWP2000 Diagnose-Request
+	FRAME D_RQ_AGW (0x0660)
+		I: D_RQ, OFFSET 0 LEN 64 - KWP2000 Diagnose-Request
+	FRAME D_RQ_ARMADA (0x06BC)
+		I: D_RQ, OFFSET 0 LEN 64 - KWP2000 Diagnose-Request
+	FRAME D_RQ_DBE (0x0740)
+		I: D_RQ, OFFSET 0 LEN 64 - KWP2000 Diagnose-Request
+	FRAME D_RQ_FDSVL (0x06C0)
+		I: D_RQ, OFFSET 0 LEN 64 - KWP2000 Diagnose-Request
+	FRAME D_RQ_FDSVR (0x06DE)
+		I: D_RQ, OFFSET 0 LEN 64 - KWP2000 Diagnose-Request
+	FRAME D_RQ_KOMBI (0x0720)
+		I: D_RQ, OFFSET 0 LEN 64 - KWP2000 Diagnose-Request
+	FRAME D_RQ_MOST0 (0x0640)
+		I: D_RQ, OFFSET 0 LEN 64 - KWP2000 Diagnose-Request
+	FRAME D_RQ_MOST1 (0x0641)
+		I: D_RQ, OFFSET 0 LEN 64 - KWP2000 Diagnose-Request
+	FRAME D_RQ_MOST10 (0x064A)
+		I: D_RQ, OFFSET 0 LEN 64 - KWP2000 Diagnose-Request
+	FRAME D_RQ_MOST11 (0x064B)
+		I: D_RQ, OFFSET 0 LEN 64 - KWP2000 Diagnose-Request
+	FRAME D_RQ_MOST12 (0x064C)
+		I: D_RQ, OFFSET 0 LEN 64 - KWP2000 Diagnose-Request
+	FRAME D_RQ_MOST13 (0x064D)
+		I: D_RQ, OFFSET 0 LEN 64 - KWP2000 Diagnose-Request
+	FRAME D_RQ_MOST14 (0x064E)
+		I: D_RQ, OFFSET 0 LEN 64 - KWP2000 Diagnose-Request
+	FRAME D_RQ_MOST15 (0x064F)
+		I: D_RQ, OFFSET 0 LEN 64 - KWP2000 Diagnose-Request
+	FRAME D_RQ_MOST16 (0x0540)
+		I: D_RQ, OFFSET 0 LEN 64 - KWP2000 Diagnose-Request
+	FRAME D_RQ_MOST17 (0x0541)
+		I: D_RQ, OFFSET 0 LEN 64 - KWP2000 Diagnose-Request
+	FRAME D_RQ_MOST2 (0x0642)
+		I: D_RQ, OFFSET 0 LEN 64 - KWP2000 Diagnose-Request
+	FRAME D_RQ_MOST3 (0x0643)
+		I: D_RQ, OFFSET 0 LEN 64 - KWP2000 Diagnose-Request
+	FRAME D_RQ_MOST4 (0x0644)
+		I: D_RQ, OFFSET 0 LEN 64 - KWP2000 Diagnose-Request
+	FRAME D_RQ_MOST5 (0x0645)
+		I: D_RQ, OFFSET 0 LEN 64 - KWP2000 Diagnose-Request
+	FRAME D_RQ_MOST6 (0x0646)
+		I: D_RQ, OFFSET 0 LEN 64 - KWP2000 Diagnose-Request
+	FRAME D_RQ_MOST7 (0x0647)
+		I: D_RQ, OFFSET 0 LEN 64 - KWP2000 Diagnose-Request
+	FRAME D_RQ_MOST8 (0x0648)
+		I: D_RQ, OFFSET 0 LEN 64 - KWP2000 Diagnose-Request
+	FRAME D_RQ_MOST9 (0x0649)
+		I: D_RQ, OFFSET 0 LEN 64 - KWP2000 Diagnose-Request
+	FRAME D_RQ_OBF (0x05C0)
+		I: D_RQ, OFFSET 0 LEN 64 - KWP2000 Diagnose-Request
+	FRAME D_RQ_PFDS (0x06DA)
+		I: D_RQ, OFFSET 0 LEN 64 - KWP2000 Diagnose-Request
+	FRAME D_RQ_STH (0x06A1)
+		I: D_RQ, OFFSET 0 LEN 64 - KWP2000 Diagnose-Request
+	FRAME D_RQ_GLOBAL (0x001C)
+		I: D_RQ, OFFSET 0 LEN 64 - Globaler KWP2000 Diagnose-Request
+
+KOMBI
+	FRAME KOMBI_A1 (0x000C)
+		I: KL_58d, OFFSET 0 LEN 8 - Helligkeit Instrumenten- und Suchbeleuchtung
+		B: AFL_ein, OFFSET 15 LEN 1 - Automatische Fahrlichtschaltung einschalten
+		B: TFL_ein, OFFSET 14 LEN 1 - Tagfahrlicht einschalten
+		B: T_C, OFFSET 13 LEN 1 - Temperatureinheit "°C" [1], "°F" [0]
+		B: Auto_Tuer, OFFSET 12 LEN 1 - Automatische Türverriegelung ein/aus
+		B: SBS_ein, OFFSET 11 LEN 1 - Sprachbediensystem einschalten
+		B: RR_km, OFFSET 10 LEN 1 - Reiserechner km/miles
+		B: SLF, OFFSET 9 LEN 1 - Speichersuchlauf [1], Sendersuchlauf [0]
+		B: Schlue_Abh_aus, OFFSET 8 LEN 1 - Schlüsselabhängigkeit aus [1], ein [0]
+		E: Sprache, OFFSET 20 LEN 4 - Sprache 
+			RAW: 0 - Deutsch / DEUTSCH 
+			RAW: 1 - Englisch / ENGLISCH 
+			RAW: 2 - Französisch / FRANZOESICH 
+			RAW: 3 - Italienisch / ITALIENISCH 
+			RAW: 4 - Spanisch / SPANISCH 
+			RAW: 5 - Japanisch / JAPANISCH 
+			RAW: 6 - Englisch (J) / ENGLISCH_J
+		B: UFB_ein, OFFSET 19 LEN 1 - Umfeldbeleuchtung einschalten
+		B: RDK_akt, OFFSET 18 LEN 1 - RDK aktivieren (W220/C215)
+		B: FL_OK, OFFSET 17 LEN 1 - Fernlicht einschalten erlaubt
+		B: IRS_Vdk_ein, OFFSET 16 LEN 1 - Innenraumschutz bei offenem Verdeck ein
+		I: InLi_Nlz, OFFSET 24 LEN 8 - Nachleuchtzeit Innenlicht
+		I: ABL_Nlz, OFFSET 32 LEN 8 - Abblendlicht Nachleuchtzeit
+		I: V_Anz, OFFSET 40 LEN 8 - Angezeigte Fahrzeuggeschwindigkeit
+		B: FDS_F_CHAR, OFFSET 55 LEN 1 - FDS-Charakteristik Fahrer dominant [1], dezent [0]
+		B: ESH_LS_ein, OFFSET 54 LEN 1 - Lenksäulenverstellung bei E/A-Hilfe ein [1], aus [0]
+		B: ESH_Sitz_ein, OFFSET 53 LEN 1 - Sitzverstellung bei E/A-Hilfe ein [1], aus [0]
+		B: FDS_B_CHAR, OFFSET 52 LEN 1 - FDS-Charakteristik Beifahrer dominant [1], dezent [0]
+		B: Spi_Park_aus, OFFSET 51 LEN 1 - Parkstellung Außenspiegel ein [1], aus [0]
+		B: VWZ_aus_MFL, OFFSET 50 LEN 1 - Vorwahlzeit deaktiviert über MFL, LED ausschalten
+		B: VWZ_akt, OFFSET 49 LEN 1 - Vorwahlzeit aktiviert, LED einschalten
+		B: STHL_ein_KOMBI, OFFSET 48 LEN 1 - Standheizung/-lüftung einschalten
+		I: SD_St1, OFFSET 56 LEN 8 - Systemdiagnose Status (R230)
+	FRAME KOMBI_A2 (0x0262)
+		E: SNR_KI, OFFSET 4 LEN 4 - Sequence Number 
+			RAW: 160 - Connection Setup (Blocksize in D0, Bit 0 - 3) / CON_SETUP 
+			RAW: 161 - Connection Acknowledge (Blocksize in D0, Bit 0 - 3) / CON_ACK 
+			RAW: 163 - Connection Test / CON_TEST 
+			RAW: 175 - Unacknowledged Data in D0 - D6 / UNACK_DATA
+		B: EOM_KI, OFFSET 3 LEN 1 - End of message
+		B: ANR_KI, OFFSET 2 LEN 1 - Acknowledge not requested
+		B: ST_KI, OFFSET 1 LEN 1 - Service type
+		B: TPDU_KI, OFFSET 0 LEN 1 - Data [0], Connection management [1]
+		I: D0_KI, OFFSET 8 LEN 8 - Daten Byte 0
+		I: D1_KI, OFFSET 16 LEN 8 - Daten Byte 1
+		I: D2_KI, OFFSET 24 LEN 8 - Daten Byte 2
+		I: D3_KI, OFFSET 32 LEN 8 - Daten Byte 3
+		I: D4_KI, OFFSET 40 LEN 8 - Daten Byte 4
+		I: D5_KI, OFFSET 48 LEN 8 - Daten Byte 5
+		I: D6_KI, OFFSET 56 LEN 8 - Daten Byte 6
+	FRAME KOMBI_A3 (0x0238)
+		I: A_Zeit, OFFSET 0 LEN 16 - Aktuelle Uhrzeit
+		I: KM, OFFSET 16 LEN 24 - Kilometerstand
+		I: RW, OFFSET 40 LEN 16 - Reichweite
+	FRAME KOMBI_A4 (0x0334)
+		B: BBV_KL, OFFSET 7 LEN 1 - Bremsbelagverschleiß Kontrolllampe
+		B: ABS_KL, OFFSET 5 LEN 1 - ABS defekt Kontrollampe
+		B: ESP_KL, OFFSET 4 LEN 1 - ESP defekt Kontrolllampe
+		B: BAS_KL, OFFSET 1 LEN 1 - BAS defekt Kontrollampe
+		B: TFSM, OFFSET 0 LEN 1 - Tankfüllstandsminimum
+		B: DIAG_KL, OFFSET 14 LEN 1 - Diagnose Kontrollampe (OBD II)
+		B: OEL_KL, OFFSET 13 LEN 1 - Ölstand/Öldruck Kontrollampe
+		B: UEHITZ, OFFSET 8 LEN 1 - Motoröltemperatur zu hoch (Überhitzung)
+		I: T_OEL, OFFSET 16 LEN 8 - Öltemperatur
+		I: OEL_FS, OFFSET 24 LEN 8 - Ölstand
+	FRAME KOMBI_A5 (0x0338)
+		B: RLZS_OK, OFFSET 2 LEN 1 - Restlaufzeit/-strecke gültig
+		B: RLZS_Prio, OFFSET 1 LEN 1 - Priorität: Restwegstrecke [0]; Restlaufzeit [1]
+		B: RLS_km, OFFSET 0 LEN 1 - Restlaufstrecke in km [0]; in miles [1]
+		I: RLZ, OFFSET 8 LEN 16 - Restlaufzeit
+		I: RLS, OFFSET 24 LEN 24 - Restlaufstrecke
+	FRAME KOMBI_A6 (0x003C)
+		I: DSPL_Dimm, OFFSET 0 LEN 8 - Display-Dimmung
+		B: KOMBI_MW_OK, OFFSET 11 LEN 1 - Kombi ist mehrwertfähig
+		B: HD_BEGRENZ, OFFSET 10 LEN 1 - Heckdeckelbegrenzung ein
+		B: SP_ANKL_SPERR, OFFSET 9 LEN 1 - Spiegelanklappen bei Fzg.-Verriegelung gesperrt [1], erlaubt [0]
+		B: REST_EIN_KI, OFFSET 8 LEN 1 - Restwärme einschalten
+	FRAME KOMBI_A7 (0x00FF)
+		I: SCHLUE_ID_KI, OFFSET 0 LEN 32 - Schlüssel-Id vom Kombi
+		I: KM_KI, OFFSET 32 LEN 24 - Kilometerstand
+	FRAME KOMBI_A8 (0x0230)
+		E: MFL_MENUE, OFFSET 0 LEN 8 - Betroffenes MFL-Menü 
+			RAW: 0 - Reserviert 
+			RAW: 1 - Reserviert 
+			RAW: 2 - Reserviert 
+			RAW: 3 - Audio / AUDIO 
+			RAW: 4 - Navigation / NAVI 
+			RAW: 5 - Telefon / TEL 
+			RAW: 6 - Neue Services / NEU_SER 
+			RAW: 7 - Sprachfunk / SPR_FNK 
+			RAW: 8 - Datenfunk / DAT_FNK 
+			RAW: 255 - Signal nicht vorhanden / SNV
+		B: BUTTON_1_1, OFFSET 15 LEN 1 - Nächstes Display
+		B: BUTTON_1_2, OFFSET 14 LEN 1 - Vorheriges Display
+		B: BUTTON_2_1, OFFSET 13 LEN 1 - Reserve
+		B: BUTTON_2_2, OFFSET 12 LEN 1 - Reserve
+		B: BUTTON_3_1, OFFSET 11 LEN 1 - Taste "+"
+		B: BUTTON_3_2, OFFSET 10 LEN 1 - Taste "-"
+		B: BUTTON_4_1, OFFSET 9 LEN 1 - Telefon Send
+		B: BUTTON_4_2, OFFSET 8 LEN 1 - Telefon End
+		B: BUTTON_5_1, OFFSET 23 LEN 1 - Reserve
+		B: BUTTON_5_2, OFFSET 22 LEN 1 - Reserve
+		B: BUTTON_6_1, OFFSET 21 LEN 1 - Reserve
+		B: BUTTON_6_2, OFFSET 20 LEN 1 - Reserve
+		B: BUTTON_7_1, OFFSET 19 LEN 1 - Reserve
+		B: BUTTON_7_2, OFFSET 18 LEN 1 - Reserve
+		B: BUTTON_8_1, OFFSET 17 LEN 1 - Reserve
+		B: BUTTON_8_2, OFFSET 16 LEN 1 - Reserve
+		B: PTT_1_1, OFFSET 31 LEN 1 - Linguatronic aktivieren
+		B: PTT_1_2, OFFSET 30 LEN 1 - Linguatronic deaktivieren
+		B: PTT_2_1, OFFSET 29 LEN 1 - Reserve
+		B: PTT_2_2, OFFSET 28 LEN 1 - Reserve
+		B: PTT_3_1, OFFSET 27 LEN 1 - Reserve
+		B: PTT_3_2, OFFSET 26 LEN 1 - Reserve
+		B: PTT_4_1, OFFSET 25 LEN 1 - Reserve
+		B: PTT_4_2, OFFSET 24 LEN 1 - Reserve
+	FRAME KOMBI_A9 (0x020B)
+		E: PRIO_KI, OFFSET 5 LEN 3 - Prioritäten am Kombi 
+			RAW: 1 - Priorität 1 / PRIO1 
+			RAW: 2 - Priorität 2 / PRIO2 
+			RAW: 3 - Priorität 3 / PRIO3
+	FRAME TP_KOMBI_AGW1 (0x027F)
+		I: TP_KOMBI_AGW, OFFSET 0 LEN 64 - Kommunikation KOMBI zum AGW
+	FRAME TP_KOMBI_TELEAID4 (0x03BF)
+		I: TP_KOMBI_TELEAID, OFFSET 0 LEN 64 - Kommunikation KOMBI zum TELEAID
+	FRAME NM_KOMBI (0x0414)
+		I: NM, OFFSET 0 LEN 64 - Netzwerkmanagement
+	FRAME D_RS_KOMBI (0x07A4)
+		I: D_RS, OFFSET 0 LEN 64 - KWP2000 Diagnose-Response
+	FRAME SD_RS_KOMBI (0x0774)
+		I: SD_RS, OFFSET 0 LEN 64 - Systemdiagnose-Response
+	FRAME SG_APPL_KOMBI (0x07D9)
+		I: SG_APPL, OFFSET 0 LEN 64 - Steuergerät an externe Applikation
+
+MRM
+	FRAME MRM_A1 (0x0101)
+		B: FL_ein, OFFSET 2 LEN 1 - Fernlicht einschalten
+		B: LHP_ein, OFFSET 1 LEN 1 - Lichthupe einschalten
+		B: SGH_ein_MRM, OFFSET 0 LEN 1 - Signalhorn einschalten
+		B: Waschen, OFFSET 14 LEN 1 - Waschen einschalten
+		B: Sch_Wi_Int, OFFSET 13 LEN 1 - Scheibenwischer Intervall einschalten
+		B: Sch_Wi_1, OFFSET 12 LEN 1 - Scheibenwischer Stufe 1 einschalten
+		B: Sch_Wi_2, OFFSET 11 LEN 1 - Scheibenwischer Stufe 2 einschalten
+	FRAME MRM_A2 (0x0005)
+		B: Bli_li_ein, OFFSET 7 LEN 1 - Blinker links einschalten
+		B: Bli_re_ein, OFFSET 6 LEN 1 - Blinker rechts einschalten
+		I: Bli_Hell, OFFSET 8 LEN 8 - Dauer Blinker-Hellphase
+	FRAME MRM_A3 (0x0330)
+		B: Display_up, OFFSET 7 LEN 1 - Taste "Display up" gedrückt
+		B: Display_dn, OFFSET 6 LEN 1 - Taste "Display down" gedrückt (W220 bis ÄJ 00/1: Voice_Ctrl)
+		B: Scroll_up, OFFSET 5 LEN 1 - Taste "Scroll up" gedrückt
+		B: Scroll_dn, OFFSET 4 LEN 1 - Taste "Scroll down" gedrückt
+		B: Volume_up, OFFSET 3 LEN 1 - Taste "Lautstärke +" gedrückt
+		B: Volume_dn, OFFSET 2 LEN 1 - Taste "Lautstärke -" gedrückt
+		B: Phone_end, OFFSET 1 LEN 1 - Taste "Telefon end" gedrückt
+		B: Phone_send, OFFSET 0 LEN 1 - Taste "Telefon send" gedrückt
+		B: Stop, OFFSET 15 LEN 1 - Hebel "Abbruch" gedrückt
+		B: Voice_Ctrl, OFFSET 14 LEN 1 - Hebel "Push to talk" gedrückt (W220 erst ab ÄJ 00/1)
+	FRAME MRM_A4 (0x0204)
+		B: LS_auf, OFFSET 7 LEN 1 - Lenksäule - nach oben
+		B: LS_ab, OFFSET 6 LEN 1 - Lenksäule - nach unten
+		B: LS_vor, OFFSET 5 LEN 1 - Lenksäule - nach vorne
+		B: LS_zurueck, OFFSET 4 LEN 1 - Lenksäule - nach hinten
+		B: ESH_ein, OFFSET 3 LEN 1 - Einstiegshilfe einschalten (W220/C215)
+		B: LSVH_ob, OFFSET 2 LEN 1 - Lenksäulenverstellhebel nach oben gedreht
+		B: LSVH_un, OFFSET 1 LEN 1 - Lenksäulenverstellhebel nach unten gedreht
+	FRAME NM_MRM (0x0415)
+		I: NM, OFFSET 0 LEN 64 - Netzwerkmanagement
+	FRAME D_RS_MRM (0x04F5)
+		I: D_RS, OFFSET 0 LEN 64 - KWFB Diagnose-Response
+	FRAME SD_RS_MRM (0x0775)
+		I: SD_RS, OFFSET 0 LEN 64 - Systemdiagnose-Response
+	FRAME SG_APPL_MRM (0x07DB)
+		I: SG_APPL, OFFSET 0 LEN 64 - Steuergerät an externe Applikation
+
+LRK
+	FRAME LRK_A1 (0x0038)
+		B: LRK_Stoerg, OFFSET 2 LEN 1 - LED's LRK blinken wg. Störung
+		B: Lh_LED_ein, OFFSET 1 LEN 1 - LED Lenkradheizung einschalten
+		B: LBlft_LED_ein, OFFSET 0 LEN 1 - LED Lenkradbelüftung einschalten
+	FRAME NM_LRK (0x040F)
+		I: NM, OFFSET 0 LEN 64 - Netzwerkmanagement
+	FRAME D_RS_LRK (0x04EF)
+		I: D_RS, OFFSET 0 LEN 64 - KWFB Diagnose-Response
+	FRAME SD_RS_LRK (0x076F)
+		I: SD_RS, OFFSET 0 LEN 64 - Systemdiagnose-Response
+	FRAME SG_APPL_LRK (0x07CF)
+		I: SG_APPL, OFFSET 0 LEN 64 - Steuergerät an externe Applikation
+
+SAM_F
+	FRAME SAM_F_A1 (0x000A)
+		I: T_Aussen, OFFSET 0 LEN 8 - Außenlufttemperatur
+		I: T_Kaelte, OFFSET 8 LEN 16 - Temperatur Kältemittel R134a
+		I: p_Kaelte, OFFSET 24 LEN 16 - Druck Kältemittel R134a
+		B: LS_zh, OFFSET 47 LEN 1 - Lenksäule zu hoch
+		B: EDW_akt, OFFSET 46 LEN 1 - EDW geschärft
+		B: IRS_akt, OFFSET 45 LEN 1 - Innenraumschutz aktivieren
+		B: Komp_def, OFFSET 44 LEN 1 - Kältekompressor-Ansteuerung Stromausgang defekt
+		B: KOMP_EIN, OFFSET 43 LEN 1 - Klima-Kompressor eingeschaltet
+		B: HAS_KL, OFFSET 42 LEN 1 - Handbremse angezogen (Kontrolllampe)
+		B: BBV_VL, OFFSET 41 LEN 1 - Bremsbelagverschleiß vorne links
+		B: BFL_KL, OFFSET 40 LEN 1 - Bremsflüssigkeitsstand Kontrolllampe
+		B: MABL_zu, OFFSET 51 LEN 1 - Meldung: "Mittelablage schliessen! IRS nicht aktivierbar"
+		B: AS_akt, OFFSET 50 LEN 1 - Abschleppschutz aktivieren
+		B: Pnk_Alm_akt, OFFSET 49 LEN 1 - Panik-Alarm ist aktiv
+		B: HD_akt, OFFSET 48 LEN 1 - Heckdeckel-Überwachung aktivieren
+		I: I_Komp, OFFSET 56 LEN 8 - Strom Kompressor-Hauptregelventil
+	FRAME SAM_F_A2 (0x0028)
+		B: PL_li_ein, OFFSET 7 LEN 1 - Parklicht links einschalten
+		B: PL_re_ein, OFFSET 6 LEN 1 - Parklicht rechts einschalten
+		B: STL_ein, OFFSET 5 LEN 1 - Standlicht einschalten
+		B: ABL_ein, OFFSET 4 LEN 1 - Abblendlicht einschalten
+		B: NSW_ein, OFFSET 3 LEN 1 - Nebelscheinwerfer einschalten
+		B: NSL_ein, OFFSET 2 LEN 1 - Nebelschlußlicht einschalten
+		B: FL_ein_SAM_F, OFFSET 1 LEN 1 - Fernlicht einschalten
+		B: SRA_ein, OFFSET 0 LEN 1 - Scheinwerferreinigungsanlage einschalten
+		B: Bli_def_VL, OFFSET 15 LEN 1 - Blinker vorne links defekt
+		B: PL_def_VL, OFFSET 14 LEN 1 - Parklicht vorne links defekt
+		B: ABL_def_R, OFFSET 13 LEN 1 - Abblendlicht RECHTS defekt (bei Kreuzverkabelung)
+		B: FL_def_L, OFFSET 12 LEN 1 - Fernlicht links defekt
+		B: NSW_def_L, OFFSET 11 LEN 1 - Nebelscheinwerfer links defekt
+		B: SM_def_VL, OFFSET 10 LEN 1 - Sidemarker vorne links defekt
+		B: AFL_St_akt, OFFSET 8 LEN 1 - Autmomatische Fahrlichtschaltung ist aktiv
+		B: Bli_Ers_VL, OFFSET 23 LEN 1 - Blinker vorne links Ersatzlicht aktiv
+		B: PL_Ers_VL, OFFSET 22 LEN 1 - Parklicht vorne links Ersatzlicht aktiv
+		B: SWA_akt, OFFSET 16 LEN 1 - Scheinwerferaufschaltung aktiv
+	FRAME SAM_F_A3 (0x0348)
+		B: Intervall, OFFSET 7 LEN 1 - Lenkstockschalter auf "Intervallstellung"
+		B: KL_31b_ein, OFFSET 6 LEN 1 - Wischer außerhalb Parkstellung
+		B: KL_86_ein, OFFSET 5 LEN 1 - Waschen betätigt
+		E: Konfig, OFFSET 2 LEN 3 - Konfigurationsbit 
+			RAW: 0 - unempfindliche Stufen / UEMPF0 
+			RAW: 1 - unempfindliche Stufen / UEMPF1 
+			RAW: 2 - unempfindliche Stufen / UEMPF2 
+			RAW: 3 - Voreinst. Empf. / VOR_EMPF 
+			RAW: 4 - empfindlichere Stufen / EMPF0 
+			RAW: 5 - empfindlichere Stufen / EMPF1 
+			RAW: 6 - empfindlichere Stufen / EMPF2 
+			RAW: 7 - Neuinitialisierung / NEU_INI
+		B: Parity_SAM_F, OFFSET 0 LEN 1 - Parity von Bit 0 bis Bit 6 (even)
+	FRAME SAM_F_A4 (0x0110)
+		B: Bli_li_ein_EDW, OFFSET 7 LEN 1 - Blinker links einschalten
+		B: Bli_re_ein_EDW, OFFSET 6 LEN 1 - Blinker rechts einschalten
+		B: SL_ein_EDW, OFFSET 5 LEN 1 - Schlußlicht einschalten
+		B: ABL_ein_EDW, OFFSET 4 LEN 1 - Abblendlicht einschalten
+		B: NSW_ein_EDW, OFFSET 3 LEN 1 - Nebelscheinwerfer einschalten
+		B: ABL_DL_EDW, OFFSET 2 LEN 1 - Abblendlicht dauerhaft einschalten
+		B: IL_DL_EDW, OFFSET 1 LEN 1 - Innenlicht dauerhaft einschalten
+		B: EDW_Alm, OFFSET 0 LEN 1 - EDW-Alarm ausgelöst
+		I: Hell_EDW, OFFSET 8 LEN 8 - Dauer Licht-Hellphase
+	FRAME NM_SAM_F (0x0402)
+		I: NM, OFFSET 0 LEN 64 - Netzwerkmanagement
+	FRAME D_RS_SAM_F (0x04E2)
+		I: D_RS, OFFSET 0 LEN 64 - KWFB Diagnose-Response
+	FRAME SD_RS_SAM_F (0x0762)
+		I: SD_RS, OFFSET 0 LEN 64 - Systemdiagnose-Response
+	FRAME SG_APPL_SAM_F (0x07B5)
+		I: SG_APPL, OFFSET 0 LEN 64 - Steuergerät an externe Applikation
+
+SAM_B
+	FRAME SAM_B_A1 (0x000E)
+		B: Bli_def_VR, OFFSET 7 LEN 1 - Blinker vorne rechts defekt
+		B: PL_def_VR, OFFSET 6 LEN 1 - Parklicht vorne rechts defekt
+		B: ABL_def_L, OFFSET 5 LEN 1 - Abblendlicht LINKS defekt (bei Kreuzverkabelung)
+		B: FL_def_R, OFFSET 4 LEN 1 - Fernlicht rechts defekt
+		B: NSW_def_R, OFFSET 3 LEN 1 - Nebelscheinwerfer rechts defekt
+		B: SM_def_VR, OFFSET 2 LEN 1 - Sidemarker vorne rechts defekt
+		B: Mot_auf, OFFSET 0 LEN 1 - Motorhaube offen
+		B: SGH_St_ein, OFFSET 15 LEN 1 - Signalhorn ist eingeschaltet
+		B: KWS_KL, OFFSET 14 LEN 1 - Kühlwasserstand zu niedrig Kontrolllampe
+		B: WWS_KL, OFFSET 13 LEN 1 - Waschwasserstand zu niedrig Kontrollampe
+		B: WWP_def, OFFSET 12 LEN 1 - Waschwasserpumpe defekt
+		B: ZWP_lft, OFFSET 11 LEN 1 - Zusatzwasserpumpe läuft
+		B: ZWP_def, OFFSET 10 LEN 1 - Zusatzwasserpumpe defekt
+		B: BBV_VR, OFFSET 9 LEN 1 - Bremsbelagverschleiß vorne rechts
+		B: KL_61_ein, OFFSET 8 LEN 1 - Klemme 61 ist eingeschaltet
+		B: Bli_Ers_VR, OFFSET 23 LEN 1 - Blinker vorne rechts Ersatzlicht aktiv
+		B: PL_Ers_VR, OFFSET 22 LEN 1 - Parklicht vorne rechts Ersatzlicht aktiv
+		B: MW_AKT_SAM_B, OFFSET 20 LEN 1 - SBC-Mehrwert: Nachlauf aktiv
+		B: VSTAT_A, OFFSET 19 LEN 1 - SAM/x: v-Signal vom EHB-ASG, x = B (230), V (211), F ( 240)
+		B: SAM_B_PAS, OFFSET 18 LEN 1 - SAM/B passiv
+		B: BLS_A, OFFSET 17 LEN 1 - SAM/x: Bremslichtschalter-Ausgang EHB-ASG, x = B (230), V (211), F (240)
+		B: INF_RFE_SAM, OFFSET 16 LEN 1 - SAM/x: EHB-ASG in Rückfallebene, x = B (230), V (211,164,251), F (240)
+		B: GWHST_P_SAM_B, OFFSET 31 LEN 1 - Getriebewählhebelstellung "P" erkannt
+		B: KL_30A_EIN, OFFSET 29 LEN 1 - 2. Batterie zuschalten
+		B: IZV_auf, OFFSET 25 LEN 1 - Innen-Zentralverriegelung auf
+		B: IZV_zu, OFFSET 24 LEN 1 - Innen-Zentralverriegelung zu
+	FRAME SAM_B_A3 (0x0388)
+		B: EDW_Mot, OFFSET 1 LEN 1 - EDW Motorhaubenkontakt ausgelöst
+		B: EDW_Hand, OFFSET 0 LEN 1 - EDW Handschuhfachkontakt ausgelöst
+	FRAME NM_SAM_B (0x0401)
+		I: NM, OFFSET 0 LEN 64 - Netzwerkmanagement
+	FRAME D_RS_SAM_B (0x04E1)
+		I: D_RS, OFFSET 0 LEN 64 - KWFB Diagnose-Response
+	FRAME SD_RS_SAM_B (0x0761)
+		I: SD_RS, OFFSET 0 LEN 64 - Systemdiagnose-Response
+	FRAME SG_APPL_SAM_B (0x07B3)
+		I: SG_APPL, OFFSET 0 LEN 64 - Steuergerät an externe Applikation
+
+SAM_H
+	FRAME SAM_H_A1 (0x0004)
+		B: TVL_auf, OFFSET 7 LEN 1 - Tür vorne links ist auf
+		B: TVR_auf, OFFSET 6 LEN 1 - Tür vorne rechts ist auf
+		B: THL_auf, OFFSET 5 LEN 1 - Tür hinten links ist auf
+		B: THR_auf, OFFSET 4 LEN 1 - Tür hinten rechts ist auf
+		B: HD_auf, OFFSET 3 LEN 1 - Heckdeckel ist auf
+		B: MABL_auf, OFFSET 2 LEN 1 - Mittelablage ist auf
+		B: PDM_SAM_H, OFFSET 0 LEN 1 - SAM/H war im Power Down Modus
+		B: HHS_St_ein, OFFSET 15 LEN 1 - Heizbare Heckscheibe ist eingeschaltet
+		B: HHS_St_USpg, OFFSET 14 LEN 1 - Heizbare Heckscheibe ist ausgeschaltet wegen Unterspannung
+		B: GS_HL_ges, OFFSET 13 LEN 1 - Gurtschloß hinten links gesteckt
+		B: GS_HM_ges, OFFSET 12 LEN 1 - Gurtschloß hinten mitte gesteckt
+		B: GS_HR_ges, OFFSET 11 LEN 1 - Gurtschloß hinten rechts gesteckt
+		B: KL_54_def, OFFSET 10 LEN 1 - Klemme 54 Leitung (Bremlichtansteuerung) defekt
+		B: BBV_H, OFFSET 9 LEN 1 - Bremsbelagverschleiß hinten
+		B: Bre_bet, OFFSET 8 LEN 1 - Bremse betätigt
+		B: SK_HD_auf, OFFSET 16 LEN 1 - Sperrklinkenschalter: Heckdeckel ist auf
+	FRAME SAM_H_A2 (0x0222)
+		B: Bli_def_HL, OFFSET 7 LEN 1 - Blinker hinten links defekt
+		B: SL_def_HL, OFFSET 6 LEN 1 - Schlußlicht hinten links defekt
+		B: BL_def_HL, OFFSET 5 LEN 1 - Bremslicht hinten links defekt
+		B: NSL_def_H, OFFSET 4 LEN 1 - Nebelschlußlicht hinten (links) defekt
+		B: RFL_def_HL, OFFSET 3 LEN 1 - Rückfahrlicht hinten links defekt
+		B: KZL_def_HL, OFFSET 2 LEN 1 - Kennzeichenlicht hinten links defekt
+		B: SM_def_HL, OFFSET 1 LEN 1 - Sidemarker hinten links defekt
+		B: BL3_def, OFFSET 0 LEN 1 - 3. Bremsleuchte defekt
+		B: Bli_def_HR, OFFSET 15 LEN 1 - Blinker hinten rechts defekt
+		B: SL_def_HR, OFFSET 14 LEN 1 - Schlußlicht hinten rechts defekt
+		B: BL_def_HR, OFFSET 13 LEN 1 - Bremslicht hinten rechts defekt
+		B: NSL_def_HR, OFFSET 12 LEN 1 - Nebelschlußlicht hinten rechts defekt
+		B: RFL_def_HR, OFFSET 11 LEN 1 - Rückfahrlicht hinten rechts defekt
+		B: KZL_def_HR, OFFSET 10 LEN 1 - Kennzeichenlicht hinten rechts defekt
+		B: SM_def_HR, OFFSET 9 LEN 1 - Sidemarker hinten rechts defekt
+		I: Tank_Fs, OFFSET 16 LEN 8 - Tankfüllstand
+		B: Bli_Ers_HL, OFFSET 31 LEN 1 - Blinker hinten links Ersatzlicht aktiv
+		B: SL_Ers_HL, OFFSET 30 LEN 1 - Schlußlicht hinten links Ersatzlicht aktiv
+		B: BL_Ers_HL, OFFSET 29 LEN 1 - Bremslicht hinten links Ersatzlicht aktiv
+		B: Bli_Ers_HR, OFFSET 27 LEN 1 - Blinker hinten rechts Ersatzlicht aktiv
+		B: SL_Ers_HR, OFFSET 26 LEN 1 - Schlußlicht hinten rechts Ersatzlicht aktiv
+		B: BL_Ers_HR, OFFSET 25 LEN 1 - Bremslicht hinten rechts Ersatzlicht aktiv
+	FRAME SAM_H_A4 (0x038C)
+		B: EDW_TVL, OFFSET 7 LEN 1 - EDW Türkontakt vorne links ausgelöst
+		B: EDW_TVR, OFFSET 6 LEN 1 - EDW Türkontakt vorne rechts ausgelöst
+		B: EDW_THL, OFFSET 5 LEN 1 - EDW Türkontakt hinten links ausgelöst
+		B: EDW_THR, OFFSET 4 LEN 1 - EDW Türkontakt hinten rechts ausgelöst
+		B: EDW_HD, OFFSET 3 LEN 1 - EDW Heckdeckelkontakt ausgelöst
+		B: EDW_Tkd, OFFSET 2 LEN 1 - EDW Tankdeckelkontakt ausgelöst
+		B: EDW_Tuer_zu, OFFSET 1 LEN 1 - EDW Alle Türen, Heckdeckel und Mittelablage geschlossen
+		B: EDW_AS_Alm, OFFSET 0 LEN 1 - EDW Abschleppschutz Alarm ausgelöst
+		B: EDW_IRS_Alm, OFFSET 15 LEN 1 - EDW Innenraumschutz Alarm ausgelöst
+		B: EDW_FBL, OFFSET 14 LEN 1 - EDW Fondboxkontakt links ausgelöst
+		B: EDW_FBR, OFFSET 13 LEN 1 - EDW Fondboxkontakt rechts ausgelöst
+		B: EDW_MABL, OFFSET 12 LEN 1 - EDW Mittelablagekontakt ausgelöst
+		B: EDW_Tank_Alm, OFFSET 11 LEN 1 - EDW Tanküberwachung Alarm ausgelöst
+		B: EDW_FT_ent, OFFSET 8 LEN 1 - EDW Fahrertür entriegelt bei aktiver EDW
+	FRAME NM_SAM_H (0x0403)
+		I: NM, OFFSET 0 LEN 64 - Netzwerkmanagement
+	FRAME D_RS_SAM_H (0x04E3)
+		I: D_RS, OFFSET 0 LEN 64 - KWFB Diagnose-Response
+	FRAME SD_RS_SAM_H (0x0763)
+		I: SD_RS, OFFSET 0 LEN 64 - Systemdiagnose-Response
+	FRAME SG_APPL_SAM_H (0x07B7)
+		I: SG_APPL, OFFSET 0 LEN 64 - Steuergerät an externe Applikation
+
+AAG
+	FRAME AAG_A1 (0x0030)
+		B: AnhBli_def_L, OFFSET 7 LEN 1 - Anhänger-Blinker links defekt
+		B: AnhSL_def_L, OFFSET 6 LEN 1 - Anhänger-Schlußlicht links defekt
+		B: AnhBL_def, OFFSET 5 LEN 1 - Anhänger-Bremslicht defekt
+		B: AnhNSL_def, OFFSET 4 LEN 1 - Anhänger-Nebelschlußlicht defekt
+		B: AnhRFL_def, OFFSET 3 LEN 1 - Anhänger-Rückfahrlicht defekt
+		B: AnhBli_def_R, OFFSET 15 LEN 1 - Anhänger-Blinker rechts defekt
+		B: AnhSL_def_R, OFFSET 14 LEN 1 - Anhänger-Schlußlicht rechts defekt
+		B: AnhKL_54_def, OFFSET 18 LEN 1 - Anhänger Klemme 54 Fehler
+		B: AHK_NOK, OFFSET 17 LEN 1 - Anhängerkupplung nicht verrastet
+		B: Anh_erk, OFFSET 16 LEN 1 - Anhängerbetrieb erkannt
+	FRAME AAG_A2 (0x0390)
+		B: EDW_Anh_Alm, OFFSET 0 LEN 1 - EDW Anhängerüberwachung Alarm ausgelöst
+	FRAME NM_AAG (0x0410)
+		I: NM, OFFSET 0 LEN 64 - Netzwerkmanagement
+	FRAME D_RS_AAG (0x04F0)
+		I: D_RS, OFFSET 0 LEN 64 - KWFB Diagnose-Response
+	FRAME SD_RS_AAG (0x0770)
+		I: SD_RS, OFFSET 0 LEN 64 - Systemdiagnose-Response
+	FRAME SG_APPL_AAG (0x07D1)
+		I: SG_APPL, OFFSET 0 LEN 64 - Steuergerät an externe Applikation
+
+TVL
+	FRAME TVL_A1 (0x0210)
+		B: SVL_vor, OFFSET 7 LEN 1 - Sitz vorne links - längs vor
+		B: SVL_zur, OFFSET 6 LEN 1 - Sitz vorne links - längs zurück
+		B: SVL_SKT_vor, OFFSET 5 LEN 1 - Sitz vorne links - Sitzkissentiefenverstellung vor
+		B: SVL_SKT_zur, OFFSET 4 LEN 1 - Sitz vorne links - Sitzkissentiefenverstellung zurück
+		B: SVL_hi_auf, OFFSET 3 LEN 1 - Sitz vorne links - Höhe hinten auf
+		B: SVL_hi_ab, OFFSET 2 LEN 1 - Sitz vorne links - Höhe hinten ab
+		B: SVL_Tgl, OFFSET 0 LEN 1 - Sitz vorne links - Togglebit
+		B: SVL_Le_vor, OFFSET 15 LEN 1 - Sitz vorne links - Lehne nach vorne
+		B: SVL_Le_zur, OFFSET 14 LEN 1 - Sitz vorne links - Lehne nach hinten
+		B: SVL_vo_auf, OFFSET 13 LEN 1 - Sitz vorne links - Höhe vorne auf
+		B: SVL_vo_ab, OFFSET 12 LEN 1 - Sitz vorne links - Höhe vorne ab
+		B: SVL_KST_auf, OFFSET 11 LEN 1 - Sitz vorne links - Kopfstütze nach oben
+		B: SVL_KST_ab, OFFSET 10 LEN 1 - Sitz vorne links - Kopfstütze nach unten
+		B: SBlft_VL_nS, OFFSET 21 LEN 1 - Sitzbelüftung Sitz vorne links nächste Stufe
+		B: Sh_VL_nS, OFFSET 20 LEN 1 - Sitzheizung Sitz vorne links nächste Stufe
+		B: Sh_VL_S1, OFFSET 19 LEN 1 - Sitzheizung Sitz vorne links Stufe 1 einschalten
+		B: Sh_VL_S2, OFFSET 18 LEN 1 - Sitzheizung Sitz vorne links Stufe 2 einschalten
+	FRAME TVL_A2 (0x0214)
+		B: MVL_P1_en, OFFSET 7 LEN 1 - Memory vorne links - Position 1 einnehmen
+		B: MVL_P2_en, OFFSET 6 LEN 1 - Memory vorne links - Position 2 einnehmen
+		B: MVL_P1_sp, OFFSET 4 LEN 1 - Memory vorne links - Position 1 speichern
+		B: MVL_P2_sp, OFFSET 3 LEN 1 - Memory vorne links - Position 2 speichern
+		B: MVL_PM_en, OFFSET 1 LEN 1 - Memory vorne links - Letzte man. eingest. Pos. einnehmen (W220)
+		B: MVL_Tgl, OFFSET 0 LEN 1 - Memory vorne links - Togglebit
+		B: ISOFIX_en_RL, OFFSET 11 LEN 1 - ISOFIX-Position einnehmen
+		B: MVL_sp_bet, OFFSET 10 LEN 1 - Memory vorne links - Speichern betätigt
+		B: MVL_man, OFFSET 9 LEN 1 - Memory vorne links - Verstell. wurde manuell aktiviert (W220)
+		B: MVL_atm, OFFSET 8 LEN 1 - Memory vorne links - Verstell. wurde autom. aktiviert (W220)
+	FRAME TVL_A3 (0x0218)
+		B: Spi_re_n_li, OFFSET 7 LEN 1 - Außenspiegel rechts nach links
+		B: Spi_re_n_re, OFFSET 6 LEN 1 - Außenspiegel rechts nach rechts
+		B: Spi_re_n_oben, OFFSET 5 LEN 1 - Außenspiegel rechts nach oben
+		B: Spi_re_n_unten, OFFSET 4 LEN 1 - Außenspiegel rechts nach unten
+		B: Spi_re_Garage, OFFSET 3 LEN 1 - Außenspiegel rechts nach Garagenstellung
+		B: Spi_re_Fahren, OFFSET 2 LEN 1 - Außenspiegel rechts nach Fahrstellung
+		B: Spi_re_sp, OFFSET 1 LEN 1 - Außenspiegel rechts speichern Parkstellung
+		B: SPVS_bet_LL, OFFSET 0 LEN 1 - Spiegelverstellschalter betätigt
+		B: FVR_at, OFFSET 15 LEN 1 - Fenster vorne rechts - automatischer Tieflauf
+		B: FVR_mt, OFFSET 14 LEN 1 - Fenster vorne rechts - manuell nach unten
+		B: FVR_mh, OFFSET 13 LEN 1 - Fenster vorne rechts - manuell nach oben
+		B: FVR_ah, OFFSET 12 LEN 1 - Fenster vorne rechts - automatischer Hochlauf
+		B: FEVS_at_LL, OFFSET 11 LEN 1 - Beliebiger Fensterverstellschalter - automatischer Tieflauf
+		B: FEVS_mt_LL, OFFSET 10 LEN 1 - Beliebiger Fensterverstellschalter - manuell nach unten
+		B: FEVS_mh_LL, OFFSET 9 LEN 1 - Beliebiger Fensterverstellschalter - manuell nach oben
+		B: FEVS_ah_LL, OFFSET 8 LEN 1 - Beliebiger Fensterverstellschalter - automatischer Hochlauf
+		B: FHL_at_LL, OFFSET 23 LEN 1 - Fenster hinten links - automatischer Tieflauf
+		B: FHL_mt_LL, OFFSET 22 LEN 1 - Fenster hinten links - manuell nach unten
+		B: FHL_mh_LL, OFFSET 21 LEN 1 - Fenster hinten links - manuell nach oben
+		B: FHL_ah_LL, OFFSET 20 LEN 1 - Fenster hinten links - automatischer Hochlauf
+		B: FHR_at_LL, OFFSET 19 LEN 1 - Fenster hinten rechts - automatischer Tieflauf
+		B: FHR_mt_LL, OFFSET 18 LEN 1 - Fenster hinten rechts - manuell nach unten
+		B: FHR_mh_LL, OFFSET 17 LEN 1 - Fenster hinten rechts - manuell nach oben
+		B: FHR_ah_LL, OFFSET 16 LEN 1 - Fenster hinten rechts - automatischer Hochlauf
+	FRAME TVL_A4 (0x0041)
+		B: SN1_TVL, OFFSET 7 LEN 1 - Schloßnuß 1 (öffnen)
+		B: SN2_TVL, OFFSET 6 LEN 1 - Schloßnuß 2 (schließen)
+		B: KB_TVL, OFFSET 5 LEN 1 - Richtung Komfortbetätigung: Öffnen [0], Schließen [1]
+		B: SHD_TVL, OFFSET 4 LEN 1 - SHD/Verdeck öffnen/schließen
+		B: ALF_TVL, OFFSET 3 LEN 1 - Fenster vorne links Automatiklauf aktiv
+		B: FVR_TVL, OFFSET 2 LEN 1 - Fenster vorne rechts öffnen/schließen
+		B: FHL_TVL, OFFSET 1 LEN 1 - Fenster hinten links öffnen/schließen
+		B: FHR_TVL, OFFSET 0 LEN 1 - Fenster hinten rechts öffnen/schließen
+	FRAME TVL_A5 (0x00E1)
+		I: ZBC_TVL, OFFSET 0 LEN 64 - Code Zugangberechtigung
+	FRAME TVL_A6 (0x0010)
+		B: FHWS_hi_LL, OFFSET 7 LEN 1 - Wahlschalter Fensterheber in Stellung hinten (R230)
+		B: HFS_LL, OFFSET 6 LEN 1 - Heckdeckelfernschließung
+		B: Bli_def_L, OFFSET 5 LEN 1 - Blinkleuchte im Außenspiegel links defekt
+		B: MV_VL_St_ZV, OFFSET 4 LEN 1 - Magnetventil ist angesteuert
+		B: Kisi_ein_LL, OFFSET 3 LEN 1 - Kindersicherung einschalten - Fensterheberschalter hinten verboten
+		B: HFE_LL, OFFSET 2 LEN 1 - Heckdeckelfernentriegelung
+		B: SpVS_Bf_LL, OFFSET 1 LEN 1 - Spiegelverstellschalter in Stellung Beifahrer
+		B: p_Anf_TVL, OFFSET 0 LEN 1 - Druckanforderung für Zuziehhilfe
+		B: FVL_Kzhb, OFFSET 11 LEN 1 - Kurzhub Fenster hinten links aktivieren
+		B: FVL_auf, OFFSET 10 LEN 1 - Fenster vorne links: geöffnet (in Verdeckfreigabeposition)
+		B: FVL_Block, OFFSET 9 LEN 1 - Fenster vorne links: Blockabschaltung
+		B: FVL_norm, OFFSET 8 LEN 1 - Fenster vorne links: normiert
+		I: FeSte_VL, OFFSET 12 LEN 12 - Fensterstellung vorne links
+		B: FVL_Block_un, OFFSET 26 LEN 1 - Fenster vorne links: im unteren Block
+		B: FVL_Block_ob, OFFSET 25 LEN 1 - Fenster vorne links: im oberen Block
+		B: FVL_Kzhb_ob, OFFSET 24 LEN 1 - Fenster vorne links: Kurzhubstellung oder oberhalb
+		I: SD_St1, OFFSET 32 LEN 8 - Systemdiagnose Status (R230)
+		I: SD_St2, OFFSET 40 LEN 8 - Systemdiagnose Status (R230)
+		I: SD_St3, OFFSET 48 LEN 8 - Systemdiagnose Status (R230)
+	FRAME NM_TVL (0x0408)
+		I: NM, OFFSET 0 LEN 64 - Netzwerkmanagement
+	FRAME D_RS_TVL (0x04E8)
+		I: D_RS, OFFSET 0 LEN 64 - KWFB Diagnose-Response
+	FRAME SD_RS_TVL (0x0768)
+		I: SD_RS, OFFSET 0 LEN 64 - Systemdiagnose-Response
+	FRAME SG_APPL_TVL (0x07C1)
+		I: SG_APPL, OFFSET 0 LEN 64 - Steuergerät an externe Applikation
+
+TVR
+	FRAME TVR_A1 (0x0211)
+		B: SVR_vor, OFFSET 7 LEN 1 - Sitz vorne rechts - längs vor
+		B: SVR_zur, OFFSET 6 LEN 1 - Sitz vorne rechts - längs zurück
+		B: SVR_SKT_vor, OFFSET 5 LEN 1 - Sitz vorne rechts - Sitzkissentiefenverstellung vor
+		B: SVR_SKT_zur, OFFSET 4 LEN 1 - Sitz vorne rechts - Sitzkissentiefenverstellung zurück
+		B: SVR_hi_auf, OFFSET 3 LEN 1 - Sitz vorne rechts - Höhe hinten auf
+		B: SVR_hi_ab, OFFSET 2 LEN 1 - Sitz vorne rechts - Höhe hinten ab
+		B: SVR_Tgl, OFFSET 0 LEN 1 - Sitz vorne rechts - Togglebit
+		B: SVR_Le_vor, OFFSET 15 LEN 1 - Sitz vorne rechts - Lehne nach vorne
+		B: SVR_Le_zur, OFFSET 14 LEN 1 - Sitz vorne rechts - Lehne nach hinten
+		B: SVR_vo_auf, OFFSET 13 LEN 1 - Sitz vorne rechts - Höhe vorne auf
+		B: SVR_vo_ab, OFFSET 12 LEN 1 - Sitz vorne rechts - Höhe vorne ab
+		B: SVR_KST_auf, OFFSET 11 LEN 1 - Sitz vorne rechts - Kopfstütze nach oben
+		B: SVR_KST_ab, OFFSET 10 LEN 1 - Sitz vorne rechts - Kopfstütze nach unten
+		B: SBlft_VR_nS, OFFSET 21 LEN 1 - Sitzbelüftung Sitz vorne rechts nächste Stufe
+		B: Sh_VR_nS, OFFSET 20 LEN 1 - Sitzheizung Sitz vorne rechts nächste Stufe
+		B: Sh_VR_S1, OFFSET 19 LEN 1 - Sitzheizung Sitz vorne rechts Stufe 1 einschalten
+		B: Sh_VR_S2, OFFSET 18 LEN 1 - Sitzheizung Sitz vorne rechts Stufe 2 einschalten
+	FRAME TVR_A2 (0x0215)
+		B: MVR_P1_en, OFFSET 7 LEN 1 - Memory vorne rechts - Position 1 einnehmen
+		B: MVR_P2_en, OFFSET 6 LEN 1 - Memory vorne rechts - Position 2 einnehmen
+		B: MVR_P1_sp, OFFSET 4 LEN 1 - Memory vorne rechts - Position 1 speichern
+		B: MVR_P2_sp, OFFSET 3 LEN 1 - Memory vorne rechts - Position 2 speichern
+		B: MVR_PM_en, OFFSET 1 LEN 1 - Memory vorne rechts - Letzte man. eingest. Pos. einnehmen (W220)
+		B: MVR_Tgl, OFFSET 0 LEN 1 - Memory vorne rechts - Togglebit
+		B: ISOFIX_en_LL, OFFSET 11 LEN 1 - ISOFIX-Position einnehmen
+		B: MVR_sp_bet, OFFSET 10 LEN 1 - Memory vorne rechts - Speichern betätigt
+		B: MVR_man, OFFSET 9 LEN 1 - Memory vorne rechts - Verstell. wurde manuell aktiviert (W220)
+		B: MVR_atm, OFFSET 8 LEN 1 - Memory vorne rechts - Verstell. wurde autom. aktiviert (W220)
+	FRAME TVR_A3 (0x0219)
+		B: Spi_li_n_li, OFFSET 7 LEN 1 - Außenspiegel links nach links
+		B: Spi_li_n_re, OFFSET 6 LEN 1 - Außenspiegel links nach rechts
+		B: Spi_li_n_oben, OFFSET 5 LEN 1 - Außenspiegel links nach oben
+		B: Spi_li_n_unten, OFFSET 4 LEN 1 - Außenspiegel links nach unten
+		B: Spi_li_Garage, OFFSET 3 LEN 1 - Außenspiegel links nach Garagenstellung
+		B: Spi_li_Fahren, OFFSET 2 LEN 1 - Außenspiegel links nach Fahrstellung
+		B: Spi_li_sp, OFFSET 1 LEN 1 - Außenspiegel links speichern Parkstellung
+		B: SPVS_bet_RL, OFFSET 0 LEN 1 - Spiegelverstellschalter betätigt
+		B: FVL_at, OFFSET 15 LEN 1 - Fenster vorne links - automatischer Tieflauf
+		B: FVL_mt, OFFSET 14 LEN 1 - Fenster vorne links - manuell nach unten
+		B: FVL_mh, OFFSET 13 LEN 1 - Fenster vorne links - manuell nach oben
+		B: FVL_ah, OFFSET 12 LEN 1 - Fenster vorne links - automatischer Hochlauf
+		B: FEVS_at_RL, OFFSET 11 LEN 1 - Beliebiger Fensterverstellschalter - automatischer Tieflauf
+		B: FEVS_mt_RL, OFFSET 10 LEN 1 - Beliebiger Fensterverstellschalter - manuell nach unten
+		B: FEVS_mh_RL, OFFSET 9 LEN 1 - Beliebiger Fensterverstellschalter - manuell nach oben
+		B: FEVS_ah_RL, OFFSET 8 LEN 1 - Beliebiger Fensterverstellschalter - automatischer Hochlauf
+		B: FHL_at_RL, OFFSET 23 LEN 1 - Fenster hinten links - automatischer Tieflauf
+		B: FHL_mt_RL, OFFSET 22 LEN 1 - Fenster hinten links - manuell nach unten
+		B: FHL_mh_RL, OFFSET 21 LEN 1 - Fenster hinten links - manuell nach oben
+		B: FHL_ah_RL, OFFSET 20 LEN 1 - Fenster hinten links - automatischer Hochlauf
+		B: FHR_at_RL, OFFSET 19 LEN 1 - Fenster hinten rechts - automatischer Tieflauf
+		B: FHR_mt_RL, OFFSET 18 LEN 1 - Fenster hinten rechts - manuell nach unten
+		B: FHR_mh_RL, OFFSET 17 LEN 1 - Fenster hinten rechts - manuell nach oben
+		B: FHR_ah_RL, OFFSET 16 LEN 1 - Fenster hinten rechts - automatischer Hochlauf
+	FRAME TVR_A4 (0x0042)
+		B: SN1_TVR, OFFSET 7 LEN 1 - Schloßnuß 1 (öffnen)
+		B: SN2_TVR, OFFSET 6 LEN 1 - Schloßnuß 2 (schließen)
+		B: KB_TVR, OFFSET 5 LEN 1 - Richtung Komfortbetätigung: Öffnen [0], Schließen [1]
+		B: SHD_TVR, OFFSET 4 LEN 1 - SHD/Verdeck öffnen/schließen
+		B: FVL_TVR, OFFSET 3 LEN 1 - Fenster vorne links öffnen/schließen
+		B: ALF_TVR, OFFSET 2 LEN 1 - Fenster vorne rechts Automatiklauf aktiv
+		B: FHL_TVR, OFFSET 1 LEN 1 - Fenster hinten links öffnen/schließen
+		B: FHR_TVR, OFFSET 0 LEN 1 - Fenster hinten rechts öffnen/schließen
+	FRAME TVR_A5 (0x00E2)
+		I: ZBC_TVR, OFFSET 0 LEN 64 - Code Zugangberechtigung
+	FRAME TVR_A6 (0x0011)
+		B: FHWS_hi_RL, OFFSET 7 LEN 1 - Wahlschalter Fensterheber in Stellung hinten (R230)
+		B: HFS_RL, OFFSET 6 LEN 1 - Heckdeckelfernschließung
+		B: Bli_def_R, OFFSET 5 LEN 1 - Blinkleuchte im Außenspiegel rechts defekt
+		B: MV_VR_St_ZV, OFFSET 4 LEN 1 - Magnetventil ist angesteuert
+		B: Kisi_ein_RL, OFFSET 3 LEN 1 - Kindersicherung einschalten - Fensterheberschalter hinten verboten
+		B: HFE_RL, OFFSET 2 LEN 1 - Heckdeckelfernentriegelung
+		B: SpVS_Bf_RL, OFFSET 1 LEN 1 - Spiegelverstellschalter in Stellung Beifahrer
+		B: p_Anf_TVR, OFFSET 0 LEN 1 - Druckanforderung für Zuziehhilfe
+		B: FVR_Kzhb, OFFSET 11 LEN 1 - Kurzhub Fenster hinten rechts aktivieren
+		B: FVR_auf, OFFSET 10 LEN 1 - Fenster vorne rechts: geöffnet (in Verdeckfreigabeposition)
+		B: FVR_Block, OFFSET 9 LEN 1 - Fenster vorne rechts: Blockabschaltung
+		B: FVR_norm, OFFSET 8 LEN 1 - Fenster vorne rechts: normiert
+		I: FeSte_VR, OFFSET 12 LEN 12 - Fensterstellung vorne rechts
+		B: FVR_Block_un, OFFSET 26 LEN 1 - Fenster vorne rechts: im unteren Block
+		B: FVR_Block_ob, OFFSET 25 LEN 1 - Fenster vorne rechts: im oberen Block
+		B: FVR_Kzhb_ob, OFFSET 24 LEN 1 - Fenster vorne rechts: Kurzhubstellung oder oberhalb
+		I: SD_St1, OFFSET 32 LEN 8 - Systemdiagnose Status (R230)
+		I: SD_St2, OFFSET 40 LEN 8 - Systemdiagnose Status (R230)
+		I: SD_St3, OFFSET 48 LEN 8 - Systemdiagnose Status (R230)
+	FRAME NM_TVR (0x040A)
+		I: NM, OFFSET 0 LEN 64 - Netzwerkmanagement
+	FRAME D_RS_TVR (0x04EA)
+		I: D_RS, OFFSET 0 LEN 64 - KWFB Diagnose-Response
+	FRAME SD_RS_TVR (0x076A)
+		I: SD_RS, OFFSET 0 LEN 64 - Systemdiagnose-Response
+	FRAME SG_APPL_TVR (0x07C5)
+		I: SG_APPL, OFFSET 0 LEN 64 - Steuergerät an externe Applikation
+
+THL
+	FRAME THL_A1 (0x0072)
+		B: SHL_vor, OFFSET 7 LEN 1 - Sitz hinten links - längs vor
+		B: SHL_zur, OFFSET 6 LEN 1 - Sitz hinten links - längs zurück
+		B: SHL_auf, OFFSET 5 LEN 1 - Sitz hinten links - Höhe auf
+		B: SHL_ab, OFFSET 4 LEN 1 - Sitz hinten links - Höhe ab
+		B: SHL_Tgl, OFFSET 0 LEN 1 - Sitz hinten links - Togglebit
+		B: SHL_KST_auf, OFFSET 11 LEN 1 - Sitz hinten links - Kopfstütze heben
+		B: SHL_KST_ab, OFFSET 10 LEN 1 - Sitz hinten links - Kopfstütze senken
+		B: SBlft_HL_nS, OFFSET 21 LEN 1 - Sitzbelüftung Sitz hinten links nächste Stufe
+		B: Sh_HL_nS, OFFSET 20 LEN 1 - Sitzheizung Sitz hinten links nächste Stufe
+		B: Sh_HL_S1, OFFSET 19 LEN 1 - Sitzheizung Sitz hinten links Stufe 1 einschalten
+		B: Sh_HL_S2, OFFSET 18 LEN 1 - Sitzheizung Sitz hinten links Stufe 2 einschalten
+	FRAME THL_A2 (0x0272)
+		B: MHL_P1_en, OFFSET 7 LEN 1 - Memory hinten links - Position 1 einnehmen
+		B: MHL_P2_en, OFFSET 6 LEN 1 - Memory hinten links - Position 2 einnehmen
+		B: MHL_P3_en, OFFSET 5 LEN 1 - Memory hinten links - Position 3 einnehmen
+		B: MHL_P1_sp, OFFSET 4 LEN 1 - Memory hinten links - Position 1 speichern
+		B: MHL_P2_sp, OFFSET 3 LEN 1 - Memory hinten links - Position 2 speichern
+		B: MHL_P3_sp, OFFSET 2 LEN 1 - Memory hinten links - Position 3 speichern
+		B: MHL_Tgl, OFFSET 0 LEN 1 - Memory hinten links - Togglebit
+	FRAME THL_A3 (0x02D2)
+		B: FV_SVL_vor, OFFSET 7 LEN 1 - Sitz vorne links - längs vor
+		B: FV_SVL_zur, OFFSET 6 LEN 1 - Sitz vorne links - längs zurück
+		B: MHL_RP_en, OFFSET 5 LEN 1 - Memory hinten links - Ruheposition einnehmen
+		B: FV_SVL_hi_auf, OFFSET 3 LEN 1 - Sitz vorne links - Höhe hinten auf
+		B: FV_SVL_hi_ab, OFFSET 2 LEN 1 - Sitz vorne links - Höhe hinten ab
+		B: SWSL_vo, OFFSET 1 LEN 1 - Sitzwahlschalter links  in Stellung vorne
+		B: FV_SVL_Tgl, OFFSET 0 LEN 1 - Sitz vorne links - Togglebit
+		B: FV_SVL_Le_vor, OFFSET 15 LEN 1 - Sitz vorne links - Lehne nach vorne
+		B: FV_SVL_Le_zur, OFFSET 14 LEN 1 - Sitz vorne links - Lehne nach hinten
+		B: FV_SVL_KST_auf, OFFSET 11 LEN 1 - Sitz vorne links - Kopfstütze nach oben
+		B: FV_SVL_KST_ab, OFFSET 10 LEN 1 - Sitz vorne links - Kopfstütze nach unten
+		B: FV_SBlft_VL_nS, OFFSET 21 LEN 1 - Sitzbelüftung Sitz vorne links nächste Stufe
+		B: FV_Sh_VL_nS, OFFSET 20 LEN 1 - Sitzheizung Sitz vorne links nächste Stufe
+		B: FV_Sh_VL_S1, OFFSET 19 LEN 1 - Sitzheizung Sitz vorne links Stufe 1 einschalten
+		B: FV_Sh_VL_S2, OFFSET 18 LEN 1 - Sitzheizung Sitz vorne links Stufe 2 einschalten
+	FRAME THL_A4 (0x0172)
+		B: MV_HL_St_ZV, OFFSET 4 LEN 1 - Magnetventil ist angesteuert
+		B: p_Anf_THL, OFFSET 0 LEN 1 - Druckanforderung für Zuziehhilfe
+		B: FHL_Kzhb, OFFSET 11 LEN 1 - Fenster hinten links: >= Kurzhubposition geöffnet
+		B: FHL_auf, OFFSET 10 LEN 1 - Fenster hinten links: geöffnet (unterhalb KLA-Position)
+		B: FHL_Block, OFFSET 9 LEN 1 - Fenster hinten links: Blockabschaltung
+		B: FHL_norm, OFFSET 8 LEN 1 - Fenster hinten links: normiert
+		I: FeSte_HL, OFFSET 12 LEN 12 - Fensterstellung hinten links
+	FRAME NM_THL (0x0409)
+		I: NM, OFFSET 0 LEN 64 - Netzwerkmanagement
+	FRAME D_RS_THL (0x04E9)
+		I: D_RS, OFFSET 0 LEN 64 - KWFB Diagnose-Response
+	FRAME SG_APPL_THL (0x07C3)
+		I: SG_APPL, OFFSET 0 LEN 64 - Steuergerät an externe Applikation
+
+THR
+	FRAME THR_A1 (0x0073)
+		B: SHR_vor, OFFSET 7 LEN 1 - Sitz hinten rechts - längs vor
+		B: SHR_zur, OFFSET 6 LEN 1 - Sitz hinten rechts - längs zurück
+		B: SHR_auf, OFFSET 5 LEN 1 - Sitz hinten rechts - Höhe auf
+		B: SHR_ab, OFFSET 4 LEN 1 - Sitz hinten rechts - Höhe ab
+		B: SHR_Tgl, OFFSET 0 LEN 1 - Sitz hinten rechts - Togglebit
+		B: SHR_KST_auf, OFFSET 11 LEN 1 - Sitz hinten rechts - Kopfstütze heben
+		B: SHR_KST_ab, OFFSET 10 LEN 1 - Sitz hinten rechts - Kopfstütze senken
+		B: SBlft_HR_nS, OFFSET 21 LEN 1 - Sitzbelüftung Sitz hinten rechts nächste Stufe
+		B: Sh_HR_nS, OFFSET 20 LEN 1 - Sitzheizung Sitz hinten rechts nächste Stufe
+		B: Sh_HR_S1, OFFSET 19 LEN 1 - Sitzheizung Sitz hinten rechts Stufe 1 einschalten
+		B: Sh_HR_S2, OFFSET 18 LEN 1 - Sitzheizung Sitz hinten rechts Stufe 2 einschalten
+	FRAME THR_A2 (0x0273)
+		B: MHR_P1_en, OFFSET 7 LEN 1 - Memory hinten rechts - Position 1 einnehmen
+		B: MHR_P2_en, OFFSET 6 LEN 1 - Memory hinten rechts - Position 2 einnehmen
+		B: MHR_P3_en, OFFSET 5 LEN 1 - Memory hinten rechts - Position 3 einnehmen
+		B: MHR_P1_sp, OFFSET 4 LEN 1 - Memory hinten rechts - Position 1 speichern
+		B: MHR_P2_sp, OFFSET 3 LEN 1 - Memory hinten rechts - Position 2 speichern
+		B: MHR_P3_sp, OFFSET 2 LEN 1 - Memory hinten rechts - Position 3 speichern
+		B: MHR_Tgl, OFFSET 0 LEN 1 - Memory hinten rechts - Togglebit
+	FRAME THR_A3 (0x02D3)
+		B: FV_SVR_vor, OFFSET 7 LEN 1 - Sitz vorne rechts - längs vor
+		B: FV_SVR_zur, OFFSET 6 LEN 1 - Sitz vorne rechts - längs zurück
+		B: MHR_RP_en, OFFSET 5 LEN 1 - Memory hinten rechts - Ruheposition einnehmen
+		B: FV_SVR_hi_auf, OFFSET 3 LEN 1 - Sitz vorne rechts - Höhe hinten auf
+		B: FV_SVR_hi_ab, OFFSET 2 LEN 1 - Sitz vorne rechts - Höhe hinten ab
+		B: SWSR_vo, OFFSET 1 LEN 1 - Sitzwahlschalter rechts  in Stellung vorne
+		B: FV_SVR_Tgl, OFFSET 0 LEN 1 - Sitz vorne rechts - Togglebit
+		B: FV_SVR_Le_vor, OFFSET 15 LEN 1 - Sitz vorne rechts - Lehne nach vorne
+		B: FV_SVR_Le_zur, OFFSET 14 LEN 1 - Sitz vorne rechts - Lehne nach hinten
+		B: FV_SVR_KST_auf, OFFSET 11 LEN 1 - Sitz vorne rechts - Kopfstütze nach oben
+		B: FV_SVR_KST_ab, OFFSET 10 LEN 1 - Sitz vorne rechts - Kopfstütze nach unten
+		B: FV_SBlft_VR_nS, OFFSET 21 LEN 1 - Sitzbelüftung Sitz vorne rechts nächste Stufe
+		B: FV_Sh_VR_nS, OFFSET 20 LEN 1 - Sitzheizung Sitz vorne rechts nächste Stufe
+		B: FV_Sh_VR_S1, OFFSET 19 LEN 1 - Sitzheizung Sitz vorne rechts Stufe 1 einschalten
+		B: FV_Sh_VR_S2, OFFSET 18 LEN 1 - Sitzheizung Sitz vorne rechts Stufe 2 einschalten
+	FRAME THR_A4 (0x0173)
+		B: MV_HR_St_ZV, OFFSET 4 LEN 1 - Magnetventil ist angesteuert
+		B: p_Anf_THR, OFFSET 0 LEN 1 - Druckanforderung für Zuziehhilfe
+		B: FHR_Kzhb, OFFSET 11 LEN 1 - Fenster hinten rechts: >= Kurzhubposition geöffnet
+		B: FHR_auf, OFFSET 10 LEN 1 - Fenster hinten rechts: geöffnet (unterhalb KLA-Position)
+		B: FHR_Block, OFFSET 9 LEN 1 - Fenster hinten rechts: Blockabschaltung
+		B: FHR_norm, OFFSET 8 LEN 1 - Fenster hinten rechts: normiert
+		I: FeSte_HR, OFFSET 12 LEN 12 - Fensterstellung hinten rechts
+	FRAME NM_THR (0x040B)
+		I: NM, OFFSET 0 LEN 64 - Netzwerkmanagement
+	FRAME D_RS_THR (0x04EB)
+		I: D_RS, OFFSET 0 LEN 64 - KWFB Diagnose-Response
+	FRAME SG_APPL_THR (0x07C7)
+		I: SG_APPL, OFFSET 0 LEN 64 - Steuergerät an externe Applikation
+
+FS
+	FRAME THL_A1 (0x0072)
+		B: SHL_vor, OFFSET 7 LEN 1 - Sitz hinten links - längs vor
+		B: SHL_zur, OFFSET 6 LEN 1 - Sitz hinten links - längs zurück
+		B: SHL_auf, OFFSET 5 LEN 1 - Sitz hinten links - Höhe auf
+		B: SHL_ab, OFFSET 4 LEN 1 - Sitz hinten links - Höhe ab
+		B: SHL_Tgl, OFFSET 0 LEN 1 - Sitz hinten links - Togglebit
+		B: SHL_KST_auf, OFFSET 11 LEN 1 - Sitz hinten links - Kopfstütze heben
+		B: SHL_KST_ab, OFFSET 10 LEN 1 - Sitz hinten links - Kopfstütze senken
+		B: SBlft_HL_nS, OFFSET 21 LEN 1 - Sitzbelüftung Sitz hinten links nächste Stufe
+		B: Sh_HL_nS, OFFSET 20 LEN 1 - Sitzheizung Sitz hinten links nächste Stufe
+		B: Sh_HL_S1, OFFSET 19 LEN 1 - Sitzheizung Sitz hinten links Stufe 1 einschalten
+		B: Sh_HL_S2, OFFSET 18 LEN 1 - Sitzheizung Sitz hinten links Stufe 2 einschalten
+	FRAME THL_A4 (0x0172)
+		B: MV_HL_St_ZV, OFFSET 4 LEN 1 - Magnetventil ist angesteuert
+		B: p_Anf_THL, OFFSET 0 LEN 1 - Druckanforderung für Zuziehhilfe
+		B: FHL_Kzhb, OFFSET 11 LEN 1 - Fenster hinten links: >= Kurzhubposition geöffnet
+		B: FHL_auf, OFFSET 10 LEN 1 - Fenster hinten links: geöffnet (unterhalb KLA-Position)
+		B: FHL_Block, OFFSET 9 LEN 1 - Fenster hinten links: Blockabschaltung
+		B: FHL_norm, OFFSET 8 LEN 1 - Fenster hinten links: normiert
+		I: FeSte_HL, OFFSET 12 LEN 12 - Fensterstellung hinten links
+	FRAME THR_A1 (0x0073)
+		B: SHR_vor, OFFSET 7 LEN 1 - Sitz hinten rechts - längs vor
+		B: SHR_zur, OFFSET 6 LEN 1 - Sitz hinten rechts - längs zurück
+		B: SHR_auf, OFFSET 5 LEN 1 - Sitz hinten rechts - Höhe auf
+		B: SHR_ab, OFFSET 4 LEN 1 - Sitz hinten rechts - Höhe ab
+		B: SHR_Tgl, OFFSET 0 LEN 1 - Sitz hinten rechts - Togglebit
+		B: SHR_KST_auf, OFFSET 11 LEN 1 - Sitz hinten rechts - Kopfstütze heben
+		B: SHR_KST_ab, OFFSET 10 LEN 1 - Sitz hinten rechts - Kopfstütze senken
+		B: SBlft_HR_nS, OFFSET 21 LEN 1 - Sitzbelüftung Sitz hinten rechts nächste Stufe
+		B: Sh_HR_nS, OFFSET 20 LEN 1 - Sitzheizung Sitz hinten rechts nächste Stufe
+		B: Sh_HR_S1, OFFSET 19 LEN 1 - Sitzheizung Sitz hinten rechts Stufe 1 einschalten
+		B: Sh_HR_S2, OFFSET 18 LEN 1 - Sitzheizung Sitz hinten rechts Stufe 2 einschalten
+	FRAME THR_A4 (0x0173)
+		B: MV_HR_St_ZV, OFFSET 4 LEN 1 - Magnetventil ist angesteuert
+		B: p_Anf_THR, OFFSET 0 LEN 1 - Druckanforderung für Zuziehhilfe
+		B: FHR_Kzhb, OFFSET 11 LEN 1 - Fenster hinten rechts: >= Kurzhubposition geöffnet
+		B: FHR_auf, OFFSET 10 LEN 1 - Fenster hinten rechts: geöffnet (unterhalb KLA-Position)
+		B: FHR_Block, OFFSET 9 LEN 1 - Fenster hinten rechts: Blockabschaltung
+		B: FHR_norm, OFFSET 8 LEN 1 - Fenster hinten rechts: normiert
+		I: FeSte_HR, OFFSET 12 LEN 12 - Fensterstellung hinten rechts
+	FRAME NM_THL (0x0409)
+		I: NM, OFFSET 0 LEN 64 - Netzwerkmanagement
+	FRAME D_RS_THL (0x04E9)
+		I: D_RS, OFFSET 0 LEN 64 - KWFB Diagnose-Response
+	FRAME SG_APPL_THL (0x07C3)
+		I: SG_APPL, OFFSET 0 LEN 64 - Steuergerät an externe Applikation
+
+VS
+	FRAME VS_A1 (0x0016)
+		E: Vdk_St, OFFSET 6 LEN 2 - Verdeckstatus 
+			RAW: 0 - Variodach entriegelt / ENTR 
+			RAW: 1 - Variodach offen und verriegelt / AUF 
+			RAW: 2 - Variodach geschlossen und verriegelt / ZU 
+			RAW: 3 - Variodachstellung unbekannt / SNV
+		B: Vdk_IR_akt, OFFSET 5 LEN 1 - Verdeck über IR aktiv
+		B: HFE_sperr, OFFSET 4 LEN 1 - Heckdeckelfernentriegelung sperren
+		B: FVL_sperr, OFFSET 3 LEN 1 - Fensterheber vorne links sperren
+		B: FVR_sperr, OFFSET 2 LEN 1 - Fensterheber vorne rechts sperren
+		B: FHL_sperr, OFFSET 1 LEN 1 - Fensterheber hinten links sperren
+		B: FHR_sperr, OFFSET 0 LEN 1 - Fensterheber hinten rechts sperren
+		B: Vdk_Warn, OFFSET 15 LEN 1 - Warnsummer Kombi ein (Intervall 1 s)
+		B: Uerb_KL, OFFSET 14 LEN 1 - Überrollbügel Kontrollampe
+		B: Vdk_KL_DL, OFFSET 13 LEN 1 - Verdeck-Kontrollampe Dauerlicht
+		B: Vdk_KL_BL, OFFSET 12 LEN 1 - Verdeck-Kontrollampe Blinklicht
+		B: VS_M9, OFFSET 11 LEN 1 - Meldung 9: "Verdeck Werkstatt aufsuchen"
+		B: VS_M10, OFFSET 10 LEN 1 - Meldung 10: "Verdeck gesperrt wegen Fahrbetrieb"
+		B: VS_M11, OFFSET 9 LEN 1 - Meldung 11: ""
+		B: VS_M12, OFFSET 8 LEN 1 - Meldung 12: ""
+		B: VS_M1, OFFSET 23 LEN 1 - Meldung 1: "Heckdeckel schließen"
+		B: VS_M2, OFFSET 22 LEN 1 - Meldung 2: "Kofferraumabtrennung schließen"
+		B: VS_M3, OFFSET 21 LEN 1 - Meldung 3: "Motor starten"
+		B: VS_M4, OFFSET 20 LEN 1 - Meldung 4: "Verdeck verriegeln"
+		B: VS_M5, OFFSET 19 LEN 1 - Meldung 5: "Überrollbügel hochstellen"
+		B: VS_M6, OFFSET 18 LEN 1 - Meldung 6: "Überrollbügel einfangen"
+		B: VS_M7, OFFSET 17 LEN 1 - Meldung 7: "Variodach"
+		B: VS_M8, OFFSET 16 LEN 1 - Meldung 8: "Bitte warten"
+		B: FHL_Kzhb_VS, OFFSET 31 LEN 1 - Fenster hinten links: >= Kurzhubposition geöffnet
+		B: FHL_auf_VS, OFFSET 30 LEN 1 - Fenster hinten links: geöffnet
+		B: FHL_Block_VS, OFFSET 29 LEN 1 - Fenster hinten links: Blockabschaltung
+		B: FHL_norm_VS, OFFSET 28 LEN 1 - Fenster hinten links: normiert
+		B: FHR_Kzhb_VS, OFFSET 27 LEN 1 - Fenster hinten rechts: >= Kurzhubposition geöffnet
+		B: FHR_auf_VS, OFFSET 26 LEN 1 - Fenster hinten rechts: geöffnet
+		B: FHR_Block_VS, OFFSET 25 LEN 1 - Fenster hinten rechts: Blockabschaltung
+		B: FHR_norm_VS, OFFSET 24 LEN 1 - Fenster hinten rechts: normiert
+		I: SD_St1, OFFSET 32 LEN 8 - Systemdiagnose Status (R230)
+		I: SD_St2, OFFSET 40 LEN 8 - Systemdiagnose Status (R230)
+	FRAME VS_A2 (0x0350)
+		B: AHLF_ein_VS, OFFSET 7 LEN 1 - Automatischen Hochlauf einschalten
+		B: KB_VS, OFFSET 5 LEN 1 - Richtung Komfortbetätigung: Öffnen[0], Schließen [1]
+		B: FVL_VS, OFFSET 3 LEN 1 - Fenster vorne links öffnen/schließen
+		B: FVR_VS, OFFSET 2 LEN 1 - Fenster vorne rechts öffnen/schließen
+		B: ALFL_VS, OFFSET 1 LEN 1 - Fenster hinten links Automatiklauf aktiv
+		B: ALFR_VS, OFFSET 0 LEN 1 - Fenster hinten rechts Automatiklauf aktiv
+	FRAME NM_THL (0x0409)
+		I: NM, OFFSET 0 LEN 64 - Netzwerkmanagement
+	FRAME D_RS_THL (0x04E9)
+		I: D_RS, OFFSET 0 LEN 64 - KWFB Diagnose-Response
+	FRAME SD_RS_THL (0x0769)
+		I: SD_RS, OFFSET 0 LEN 64 - Systemdiagnose-Response
+	FRAME SG_APPL_THL (0x07C3)
+		I: SG_APPL, OFFSET 0 LEN 64 - Steuergerät an externe Applikation
+
+DBE
+	FRAME DBE_A1 (0x0014)
+		B: EL_ein, OFFSET 7 LEN 1 - Einstiegsleuchten ein
+		B: SHD_St_zu, OFFSET 6 LEN 1 - Schiebe-/Hebedach ist zu
+		B: SDa_St_auf, OFFSET 5 LEN 1 - Schiebedach ist auf
+		B: HDa_St_auf, OFFSET 4 LEN 1 - Hebedach ist auf
+		B: InLi_St_ein, OFFSET 3 LEN 1 - Innenlicht ist eingeschaltet
+		B: FoLi_St_ein, OFFSET 2 LEN 1 - Fondlicht ist eingeschaltet
+		B: LeLi_St_ein, OFFSET 1 LEN 1 - Leselicht ist eingeschaltet
+		B: IFG_lft, OFFSET 0 LEN 1 - Innenfühlergebläse läuft
+		I: T_Innen, OFFSET 8 LEN 8 - Innentemperatur
+		E: AFL_Grund, OFFSET 22 LEN 2 - Code Einschaltgrund 
+			RAW: 0 - Dämmerung / DAEMMERUNG 
+			RAW: 1 - Tunnel / TUNNEL 
+			RAW: 2 - Geschwindigkeit / GESCHWINDIGKEIT 
+			RAW: 3 - Regen / REGEN
+		B: LiSr_def, OFFSET 21 LEN 1 - Lichtsensor defekt/fehlt
+		B: Vdk_St_zu, OFFSET 20 LEN 1 - Verdeck ist zu (R230)
+		B: AL_ein, OFFSET 19 LEN 1 - Ausstiegsleuchten ein
+		B: KL_58d_ein, OFFSET 18 LEN 1 - Instrumenten- und Suchbeleuchtung einschalten
+		B: DSPL_inv_DBE, OFFSET 17 LEN 1 - Dislpay invertieren
+		B: AFL_ABL_ein, OFFSET 16 LEN 1 - AFL-Anforderung: Abblendlicht einschalten
+		B: FRBL_VL, OFFSET 27 LEN 1 - Fußraumbeleuchtung vorne links ein
+		B: FRBL_VR, OFFSET 26 LEN 1 - Fußraumbeleuchtung vorne rechts ein
+		B: FRBL_HL, OFFSET 25 LEN 1 - Fußraumbeleuchtung hinten links ein
+		B: FRBL_HR, OFFSET 24 LEN 1 - Fußraumbeleuchtung hinten rechts ein
+		I: FRBL_HELL, OFFSET 32 LEN 8 - Helligkeit Fußraumbeleuchtung
+		I: SD_St1, OFFSET 40 LEN 8 - Systemdiagnose Status (R230)
+		I: SD_St2, OFFSET 48 LEN 8 - Systemdiagnose Status (R230)
+	FRAME DBE_A2 (0x00D0)
+		I: ZBC_DBE, OFFSET 0 LEN 64 - Code Zugangberechtigung
+	FRAME DBE_A3 (0x0380)
+		B: Wischer_ein, OFFSET 7 LEN 1 - Wischeranforderung
+		E: Fehler, OFFSET 4 LEN 3 - Fehlercodierung 
+			RAW: 0 - kein Fehler / KEIN_FEHLER 
+			RAW: 1 - Fehler 1 / FEHLER1 
+			RAW: 2 - Fehler 2 / FEHLER2 
+			RAW: 3 - Fehler 3 / FEHLER3 
+			RAW: 4 - Fehler 4 / FEHLER4 
+			RAW: 5 - Fehler 5 / FEHLER5 
+			RAW: 6 - Fehler 6 / FEHLER6 
+			RAW: 7 - Fehler 7 / FEHLER7
+		B: Neu_Ini_fertig, OFFSET 3 LEN 1 - Neuinitialisierung fertig
+		B: Sende_Wieder, OFFSET 2 LEN 1 - Anforderung nicht verstanden
+		B: Sch_Wi_2_RS, OFFSET 1 LEN 1 - Scheibenwischer Stufe 2 einschalten
+		B: Parity_DBE, OFFSET 0 LEN 1 - Parity von Bit 0 bis Bit 6 (even)
+	FRAME DBE_A4 (0x038A)
+		B: SHD_ZU_RS, OFFSET 1 LEN 1 - Schiebehebedach zu bei Regen
+		B: IRS_Alm, OFFSET 0 LEN 1 - Innenraumschutz ausgelöst
+	FRAME NM_DBE (0x0407)
+		I: NM, OFFSET 0 LEN 64 - Netzwerkmanagement
+	FRAME D_RS_DBE (0x07A7)
+		I: D_RS, OFFSET 0 LEN 64 - KWP2000 Diagnose-Response
+	FRAME SD_RS_DBE (0x0767)
+		I: SD_RS, OFFSET 0 LEN 64 - Systemdiagnose-Response
+	FRAME SG_APPL_DBE (0x07BF)
+		I: SG_APPL, OFFSET 0 LEN 64 - Steuergerät an externe Applikation
+
+OBF
+	FRAME OBF_A1 (0x02B0)
+		B: WBL_ein, OFFSET 7 LEN 1 - Warnblinklicht ein
+	FRAME OBF_A2 (0x0006)
+		B: AFE_ein, OFFSET 7 LEN 1 - Automatische Fahrspurerkennung einschalten
+		B: AFE_aus, OFFSET 6 LEN 1 - Automatische Fahrspurerkennung ausschalten
+		E: FKS_BET, OFFSET 4 LEN 2 - Kopfstützen Fond heben/senken betätigt 
+			RAW: 0 - Nicht betätigt (Wippe und Push Push) / NBET 
+			RAW: 1 - FKS hoch betätigt (Wippe), Nicht definiert (Push Push) / HOCH_NDEF 
+			RAW: 2 - FKS runter betätigt (Wippe), Betätigt (Push Push) / RUNTER_BET 
+			RAW: 3 - Signal nicht vorhanden (Wippe und Push Push) / SNV
+		E: HR_BET, OFFSET 2 LEN 2 - Heckrollo öffnen/schließen betätigt 
+			RAW: 0 - Nicht betätigt / NBET 
+			RAW: 1 - nicht definiert 
+			RAW: 2 - Betätigt / BET 
+			RAW: 3 - Signal nicht vorhanden / SNV
+		B: ZV_auf_IS, OFFSET 1 LEN 1 - ZV öffnen (Innenschalter betätigt)
+		B: ZV_zu_IS, OFFSET 0 LEN 1 - ZV schließen (Innenschalter betätigt)
+		B: Vdk_auf, OFFSET 15 LEN 1 - Verdeck öffnen ([1] => Zykluszeit=20ms) (R230)
+		B: Vdk_zu, OFFSET 14 LEN 1 - Verdeck schließen ([1] => Zykluszeit=20ms) (R230)
+		B: Uerb_hoch, OFFSET 13 LEN 1 - Überrollbügel heben ([1] => Zykluszeit=20ms) (R230)
+		B: Uerb_runter, OFFSET 12 LEN 1 - Überrollbügel senken ([1] => Zykluszeit=20ms) (R230)
+		E: PTS_BET, OFFSET 9 LEN 2 - Parctronic komplett ein/aus betätigt 
+			RAW: 0 - Nicht betätigt / NBET 
+			RAW: 1 - nicht definiert 
+			RAW: 2 - Betätigt / BET 
+			RAW: 3 - Signal nicht vorhanden / SNV
+		E: ART_ABW_BET, OFFSET 22 LEN 2 - ART-Abstandswarnung ein/aus betätigt 
+			RAW: 0 - nicht definiert (Wippe), Nicht betätigt (Push Push) / NDEF_NBET 
+			RAW: 1 - Abstandswarnung aus (Wippe), nicht definiert (Push Push) / AUS_NDEF 
+			RAW: 2 - Abstandswarnung ein (Wippe), Betätigt (Push Push) / EIN_BET 
+			RAW: 3 - Signal nicht vorhanden (Wippe und Push Push) / SNV
+		E: ESP_BET, OFFSET 20 LEN 2 - ESP ein/aus betätigt 
+			RAW: 0 - Nicht betätigt (Wippe und Push Push) / NBET 
+			RAW: 1 - ESP ein betätigt (Wippe), nicht definiert (Push Push) / EIN_NDEF 
+			RAW: 2 - ESP aus betätigt (Wippe), Betätigt (Push Push) / AUS_BET 
+			RAW: 3 - Signal nicht vorhanden (Wippe und Push Push) / SNV
+		E: ST3_BET, OFFSET 18 LEN 2 - LF/ABC 3-stufiger Schalter betätigt 
+			RAW: 0 - Nicht betätigt / NBET 
+			RAW: 1 - nicht definiert 
+			RAW: 2 - Betätigt / BET 
+			RAW: 3 - Signal nicht vorhanden / SNV
+		E: ST2_BET, OFFSET 16 LEN 2 - LF/ABC 2-stufiger Schalter betätigt 
+			RAW: 0 - Nicht betätigt / NBET 
+			RAW: 1 - nicht definiert 
+			RAW: 2 - Betätigt / BET 
+			RAW: 3 - Signal nicht vorhanden / SNV
+		I: ART_Abstand, OFFSET 24 LEN 8 - Abstandsfaktor
+		B: Spi_n_li, OFFSET 39 LEN 1 - Außenspiegel nach links ([1] => Zykluszeit=20ms)
+		B: Spi_n_re, OFFSET 38 LEN 1 - Außenspiegel nach rechts ([1] => Zykluszeit=20ms)
+		B: Spi_n_oben, OFFSET 37 LEN 1 - Außenspiegel nach oben ([1] => Zykluszeit=20ms)
+		B: Spi_n_unten, OFFSET 36 LEN 1 - Außenspiegel nach unten ([1] => Zykluszeit=20ms)
+		B: Spi_klappen, OFFSET 35 LEN 1 - Außenspiegel aus-/anklappen ([1] => Zykluszeit=20ms)
+		B: SPVS_bet, OFFSET 33 LEN 1 - Spiegelverstellschalter betätigt ([1] => Zykluszeit=20ms)
+		B: SPVS_re, OFFSET 32 LEN 1 - Spiegelverstellschalterstellung (links [0], rechts [1])
+		B: ASG_SPORT_BET, OFFSET 46 LEN 1 - ASG Sport-Modus ein/aus betätigt (ST2_LED_DL wenn ABC vorhanden)
+		B: LED_STH_DEF, OFFSET 42 LEN 1 - LEDs für Standheizung defekt
+		E: STHL_BET, OFFSET 40 LEN 2 - Standheizung/-lüftung ein/aus  betätigt 
+			RAW: 0 - Nicht betätigt / NBET 
+			RAW: 1 - nicht definiert 
+			RAW: 2 - Betätigt / BET 
+			RAW: 3 - Signal nicht vorhanden / SNV
+		I: SD_St1, OFFSET 48 LEN 8 - Systemdiagnose Status (R230)
+		I: SD_St2, OFFSET 56 LEN 8 - Systemdiagnose Status (R230)
+	FRAME OBF_A3 (0x0103)
+		B: Bli_li_ein_OBF, OFFSET 7 LEN 1 - Blinker links einschalten
+		B: Bli_re_ein_OBF, OFFSET 6 LEN 1 - Blinker rechts einschalten
+		I: Bli_Hell_OBF, OFFSET 8 LEN 8 - Dauer Blinker-Hellphase
+	FRAME OBF_A4 (0x0108)
+		B: IRS_aus, OFFSET 6 LEN 1 - EDW Innenraumschutz abwählen
+		B: AS_aus, OFFSET 4 LEN 1 - EDW Abschleppschutz abwählen
+	FRAME STH_A1 (0x0120)
+		B: ZH_aus_STH, OFFSET 7 LEN 1 - Zuheizer ausschalten
+	FRAME NM_OBF (0x0405)
+		I: NM, OFFSET 0 LEN 64 - Netzwerkmanagement
+	FRAME D_RS_OBF (0x04E5)
+		I: D_RS, OFFSET 0 LEN 64 - KWFB Diagnose-Response
+	FRAME SD_RS_OBF (0x0765)
+		I: SD_RS, OFFSET 0 LEN 64 - Systemdiagnose-Response
+	FRAME SG_APPL_OBF (0x07BB)
+		I: SG_APPL, OFFSET 0 LEN 64 - Steuergerät an externe Applikation
+
+ARMADA
+	FRAME ARMADA_A1 (0x0012)
+		B: SRS_WERK_FT1, OFFSET 7 LEN 1 - SRS-Meldung "Werkstatt", ein [1], aus [0]
+		B: SRS_WERT_FT3, OFFSET 6 LEN 1 - reserviert für BR 203
+		B: SRS_BLINK, OFFSET 5 LEN 1 - SRS-Kontrollampe blinken ein [1], aus [0]
+		B: SRS_KL, OFFSET 4 LEN 1 - SRS-Kontrollampe einschalten, ein [1], aus [0]
+		B: SRS_ROLLE_KI, OFFSET 3 LEN 1 - Rolle N [0], W [1]
+		B: KONTAKT_BF, OFFSET 2 LEN 1 - Kontaktierung Beifahrersitz prüfen
+		B: AKSE_BLINK, OFFSET 1 LEN 1 - AKSE-Leuchte blinken
+		B: AKSE_EIN, OFFSET 0 LEN 1 - AKSE-Leuchte einschalten
+		E: KISI_ST, OFFSET 13 LEN 3 - Status Kindersitz 
+			RAW: 0 - Kein Kindersitz erkannt / KEIN_KISI 
+			RAW: 1 - Kindersitz erkannt (vorwärts eingebaut) / KISI_V_ERK 
+			RAW: 2 - Kindersitz erkannt (rückwärts eingebaut) / KISI_R_ERK 
+			RAW: 4 - Kindersitz Fehlposition / KISI_FPOS 
+			RAW: 6 - Fehler Kindersitzerkennung / KISI_FEHLER 
+			RAW: 7 - Signal nicht verfügbar / SNV
+		B: KISI_POS, OFFSET 12 LEN 1 - Kindersitzposition korrigieren
+		B: KISI_AB_OFF, OFFSET 11 LEN 1 - Kindersitz erkannt, Beifahrer-Airbag Off
+		B: RAST_SITZ_BF, OFFSET 10 LEN 1 - Sitzverrastung prüfen Beifahrer
+		E: OC_BF, OFFSET 21 LEN 3 - Occupant classification Beifahrer 
+			RAW: 0 - Occupant Classification 0-10kg / OC_BF0 
+			RAW: 1 - Occupant Classification 11-30kg / OC_BF1 
+			RAW: 2 - Occupant Classification 31-60kg / OC_BF2 
+			RAW: 3 - Occupant Classification 61-90kg / OC_BF3 
+			RAW: 4 - Occupant Classification >90kg / OC_BF4 
+			RAW: 6 - Fehler OC-BF / OC_BF_FEHLER 
+			RAW: 7 - Signal nicht verfügbar / SNV
+		E: PSG_DETEC_FAST, OFFSET 19 LEN 2 - Passenger detection fast 
+			RAW: 0 - Signal not available / SNA 
+			RAW: 1 - Passenger present / PSG_PRESENT 
+			RAW: 2 - Fault / FAULT 
+			RAW: 3 - Passenger absent / PSG_ABSENT
+		E: GS_BF, OFFSET 16 LEN 2 - Gurtschloss Beifahrer 
+			RAW: 0 - Gurtschloss gesteckt / GS_OK 
+			RAW: 1 - Gurtschloss nicht gesteckt / GS_NOK 
+			RAW: 2 - Fehler Gurtschloss / GS_FEHLER 
+			RAW: 3 - Signal nicht verfügbar / SNV
+		E: GS_F, OFFSET 24 LEN 2 - Gurtschloss Fahrer 
+			RAW: 0 - Gurtschloss gesteckt / GS_OK 
+			RAW: 1 - Gurtschloss nicht gesteckt / GS_NOK 
+			RAW: 2 - Fehler Gurtschloss / GS_FEHLER 
+			RAW: 3 - Signal nicht verfügbar / SNV
+		E: ISOFIX_BF, OFFSET 34 LEN 2 - Isofix-Schalter Beifahrer (nur Roadster) 
+			RAW: 0 - Kein KISI / KEIN_KISI 
+			RAW: 1 - KISI erkannt / KISI_ERK 
+			RAW: 2 - KISI Fehler / KISI_FEHLER 
+			RAW: 3 - Signal nicht verfügbar / SNV
+	FRAME ARMADA_A2 (0x0090)
+		B: CRASH_A, OFFSET 7 LEN 1 - Frontalereignis 1
+		B: CRASH_B, OFFSET 6 LEN 1 - Heckereignis 1
+		B: CRASH_C, OFFSET 5 LEN 1 - Frontalereignis 5
+		B: CRASH_D, OFFSET 4 LEN 1 - Seitenereignis 1
+		B: CRASH_E, OFFSET 3 LEN 1 - Heckereignis 2
+		B: CRASH_F, OFFSET 2 LEN 1 - Frontalereignis 2
+		B: CRASH_G, OFFSET 1 LEN 1 - Überschlagereignis 1
+		B: CONF_CRASH, OFFSET 0 LEN 1 - Confirm-Bit für alle Crashereignisse, toggelnd
+		B: CRASH_H, OFFSET 15 LEN 1 - Überschlagereignis 2
+		B: CRASH_I, OFFSET 14 LEN 1 - Überschlagereignis 3
+		B: CRASH_K, OFFSET 13 LEN 1 - Heckereignis 3
+		B: CRASH_L, OFFSET 12 LEN 1 - Seitenereignis 2
+		B: CRASH_M, OFFSET 11 LEN 1 - Ereignis tbd
+		B: CRASH_N, OFFSET 10 LEN 1 - Ereignis tbd
+		B: CRASH_O, OFFSET 9 LEN 1 - Ereignis tbd
+		B: X_CRASH, OFFSET 8 LEN 1 - Beliebiges Crashereignis
+	FRAME NM_ARMADA (0x041C)
+		I: NM, OFFSET 0 LEN 64 - Netzwerkmanagement
+	FRAME D_RS_ARMADA (0x07AC)
+		I: D_RS, OFFSET 0 LEN 64 - KWP2000 Diagnose-Response
+	FRAME SD_RS_ARMADA (0x077C)
+		I: SD_RS, OFFSET 0 LEN 64 - Systemdiagnose-Response
+	FRAME SG_APPL_ARMADA (0x07E9)
+		I: SG_APPL, OFFSET 0 LEN 64 - Steuergerät an externe Applikation
+
+SVL
+	FRAME SVL_A1 (0x0114)
+		E: SBlft_VL_St, OFFSET 6 LEN 2 - Status Sitzbelüftung vorne 
+			RAW: 0 - Sitzbelüftung ist ausgeschaltet / AUS 
+			RAW: 1 - Sitzbelüftung Stufe 1 ist eingeschaltet / STUFE1 
+			RAW: 2 - Sitzbelüftung Stufe 2 ist eingeschaltet / STUFE2 
+			RAW: 3 - Sitzbelüftung Stufe 3 ist eingeschaltet / STUFE3
+		B: Le_VL_ent, OFFSET 4 LEN 1 - Lehne vorne links entriegelt (Warnanzeige bei Integralsitz C215)
+		B: Sh_VL_Stu1, OFFSET 3 LEN 1 - Sitzheizung vorne links Stufe 1 ist eingeschaltet
+		B: Sh_VL_Stu2, OFFSET 2 LEN 1 - Sitzheizung vorne links Stufe 2 ist eingeschaltet
+		B: Sh_VL_USpg, OFFSET 1 LEN 1 - Sitzheizung/-belüftung ausgeschaltet wegen Unterspannung
+		B: GS_VL_ges, OFFSET 0 LEN 1 - Gurtschloß vorne links gesteckt
+		I: SVL_Pos, OFFSET 8 LEN 8 - Position Längsverstellung Sitz vorne links (Vorderster Abschnitt [0])
+		B: SVL_Le_RP, OFFSET 21 LEN 1 - Sitz vorne links - Lehnenposition für Ruhestellung
+		B: ISOFIX_RL, OFFSET 20 LEN 1 - ISOFIX-Position eingenommen
+		B: FSG_VL_KL, OFFSET 19 LEN 1 - Fahrzeugsensitive Gurtsperre Kontrollampe
+		B: MVL_atm_aus, OFFSET 18 LEN 1 - Memory vorne links - autom. Verstellung ausschalten (W220)
+		B: P1_MVL, OFFSET 17 LEN 1 - Memory-Position 1 zuletzt eingenommen/gespeichert
+		B: P2_MVL, OFFSET 16 LEN 1 - Memory-Position 2 zuletzt eingenommen/gespeichert
+	FRAME SVL_A2 (0x0304)
+		B: MVL_LS_ein, OFFSET 7 LEN 1 - Memory vorne links - Lenksäulenverstellung ein (C215/R230)
+		B: MVL_Rest_ein, OFFSET 5 LEN 1 - Memory vorne links - Verstellung Rest (Sitz/Spiegel) ein (R230)
+		B: MVL_Fahr_akt, OFFSET 2 LEN 1 - Memory vorne links - Fahrposition anfahren aktiv (C215/R230)
+		B: MVL_man_sp, OFFSET 1 LEN 1 - Memory vorne links - Fahrposition speichern
+		B: ESH_VL_akt, OFFSET 0 LEN 1 - Einstiegshilfe vorne links aktiv
+	FRAME NM_SVL (0x040C)
+		I: NM, OFFSET 0 LEN 64 - Netzwerkmanagement
+	FRAME D_RS_MKLVL (0x04FC)
+		I: D_RS, OFFSET 0 LEN 64 - KWFB Diagnose-Response
+	FRAME D_RS_SVL (0x04EC)
+		I: D_RS, OFFSET 0 LEN 64 - KWFB Diagnose-Response
+	FRAME SD_RS_SVL (0x076C)
+		I: SD_RS, OFFSET 0 LEN 64 - Systemdiagnose-Response
+	FRAME SG_APPL_SVL (0x07C9)
+		I: SG_APPL, OFFSET 0 LEN 64 - Steuergerät an externe Applikation
+
+SVR
+	FRAME SVR_A1 (0x0115)
+		E: SBlft_VR_St, OFFSET 6 LEN 2 - Status Sitzbelüftung vorne rechts 
+			RAW: 0 - Sitzbelüftung ist ausgeschaltet / AUS 
+			RAW: 1 - Sitzbelüftung Stufe 1 ist eingeschaltet / STUFE1 
+			RAW: 2 - Sitzbelüftung Stufe 2 ist eingeschaltet / STUFE2 
+			RAW: 3 - Sitzbelüftung Stufe 3 ist eingeschaltet / STUFE3
+		B: Le_VR_ent, OFFSET 4 LEN 1 - Lehne vorne rechts entriegelt (Warnanzeige bei Integralsitz C215)
+		B: Sh_VR_Stu1, OFFSET 3 LEN 1 - Sitzheizung vorne rechts Stufe 1 ist eingeschaltet
+		B: Sh_VR_Stu2, OFFSET 2 LEN 1 - Sitzheizung vorne rechts Stufe 2 ist eingeschaltet
+		B: Sh_VR_USpg, OFFSET 1 LEN 1 - Sitzheizung/-belüftung ausgeschaltet wegen Unterspannung
+		B: GS_VR_ges, OFFSET 0 LEN 1 - Gurtschloß vorne rechts gesteckt
+		I: SVR_Pos, OFFSET 8 LEN 8 - Position Längsverstellung Sitz vorne rechts (Vorderster Abschnitt [0])
+		B: SVR_Le_RP, OFFSET 21 LEN 1 - Sitz vorne rechts - Lehnenposition für Ruhestellung
+		B: ISOFIX_LL, OFFSET 20 LEN 1 - ISOFIX-Position eingenommen
+		B: FSG_VR_KL, OFFSET 19 LEN 1 - Fahrzeugsensitive Gurtsperre Kontrollampe
+		B: MVR_atm_aus, OFFSET 18 LEN 1 - Memory vorne rechts - autom. Verstellung ausschalten (W220)
+		B: P1_MVR, OFFSET 17 LEN 1 - Memory-Position 1 zuletzt eingenommen/gespeichert
+		B: P2_MVR, OFFSET 16 LEN 1 - Memory-Position 2 zuletzt eingenommen/gespeichert
+	FRAME SVR_A2 (0x0305)
+		B: MVR_LS_ein, OFFSET 7 LEN 1 - Memory vorne rechts - Lenksäulenverstellung ein (C215/R230)
+		B: MVR_Rest_ein, OFFSET 5 LEN 1 - Memory vorne rechts - Verstellung Rest (Sitz/Spiegel) ein (R230)
+		B: MVR_Fahr_akt, OFFSET 2 LEN 1 - Memory vorne rechts - Fahrposition anfahren aktiv (C215/R230)
+		B: MVR_man_sp, OFFSET 1 LEN 1 - Memory vorne rechts - Fahrposition speichern
+		B: ESH_VR_akt, OFFSET 0 LEN 1 - Einstiegshilfe vorne rechts aktiv
+	FRAME NM_SVR (0x040D)
+		I: NM, OFFSET 0 LEN 64 - Netzwerkmanagement
+	FRAME D_RS_MKLVR (0x04FD)
+		I: D_RS, OFFSET 0 LEN 64 - KWFB Diagnose-Response
+	FRAME D_RS_SVR (0x04ED)
+		I: D_RS, OFFSET 0 LEN 64 - KWFB Diagnose-Response
+	FRAME SD_RS_SVR (0x076D)
+		I: SD_RS, OFFSET 0 LEN 64 - Systemdiagnose-Response
+	FRAME SG_APPL_SVR (0x07CB)
+		I: SG_APPL, OFFSET 0 LEN 64 - Steuergerät an externe Applikation
+
+SH
+	FRAME SH_A1 (0x02D8)
+		E: SBlft_HL_St, OFFSET 6 LEN 2 - Status Sitzbelüftung hinten links 
+			RAW: 0 - Sitzbelüftung ist ausgeschaltet / AUS 
+			RAW: 1 - Sitzbelüftung Stufe 1 ist eingeschaltet / STUFE1 
+			RAW: 2 - Sitzbelüftung Stufe 2 ist eingeschaltet / STUFE2 
+			RAW: 3 - Sitzbelüftung Stufe 3 ist eingeschaltet / STUFE3
+		B: Sh_HL_Stu1, OFFSET 3 LEN 1 - Sitzheizung hinten links Stufe 1 ist eingeschaltet
+		B: Sh_HL_Stu2, OFFSET 2 LEN 1 - Sitzheizung hinten links Stufe 2 ist eingeschaltet
+		B: Sh_HL_USpg, OFFSET 1 LEN 1 - Sitzheizung/-belüftung ausgeschaltet wegen Unterspannung
+		B: SHL_RP, OFFSET 0 LEN 1 - Sitz hinten links: Ruheposition eingenommen
+		E: SBlft_HR_St, OFFSET 14 LEN 2 - Status Sitzbelüftung hinten rechts 
+			RAW: 0 - Sitzbelüftung ist ausgeschaltet / AUS 
+			RAW: 1 - Sitzbelüftung Stufe 1 ist eingeschaltet / STUFE1 
+			RAW: 2 - Sitzbelüftung Stufe 2 ist eingeschaltet / STUFE2 
+			RAW: 3 - Sitzbelüftung Stufe 3 ist eingeschaltet / STUFE3
+		B: Sh_HR_Stu1, OFFSET 11 LEN 1 - Sitzheizung hinten rechts Stufe 1 ist eingeschaltet
+		B: Sh_HR_Stu2, OFFSET 10 LEN 1 - Sitzheizung hinten rechts Stufe 2 ist eingeschaltet
+		B: Sh_HR_USpg, OFFSET 9 LEN 1 - Sitzheizung/-belüftung ausgeschaltet wegen Unterspannung
+		B: SHR_RP, OFFSET 8 LEN 1 - Sitz hinten rechts: Ruheposition eingenommen
+	FRAME NM_SH (0x040E)
+		I: NM, OFFSET 0 LEN 64 - Netzwerkmanagement
+	FRAME D_RS_MKLH (0x04FE)
+		I: D_RS, OFFSET 0 LEN 64 - KWFB Diagnose-Response
+	FRAME D_RS_SH (0x04EE)
+		I: D_RS, OFFSET 0 LEN 64 - KWFB Diagnose-Response
+	FRAME SG_APPL_SH (0x07CD)
+		I: SG_APPL, OFFSET 0 LEN 64 - Steuergerät an externe Applikation
+
+PFDS
+	FRAME PFDS_A1 (0x02C8)
+		E: PFDSMOT_ST, OFFSET 6 LEN 2 - Status FDS-Pumpenmotor 
+			RAW: 0 - Pumpenmotor ist ausgeschaltet / AUS 
+			RAW: 1 - Pumpenmotor ist eingeschaltet / EIN 
+			RAW: 2 - Pumpenmotor macht Kondenswasserlauf / KWL 
+			RAW: 3 - Pumpenmotor ist inaktiv wg. interner Störung / FEHLER
+		B: PFDS_OVLD, OFFSET 5 LEN 1 - Vorwarnung Überlast
+		B: PFDS_ENT, OFFSET 4 LEN 1 - Druckbehälter entlüften
+		B: PFDS_DEAKT, OFFSET 3 LEN 1 - Pumpe FDS deaktiviert
+		I: P_PFDS, OFFSET 11 LEN 5 - Versorgungsdruck FDS-Pumpe
+	FRAME NM_PFDS (0x041A)
+		I: NM, OFFSET 0 LEN 64 - Netzwerkmanagement
+	FRAME D_RS_PFDS (0x07AA)
+		I: D_RS, OFFSET 0 LEN 64 - KWP2000 Diagnose-Response
+	FRAME SG_APPL_PFDS (0x07E5)
+		I: SG_APPL, OFFSET 0 LEN 64 - Steuergerät an externe Applikation
+
+FDSVL
+	FRAME FDSVL_A1 (0x02CC)
+		E: PFDS_ANF_VL, OFFSET 6 LEN 2 - Anforderung FDS-Pumpe 
+			RAW: 0 - Keine Anforderung / IDLE 
+			RAW: 1 - Druckversorgung einschalten / EIN 
+			RAW: 2 - Druckversorgung ausschalten / AUS 
+			RAW: 3 - nicht definiert / N_DEF
+		E: FDSVL_STAT, OFFSET 4 LEN 2 - FDSVL-Status 
+			RAW: 0 - IDLE / IDLE 
+			RAW: 1 - Ein / EIN 
+			RAW: 2 - Aus / AUS 
+			RAW: 3 - SNV / SNV
+		B: SEIT_AKT_VL, OFFSET 2 LEN 1 - Seitenhaltverstellung aktiv
+		B: MITT_AKT_VL, OFFSET 1 LEN 1 - Dynamische Lordosenstützenverstellung  aktiv
+		B: FDS_AKT_VL, OFFSET 0 LEN 1 - Fahrdynamische Sitzverstellung  aktiv
+	FRAME NM_FDSVL (0x041D)
+		I: NM, OFFSET 0 LEN 64 - Netzwerkmanagement
+	FRAME D_RS_FDSVL (0x07AD)
+		I: D_RS, OFFSET 0 LEN 64 - KWP2000 Diagnose-Response
+	FRAME SG_APPL_FDSVL (0x07EB)
+		I: SG_APPL, OFFSET 0 LEN 64 - Steuergerät an externe Applikation
+
+FDSVR
+	FRAME FDSVR_A1 (0x02CD)
+		E: PFDS_ANF_VR, OFFSET 6 LEN 2 - Anforderung FDS-Pumpe 
+			RAW: 0 - Keine Anforderung / IDLE 
+			RAW: 1 - Druckversorgung einschalten / EIN 
+			RAW: 2 - Druckversorgung ausschalten / AUS 
+			RAW: 3 - nicht definiert / N_DEF
+		E: FDSVR_STAT, OFFSET 4 LEN 2 - FDSVR-Status 
+			RAW: 0 - IDLE / IDLE 
+			RAW: 1 - Ein / EIN 
+			RAW: 2 - Aus / AUS 
+			RAW: 3 - SNV / SNV
+		B: SEIT_AKT_VR, OFFSET 2 LEN 1 - Seitenhaltverstellung aktiv
+		B: MITT_AKT_VR, OFFSET 1 LEN 1 - Dynamische Lordosenstützenverstellung  aktiv
+		B: FDS_AKT_VR, OFFSET 0 LEN 1 - Fahrdynamische Sitzverstellung  aktiv
+	FRAME NM_FDSVR (0x041E)
+		I: NM, OFFSET 0 LEN 64 - Netzwerkmanagement
+	FRAME D_RS_FDSVR (0x07AE)
+		I: D_RS, OFFSET 0 LEN 64 - KWP2000 Diagnose-Response
+	FRAME SG_APPL_FDSVR (0x07ED)
+		I: SG_APPL, OFFSET 0 LEN 64 - Steuergerät an externe Applikation
+
+STH
+	FRAME STH_A1 (0x0120)
+		B: ZH_aus_STH, OFFSET 7 LEN 1 - Zuheizer ausschalten
+		B: SENDLM_EIN, OFFSET 6 LEN 1 - Sendelernmodus ein
+		B: VWZ_Menue, OFFSET 5 LEN 1 - Vorwahlzeit-Menue öffnen
+		B: Geblaese_ein, OFFSET 4 LEN 1 - Fahrzeuggebläse einschalten
+		B: STHL_AUS, OFFSET 3 LEN 1 - Standheizung-/Lüftung ausschalten
+		B: ZH_LED_ein, OFFSET 2 LEN 1 - Zuheizer-LED einschalten
+		B: ZHBTRB, OFFSET 1 LEN 1 - Zuheizbetrieb [1], Standheizungsbetrieb [0]
+		B: STHL_ein, OFFSET 0 LEN 1 - Standheizung/-lüftung einschalten
+		I: SD_St1, OFFSET 16 LEN 8 - Systemdiagnose Status (R230)
+		I: SD_St2, OFFSET 24 LEN 8 - Systemdiagnose Status (R230)
+	FRAME NM_STH (0x0419)
+		I: NM, OFFSET 0 LEN 64 - Netzwerkmanagement
+	FRAME D_RS_STH (0x04F9)
+		I: D_RS, OFFSET 0 LEN 64 - KWFB Diagnose-Response
+	FRAME SD_RS_STH (0x0779)
+		I: SD_RS, OFFSET 0 LEN 64 - Systemdiagnose-Response
+	FRAME SG_APPL_STH (0x07E3)
+		I: SG_APPL, OFFSET 0 LEN 64 - Steuergerät an externe Applikation
+
+KLA
+	FRAME KLA_A1 (0x0008)
+		B: LL_DZA, OFFSET 7 LEN 1 - Leerlauf-Drehzahlanhebung zur Kälteleistungserhöhung
+		B: KLA_def, OFFSET 6 LEN 1 - KLA defekt
+		B: ZH_ein_OK, OFFSET 5 LEN 1 - Zuheizer einschalten erlaubt
+		B: ZWP_ein, OFFSET 4 LEN 1 - Zusatzwasserpumpe einschalten
+		B: IFG_ein, OFFSET 3 LEN 1 - Innenfühlergebläse einschalten
+		B: Komp_ein_KLA, OFFSET 2 LEN 1 - Kältekompressor einschalten
+		B: HHS_ein, OFFSET 1 LEN 1 - Heizbare Heckscheibe einschalten
+		B: MAXCOOL, OFFSET 0 LEN 1 - Display-Anzeige "MAXCOOL" (nur USA)
+		I: NLFTS, OFFSET 8 LEN 8 - Motorlüfter Solldrehzahl
+		I: U_Gebl, OFFSET 16 LEN 8 - Gebläsespannung
+		I: M_Komp, OFFSET 24 LEN 8 - Drehmomentaufnahme Kältekompressor
+		I: Komp_Stell, OFFSET 32 LEN 8 - Kältekompressor Stellsignal
+		B: Rest_akt, OFFSET 45 LEN 1 - Restwärmebetrieb aktiv
+		B: STH_akt, OFFSET 44 LEN 1 - Standheizung/Standlüftung aktiv
+		B: Heizen, OFFSET 43 LEN 1 - Standheizung einschalten
+		B: Lueften, OFFSET 42 LEN 1 - Standlüftung einschalten
+		I: P_SK_Soll, OFFSET 49 LEN 7 - Soll-Leistung Sitzklimatisierung (0-100%,0-100,1%)
+		B: Sh_SBlft, OFFSET 48 LEN 1 - Sitzheizung [0], Sitzbelüftung [1]
+	FRAME KLA_A2 (0x02A8)
+		I: TBSoll_HL, OFFSET 0 LEN 8 - Ausblassolltemperatur hinten links
+		I: TBSoll_HR, OFFSET 8 LEN 8 - Ausblassolltemperatur hinten rechts
+		I: Soll_HL, OFFSET 16 LEN 8 - Sollwert hinten links
+		I: Soll_HR, OFFSET 24 LEN 8 - Sollwert hinten rechts
+		I: Gebl_Soll_H, OFFSET 32 LEN 8 - Gebläsesollwert hinten
+		B: SWA, OFFSET 47 LEN 1 - Sensorwertanzeige aktiv
+		B: GeblAuto, OFFSET 46 LEN 1 - Gebläse-Automatik aktiv
+		B: GE, OFFSET 45 LEN 1 - Grundeinstellung aktiv
+		B: EC, OFFSET 44 LEN 1 - EC-Modus aktiv
+		B: Eich, OFFSET 43 LEN 1 - Eichlauf aktiv
+		B: Umluft, OFFSET 42 LEN 1 - Umluft aktiv
+		B: KLA_OFF, OFFSET 41 LEN 1 - 0-Taste gedrückt
+		B: Defrost, OFFSET 40 LEN 1 - Defrostfunktion aktiv
+		B: Fond_Mode, OFFSET 55 LEN 1 - Fernbedienung FKLA aktiv
+		B: FKLA_GBA_man, OFFSET 54 LEN 1 - FKLA-Gebläsebalkenanzeige nur im manuellen Modus aktiv
+		B: FKLA_DSPL_neg, OFFSET 53 LEN 1 - FKLA-Anzeigedisplay immer negativ
+		B: FKLA_DSPL_pos, OFFSET 52 LEN 1 - FKLA-Anzeigedisplay immer positiv
+		B: Takt_red, OFFSET 51 LEN 1 - Reduzierung Taktventilkennlinie
+		B: Flr_les, OFFSET 50 LEN 1 - Fehler lesen
+		B: Flr_loe, OFFSET 49 LEN 1 - Fehler löschen
+		B: WVK_ein, OFFSET 48 LEN 1 - FKLA-Wärmevorkonditionierung ein
+	FRAME KLA_A3 (0x0208)
+		I: Sonne_VL, OFFSET 0 LEN 8 - Sonnenintensität vorne links
+		I: Sonne_VR, OFFSET 8 LEN 8 - Sonnenintensität vorne rechts
+		I: Sonne_HR, OFFSET 16 LEN 8 - Sonnenintensität hinten rechts
+		I: Sonne_HL, OFFSET 24 LEN 8 - Sonnenintensität hinten links
+		I: Sonne_MW, OFFSET 32 LEN 8 - Sonnenintensität Mittelwert
+		I: T_Tau, OFFSET 48 LEN 8 - Taupunkttemperatur
+		I: T_AUSSEN_WM, OFFSET 56 LEN 8 - Außenlufttemperatur für Wärmemanagement
+	FRAME KLA_A4 (0x0250)
+		B: AHLF_ein, OFFSET 7 LEN 1 - Automatischen Hoch-/Tieflauf einschalten
+		B: KB_KLA, OFFSET 5 LEN 1 - Richtung Komfortbetätigung: Öffnen [0], Schließen [1]
+		B: SHD_KLA, OFFSET 4 LEN 1 - SHD/Verdeck öffnen/schließen
+		B: FVL_KLA, OFFSET 3 LEN 1 - Fenster vorne links öffnen/schließen
+		B: FVR_KLA, OFFSET 2 LEN 1 - Fenster vorne rechts öffnen/schließen
+		B: FHL_KLA, OFFSET 1 LEN 1 - Fenster hinten links öffnen/schließen
+		B: FHR_KLA, OFFSET 0 LEN 1 - Fenster hinten rechts öffnen/schließen
+	FRAME NM_KLA (0x0411)
+		I: NM, OFFSET 0 LEN 64 - Netzwerkmanagement
+	FRAME D_RS_KLA (0x04F1)
+		I: D_RS, OFFSET 0 LEN 64 - KWFB Diagnose-Response
+	FRAME SD_RS_KLA (0x0771)
+		I: SD_RS, OFFSET 0 LEN 64 - Systemdiagnose-Response
+	FRAME SG_APPL_KLA (0x07D3)
+		I: SG_APPL, OFFSET 0 LEN 64 - Steuergerät an externe Applikation
+
+FKLA
+	FRAME FKLA_A1 (0x0170)
+		I: FKLA_Soll_HL, OFFSET 0 LEN 8 - Sollwert von Fond-KLA hinten links
+		I: FKLA_Soll_HR, OFFSET 8 LEN 8 - Sollwert von Fond-KLA hinten rechts
+		I: Gebl_H, OFFSET 16 LEN 8 - Gebläsestellung
+		B: GeblAuto_FKLA, OFFSET 29 LEN 1 - Gebläseautomatik FKLA aktiv
+		B: Rest_ein, OFFSET 26 LEN 1 - Restwärme einschalten
+		B: R134a_auf, OFFSET 25 LEN 1 - Magnetventil R134a ist offen
+		B: FKLA_St_aus, OFFSET 24 LEN 1 - FKLA ist ausgeschaltet
+		I: FKLA_Flr1, OFFSET 32 LEN 8 - FKLA Fehler, Byte 1
+		I: FKLA_Flr2, OFFSET 40 LEN 8 - FKLA Fehler, Byte 2
+		I: FKLA_Flr3, OFFSET 48 LEN 8 - FKLA Fehler, Byte 3
+		I: FKLA_Flr4, OFFSET 56 LEN 8 - FKLA Fehler, Byte 4
+	FRAME FKLA_A2 (0x0178)
+		I: TB_HL, OFFSET 0 LEN 8 - Ausblastemperatur hinten links
+		I: TB_HR, OFFSET 8 LEN 8 - Ausblastemperatur hinten rechts
+		I: TVerd_H, OFFSET 16 LEN 8 - Verdampfertemperatur hinten
+		I: FKLA_SW, OFFSET 24 LEN 8 - Softwarestand Fond-KLA
+		I: FKLA_HW, OFFSET 32 LEN 8 - Hardwarestand Fond-KLA
+		I: LVP, OFFSET 40 LEN 8 - Stellung Luftverteilungspotentiometer
+	FRAME NM_FKLA (0x0412)
+		I: NM, OFFSET 0 LEN 64 - Netzwerkmanagement
+	FRAME D_RS_FKLA (0x04F2)
+		I: D_RS, OFFSET 0 LEN 64 - KWFB Diagnose-Response
+	FRAME SG_APPL_FKLA (0x07D5)
+		I: SG_APPL, OFFSET 0 LEN 64 - Steuergerät an externe Applikation
+
+KG
+	FRAME KG_A1 (0x032C)
+		B: M6, OFFSET 7 LEN 1 - Meld. 6: "Wählhebel nach P" (weiß)
+		B: Tuer_prf, OFFSET 6 LEN 1 - Meld. 7: "Türen prüfen" (ROT)
+		B: M0, OFFSET 5 LEN 1 - Meld. 0: "Chip-Karte/Schlüssel nicht erkannt" (rot)
+		B: M1, OFFSET 4 LEN 1 - Meld. 1: "Chip-Karte/Schlüssel nicht erkannt" (weiß)
+		B: M2, OFFSET 3 LEN 1 - Meld. 2: "Chip-Karte/Schlüssel im Fahrzeug erkannt" (weiß)
+		B: M3, OFFSET 2 LEN 1 - Meld. 3: "Wählhebel nach P" (rot, Dauerton)
+		B: M4, OFFSET 1 LEN 1 - Meld. 4: "Chip-Karte/Schlüssel Batterie prüfen" (weiß)
+		B: M5, OFFSET 0 LEN 1 - Meld. 5: "Keyless Go Werkstatt aufsuchen" (weiß)
+		B: M8, OFFSET 15 LEN 1 - Meld. 8: "Keyless Go Einlernvorgang aktiv" (weiß)
+		B: M9, OFFSET 14 LEN 1 - Meld. 9: "Türen prüfen" (weiß)
+		B: M10, OFFSET 13 LEN 1 - Meld. 10: "Chip-Karte/Schlüssel Batterie prüfen" (weiß, Quittierung erf.)
+		B: M11, OFFSET 12 LEN 1 - Meld. 11: "Keyless Go System prüfen"
+		B: M12, OFFSET 11 LEN 1 - Meld. 12: "Chip-Karte/Schlüssel mitnehmen!"
+		B: M13, OFFSET 10 LEN 1 - Meld. 13: "Keyless Go Keine Berechtigung!"
+		B: M14, OFFSET 9 LEN 1 - Meld. 14: "Keyless Go in Diagnose"
+		B: KG_SCHLUE_VH, OFFSET 8 LEN 1 - Keyless Go mit Chip-Karte [0] bzw. Schlüssel [1]
+	FRAME KG_A2 (0x00E0)
+		I: ZB_FBC_KG, OFFSET 0 LEN 64 - Zugangs-/Fahrberechtigungscode
+	FRAME KG_A3 (0x0248)
+		B: AHLF_ein_KG, OFFSET 7 LEN 1 - Automatischen Hochlauf einschalten
+		B: KB_KG, OFFSET 5 LEN 1 - Richtung Komfortbetätigung: Öffnen [0], Schließen [1]
+		B: SHD_KG, OFFSET 4 LEN 1 - SHD/Verdeck öffnen/schließen
+		B: FVL_KG, OFFSET 3 LEN 1 - Fenster vorne links öffnen/schließen
+		B: FVR_KG, OFFSET 2 LEN 1 - Fenster vorne rechts öffnen/schließen
+		B: FHL_KG, OFFSET 1 LEN 1 - Fenster hinten links öffnen/schließen
+		B: FHR_KG, OFFSET 0 LEN 1 - Fenster hinten rechts öffnen/schließen
+	FRAME KG_A4 (0x02A0)
+		I: ZB_FBC_FSS, OFFSET 0 LEN 64 - Zugangs-/Fahrberechtigungscode
+	FRAME KG_A5 (0x01D4)
+		B: HD_KGAS_bet, OFFSET 3 LEN 1 - Heckdeckel KG-Außensicherungstaste betätigt
+		B: HD_zu_KG, OFFSET 2 LEN 1 - Heckdeckel schließen
+		B: HD_stop_KG, OFFSET 1 LEN 1 - Heckdeckel stop
+		B: WBL_ein_KG, OFFSET 0 LEN 1 - Warnblinklicht ein
+	FRAME NM_KG (0x0417)
+		I: NM, OFFSET 0 LEN 64 - Netzwerkmanagement
+	FRAME D_RS_KG (0x04F7)
+		I: D_RS, OFFSET 0 LEN 64 - KWFB Diagnose-Response
+	FRAME SD_RS_KG (0x0777)
+		I: SD_RS, OFFSET 0 LEN 64 - Systemdiagnose-Response
+	FRAME SG_APPL_KG (0x07DF)
+		I: SG_APPL, OFFSET 0 LEN 64 - Steuergerät an externe Applikation
+
+ZVP
+	FRAME ZVP_A1 (0x0007)
+		B: ZV_Aussen, OFFSET 7 LEN 1 - ZV wurde von außen verriegelt (W220/C215)
+		B: ZV_AV, OFFSET 6 LEN 1 - ZV-Automatikverriegelung durchgeführt (v > 15 km/h)
+		B: DFS_bet, OFFSET 5 LEN 1 - Drehfallenschalter betätigt
+		B: HD_oef, OFFSET 4 LEN 1 - Heckdeckel öffnen (Außenschalter betätigt)
+		B: ZV_NV, OFFSET 3 LEN 1 - ZV-Nachverriegelung durchgeführt
+		B: Kisi_Warn, OFFSET 2 LEN 1 - Warnton: Tür-Kindersicherung entriegelt
+		B: ZV_St_ent, OFFSET 1 LEN 1 - Zentralverriegelung ist entriegelt (Fzg. ist auf)
+		B: ZV_St_ver, OFFSET 0 LEN 1 - Zentralverriegelung ist verriegelt (Fzg. ist zu)
+		B: MV_VL_ZV, OFFSET 15 LEN 1 - Magnetventil vorne links ansteuern
+		B: MV_VR_ZV, OFFSET 14 LEN 1 - Magnetventil vorne rechts ansteuern
+		B: MV_HL_ZV, OFFSET 13 LEN 1 - Magnetventil hinten links ansteuern
+		B: MV_HR_ZV, OFFSET 12 LEN 1 - Magnetventil hinten rechts ansteuern
+		B: ZZH_VL_akt, OFFSET 11 LEN 1 - Zuziehhilfe vorne links aktiv (C215)
+		B: ZZH_VR_akt, OFFSET 10 LEN 1 - Zuziehhilfe vorne rechts aktiv (C215)
+		B: HD_IOEF_bet, OFFSET 9 LEN 1 - Heckdeckel Innenöffnungstaste (KIT) betätigt
+		B: KofAbt_zu, OFFSET 8 LEN 1 - Kofferraumabtrennung zu (R230)
+		B: ZV_VL_ent, OFFSET 23 LEN 1 - (Soll-) Zustand Verriegelung vorne links: entriegelt
+		B: ZV_VR_ent, OFFSET 22 LEN 1 - (Soll-) Zustand Verriegelung vorne rechts: entriegelt
+		B: ZV_HL_ent, OFFSET 21 LEN 1 - (Soll-) Zustand Verriegelung hinten links: entriegelt
+		B: ZV_HR_ent, OFFSET 20 LEN 1 - (Soll-) Zustand Verriegelung hinten rechts: entriegelt
+		B: ZV_HD_ent, OFFSET 19 LEN 1 - (Soll-) Zustand Verriegelung Heckdeckel: entriegelt
+		B: ZV_ent_Sel, OFFSET 18 LEN 1 - Zentralverriegelung ist selektiv entriegelt
+		B: Sel_OK, OFFSET 17 LEN 1 - Selektiv-Informationen in Byte 4 sind gültig
+		B: ZV_unbknt, OFFSET 16 LEN 1 - (Soll-) Zustand Verriegelung unbekannt
+		B: ZV_VL_Sel, OFFSET 31 LEN 1 - Tür vorne links wird selektiv entriegelt
+		B: ZV_VR_Sel, OFFSET 30 LEN 1 - Tür vorne rechts wird selektiv entriegelt
+		B: ZV_HL_Sel, OFFSET 29 LEN 1 - Tür hinten links wird selektiv entriegelt
+		B: ZV_HR_Sel, OFFSET 28 LEN 1 - Tür hinten rechts wird selektiv entriegelt
+		B: HD_ent, OFFSET 27 LEN 1 - Heckdeckel ist entriegelt
+		B: HD_IS_bet, OFFSET 26 LEN 1 - Heckdeckel Innenschließtaste betätigt
+		B: HD_lft_auf, OFFSET 25 LEN 1 - Heckdeckel läuft auf
+		B: HD_lft_zu, OFFSET 24 LEN 1 - Heckdeckel läuft zu
+		I: HD_OefWkl, OFFSET 32 LEN 8 - Öffnungswinkel Heckdeckel
+		B: HD_KGIS_akt, OFFSET 41 LEN 1 - Heckdeckel KG-Innenschließtaste aktiv
+		B: HD_KGIS_bet, OFFSET 40 LEN 1 - Heckdeckel KG-Innenschließtaste betätigt
+		I: SD_St1, OFFSET 48 LEN 8 - Systemdiagnose Status (R230)
+	FRAME ZVP_A2 (0x0043)
+		B: SN1_ZVP, OFFSET 7 LEN 1 - Schloßnuß 1 (öffnen)
+		B: SN2_ZVP, OFFSET 6 LEN 1 - Schloßnuß 2 (schließen)
+		B: KB_ZVP, OFFSET 5 LEN 1 - Richtung Komfortbetätigung: Öffnen[0], Schließen [1]
+		B: SHD_ZVP, OFFSET 4 LEN 1 - SHD/Verdeck öffnen/schließen
+		B: FVL_ZVP, OFFSET 3 LEN 1 - Fenster vorne links öffnen/schließen
+		B: FVR_ZVP, OFFSET 2 LEN 1 - Fenster vorne rechts öffnen/schließen
+		B: FHL_ZVP, OFFSET 1 LEN 1 - Fenster hinten links öffnen/schließen
+		B: FHR_ZVP, OFFSET 0 LEN 1 - Fenster hinten rechts öffnen/schließen
+	FRAME NM_ZVP (0x0404)
+		I: NM, OFFSET 0 LEN 64 - Netzwerkmanagement
+	FRAME D_RS_ZVP (0x04E4)
+		I: D_RS, OFFSET 0 LEN 64 - KWFB Diagnose-Response
+	FRAME SD_RS_ZVP (0x0764)
+		I: SD_RS, OFFSET 0 LEN 64 - Systemdiagnose-Response
+	FRAME SG_APPL_ZVP (0x07B9)
+		I: SG_APPL, OFFSET 0 LEN 64 - Steuergerät an externe Applikation
+
+BNS
+	FRAME BNS_A1 (0x0009)
+		B: BN_Warn1, OFFSET 7 LEN 1 - Bordnetz-Warnung: Notlauf (Prio1- und Prio2-Verbraucher aus, Starterbatterie stützt)
+		B: BN_Warn2, OFFSET 6 LEN 1 - Bordnetz-Warnung: Notlauf (Prio1- oder Prio2-Verbraucher aus)
+		B: BN_Warn3, OFFSET 5 LEN 1 - Bordnetz-Warnung: Relais K2 defekt
+		B: BN_Warn4, OFFSET 4 LEN 1 - Bordnetz-Warnung: Sicherung Starterbatterie defekt
+		B: BN_Warn5, OFFSET 3 LEN 1 - Bordnetz-Warnung: "Schlüssel steckt" nicht erkannt
+		B: BN_NTLF_P2, OFFSET 2 LEN 1 - Bordnetz-Notlauf: Prio2-Verbraucher aus
+		B: BN_NTLF_P1, OFFSET 1 LEN 1 - Bordnetz-Notlauf: Prio1-Verbraucher aus
+		B: BN_NTLF, OFFSET 0 LEN 1 - Bordnetz-Notlauf: Prio1- und Prio2-Verbraucher aus, Zweite Batterie stützt
+		B: BN_SOCS1, OFFSET 14 LEN 1 - Bordnetz-Warnung: Starterbatterie State of Charge
+		B: BN_SOCS2, OFFSET 13 LEN 1 - Bordnetz-Warnung: Starterbatterie State of Charge
+		B: BN_SOHS_SB, OFFSET 12 LEN 1 - Bordnetz-Warnung: Starterbatterie State of Health
+		B: BN_SOHS_VB, OFFSET 11 LEN 1 - Bordnetz-Warnung: Versorgungsbatterie State of Health
+		B: DISCONNECT, OFFSET 22 LEN 1 - BNS trennt 30 und 30A in 2 Sekunden
+		B: BNS_AKT, OFFSET 18 LEN 1 - Bordnetzsteuergerät aktiv
+	FRAME NM_BNS (0x041F)
+		I: NM, OFFSET 0 LEN 64 - Netzwerkmanagement
+	FRAME D_RS_BNS (0x04FF)
+		I: D_RS, OFFSET 0 LEN 64 - KWFB Diagnose-Response
+	FRAME SD_RS_BNS (0x077F)
+		I: SD_RS, OFFSET 0 LEN 64 - Systemdiagnose-Response
+	FRAME SG_APPL_BNS (0x07EF)
+		I: SG_APPL, OFFSET 0 LEN 64 - Steuergerät an externe Applikation
+
+MSS
+	FRAME MSS_A1 (0x0102)
+		B: Bli_li_ein_MSS, OFFSET 7 LEN 1 - Blinker links einschalten
+		B: Bli_re_ein_MSS, OFFSET 6 LEN 1 - Blinker rechts einschalten
+		B: TXHIRU_ein, OFFSET 5 LEN 1 - Taxi-Hilferuf einschalten
+		B: NSW_ein_MSS, OFFSET 4 LEN 1 - Nebelscheinwerfer einschalten
+		B: SGH_ein_MSS, OFFSET 3 LEN 1 - Signalhorn einschalten
+		B: IL_ein_MSS, OFFSET 2 LEN 1 - Innenlicht einschalten
+		B: ZV_zu_MSS, OFFSET 1 LEN 1 - Zentralverriegelung schließen
+		B: FL_ein_MSS, OFFSET 0 LEN 1 - Fernlicht einschalten
+		I: Bli_Hell_MSS, OFFSET 8 LEN 8 - Dauer Blinker-Hellphase
+		I: SGH_an_MSS, OFFSET 16 LEN 8 - Dauer des Hupens
+		I: FL_Hell_MSS, OFFSET 24 LEN 8 - Dauer Fernlicht-Hellphase
+	FRAME MSS_A2 (0x033C)
+		B: Not_Alm_def, OFFSET 7 LEN 1 - Notalarm-Anlage defekt
+		B: TX_EL_def, OFFSET 6 LEN 1 - Taxi Elektrik defekt
+		B: MSS_Alm, OFFSET 5 LEN 1 - Stiller Alarm ausgelöst
+		B: MSS_USpg, OFFSET 4 LEN 1 - MSS detektiert Unterspannung
+		B: DZ_def, OFFSET 3 LEN 1 - Dachzeichen defekt
+		B: DZ_prf, OFFSET 2 LEN 1 - Dachzeichen prüfen
+		B: DZ_La_def, OFFSET 1 LEN 1 - Dachzeichen Lampendefekt
+		B: DZ_KL, OFFSET 0 LEN 1 - Dachzeichen-Kontrolllampe ein
+	FRAME NM_MSS (0x0406)
+		I: NM, OFFSET 0 LEN 64 - Netzwerkmanagement
+	FRAME D_RS_MSS (0x04E6)
+		I: D_RS, OFFSET 0 LEN 64 - KWFB Diagnose-Response
+	FRAME SD_RS_MSS (0x0766)
+		I: SD_RS, OFFSET 0 LEN 64 - Systemdiagnose-Response
+	FRAME SG_APPL_MSS (0x07BD)
+		I: SG_APPL, OFFSET 0 LEN 64 - Steuergerät an externe Applikation
+
+PTS
+	FRAME PTS_A1 (0x01D8)
+		B: PTS_St_aus, OFFSET 0 LEN 1 - PTS ist komplett ausgeschaltet
+	FRAME NM_PTS (0x0413)
+		I: NM, OFFSET 0 LEN 64 - Netzwerkmanagement
+	FRAME D_RS_PTS (0x04F3)
+		I: D_RS, OFFSET 0 LEN 64 - KWFB Diagnose-Response
+	FRAME SD_RS_PTS (0x0773)
+		I: SD_RS, OFFSET 0 LEN 64 - Systemdiagnose-Response
+	FRAME SG_APPL_PTS (0x07D7)
+		I: SG_APPL, OFFSET 0 LEN 64 - Steuergerät an externe Applikation
+
+RDK
+	FRAME RDK_A1 (0x0324)
+		B: Warnfarbe, OFFSET 7 LEN 1 - Warnfarbe (Rot [1] / Gelb [0])
+		B: S_UE, OFFSET 6 LEN 1 - Störsender/Überhitzung
+		B: VBZ, OFFSET 5 LEN 1 - Beladungszustand/Geschwindigkeit
+		B: p_Verl_l, OFFSET 4 LEN 1 - Langsamer Druckverlust
+		B: p_min, OFFSET 3 LEN 1 - Mindestdruck
+		B: p_Verl_s, OFFSET 2 LEN 1 - Schneller Druckverlust
+		B: RDK_Ini, OFFSET 1 LEN 1 - Reifendruckkontrolle nicht initialisiert
+		B: Service, OFFSET 0 LEN 1 - Service
+		B: MitPos, OFFSET 15 LEN 1 - Reifenpositionen anzeigen
+		B: RVL, OFFSET 14 LEN 1 - Reifen vorne links
+		B: RVR, OFFSET 13 LEN 1 - Reifen vorne rechts
+		B: RHL, OFFSET 12 LEN 1 - Reifen hinten links
+		B: RHR, OFFSET 11 LEN 1 - Reifen hinten rechts
+		B: RR, OFFSET 10 LEN 1 - Reserverad
+		B: RDK_OFF, OFFSET 8 LEN 1 - RDK deaktiviert
+		I: p_RVL, OFFSET 16 LEN 8 - Reifendruck vorne links
+		I: p_RVR, OFFSET 24 LEN 8 - Reifendruck vorne rechts
+		I: p_RHL, OFFSET 32 LEN 8 - Reifendruck hinten links
+		I: p_RHR, OFFSET 40 LEN 8 - Reifendruck hinten rechts
+		I: p_RR, OFFSET 48 LEN 8 - Reifendruck Reserverad
+	FRAME NM_RDK (0x0418)
+		I: NM, OFFSET 0 LEN 64 - Netzwerkmanagement
+	FRAME D_RS_RDK (0x04F8)
+		I: D_RS, OFFSET 0 LEN 64 - KWFB Diagnose-Response
+	FRAME SD_RS_RDK (0x0778)
+		I: SD_RS, OFFSET 0 LEN 64 - Systemdiagnose-Response
+	FRAME SG_APPL_RDK (0x07E1)
+		I: SG_APPL, OFFSET 0 LEN 64 - Steuergerät an externe Applikation
+
+FSS
+	FRAME FSS_A1 (0x01DC)
+	FRAME NM_BNS (0x041F)
+		I: NM, OFFSET 0 LEN 64 - Netzwerkmanagement
+	FRAME D_RS_BNS (0x04FF)
+		I: D_RS, OFFSET 0 LEN 64 - KWFB Diagnose-Response
+	FRAME SG_APPL_BNS (0x07EF)
+		I: SG_APPL, OFFSET 0 LEN 64 - Steuergerät an externe Applikation
+
+TLM
+	FRAME GPS_A1 (0x023A)
+		I: LATITUDE, OFFSET 0 LEN 32 - GPS Latitude (+ = North)
+		I: LONGITUDE, OFFSET 32 LEN 32 - GPS Longitude (+ = East)
+	FRAME GPS_A2 (0x023B)
+		I: UTC_YEARS, OFFSET 0 LEN 16 - GPS-Date Years
+		I: UTC_MONTHS, OFFSET 16 LEN 8 - GPS-Date Months
+		I: UTC_DAYS, OFFSET 24 LEN 8 - GPS-Date Days
+		I: UTC_HOURS, OFFSET 32 LEN 8 - GPS-Time Hours
+		I: UTC_MINUTES, OFFSET 40 LEN 8 - GPS-Time Minutes
+		I: UTC_SECONDS, OFFSET 48 LEN 16 - GPS-Time Seconds
+	FRAME GPS_A3 (0x023C)
+		I: GPS_SPEED, OFFSET 0 LEN 16 - GPS Speed
+		I: GPS_HEADING, OFFSET 16 LEN 8 - GPS Heading (0 ° = North)
+		I: GPS_HEIGHT, OFFSET 24 LEN 8 - GPS height
+		E: GPS_FIX, OFFSET 32 LEN 8 - GPS Fix 
+			RAW: 0 - Reserved 
+			RAW: 1 - not available / NAV 
+			RAW: 2 - No fix / NO_FIX 
+			RAW: 3 - 2D fix / FIX_2D 
+			RAW: 4 - 3D fix / FIX_3D
+		B: CALI, OFFSET 46 LEN 1 - Calibrated
+		B: MDM, OFFSET 45 LEN 1 - Matched to digital map
+		B: FDG, OFFSET 44 LEN 1 - Fully digitalized area
+		B: IDG, OFFSET 43 LEN 1 - Inside digitalized area (on map)
+		B: DEAD_RCK, OFFSET 42 LEN 1 - Dead reckoning available
+		B: DIFF_POS_AVLB, OFFSET 41 LEN 1 - Differential GPS position data available
+		B: POS_AVLB, OFFSET 40 LEN 1 - GPS position avilable
+		I: V_DOP, OFFSET 48 LEN 8 - Vertical dilution of position
+		I: H_DOP, OFFSET 56 LEN 8 - Horizontal dilution of position
+	FRAME TLM_A1 (0x023F)
+		B: WM_AID0, OFFSET 7 LEN 1 - Warnmeldung: Ruf erfolglos
+		B: WM_AID1, OFFSET 6 LEN 1 - Warnmeldung: Rufaufbau
+		B: WM_AID2, OFFSET 5 LEN 1 - Warnmeldung: Verbindung aktiv
+		B: HU_AID, OFFSET 0 LEN 1 - Audio Warnung TeleAid
+		B: WM_TD0, OFFSET 15 LEN 1 - Warnmeldung: Ruf erfolglos
+		B: WM_TD1, OFFSET 14 LEN 1 - Warnmeldung: Rufaufbau
+		B: WM_TD2, OFFSET 13 LEN 1 - Warnmeldung: Verbindung aktiv
+		B: HU_TD, OFFSET 8 LEN 1 - Audio Warnung TeleDiagnose
+		B: WM_INF0, OFFSET 23 LEN 1 - Warnmeldung: Ruf erfolglos
+		B: WM_INF1, OFFSET 22 LEN 1 - Warnmeldung: Rufaufbau
+		B: WM_INF2, OFFSET 21 LEN 1 - Warnmeldung: Verbindung aktiv
+		B: HU_INFO, OFFSET 16 LEN 1 - Audio Warnung Info
+		B: WM_AID_SYS0, OFFSET 31 LEN 1 - Warnmeldung: Systemfehler
+		B: WM_AID_SYS1, OFFSET 30 LEN 1 - Warnmeldung: Nicht authorisiert
+		B: WM_TD_SYS, OFFSET 29 LEN 1 - Warnmeldung: Telediagnose nicht authorisiert
+		B: KEIN_NETZ, OFFSET 28 LEN 1 - Netz nicht verfügbar
+		B: BACKUP_BATT, OFFSET 27 LEN 1 - Warnmeldung für Backup-Batterie
+	FRAME NM_PFDS (0x041A)
+		I: NM, OFFSET 0 LEN 64 - Netzwerkmanagement
+	FRAME SD_RS_TLM (0x077A)
+		I: SD_RS, OFFSET 0 LEN 64 - Systemdiagnose-Response
+	FRAME SG_APPL_PFDS (0x07E5)
+		I: SG_APPL, OFFSET 0 LEN 64 - Steuergerät an externe Applikation
+
+RADIO
+	FRAME RADIO_A1 (0x0328)
+		E: SNR_HU, OFFSET 4 LEN 4 - Sequence Number 
+			RAW: 160 - Connection Setup (Blocksize in D0, Bit 0 - 3) / CON_SETUP 
+			RAW: 161 - Connection Acknowledge (Blocksize in D0, Bit 0 - 3) / CON_ACK 
+			RAW: 163 - Connection Test / CON_TEST 
+			RAW: 175 - Unacknowledged Data in D0 - D6 / UNACK_DATA
+		B: EOM_HU, OFFSET 3 LEN 1 - End of message
+		B: ANR_HU, OFFSET 2 LEN 1 - Acknowledge not requested
+		B: ST_HU, OFFSET 1 LEN 1 - Service type
+		B: TPDU_HU, OFFSET 0 LEN 1 - Data [0], Connection management [1]
+		I: D0_HU, OFFSET 8 LEN 8 - Daten Byte 0
+		I: D1_HU, OFFSET 16 LEN 8 - Daten Byte 1
+		I: D2_HU, OFFSET 24 LEN 8 - Daten Byte 2
+		I: D3_HU, OFFSET 32 LEN 8 - Daten Byte 3
+		I: D4_HU, OFFSET 40 LEN 8 - Daten Byte 4
+		I: D5_HU, OFFSET 48 LEN 8 - Daten Byte 5
+		I: D6_HU, OFFSET 56 LEN 8 - Daten Byte 6
+	FRAME NM_RADIO (0x0416)
+		I: NM, OFFSET 0 LEN 64 - Netzwerkmanagement
+	FRAME D_RS_RADIO (0x04F6)
+		I: D_RS, OFFSET 0 LEN 64 - KWFB Diagnose-Response
+	FRAME SD_RS_RADIO (0x0776)
+		I: SD_RS, OFFSET 0 LEN 64 - Systemdiagnose-Response
+	FRAME SG_APPL_RADIO (0x07DD)
+		I: SG_APPL, OFFSET 0 LEN 64 - Steuergerät an externe Applikation
+
+AGW
+	FRAME AGW_A1 (0x0034)
+		B: SBS_AKT, OFFSET 8 LEN 1 - Sprachbediensystem aktiv
+	FRAME AGW_A2 (0x020C)
+		E: PRIO_AGW, OFFSET 5 LEN 3 - Prioritäten am AGW 
+			RAW: 1 - Priorität 1 / PRIO1 
+			RAW: 2 - Priorität 2 / PRIO2 
+			RAW: 3 - Priorität 3 / PRIO3
+	FRAME GPS_A1 (0x023A)
+		I: LATITUDE, OFFSET 0 LEN 32 - GPS Latitude (+ = North)
+		I: LONGITUDE, OFFSET 32 LEN 32 - GPS Longitude (+ = East)
+	FRAME GPS_A2 (0x023B)
+		I: UTC_YEARS, OFFSET 0 LEN 16 - GPS-Date Years
+		I: UTC_MONTHS, OFFSET 16 LEN 8 - GPS-Date Months
+		I: UTC_DAYS, OFFSET 24 LEN 8 - GPS-Date Days
+		I: UTC_HOURS, OFFSET 32 LEN 8 - GPS-Time Hours
+		I: UTC_MINUTES, OFFSET 40 LEN 8 - GPS-Time Minutes
+		I: UTC_SECONDS, OFFSET 48 LEN 16 - GPS-Time Seconds
+	FRAME GPS_A3 (0x023C)
+		I: GPS_SPEED, OFFSET 0 LEN 16 - GPS Speed
+		I: GPS_HEADING, OFFSET 16 LEN 8 - GPS Heading (0 ° = North)
+		I: GPS_HEIGHT, OFFSET 24 LEN 8 - GPS height
+		E: GPS_FIX, OFFSET 32 LEN 8 - GPS Fix 
+			RAW: 0 - Reserved 
+			RAW: 1 - not available / NAV 
+			RAW: 2 - No fix / NO_FIX 
+			RAW: 3 - 2D fix / FIX_2D 
+			RAW: 4 - 3D fix / FIX_3D
+		B: CALI, OFFSET 46 LEN 1 - Calibrated
+		B: MDM, OFFSET 45 LEN 1 - Matched to digital map
+		B: FDG, OFFSET 44 LEN 1 - Fully digitalized area
+		B: IDG, OFFSET 43 LEN 1 - Inside digitalized area (on map)
+		B: DEAD_RCK, OFFSET 42 LEN 1 - Dead reckoning available
+		B: DIFF_POS_AVLB, OFFSET 41 LEN 1 - Differential GPS position data available
+		B: POS_AVLB, OFFSET 40 LEN 1 - GPS position avilable
+		I: V_DOP, OFFSET 48 LEN 8 - Vertical dilution of position
+		I: H_DOP, OFFSET 56 LEN 8 - Horizontal dilution of position
+	FRAME TP_AGW_KOMBI1 (0x033F)
+		I: TP_AGW_KOMBI, OFFSET 0 LEN 64 - Kommunikation AGW zum KOMBI
+	FRAME TP_AGW_TELEAID6 (0x03E3)
+		I: TP_AGW_TELEAID, OFFSET 0 LEN 64 - Kommunikation AGW zum TELEAID
+	FRAME NM_RADIO (0x0416)
+		I: NM, OFFSET 0 LEN 64 - Netzwerkmanagement
+	FRAME D_RS_AGW (0x07A9)
+		I: D_RS, OFFSET 0 LEN 64 - KWP2000 Diagnose-Response
+	FRAME D_RS_MOST0 (0x0680)
+		I: D_RS, OFFSET 0 LEN 64 - KWP2000 Diagnose-Response
+	FRAME D_RS_MOST1 (0x0681)
+		I: D_RS, OFFSET 0 LEN 64 - KWP2000 Diagnose-Response
+	FRAME D_RS_MOST10 (0x068A)
+		I: D_RS, OFFSET 0 LEN 64 - KWP2000 Diagnose-Response
+	FRAME D_RS_MOST11 (0x068B)
+		I: D_RS, OFFSET 0 LEN 64 - KWP2000 Diagnose-Response
+	FRAME D_RS_MOST12 (0x068C)
+		I: D_RS, OFFSET 0 LEN 64 - KWP2000 Diagnose-Response
+	FRAME D_RS_MOST13 (0x068D)
+		I: D_RS, OFFSET 0 LEN 64 - KWP2000 Diagnose-Response
+	FRAME D_RS_MOST14 (0x068E)
+		I: D_RS, OFFSET 0 LEN 64 - KWP2000 Diagnose-Response
+	FRAME D_RS_MOST15 (0x068F)
+		I: D_RS, OFFSET 0 LEN 64 - KWP2000 Diagnose-Response
+	FRAME D_RS_MOST16 (0x0580)
+		I: D_RS, OFFSET 0 LEN 64 - KWP2000 Diagnose-Response
+	FRAME D_RS_MOST17 (0x0581)
+		I: D_RS, OFFSET 0 LEN 64 - KWP2000 Diagnose-Response
+	FRAME D_RS_MOST2 (0x0682)
+		I: D_RS, OFFSET 0 LEN 64 - KWP2000 Diagnose-Response
+	FRAME D_RS_MOST3 (0x0683)
+		I: D_RS, OFFSET 0 LEN 64 - KWP2000 Diagnose-Response
+	FRAME D_RS_MOST4 (0x0684)
+		I: D_RS, OFFSET 0 LEN 64 - KWP2000 Diagnose-Response
+	FRAME D_RS_MOST5 (0x0685)
+		I: D_RS, OFFSET 0 LEN 64 - KWP2000 Diagnose-Response
+	FRAME D_RS_MOST6 (0x0686)
+		I: D_RS, OFFSET 0 LEN 64 - KWP2000 Diagnose-Response
+	FRAME D_RS_MOST7 (0x0687)
+		I: D_RS, OFFSET 0 LEN 64 - KWP2000 Diagnose-Response
+	FRAME D_RS_MOST8 (0x0688)
+		I: D_RS, OFFSET 0 LEN 64 - KWP2000 Diagnose-Response
+	FRAME D_RS_MOST9 (0x0689)
+		I: D_RS, OFFSET 0 LEN 64 - KWP2000 Diagnose-Response
+	FRAME SG_APPL_RADIO (0x07DD)
+		I: SG_APPL, OFFSET 0 LEN 64 - Steuergerät an externe Applikation
+	FRAME D_RS_ACL (0x07A8)
+		I: D_RS, OFFSET 0 LEN 64 - KWP2000 Diagnose-Response
+	FRAME SD_RS_FKLA (0x0772)
+		I: SD_RS, OFFSET 0 LEN 64 - Systemdiagnose-Response
+	FRAME SD_RS_SH (0x076E)
+		I: SD_RS, OFFSET 0 LEN 64 - Systemdiagnose-Response
+	FRAME SD_RS_THR (0x076B)
+		I: SD_RS, OFFSET 0 LEN 64 - Systemdiagnose-Response
+	FRAME APPL_SG_AAG (0x05AF)
+		I: APPL_SG, OFFSET 0 LEN 64 - Externe Applikation zu Steuergerät
+	FRAME APPL_SG_ARMADA (0x06A3)
+		I: APPL_SG, OFFSET 0 LEN 64 - Externe Applikation zu Steuergerät
+	FRAME APPL_SG_BNS (0x06A0)
+		I: APPL_SG, OFFSET 0 LEN 64 - Externe Applikation zu Steuergerät
+	FRAME APPL_SG_DBE (0x0758)
+		I: APPL_SG, OFFSET 0 LEN 64 - Externe Applikation zu Steuergerät
+	FRAME APPL_SG_EZS (0x04DF)
+		I: APPL_SG, OFFSET 0 LEN 64 - Externe Applikation zu Steuergerät
+	FRAME APPL_SG_FDSVL (0x06C2)
+		I: APPL_SG, OFFSET 0 LEN 64 - Externe Applikation zu Steuergerät
+	FRAME APPL_SG_FDSVR (0x06C1)
+		I: APPL_SG, OFFSET 0 LEN 64 - Externe Applikation zu Steuergerät
+	FRAME APPL_SG_FKLA (0x06AD)
+		I: APPL_SG, OFFSET 0 LEN 64 - Externe Applikation zu Steuergerät
+	FRAME APPL_SG_KG (0x05C8)
+		I: APPL_SG, OFFSET 0 LEN 64 - Externe Applikation zu Steuergerät
+	FRAME APPL_SG_KLA (0x056E)
+		I: APPL_SG, OFFSET 0 LEN 64 - Externe Applikation zu Steuergerät
+	FRAME APPL_SG_KOMBI (0x072B)
+		I: APPL_SG, OFFSET 0 LEN 64 - Externe Applikation zu Steuergerät
+	FRAME APPL_SG_LRK (0x0750)
+		I: APPL_SG, OFFSET 0 LEN 64 - Externe Applikation zu Steuergerät
+	FRAME APPL_SG_MRM (0x06AA)
+		I: APPL_SG, OFFSET 0 LEN 64 - Externe Applikation zu Steuergerät
+	FRAME APPL_SG_MSS (0x06B4)
+		I: APPL_SG, OFFSET 0 LEN 64 - Externe Applikation zu Steuergerät
+	FRAME APPL_SG_OBF (0x05DA)
+		I: APPL_SG, OFFSET 0 LEN 64 - Externe Applikation zu Steuergerät
+	FRAME APPL_SG_PFDS (0x06C5)
+		I: APPL_SG, OFFSET 0 LEN 64 - Externe Applikation zu Steuergerät
+	FRAME APPL_SG_PTS (0x06AC)
+		I: APPL_SG, OFFSET 0 LEN 64 - Externe Applikation zu Steuergerät
+	FRAME APPL_SG_RADIO (0x0669)
+		I: APPL_SG, OFFSET 0 LEN 64 - Externe Applikation zu Steuergerät
+	FRAME APPL_SG_RDK (0x06A7)
+		I: APPL_SG, OFFSET 0 LEN 64 - Externe Applikation zu Steuergerät
+	FRAME APPL_SG_SAM_B (0x05BE)
+		I: APPL_SG, OFFSET 0 LEN 64 - Externe Applikation zu Steuergerät
+	FRAME APPL_SG_SAM_F (0x079D)
+		I: APPL_SG, OFFSET 0 LEN 64 - Externe Applikation zu Steuergerät
+	FRAME APPL_SG_SAM_H (0x05BC)
+		I: APPL_SG, OFFSET 0 LEN 64 - Externe Applikation zu Steuergerät
+	FRAME APPL_SG_SH (0x0671)
+		I: APPL_SG, OFFSET 0 LEN 64 - Externe Applikation zu Steuergerät
+	FRAME APPL_SG_STH (0x06AB)
+		I: APPL_SG, OFFSET 0 LEN 64 - Externe Applikation zu Steuergerät
+	FRAME APPL_SG_SVL (0x06D3)
+		I: APPL_SG, OFFSET 0 LEN 64 - Externe Applikation zu Steuergerät
+	FRAME APPL_SG_SVR (0x06D2)
+		I: APPL_SG, OFFSET 0 LEN 64 - Externe Applikation zu Steuergerät
+	FRAME APPL_SG_THL (0x06D6)
+		I: APPL_SG, OFFSET 0 LEN 64 - Externe Applikation zu Steuergerät
+	FRAME APPL_SG_THR (0x06D4)
+		I: APPL_SG, OFFSET 0 LEN 64 - Externe Applikation zu Steuergerät
+	FRAME APPL_SG_TLM (0x0725)
+		I: APPL_SG, OFFSET 0 LEN 64 - Externe Applikation zu Steuergerät
+	FRAME APPL_SG_TVL (0x0757)
+		I: APPL_SG, OFFSET 0 LEN 64 - Externe Applikation zu Steuergerät
+	FRAME APPL_SG_TVR (0x0755)
+		I: APPL_SG, OFFSET 0 LEN 64 - Externe Applikation zu Steuergerät
+	FRAME APPL_SG_VS (0x0756)
+		I: APPL_SG, OFFSET 0 LEN 64 - Externe Applikation zu Steuergerät
+	FRAME APPL_SG_ZVP (0x057B)
+		I: APPL_SG, OFFSET 0 LEN 64 - Externe Applikation zu Steuergerät
+	FRAME D_RQ_EZS (0x04E0)
+		I: D_RQ, OFFSET 0 LEN 64 - KWFB Diagnose-Request
+

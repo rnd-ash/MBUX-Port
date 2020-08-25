@@ -27,18 +27,18 @@ object EZS_A9 {
 	}
 	
 	/** Sets VIN signal part **/
-	fun set_vin_msg(f: CanFrame, p: VIN_MSG) : CanFrame? {
+	fun set_vin_msg(f: CanFrame, p: VIN_MSG) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 6, 2, p.raw)
+		CanBusNative.setFrameParameter(f, 6, 2, p.raw)
 	}
 	
 	/** Gets VIN data **/
 	fun get_vin_data() : Int = CanBusNative.getECUParameterB(CanBAddrs.EZS_A9, 8, 56)
 	
 	/** Sets VIN data **/
-	fun set_vin_data(f: CanFrame, p: Int) : CanFrame? {
+	fun set_vin_data(f: CanFrame, p: Int) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 8, 56, p)
+		CanBusNative.setFrameParameter(f, 8, 56, p)
 	}
 	
 	/**

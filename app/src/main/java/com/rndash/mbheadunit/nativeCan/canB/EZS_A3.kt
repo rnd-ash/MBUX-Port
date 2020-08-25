@@ -21,9 +21,9 @@ object EZS_A3 {
 	fun get_km_ezs_alt() : Int = CanBusNative.getECUParameterB(CanBAddrs.EZS_A3, 0, 24)
 	
 	/** Sets Mileage (up to AY 2002/1)  **/
-	fun set_km_ezs_alt(f: CanFrame, p: Int) : CanFrame? {
+	fun set_km_ezs_alt(f: CanFrame, p: Int) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 0, 24, p)
+		CanBusNative.setFrameParameter(f, 0, 24, p)
 	}
 	
 	/**

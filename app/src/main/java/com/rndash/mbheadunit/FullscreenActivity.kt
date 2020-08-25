@@ -1,29 +1,33 @@
 package com.rndash.mbheadunit
 
 import android.app.PendingIntent
+import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
+import android.content.IntentFilter
 import android.hardware.usb.UsbDevice
 import android.hardware.usb.UsbManager
 import android.media.AudioManager
+import android.microntek.CarManager
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.view.Window
+import android.view.WindowManager
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
-import com.rndash.mbheadunit.nativeCan.canB.CanBAddrs
-import com.rndash.mbheadunit.nativeCan.canC.CanCAddrs
+import com.rndash.mbheadunit.car.KeyManager
 import com.rndash.mbheadunit.nativeCan.CanBusNative
-import com.rndash.mbheadunit.nativeCan.canB.KLA_A1
-import com.rndash.mbheadunit.ui.ACDisplay
-import com.rndash.mbheadunit.ui.MPGDisplay
-import com.rndash.mbheadunit.ui.PTDisplay
+import com.rndash.mbheadunit.nativeCan.canB.*
+import com.rndash.mbheadunit.nativeCan.canC.*
+import com.rndash.mbheadunit.ui.*
 import com.rndash.mbheadunit.ui.dialog.MBUXDialog
-import java.lang.RuntimeException
+import java.util.*
 
 
 /**
@@ -33,6 +37,7 @@ import java.lang.RuntimeException
 @ExperimentalStdlibApi
 @ExperimentalUnsignedTypes
 class FullscreenActivity : FragmentActivity() {
+    private val carManager = CarManager()
     private lateinit var viewPager: ViewPager2
     companion object {
         private lateinit var audiomanager: AudioManager
@@ -53,24 +58,18 @@ class FullscreenActivity : FragmentActivity() {
             System.loadLibrary("canbus-lib")
         }
     }
-
     override fun onCreate(savedInstanceState: Bundle?) {
-        volContext = this
-        audiomanager = applicationContext.getSystemService(Context.AUDIO_SERVICE) as AudioManager
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN)
         super.onCreate(savedInstanceState)
         window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_FULLSCREEN
         actionBar?.hide()
         setContentView(R.layout.activity_fullscreen)
+        //val bar = findViewById<Fragment>(R.id.status_bar_fragment)
         viewPager = findViewById(R.id.ui_fragment)
         val pagerAdapter = ScreenSlidePagerAdapter(this)
         viewPager.setPageTransformer(ZoomOutPageTransformer())
         viewPager.adapter = pagerAdapter
-        val am = this.getSystemService(Context.AUDIO_SERVICE) as AudioManager
-        try {
-            am.setStreamVolume(AudioManager.STREAM_NOTIFICATION, 10, 0)
-        } catch (e: RuntimeException) {
-            // Ignore - this is due to DND
-        }
     }
 
     override fun onWindowFocusChanged(hasFocus: Boolean) {
@@ -112,29 +111,117 @@ class FullscreenActivity : FragmentActivity() {
             Log.e("MAIN", "No Arduino found!")
             Toast.makeText(this, "Error. Arduino not found!", Toast.LENGTH_LONG).show()
             CanBusNative.init()
+            Thread {
+                Thread.sleep(1000)
+                //CanBusNative.sendBytesToBuffer("C06086F43062DFA003600\r\n".toByteArray(Charsets.US_ASCII), 23)
+                sendToBusTest(CanFrame(0x0090, 'B' ,byteArrayOf(0xB0.toByte(), 0x59, 0x57)))
+                sendToBusTest(CanFrame(0x608, 'C', byteArrayOf(0x6E, 0x41, 0x06, 0x2D, 0xFA.toByte(), 0x02, 0x5C, 0x00)))
+
+                Thread.sleep(10)
+                println(SAM_H_A2)
+            }.start()
         } else {
             Log.d("MAIN", "Arduino found!")
             comm = CarComm(dev!!, x)
-            Toast.makeText(this, "Connected to car!", Toast.LENGTH_SHORT).show()
         }
 
-        val mbux = MBUXDialog(this)
-        mbux.show()
+        //val mbux = MBUXDialog(this)
+        //mbux.show()
+        val bg = findViewById<ImageView>(R.id.ui_bg)
+
         Thread {
-            Thread.sleep(1000)
-            CanBusNative.sendBytesToBuffer("B00302000031A00260150\r\n".toByteArray(Charsets.US_ASCII), 23)
-            Thread.sleep(10)
-            println(KLA_A1)
-            println(CanBusNative.getBFrame(CanBAddrs.KLA_A1))
+            while(true) {
+                if (DBE_A1.get_daemmer()) { // Light sensor request dim please
+                    println("Sensor activated - Dimming!")
+                    window.attributes.screenBrightness = 0.5f
+                } else {
+                    window.attributes.screenBrightness = 1.0f
+                }
+                when (Calendar.getInstance().get(Calendar.HOUR_OF_DAY)) {
+                    in 5..7 -> runOnUiThread { bg.setImageResource(R.drawable.bg_dusk) }
+                    in 7..9 -> runOnUiThread { bg.setImageResource(R.drawable.bg_mid) }
+                    in 9..11 -> runOnUiThread { bg.setImageResource(R.drawable.bg_rise) }
+                    in 11..15 -> runOnUiThread { bg.setImageResource(R.drawable.bg_day) }
+                    in 15..18 -> runOnUiThread { bg.setImageResource(R.drawable.bg_mid) }
+                    in 18..21 -> runOnUiThread { bg.setImageResource(R.drawable.bg_dusk) }
+                    else -> runOnUiThread { bg.setImageResource(R.drawable.bg_night) }
+                }
+                Thread.sleep(2000)
+            }
         }.start()
+
+        // Register for all Microntek intents
+        val intentFilter = IntentFilter()
+        intentFilter.addAction("com.microntek.bootcheck")
+        intentFilter.addAction("com.microntek.removetask")
+        intentFilter.addAction("hct.btmusic.play")
+        intentFilter.addAction("hct.btmusic.pause")
+        intentFilter.addAction("hct.btmusic.prev")
+        intentFilter.addAction("hct.btmusic.next")
+        intentFilter.addAction("hct.btmusic.info")
+        intentFilter.addAction("hct.btmusic.playpause")
+        intentFilter.addAction("com.microntek.bt.report")
+        intentFilter.addAction("com.microntek.btbarstatechange")
+        intentFilter.addAction("com.btmusic.finish")
+        intentFilter.addAction("a2dp_play_type")
+
+        registerReceiver(IntentManager(), intentFilter)
+        KeyManager.watcher.start()
+
+        KeyManager.registerPageUpListener(KeyManager.KEY.VOLUME_UP, object: KeyManager.KeyListener {
+            override fun onLongPress(pg: KeyManager.PAGE) {
+                // Ignore long presses for volume
+            }
+
+            override fun onShortPress(pg: KeyManager.PAGE) {
+                // send intent to MTC
+                modifyVolume(true)
+            }
+        })
+
+        KeyManager.registerPageUpListener(KeyManager.KEY.VOLUME_DOWN, object: KeyManager.KeyListener {
+            override fun onLongPress(pg: KeyManager.PAGE) {
+                // Ignore long presses for volume
+            }
+
+            override fun onShortPress(pg: KeyManager.PAGE) {
+                // Send intent to MTC
+                modifyVolume(false)
+            }
+        })
+
+        KeyManager.registerPageUpListener(KeyManager.KEY.PAGE_UP, object: KeyManager.KeyListener {
+            override fun onLongPress(pg: KeyManager.PAGE) {
+                println("Page up long press. Page: $pg")
+            }
+
+            override fun onShortPress(pg: KeyManager.PAGE) {
+                if (pg == KeyManager.PAGE.AUDIO) { BTMusic.playNext() }
+            }
+        })
+
+        KeyManager.registerPageUpListener(KeyManager.KEY.PAGE_DOWN, object: KeyManager.KeyListener {
+            override fun onLongPress(pg: KeyManager.PAGE) {
+                println("Page up long press. Page: $pg")
+            }
+ 
+            override fun onShortPress(pg: KeyManager.PAGE) {
+                if (pg == KeyManager.PAGE.AUDIO) { BTMusic.playPrev() }
+            }
+        })
+        carManager.setParameters("av_channel_enter=gsm_bt")
+        val i = Intent()
+        i.component = ComponentName("android.microntek.mtcser", "android.microntek.mtcser.BlueToothService")
+        bindService(i, BTMusic.serviceConnection, BIND_AUTO_CREATE)
     }
 
     private inner class ScreenSlidePagerAdapter(fa: FragmentActivity) : FragmentStateAdapter(fa) {
-        override fun getItemCount(): Int = 3
+        override fun getItemCount(): Int = 4
 
         override fun createFragment(position: Int): Fragment = when(position) {
             1 -> ACDisplay()
             2 -> MPGDisplay()
+            3 -> LightsDisplay()
             else -> PTDisplay()
         }
     }
@@ -155,4 +242,25 @@ class FullscreenActivity : FragmentActivity() {
             }
         }
     }
+
+    private fun sendToBusTest(f: CanFrame) {
+        var tmp = String.format("%c%04X", f.bus, f.canID)
+        (0 until f.dlc).forEach {
+            tmp += String.format("%02X", f.data[it])
+        }
+        tmp += "\r\n"
+        val bs = tmp.toByteArray(Charsets.US_ASCII)
+        CanBusNative.sendBytesToBuffer(bs, bs.size)
+        println(bs.size)
+    }
+
+    // Sends an intent asking the headunit to set volume
+    private fun modifyVolume(increase: Boolean) {
+        val intent = Intent().apply {
+            this.action = "com.microntek.VOLUME_SET"
+            this.putExtra("type", if (increase) "add" else "sub")
+        }
+        applicationContext.sendBroadcast(intent)
+    }
+
 }

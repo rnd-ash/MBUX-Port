@@ -27,9 +27,9 @@ object UBF_A2 {
 	}
 	
 	/** Sets convertible top actuation **/
-	fun set_vdk_anf(f: CanFrame, p: VDK_ANF) : CanFrame? {
+	fun set_vdk_anf(f: CanFrame, p: VDK_ANF) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 0, 2, p.raw)
+		CanBusNative.setFrameParameter(f, 0, 2, p.raw)
 	}
 	
 	/**

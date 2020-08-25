@@ -156,9 +156,9 @@ class Parser:
                 break
 
     def readECUBlock(self) -> ecu:
-        print(self.read_range(2))
+        ecu_number = int(struct.unpack("<H", self.read_range(2))[0])
         ecu_name = self.readString()
-        print("ECU : "+ ecu_name)
+        print("ECU {0}: (Number {1})".format(ecu_name, ecu_number))
         if not self.__read_first_ecu__:
             r = self.read_range(8)
             print(r)
@@ -179,13 +179,14 @@ class Parser:
 
 
     def readFrameBlock(self) -> Tuple[bool, ecu_frame]:
-        print(self.read_range(2))
+        frame_number = int(struct.unpack("<H", self.read_range(2))[0])
+        print("FRAME NUMBER {0}".format(frame_number))
         frame_name = self.readString()
-        print(self.read_range(1))
+        self.read_range(1) # null pad before start of string
         frame_id = int(struct.unpack("<H", self.read_range(2))[0])
         print("\tFRAME: {0} ({1})".format(frame_name, "0x%04X" % frame_id))
         r = self.read_range(8)
-        #print(r)
+        print("METADATA {1} (PRE SIG COUNT) {0}".format(r.hex(), frame_name))
         frame_signal_count = r[4]
         if not self.__read_first_ecu__:
             print(self.read_range(2))
@@ -195,7 +196,7 @@ class Parser:
         signals = [] # List of all signals
         while signal_count != frame_signal_count:
             signal_count += 1
-            signals.append(self.readSignalBlock())
+            signals.append(self.readSignalBlock(frame_name))
             signal_end = self.read_range(2) # End for signal
             print("SIG END: {0}".format(signal_end))
             if signal_end == bytearray([0x05, 0x80]): # End of Signal entry
@@ -214,7 +215,7 @@ class Parser:
             cf.add_signal(i)
         return ret, cf
 
-    def readSignalBlock(self) -> can_signal:
+    def readSignalBlock(self, f: str) -> can_signal:
         sig_name = ""
         sig_desc = ""
         sig_unit = ""
@@ -222,7 +223,7 @@ class Parser:
         sig_name = self.readString()
         sig_offset = int(self.read_range(1)[0])
         sig_len = int(self.read_range(1)[0])
-        print(self.read_range(14).hex())
+        print("SIGNAL METADATA ({0} - {1}): {2}".format(f, sig_name, self.read_range(14).hex()))
         if self.__bytes__[0] != 0x00:
             sig_unit = self.readString() #CSignal
         else:

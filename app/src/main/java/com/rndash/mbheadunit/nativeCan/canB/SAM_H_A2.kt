@@ -21,27 +21,27 @@ object SAM_H_A2 {
 	fun get_tank_fs_b() : Int = CanBusNative.getECUParameterB(CanBAddrs.SAM_H_A2, 0, 8)
 	
 	/** Sets Tank level  **/
-	fun set_tank_fs_b(f: CanFrame, p: Int) : CanFrame? {
+	fun set_tank_fs_b(f: CanFrame, p: Int) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 0, 8, p)
+		CanBusNative.setFrameParameter(f, 0, 8, p)
 	}
 	
 	/** Gets Tank sensor value right  **/
 	fun get_tank_ge_re() : Int = CanBusNative.getECUParameterB(CanBAddrs.SAM_H_A2, 8, 8)
 	
 	/** Sets Tank sensor value right  **/
-	fun set_tank_ge_re(f: CanFrame, p: Int) : CanFrame? {
+	fun set_tank_ge_re(f: CanFrame, p: Int) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 8, 8, p)
+		CanBusNative.setFrameParameter(f, 8, 8, p)
 	}
 	
 	/** Gets Tank sensor value left  **/
 	fun get_tank_ge_li() : Int = CanBusNative.getECUParameterB(CanBAddrs.SAM_H_A2, 16, 8)
 	
 	/** Sets Tank sensor value left  **/
-	fun set_tank_ge_li(f: CanFrame, p: Int) : CanFrame? {
+	fun set_tank_ge_li(f: CanFrame, p: Int) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 16, 8, p)
+		CanBusNative.setFrameParameter(f, 16, 8, p)
 	}
 	
 	/**

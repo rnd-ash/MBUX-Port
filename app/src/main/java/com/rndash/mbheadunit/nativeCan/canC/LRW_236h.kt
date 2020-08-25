@@ -21,18 +21,18 @@ object LRW_236h {
 	fun get_lrw() : Int = CanBusNative.getECUParameterC(CanCAddrs.LRW_236h, 2, 14)
 	
 	/** Sets steering wheel angle **/
-	fun set_lrw(f: CanFrame, p: Int) : CanFrame? {
+	fun set_lrw(f: CanFrame, p: Int) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 2, 14, p)
+		CanBusNative.setFrameParameter(f, 2, 14, p)
 	}
 	
 	/** Gets steering wheel angular speed **/
 	fun get_vlrw() : Int = CanBusNative.getECUParameterC(CanCAddrs.LRW_236h, 18, 14)
 	
 	/** Sets steering wheel angular speed **/
-	fun set_vlrw(f: CanFrame, p: Int) : CanFrame? {
+	fun set_vlrw(f: CanFrame, p: Int) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 18, 14, p)
+		CanBusNative.setFrameParameter(f, 18, 14, p)
 	}
 	
 	/** Gets Steering wheel angle sensor status **/
@@ -45,9 +45,9 @@ object LRW_236h {
 	}
 	
 	/** Sets Steering wheel angle sensor status **/
-	fun set_lrws_st(f: CanFrame, p: LRWS_ST) : CanFrame? {
+	fun set_lrws_st(f: CanFrame, p: LRWS_ST) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 38, 2, p.raw)
+		CanBusNative.setFrameParameter(f, 38, 2, p.raw)
 	}
 	
 	/** Gets Identification of the steering wheel angle sensor **/
@@ -60,27 +60,27 @@ object LRW_236h {
 	}
 	
 	/** Sets Identification of the steering wheel angle sensor **/
-	fun set_lrws_id(f: CanFrame, p: LRWS_ID) : CanFrame? {
+	fun set_lrws_id(f: CanFrame, p: LRWS_ID) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 36, 2, p.raw)
+		CanBusNative.setFrameParameter(f, 36, 2, p.raw)
 	}
 	
 	/** Gets message counter **/
 	fun get_bz236h() : Int = CanBusNative.getECUParameterC(CanCAddrs.LRW_236h, 32, 4)
 	
 	/** Sets message counter **/
-	fun set_bz236h(f: CanFrame, p: Int) : CanFrame? {
+	fun set_bz236h(f: CanFrame, p: Int) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 32, 4, p)
+		CanBusNative.setFrameParameter(f, 32, 4, p)
 	}
 	
 	/** Gets CRC checksum byte 1 **/
 	fun get_crc236h() : Int = CanBusNative.getECUParameterC(CanCAddrs.LRW_236h, 56, 8)
 	
 	/** Sets CRC checksum byte 1 **/
-	fun set_crc236h(f: CanFrame, p: Int) : CanFrame? {
+	fun set_crc236h(f: CanFrame, p: Int) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 56, 8, p)
+		CanBusNative.setFrameParameter(f, 56, 8, p)
 	}
 	
 	/**

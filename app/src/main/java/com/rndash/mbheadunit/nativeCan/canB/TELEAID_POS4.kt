@@ -21,18 +21,18 @@ object TELEAID_POS4 {
 	fun get_dr_mm_lat() : Int = CanBusNative.getECUParameterB(CanBAddrs.TELEAID_POS4, 0, 32)
 	
 	/** Sets Dead reckoning / map matching latitude (- means south)  **/
-	fun set_dr_mm_lat(f: CanFrame, p: Int) : CanFrame? {
+	fun set_dr_mm_lat(f: CanFrame, p: Int) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 0, 32, p)
+		CanBusNative.setFrameParameter(f, 0, 32, p)
 	}
 	
 	/** Gets Dead reckoning / map matching longtitude (- means west)  **/
 	fun get_dr_mm_long() : Int = CanBusNative.getECUParameterB(CanBAddrs.TELEAID_POS4, 32, 32)
 	
 	/** Sets Dead reckoning / map matching longtitude (- means west)  **/
-	fun set_dr_mm_long(f: CanFrame, p: Int) : CanFrame? {
+	fun set_dr_mm_long(f: CanFrame, p: Int) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 32, 32, p)
+		CanBusNative.setFrameParameter(f, 32, 32, p)
 	}
 	
 	/**

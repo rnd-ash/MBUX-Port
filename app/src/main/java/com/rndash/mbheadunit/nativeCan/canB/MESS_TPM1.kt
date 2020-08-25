@@ -21,9 +21,9 @@ object MESS_TPM1 {
 	fun get_mess_tpm1() : Int = CanBusNative.getECUParameterB(CanBAddrs.MESS_TPM1, 0, 64)
 	
 	/** Sets Measurement data **/
-	fun set_mess_tpm1(f: CanFrame, p: Int) : CanFrame? {
+	fun set_mess_tpm1(f: CanFrame, p: Int) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 0, 64, p)
+		CanBusNative.setFrameParameter(f, 0, 64, p)
 	}
 	
 	/**

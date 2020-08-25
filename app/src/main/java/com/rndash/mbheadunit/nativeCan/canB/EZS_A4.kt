@@ -21,18 +21,18 @@ object EZS_A4 {
 	fun get_schlue_id() : Int = CanBusNative.getECUParameterB(CanBAddrs.EZS_A4, 0, 32)
 	
 	/** Sets Identification key for pre-filtering **/
-	fun set_schlue_id(f: CanFrame, p: Int) : CanFrame? {
+	fun set_schlue_id(f: CanFrame, p: Int) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 0, 32, p)
+		CanBusNative.setFrameParameter(f, 0, 32, p)
 	}
 	
 	/** Gets Mileage  **/
 	fun get_km_ezs() : Int = CanBusNative.getECUParameterB(CanBAddrs.EZS_A4, 32, 24)
 	
 	/** Sets Mileage  **/
-	fun set_km_ezs(f: CanFrame, p: Int) : CanFrame? {
+	fun set_km_ezs(f: CanFrame, p: Int) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 32, 24, p)
+		CanBusNative.setFrameParameter(f, 32, 24, p)
 	}
 	
 	/**

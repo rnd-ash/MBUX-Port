@@ -21,9 +21,9 @@ object EZS_MESS1 {
 	fun get_mess1() : Int = CanBusNative.getECUParameterC(CanCAddrs.EZS_MESS1, 0, 64)
 	
 	/** Sets measured values **/
-	fun set_mess1(f: CanFrame, p: Int) : CanFrame? {
+	fun set_mess1(f: CanFrame, p: Int) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 0, 64, p)
+		CanBusNative.setFrameParameter(f, 0, 64, p)
 	}
 	
 	/**

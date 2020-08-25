@@ -21,9 +21,9 @@ object TP_AGW_KOMBI1 {
 	fun get_tp_agw_kombi() : Int = CanBusNative.getECUParameterB(CanBAddrs.TP_AGW_KOMBI1, 0, 64)
 	
 	/** Sets communication AGW to KOMBI **/
-	fun set_tp_agw_kombi(f: CanFrame, p: Int) : CanFrame? {
+	fun set_tp_agw_kombi(f: CanFrame, p: Int) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 0, 64, p)
+		CanBusNative.setFrameParameter(f, 0, 64, p)
 	}
 	
 	/**

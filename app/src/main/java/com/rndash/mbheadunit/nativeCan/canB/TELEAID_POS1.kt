@@ -21,18 +21,18 @@ object TELEAID_POS1 {
 	fun get_gps_lat() : Int = CanBusNative.getECUParameterB(CanBAddrs.TELEAID_POS1, 0, 32)
 	
 	/** Sets GPS latitude (- means south)  **/
-	fun set_gps_lat(f: CanFrame, p: Int) : CanFrame? {
+	fun set_gps_lat(f: CanFrame, p: Int) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 0, 32, p)
+		CanBusNative.setFrameParameter(f, 0, 32, p)
 	}
 	
 	/** Gets GPS longitude (- means west)  **/
 	fun get_gps_long() : Int = CanBusNative.getECUParameterB(CanBAddrs.TELEAID_POS1, 32, 32)
 	
 	/** Sets GPS longitude (- means west)  **/
-	fun set_gps_long(f: CanFrame, p: Int) : CanFrame? {
+	fun set_gps_long(f: CanFrame, p: Int) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 32, 32, p)
+		CanBusNative.setFrameParameter(f, 32, 32, p)
 	}
 	
 	/**

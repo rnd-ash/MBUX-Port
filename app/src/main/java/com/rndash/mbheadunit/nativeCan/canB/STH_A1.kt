@@ -21,72 +21,72 @@ object STH_A1 {
 	fun get_sendlm_ein() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.STH_A1, 7, 1) != 0
 	
 	/** Sets transmitter learning mode on **/
-	fun set_sendlm_ein(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_sendlm_ein(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 7, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 7, 1, if(p) 1 else 0)
 	}
 	
 	/** Gets Switch on auxiliary heater LED **/
 	fun get_zh_led_ein() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.STH_A1, 6, 1) != 0
 	
 	/** Sets Switch on auxiliary heater LED **/
-	fun set_zh_led_ein(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_zh_led_ein(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 6, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 6, 1, if(p) 1 else 0)
 	}
 	
 	/** Gets Open the preset time menu **/
 	fun get_vwz_menue() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.STH_A1, 5, 1) != 0
 	
 	/** Sets Open the preset time menu **/
-	fun set_vwz_menue(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_vwz_menue(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 5, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 5, 1, if(p) 1 else 0)
 	}
 	
 	/** Gets Switch on the vehicle fan **/
 	fun get_fan_on() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.STH_A1, 4, 1) != 0
 	
 	/** Sets Switch on the vehicle fan **/
-	fun set_fan_on(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_fan_on(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 4, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 4, 1, if(p) 1 else 0)
 	}
 	
 	/** Gets Switching on heating manually **/
 	fun get_sthzg_ein() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.STH_A1, 3, 1) != 0
 	
 	/** Sets Switching on heating manually **/
-	fun set_sthzg_ein(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_sthzg_ein(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 3, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 3, 1, if(p) 1 else 0)
 	}
 	
 	/** Gets Switch on ventilation manually **/
 	fun get_stlft_ein() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.STH_A1, 2, 1) != 0
 	
 	/** Sets Switch on ventilation manually **/
-	fun set_stlft_ein(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_stlft_ein(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 2, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 2, 1, if(p) 1 else 0)
 	}
 	
 	/** Gets switch off auxiliary heating / ventilation **/
 	fun get_sthl_aus() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.STH_A1, 1, 1) != 0
 	
 	/** Sets switch off auxiliary heating / ventilation **/
-	fun set_sthl_aus(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_sthl_aus(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 1, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 1, 1, if(p) 1 else 0)
 	}
 	
 	/** Gets switch on auxiliary heating / ventilation **/
 	fun get_sthl_ein() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.STH_A1, 0, 1) != 0
 	
 	/** Sets switch on auxiliary heating / ventilation **/
-	fun set_sthl_ein(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_sthl_ein(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 0, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 0, 1, if(p) 1 else 0)
 	}
 	
 	/**

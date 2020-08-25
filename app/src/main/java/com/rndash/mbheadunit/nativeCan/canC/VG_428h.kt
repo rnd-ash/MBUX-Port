@@ -28,18 +28,18 @@ object VG_428h {
 	}
 	
 	/** Sets Current gear transfer case **/
-	fun set_vg_gang(f: CanFrame, p: VG_GANG) : CanFrame? {
+	fun set_vg_gang(f: CanFrame, p: VG_GANG) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 5, 3, p.raw)
+		CanBusNative.setFrameParameter(f, 5, 3, p.raw)
 	}
 	
 	/** Gets VG error (ECU failure detected) **/
 	fun get_vg_err() : Boolean = CanBusNative.getECUParameterC(CanCAddrs.VG_428h, 2, 1) != 0
 	
 	/** Sets VG error (ECU failure detected) **/
-	fun set_vg_err(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_vg_err(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 2, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 2, 1, if(p) 1 else 0)
 	}
 	
 	/** Gets VG **/
@@ -52,27 +52,27 @@ object VG_428h {
 	}
 	
 	/** Sets VG **/
-	fun set_anfn_vg(f: CanFrame, p: ANFN_VG) : CanFrame? {
+	fun set_anfn_vg(f: CanFrame, p: ANFN_VG) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 14, 2, p.raw)
+		CanBusNative.setFrameParameter(f, 14, 2, p.raw)
 	}
 	
 	/** Gets VG **/
 	fun get_anfntgl_vg() : Boolean = CanBusNative.getECUParameterC(CanCAddrs.VG_428h, 13, 1) != 0
 	
 	/** Sets VG **/
-	fun set_anfntgl_vg(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_anfntgl_vg(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 13, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 13, 1, if(p) 1 else 0)
 	}
 	
 	/** Gets VG **/
 	fun get_anfnpar_vg() : Boolean = CanBusNative.getECUParameterC(CanCAddrs.VG_428h, 12, 1) != 0
 	
 	/** Sets VG **/
-	fun set_anfnpar_vg(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_anfnpar_vg(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 12, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 12, 1, if(p) 1 else 0)
 	}
 	
 	/**

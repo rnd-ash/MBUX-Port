@@ -21,9 +21,9 @@ object SAM_H_A6 {
 	fun get_zbc_sam_h() : Int = CanBusNative.getECUParameterB(CanBAddrs.SAM_H_A6, 0, 64)
 	
 	/** Sets code access authorization **/
-	fun set_zbc_sam_h(f: CanFrame, p: Int) : CanFrame? {
+	fun set_zbc_sam_h(f: CanFrame, p: Int) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 0, 64, p)
+		CanBusNative.setFrameParameter(f, 0, 64, p)
 	}
 	
 	/**

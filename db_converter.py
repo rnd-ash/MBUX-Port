@@ -140,14 +140,14 @@ class code_object:
                 buf = "/** Sets {0} **/\n".format(self.__description__)
             else:
                 buf = "/** UNKNOWN DESCRIPTION **/\n"
-            buf += "fun {0}(f: CanFrame, p: {1}) : CanFrame? {{\n".format(self.__function_setter__, self.__data_type__)
+            buf += "fun {0}(f: CanFrame, p: {1}) {{\n".format(self.__function_setter__, self.__data_type__)
             buf += "\tcheckFrame(f)\n"
             if self.__data_type__ == "Boolean": # Bo olean - just check return value is not 0
-                buf += "\treturn CanBusNative.setFrameParameter(f, {0}, {1}, if(p) 1 else 0)\n".format(self.__data_offset__, self.__data_length__)
+                buf += "\tCanBusNative.setFrameParameter(f, {0}, {1}, if(p) 1 else 0)\n".format(self.__data_offset__, self.__data_length__)
             elif self.__data_type__ == "Int": # Int - return value is OK!
-                buf += "\treturn CanBusNative.setFrameParameter(f, {0}, {1}, p)\n".format(self.__data_offset__, self.__data_length__)
+                buf += "\tCanBusNative.setFrameParameter(f, {0}, {1}, p)\n".format(self.__data_offset__, self.__data_length__)
             else: # Extract value from enum
-                buf += "\treturn CanBusNative.setFrameParameter(f, {0}, {1}, p.raw)\n".format(self.__data_offset__, self.__data_length__)
+                buf += "\tCanBusNative.setFrameParameter(f, {0}, {1}, p.raw)\n".format(self.__data_offset__, self.__data_length__)
             buf += "}\n"
             return buf
         except Exception as e:
@@ -276,7 +276,7 @@ object {0} {{
     **/
     fun get_frame() : CanFrame? = CanBusNative.get{2}Frame(Can{2}Addrs.{0})\n\n""".format(frame.get_name(), frame.get_id(), can_subsystem)
     for l in frame.generate_class_body().split("\n"):
-        buf += "\t" + l + "\n"
+        buf += "\t{}\n".format(l)
     buf = buf[:-1]
     buf += """/**
      * Auto generated function
@@ -362,10 +362,10 @@ while True:
     e.process()
     for pos, x in enumerate(frames):
         if x.get_id() == e.get_id():
-            print("Duplicate entry for ", x.get_name())
+            print("Duplicate entry for {}".format(x.get_name()))
             # Check - Does the new instance have more data?
             if e.get_signal_count() > x.get_signal_count():
-                print("Replacing {2}. {0} signals to {1} signals".format(e.get_signal_count(), x.get_signal_count(), e.get_name()))
+                print("Replacing {0}. {1} signals to {2} signals".format(e.get_name(), e.get_signal_count(), x.get_signal_count()))
                 frames[pos] = e
             add = False # Still mark as false as we replaced rather than insert
     if add:
@@ -374,8 +374,8 @@ while True:
         o = open(output_dir + e.get_name() + ".kt", "w")
         o.write(generate_class_content(e))    
 
-o = open(output_dir + "Can{0}Addrs.kt".format(can_subsystem), "w")
+o = open("{0}Can{1}Addrs.kt".format(output_dir, can_subsystem), "w")
 o.write(generate_addr_file(frames)) # Generate all the enums into 1 file for ECU Addresses
 
-o = open(output_dir + "Can{0}Enums.kt".format(can_subsystem), "w")
+o = open("{0}Can{1}Enums.kt".format(output_dir, can_subsystem), "w")
 o.write(generate_enum_file(frames))

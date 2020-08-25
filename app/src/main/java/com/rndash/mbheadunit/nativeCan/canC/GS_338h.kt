@@ -21,18 +21,18 @@ object GS_338h {
 	fun get_nab() : Int = CanBusNative.getECUParameterC(CanCAddrs.GS_338h, 0, 16)
 	
 	/** Sets gearbox output speed (only 463/461, otherwise FFFFh) **/
-	fun set_nab(f: CanFrame, p: Int) : CanFrame? {
+	fun set_nab(f: CanFrame, p: Int) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 0, 16, p)
+		CanBusNative.setFrameParameter(f, 0, 16, p)
 	}
 	
 	/** Gets turbine speed (EGS52-NAG, VGS-NAG2) **/
 	fun get_nturbine() : Int = CanBusNative.getECUParameterC(CanCAddrs.GS_338h, 48, 16)
 	
 	/** Sets turbine speed (EGS52-NAG, VGS-NAG2) **/
-	fun set_nturbine(f: CanFrame, p: Int) : CanFrame? {
+	fun set_nturbine(f: CanFrame, p: Int) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 48, 16, p)
+		CanBusNative.setFrameParameter(f, 48, 16, p)
 	}
 	
 	/**

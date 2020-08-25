@@ -21,18 +21,18 @@ object SAM_H_A4 {
 	fun get_zv_notoeff() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.SAM_H_A4, 7, 1) != 0
 	
 	/** Sets ZV emergency opening **/
-	fun set_zv_notoeff(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_zv_notoeff(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 7, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 7, 1, if(p) 1 else 0)
 	}
 	
 	/** Gets lock follower 1 (unlock) **/
 	fun get_sn1_sam_h() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.SAM_H_A4, 1, 1) != 0
 	
 	/** Sets lock follower 1 (unlock) **/
-	fun set_sn1_sam_h(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_sn1_sam_h(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 1, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 1, 1, if(p) 1 else 0)
 	}
 	
 	/**

@@ -21,18 +21,18 @@ object EZS_A10 {
 	fun get_riz_hl() : Int = CanBusNative.getECUParameterB(CanBAddrs.EZS_A10, 0, 8)
 	
 	/** Sets Pulse ring counter, rear left wheel (48 per revolution)  **/
-	fun set_riz_hl(f: CanFrame, p: Int) : CanFrame? {
+	fun set_riz_hl(f: CanFrame, p: Int) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 0, 8, p)
+		CanBusNative.setFrameParameter(f, 0, 8, p)
 	}
 	
 	/** Gets Pulse ring counter, rear right wheel (48 per revolution)  **/
 	fun get_riz_hr() : Int = CanBusNative.getECUParameterB(CanBAddrs.EZS_A10, 8, 8)
 	
 	/** Sets Pulse ring counter, rear right wheel (48 per revolution)  **/
-	fun set_riz_hr(f: CanFrame, p: Int) : CanFrame? {
+	fun set_riz_hr(f: CanFrame, p: Int) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 8, 8, p)
+		CanBusNative.setFrameParameter(f, 8, 8, p)
 	}
 	
 	/** Gets direction of rotation of the rear wheel right **/
@@ -45,18 +45,18 @@ object EZS_A10 {
 	}
 	
 	/** Sets direction of rotation of the rear wheel right **/
-	fun set_drtghr(f: CanFrame, p: DRTGHR) : CanFrame? {
+	fun set_drtghr(f: CanFrame, p: DRTGHR) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 16, 2, p.raw)
+		CanBusNative.setFrameParameter(f, 16, 2, p.raw)
 	}
 	
 	/** Gets wheel speed rear right  **/
 	fun get_dhr() : Int = CanBusNative.getECUParameterB(CanBAddrs.EZS_A10, 18, 14)
 	
 	/** Sets wheel speed rear right  **/
-	fun set_dhr(f: CanFrame, p: Int) : CanFrame? {
+	fun set_dhr(f: CanFrame, p: Int) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 18, 14, p)
+		CanBusNative.setFrameParameter(f, 18, 14, p)
 	}
 	
 	/** Gets direction of rotation of rear left wheel **/
@@ -69,18 +69,18 @@ object EZS_A10 {
 	}
 	
 	/** Sets direction of rotation of rear left wheel **/
-	fun set_drtghl(f: CanFrame, p: DRTGHL) : CanFrame? {
+	fun set_drtghl(f: CanFrame, p: DRTGHL) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 32, 2, p.raw)
+		CanBusNative.setFrameParameter(f, 32, 2, p.raw)
 	}
 	
 	/** Gets wheel speed rear left  **/
 	fun get_dhl() : Int = CanBusNative.getECUParameterB(CanBAddrs.EZS_A10, 34, 14)
 	
 	/** Sets wheel speed rear left  **/
-	fun set_dhl(f: CanFrame, p: Int) : CanFrame? {
+	fun set_dhl(f: CanFrame, p: Int) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 34, 14, p)
+		CanBusNative.setFrameParameter(f, 34, 14, p)
 	}
 	
 	/**

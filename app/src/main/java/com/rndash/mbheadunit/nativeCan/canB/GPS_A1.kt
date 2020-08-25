@@ -21,18 +21,18 @@ object GPS_A1 {
 	fun get_latitude() : Int = CanBusNative.getECUParameterB(CanBAddrs.GPS_A1, 0, 32)
 	
 	/** Sets GPS Latitude (+ = North)  **/
-	fun set_latitude(f: CanFrame, p: Int) : CanFrame? {
+	fun set_latitude(f: CanFrame, p: Int) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 0, 32, p)
+		CanBusNative.setFrameParameter(f, 0, 32, p)
 	}
 	
 	/** Gets GPS Longitude (+ = East)  **/
 	fun get_longitude() : Int = CanBusNative.getECUParameterB(CanBAddrs.GPS_A1, 32, 32)
 	
 	/** Sets GPS Longitude (+ = East)  **/
-	fun set_longitude(f: CanFrame, p: Int) : CanFrame? {
+	fun set_longitude(f: CanFrame, p: Int) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 32, 32, p)
+		CanBusNative.setFrameParameter(f, 32, 32, p)
 	}
 	
 	/**

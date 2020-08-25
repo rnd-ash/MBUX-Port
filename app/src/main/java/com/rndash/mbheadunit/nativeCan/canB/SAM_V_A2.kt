@@ -21,36 +21,36 @@ object SAM_V_A2 {
 	fun get_t_aussen_b() : Int = CanBusNative.getECUParameterB(CanBAddrs.SAM_V_A2, 0, 8)
 	
 	/** Sets outside air temperature  **/
-	fun set_t_aussen_b(f: CanFrame, p: Int) : CanFrame? {
+	fun set_t_aussen_b(f: CanFrame, p: Int) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 0, 8, p)
+		CanBusNative.setFrameParameter(f, 0, 8, p)
 	}
 	
 	/** Gets pressure refrigerant R134a  **/
 	fun get_p_kaelte() : Int = CanBusNative.getECUParameterB(CanBAddrs.SAM_V_A2, 8, 16)
 	
 	/** Sets pressure refrigerant R134a  **/
-	fun set_p_kaelte(f: CanFrame, p: Int) : CanFrame? {
+	fun set_p_kaelte(f: CanFrame, p: Int) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 8, 16, p)
+		CanBusNative.setFrameParameter(f, 8, 16, p)
 	}
 	
 	/** Gets temperature refrigerant R134a  **/
 	fun get_t_kaelte() : Int = CanBusNative.getECUParameterB(CanBAddrs.SAM_V_A2, 24, 16)
 	
 	/** Sets temperature refrigerant R134a  **/
-	fun set_t_kaelte(f: CanFrame, p: Int) : CanFrame? {
+	fun set_t_kaelte(f: CanFrame, p: Int) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 24, 16, p)
+		CanBusNative.setFrameParameter(f, 24, 16, p)
 	}
 	
 	/** Gets Current compressor main control valve  **/
 	fun get_i_komp() : Int = CanBusNative.getECUParameterB(CanBAddrs.SAM_V_A2, 40, 8)
 	
 	/** Sets Current compressor main control valve  **/
-	fun set_i_komp(f: CanFrame, p: Int) : CanFrame? {
+	fun set_i_komp(f: CanFrame, p: Int) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 40, 8, p)
+		CanBusNative.setFrameParameter(f, 40, 8, p)
 	}
 	
 	/**

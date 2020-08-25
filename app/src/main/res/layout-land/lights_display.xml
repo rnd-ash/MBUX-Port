@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="50dp"
+            android:layout_marginBottom="50dp">
+
+            <Switch
+                android:id="@+id/indicator_toggle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Hazard control"
+                android:textColor="#FFFFFF"
+                app:layout_constraintBottom_toTopOf="@+id/fog_toggle"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <SeekBar
+                android:id="@+id/hazard_seek"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:max="1000"
+                android:min="10"
+                android:progress="100"
+                android:progressTint="#FFFFFF"
+                app:layout_constraintBottom_toBottomOf="@+id/indicator_toggle"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/indicator_toggle"
+                app:layout_constraintTop_toTopOf="@+id/indicator_toggle" />
+
+            <Switch
+                android:id="@+id/fog_toggle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:text="Fog control"
+                android:textColor="#FFFFFF"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/indicator_toggle" />
+
+            <SeekBar
+                android:id="@+id/fog_seek"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:max="1000"
+                android:min="10"
+                android:progress="100"
+                android:progressTint="#FFFFFF"
+                app:layout_constraintBottom_toBottomOf="@+id/fog_toggle"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/fog_toggle"
+                app:layout_constraintTop_toTopOf="@+id/fog_toggle" />
+
+            <TextView
+                android:id="@+id/indicator_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0ms"
+                android:textColor="#FFFFFF"
+                app:layout_constraintBottom_toBottomOf="@+id/hazard_seek"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/hazard_seek"
+                app:layout_constraintTop_toTopOf="@+id/hazard_seek"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <TextView
+                android:id="@+id/fog_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0ms"
+                android:textColor="#FFFFFF"
+                app:layout_constraintBottom_toBottomOf="@+id/fog_seek"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/fog_seek"
+                app:layout_constraintTop_toTopOf="@+id/fog_seek"
+                app:layout_constraintVertical_bias="0.0" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

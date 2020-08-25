@@ -39,9 +39,9 @@ object MS_ANZ {
 	}
 	
 	/** Sets number of the ASS status message **/
-	fun set_ass_dspl(f: CanFrame, p: ASS_DSPL) : CanFrame? {
+	fun set_ass_dspl(f: CanFrame, p: ASS_DSPL) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 20, 4, p.raw)
+		CanBusNative.setFrameParameter(f, 20, 4, p.raw)
 	}
 	
 	/** Gets number of the ASS warning message **/
@@ -66,18 +66,18 @@ object MS_ANZ {
 	}
 	
 	/** Sets number of the ASS warning message **/
-	fun set_ass_warn(f: CanFrame, p: ASS_WARN) : CanFrame? {
+	fun set_ass_warn(f: CanFrame, p: ASS_WARN) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 16, 4, p.raw)
+		CanBusNative.setFrameParameter(f, 16, 4, p.raw)
 	}
 	
 	/** Gets Suppression of lamp test during the stop phase **/
 	fun get_ass_ltest_aus() : Boolean = CanBusNative.getECUParameterC(CanCAddrs.MS_ANZ, 24, 1) != 0
 	
 	/** Sets Suppression of lamp test during the stop phase **/
-	fun set_ass_ltest_aus(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_ass_ltest_aus(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 24, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 24, 1, if(p) 1 else 0)
 	}
 	
 	/**

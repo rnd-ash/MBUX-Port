@@ -21,99 +21,99 @@ object DBE_A1 {
 	fun get_al_hr() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.DBE_A1, 3, 1) != 0
 	
 	/** Sets Switch on the exit light at the rear right **/
-	fun set_al_hr(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_al_hr(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 3, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 3, 1, if(p) 1 else 0)
 	}
 	
 	/** Gets Switch on the exit light at the rear left **/
 	fun get_al_hl() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.DBE_A1, 2, 1) != 0
 	
 	/** Sets Switch on the exit light at the rear left **/
-	fun set_al_hl(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_al_hl(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 2, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 2, 1, if(p) 1 else 0)
 	}
 	
 	/** Gets Switch on the exit light at the front right **/
 	fun get_al_vr() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.DBE_A1, 1, 1) != 0
 	
 	/** Sets Switch on the exit light at the front right **/
-	fun set_al_vr(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_al_vr(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 1, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 1, 1, if(p) 1 else 0)
 	}
 	
 	/** Gets Switch on the exit light at the front left **/
 	fun get_al_vl() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.DBE_A1, 0, 1) != 0
 	
 	/** Sets Switch on the exit light at the front left **/
-	fun set_al_vl(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_al_vl(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 0, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 0, 1, if(p) 1 else 0)
 	}
 	
 	/** Gets Inside temperature  **/
 	fun get_t_innen() : Int = CanBusNative.getECUParameterB(CanBAddrs.DBE_A1, 8, 8)
 	
 	/** Sets Inside temperature  **/
-	fun set_t_innen(f: CanFrame, p: Int) : CanFrame? {
+	fun set_t_innen(f: CanFrame, p: Int) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 8, 8, p)
+		CanBusNative.setFrameParameter(f, 8, 8, p)
 	}
 	
 	/** Gets LS initialization is running **/
 	fun get_init_ls_akt() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.DBE_A1, 23, 1) != 0
 	
 	/** Sets LS initialization is running **/
-	fun set_init_ls_akt(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_init_ls_akt(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 23, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 23, 1, if(p) 1 else 0)
 	}
 	
 	/** Gets Light sensor: Dusk **/
 	fun get_daemmer() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.DBE_A1, 21, 1) != 0
 	
 	/** Sets Light sensor: Dusk **/
-	fun set_daemmer(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_daemmer(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 21, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 21, 1, if(p) 1 else 0)
 	}
 	
 	/** Gets Light sensor: tunnel **/
 	fun get_tunnel() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.DBE_A1, 20, 1) != 0
 	
 	/** Sets Light sensor: tunnel **/
-	fun set_tunnel(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_tunnel(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 20, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 20, 1, if(p) 1 else 0)
 	}
 	
 	/** Gets light sensor defective **/
 	fun get_lisr_def() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.DBE_A1, 18, 1) != 0
 	
 	/** Sets light sensor defective **/
-	fun set_lisr_def(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_lisr_def(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 18, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 18, 1, if(p) 1 else 0)
 	}
 	
 	/** Gets day / night signal **/
 	fun get_night() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.DBE_A1, 17, 1) != 0
 	
 	/** Sets day / night signal **/
-	fun set_night(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_night(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 17, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 17, 1, if(p) 1 else 0)
 	}
 	
 	/** Gets AFL request: switch on low beam **/
 	fun get_afl_abl_ein() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.DBE_A1, 16, 1) != 0
 	
 	/** Sets AFL request: switch on low beam **/
-	fun set_afl_abl_ein(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_afl_abl_ein(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 16, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 16, 1, if(p) 1 else 0)
 	}
 	
 	/** Gets Sunroof status **/
@@ -130,72 +130,72 @@ object DBE_A1 {
 	}
 	
 	/** Sets Sunroof status **/
-	fun set_shd_st(f: CanFrame, p: SHD_ST) : CanFrame? {
+	fun set_shd_st(f: CanFrame, p: SHD_ST) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 29, 3, p.raw)
+		CanBusNative.setFrameParameter(f, 29, 3, p.raw)
 	}
 	
 	/** Gets Switch on the charging lamp **/
 	fun get_lade_ein() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.DBE_A1, 27, 1) != 0
 	
 	/** Sets Switch on the charging lamp **/
-	fun set_lade_ein(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_lade_ein(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 27, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 27, 1, if(p) 1 else 0)
 	}
 	
 	/** Gets convertible top locked (with W, S, C, CL = [1]) **/
 	fun get_verd_zu() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.DBE_A1, 26, 1) != 0
 	
 	/** Sets convertible top locked (with W, S, C, CL = [1]) **/
-	fun set_verd_zu(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_verd_zu(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 26, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 26, 1, if(p) 1 else 0)
 	}
 	
 	/** Gets Convertible top in catch position **/
 	fun get_verd_fangpos() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.DBE_A1, 25, 1) != 0
 	
 	/** Sets Convertible top in catch position **/
-	fun set_verd_fangpos(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_verd_fangpos(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 25, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 25, 1, if(p) 1 else 0)
 	}
 	
 	/** Gets Interior protection glass breakage triggered **/
 	fun get_irs_gb() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.DBE_A1, 33, 1) != 0
 	
 	/** Sets Interior protection glass breakage triggered **/
-	fun set_irs_gb(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_irs_gb(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 33, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 33, 1, if(p) 1 else 0)
 	}
 	
 	/** Gets Interior protection triggered **/
 	fun get_irs_alm() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.DBE_A1, 32, 1) != 0
 	
 	/** Sets Interior protection triggered **/
-	fun set_irs_alm(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_irs_alm(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 32, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 32, 1, if(p) 1 else 0)
 	}
 	
 	/** Gets front left footwell lighting on **/
 	fun get_frbl_vl() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.DBE_A1, 52, 1) != 0
 	
 	/** Sets front left footwell lighting on **/
-	fun set_frbl_vl(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_frbl_vl(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 52, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 52, 1, if(p) 1 else 0)
 	}
 	
 	/** Gets Brightness of footwell lighting  **/
 	fun get_frbl_hell() : Int = CanBusNative.getECUParameterB(CanBAddrs.DBE_A1, 56, 8)
 	
 	/** Sets Brightness of footwell lighting  **/
-	fun set_frbl_hell(f: CanFrame, p: Int) : CanFrame? {
+	fun set_frbl_hell(f: CanFrame, p: Int) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 56, 8, p)
+		CanBusNative.setFrameParameter(f, 56, 8, p)
 	}
 	
 	/**

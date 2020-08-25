@@ -21,27 +21,27 @@ object KOMBI_412h {
 	fun get_eco_warn_st() : Boolean = CanBusNative.getECUParameterC(CanCAddrs.KOMBI_412h, 4, 1) != 0
 	
 	/** Sets Status ECO warning **/
-	fun set_eco_warn_st(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_eco_warn_st(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 4, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 4, 1, if(p) 1 else 0)
 	}
 	
 	/** Gets Optical warning off **/
 	fun get_opt_warn_aus() : Boolean = CanBusNative.getECUParameterC(CanCAddrs.KOMBI_412h, 1, 1) != 0
 	
 	/** Sets Optical warning off **/
-	fun set_opt_warn_aus(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_opt_warn_aus(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 1, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 1, 1, if(p) 1 else 0)
 	}
 	
 	/** Gets Acoustic warning off **/
 	fun get_aku_warn_aus() : Boolean = CanBusNative.getECUParameterC(CanCAddrs.KOMBI_412h, 0, 1) != 0
 	
 	/** Sets Acoustic warning off **/
-	fun set_aku_warn_aus(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_aku_warn_aus(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 0, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 0, 1, if(p) 1 else 0)
 	}
 	
 	/** Gets Set distance **/
@@ -58,27 +58,27 @@ object KOMBI_412h {
 	}
 	
 	/** Sets Set distance **/
-	fun set_ist_abst(f: CanFrame, p: IST_ABST) : CanFrame? {
+	fun set_ist_abst(f: CanFrame, p: IST_ABST) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 9, 3, p.raw)
+		CanBusNative.setFrameParameter(f, 9, 3, p.raw)
 	}
 	
 	/** Gets distance unit **/
 	fun get_abst_s() : Boolean = CanBusNative.getECUParameterC(CanCAddrs.KOMBI_412h, 8, 1) != 0
 	
 	/** Sets distance unit **/
-	fun set_abst_s(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_abst_s(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 8, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 8, 1, if(p) 1 else 0)
 	}
 	
 	/** Gets Displayed speed **/
 	fun get_v_anz() : Int = CanBusNative.getECUParameterC(CanCAddrs.KOMBI_412h, 12, 12)
 	
 	/** Sets Displayed speed **/
-	fun set_v_anz(f: CanFrame, p: Int) : CanFrame? {
+	fun set_v_anz(f: CanFrame, p: Int) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 12, 12, p)
+		CanBusNative.setFrameParameter(f, 12, 12, p)
 	}
 	
 	/** Gets direction of wheel rotation to V_ANZ **/
@@ -91,18 +91,18 @@ object KOMBI_412h {
 	}
 	
 	/** Sets direction of wheel rotation to V_ANZ **/
-	fun set_drtganz(f: CanFrame, p: DRTGANZ) : CanFrame? {
+	fun set_drtganz(f: CanFrame, p: DRTGANZ) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 24, 2, p.raw)
+		CanBusNative.setFrameParameter(f, 24, 2, p.raw)
 	}
 	
 	/** Gets wheel speed calculated from V_ANZ **/
 	fun get_danz() : Int = CanBusNative.getECUParameterC(CanCAddrs.KOMBI_412h, 26, 14)
 	
 	/** Sets wheel speed calculated from V_ANZ **/
-	fun set_danz(f: CanFrame, p: Int) : CanFrame? {
+	fun set_danz(f: CanFrame, p: Int) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 26, 14, p)
+		CanBusNative.setFrameParameter(f, 26, 14, p)
 	}
 	
 	/** Gets Flat roll warning request **/
@@ -115,27 +115,27 @@ object KOMBI_412h {
 	}
 	
 	/** Sets Flat roll warning request **/
-	fun set_prw_anf(f: CanFrame, p: PRW_ANF) : CanFrame? {
+	fun set_prw_anf(f: CanFrame, p: PRW_ANF) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 46, 2, p.raw)
+		CanBusNative.setFrameParameter(f, 46, 2, p.raw)
 	}
 	
 	/** Gets Activate ECO in the combination menu **/
 	fun get_eco_akt() : Boolean = CanBusNative.getECUParameterC(CanCAddrs.KOMBI_412h, 44, 1) != 0
 	
 	/** Sets Activate ECO in the combination menu **/
-	fun set_eco_akt(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_eco_akt(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 44, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 44, 1, if(p) 1 else 0)
 	}
 	
 	/** Gets engine shutdown time **/
 	fun get_maz_neu() : Int = CanBusNative.getECUParameterC(CanCAddrs.KOMBI_412h, 52, 12)
 	
 	/** Sets engine shutdown time **/
-	fun set_maz_neu(f: CanFrame, p: Int) : CanFrame? {
+	fun set_maz_neu(f: CanFrame, p: Int) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 52, 12, p)
+		CanBusNative.setFrameParameter(f, 52, 12, p)
 	}
 	
 	/**

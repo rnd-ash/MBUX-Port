@@ -21,9 +21,9 @@ object DBE_A4 {
 	fun get_shd_zu_rs() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.DBE_A4, 0, 1) != 0
 	
 	/** Sets Sliding / tilting roof closed when it rains **/
-	fun set_shd_zu_rs(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_shd_zu_rs(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 0, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 0, 1, if(p) 1 else 0)
 	}
 	
 	/**

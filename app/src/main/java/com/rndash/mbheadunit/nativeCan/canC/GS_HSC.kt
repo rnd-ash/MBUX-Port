@@ -21,9 +21,9 @@ object GS_HSC {
 	fun get_hsc() : Int = CanBusNative.getECUParameterC(CanCAddrs.GS_HSC, 0, 64)
 	
 	/** Sets manual control on the test bench **/
-	fun set_hsc(f: CanFrame, p: Int) : CanFrame? {
+	fun set_hsc(f: CanFrame, p: Int) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 0, 64, p)
+		CanBusNative.setFrameParameter(f, 0, 64, p)
 	}
 	
 	/**

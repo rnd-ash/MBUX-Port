@@ -21,18 +21,18 @@ object BS_270h {
 	fun get_riz_hl() : Int = CanBusNative.getECUParameterC(CanCAddrs.BS_270h, 0, 8)
 	
 	/** Sets Pulse ring counter, rear left wheel (48 per revolution) **/
-	fun set_riz_hl(f: CanFrame, p: Int) : CanFrame? {
+	fun set_riz_hl(f: CanFrame, p: Int) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 0, 8, p)
+		CanBusNative.setFrameParameter(f, 0, 8, p)
 	}
 	
 	/** Gets Pulse ring counter, rear right wheel (48 per revolution) **/
 	fun get_riz_hr() : Int = CanBusNative.getECUParameterC(CanCAddrs.BS_270h, 8, 8)
 	
 	/** Sets Pulse ring counter, rear right wheel (48 per revolution) **/
-	fun set_riz_hr(f: CanFrame, p: Int) : CanFrame? {
+	fun set_riz_hr(f: CanFrame, p: Int) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 8, 8, p)
+		CanBusNative.setFrameParameter(f, 8, 8, p)
 	}
 	
 	/** Gets Flat roll warning status **/
@@ -49,9 +49,9 @@ object BS_270h {
 	}
 	
 	/** Sets Flat roll warning status **/
-	fun set_prw_st(f: CanFrame, p: PRW_ST) : CanFrame? {
+	fun set_prw_st(f: CanFrame, p: PRW_ST) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 21, 3, p.raw)
+		CanBusNative.setFrameParameter(f, 21, 3, p.raw)
 	}
 	
 	/** Gets Warning messages flat roll warner **/
@@ -71,9 +71,9 @@ object BS_270h {
 	}
 	
 	/** Sets Warning messages flat roll warner **/
-	fun set_prw_warn(f: CanFrame, p: PRW_WARN) : CanFrame? {
+	fun set_prw_warn(f: CanFrame, p: PRW_WARN) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 16, 4, p.raw)
+		CanBusNative.setFrameParameter(f, 16, 4, p.raw)
 	}
 	
 	/**

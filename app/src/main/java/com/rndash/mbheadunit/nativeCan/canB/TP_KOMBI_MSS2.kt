@@ -21,9 +21,9 @@ object TP_KOMBI_MSS2 {
 	fun get_tp_kombi_mss() : Int = CanBusNative.getECUParameterB(CanBAddrs.TP_KOMBI_MSS2, 0, 64)
 	
 	/** Sets COMBI communication to the MSS **/
-	fun set_tp_kombi_mss(f: CanFrame, p: Int) : CanFrame? {
+	fun set_tp_kombi_mss(f: CanFrame, p: Int) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 0, 64, p)
+		CanBusNative.setFrameParameter(f, 0, 64, p)
 	}
 	
 	/**

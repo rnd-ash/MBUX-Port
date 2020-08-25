@@ -21,9 +21,9 @@ object TP_KOMBI_TELEAID4 {
 	fun get_tp_kombi_teleaid() : Int = CanBusNative.getECUParameterB(CanBAddrs.TP_KOMBI_TELEAID4, 0, 64)
 	
 	/** Sets communication KOMBI to TELEAID **/
-	fun set_tp_kombi_teleaid(f: CanFrame, p: Int) : CanFrame? {
+	fun set_tp_kombi_teleaid(f: CanFrame, p: Int) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 0, 64, p)
+		CanBusNative.setFrameParameter(f, 0, 64, p)
 	}
 	
 	/**

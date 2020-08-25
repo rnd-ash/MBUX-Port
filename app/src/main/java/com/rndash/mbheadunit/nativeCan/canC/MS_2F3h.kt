@@ -38,9 +38,9 @@ object MS_2F3h {
 	}
 	
 	/** Sets Gear step shift recommendation "Actual" **/
-	fun set_fsc_ist(f: CanFrame, p: FSC_IST) : CanFrame? {
+	fun set_fsc_ist(f: CanFrame, p: FSC_IST) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 0, 8, p.raw)
+		CanBusNative.setFrameParameter(f, 0, 8, p.raw)
 	}
 	
 	/** Gets Gear step shift recommendation "target" **/
@@ -66,9 +66,9 @@ object MS_2F3h {
 	}
 	
 	/** Sets Gear step shift recommendation "target" **/
-	fun set_fsc_soll(f: CanFrame, p: FSC_SOLL) : CanFrame? {
+	fun set_fsc_soll(f: CanFrame, p: FSC_SOLL) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 40, 8, p.raw)
+		CanBusNative.setFrameParameter(f, 40, 8, p.raw)
 	}
 	
 	/**

@@ -34,36 +34,36 @@ object AGW_A3 {
 	}
 	
 	/** Sets Numeric keypad head unit **/
-	fun set_ziffer_hu(f: CanFrame, p: ZIFFER_HU) : CanFrame? {
+	fun set_ziffer_hu(f: CanFrame, p: ZIFFER_HU) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 4, 4, p.raw)
+		CanBusNative.setFrameParameter(f, 4, 4, p.raw)
 	}
 	
 	/** Gets Diamond key pressed **/
 	fun get_raute_hu() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.AGW_A3, 3, 1) != 0
 	
 	/** Sets Diamond key pressed **/
-	fun set_raute_hu(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_raute_hu(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 3, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 3, 1, if(p) 1 else 0)
 	}
 	
 	/** Gets star key pressed **/
 	fun get_stern_hu() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.AGW_A3, 2, 1) != 0
 	
 	/** Sets star key pressed **/
-	fun set_stern_hu(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_stern_hu(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 2, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 2, 1, if(p) 1 else 0)
 	}
 	
 	/** Gets Rejection of numeric entry HU **/
 	fun get_cancel_hu() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.AGW_A3, 1, 1) != 0
 	
 	/** Sets Rejection of numeric entry HU **/
-	fun set_cancel_hu(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_cancel_hu(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 1, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 1, 1, if(p) 1 else 0)
 	}
 	
 	/** Gets Active application **/
@@ -74,9 +74,9 @@ object AGW_A3 {
 	}
 	
 	/** Sets Active application **/
-	fun set_akt_sys(f: CanFrame, p: AKT_SYS) : CanFrame? {
+	fun set_akt_sys(f: CanFrame, p: AKT_SYS) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 13, 3, p.raw)
+		CanBusNative.setFrameParameter(f, 13, 3, p.raw)
 	}
 	
 	/** Gets function keys **/
@@ -93,9 +93,9 @@ object AGW_A3 {
 	}
 	
 	/** Sets function keys **/
-	fun set_function_keys(f: CanFrame, p: FUNCTION_KEYS) : CanFrame? {
+	fun set_function_keys(f: CanFrame, p: FUNCTION_KEYS) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 10, 3, p.raw)
+		CanBusNative.setFrameParameter(f, 10, 3, p.raw)
 	}
 	
 	/**

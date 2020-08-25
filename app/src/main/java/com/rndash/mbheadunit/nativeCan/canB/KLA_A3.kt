@@ -21,18 +21,18 @@ object KLA_A3 {
 	fun get_hzl_anf() : Int = CanBusNative.getECUParameterB(CanBAddrs.KLA_A3, 0, 8)
 	
 	/** Sets Request heating power  **/
-	fun set_hzl_anf(f: CanFrame, p: Int) : CanFrame? {
+	fun set_hzl_anf(f: CanFrame, p: Int) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 0, 8, p)
+		CanBusNative.setFrameParameter(f, 0, 8, p)
 	}
 	
 	/** Gets Outside air temperature for heat management  **/
 	fun get_t_aussen_wm() : Int = CanBusNative.getECUParameterB(CanBAddrs.KLA_A3, 8, 8)
 	
 	/** Sets Outside air temperature for heat management  **/
-	fun set_t_aussen_wm(f: CanFrame, p: Int) : CanFrame? {
+	fun set_t_aussen_wm(f: CanFrame, p: Int) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 8, 8, p)
+		CanBusNative.setFrameParameter(f, 8, 8, p)
 	}
 	
 	/**

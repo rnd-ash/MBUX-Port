@@ -21,54 +21,54 @@ object VS_A2 {
 	fun get_fh_lh_begr() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.VS_A2, 7, 1) != 0
 	
 	/** Sets FH travel limitation long stroke active **/
-	fun set_fh_lh_begr(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_fh_lh_begr(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 7, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 7, 1, if(p) 1 else 0)
 	}
 	
 	/** Gets window lifter run **/
 	fun get_fh_mod_vs() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.VS_A2, 6, 1) != 0
 	
 	/** Sets window lifter run **/
-	fun set_fh_mod_vs(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_fh_mod_vs(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 6, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 6, 1, if(p) 1 else 0)
 	}
 	
 	/** Gets Direction to operate the window regulator **/
 	fun get_fh_ri_vs() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.VS_A2, 5, 1) != 0
 	
 	/** Sets Direction to operate the window regulator **/
-	fun set_fh_ri_vs(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_fh_ri_vs(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 5, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 5, 1, if(p) 1 else 0)
 	}
 	
 	/** Gets Open / close front left window **/
 	fun get_fvl_vs() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.VS_A2, 3, 1) != 0
 	
 	/** Sets Open / close front left window **/
-	fun set_fvl_vs(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_fvl_vs(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 3, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 3, 1, if(p) 1 else 0)
 	}
 	
 	/** Gets Open / close front right window **/
 	fun get_fvr_vs() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.VS_A2, 2, 1) != 0
 	
 	/** Sets Open / close front right window **/
-	fun set_fvr_vs(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_fvr_vs(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 2, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 2, 1, if(p) 1 else 0)
 	}
 	
 	/** Gets rollover detected **/
 	fun get_ueb_erk() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.VS_A2, 8, 1) != 0
 	
 	/** Sets rollover detected **/
-	fun set_ueb_erk(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_ueb_erk(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 8, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 8, 1, if(p) 1 else 0)
 	}
 	
 	/**

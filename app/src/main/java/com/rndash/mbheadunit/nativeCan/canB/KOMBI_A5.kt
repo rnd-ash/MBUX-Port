@@ -35,225 +35,225 @@ object KOMBI_A5 {
 	}
 	
 	/** Sets Status combi **/
-	fun set_ki_stat(f: CanFrame, p: KI_STAT) : CanFrame? {
+	fun set_ki_stat(f: CanFrame, p: KI_STAT) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 0, 8, p.raw)
+		CanBusNative.setFrameParameter(f, 0, 8, p.raw)
 	}
 	
 	/** Gets Next display **/
 	fun get_button_1_1() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.KOMBI_A5, 15, 1) != 0
 	
 	/** Sets Next display **/
-	fun set_button_1_1(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_button_1_1(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 15, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 15, 1, if(p) 1 else 0)
 	}
 	
 	/** Gets Previous display **/
 	fun get_button_1_2() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.KOMBI_A5, 14, 1) != 0
 	
 	/** Sets Previous display **/
-	fun set_button_1_2(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_button_1_2(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 14, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 14, 1, if(p) 1 else 0)
 	}
 	
 	/** Gets reserve **/
 	fun get_button_2_1() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.KOMBI_A5, 13, 1) != 0
 	
 	/** Sets reserve **/
-	fun set_button_2_1(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_button_2_1(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 13, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 13, 1, if(p) 1 else 0)
 	}
 	
 	/** Gets reserve **/
 	fun get_button_2_2() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.KOMBI_A5, 12, 1) != 0
 	
 	/** Sets reserve **/
-	fun set_button_2_2(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_button_2_2(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 12, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 12, 1, if(p) 1 else 0)
 	}
 	
 	/** Gets "+" button **/
 	fun get_button_3_1() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.KOMBI_A5, 11, 1) != 0
 	
 	/** Sets "+" button **/
-	fun set_button_3_1(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_button_3_1(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 11, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 11, 1, if(p) 1 else 0)
 	}
 	
 	/** Gets button "-" **/
 	fun get_button_3_2() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.KOMBI_A5, 10, 1) != 0
 	
 	/** Sets button "-" **/
-	fun set_button_3_2(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_button_3_2(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 10, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 10, 1, if(p) 1 else 0)
 	}
 	
 	/** Gets Telephone send **/
 	fun get_button_4_1() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.KOMBI_A5, 9, 1) != 0
 	
 	/** Sets Telephone send **/
-	fun set_button_4_1(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_button_4_1(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 9, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 9, 1, if(p) 1 else 0)
 	}
 	
 	/** Gets Telephone End **/
 	fun get_button_4_2() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.KOMBI_A5, 8, 1) != 0
 	
 	/** Sets Telephone End **/
-	fun set_button_4_2(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_button_4_2(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 8, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 8, 1, if(p) 1 else 0)
 	}
 	
 	/** Gets reserve **/
 	fun get_button_5_1() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.KOMBI_A5, 23, 1) != 0
 	
 	/** Sets reserve **/
-	fun set_button_5_1(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_button_5_1(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 23, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 23, 1, if(p) 1 else 0)
 	}
 	
 	/** Gets reserve **/
 	fun get_button_5_2() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.KOMBI_A5, 22, 1) != 0
 	
 	/** Sets reserve **/
-	fun set_button_5_2(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_button_5_2(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 22, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 22, 1, if(p) 1 else 0)
 	}
 	
 	/** Gets reserve **/
 	fun get_button_6_1() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.KOMBI_A5, 21, 1) != 0
 	
 	/** Sets reserve **/
-	fun set_button_6_1(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_button_6_1(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 21, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 21, 1, if(p) 1 else 0)
 	}
 	
 	/** Gets reserve **/
 	fun get_button_6_2() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.KOMBI_A5, 20, 1) != 0
 	
 	/** Sets reserve **/
-	fun set_button_6_2(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_button_6_2(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 20, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 20, 1, if(p) 1 else 0)
 	}
 	
 	/** Gets reserve **/
 	fun get_button_7_1() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.KOMBI_A5, 19, 1) != 0
 	
 	/** Sets reserve **/
-	fun set_button_7_1(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_button_7_1(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 19, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 19, 1, if(p) 1 else 0)
 	}
 	
 	/** Gets reserve **/
 	fun get_button_7_2() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.KOMBI_A5, 18, 1) != 0
 	
 	/** Sets reserve **/
-	fun set_button_7_2(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_button_7_2(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 18, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 18, 1, if(p) 1 else 0)
 	}
 	
 	/** Gets reserve **/
 	fun get_button_8_1() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.KOMBI_A5, 17, 1) != 0
 	
 	/** Sets reserve **/
-	fun set_button_8_1(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_button_8_1(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 17, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 17, 1, if(p) 1 else 0)
 	}
 	
 	/** Gets reserve **/
 	fun get_button_8_2() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.KOMBI_A5, 16, 1) != 0
 	
 	/** Sets reserve **/
-	fun set_button_8_2(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_button_8_2(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 16, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 16, 1, if(p) 1 else 0)
 	}
 	
 	/** Gets Activate Linguatronic **/
 	fun get_ptt_1_1() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.KOMBI_A5, 31, 1) != 0
 	
 	/** Sets Activate Linguatronic **/
-	fun set_ptt_1_1(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_ptt_1_1(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 31, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 31, 1, if(p) 1 else 0)
 	}
 	
 	/** Gets Deactivate Linguatronic **/
 	fun get_ptt_1_2() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.KOMBI_A5, 30, 1) != 0
 	
 	/** Sets Deactivate Linguatronic **/
-	fun set_ptt_1_2(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_ptt_1_2(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 30, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 30, 1, if(p) 1 else 0)
 	}
 	
 	/** Gets reserve **/
 	fun get_ptt_2_1() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.KOMBI_A5, 29, 1) != 0
 	
 	/** Sets reserve **/
-	fun set_ptt_2_1(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_ptt_2_1(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 29, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 29, 1, if(p) 1 else 0)
 	}
 	
 	/** Gets reserve **/
 	fun get_ptt_2_2() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.KOMBI_A5, 28, 1) != 0
 	
 	/** Sets reserve **/
-	fun set_ptt_2_2(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_ptt_2_2(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 28, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 28, 1, if(p) 1 else 0)
 	}
 	
 	/** Gets reserve **/
 	fun get_ptt_3_1() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.KOMBI_A5, 27, 1) != 0
 	
 	/** Sets reserve **/
-	fun set_ptt_3_1(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_ptt_3_1(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 27, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 27, 1, if(p) 1 else 0)
 	}
 	
 	/** Gets reserve **/
 	fun get_ptt_3_2() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.KOMBI_A5, 26, 1) != 0
 	
 	/** Sets reserve **/
-	fun set_ptt_3_2(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_ptt_3_2(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 26, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 26, 1, if(p) 1 else 0)
 	}
 	
 	/** Gets reserve **/
 	fun get_ptt_4_1() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.KOMBI_A5, 25, 1) != 0
 	
 	/** Sets reserve **/
-	fun set_ptt_4_1(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_ptt_4_1(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 25, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 25, 1, if(p) 1 else 0)
 	}
 	
 	/** Gets reserve **/
 	fun get_ptt_4_2() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.KOMBI_A5, 24, 1) != 0
 	
 	/** Sets reserve **/
-	fun set_ptt_4_2(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_ptt_4_2(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 24, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 24, 1, if(p) 1 else 0)
 	}
 	
 	/**

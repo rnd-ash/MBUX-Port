@@ -31,9 +31,9 @@ object SBW_232h {
 	}
 	
 	/** Sets Steering wheel buttons "+", "-" pressed **/
-	fun set_lrt_pm3(f: CanFrame, p: LRT_PM3) : CanFrame? {
+	fun set_lrt_pm3(f: CanFrame, p: LRT_PM3) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 5, 3, p.raw)
+		CanBusNative.setFrameParameter(f, 5, 3, p.raw)
 	}
 	
 	/** Gets sender identification **/
@@ -46,9 +46,9 @@ object SBW_232h {
 	}
 	
 	/** Sets sender identification **/
-	fun set_sid_sbw(f: CanFrame, p: SID_SBW) : CanFrame? {
+	fun set_sid_sbw(f: CanFrame, p: SID_SBW) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 0, 2, p.raw)
+		CanBusNative.setFrameParameter(f, 0, 2, p.raw)
 	}
 	
 	/** Gets Shift-by-wire control element Status RND **/
@@ -64,9 +64,9 @@ object SBW_232h {
 	}
 	
 	/** Sets Shift-by-wire control element Status RND **/
-	fun set_sbwb_st_rnd(f: CanFrame, p: SBWB_ST_RND) : CanFrame? {
+	fun set_sbwb_st_rnd(f: CanFrame, p: SBWB_ST_RND) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 12, 4, p.raw)
+		CanBusNative.setFrameParameter(f, 12, 4, p.raw)
 	}
 	
 	/** Gets Shift-by-wire control element P button **/
@@ -79,9 +79,9 @@ object SBW_232h {
 	}
 	
 	/** Sets Shift-by-wire control element P button **/
-	fun set_sbwb_st_p(f: CanFrame, p: SBWB_ST_P) : CanFrame? {
+	fun set_sbwb_st_p(f: CanFrame, p: SBWB_ST_P) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 10, 2, p.raw)
+		CanBusNative.setFrameParameter(f, 10, 2, p.raw)
 	}
 	
 	/** Gets Shift-by-wire control element identification **/
@@ -93,18 +93,18 @@ object SBW_232h {
 	}
 	
 	/** Sets Shift-by-wire control element identification **/
-	fun set_sbwb_id(f: CanFrame, p: SBWB_ID) : CanFrame? {
+	fun set_sbwb_id(f: CanFrame, p: SBWB_ID) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 8, 2, p.raw)
+		CanBusNative.setFrameParameter(f, 8, 2, p.raw)
 	}
 	
 	/** Gets message counter **/
 	fun get_bz232h() : Int = CanBusNative.getECUParameterC(CanCAddrs.SBW_232h, 16, 4)
 	
 	/** Sets message counter **/
-	fun set_bz232h(f: CanFrame, p: Int) : CanFrame? {
+	fun set_bz232h(f: CanFrame, p: Int) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 16, 4, p)
+		CanBusNative.setFrameParameter(f, 16, 4, p)
 	}
 	
 	/**

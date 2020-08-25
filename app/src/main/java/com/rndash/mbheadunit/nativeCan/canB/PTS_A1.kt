@@ -21,9 +21,9 @@ object PTS_A1 {
 	fun get_pts_st_aus() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.PTS_A1, 0, 1) != 0
 	
 	/** Sets PTS is completely switched off **/
-	fun set_pts_st_aus(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_pts_st_aus(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 0, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 0, 1, if(p) 1 else 0)
 	}
 	
 	/**

@@ -21,9 +21,9 @@ object EZS_A11 {
 	fun get_u_batt() : Int = CanBusNative.getECUParameterB(CanBAddrs.EZS_A11, 0, 8)
 	
 	/** Sets Battery voltage  **/
-	fun set_u_batt(f: CanFrame, p: Int) : CanFrame? {
+	fun set_u_batt(f: CanFrame, p: Int) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 0, 8, p)
+		CanBusNative.setFrameParameter(f, 0, 8, p)
 	}
 	
 	/**

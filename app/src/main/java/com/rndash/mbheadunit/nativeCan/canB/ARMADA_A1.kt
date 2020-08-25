@@ -21,54 +21,54 @@ object ARMADA_A1 {
 	fun get_srs_werk() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.ARMADA_A1, 7, 1) != 0
 	
 	/** Sets SRS control lamp (workshop) **/
-	fun set_srs_werk(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_srs_werk(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 7, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 7, 1, if(p) 1 else 0)
 	}
 	
 	/** Gets SRS control lamp (service) **/
 	fun get_srs_serv() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.ARMADA_A1, 6, 1) != 0
 	
 	/** Sets SRS control lamp (service) **/
-	fun set_srs_serv(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_srs_serv(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 6, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 6, 1, if(p) 1 else 0)
 	}
 	
 	/** Gets SRS control lamps flash **/
 	fun get_srs_blink() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.ARMADA_A1, 5, 1) != 0
 	
 	/** Sets SRS control lamps flash **/
-	fun set_srs_blink(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_srs_blink(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 5, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 5, 1, if(p) 1 else 0)
 	}
 	
 	/** Gets SRS control lamp **/
 	fun get_srs_kl() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.ARMADA_A1, 4, 1) != 0
 	
 	/** Sets SRS control lamp **/
-	fun set_srs_kl(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_srs_kl(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 4, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 4, 1, if(p) 1 else 0)
 	}
 	
 	/** Gets AKSE lights are flashing **/
 	fun get_akse_blink() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.ARMADA_A1, 1, 1) != 0
 	
 	/** Sets AKSE lights are flashing **/
-	fun set_akse_blink(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_akse_blink(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 1, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 1, 1, if(p) 1 else 0)
 	}
 	
 	/** Gets switch on the AKSE lamp **/
 	fun get_akse_ein() : Boolean = CanBusNative.getECUParameterB(CanBAddrs.ARMADA_A1, 0, 1) != 0
 	
 	/** Sets switch on the AKSE lamp **/
-	fun set_akse_ein(f: CanFrame, p: Boolean) : CanFrame? {
+	fun set_akse_ein(f: CanFrame, p: Boolean) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 0, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 0, 1, if(p) 1 else 0)
 	}
 	
 	/** Gets Child seat status **/
@@ -83,9 +83,9 @@ object ARMADA_A1 {
 	}
 	
 	/** Sets Child seat status **/
-	fun set_kisi_st(f: CanFrame, p: KISI_ST) : CanFrame? {
+	fun set_kisi_st(f: CanFrame, p: KISI_ST) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 13, 3, p.raw)
+		CanBusNative.setFrameParameter(f, 13, 3, p.raw)
 	}
 	
 	/** Gets SBE class passenger **/
@@ -102,9 +102,9 @@ object ARMADA_A1 {
 	}
 	
 	/** Sets SBE class passenger **/
-	fun set_sbe_bf(f: CanFrame, p: SBE_BF) : CanFrame? {
+	fun set_sbe_bf(f: CanFrame, p: SBE_BF) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 21, 3, p.raw)
+		CanBusNative.setFrameParameter(f, 21, 3, p.raw)
 	}
 	
 	/** Gets Passenger detection fast **/
@@ -117,9 +117,9 @@ object ARMADA_A1 {
 	}
 	
 	/** Sets Passenger detection fast **/
-	fun set_psg_detec_fast(f: CanFrame, p: PSG_DETEC_FAST) : CanFrame? {
+	fun set_psg_detec_fast(f: CanFrame, p: PSG_DETEC_FAST) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 19, 2, p.raw)
+		CanBusNative.setFrameParameter(f, 19, 2, p.raw)
 	}
 	
 	/** Gets seat belt buckle front passenger **/
@@ -132,9 +132,9 @@ object ARMADA_A1 {
 	}
 	
 	/** Sets seat belt buckle front passenger **/
-	fun set_gs_bf(f: CanFrame, p: GS_BF) : CanFrame? {
+	fun set_gs_bf(f: CanFrame, p: GS_BF) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 16, 2, p.raw)
+		CanBusNative.setFrameParameter(f, 16, 2, p.raw)
 	}
 	
 	/** Gets SBE class driver **/
@@ -151,9 +151,9 @@ object ARMADA_A1 {
 	}
 	
 	/** Sets SBE class driver **/
-	fun set_sbe_f(f: CanFrame, p: SBE_F) : CanFrame? {
+	fun set_sbe_f(f: CanFrame, p: SBE_F) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 29, 3, p.raw)
+		CanBusNative.setFrameParameter(f, 29, 3, p.raw)
 	}
 	
 	/** Gets seat belt buckle driver **/
@@ -166,9 +166,9 @@ object ARMADA_A1 {
 	}
 	
 	/** Sets seat belt buckle driver **/
-	fun set_gs_f(f: CanFrame, p: GS_F) : CanFrame? {
+	fun set_gs_f(f: CanFrame, p: GS_F) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 24, 2, p.raw)
+		CanBusNative.setFrameParameter(f, 24, 2, p.raw)
 	}
 	
 	/**

@@ -21,9 +21,9 @@ object MS_APPL4 {
 	fun get_appl4() : Int = CanBusNative.getECUParameterC(CanCAddrs.MS_APPL4, 0, 64)
 	
 	/** Sets application **/
-	fun set_appl4(f: CanFrame, p: Int) : CanFrame? {
+	fun set_appl4(f: CanFrame, p: Int) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 0, 64, p)
+		CanBusNative.setFrameParameter(f, 0, 64, p)
 	}
 	
 	/**

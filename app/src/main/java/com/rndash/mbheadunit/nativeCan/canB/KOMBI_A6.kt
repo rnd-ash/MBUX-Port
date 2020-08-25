@@ -21,18 +21,18 @@ object KOMBI_A6 {
 	fun get_schlue_id_ki() : Int = CanBusNative.getECUParameterB(CanBAddrs.KOMBI_A6, 0, 32)
 	
 	/** Sets Identification key for pre-filtering **/
-	fun set_schlue_id_ki(f: CanFrame, p: Int) : CanFrame? {
+	fun set_schlue_id_ki(f: CanFrame, p: Int) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 0, 32, p)
+		CanBusNative.setFrameParameter(f, 0, 32, p)
 	}
 	
 	/** Gets Mileage  **/
 	fun get_km_ki() : Int = CanBusNative.getECUParameterB(CanBAddrs.KOMBI_A6, 32, 24)
 	
 	/** Sets Mileage  **/
-	fun set_km_ki(f: CanFrame, p: Int) : CanFrame? {
+	fun set_km_ki(f: CanFrame, p: Int) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 32, 24, p)
+		CanBusNative.setFrameParameter(f, 32, 24, p)
 	}
 	
 	/**

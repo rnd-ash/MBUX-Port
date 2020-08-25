@@ -21,9 +21,9 @@ object EWM_104h {
 	fun get_ewm_fbs() : Int = CanBusNative.getECUParameterC(CanCAddrs.EWM_104h, 0, 64)
 	
 	/** Sets FBS message to EZS (8 bytes) **/
-	fun set_ewm_fbs(f: CanFrame, p: Int) : CanFrame? {
+	fun set_ewm_fbs(f: CanFrame, p: Int) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 0, 64, p)
+		CanBusNative.setFrameParameter(f, 0, 64, p)
 	}
 	
 	/**

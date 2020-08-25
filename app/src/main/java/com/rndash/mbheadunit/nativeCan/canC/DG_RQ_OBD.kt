@@ -21,9 +21,9 @@ object DG_RQ_OBD {
 	fun get_d_rq() : Int = CanBusNative.getECUParameterC(CanCAddrs.DG_RQ_OBD, 0, 64)
 	
 	/** Sets KWP2000 diagnosis request **/
-	fun set_d_rq(f: CanFrame, p: Int) : CanFrame? {
+	fun set_d_rq(f: CanFrame, p: Int) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 0, 64, p)
+		CanBusNative.setFrameParameter(f, 0, 64, p)
 	}
 	
 	/**

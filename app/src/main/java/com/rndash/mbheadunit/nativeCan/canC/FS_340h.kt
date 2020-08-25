@@ -21,9 +21,9 @@ object FS_340h {
 	fun get_m_last() : Int = CanBusNative.getECUParameterC(CanCAddrs.FS_340h, 60, 4)
 	
 	/** Sets Load torque ABC pump **/
-	fun set_m_last(f: CanFrame, p: Int) : CanFrame? {
+	fun set_m_last(f: CanFrame, p: Int) {
 		checkFrame(f)
-		return CanBusNative.setFrameParameter(f, 60, 4, p)
+		CanBusNative.setFrameParameter(f, 60, 4, p)
 	}
 	
 	/**
