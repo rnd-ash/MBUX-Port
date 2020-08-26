@@ -1,0 +1,1395 @@
+ESP_SBC
+	FRAME BS_200h (0x0200)
+		B: BBV_KL, OFFSET 7 LEN 1 - Brake pad wear indicator lamp
+		B: ABS_KL, OFFSET 5 LEN 1 - ABS defective control lamp
+		B: ESP_KL, OFFSET 4 LEN 1 - ESP defective control lamp
+		B: ESP_INFO_DL, OFFSET 3 LEN 1 - ESP info lamp steady light
+		B: ESP_INFO_BL, OFFSET 2 LEN 1 - ESP info lamp flashing light
+		B: BAS_KL, OFFSET 1 LEN 1 - BAS defective control lamp
+		B: BRE_KL, OFFSET 0 LEN 1 - brake defective control lamp (EBV_KL at 463/461 / NCV2)
+		E: BLS, OFFSET 14 LEN 2 - brake light switch
+			RAW: 0 - brake not applied / BREMSE_NBET
+			RAW: 1 - brake applied / BREMSE_BET
+			RAW: 2 - not defined
+			RAW: 3 - signal not available / SNV
+		I: BZ200h, OFFSET 10 LEN 4 - message counter
+		B: BLS_PA, OFFSET 9 LEN 1 - BLS Parity (even parity)
+		B: BLS_UNT, OFFSET 8 LEN 1 - brake light suppression (EBV_KL at 163 / T0 / T1N)
+		E: DRTGVL, OFFSET 16 LEN 2 - direction of rotation of front left wheel
+			RAW: 0 - No direction of rotation detection / PASSIVE
+			RAW: 1 - direction of rotation forward / FORWARD
+			RAW: 2 - direction of rotation backwards / REVERSE
+			RAW: 3 - signal not available / SNV
+		I: DVL, OFFSET 18 LEN 14 - wheel speed front left
+		E: DRTGVR, OFFSET 32 LEN 2 - direction of rotation of the front right wheel
+			RAW: 0 - No direction of rotation detection / PASSIVE
+			RAW: 1 - direction of rotation forward / FORWARD
+			RAW: 2 - direction of rotation backwards / REVERSE
+			RAW: 3 - signal not available / SNV
+		I: DVR, OFFSET 34 LEN 14 - wheel speed front right
+		E: DRTGTM, OFFSET 48 LEN 2 - direction of rotation wheel left for cruise control
+			RAW: 0 - No direction of rotation detection / PASSIVE
+			RAW: 1 - direction of rotation forward / FORWARD
+			RAW: 2 - direction of rotation backwards / REVERSE
+			RAW: 3 - signal not available / SNV
+		I: TM_DL, OFFSET 50 LEN 14 - Left wheel speed for cruise control
+	FRAME BS_208h (0x0208)
+		E: GMIN_ESP, OFFSET 5 LEN 3 - target gear, lower limit
+			RAW: 0 - Passive value / PASSIVE
+			RAW: 1 - target gear, lower limit = 1 / G1
+			RAW: 2 - target gear, lower limit = 2 / G2
+			RAW: 3 - target gear, lower limit = 3 / G3
+			RAW: 4 - target gear, lower limit = 4 / G4
+			RAW: 5 - target gear, lower limit = 5 / G5
+			RAW: 6 - target gear, lower limit = 6 / G6
+			RAW: 7 - target gear, lower limit = 7 / G7
+		E: GMAX_ESP, OFFSET 2 LEN 3 - target gear, upper limit
+			RAW: 0 - Passive value / PASSIVE
+			RAW: 1 - target gear, upper limit = 1 / G1
+			RAW: 2 - target gear, upper limit = 2 / G2
+			RAW: 3 - target gear, upper limit = 3 / G3
+			RAW: 4 - target gear, upper limit = 4 / G4
+			RAW: 5 - target gear, upper limit = 5 / G5
+			RAW: 6 - target gear, upper limit = 6 / G6
+			RAW: 7 - target gear, upper limit = 7 / G7
+		B: MINMAX_ART, OFFSET 1 LEN 1 - Target gear request from ART
+		B: AKT_R_ESP, OFFSET 0 LEN 1 - ESP / ART request: "Active downshift"
+		E: SLV_ESP, OFFSET 12 LEN 4 - switching line shift ESP
+			RAW: 0 - switching characteristic "0" / SKL0
+			RAW: 1 - switching characteristic "1" / SKL1
+			RAW: 2 - switching characteristic "2" / SKL2
+			RAW: 3 - switching characteristic "3" / SKL3
+			RAW: 4 - switching characteristic "4" / ​​SKL4
+			RAW: 5 - switching characteristic "5" / SKL5
+			RAW: 6 - switching characteristic "6" / SKL6
+			RAW: 7 - switching characteristic "7" / SKL7
+			RAW: 8 - switching characteristic "8" / SKL8
+			RAW: 9 - switching characteristic "9" / SKL9
+			RAW: 10 - switching characteristic "10" / SKL10
+		B: TM_AUS, OFFSET 11 LEN 1 - Cruise control mode off
+		E: SZS, OFFSET 9 LEN 2 - system status
+			RAW: 0 - system error or diagnosis / ERR_DIAG
+			RAW: 1 - normal operation / NORM
+			RAW: 2 - not defined
+			RAW: 3 - Emissions test / EXHAUST
+		B: DDYN_UNT, OFFSET 8 LEN 1 - Suppression of dynamic full load downshift
+		B: BRE_AKT_ART, OFFSET 19 LEN 1 - ART brake intervention active
+		E: ANFN, OFFSET 17 LEN 2 - ESP request: insert "N"
+			RAW: 0 - not defined
+			RAW: 1 - "Neutral" request / ANF_N
+			RAW: 2 - No requirement / IDLE
+			RAW: 3 - signal not available / SNV
+		B: BRE_AKT_ESP, OFFSET 16 LEN 1 - ESP brake intervention active
+		I: MBRE_ESP, OFFSET 20 LEN 12 - Set braking torque (BR240 factor 1.8 greater)
+		E: DRTGHR, OFFSET 32 LEN 2 - direction of rotation of the rear right wheel
+			RAW: 0 - No direction of rotation detection / PASSIVE
+			RAW: 1 - direction of rotation forward / FORWARD
+			RAW: 2 - direction of rotation backwards / REVERSE
+			RAW: 3 - signal not available / SNV
+		I: DHR, OFFSET 34 LEN 14 - wheel speed rear right
+		E: DRTGHL, OFFSET 48 LEN 2 - direction of rotation of rear left wheel
+			RAW: 0 - No direction of rotation detection / PASSIVE
+			RAW: 1 - direction of rotation forward / FORWARD
+			RAW: 2 - direction of rotation backwards / REVERSE
+			RAW: 3 - signal not available / SNV
+		I: DHL, OFFSET 50 LEN 14 - rear left wheel speed
+	FRAME BS_270h (0x0270)
+		I: RIZ_HL, OFFSET 0 LEN 8 - Pulse ring counter, rear left wheel (48 per revolution)
+		I: RIZ_HR, OFFSET 8 LEN 8 - Pulse ring counter, rear right wheel (48 per revolution)
+		E: PRW_ST, OFFSET 21 LEN 3 - Flat roll warning status
+			RAW: 0 - PRW active, no warning / ON
+			RAW: 1 - PRW active, there is a warning / WARN
+			RAW: 2 - PRW inactive or not available / OFF
+			RAW: 3 - PRW is initialized / INIT
+			RAW: 4 - not defined
+			RAW: 5 - not defined
+			RAW: 6 - PRW not available / PRW_NV
+			RAW: 7 - signal not available / SNV
+		E: PRW_WARN, OFFSET 16 LEN 4 - Warning messages flat roll warner
+			RAW: 0 - no warning / OK
+			RAW: 1 - tire pressure warning without position information / WARN_OHNE
+			RAW: 2 - PRW not available / PRW_NV
+			RAW: 3 - restart PRW / PRW_START
+			RAW: 4 - tire pressure warning front left / WARN_VL
+			RAW: 5 - tire pressure warning front right / WARN_VR
+			RAW: 6 - rear left tire pressure warning / WARN_HL
+			RAW: 7 - Rear right tire pressure warning / WARN_HR
+			RAW: 8 - not defined
+			RAW: 14 - undefined
+			RAW: 15 - signal not available / SNV
+	FRAME BS_300h (0x0300)
+		B: LWS_INI_EIN, OFFSET 7 LEN 1 - Steering angle sensor initialization possible
+		B: LWS_INI_OK, OFFSET 6 LEN 1 - Initialization of steering angle sensor o.k.
+		B: ESP_GIER_AKT, OFFSET 5 LEN 1 - ESP yaw moment control active
+		B: ART_E, OFFSET 4 LEN 1 - Enable ART
+		B: VOLLBRE, OFFSET 3 LEN 1 - Full braking (ABS controls all 4 wheels)
+		B: BAS_AKT, OFFSET 2 LEN 1 - BAS control active
+		B: DMDYN_ART, OFFSET 1 LEN 1 - Dynamic engine torque request
+		B: DMPAR_ART, OFFSET 0 LEN 1 - Motor torque request parity (even parity)
+		E: SFB, OFFSET 14 LEN 2 - driver brakes
+			RAW: 0 - driver does not brake / BRAKE_NO
+			RAW: 1 - driver brakes / BREMSE_YES
+			RAW: 2 - not defined
+			RAW: 3 - signal not available / SNV
+		B: SFB_PA, OFFSET 13 LEN 1 - driver brakes parity (even parity)
+		E: T_Z, OFFSET 11 LEN 2 - transmission cycle time
+			RAW: 0 - not defined
+			RAW: 1 - transmission cycle time 20 ms / T20_0
+			RAW: 2 - transmission cycle time 23.1 ms / T23_1
+			RAW: 3 - signal not available / SNV
+		B: AMR_AKT_ESP, OFFSET 10 LEN 1 - drive torque control active
+		B: MDYN_ESP, OFFSET 9 LEN 1 - Dynamic motor torque request
+		B: MPAR_ESP, OFFSET 8 LEN 1 - Motor torque request parity (even parity)
+		B: DMMAX_ART, OFFSET 18 LEN 1 - Motor torque request Max
+		B: DMMIN_ART, OFFSET 17 LEN 1 - engine torque request min
+		B: DMTGL_ART, OFFSET 16 LEN 1 - engine torque request. Toggle 40ms + -10
+		I: DM_ART, OFFSET 19 LEN 13 - Required. Engine torque
+		B: MMAX_ESP, OFFSET 34 LEN 1 - Motor torque request Max
+		B: MMIN_ESP, OFFSET 33 LEN 1 - Motor torque request Min
+		B: MTGL_ESP, OFFSET 32 LEN 1 - Motor torque request. Toggle 40ms + -10
+		I: M_ESP, OFFSET 35 LEN 13 - Required. Engine torque
+		I: GIER_ROH, OFFSET 48 LEN 16 - Raw signal yaw rate without adjustment / filtering (+ = left)
+	FRAME BS_328h (0x0328)
+		B: WMS_PA, OFFSET 0 LEN 1 - WMS Parity (even parity)
+		I: WMS, OFFSET 1 LEN 15 - Set roll torque change
+		I: AY_S, OFFSET 16 LEN 8 - vehicle lateral acceleration. in the center of gravity (+ = left)
+		E: ESP_DSPL, OFFSET 35 LEN 5 - ESP display messages
+			RAW: 0 - No error / OK
+			RAW: 1 - ESP defective / ESP_DEF
+			RAW: 2 - ESP not available / ESP_OFF
+			RAW: 3 - ESP not available, differential voltage. active (only 463/461) / ESP_OFF_DS
+			RAW: 4 - BAS defective / BAS_DEF
+			RAW: 5 - ABS defective (only 463/461) / ABS_DEF
+			RAW: 6 - ABS not available (463/461 only) / ABS_OFF
+			RAW: 7 - BKV defective (only 463/461) / BKV_DEF_GBV
+			RAW: 8 - ABS, BAS u. ESP not available (only 463/461) / ALL_OFF_DS
+			RAW: 9 - Stop & Roll defective / SBCS_DEF
+			RAW: 10 - Stop & Roll on / SBCS_ON
+			RAW: 11 - SBC Hold cannot be activated / SBCH_N_AKT
+			RAW: 13 - BAS u. ESP defective / ESP_BAS_DEF
+			RAW: 14 - SBC Hold off / SBCH_OFF
+			RAW: 15 - SBC Hold / SBCH
+			RAW: 16 - ABS, BAS u. ESP defective / ALL_DEF
+			RAW: 17 - ABS, BAS, ESP u. BKV defective / ALL_DEF_GBV
+			RAW: 19 - ABS, BAS u. ESP Diag. Check / ALL_DIAG
+			RAW: 20 - ABS, BAS, ESP u. BKV Diag. Test / ALL_DIAG_GBV
+			RAW: 22 - ABS, BAS u. ESP not available / ALL_OFF
+			RAW: 23 - ABS, BAS, ESP u. BKV not available / ALL_OFF_GBV
+			RAW: 24 - SBC stop / SBCS
+			RAW: 25 - SBC stop off / SBCS_OFF
+			RAW: 26 - Brake immediately! / BRAKE
+			RAW: 27 - SBC stop cannot be activated / SBCS_N_AKT
+			RAW: 28 - SBC Hold defective / SBCH_DEF
+			RAW: 29 - SBC stop defective / SBCS_DEF
+			RAW: 30 - Selector lever to P / GWH_P
+			RAW: 31 - signal not available / SNV
+		I: BZ328h, OFFSET 45 LEN 3 - message counter
+		B: KPL_OEF, OFFSET 44 LEN 1 - open clutch
+		B: NOTBRE, OFFSET 41 LEN 1 - emergency braking (brake light flashing)
+		I: RIZ_VL, OFFSET 48 LEN 8 - Pulse ring counter, front left wheel (48 per revolution)
+		I: RIZ_VR, OFFSET 56 LEN 8 - Pulse ring counter, front right wheel (48 per revolution)
+	FRAME D_RS_BS (0x0785)
+		I: D_RS, OFFSET 0 LEN 64 - KWP2000 diagnostic response
+	FRAME SD_RS_BS (0x0722)
+		I: SD_RS, OFFSET 0 LEN 64 - System diagnosis response
+	FRAME BS_APPL2 (0x0635)
+		I: APPL2, OFFSET 0 LEN 64 - application
+	FRAME PRW_MESS1 (0x06A0)
+		I: MESS1, OFFSET 0 LEN 64 - measured values
+	FRAME PRW_MESS2 (0x06A1)
+		I: MESS2, OFFSET 0 LEN 64 - measured values
+	FRAME PRW_MESS3 (0x06A2)
+		I: MESS3, OFFSET 0 LEN 64 - measured values
+	FRAME PRW_MESS4 (0x06A3)
+		I: MESS4, OFFSET 0 LEN 64 - measured values
+
+MS
+	FRAME MS_100h (0x0100)
+		I: FBS, OFFSET 0 LEN 64 - FBS message to EZS (8 bytes)
+	FRAME MS_101h (0x0101)
+		I: MS_FBS, OFFSET 0 LEN 64 - FBS message to EZS (8 bytes)
+	FRAME MS_210h (0x0210)
+		B: ANF1, OFFSET 7 LEN 1 - MS request: "Approach 1st gear"
+		B: KRIECH_AUS, OFFSET 6 LEN 1 - Switch off KSG creeping
+		E: SLV_MS, OFFSET 1 LEN 4 - switching line shift MS
+			RAW: 0 - switching characteristic "0" / SKL0
+			RAW: 1 - switching characteristic "1" / SKL1
+			RAW: 2 - switching characteristic "2" / SKL2
+			RAW: 3 - switching characteristic "3" / SKL3
+			RAW: 4 - switching characteristic "4" / ​​SKL4
+			RAW: 5 - switching characteristic "5" / SKL5
+			RAW: 6 - switching characteristic "6" / SKL6
+			RAW: 7 - switching characteristic "7" / SKL7
+			RAW: 8 - switching characteristic "8" / SKL8
+			RAW: 9 - switching characteristic "9" / SKL9
+			RAW: 10 - switching characteristic "10" / SKL10
+		B: KOMP_NOTAUS, OFFSET 0 LEN 1 - Air conditioning compressor emergency shutdown
+		E: GMIN_MS, OFFSET 13 LEN 3 - target gear, lower limit
+			RAW: 0 - Passive value / PASSIVE
+			RAW: 1 - target gear, lower limit = 1 / G1
+			RAW: 2 - target gear, lower limit = 2 / G2
+			RAW: 3 - target gear, lower limit = 3 / G3
+			RAW: 4 - target gear, lower limit = 4 / G4
+			RAW: 5 - target gear, lower limit = 5 / G5
+			RAW: 6 - target gear, lower limit = 6 / G6
+			RAW: 7 - target gear, lower limit = 7 / G7
+		E: GMAX_MS, OFFSET 10 LEN 3 - target gear, upper limit
+			RAW: 0 - Passive value / PASSIVE
+			RAW: 1 - target gear, upper limit = 1 / G1
+			RAW: 2 - target gear, upper limit = 2 / G2
+			RAW: 3 - target gear, upper limit = 3 / G3
+			RAW: 4 - target gear, upper limit = 4 / G4
+			RAW: 5 - target gear, upper limit = 5 / G5
+			RAW: 6 - target gear, upper limit = 6 / G6
+			RAW: 7 - target gear, upper limit = 7 / G7
+		B: ZH_AUS_MS, OFFSET 9 LEN 1 - switch off auxiliary heater
+		B: AKT_R_MS, OFFSET 8 LEN 1 - MS request: "Active downshift"
+		I: PW, OFFSET 16 LEN 8 - pedal value
+		B: CRASH_MS, OFFSET 31 LEN 1 - crash signal from engine control
+		B: KOMP_BAUS, OFFSET 30 LEN 1 - Switch off air conditioning compressor: acceleration
+		B: MSS_AKT, OFFSET 29 LEN 1 - Motor start / stop system active
+		B: MSS_KL, OFFSET 28 LEN 1 - Motor start / stop system control lamp
+		B: MSS_DEF, OFFSET 27 LEN 1 - Motor start / stop system defective
+		B: VGL_ST, OFFSET 26 LEN 1 - preheating status
+		B: LL_STBL, OFFSET 25 LEN 1 - idle is stable
+		B: V_DSPL_NEU, OFFSET 24 LEN 1 - Re-trigger the minimum display time
+		B: V_MAX_SUM, OFFSET 39 LEN 1 - warning buzzer on
+		B: NOTL, OFFSET 38 LEN 1 - emergency operation
+		B: KD_MS, OFFSET 37 LEN 1 - Kickdown (changeover scenario open!)
+		B: V_MAX_EIN, OFFSET 36 LEN 1 - speed limit switched on
+		B: TM_REG, OFFSET 35 LEN 1 - Tempomat regulates
+		B: KUEB_S_A, OFFSET 34 LEN 1 - Req. Converter lock-up clutch "slip"
+		B: LL, OFFSET 33 LEN 1 - idle
+		B: PWG_ERR, OFFSET 32 LEN 1 - Pedal encoder error
+		B: V_DSPL_EIN, OFFSET 47 LEN 1 - Speed ​​limiter / cruise control display on
+		B: V_DSPL_BL, OFFSET 46 LEN 1 - display flashes
+		B: V_DSPL_ERR, OFFSET 45 LEN 1 - "Error" indication on the display
+		B: V_DSPL_LIM, OFFSET 44 LEN 1 - Display "Limit?" on the display
+		B: V_MAX_REG, OFFSET 43 LEN 1 - speed limiter regulates
+		B: TM_EIN, OFFSET 42 LEN 1 - Tempomat switched on
+		B: V_DSPL_PGB, OFFSET 41 LEN 1 - "Winter tire limit reached" on the display
+		B: FBS_SE, OFFSET 40 LEN 1 - FBS: Start Error
+		I: FMMOTMAX, OFFSET 48 LEN 8 - factor for depreciation. d. Max. Mom. When decreasing A. pressure
+		I: V_MAX_TM, OFFSET 56 LEN 8 - Set maximum or cruise control speed
+	FRAME MS_212h (0x0212)
+		I: NMOTS, OFFSET 0 LEN 16 - Target engine idling speed
+		B: M_ART_E, OFFSET 18 LEN 1 - Enable torque request ART
+		B: TM_MS, OFFSET 17 LEN 1 - Series cruise control is variant-coded
+		I: M_FV, OFFSET 19 LEN 13 - driver default torque
+		B: M_ESP_E, OFFSET 34 LEN 1 - Enable torque request ESP
+		B: SME_E, OFFSET 33 LEN 1 - Enable fast torque setting
+		I: M_FEV, OFFSET 35 LEN 13 - Substitute default torque driver
+		B: M_EGS_E, OFFSET 50 LEN 1 - Enable torque request EGS
+		B: M_EGS_Q, OFFSET 49 LEN 1 - Acknowledgment of torque request EGS
+		B: CALID_CVN_E, OFFSET 48 LEN 1 - Transfer CALID / CVN enable
+		I: M_ESPV, OFFSET 51 LEN 13 - Preset torque ESP
+	FRAME MS_268h (0x0268)
+		I: IMIN_MS, OFFSET 0 LEN 8 - target ratio, lower limit (FCVT)
+		I: IMAX_MS, OFFSET 8 LEN 8 - target ratio, upper limit (FCVT)
+		E: HZL_ST, OFFSET 22 LEN 2 - Status of heating output
+			RAW: 0 - Heater shut-off valve is closed
+			RAW: 1 - Heater shut-off valve is on / OPEN
+			RAW: 2 - Heating shut-off valve is clocked / TAKT
+			RAW: 3 - signal not available / SNV
+		B: ASV_KKL_169, OFFSET 18 LEN 1 - shut-off valve cooling circuit M266 ATL
+		B: OEL_INFO_169, OFFSET 17 LEN 1 - Oil info, reserved M266
+		B: KL_61_EIN, OFFSET 16 LEN 1 - Terminal 61
+		I: LAST_GEN, OFFSET 26 LEN 6 - Generator utilization (only with LIN generators!)
+		B: LRS_MODE, OFFSET 25 LEN 1 - Air control system mode
+		B: KID_MS, OFFSET 24 LEN 1 - Request force-free in "D" (FCVT)
+		I: M_KOMP_MAX, OFFSET 32 LEN 8 - Max. Air conditioning compressor torque
+		I: PW_F, OFFSET 40 LEN 8 - pedal value driver (only 169)
+	FRAME MS_2F3h (0x02F3)
+		E: FSC_IST, OFFSET 0 LEN 8 - Gear step shift recommendation "Actual"
+			RAW: 32 - Blank ("") / BLANK
+			RAW: 49 - speed step "1" / ONE
+			RAW: 50 - speed step "2" / TWO
+			RAW: 51 - speed step "3" / THREE
+			RAW: 52 - speed step "4" / ​​FOUR
+			RAW: 53 - speed step "5" / FUENF
+			RAW: 54 - speed step "6" / SIX
+			RAW: 55 - speed step "7" / SEVEN
+			RAW: 65 - speed level "A" / A
+			RAW: 68 - speed step "D" / D
+			RAW: 70 - "F" / F error mark
+			RAW: 78 - drive position "N" / N
+			RAW: 80 - speed step "P" / P
+			RAW: 82 - speed step "R" / R
+			RAW: 255 - Passive value / SNV
+		E: FSC_SOLL, OFFSET 40 LEN 8 - Gear step shift recommendation "target"
+			RAW: 1 - "upshift" / arrow / UP
+			RAW: 2 - "Shift down" / Arrow / DOWN
+			RAW: 32 - Blank ("") / Passive / BLANK / PAS
+			RAW: 49 - speed step "1" / ONE
+			RAW: 50 - speed step "2" / TWO
+			RAW: 51 - speed step "3" / THREE
+			RAW: 52 - speed step "4" / ​​FOUR
+			RAW: 53 - speed step "5" / FUENF
+			RAW: 54 - speed step "6" / SIX
+			RAW: 55 - speed step "7" / SEVEN
+			RAW: 65 - speed level "A" / A
+			RAW: 68 - speed step "D" / D
+			RAW: 70 - "F" / F error mark
+			RAW: 78 - drive position "N" / N
+			RAW: 80 - speed step "P" / P
+			RAW: 82 - speed step "R" / R
+			RAW: 255 - Passive value / SNV
+	FRAME MS_308h (0x0308)
+		B: ZASBED, OFFSET 7 LEN 1 - cylinder deactivation conditions met
+		B: WKS_KL, OFFSET 6 LEN 1 - water in fuel control lamp (only CR2-USA)
+		B: KSF_KL, OFFSET 5 LEN 1 - fuel filter clogged control lamp (only CR2-USA)
+		B: SASV, OFFSET 4 LEN 1 - fuel cutoff full
+		B: SAST, OFFSET 3 LEN 1 - partial thrust cut-off
+		B: N_MAX_BG, OFFSET 2 LEN 1 - speed limitation function active
+		B: KUEB_O_A, OFFSET 1 LEN 1 - Req. Torque converter lock-up clutch "open"
+		B: KPL, OFFSET 0 LEN 1 - clutch pressed
+		I: NMOT, OFFSET 8 LEN 16 - engine speed
+		B: TANK_KL, OFFSET 31 LEN 1 - Tank cap open control lamp
+		B: DIAG_KL, OFFSET 30 LEN 1 - Diagnostic control lamp (OBD II)
+		B: OEL_KL, OFFSET 29 LEN 1 - Oil level / oil pressure control lamp
+		B: VGL_KL, OFFSET 28 LEN 1 - Pre-glow control lamp
+		B: LUFI_KL, OFFSET 27 LEN 1 - air filter dirty control lamp (only diesel)
+		B: EOH, OFFSET 26 LEN 1 - ethanol operation detected
+		B: ELHP_WARN, OFFSET 25 LEN 1 - Warning message for the eco power steering pump
+		B: TEMP_KL, OFFSET 39 LEN 1 - cooling water temperature too high
+		B: DBAA, OFFSET 38 LEN 1 - speed limitation for display active (0 for CR)
+		B: LUEFT_MOT_KL, OFFSET 37 LEN 1 - Motor fan defective control lamp
+		B: ANL_LFT, OFFSET 36 LEN 1 - starter is running
+		B: ADR_DEF_KL, OFFSET 35 LEN 1 - ADR defective control lamp (only commercial vehicles)
+		B: ADR_KL, OFFSET 34 LEN 1 - ADR control lamp (only commercial vehicles)
+		B: ZAS, OFFSET 33 LEN 1 - cylinder deactivation
+		B: UEHITZ, OFFSET 32 LEN 1 - engine oil temperature too high (overheating)
+		I: T_OEL, OFFSET 40 LEN 8 - oil temperature
+		I: OEL_FS, OFFSET 48 LEN 8 - oil level
+		I: OEL_QUAL, OFFSET 56 LEN 8 - oil quality
+	FRAME MS_312h (0x0312)
+		I: M_STA, OFFSET 3 LEN 13 - Static motor torque
+		I: M_MAX_ATL, OFFSET 19 LEN 13 - Maximum motor torque including dyn. Turbocharger share
+		I: M_MAX, OFFSET 35 LEN 13 - maximum motor torque
+		I: M_MIN, OFFSET 51 LEN 13 - minimum motor torque
+	FRAME AAD_580h (0x0580)
+		I: FTK_BMI, OFFSET 0 LEN 8 - code number acceleration type (> 100: dynamic)
+		I: FTK_LMI, OFFSET 8 LEN 8 - Code number transverse acceleration type (> 100: dynamic)
+		I: FTK_VMI, OFFSET 16 LEN 8 - code number brake type (> 100: dynamic)
+		I: FTK_DPW, OFFSET 32 LEN 8 - Max.diff. Pedal angle value per maneuver
+		I: AADKB, OFFSET 40 LEN 8 - Continuous driver observation
+		B: AADKBDYN, OFFSET 48 LEN 1 - Spontaneous dynamic demand
+		I: AADNT, OFFSET 56 LEN 8 - Nervousness
+	FRAME MS_608h (0x0608)
+		I: T_MOT, OFFSET 0 LEN 8 - engine coolant temperature
+		I: T_LUFT, OFFSET 8 LEN 8 - intake air temperature
+		E: FCOD_BR, OFFSET 19 LEN 5 - vehicle code series
+			RAW: 0 - BR 221 or BR 140 / BR221
+			RAW: 1 - BR 129 / BR129
+			RAW: 2 - BR 210 or BR 212 / BR210
+			RAW: 3 - BR 202 or BR 204 / BR202
+			RAW: 4 - BR 220 / BR220
+			RAW: 5 - BR 170 / BR170
+			RAW: 6 - BR 203 / BR203
+			RAW: 7 - BR 168 / BR168
+			RAW: 8 - BR 163 / BR163
+			RAW: 9 - BR 208 / BR208
+			RAW: 10 - BR 463 / BR463
+			RAW: 11 - BR 215 / BR215
+			RAW: 12 - BR 230 / BR230
+			RAW: 13 - BR 211 / BR211
+			RAW: 14 - BR 209 / BR209
+			RAW: 15 - BR 461 / BR461
+			RAW: 16 - BR 240 / BR240
+			RAW: 17 - BR 251 / BR251
+			RAW: 18 - BR 171 / BR171
+			RAW: 19 - BR 164 / BR164
+			RAW: 20 - BR 169 or BR 245 / BR169
+			RAW: 21 - BR 199 / BR199
+			RAW: 22 - BR 216 / BR216
+			RAW: 23 - BR 219 / BR219
+			RAW: 24 - BR 454 (z-car) / BR454
+			RAW: 25 - NCV2 / NCV2
+			RAW: 26 - V-Class / Vito / VITO
+			RAW: 27 - Sprinter / SPRINTER
+			RAW: 28 - NCV3 / NCV3
+			RAW: 29 - NCV1 / NCV1
+			RAW: 30 - all other BR / REST
+			RAW: 31 - code does not exist / SNV
+		E: FCOD_KAR, OFFSET 16 LEN 3 - vehicle code body
+			RAW: 0 - W - Limousine (or G for short BM1 / 3 for BR 463, G for 461) / W
+			RAW: 1 - V - sedan long (or VF with BR 210/211, G long BM6 with BR 463) / V
+			RAW: 2 - C - Coupé (or VV for BR 210/211/220) / C
+			RAW: 3 - S - T-Modell (or special protection B4 for BR W240, T for BR 245) / S
+			RAW: 4 - A - Cabrio (or X with BR 164) / A
+			RAW: 5 - R - Roadster (or special protection B4 for BR 210/211/220 / V240) / R
+			RAW: 6 - SS - special protection B6 / 7 (or CL for BR 203) / SS
+			RAW: 7 - code does not exist / SNV
+		E: FCOD_MOT, OFFSET 26 LEN 6 - Vehicle code motor 7Bit, Bit0-5 (Bit6 -> Signal FCOD_MOT6)
+			RAW: 0 - M272 E35 / M272E35
+			RAW: 1 - M271 E18 ML red. (105 kW) / M271E18ML105
+			RAW: 2 - M271 E18 ML (120 kW) / M271E18ML120
+			RAW: 3 - M112 E37 / M112E37
+			RAW: 4 - M272 E25 / M272E25
+			RAW: 5 - M272 E30 / M272E30
+			RAW: 7 - M112 E28 / M112E28
+			RAW: 8 - M112 E32 / M112E32
+			RAW: 10 - M273 E46 / M273E46
+			RAW: 11 - M273 E55 / M273E55
+			RAW: 12 - M112 E26 / M112E26
+			RAW: 13 - M113 E43 / M113E43
+			RAW: 14 - M113 E50 / M113E50
+			RAW: 18 - M271 E18 ML / 1 (140 kW) / M271E18ML140
+			RAW: 19 - M271 DE18 ML red. (105 kW) / M271DE18ML105
+			RAW: 20 - M271 DE18 ML (125 kW) / M271DE18ML125
+			RAW: 22 - M111E E23 ML / M111E_E23ML
+			RAW: 23 - M111E E20 / M111E_E20
+			RAW: 24 - M111E E20 ML / M111E_E20ML
+			RAW: 25 - M112 E32 red. (140 kW) / M112E32_140
+			RAW: 26 - M266 E20 ATL / M266E20ATL
+			RAW: 27 - M266 E15 / M266E15
+			RAW: 28 - M266 E17 / M266E17
+			RAW: 29 - M266 E20 / M266E20
+			RAW: 30 - M275 E55 or M285 E55 / M275E55
+			RAW: 31 - M137 E58 / M137E58
+			RAW: 32 - OM 640 DE20 LA (60 kW) / OM640DE20LA60
+			RAW: 34 - OM 640 DE20 LA (80 kW) / OM640DE20LA80
+			RAW: 35 - OM642 DE30 LA (155/160 kW) / OM642DE30LA160
+			RAW: 36 - OM 640 DE20 LA (100 kW) / OM640DE20LA100
+			RAW: 37 - OM613 DE32 LA or OM648 DE32 LA / OM613DE32LA
+			RAW: 38 - OM 639 DE15 LA (70/50 kW) / OM639DE15LA
+			RAW: 39 - OM628 DE40 LA / OM628DE40LA
+			RAW: 40 - OM642 DE30 LA (140 kW) / OM642DE30LA140
+			RAW: 43 - OM612 DE27 LA or OM647 DE27 LA (120/130 kW) / OM612DE27LA
+			RAW: 44 - OM611 DE22 LA (105/100 kW) or OM646 DE22 LA (100/105/110 kW) / OM611DE22LA100
+			RAW: 45 - OM611 DE22 LA (85 kW) or OM646 DE22 LA (90 kW) / OM611DE22LA85
+			RAW: 46 - OM611 DE22 LA (75 kW) or OM646 DE22 LA (75 kW) / OM611DE22LA75
+			RAW: 64 - M134 E11 (3A91) / M134E11
+			RAW: 65 - M135 E13 (4A90) / M135E13
+			RAW: 66 - M135 E15 (4A91) / M135E15
+			RAW: 67 - M135 E15 ATL / M135E15ATL
+			RAW: 68 - M272 DE25 / M272DE25
+			RAW: 69 - M272 DE30 / M272DE30
+			RAW: 70 - M272 DE35 / M272DE35
+			RAW: 71 - M273 DE46 / M273DE46
+			RAW: 72 - M273 DE55 / M273DE55
+			RAW: 79 - M271 E18 ML Attr. (115kW) / M271E18MLATTR115
+			RAW: 80 - M271 E18 ML Attr. (141kW) / M271E18MLATTR141
+			RAW: 96 - OM629 DE40 LA / OM629DE40LA
+			RAW: 97 - OM646 DE22 EVO (120 / 125kW) / OM646DE22EVO120
+			RAW: 98 - OM646 DE22 LA EVO (100kW) / OM646DE22LAEVO100
+			RAW: 99 - OM642 DE30 LA red. (140kW) / OM642DE30LARED140
+		B: GS_NVH, OFFSET 25 LEN 1 - transmission control not available
+		B: FCOD_MOT6, OFFSET 24 LEN 1 - Vehicle code engine with 7 bits, bit 6
+		I: V_MAX_FIX, OFFSET 32 LEN 8 - Fixed maximum speed
+		I: VB, OFFSET 40 LEN 16 - consumption
+		I: PFKO, OFFSET 60 LEN 4 - Particle filter correction offset FMMOTMAX
+		B: ZVB_EIN_MS, OFFSET 59 LEN 1 - switch on additional consumer
+		E: PFW, OFFSET 57 LEN 2 - Particle filter warning
+			RAW: 0 - No warning / OK
+			RAW: 1 - Warning filter closed, level 1 / PFW1
+			RAW: 2 - Warning filter closed, level 2 / PFW2
+			RAW: 3 - signal not available / SNV
+		B: ZWP_EIN_MS, OFFSET 56 LEN 1 - switch on additional water pump
+	FRAME D_RS_FSCM (0x0779)
+		I: D_RS_FSCM, OFFSET 0 LEN 64 - KWP2000 diagnostic response
+	FRAME D_RS_MS (0x07E8)
+		I: D_RS, OFFSET 0 LEN 64 - KWP2000 diagnostic response
+	FRAME SD_RS_MS (0x0720)
+		I: SD_RS, OFFSET 0 LEN 64 - System diagnosis response
+	FRAME SG_APPL_MS (0x0529)
+		I: SG_APPL_MS, OFFSET 0 LEN 64 - control device to external application
+	FRAME MS_APPL2 (0x04A9)
+		I: APPL2, OFFSET 0 LEN 64 - application
+	FRAME MS_APPL4 (0x06E8)
+		I: APPL4, OFFSET 0 LEN 64 - application
+	FRAME MS_APPL5 (0x0748)
+		I: APPL5, OFFSET 0 LEN 64 - application
+	FRAME MS_APPL6 (0x0610)
+		I: APPL6, OFFSET 0 LEN 64 - application
+	FRAME MS_APPL7 (0x06AA)
+		I: APPL7, OFFSET 0 LEN 64 - application
+	FRAME EDC_MESS1 (0x0670)
+		I: MESS1, OFFSET 0 LEN 64 - measured values
+	FRAME EDC_MESS2 (0x0671)
+		I: MESS2, OFFSET 0 LEN 64 - measured values
+
+GS
+	FRAME GS_218h (0x0218)
+		B: MMAX_EGS, OFFSET 2 LEN 1 - Motor torque request Max
+		B: MMIN_EGS, OFFSET 1 LEN 1 - engine torque request min
+		B: MTGL_EGS, OFFSET 0 LEN 1 - motor torque request. Toggle 40ms + -10
+		I: M_EGS, OFFSET 3 LEN 13 - Required. Engine torque
+		E: GIC, OFFSET 20 LEN 4 - actual gear
+			RAW: 0 - actual gear "N" / N
+			RAW: 1 - actual gear "1" / D1
+			RAW: 2 - actual gear "2" / D2
+			RAW: 3 - actual gear "3" / D3
+			RAW: 4 - actual gear "4" / ​​D4
+			RAW: 5 - actual gear "5" / D5
+			RAW: 6 - actual gear "6" / D6
+			RAW: 7 - actual gear "7" / D7
+			RAW: 8 - actual gear "continuously forward / D_CVT
+			RAW: 9 - actual gear "continuously backwards" / R_CVT
+			RAW: 10 - actual gear "R3" / R3
+			RAW: 11 - Actual gear "R" / R
+			RAW: 12 - actual gear "R2" / R2
+			RAW: 13 - actual gear "P" / P
+			RAW: 14 - No Force / No Force
+			RAW: 15 - signal not available / SNV
+		E: GZC, OFFSET 16 LEN 4 - target gear
+			RAW: 0 - target gear "N" / N
+			RAW: 1 - target gear "1" / D1
+			RAW: 2 - target gear "2" / D2
+			RAW: 3 - target gear "3" / D3
+			RAW: 4 - target gear "4" / ​​D4
+			RAW: 5 - target gear "5" / D5
+			RAW: 6 - target gear "6" / D6
+			RAW: 7 - target gear "7" / D7
+			RAW: 8 - target gear "stepless forward / D_CVT
+			RAW: 9 - target gear "continuously backwards" / R_CVT
+			RAW: 10 - target gear "R3" / R3
+			RAW: 11 - Target gear "R" / R
+			RAW: 12 - target gear "R2" / R2
+			RAW: 13 - Target gear "P" / P
+			RAW: 14 - circuit termination / CANCEL
+			RAW: 15 - signal not available / SNV
+		B: HSM, OFFSET 31 LEN 1 - manual switching mode
+		B: SWITCH, OFFSET 30 LEN 1 switching
+		B: FW_HOCH, OFFSET 29 LEN 1 - driving resistance high
+		B: GSP_OK, OFFSET 28 LEN 1 - basic switching program o.k.
+		B: G_G, OFFSET 27 LEN 1 - off-road gear
+		B: K_G_B, OFFSET 26 LEN 1 - Order (converter bypass) clutch "closed"
+		B: K_O_B, OFFSET 25 LEN 1 - Order (converter bypass) clutch "open"
+		B: K_S_B, OFFSET 24 LEN 1 - Order (converter bypass) clutch "slip"
+		E: FPC_AAD_NEU, OFFSET 37 LEN 3 - Drive program for AAD
+			RAW: 0 - Sport (default) / SPORT
+			RAW: 1 - COMFORT / COMFORT
+			RAW: 2 - not defined
+			RAW: 3 - not defined
+			RAW: 4 - not defined
+			RAW: 5 - not defined
+			RAW: 6 - Offroad / OFFROAD
+			RAW: 7 - signal not available / SNV
+		B: UEHITZ_GET, OFFSET 36 LEN 1 - Overtemperature transmission
+		B: GS_NOTL, OFFSET 35 LEN 1 - GS in emergency mode
+		B: ALF, OFFSET 34 LEN 1 - start release
+		B: KS, OFFSET 33 LEN 1 - bang start
+		B: GET_OK, OFFSET 32 LEN 1 - gear ok
+		B: MOT_NAUS, OFFSET 47 LEN 1 - Motor emergency shutdown
+		B: MOT_NAUS_CNF, OFFSET 46 LEN 1 - MOT_NAUS confirmbit
+		B: K_LSTFR, OFFSET 45 LEN 1 - converter lockup clutch unloaded
+		B: DYN0_AMR_EGS, OFFSET 42 LEN 1 - intervention mode / drive torque control
+		B: DYN1_EGS, OFFSET 41 LEN 1 - intervention mode / drive torque control
+		B: MPAR_EGS, OFFSET 40 LEN 1 - Motor torque request parity (even parity)
+		I: MKRIECH, OFFSET 48 LEN 8 - creep torque (FFh with EGS, CVT) or CALID / CVN
+		I: ERROR, OFFSET 59 LEN 5 - Error number or counter for CALID / CVN transmission
+		B: CALID_CVN_AKT, OFFSET 58 LEN 1 - CALID / CVN transmission active
+		E: FEHLPRF_ST, OFFSET 56 LEN 2 - Status error check
+			RAW: 0 - error check not yet run through completely / WAIT
+			RAW: 1 - error check run through completely, result i. O. / OK
+			RAW: 2 - Error detected, enter current environment data / ERROR
+			RAW: 3 - not defined
+	FRAME GS_338h (0x0338)
+		I: NAB, OFFSET 0 LEN 16 - gearbox output speed (only 463/461, otherwise FFFFh)
+		I: NTURBINE, OFFSET 48 LEN 16 - turbine speed (EGS52-NAG, VGS-NAG2)
+	FRAME GS_418h (0x0418)
+		E: FSC, OFFSET 0 LEN 8 - speed step
+			RAW: 32 - Blank ("") / BLANK
+			RAW: 49 - speed step "1" / ONE
+			RAW: 50 - speed step "2" / TWO
+			RAW: 51 - speed step "3" / THREE
+			RAW: 52 - speed step "4" / ​​FOUR
+			RAW: 53 - speed step "5" / FUENF
+			RAW: 54 - speed step "6" / SIX
+			RAW: 55 - speed step "7" / SEVEN
+			RAW: 65 - speed level "A" / A
+			RAW: 68 - speed step "D" / D
+			RAW: 70 - "F" / F error mark
+			RAW: 78 - drive position "N" / N
+			RAW: 80 - speed step "P" / P
+			RAW: 82 - speed step "R" / R
+			RAW: 255 - Passive value / SNV
+		E: FPC, OFFSET 8 LEN 8 - driving program
+			RAW: 2 - "C", message "gear, actuate parking brake!" with warning tone / C_MGFB_WT
+			RAW: 3 - "C", message "Shift gear, shift lever to N!" / C_MGSNN
+			RAW: 4 - "C", message "gear, apply brake!" / C_MGBB
+			RAW: 6 - "C", message "Request gear, gear again!" / C_MGGEA
+			RAW: 7 - "C", message "Gearbox, insert N to start!" / C_MGZSN
+			RAW: 10 - "A", message "Activate gear, parking brake!" with warning tone / A_MGFB_WT
+			RAW: 11 - "A", message "Shift gear, shift lever to N!" / A_MGSNN
+			RAW: 12 - "A", message "gear, apply brake!" / A_MGBB
+			RAW: 14 - "A", message "Request transmission, gear again!" / A_MGGEA
+			RAW: 15 - "A", message "Gear, insert N to start!" / A_MGZSN
+			RAW: 18 - "S", message "Activate gear, parking brake!" with warning tone / S_MGFB_WT
+			RAW: 19 - "S", message "Shift gear, shift lever to N!" / S_MGSNN
+			RAW: 20 - "S", message "gear, apply brake!" / S_MGBB
+			RAW: 22 - "S", message "Transmission, request gear again!" / S_MGGEA
+			RAW: 23 - "S", message "Gear, insert N to start!" / S_MGZSN
+			RAW: 24 - shift recommendation "upshift" / UP
+			RAW: 25 - Shift recommendation "Downshift" / DOWN
+			RAW: 32 - "" (blank) / BLANK
+			RAW: 64 - "" (blank), message "Gear, insert N!" / BLANK_MGN
+			RAW: 65 - "A" / A
+			RAW: 67 - "C" / C
+			RAW: 70 - "F" / F error mark
+			RAW: 77 - "M" / M
+			RAW: 83 - "S" / S
+			RAW: 87 - "W" / W
+			RAW: 95 - "_" (Underscore) / _
+			RAW: 96 - "" (blank), message "Gearbox, visit workshop!" / BLANK_MGW
+			RAW: 97 - "A", message "Gear, insert N!" / A_MGN
+			RAW: 99 - "C", message "Gear, insert N!" / C_MGN
+			RAW: 109 - "M", message "Gear, insert N!" / M_MGN
+			RAW: 115 - "S", message "Gear, insert N!" / S_MGN
+			RAW: 119 - "W", message "Gear, insert N!" / W_MGN
+			RAW: 127 - "_" (Underscore), message "Gear, insert N!" / __MGN
+			RAW: 129 - "A", message "Gearbox, visit workshop!" / A_MGW
+			RAW: 131 - "C", message "Gearbox, visit workshop!" / C_MGW
+			RAW: 134 - Error marking "F", message "Gearbox, visit workshop!" / F_MGW
+			RAW: 141 - "M", message "Gearbox, visit workshop!" / M_MGW
+			RAW: 147 - "S", message "Gearbox, visit workshop!" / S_MGW
+			RAW: 151 - "W", message "Gearbox, visit workshop!" / W_MGW
+			RAW: 159 - "_" (Underscore), message "Gearbox, go to the workshop!" / __MGW
+			RAW: 255 - Passive value / SNV
+		I: T_GET, OFFSET 16 LEN 8 - transmission oil temperature
+		B: KD, OFFSET 31 LEN 1 - Kickdown
+		B: ESV_BRE, OFFSET 30 LEN 1 - apply brake when switching on
+		E: MECH, OFFSET 28 LEN 2 - gear mechanism variant
+			RAW: 0 - NAG, Large Gear / LARGE
+			RAW: 1 - NAG, Small Gear / SMALL
+			RAW: 2 - NAG2, Large Gear / GROSS2
+			RAW: 3 - NAG2, Small Gear / KLEIN2
+		B: CVT, OFFSET 27 LEN 1 - continuously variable transmission [1], multi-step transmission [0]
+		B: SWITCH, OFFSET 26 LEN 1 switching
+		B: FRONT, OFFSET 25 LEN 1 - front-wheel drive [1], rear-wheel drive [0]
+		B: ALL-WHEEL, OFFSET 24 LEN 1 - all-wheel drive
+		E: GIC, OFFSET 36 LEN 4 - actual gear
+			RAW: 0 - actual gear "N" / N
+			RAW: 1 - actual gear "1" / D1
+			RAW: 2 - actual gear "2" / D2
+			RAW: 3 - actual gear "3" / D3
+			RAW: 4 - actual gear "4" / ​​D4
+			RAW: 5 - actual gear "5" / D5
+			RAW: 6 - actual gear "6" / D6
+			RAW: 7 - actual gear "7" / D7
+			RAW: 8 - actual gear "continuously forward / D_CVT
+			RAW: 9 - actual gear "continuously backwards" / R_CVT
+			RAW: 10 - actual gear "R3" / R3
+			RAW: 11 - Actual gear "R" / R
+			RAW: 12 - actual gear "R2" / R2
+			RAW: 13 - actual gear "P" / P
+			RAW: 14 - No Force / No Force
+			RAW: 15 - signal not available / SNV
+		E: GZC, OFFSET 32 LEN 4 - target gear
+			RAW: 0 - target gear "N" / N
+			RAW: 1 - target gear "1" / D1
+			RAW: 2 - target gear "2" / D2
+			RAW: 3 - target gear "3" / D3
+			RAW: 4 - target gear "4" / ​​D4
+			RAW: 5 - target gear "5" / D5
+			RAW: 6 - target gear "6" / D6
+			RAW: 7 - target gear "7" / D7
+			RAW: 8 - target gear "stepless forward / D_CVT
+			RAW: 9 - target gear "continuously backwards" / R_CVT
+			RAW: 10 - target gear "R3" / R3
+			RAW: 11 - Target gear "R" / R
+			RAW: 12 - target gear "R2" / R2
+			RAW: 13 - Target gear "P" / P
+			RAW: 14 - circuit termination / CANCEL
+			RAW: 15 - signal not available / SNV
+		I: M_VERL, OFFSET 40 LEN 8 - torque loss (FFh at KSG)
+		E: WHST, OFFSET 50 LEN 3 - Gear selector lever position (NAG, KSG, CVT)
+			RAW: 0 - Gear selector lever in position "P" / P
+			RAW: 1 - Gear selector lever in position "R" / R
+			RAW: 2 - Gear selector lever in position "N" / N
+			RAW: 4 - Gear selector lever in position "D" / D
+			RAW: 7 - signal not available / SNV
+		B: FMRADTGL, OFFSET 49 LEN 1 - Factor wheel torque toggle 40ms + -10
+		B: FMRADPAR, OFFSET 48 LEN 1 - Wheel torque parity factor (even parity)
+		I: FMRAD, OFFSET 53 LEN 11 - wheel torque factor (7FFh at KSG)
+	FRAME D_RS_GS (0x07E9)
+		I: D_RS, OFFSET 0 LEN 64 - KWP2000 diagnostic response
+	FRAME SD_RS_GS (0x0723)
+		I: SD_RS_GS, OFFSET 0 LEN 64 - System diagnosis response
+	FRAME GS_APPL1 (0x051C)
+		I: APPL1, OFFSET 0 LEN 64 - application
+	FRAME GS_HSA (0x050A)
+		I: HSA, OFFSET 0 LEN 64 - manual control on the test bench
+	FRAME GS_HSB (0x050B)
+		I: HSB, OFFSET 0 LEN 64 - manual control on the test bench
+	FRAME GS_HSC (0x050C)
+		I: HSC, OFFSET 0 LEN 64 - manual control on the test bench
+	FRAME GS_HSD (0x050D)
+		I: HSD, OFFSET 0 LEN 64 - manual control on the test bench
+	FRAME GS_HSE (0x050E)
+		I: HSE, OFFSET 0 LEN 64 - manual control on the test bench
+
+EWM
+	FRAME EWM_104h (0x0104)
+		I: EWM_FBS, OFFSET 0 LEN 64 - FBS message to EZS (8 bytes)
+	FRAME EWM_230h (0x0230)
+		E: WHC, OFFSET 4 LEN 4 - gear selector lever position (only NAG)
+			RAW: 5 - Selector lever in position "D" / D
+			RAW: 6 - Selector lever in position "N" / N
+			RAW: 7 - Selector lever in position "R" / R
+			RAW: 8 - Selector lever in position "P" / P
+			RAW: 9 - Selector lever in position "+" / PLUS
+			RAW: 10 - Selector lever in position "-" / MINUS
+			RAW: 11 - Selector lever in intermediate position "N-D" / N_ZW_D
+			RAW: 12 - Selector lever in intermediate position "R-N" / R_ZW_N
+			RAW: 13 - Selector lever in intermediate position "P-R" / P_ZW_R
+			RAW: 15 - Selector lever position implausible / SNV
+		B: KD, OFFSET 2 LEN 1 - kickdown
+		B: FPT, OFFSET 1 LEN 1 - Drive program button pressed
+	FRAME EWM_MESS1 (0x06F0)
+		I: MESS1, OFFSET 0 LEN 64 - measured values
+	FRAME EWM_MESS2 (0x06F1)
+		I: MESS2, OFFSET 0 LEN 64 - measured values
+
+EZS
+	FRAME FBS_110h (0x0110)
+		I: IFZ_ST, OFFSET 0 LEN 64 - FBS message to MS (8 bytes)
+	FRAME FBS_111h (0x0111)
+		I: FBS_MS, OFFSET 0 LEN 64 - FBS message to MS (8 bytes)
+	FRAME FBS_112h (0x0112)
+		I: FBS_GS, OFFSET 0 LEN 64 - FBS message to GS (8 bytes)
+	FRAME FBS_114h (0x0114)
+		I: FBS_EWM, OFFSET 0 LEN 64 - FBS message to EWM (8 bytes)
+	FRAME EZS_240h (0x0240)
+		B: KL_50, OFFSET 15 LEN 1 - Terminal 50
+		B: KL_15, OFFSET 14 LEN 1 - Terminal 15
+		B: BS_SL, OFFSET 13 LEN 1 - brake switch for shift lock
+		E: LL_RLC, OFFSET 10 LEN 2 - left-hand drive / right-hand drive
+			RAW: 0 - not defined
+			RAW: 1 - left hand drive / LL
+			RAW: 2 - right hand drive / RL
+			RAW: 3 - code does not exist / SNV
+		B: KG_ALB_OK, OFFSET 9 LEN 1 - Keyles Go event conditions met
+		B: KG_KL_AKT, OFFSET 8 LEN 1 - Keyless Go terminal control active
+		B: CRASH, OFFSET 31 LEN 1 - crash signal from Airbag-SG
+		B: CRASH_CNF, OFFSET 30 LEN 1 - CRASH confirmbit
+		B: INF_RFE_SAM, OFFSET 29 LEN 1 - SAM / x: EHB-ASG in fall-back level, x = B (230), V (211,164,251), F (240)
+		B: VSTAT_A, OFFSET 28 LEN 1 - SAM / x: v-Signal from EHB-ASG, x = B (230), V (211), F (240)
+		B: ASG_SPORT_BET, OFFSET 27 LEN 1 - ASG sport mode on / off activated (ST2_LED_DL if ABC is available)
+		B: BN_SOCS, OFFSET 26 LEN 1 - Vehicle electrical system warning: starter battery state of charge
+		B: BLS_A, OFFSET 25 LEN 1 - SAM / x: Brake light switch output EHB-ASG, x = B (230), V (211), F (240)
+		B: SAM_PAS, OFFSET 24 LEN 1 - SAM / x passive, x = B (230), V (211), F (240)
+		B: KL_31B, OFFSET 36 LEN 1 - wiper outside of parking position
+		B: HAS_KL, OFFSET 35 LEN 1 - handbrake applied (control lamp)
+		E: ESP_BET, OFFSET 33 LEN 2 - ESP on / off actuated
+			RAW: 0 - Not pressed (rocker and push push) / NBET
+			RAW: 1 - ESP off actuated (rocker), actuated (Push Push) / AUS_BET
+			RAW: 2 - ESP on actuated (rocker), not defined (push push) / EIN_NDEF
+			RAW: 3 - signal not available (rocker and push push) / SNV
+		B: BN_NTLF, OFFSET 32 LEN 1 - On-board network emergency operation: Prio1 and Prio2 consumers off, second battery supports
+		B: ABL_EIN, OFFSET 46 LEN 1 - Switch on low beam
+		E: ART_ABW_BET, OFFSET 44 LEN 2 - ART distance warning on / off activated
+			RAW: 0 - not defined (rocker), not actuated (push push) / NDEF_NBET
+			RAW: 1 - Distance warning off (rocker), not defined (Push Push) / AUS_NDEF
+			RAW: 2 - Distance warning on (rocker), activated (Push Push) / ON_BET
+			RAW: 3 - signal not available (rocker and push push) / SNV
+		E: ST3_BET, OFFSET 42 LEN 2 - LF / ABC 3-stage switch actuated
+			RAW: 0 - Not pressed (rocker and push push) / NBET
+			RAW: 1 - Pressed down (rocker), not defined (Push Push) / UNBET_NDEF
+			RAW: 2 - Pressed at the top (rocker), pressed (Push Push) / OBBET_BET
+			RAW: 3 - Not defined (rocker and push push)
+		E: ST2_BET, OFFSET 40 LEN 2 - LF / ABC 2-stage switch actuated
+			RAW: 0 - Not pressed (rocker and push push) / NBET
+			RAW: 1 - Pressed down (rocker), not defined (Push Push) / UNBET_NDEF
+			RAW: 2 - Pressed at the top (rocker), pressed (Push Push) / OBBET_BET
+			RAW: 3 - Not defined (rocker and push push)
+		I: ART_ABSTAND, OFFSET 48 LEN 8 - distance factor
+		E: LDC, OFFSET 62 LEN 2 - country code
+			RAW: 0 - rest of the world / RDW
+			RAW: 1 - USA / Canada / USA_CAN
+			RAW: 2 - not defined
+			RAW: 3 - code does not exist / SNV
+		E: FZGVERSN, OFFSET 59 LEN 3 - model-dependent vehicle version (only 220/215/230)
+			RAW: 0 - Status when the respective series / START was launched
+			RAW: 1 - BR 220: AJ 99 / X, C215: AJ 01/1, R230: AJ 02/1 / V1
+			RAW: 2 - BR 220: AJ 01/1, C215: AJ 02 / X, R230: AJ 03 / X / V2
+			RAW: 3 - BR 220: ÄJ 02 / X, C215: ÄJ 03 / X, R230: not defined / V3
+			RAW: 4 - BR 220: prohibited, C215 / R230: not defined / V4
+			RAW: 5 - BR 220: prohibited, C215 / R230: not defined / V5
+			RAW: 6 - BR 220: ÄJ 03 / X, C215, / R230: not defined / V6
+			RAW: 7 - BR 220 / C215, / R230: not defined / V7
+		B: ABC_VH, OFFSET 58 LEN 1 - ABC available
+		B: GBL_AUS, OFFSET 57 LEN 1 - E-suction fan: basic ventilation off
+		B: ART_VH, OFFSET 56 LEN 1 - ART available
+	FRAME KLA_410h (0x0410)
+		B: KOMP_EIN, OFFSET 7 LEN 1 - A / C compressor switched on
+		B: LL_DZA, OFFSET 1 LEN 1 - Idle speed increase to increase the cooling capacity
+		B: ZH_EIN_OK, OFFSET 0 LEN 1 - Switching on auxiliary heater allowed
+		I: P_KAELTE8, OFFSET 8 LEN 8 - refrigerant pressure
+		I: M_KOMP, OFFSET 16 LEN 8 - Torque absorption refrigeration compressor
+		I: NLFTS, OFFSET 24 LEN 8 - Motor fan setpoint speed
+		I: T_AUSSEN_WM, OFFSET 40 LEN 8 - outside air temperature for heat management
+	FRAME EZS_MESS1 (0x060E)
+		I: MESS1, OFFSET 0 LEN 64 - measured values
+
+ZGW
+	FRAME ZGW_248h (0x0248)
+		E: ST3_BET, OFFSET 6 LEN 2 - LF / ABC 3-stage switch actuated
+			RAW: 0 - Not pressed (rocker and push push) / NBET
+			RAW: 1 - Pressed down (rocker), not defined (Push Push) / UNBET_NDEF
+			RAW: 2 - Pressed at the top (rocker), pressed (Push Push) / OBBET_BET
+			RAW: 3 - Not defined (rocker and push push)
+		E: ST2_BET, OFFSET 4 LEN 2 - LF / ABC 2-stage switch actuated
+			RAW: 0 - Not pressed (rocker and push push) / NBET
+			RAW: 1 - Pressed down (rocker), not defined (Push Push) / UNBET_NDEF
+			RAW: 2 - Pressed at the top (rocker), pressed (Push Push) / OBBET_BET
+			RAW: 3 - Not defined (rocker and push push)
+		B: ABL_EIN, OFFSET 3 LEN 1 - switch on low beam
+		E: ANH_ERK2, OFFSET 14 LEN 2 - Trailer operation detected
+			RAW: 0 - Trailer not recognized / NONE
+			RAW: 1 - trailer recognized / OK
+			RAW: 2 - not defined
+			RAW: 3 - signal not available / SNV
+		B: MOT_AUF, OFFSET 11 LEN 1 - engine hood is open
+		B: GWHST_P_SAM, OFFSET 9 LEN 1 - Gear selector lever position "P" recognized
+		B: BN_SOCS, OFFSET 8 LEN 1 - Vehicle electrical system warning: starter battery state of charge
+		B: BLS_A, OFFSET 23 LEN 1 - SAM / x: Brake light switch output EHB-ASG, x = B (230), V (211), F (240)
+		B: VSTAT_A, OFFSET 22 LEN 1 - SAM / x: v-signal from EHB-ASG, x = B (230), V (211), F (240)
+		B: INF_RFE_SAM, OFFSET 21 LEN 1 - SAM / x: EHB-ASG in fall-back level, x = B (230), V (211,164,251), F (240)
+		B: SAM_PAS, OFFSET 20 LEN 1 - SAM / x passive, x = B (230), V (211), F (240)
+		B: MW_AKT_SAM, OFFSET 31 LEN 1 - SBC added value: overrun active
+		B: BNS_AKT, OFFSET 30 LEN 1 - On-board power supply control unit active
+		B: KL_31B, OFFSET 29 LEN 1 - wiper outside of parking position
+		B: HAS_KL, OFFSET 28 LEN 1 - handbrake applied (control lamp)
+		E: ESP_BET, OFFSET 26 LEN 2 - ESP on / off actuated
+			RAW: 0 - Not pressed (rocker and push push) / NBET
+			RAW: 1 - ESP off actuated (rocker), actuated (Push Push) / AUS_BET
+			RAW: 2 - ESP on actuated (rocker), not defined (push push) / EIN_NDEF
+			RAW: 3 - signal not available (rocker and push push) / SNV
+		B: BN_NTLF, OFFSET 25 LEN 1 - On-board network emergency operation: Prio1 and Prio2 consumers off, second battery supports
+		B: KL54_RM, OFFSET 24 LEN 1 - Terminal 54 hardware active
+		E: OC_BF, OFFSET 37 LEN 3 - Occupant classification co-driver
+			RAW: 0 - Occupant Classification 0 / OC_0
+			RAW: 1 - Occupant Classification 1 / OC_1
+			RAW: 2 - Occupant Classification 2 / OC_2
+			RAW: 3 - Occupant Classification 3 / OC_3
+			RAW: 4 - Occupant Classification 4 / OC_4
+			RAW: 6 - Error OC / OC_FEHLER
+			RAW: 7 - signal not available / SNV
+		E: GS_F, OFFSET 34 LEN 2 - seat belt buckle driver
+			RAW: 0 - seat belt buckle inserted / GS_OK
+			RAW: 1 - seat belt buckle not inserted / GS_NOK
+			RAW: 2 - Belt buckle error / GS_FEHLER
+			RAW: 3 - signal not available / SNV
+		E: GS_BF, OFFSET 32 LEN 2 - seat belt buckle front passenger
+			RAW: 0 - seat belt buckle inserted / GS_OK
+			RAW: 1 - seat belt buckle not inserted / GS_NOK
+			RAW: 2 - Belt buckle error / GS_FEHLER
+			RAW: 3 - signal not available / SNV
+		B: X_CRASH, OFFSET 47 LEN 1 - Any crash event
+		B: CRASH_CNF, OFFSET 46 LEN 1 - CRASH confirmbit
+		B: CRASH, OFFSET 45 LEN 1 - crash signal from Airbag-SG
+		B: KOMBI_MW_OK, OFFSET 40 LEN 1 - Kombi has added value
+		B: ART_VH, OFFSET 56 LEN 1 - ART available
+	FRAME ZGW_24Ch (0x024C)
+		I: SVL_POS, OFFSET 0 LEN 8 - Position fore / aft adjustment seat front left (frontmost section [0])
+		I: SVR_POS, OFFSET 8 LEN 8 - Position fore / aft adjustment seat front right (frontmost section [0])
+	FRAME KLA_40Eh (0x040E)
+		I: HZL_ANF, OFFSET 0 LEN 8 - Heating power requirement
+	FRAME CONFIG_6FFh (0x06FF)
+		E: LDC, OFFSET 6 LEN 2 - country code
+			RAW: 0 - rest of the world / RDW
+			RAW: 1 - USA / Canada / USA_CAN
+			RAW: 2 - not defined
+			RAW: 3 - code does not exist / SNV
+		E: LL_RLC, OFFSET 4 LEN 2 - left-hand drive / right-hand drive
+			RAW: 0 - not defined
+			RAW: 1 - left hand drive / LL
+			RAW: 2 - right hand drive / RL
+			RAW: 3 - code does not exist / SNV
+		B: GBL_AUS, OFFSET 0 LEN 1 - E-suction fan: basic ventilation off
+		B: GUARD_B4, OFFSET 15 LEN 1 - special protection Guard B4
+		B: GUARD_B6, OFFSET 14 LEN 1 - special protection Guard B6 / 7
+		E: VER_AE, OFFSET 22 LEN 2 - year of change
+			RAW: 0 - change year "/ 1" / AE1
+			RAW: 1 - change year "/ X" / AEX
+			RAW: 2 - change year "/ 2" / AE2
+			RAW: 3 - start of series production / SB
+		E: VER_JAHR, OFFSET 17 LEN 5 - year
+			RAW: 0 - year 0 (beginning of year 2000) / YEAR00
+			RAW: 1 - year 1 / YEAR01
+			RAW: 29 - Year 29 / YEAR29
+			RAW: 30 - not defined / N_DEF
+			RAW: 31 - start of series production / SB
+		B: AAS_VH, OFFSET 55 LEN 1 - distance assistant available
+		B: PAS_VH, OFFSET 54 LEN 1 - Parking assistant available
+		B: ART_VH, OFFSET 52 LEN 1 - ART available
+		B: TM_BRE_VH, OFFSET 51 LEN 1 - Braking cruise control available (in SBC or RDU)
+		B: KLA_VH, OFFSET 50 LEN 1 - air conditioning available
+	FRAME D_RQ_ART (0x078E)
+		I: D_RQ, OFFSET 0 LEN 64 - KWP2000 diagnosis request
+	FRAME D_RQ_BS (0x0784)
+		I: D_RQ, OFFSET 0 LEN 64 - KWP2000 diagnosis request
+	FRAME D_RQ_DTR (0x0702)
+		I: D_RQ_DTR, OFFSET 0 LEN 64 - KWP2000 diagnosis request
+	FRAME D_RQ_EHB (0x079A)
+		I: D_RQ, OFFSET 0 LEN 64 - KWP2000 diagnosis request
+	FRAME D_RQ_EHB2 (0x07B0)
+		I: D_RQ, OFFSET 0 LEN 64 - KWP2000 diagnosis request
+	FRAME D_RQ_FS (0x078C)
+		I: D_RQ, OFFSET 0 LEN 64 - KWP2000 diagnosis request
+	FRAME D_RQ_FSCM (0x0778)
+		I: D_RQ_FSCM, OFFSET 0 LEN 64 - KWP2000 diagnosis request
+	FRAME D_RQ_GS (0x07E1)
+		I: D_RQ, OFFSET 0 LEN 64 - KWP2000 diagnosis request
+	FRAME D_RQ_ISM (0x06EA)
+		I: D_RQ, OFFSET 0 LEN 64 - KWP2000 diagnosis request
+	FRAME D_RQ_KOMBI_C (0x0796)
+		I: D_RQ, OFFSET 0 LEN 64 - KWP2000 diagnosis request
+	FRAME D_RQ_LWR (0x0794)
+		I: D_RQ, OFFSET 0 LEN 64 - KWP2000 diagnosis request
+	FRAME D_RQ_MS (0x07E0)
+		I: D_RQ, OFFSET 0 LEN 64 - KWP2000 diagnosis request
+	FRAME D_RQ_OBD (0x07DF)
+		I: D_RQ, OFFSET 0 LEN 64 - KWP2000 diagnosis request
+	FRAME D_RQ_RGS_L (0x07B2)
+		I: D_RQ, OFFSET 0 LEN 64 - KWP2000 diagnosis request
+	FRAME D_RQ_RGS_R (0x07B4)
+		I: D_RQ, OFFSET 0 LEN 64 - KWP2000 diagnosis request
+	FRAME D_RQ_UP28 (0x07A2)
+		I: D_RQ, OFFSET 0 LEN 64 - KWP2000 diagnosis request
+	FRAME GS_APPL2 (0x06E4)
+		I: APPL2, OFFSET 0 LEN 64 - application
+	FRAME DG_RQ_GLOBAL (0x0440)
+		I: DG_RQ_GLOBAL, OFFSET 0 LEN 64 - Functional diagnosis request
+
+KOMBI
+	FRAME KOMBI_408h (0x0408)
+		I: TANK_FS, OFFSET 0 LEN 8 - tank level
+		B: KL_61E, OFFSET 15 LEN 1 - Terminal 61 decoupled
+		B: TFSM, OFFSET 14 LEN 1 - minimum tank level
+		B: VGL_KL_DEF, OFFSET 13 LEN 1 - Pre-glow control lamp defective
+		B: KLA_VH, OFFSET 12 LEN 1 - air conditioning available
+		B: V_MPH, OFFSET 11 LEN 1 - mph instead of km / h (variable speed limit)
+		B: TACHO_SYM, OFFSET 10 LEN 1 - Tacho calibration
+		B: V_DSPL_AUS, OFFSET 9 LEN 1 - Speed ​​limiter / tempomat display not possible
+		B: TF_AUF, OFFSET 8 LEN 1 - driver's door open
+		I: T_AUSSEN, OFFSET 16 LEN 8 - Raw outside air temperature
+		I: KL_58D, OFFSET 24 LEN 8 - Terminal 58 dimmed
+		I: MAZ, OFFSET 32 LEN 8 - engine shutdown time (is sent from terminal 15)
+		I: KM16, OFFSET 40 LEN 16 - mileage
+		E: WRC, OFFSET 61 LEN 3 - maximum winter tire speed with 4 bits
+			RAW: 0 - unlimited / UBG
+			RAW: 1 - 210 km / h / BG210
+			RAW: 2 - 190 km / h / BG190
+			RAW: 3 - 160 km / h / BG160
+			RAW: 4 - 240 km / h / BG240
+			RAW: 5 - 230 km / h / BG230
+			RAW: 6 - 220 km / h / BG220
+			RAW: 7 - 200 km / h / BG200
+			RAW: 128 - 180 km / h / BG180
+			RAW: 129 - 170 km / h / BG170
+			RAW: 130 - 150 km / h / BG150
+			RAW: 131 - 140 km / h / BG140
+			RAW: 132 - 130 km / h / BG130
+			RAW: 133 - 120 km / h / BG120
+			RAW: 134 - 110 km / h / BG110
+			RAW: 135 - 100 km / h / BG100
+		B: RT_EIN, OFFSET 60 LEN 1 - Activate roller test mode ESP
+		B: ZH_FREIG, OFFSET 59 LEN 1 - Enable auxiliary heater
+		B: SGT_VH, OFFSET 58 LEN 1 - segment tachometer available
+		B: V_DSPL_AKT, OFFSET 57 LEN 1 - Speed ​​limiter / cruise control display active
+		B: WRC3, OFFSET 56 LEN 1 - Winter tire maximum speed bit 3
+	FRAME KOMBI_412h (0x0412)
+		B: OPT_WARN_AUS, OFFSET 1 LEN 1 - Optical warning off
+		B: AKU_WARN_AUS, OFFSET 0 LEN 1 - Acoustic warning off
+		E: IST_ABST, OFFSET 9 LEN 3 - Set distance
+			RAW: 0 - Very Small / VERY_SMALL
+			RAW: 1 - Small / SMALL
+			RAW: 2 - Medium / MEDIUM
+			RAW: 3 - Large / LARGE
+			RAW: 4 - Very Large / VERY_LARGE
+			RAW: 5 - not defined
+			RAW: 6 - not defined
+			RAW: 7 - not defined
+		B: ABST_S, OFFSET 8 LEN 1 - distance unit
+		I: V_ANZ, OFFSET 12 LEN 12 - Displayed speed
+		E: DRTGANZ, OFFSET 24 LEN 2 - direction of wheel rotation to V_ANZ
+			RAW: 0 - No direction of rotation detection / PASSIVE
+			RAW: 1 - direction of rotation forward / FORWARD
+			RAW: 2 - direction of rotation backwards / REVERSE
+			RAW: 3 - signal not available / SNV
+		I: DANZ, OFFSET 26 LEN 14 - wheel speed calculated from V_ANZ
+		I: MAZ_NEU, OFFSET 52 LEN 12 - engine shutdown time
+	FRAME D_RS_KOMBI_C (0x0797)
+		I: D_RS, OFFSET 0 LEN 64 - KWP2000 diagnostic response
+	FRAME KOMBI_MESS1 (0x0680)
+		I: MESS1, OFFSET 0 LEN 64 - measured values
+	FRAME KOMBI_MESS2 (0x0681)
+		I: MESS2, OFFSET 0 LEN 64 - measured values
+
+MRM
+	FRAME SBW_232h (0x0232)
+		E: LRT_PM3, OFFSET 5 LEN 3 - Steering wheel buttons "+", "-" pressed
+			RAW: 0 - Not actuated / NBET
+			RAW: 1 - "+" pressed / PLUS
+			RAW: 2 - "-" pressed / MINUS
+			RAW: 3 - "+" and "-" pressed / PLUS_MINUS
+			RAW: 4 - not defined
+			RAW: 5 - not defined
+			RAW: 6 - not defined
+			RAW: 7 - signal not available / SNV
+		E: SID_SBW, OFFSET 0 LEN 2 - sender identification
+			RAW: 0 - EWM / EWM
+			RAW: 1 - MRM / MRM
+			RAW: 2 - not defined
+			RAW: 3 - not defined
+		I: BZ232h, OFFSET 16 LEN 4 - message counter
+		I: CRC232h, OFFSET 24 LEN 8 - CRC checksum byte 1 - 7 according to SAE J1850
+	FRAME MRM_238h (0x0238)
+		B: OFF, OFFSET 7 LEN 1 - Cruise control lever: "Switch off"
+		B: WA, OFFSET 6 LEN 1 - Cruise control lever: "Resume"
+		B: S_PLUS_B, OFFSET 5 LEN 1 - Cruise control lever: "Set and accelerate level0"
+		B: S_MINUS_B, OFFSET 4 LEN 1 - Cruise control lever: "Set and decelerate level0"
+		B: VMAX_AKT, OFFSET 3 LEN 1 - Operation variable speed limit
+		B: WH_UP, OFFSET 2 LEN 1 - Cruise control lever implausible
+		B: S_PLUS1_B, OFFSET 1 LEN 1 - Cruise control lever: "Set and accelerate level 1"
+		B: S_MINUS1_B, OFFSET 0 LEN 1 - Cruise control lever: "Set and delay stage 1"
+		I: BZ238h, OFFSET 12 LEN 4 - message counter
+		B: WH_PA, OFFSET 11 LEN 1 - Cruise control lever parity (even parity)
+		B: TMWH_ST2_VH, OFFSET 10 LEN 1 - 2-stage cruise control lever available
+		B: BLI_LI, OFFSET 9 LEN 1 - direction flashing left
+		B: BLI_RE, OFFSET 8 LEN 1 - right direction flashing
+		B: LW_VZ, OFFSET 20 LEN 1 - steering angle sign
+		B: LW_INI, OFFSET 19 LEN 1 - Steering angle sensor: not initialized
+		B: LW_CF, OFFSET 18 LEN 1 - Steering angle sensor: Code error
+		B: LW_OV, OFFSET 17 LEN 1 - Steering angle sensor: overflow
+		B: LW_PA, OFFSET 16 LEN 1 - Steering angle parity (even parity)
+		I: LW, OFFSET 21 LEN 11 - steering angle
+
+LF_ABC
+	FRAME FS_340h (0x0340)
+		B: FM1, OFFSET 7 LEN 1 - Error 1: "Stop auto too low"
+		B: FM2, OFFSET 6 LEN 1 - Error 2: "wait briefly" (LF) / "steering oil" (only ABC)
+		B: FM3, OFFSET 5 LEN 1 - Error 3: "Go to workshop"
+		B: FM4, OFFSET 4 LEN 1 - Error 4: "Park vehicle"
+		B: M1, OFFSET 3 LEN 1 - Message 1: "Vehicle is lifting", BR164 / 251: "Highway-> Offroad", BR164 Offroad: "Highway-> Offroad1"
+		B: M2, OFFSET 2 LEN 1 - Message 2: "Level selection deleted"
+		B: NEDG, OFFSET 1 LEN 1 - level calibration carried out
+		B: ST3_LEDL_DL, OFFSET 15 LEN 1 - Left LED 3-stage switch permanent light (164/251 lower LED)
+		B: ST3_LEDL_BL, OFFSET 14 LEN 1 - Left LED 3-position switch, flashing light
+		B: ST3_LEDR_DL, OFFSET 13 LEN 1 - Right LED 3-stage switch permanent light (164/251 upper LED)
+		B: ST3_LEDR_BL, OFFSET 12 LEN 1 - Right LED 3-position switch, flashing light
+		B: ST2_LED_DL, OFFSET 11 LEN 1 - LED 2-stage switch permanent light
+		E: LOADED, OFFSET 9 LEN 2 - loading
+			RAW: 0 - Unloaded / EMPTY
+			RAW: 1 - Half Load / HALF
+			RAW: 2 - Fully Loaded / FULL
+			RAW: 3 - load not recognized / SNV
+		I: FZGN_VL, OFFSET 16 LEN 8 - vehicle level front left
+		I: FZGN_VR, OFFSET 24 LEN 8 - vehicle level front right
+		I: FZGN_HL, OFFSET 32 LEN 8 - vehicle level rear left
+		I: FZGN_HR, OFFSET 40 LEN 8 - vehicle level at the rear right
+		I: M_LAST, OFFSET 60 LEN 4 - Load torque ABC pump
+		E: FS_ID, OFFSET 56 LEN 3 - Identification of suspension control
+			RAW: 0 - air suspension / LF (BR164 / 251 NR without ADS) / LF
+			RAW: 1 - Semi-active air suspension, SLF (BR164 / 251 NR + ADS) / SLF
+			RAW: 2 - Electronic rear axle level control / EHNR
+			RAW: 3 - Active Body Control 1 / ABC
+	FRAME ABC_348h (0x0348)
+		I: FN_VL, OFFSET 0 LEN 8 - normal force front left wheel
+		I: FN_VR, OFFSET 8 LEN 8 - normal force front right wheel
+		I: FN_HL, OFFSET 16 LEN 8 - normal force rear left wheel
+		I: FN_HR, OFFSET 24 LEN 8 - normal force rear right wheel
+		I: WME_MAX, OFFSET 32 LEN 8 - Max. Adjustable roll torque increase
+		I: WMR_MAX, OFFSET 40 LEN 8 - Max.adjustable rolling moment reduction
+		I: WMVS_ABC, OFFSET 51 LEN 5 - target roll torque distribution
+		I: BZ348h, OFFSET 48 LEN 3 - message counter
+		I: ESM_AMP, OFFSET 57 LEN 7 - factor for amplitude extended EMS multi-value function
+		B: ESM_AKT, OFFSET 56 LEN 1 - Extended EMS value-added function active
+	FRAME D_RS_FS (0x078D)
+		I: D_RS, OFFSET 0 LEN 64 - KWP2000 diagnostic response
+	FRAME FS_APPL2 (0x063D)
+		I: APPL2, OFFSET 0 LEN 64 - application
+	FRAME FS_MESS1 (0x0650)
+		I: MESS1, OFFSET 0 LEN 64 - measured values
+	FRAME FS_MESS2 (0x0651)
+		I: MESS2, OFFSET 0 LEN 64 - measured values
+
+ART
+	FRAME ART_250h (0x0250)
+		B: DYN_UNT, OFFSET 7 LEN 1 - Suppression of dynamic full load downshift
+		B: BL_UNT, OFFSET 6 LEN 1 - brake light suppression
+		B: ART_BRE, OFFSET 5 LEN 1 - ART brakes
+		B: ART_OK, OFFSET 4 LEN 1 - ART ok
+		E: SLV_ART, OFFSET 0 LEN 4 - switching line shift ART
+			RAW: 0 - switching characteristic "0" / SKL0
+			RAW: 1 - switching characteristic "1" / SKL1
+			RAW: 2 - switching characteristic "2" / SKL2
+			RAW: 3 - switching characteristic "3" / SKL3
+			RAW: 4 - switching characteristic "4" / ​​SKL4
+			RAW: 5 - switching characteristic "5" / SKL5
+			RAW: 6 - switching characteristic "6" / SKL6
+			RAW: 7 - switching characteristic "7" / SKL7
+			RAW: 8 - switching characteristic "8" / SKL8
+			RAW: 9 - switching characteristic "9" / SKL9
+			RAW: 10 - switching characteristic "10" / SKL10
+		B: CAS_REG, OFFSET 10 LEN 1 - Cityassistent regulates
+		B: MDYN_ART, OFFSET 9 LEN 1 - Motor torque request dynamic
+		B: MPAR_ART, OFFSET 8 LEN 1 - Motor torque request parity (even parity)
+		B: ART_REG, OFFSET 18 LEN 1 - ART regulates
+		B: LIM_REG, OFFSET 17 LEN 1 - Limiter controls
+		I: M_ART, OFFSET 19 LEN 13 - Required. Engine torque
+		I: BZ250h, OFFSET 32 LEN 4 - message counter
+		I: MBRE_ART, OFFSET 36 LEN 12 - braking torque (0000h: passive value)
+		E: GMIN_ART, OFFSET 53 LEN 3 - target gear, lower limit
+			RAW: 0 - Passive value / PASSIVE
+			RAW: 1 - target gear, lower limit = 1 / G1
+			RAW: 2 - target gear, lower limit = 2 / G2
+			RAW: 3 - target gear, lower limit = 3 / G3
+			RAW: 4 - target gear, lower limit = 4 / G4
+			RAW: 5 - target gear, lower limit = 5 / G5
+			RAW: 6 - target gear, lower limit = 6 / G6
+			RAW: 7 - target gear, lower limit = 7 / G7
+		E: GMAX_ART, OFFSET 50 LEN 3 - target gear, upper limit
+			RAW: 0 - Passive value / PASSIVE
+			RAW: 1 - target gear, upper limit = 1 / G1
+			RAW: 2 - target gear, upper limit = 2 / G2
+			RAW: 3 - target gear, upper limit = 3 / G3
+			RAW: 4 - target gear, upper limit = 4 / G4
+			RAW: 5 - target gear, upper limit = 5 / G5
+			RAW: 6 - target gear, upper limit = 6 / G6
+			RAW: 7 - target gear, upper limit = 7 / G7
+		B: AKT_R_ART, OFFSET 48 LEN 1 - ART request: "Active downshift"
+	FRAME ART_258h (0x0258)
+		E: ART_ERR, OFFSET 4 LEN 4 - ART error code
+			RAW: 0 - No error present / OK
+			RAW: 1 - ART disorder; Sensor dirty / DIRT
+			RAW: 2 - ART defective / ART_DEF
+			RAW: 3 - ART / LIM defective / ART_LIM_DEF
+			RAW: 4 - ART; external fault / EXT
+			RAW: 5 - DBC defective / DBC_DEF
+			RAW: 6 - ART disorder; Sensor dirty and DBC defective / SCHMUTZ_DBC_DEF
+			RAW: 7 - ART and DBC defective / ART_DBC_DEF
+			RAW: 8 - ART / LIM and DBC defective / ART_LIM_DBC_DEF
+			RAW: 9 - ART external fault and DBC defective / EXT_DBC
+			RAW: 15 - undefined
+		B: ART_INFO, OFFSET 3 LEN 1 - ART info lamp
+		B: ART_WT, OFFSET 2 LEN 1 - ART warning tone
+		B: S_OBJ, OFFSET 1 LEN 1 - Detection of stationary object
+		B: ART_DSPL_EIN, OFFSET 0 LEN 1 - Switch display to ART display
+		I: V_ART, OFFSET 8 LEN 8 - set ART speed
+		I: ABST_R_OBJ, OFFSET 16 LEN 8 - Distance relevant object
+		I: SOLL_ABST, OFFSET 24 LEN 8 - driver's desired distance
+		B: TM_EIN_ART, OFFSET 39 LEN 1 - ART-Tempomat switched on
+		B: ART_DSPL_BL, OFFSET 38 LEN 1 - speed display flashing
+		B: ART_SEG_EIN, OFFSET 37 LEN 1 - Switch on ART segment display
+		B: OBJ_ERK, OFFSET 36 LEN 1 - Relevant object recognized
+		B: ART_EIN, OFFSET 35 LEN 1 - Adaptive cruise control switched on
+		B: ART_DSPL_LIM, OFFSET 34 LEN 1 - Indication "---" on the display
+		B: ART_VFBR, OFFSET 33 LEN 1 - Indication "DTR AUS [0]" on the display
+		B: ART_DSPL_PGB, OFFSET 32 LEN 1 - "Winter tire limit reached" on the display
+		I: V_ZIEL, OFFSET 40 LEN 8 - speed of detected target vehicle
+		B: ART_ABW_AKT, OFFSET 51 LEN 1 - ART distance warning is switched on
+		B: ART_REAKT, OFFSET 50 LEN 1 - Display of the system availability after system errors
+		B: ART_UEBERSP, OFFSET 49 LEN 1 - ART is overwritten by the driver
+		B: ART_DSPL_NEU, OFFSET 48 LEN 1 - Re-trigger the minimum display time
+	FRAME D_RS_ART (0x078F)
+		I: D_RS, OFFSET 0 LEN 64 - KWP2000 diagnostic response
+	FRAME SD_RS_ART (0x0727)
+		I: SD_RS, OFFSET 0 LEN 64 - System diagnosis response
+	FRAME ART_APPL2 (0x0629)
+		I: APPL2, OFFSET 0 LEN 64 - application
+	FRAME ART_MESS1 (0x0690)
+		I: MESS1, OFFSET 0 LEN 64 - measured values
+	FRAME ART_MESS2 (0x0691)
+		I: MESS2, OFFSET 0 LEN 64 - measured values
+	FRAME ART_MESS3 (0x0692)
+		I: MESS3, OFFSET 0 LEN 64 - measured values
+	FRAME ART_MESS4 (0x0693)
+		I: MESS4, OFFSET 0 LEN 64 - measured values
+
+LWR
+	FRAME LWR_530h (0x0530)
+		B: LWR_M1, OFFSET 7 LEN 1 - Display message 1: "Cornering light defect! Drive to the workshop"
+		B: LWR_M2, OFFSET 6 LEN 1 - Display message 2: "Cornering light, replacement light activated!" (White)
+		B: LWR_M3, OFFSET 5 LEN 1 - Display message 3: "Cornering light currently not available" (white).
+		B: LWR_M4, OFFSET 4 LEN 1 - Display message 4: "Cornering light currently not available" (white / 5x flashing at 1Hz)
+		B: LWR_M5, OFFSET 3 LEN 1 - Display message 5: "Left cornering light"
+		B: LWR_M6, OFFSET 2 LEN 1 - Display message 6: "Right cornering light"
+		B: LWR_M7, OFFSET 1 LEN 1 - Display message 7: "Cornering light currently not available"
+		B: SUB_ABL_R, OFFSET 9 LEN 1 - Substitution of right low beam
+		B: SUB_ABL_L, OFFSET 8 LEN 1 - Substitution of left low beam
+	FRAME D_RS_LWR (0x0795)
+		I: D_RS, OFFSET 0 LEN 64 - KWP2000 diagnostic response
+	FRAME SD_RS_LWR (0x0730)
+		I: SD_RS, OFFSET 0 LEN 64 - System diagnosis response
+	FRAME LWR_MESS1 (0x0658)
+		I: MESS1, OFFSET 0 LEN 64 - measured values
+	FRAME LWR_MESS2 (0x0659)
+		I: MESS2, OFFSET 0 LEN 64 - measured values
+	FRAME LWR_MESS3 (0x065A)
+		I: MESS3, OFFSET 0 LEN 64 - measured values
+
+RGS_L
+	FRAME RGS_L_450h (0x0450)
+		E: PRESF_L_SVL, OFFSET 6 LEN 2 - Presafe adjustment seat front left
+			RAW: 0 - Presafe off / OFF
+			RAW: 1 - Approach presafe position / PRESAFE
+			RAW: 2 - go to starting position / BACK
+			RAW: 3 - not defined
+		E: PRESF_L_SHD, OFFSET 4 LEN 2 - Presafe adjustment for sliding / tilting roof
+			RAW: 0 - Presafe off / OFF
+			RAW: 1 - Approach presafe position / PRESAFE
+			RAW: 2 - go to starting position / BACK
+			RAW: 3 - not defined
+		B: PRESF_L_TGL, OFFSET 0 LEN 1 - Presafe toggle bit 40ms (1 / message)
+		E: PRESF_L_KI, OFFSET 14 LEN 2 - Presafe adjustment combination message
+			RAW: 0 - Presafe workshop message from / PRESF_WM_AUS
+			RAW: 1 - Presafe workshop message on / PRESF_WM_EIN
+			RAW: 2 - not defined / NDEF
+			RAW: 3 - undefined / NDEF
+	FRAME D_RS_RGS_L (0x07B3)
+		I: D_RS, OFFSET 0 LEN 64 - KWP2000 diagnostic response
+	FRAME RGS_L_MESS1 (0x0688)
+		I: MESS1, OFFSET 0 LEN 64 - measured values
+
+RGS_R
+	FRAME RGS_R_458h (0x0458)
+		E: PRESF_R_SVR, OFFSET 6 LEN 2 - Presafe adjustment seat front right
+			RAW: 0 - Presafe off / OFF
+			RAW: 1 - Approach presafe position / PRESAFE
+			RAW: 2 - go to starting position / BACK
+			RAW: 3 - not defined
+		E: PRESF_R_SHD, OFFSET 4 LEN 2 - Presafe adjustment, sliding / tilting roof
+			RAW: 0 - Presafe off / OFF
+			RAW: 1 - Approach presafe position / PRESAFE
+			RAW: 2 - go to starting position / BACK
+			RAW: 3 - not defined
+		B: PRESF_R_TGL, OFFSET 0 LEN 1 - Presafe toggle bit 40ms (1 / message)
+		E: PRESF_R_KI, OFFSET 14 LEN 2 - Presafe adjustment combined message
+			RAW: 0 - Presafe workshop message from / PRESF_WM_AUS
+			RAW: 1 - Presafe workshop message on / PRESF_WM_EIN
+			RAW: 2 - not defined / NDEF
+			RAW: 3 - undefined / NDEF
+	FRAME D_RS_RGS_R (0x07B5)
+		I: D_RS, OFFSET 0 LEN 64 - KWP2000 diagnostic response
+	FRAME RGS_R_MESS1 (0x068C)
+		I: MESS1, OFFSET 0 LEN 64 - measured values
+
+ 
+	FRAME ARCADE_A2 (0x0035)
+		B: CRASH_C, OFFSET 5 LEN 1 - frontal event 5
+		B: CRASH_F, OFFSET 2 LEN 1 - frontal event 2
+		B: CONF_CRASH, OFFSET 0 LEN 1 - Confirm bit for all crash events, toggling
+	FRAME GS_102h (0x0102)
+		I: GS_FBS, OFFSET 0 LEN 64 - FBS message to EZS (8 bytes)
+	FRAME BS_208h (0x0208)
+		E: SZS_NEU, OFFSET 9 LEN 2 - system status
+			RAW: 0 - system error / ERR
+			RAW: 1 - normal operation / NORM
+			RAW: 2 - Diagnosis / DIAG
+			RAW: 3 - Emissions test / EXHAUST
+	FRAME GS_218h (0x0218)
+		I: I_IST_GET, OFFSET 16 LEN 8 - actual translation (only with FCVT, otherwise actual / target gear)
+	FRAME LRW_236h (0x0236)
+		I: LRW, OFFSET 2 LEN 14 - steering wheel angle
+		I: VLRW, OFFSET 18 LEN 14 - steering wheel angular speed
+		E: LRWS_ST, OFFSET 38 LEN 2 - Steering wheel angle sensor status
+			RAW: 0 - steering wheel angle sensor ok / OK
+			RAW: 1 - Steering wheel angle sensor not initialized / INI
+			RAW: 2 - steering wheel angle sensor faulty / ERR
+			RAW: 3 - steering wheel angle sensor faulty and not initialized / ERR_INI
+		E: LRWS_ID, OFFSET 36 LEN 2 - Identification of the steering wheel angle sensor
+			RAW: 0 - LRW sensor can be initialized / INIT_PSBL
+			RAW: 1 - LRW sensor initializes itself / INIT_SELF
+			RAW: 2 - (LRW sensor must be initialized) / INIT_MUST
+			RAW: 3 - signal not available / SNV
+		I: BZ236h, OFFSET 32 LEN 4 - message counter
+		I: CRC236h, OFFSET 56 LEN 8 - CRC checksum byte 1 - 7 according to SAE J1850
+	FRAME MRM_238h (0x0238)
+		I: ART_ABSTAND, OFFSET 32 LEN 8 - distance factor
+	FRAME ZGW_248h (0x0248)
+		E: VG_MMI_S, OFFSET 56 LEN 2 - MMI transfer case
+			RAW: 0 - High Range (button: not pressed) / HI
+			RAW: 1 - Low Range (button: pressed) / LO
+			RAW: 2 - Neutral (button: not defined) / N
+			RAW: 3 - signal not available / SNV
+	FRAME PSM_3B4h (0x03B4)
+		B: PSM_ADR_AKT, OFFSET 2 LEN 1 - Working speed control active
+		B: PSM_ADR_TGL, OFFSET 1 LEN 1 - working speed control - toggle bit
+		B: PSM_ADR_PAR, OFFSET 0 LEN 1 - working speed control - parity bit
+		I: PSM_N_SOLL, OFFSET 8 LEN 16 - Motor target speed ADR
+		B: PSM_MOM_AKT, OFFSET 26 LEN 1 - torque limitation active
+		B: PSM_MOM_TGL, OFFSET 25 LEN 1 - torque limit - toggle bit
+		B: PSM_MOM_PAR, OFFSET 24 LEN 1 - torque limitation - parity bit
+		I: PSM_MOM_SOLL, OFFSET 27 LEN 13 - Maximum motor torque
+		B: PSM_DZ_AKT, OFFSET 42 LEN 1 - speed limitation active
+		B: PSM_DZ_TGL, OFFSET 41 LEN 1 - speed limitation - toggle bit
+		B: PSM_DZ_PAR, OFFSET 40 LEN 1 - speed limitation - parity bit
+		I: PSM_DZ_MAX, OFFSET 48 LEN 16 - maximum speed
+	FRAME PSM_3B8h (0x03B8)
+		B: PSM_V_AKT, OFFSET 2 LEN 1 - speed limit active
+		B: PSM_V_TGL, OFFSET 1 LEN 1 - speed limit - toggle bit
+		B: PSM_V_PAR, OFFSET 0 LEN 1 - speed limit - parity bit
+		I: PSM_V_SOLL, OFFSET 8 LEN 8 - speed limit
+		B: PSM_FPM_SP, OFFSET 20 LEN 1 - Disable accelerator pedal module
+		B: PSM_FERN_STOP, OFFSET 19 LEN 1 - Motor remote stop active
+		B: PSM_FERN_START, OFFSET 18 LEN 1 - Motor remote start active
+		B: PSM_DZ_TGL, OFFSET 17 LEN 1 - speed limitation - toggle bit
+		B: PSM_DZ_PAR, OFFSET 16 LEN 1 - speed limitation - parity bit
+	FRAME KLA_410h (0x0410)
+		B: M_KOMPTGL, OFFSET 6 LEN 1 - A / C compressor torque toggle
+		B: M_KOMPPAR, OFFSET 5 LEN 1 - A / C compressor torque parity (even parity)
+		B: SENDE_NEU, OFFSET 3 LEN 1 - Signal version compressor torque
+		I: M_KOMP_NEU, OFFSET 16 LEN 8 - A / C compressor torque new
+	FRAME VG_428h (0x0428)
+		E: VG_GANG, OFFSET 5 LEN 3 - Current gear transfer case
+			RAW: 0 - shift in progress / SH_IPG
+			RAW: 1 - off-road gear (low range) / LO
+			RAW: 2 - street gang (high range) / HI
+			RAW: 4 - neutral gear (not high or low range) / N
+			RAW: 7 - signal not available / SNV
+		B: SH_ABTD, OFFSET 4 LEN 1 - switching process aborted (shift aborted)
+		B: VG_ERR, OFFSET 2 LEN 1 - VG error (ECU failure detected)
+		B: VG_LOL, OFFSET 1 LEN 1 - Terrain information lamp (low lamp)
+		B: SH_IMP, OFFSET 0 LEN 1 - switching conditions not met (shift impossible)
+		E: ANFN_VG, OFFSET 14 LEN 2 - VG - insert request "N"
+			RAW: 0 - not defined
+			RAW: 1 - "Neutral" request / ANF_N
+			RAW: 2 - No requirement / IDLE
+			RAW: 3 - signal not available / SNV
+		B: ANFNTGL_VG, OFFSET 13 LEN 1 - VG - Anf. Insert "N" toggle 20ms (1 / message)
+		B: ANFNPAR_VG, OFFSET 12 LEN 1 - VG - insert request "N" Parity (even parity)
+	FRAME D_RS_DTR (0x04A0)
+		I: D_RS_DTR, OFFSET 0 LEN 64 - KWP2000 diagnostic response
+	FRAME D_RS_EHB (0x079B)
+		I: D_RS, OFFSET 0 LEN 64 - KWP2000 diagnostic response
+	FRAME D_RS_EHB2 (0x07B1)
+		I: D_RS, OFFSET 0 LEN 64 - KWP2000 diagnostic response
+	FRAME D_RS_ISM (0x049D)
+		I: D_RS, OFFSET 0 LEN 64 - KWP2000 diagnostic response
+	FRAME D_RS_UP28 (0x07A3)
+		I: D_RS, OFFSET 0 LEN 64 - KWP2000 diagnostic response
+	FRAME SD_RS_DTR (0x05A0)
+		I: SD_RS_DTR, OFFSET 0 LEN 64 - System diagnosis response
+	FRAME SD_RS_MRM (0x0729)
+		I: SD_RS_MRM, OFFSET 0 LEN 64 - System diagnosis response
+	FRAME APPL_SG_MS (0x074C)
+		I: APPL_SG_MS, OFFSET 0 LEN 64 - External application for control device
+	FRAME ART_APPL1 (0x0628)
+		I: APPL1, OFFSET 0 LEN 64 - application
+	FRAME BS_APPL1 (0x0634)
+		I: APPL1, OFFSET 0 LEN 64 - application
+	FRAME FS_APPL1 (0x063C)
+		I: APPL1, OFFSET 0 LEN 64 - application
+	FRAME MS_APPL1 (0x0630)
+		I: APPL1, OFFSET 0 LEN 64 - application
+	FRAME MS_APPL3 (0x06E0)
+		I: APPL3, OFFSET 0 LEN 64 - application
+	FRAME EZS_MESS2 (0x060F)
+		I: MESS2, OFFSET 0 LEN 64 - measured values
+	FRAME GS_HS1 (0x0501)
+		I: HS1, OFFSET 0 LEN 64 - manual control on the test bench
+	FRAME GS_HS2 (0x0502)
+		I: HS2, OFFSET 0 LEN 64 - manual control on the test bench
+	FRAME GS_HS3 (0x0503)
+		I: HS3, OFFSET 0 LEN 64 - manual control on the test bench
+	FRAME GS_HS4 (0x0504)
+		I: HS4, OFFSET 0 LEN 64 - manual control on the test bench
+	FRAME GS_HS5 (0x0505)
+		I: HS5, OFFSET 0 LEN 64 -
+	FRAME GS_HS6 (0x0506)
+		I: HS6, OFFSET 0 LEN 64 -
+
