@@ -4,6 +4,8 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 
+@ExperimentalStdlibApi
+@ExperimentalUnsignedTypes
 class IntentManager() : BroadcastReceiver() {
     override fun onReceive(context: Context?, intent: Intent?) {
         intent?.let {i ->

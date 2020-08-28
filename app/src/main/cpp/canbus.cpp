@@ -16,6 +16,7 @@ JNIEXPORT void JNICALL
 Java_com_rndash_mbheadunit_nativeCan_CanBusNative_destroy(JNIEnv *env, jobject thiz) {
     __android_log_print(ANDROID_LOG_DEBUG, LOG_TAG, "Native canbus shutdown!");
     thread_cancel = true; // Tells parser thread to quit
+    decoder->kombi->stopThread();
 }
 
 extern "C"
@@ -32,11 +33,14 @@ Java_com_rndash_mbheadunit_nativeCan_CanBusNative_sendBytesToBuffer(JNIEnv *env,
 extern "C"
 JNIEXPORT jbyteArray JNICALL
 Java_com_rndash_mbheadunit_nativeCan_CanBusNative_getSendFrame(JNIEnv *env, jobject thiz) {
-    if (!sendQueue.empty()) { // Queue has a frame to send
-        jbyteArray ret = env->NewByteArray(sizeof(CanFrame)); // Allocate a new jbyteArray
+    if (sendFrames.hasFrame()) { // Queue has a frame to send
+        CanFrame front = sendFrames.getFront();
+        jbyteArray ret = env->NewByteArray(12); // Allocate a new jbyteArray
         // Copy array content from first in queue
-        env->SetByteArrayRegion(ret, 0, sizeof(CanFrame), (jbyte*)&sendQueue.front());
-        sendQueue.pop(); // Pop the queue
+        env->SetByteArrayRegion(ret, 0, 1, (jbyte*)&front.busID);
+        env->SetByteArrayRegion(ret, 1, 2, (jbyte*)&front.id);
+        env->SetByteArrayRegion(ret, 3, 1, (jbyte*)&front.dlc);
+        env->SetByteArrayRegion(ret, 4, 8, (jbyte*)&front.data);
         return ret; // Return the populated array
     } else {
         return NULL; // No data, return empty jbytearray
@@ -45,6 +49,9 @@ Java_com_rndash_mbheadunit_nativeCan_CanBusNative_getSendFrame(JNIEnv *env, jobj
 
 void processFrames() {
     __android_log_print(ANDROID_LOG_DEBUG, "ParseThread", "Starting thread");
+    // Wake up KOMBI - Tell KOMBI AGW Is awake!
+    sendFrames.pushFrame({'B', 0x01A4, 0x08, 0x05, 0x05, 0x20, 0x02, 0x11, 0xC1});
+    sendFrames.pushFrame({'B', 0x01A4, 0x08, 0x05, 0x03, 0x20, 0x02, 0x11, 0xC3});
     CanFrame read = {0x00};
     while(!thread_cancel) {
         // Now check if we can read a canframe
@@ -78,4 +85,16 @@ void processFrames() {
 
 uint8_t strToInt(char x) {
     return (x >= 'A') ? (x - 'A' + 10) : (x - '0');
+}
+
+extern "C"
+JNIEXPORT void JNICALL
+Java_com_rndash_mbheadunit_nativeCan_KombiDisplay_setBodyAttrs(JNIEnv *env, jobject thiz, jbyte page, jbyte fmt, jstring text) {
+    const char* c = env->GetStringUTFChars(text, nullptr);
+    if (page == 0x03) {
+        decoder->kombi->audioPage.setBody(std::string(c), (uint8_t)fmt);
+    } else if (page == 0x05) {
+
+    }
+    env->ReleaseStringUTFChars(text, c);
 }

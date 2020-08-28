@@ -7,11 +7,44 @@
 
 #include <cstdlib>
 #include <cstring>
+#include <string>
 #include <android/log.h>
+#include <mutex>
+#include <queue>
 
 #define CANC 'C'
 #define CANB 'B'
 
+
+typedef struct {
+    char busID;
+    uint16_t id;
+    uint8_t dlc;
+    uint8_t data[8] __attribute__((aligned(8)));
+} CanFrame;
+
+class FrameQueue {
+public:
+    void pushFrame(CanFrame f) {
+        queueMutex.lock();
+        sendQueue.push(f);
+        queueMutex.unlock();
+    }
+    bool hasFrame() {
+        return sendQueue.size() != 0;
+    }
+    CanFrame getFront() {
+        CanFrame f;
+        queueMutex.lock();
+        f = sendQueue.front();
+        sendQueue.pop();
+        queueMutex.unlock();
+        return f;
+    }
+private:
+    std::queue<CanFrame> sendQueue; // Queue of frames to send to Arduino
+    std::mutex queueMutex;
+};
 
 class InvalidSizeException : public std::exception  {
 public:
@@ -28,13 +61,6 @@ private:
     int max;
     int requested;
 };
-
-typedef struct {
-    char busID;
-    uint16_t id;
-    uint8_t dlc;
-    uint8_t data[8] __attribute__((aligned(8)));
-} CanFrame;
 
 class ECUFrame {
 public:

@@ -1,6 +1,7 @@
 package com.rndash.mbheadunit.car
 
 import android.os.Looper
+import com.rndash.mbheadunit.nativeCan.KombiDisplay
 import com.rndash.mbheadunit.nativeCan.canB.KI_STAT
 import com.rndash.mbheadunit.nativeCan.canB.KOMBI_A5
 import java.security.Key
@@ -35,6 +36,7 @@ object KeyManager {
     private var page: KI_STAT by Delegates.observable(KI_STAT.RESERVED) { _, o, n ->
         if (o != n) {
             println("Cluster page: $n")
+            KombiDisplay.setPage(page.raw.toByte())
             simplePage = when(n) {
                 KI_STAT.RESERVED -> simplePage // Itself if reserved
                 KI_STAT.AUDIO -> PAGE.AUDIO

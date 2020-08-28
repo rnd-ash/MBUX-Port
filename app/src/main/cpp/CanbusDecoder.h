@@ -5,7 +5,7 @@
 #ifndef MERCEDES_UI_CANBUSDECODER_H
 #define MERCEDES_UI_CANBUSDECODER_H
 
-#include "ECUs/ECU.h"
+#include "kombiCom.h"
 #include <map>
 
 class InvalidBusException : public std::exception {
@@ -47,6 +47,7 @@ private:
 
 class CanbusDecoder {
 public:
+    CanbusDecoder();
     void processFrame(CanFrame* frame);
     // Database for CAN B
     CanDB canB;
@@ -71,6 +72,7 @@ public:
      * @return Nullptr if frame not found, else pointer to can frame
      */
     CanFrame* getFrame(char bus, int ecuAddr);
+    kombiCom* kombi;
 };
 
 

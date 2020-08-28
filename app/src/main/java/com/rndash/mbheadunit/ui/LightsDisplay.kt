@@ -9,6 +9,7 @@ import android.widget.Switch
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import com.rndash.mbheadunit.BTMusic
 import com.rndash.mbheadunit.CanFrame
 import com.rndash.mbheadunit.CarComm
 import com.rndash.mbheadunit.R
@@ -128,6 +129,7 @@ class LightsDisplay : Fragment() {
         }, 0, 250)
         PartyMode.startThread()
         controlThread.start()
+        BTMusic.setupSampler()
     }
 
 
@@ -135,11 +137,13 @@ class LightsDisplay : Fragment() {
         super.onPause()
         isInPage = false
         PartyMode.stopThread()
+        //BTMusic.tearDownSampler()
     }
 
     override fun onResume() {
         super.onResume()
         isInPage = true
         PartyMode.startThread()
+        BTMusic.setupSampler()
     }
 }

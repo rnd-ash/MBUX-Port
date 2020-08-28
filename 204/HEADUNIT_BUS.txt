@@ -1,0 +1,759 @@
+TGW
+	FRAME CONFIG_HU (0x035D)
+		E: Language_Rq, OFFSET 16 LEN 5 - Language request / language
+			RAW: 0 - German / GERMAN
+			RAW: 1 - English (imperial) / ENGLISH_IMP
+			RAW: 2 - French / FRENCH
+			RAW: 3 - Italian / ITALIAN
+			RAW: 4 - Spanish / SPANISH
+			RAW: 5 - Japanese / JAPANESE
+			RAW: 6 - English (metric) / ENGLISH_MET
+			RAW: 7 - Dutch / DUTCH
+			RAW: 8 - Danish / DANISH
+			RAW: 9 - Swedish / SWEDISH
+			RAW: 10 - Turkish / TURKISH
+			RAW: 11 - Portuguese / PORTUGUESE
+			RAW: 12 - Russian / RUSSIAN
+			RAW: 13 - Arabic / ARABIC
+			RAW: 14 - Chinese (simplified) / CHINESE
+			RAW: 15 - American English / ENGLISH_AM
+			RAW: 16 - Traditional Chinese (Taiwan, HK) / TRAD_CHINESE
+			RAW: 17 - Korean (Han 'Gul) / KOREAN
+			RAW: 18 - Finnish / FINNISH
+			RAW: 19 - Polish / POLISH
+			RAW: 31 - Signal not available / SNA
+	FRAME CTRL_C_RQ (0x01BB)
+		I: Detents_Rq, OFFSET 8 LEN 16 - Number of detents request / number of detents between the stops
+		I: StPosn_Rq, OFFSET 24 LEN 16 - Start position at activation request / start position on first activation
+		I: Local_Posn_Stat, OFFSET 40 LEN 16 - Local position in model state / actual position of the rotary actuator in the model
+		I: CTRL_C_Rq_Id, OFFSET 56 LEN 8 - Central control request ID / Central control element Request ID
+	FRAME CTRL_U_A2 (0x0015)
+		I: SwIllLvl, OFFSET 0 LEN 8 - Switch illumination level (Term.58d) / search lighting (Kl.58d) UNIT:%
+		E: DispBrt_IC, OFFSET 8 LEN 8 - Display brightness instrument cluster / Display brightness instrument cluster UNIT:%
+			RAW: 254 - Display lighting on (bright day value) / DISP_LGT_ON
+			RAW: 255 - Signal not available / SNA
+	FRAME EIS_A1 (0x0001)
+		E: ISw_Stat, OFFSET 5 LEN 3 - Ignition switch state / terminal status
+			RAW: 0 - Ignition lock (0) / IGN_LOCK
+			RAW: 1 - Ignition off (15c) / IGN_OFF
+			RAW: 2 - Ignition accessory (15r) / IGN_ACC
+			RAW: 4 - Ignition on (15) / IGN_ON
+			RAW: 5 - Ignition start (50) / IGN_START
+			RAW: 7 - Signal not available / SNA
+		B: Ign_On_StProc_Inact, OFFSET 4 LEN 1 - Ignition is on and starting procedure is inactive (15x) / ignition on / engine start off
+		B: TxPkPosn_Rq, OFFSET 3 LEN 1 - Transmission parking position request / EIS request: insert "P"
+		B: TxPkPosn_Emg_Rq, OFFSET 2 LEN 1 - Transmission parking position emergency request / emergency "P" request
+		B: TxPkPosnAuto_Enbl, OFFSET 1 LEN 1 - Transmission parking position auto enable / Auto- "P" enabled
+		B: TxPkPosn_Rq_SBC_Enbl, OFFSET 0 LEN 1 - Transmission parking position request enable / SBC request: "P" insert allowed
+		B: KG_IgnCtrl_Actv, OFFSET 15 LEN 1 - Keyless Go ignition control active / Keyless Go terminal control active
+		B: EngSt_Enbl_Rq_KG, OFFSET 14 LEN 1 - Enable engine start request / Keyles Go Starting conditions fulfilled
+		B: KG_StSw_Psd, OFFSET 13 LEN 1 - Keyless Go start switch pressed / Keyless Go start button pressed
+		E: AutoDrLk_Rq_Src, OFFSET 8 LEN 2 - Automatic door lock request source / source of the automatic door lock request
+			RAW: 0 - not defined / NDEF0
+			RAW: 1 - Source is central locking system inside switch / CLKS_INSD_SW
+			RAW: 2 - Source is settings menu / MENU
+			RAW: 3 - Signal not available / SNA
+		E: AutoDrLk_Stat, OFFSET 18 LEN 2 - Automatic door lock state / Status of automatic door lock
+			RAW: 0 - Off / OFF
+			RAW: 1 - On / ON
+			RAW: 2 - not defined / NDEF2
+			RAW: 3 - Signal not available / SNA
+		E: SPCR_Conf_EIS, OFFSET 30 LEN 2 - Stop coordinator configuration / configuration of standstill coordinator
+			RAW: 0 - Not configured / NOT_CONF
+			RAW: 1 - Configured for hold without shift by wire (warning strategy) / HOLD_NO_SBW
+			RAW: 2 - Configured for hold with shift by wire (immobilizing strategy) / HOLD_AND_SBW
+			RAW: 3 - Signal not available / SNA
+		E: CLkS_DL_Stat, OFFSET 26 LEN 2 - Central locking system deck lid state / ZV status trunk lid
+			RAW: 0 - not defined / NDEF0
+			RAW: 1 - Locked / LOCK
+			RAW: 2 - Unlocked / UNLOCK
+			RAW: 3 - Signal not available / SNA
+		E: CLkS_Gas_Dr_Stat, OFFSET 24 LEN 2 - Central locking system gas door state / ZV status tank flap
+			RAW: 0 - not defined / NDEF0
+			RAW: 1 - Locked / LOCK
+			RAW: 2 - Unlocked / UNLOCK
+			RAW: 3 - Signal not available / SNA
+		E: CLkS_Dr_FL_Stat, OFFSET 38 LEN 2 - Central locking system door front left state / ZV status door front left
+			RAW: 0 - not defined / NDEF0
+			RAW: 1 - Locked / LOCK
+			RAW: 2 - Unlocked / UNLOCK
+			RAW: 3 - Signal not available / SNA
+		E: CLkS_Dr_FR_Stat, OFFSET 36 LEN 2 - Central locking system door front right state / ZV status door front right
+			RAW: 0 - not defined / NDEF0
+			RAW: 1 - Locked / LOCK
+			RAW: 2 - Unlocked / UNLOCK
+			RAW: 3 - Signal not available / SNA
+		E: CLkS_Dr_RL_Stat, OFFSET 34 LEN 2 - Central locking system door rear left state / ZV status door rear left
+			RAW: 0 - not defined / NDEF0
+			RAW: 1 - Locked / LOCK
+			RAW: 2 - Unlocked / UNLOCK
+			RAW: 3 - Signal not available / SNA
+		E: CLkS_Dr_RR_Stat, OFFSET 32 LEN 2 - Central locking system door rear right state / ZV status door rear right
+			RAW: 0 - not defined / NDEF0
+			RAW: 1 - Locked / LOCK
+			RAW: 2 - Unlocked / UNLOCK
+			RAW: 3 - Signal not available / SNA
+		B: KeyLine1_Appr, OFFSET 47 LEN 1 - Keyline 1 approved for Keyless Go / Schlüssellinie 1 approved for KG
+		B: KeyLine2_Appr, OFFSET 46 LEN 1 - Keyline 2 approved for Keyless Go / Schlüssellinie 2 approved for KG
+		B: KeyLine3_Appr, OFFSET 45 LEN 1 - Keyline 3 approved for Keyless Go / Schlüssellinie 3 approved for KG
+		B: KeyLine4_Appr, OFFSET 44 LEN 1 - Keyline 4 approved for Keyless Go / Schlüssellinie 4 approved for KG
+		B: KeyLine5_Appr, OFFSET 43 LEN 1 - Keyline 5 approved for Keyless Go / Schlüssellinie 5 approved for KG
+		B: KeyLine6_Appr, OFFSET 42 LEN 1 - Keyline 6 approved for Keyless Go / Schlüssellinie 6 approved for KG
+		B: KeyLine7_Appr, OFFSET 41 LEN 1 - Keyline 7 approved for Keyless Go / Schlüssellinie 7 approved for KG
+		B: KeyLine8_Appr, OFFSET 40 LEN 1 - Keyline 8 approved for Keyless Go / Schlüssellinie 8 approved for KG
+		E: CLkS_Lk_Stat3, OFFSET 53 LEN 3 - Central locking system lock state / state of central locking
+			RAW: 0 - Vehicle Unlocked / UNLK
+			RAW: 1 - Vehicle internal locked / INT_LK
+			RAW: 2 - Vehicle external locked / EXT_LK
+			RAW: 3 - Vehicle selective unlocked / SEL_UNLK
+			RAW: 7 - Signal not available / SNA
+		B: SPCR_AcustWarn_Rq_EIS, OFFSET 52 LEN 1 - SPCR acoustical warning request / acoustic warning SPCR
+		I: MC_EIS_A1, OFFSET 48 LEN 4 - Message counter / message counter
+		I: CRC_EIS_A1, OFFSET 56 LEN 8 - CRC-checksum byte 1 to 7 according to SAE J1850 / CRC-checksum byte 1 - 7 according to SAE J1850
+	FRAME IC_A1 (0x019F)
+		I: Vprzr_DryVnTmr_Stat, OFFSET 2 LEN 2 - Vaporizer dry ventilation timer state / evaporator dry ventilation state timer
+		I: VehSpd_Disp, OFFSET 4 LEN 12 - Displayed vehicle speed (without attenuation) / displayed speed (without pointer damping) UNIT: km / h
+		I: AirTemp_Outsd_Disp, OFFSET 16 LEN 8 - Displayed outside air temperature / displayed outside air temperature UNIT: ° C
+		E: HiBm_Enbl, OFFSET 26 LEN 2 - High beam enable / enable high beam
+			RAW: 0 - Disable / DSABL
+			RAW: 1 - Enable / ENBL
+			RAW: 2 - not defined / NDEF2
+			RAW: 3 - Signal not available / SNA
+		E: PTS_Disp_Stat_IC, OFFSET 24 LEN 2 - PTS display state from IC / PTS display state
+			RAW: 0 - No error / OK
+			RAW: 1 - Timeout / TIMEOUT
+			RAW: 2 - Fatal error / FATAL
+			RAW: 3 - Signal not available / SNA
+		I: EngShutOffTm, OFFSET 28 LEN 12 - Engine shut-off time UNIT: min
+		I: Odo, OFFSET 40 LEN 24 - Odometer (for everyone, FFFFFEh: Signal invalid) / Mileage (for everyone, FFFFFEh: Signal invalid) UNIT: km
+	FRAME LGTSENS_A1 (0x0025)
+		I: LgtSens_Twlgt, OFFSET 5 LEN 3 - Twilight state light sensor / twilight levels light sensor UNIT: Steps
+		B: ADL_TlLmp_On_Rq, OFFSET 4 LEN 1 - Tail lamps on request by automatic driving light / AFL request: Switch on tail lights
+		B: LgtSens_Tunnel, OFFSET 3 LEN 1 - Light sensor "tunnel" detected / light sensor: tunnel recognized
+		B: LgtSens_Flt, OFFSET 2 LEN 1 - Light sensor fault / light sensor defective
+		B: LgtSens_Night, OFFSET 1 LEN 1 - Light sensor detects night mode / light sensor actual value
+		B: ADL_LoBm_On_Rq, OFFSET 0 LEN 1 - Low beam on request by automatic driving light / AFL request: switch on low beam
+		B: LgtSens_SNA, OFFSET 15 LEN 1 - Light sensor information not available / values ​​from light sensor not available
+		B: LgtSens_Night2, OFFSET 13 LEN 1 - Light sensor detects night mode 2 / light sensor second threshold for displays
+	FRAME PN14_STAT (0x0205)
+		B: PN14_BackupBat_Flt, OFFSET 5 LEN 1 - Backup battery fault / backup battery faulty
+		B: PN14_RemPerm, OFFSET 3 LEN 1 - Remote functions permission / remote control functions allowed
+		B: PN14_RevBltTns_Off_Rq, OFFSET 2 LEN 1 - Reversible belt tensioner off request / switch off belt tensioner
+		B: PN14_SBC_Add_Off_Rq, OFFSET 1 LEN 1 - SBC additional value off request / switch off SBC added value
+		I: PN14_SupBat_Volt, OFFSET 8 LEN 8 - Supply battery voltage / supply battery actual voltage UNIT: V
+		I: PN14_SupBatCutSw_Stat, OFFSET 22 LEN 2 - Supply battery cutoff switch state / status of battery isolating switch
+		B: PN14_GM1_Actv, OFFSET 21 LEN 1 - Generator management activated / Generator management activated
+		B: PN14_GM1_Avl, OFFSET 20 LEN 1 - Generator management available, ready for activation / Generator Management available and can be activated
+		E: PN14_AS_Off_Rq, OFFSET 30 LEN 2 - Assistance system off request / request assistance system off
+			RAW: 0 - No request, supply battery state of charge ok / IDLE
+			RAW: 1 - Assistance system forbid request / AS_FORBID
+			RAW: 2 - Assistance system cancel request / AS_CANCEL
+			RAW: 3 - Signal not available / SNA
+		E: SPCR_Flt_PN14, OFFSET 28 LEN 2 - Stop coordinator fault detected by PN14 / PN14 has detected a standstill coordinator fault
+			RAW: 0 - No fault detected / OK
+			RAW: 1 - Fault detected / FLT
+			RAW: 2 - not defined / NDEF2
+			RAW: 3 - Signal not available / SNA
+		B: PN14_LHC_Actv, OFFSET 24 LEN 1 - 14 V powernet limp-home cutoff active / 14V-BN emergency shutdown active
+		B: LHC_PTC6_Rq, OFFSET 39 LEN 1 - Limp-home cutoff PTC 6th branch request / emergency shutdown PTC 6th branch
+		B: LHC_PTC5_Rq, OFFSET 38 LEN 1 - Limp-home cutoff PTC 5th branch request / emergency shutdown PTC 5th branch
+		B: LHC_PTC4_Rq, OFFSET 37 LEN 1 - Limp-home cutoff PTC 4th branch request / emergency shutdown PTC 4th branch
+		B: LHC_PTC3_Rq, OFFSET 36 LEN 1 - Limp-home cutoff PTC 3rd branch request / emergency shutdown PTC 3rd branch
+		B: LHC_PTC2_Rq, OFFSET 35 LEN 1 - Limp-home cutoff PTC 2nd branch request / emergency shutdown PTC 2nd branch
+		B: LHC_PTC1_Rq, OFFSET 34 LEN 1 - Limp-home cutoff PTC 1st branch request / emergency shutdown PTC 1st branch
+		B: LHC_IntFan_R_50_Rq, OFFSET 33 LEN 1 - Limp-home cutoff rear interior fan to 50% request / emergency shutdown rear interior fan to 50%
+		B: LHC_IntFan_F_50_Rq, OFFSET 32 LEN 1 - Limp-home cutoff front interior fan to 50% request / emergency shutdown of front interior fan to 50%
+		B: LHC_DSH_Stg2_Rq, OFFSET 47 LEN 1 - Limp-home cutoff door surface heating stage 2 request / emergency shutdown door surface heating stage 2
+		B: LHC_DSH_Stg1_Rq, OFFSET 46 LEN 1 - Limp-home cutoff door surface heating stage 1 request / emergency shutdown door surface heating stage 1
+		B: LHC_SeatHtStg3_Rq, OFFSET 45 LEN 1 - Limp-home cutoff seat heating stage 3 request / emergency shutdown seat heating stage 3
+		B: LHC_SeatHtStg2_Rq, OFFSET 44 LEN 1 - Limp-home cutoff seat heating stage 2 request / emergency shutdown seat heating stage 2
+		B: LHC_SeatHtStg1_Rq, OFFSET 43 LEN 1 - Limp-home cutoff seat heating stage 1 request / emergency shutdown seat heating stage 1
+		B: LHC_SeatVn_Rq, OFFSET 42 LEN 1 - Limp-home cutoff seat ventilation request / emergency shutdown seat ventilation
+		B: LHC_Tlm_Rq, OFFSET 41 LEN 1 - Limp-home cutoff Telematics / Audio / Phone / GPS request / Emergency shutdown Telematik / Audio / Telephone / GPS
+		B: LHC_TrlrSock_Rq, OFFSET 40 LEN 1 - Limp-home cutoff trailer socket request / emergency shutdown trailer socket
+		B: LHC_WprPkHt_Rq, OFFSET 55 LEN 1 - Limp-home cutoff wiper park position heater request / emergency shutdown wiper rest heater
+		B: LHC_EBL_Rq, OFFSET 54 LEN 1 - Limp-home cutoff electric backlite heater request / emergency shutdown rear window heater
+		B: LHC_StW_Ht_Rq, OFFSET 53 LEN 1 - Limp-home cutoff steering wheel heater request / emergency shutdown of steering wheel heating
+		B: LHC_WShHt_Rq, OFFSET 52 LEN 1 - Limp-home cutoff windshield heater request / emergency shutdown of windshield heater
+		B: LHC_MirrHt_Rq, OFFSET 51 LEN 1 - Limp-home cutoff mirror heater Request / emergency shutdown of exterior mirror heating
+		B: LHC_CoolBox_R_Rq, OFFSET 50 LEN 1 - Limp-home cutoff rear cooler box request / emergency shutdown of the rear cooler box
+		B: LHC_EngFan_50_Rq, OFFSET 49 LEN 1 - Limp-home cutoff engine fan to 50% request / emergency shutdown of motor fan to 50%
+		B: LHC_FogLmp_Ft_Rq, OFFSET 48 LEN 1 - Limp-home cutoff fog lamps front request / emergency shutdown fog lamps
+		B: LHC_TrkSock_Rq, OFFSET 63 LEN 1 - Limp-home cutoff trunk socket / cigarette lighter request / emergency shutdown trunk socket / cigar lighter
+		B: LHC_ComfLmp_Rq, OFFSET 62 LEN 1 - Limp-home cutoff comfort lamps request / emergency shutdown for comfort lamps
+		B: LHC_RHU_Rq, OFFSET 61 LEN 1 - Limp-home cutoff residual heat utilization request / emergency shutdown of residual heat utilization
+		B: LHC_ICH_Rq, OFFSET 60 LEN 1 - Limp-home cutoff independant car heater request / emergency shutdown of parking heater
+		B: PN14_LHC_Taxi_Rq, OFFSET 59 LEN 1 - Limp-home cutoff taxi roofsign / printer request / emergency shutdown taxi roof sign
+	FRAME TGW_DISP_C (0x01EE)
+		I: DispBrt_HU_V2, OFFSET 0 LEN 8 - Display brightness headunit / Display brightness headunit UNIT:%
+		B: DISP_C_On_Rq, OFFSET 23 LEN 1 - Central display request / display on / off
+		B: DISP_C_BackLgt_Rq, OFFSET 22 LEN 1 - Central display backlight request / request for background lighting of the central display
+	FRAME TGW_DISP_CTL (0x0384)
+		E: DISP_C_OpnCls_Rq, OFFSET 22 LEN 2 - Central Display Open / Close Request / Open / close central display
+			RAW: 0 - not defined / NDEF0
+			RAW: 1 - Open / OPN
+			RAW: 2 - Close / CLS
+			RAW: 3 - Signal not available / SNA
+	FRAME TGW_RSE (0x0215)
+		I: TGW_TrackTmHour, OFFSET 8 LEN 8 - Track time hour / track time hour UNIT: h
+		I: TGW_TrackTmMinute, OFFSET 16 LEN 8 - Track time minute / track time minute UNIT: min
+		I: TGW_TrackTmSecond, OFFSET 24 LEN 8 - Track time second UNIT: s
+		I: TGW_TrackHdl, OFFSET 32 LEN 8 - Track Handle / Track Handle
+		E: HU_RSE_Src, OFFSET 40 LEN 8 - Active HU entertainment source for RSE / Active head unit source for RSE
+			RAW: 0 - Not active / NOT_ACTV
+			RAW: 1 - Radio FM / RADIO_FM
+			RAW: 2 - Radio AM / RADIO_AM
+			RAW: 3 - Radio HD / RADIO_HD
+			RAW: 4 - Radio WB / RADIO_WB
+			RAW: 5 - DAB / DAB
+			RAW: 6 - SDARS / SDARS
+			RAW: 7 - Compressed Audio / COMP_AUDIO
+			RAW: 8 - CD Audio / CD_AUDIO
+			RAW: 9 - DVD Audio / DVD_AUDIO
+			RAW: 10 - DVD Video / DVD_VIDEO
+			RAW: 255 - Signal not available / SNA
+	FRAME TGW_STAT (0x0146)
+		E: TGW_Rout_Stat, OFFSET 6 LEN 2 - TGW routing status / TGW routing status
+			RAW: 0 - Source CAN active / ACTIVE
+			RAW: 1 - Source CAN inactive, disable timeout monitoring / DSABL_TO_MON
+			RAW: 2 - not defined / NDEF2
+			RAW: 3 - not defined / NDEF3
+	FRAME NM_TGW (0x040A)
+		E: NM_Mode, OFFSET 0 LEN 8 - Network management mode / network management mode
+			RAW: 252 - Limp-home mode / LHOM
+			RAW: 253 - Ring mode / RING
+			RAW: 254 - Alive mode / ALIVE
+			RAW: 255 - Signal not available / SNA
+		I: NM_Successor, OFFSET 8 LEN 8 - Network management logical successor / network management logical successor
+		E: NM_Ud_Launch, OFFSET 18 LEN 6 - Network management user data launch type / network management user data transmission type
+			RAW: 4 - Broadcast or Start Alive / BROADCAST
+			RAW: 63 - Signal not available / SNA
+		B: NM_Sleep_Ack, OFFSET 17 LEN 1 - Network management sleep acknowledge / Netzmanagement Sleep Acknowledge
+		B: NM_Sleep_Ind, OFFSET 16 LEN 1 - Network management sleep indication / Netzmanagement Sleep Indication
+		E: NM_Ud_Srv, OFFSET 24 LEN 8 - Network management userdata service no./Netzmanagement Userdaten-Service
+			RAW: 1 - User data transmission ok (broadcast) / DATA_OK_BC
+			RAW: 2 - Wakeup status (start alive) / WAKEUP_SA
+			RAW: 5 - System basis chip status (broadcast) / SBC_STAT_BC
+			RAW: 15 - Stay awake reason (broadcast) / AWAKE_BC
+			RAW: 255 - Signal not available / SNA
+		B: Awake_NwSt, OFFSET 39 LEN 1 - Stay awake for network startup
+		B: Awake_Diag_Actv, OFFSET 38 LEN 1 - Stay awake for diagnostics active
+		B: Awake_DataExchg_Actv, OFFSET 35 LEN 1 - Stay awake for data exchange active / keep awake for data exchange active
+		B: Awake_TGW_Actv, OFFSET 34 LEN 1 - Stay awake for telematic gateway active / keep awake for telematic gateway active
+		I: WakeupCnt, OFFSET 40 LEN 8 - Counter for module wakeup states during network sleep / counter for control units internal wake states during bus idle
+		E: Nw_Id, OFFSET 56 LEN 8 - Network identification no./Netzwerk-ID
+			RAW: 4 - Backbone CAN / BACKBONE
+			RAW: 5 - Diagnostics-CAN / DIAGNOSTICS
+			RAW: 6 - Body-CAN / BODY
+			RAW: 7 - Chassis CAN / CHASSIS
+			RAW: 8 - Powertrain-CAN / POWERTRAIN
+			RAW: 9 - Powertrain Sensor-CAN / PT_SENSOR
+			RAW: 11 - Dynamics-CAN / DYNAMICS
+			RAW: 14 - Headunit-CAN / HEADUNIT
+			RAW: 15 - Impact-CAN / IMPACT
+			RAW: 16 - Multipurpose-CAN / MULTIPURPOSE
+			RAW: 255 - Signal not available / SNA
+	FRAME D_RQ_AVS (0x0763)
+		I: D_RQ_AVS, OFFSET 0 LEN 64 - Diagnostic Request / Diagnostic Request
+	FRAME D_RQ_CTRL_C (0x0743)
+		I: D_RQ_CTRL_C, OFFSET 0 LEN 64 - Diagnostic Request / Diagnostic Request
+	FRAME D_RQ_DISP_C (0x0753)
+		I: D_RQ_DISP_C, OFFSET 0 LEN 64 - Diagnostic Request / Diagnostic Request
+	FRAME D_RQ_DISP_CTL (0x0793)
+		I: D_RQ_DISP_CTL, OFFSET 0 LEN 64 - Diagnostic Request / Diagnostic Request
+	FRAME D_RQ_DISP_RL (0x06D9)
+		I: D_RQ_DISP_RL, OFFSET 0 LEN 64 - Diagnostic Request / Diagnostic Request
+	FRAME D_RQ_DISP_RR (0x06F9)
+		I: D_RQ_DISP_RR, OFFSET 0 LEN 64 - Diagnostic Request / Diagnostic Request
+	FRAME D_RQ_TVT (0x078B)
+		I: D_RQ_TVT, OFFSET 0 LEN 64 - Diagnostic Request / Diagnostic Request
+	FRAME DG_RQ_GLOBAL (0x0440)
+		I: DG_RQ_GLOBAL, OFFSET 0 LEN 64 - Functional Diagnostic Request (KWP2000) / Functional Diagnostic Request (KWP2000)
+	FRAME DG_RQ_GLOBAL_UDS (0x0441)
+		I: DG_RQ_GLOBAL_UDS, OFFSET 0 LEN 64 - Functional Diagnostic Request (UDS) / Functional Diagnostic Request (UDS)
+	FRAME TP_TGW_DISP_RL_CTRL4 (0x0329)
+		I: TP_TGW_DISP_RL_CTRL, OFFSET 0 LEN 64 - Transport protocol control TGW to DISP_RL / Transport protocol control TGW to DISP_RL
+	FRAME TP_TGW_DISP_RL_DATA4 (0x0330)
+		I: TP_TGW_DISP_RL_DATA, OFFSET 0 LEN 64 - Transport protocol data TGW to DISP_RL / Transport protocol data TGW to DISP_RL
+	FRAME TP_TGW_DISP_RR_CTRL4 (0x032B)
+		I: TP_TGW_DISP_RR_CTRL, OFFSET 0 LEN 64 - Transport protocol control TGW to DISP_RR / Transport protocol control TGW to DISP_RR
+	FRAME TP_TGW_DISP_RR_DATA4 (0x0332)
+		I: TP_TGW_DISP_RR_DATA, OFFSET 0 LEN 64 - Transport protocol data TGW to DISP_RR / Transport protocol data TGW to DISP_RR
+	FRAME SG_APPL_TGW (0x050A)
+		I: SG_APPL_TGW, OFFSET 0 LEN 64 - ECU to external application / control device to external application
+
+CTRL_C
+	FRAME CTRL_C_A1 (0x00FD)
+		B: ReturnKey_Psd, OFFSET 6 LEN 1 - Return key pressed / Return key pressed
+		B: MCMS_MenuKey_Psd, OFFSET 5 LEN 1 - Multi contour seat menu key pressed / entry key multi contour seat pressed
+		B: DeleteKey_Psd, OFFSET 2 LEN 1 - Delete key pressed / delete key pressed
+		B: StarKey_Psd, OFFSET 1 LEN 1 - Start key pressed / star key pressed
+		B: CTRL_C_C_Psd, OFFSET 8 LEN 1 - Central control central pressed / Central operating element operated centrally
+		B: CTRL_C_N_Psd, OFFSET 23 LEN 1 - Central control North pressed / Central control element pressed to NORTH
+		B: CTRL_C_NE_Psd, OFFSET 22 LEN 1 - Central control NorthEast pressed / Central control element to NORTHEAST pressed
+		B: CTRL_C_E_Psd, OFFSET 21 LEN 1 - Central control East pressed / Central control element pressed to the East
+		B: CTRL_C_SE_Psd, OFFSET 20 LEN 1 - Central control SouthEast pressed / Central control element to SOUTH EAST pressed
+		B: CTRL_C_S_Psd, OFFSET 19 LEN 1 - Central control South pressed / Central control element pressed to the SOUTH
+		B: CTRL_C_SW_Psd, OFFSET 18 LEN 1 - Central control SouthWest pressed / Central operating element pressed to SOUTHWEST
+		B: CTRL_C_W_Psd, OFFSET 17 LEN 1 - Central control West pressed / Central control element pressed to WEST
+		B: CTRL_C_NW_Psd, OFFSET 16 LEN 1 - Central control NorthWest pressed / Central operating element pressed to NORDWEST
+	FRAME CTRL_C_A3 (0x00FB)
+		I: Detents_Stat, OFFSET 8 LEN 16 - Number of detents state / Status Number of detents between the stops
+		I: StPosn_Stat, OFFSET 24 LEN 16 - Start position at activation state / Status start position at first activation
+		I: Local_Posn_Rq, OFFSET 40 LEN 16 - Local position in model request / target position rotary actuator in the model
+		I: CTRL_C_Stat_Id, OFFSET 56 LEN 8 - Central control state ID / Central control element Status ID
+	FRAME ECU_INFO_CTRL_C (0x0609)
+		I: ECU_INFO_CTRL_C_MsgPart, OFFSET 6 LEN 2 - ECU Info message part / ECU Info signal part number
+		I: ECU_INFO_CTRL_C_DiagProt, OFFSET 2 LEN 2 - ECU Info diagnostic protocol / ECU Info diagnostic protocol
+		I: ECU_DATA_CTRL_C, OFFSET 8 LEN 56 - ECU info / control unit data
+	FRAME NM_CTRL_C (0x0428)
+		E: NM_Mode, OFFSET 0 LEN 8 - Network management mode / network management mode
+			RAW: 252 - Limp-home mode / LHOM
+			RAW: 253 - Ring mode / RING
+			RAW: 254 - Alive mode / ALIVE
+			RAW: 255 - Signal not available / SNA
+		I: NM_Successor, OFFSET 8 LEN 8 - Network management logical successor / network management logical successor
+		E: NM_Ud_Launch, OFFSET 18 LEN 6 - Network management user data launch type / network management user data transmission type
+			RAW: 4 - Broadcast or Start Alive / BROADCAST
+			RAW: 63 - Signal not available / SNA
+		B: NM_Sleep_Ack, OFFSET 17 LEN 1 - Network management sleep acknowledge / Netzmanagement Sleep Acknowledge
+		B: NM_Sleep_Ind, OFFSET 16 LEN 1 - Network management sleep indication / Netzmanagement Sleep Indication
+		E: NM_Ud_Srv, OFFSET 24 LEN 8 - Network management userdata service no./Netzmanagement Userdaten-Service
+			RAW: 1 - User data transmission ok (broadcast) / DATA_OK_BC
+			RAW: 2 - Wakeup status (start alive) / WAKEUP_SA
+			RAW: 5 - System basis chip status (broadcast) / SBC_STAT_BC
+			RAW: 15 - Stay awake reason (broadcast) / AWAKE_BC
+			RAW: 255 - Signal not available / SNA
+		B: Awake_NwSt, OFFSET 39 LEN 1 - Stay awake for network startup
+		B: Awake_Diag_Actv, OFFSET 38 LEN 1 - Stay awake for diagnostics active
+		I: WakeupCnt, OFFSET 40 LEN 8 - Counter for module wakeup states during network sleep / counter for control units internal wake states during bus idle
+		E: Nw_Id, OFFSET 56 LEN 8 - Network identification no./Netzwerk-ID
+			RAW: 4 - Backbone CAN / BACKBONE
+			RAW: 5 - Diagnostics-CAN / DIAGNOSTICS
+			RAW: 6 - Body-CAN / BODY
+			RAW: 7 - Chassis CAN / CHASSIS
+			RAW: 8 - Powertrain-CAN / POWERTRAIN
+			RAW: 9 - Powertrain Sensor-CAN / PT_SENSOR
+			RAW: 11 - Dynamics-CAN / DYNAMICS
+			RAW: 14 - Headunit-CAN / HEADUNIT
+			RAW: 15 - Impact-CAN / IMPACT
+			RAW: 16 - Multipurpose-CAN / MULTIPURPOSE
+			RAW: 255 - Signal not available / SNA
+	FRAME D_RS_CTRL_C (0x04E8)
+		I: D_RS_CTRL_C, OFFSET 0 LEN 64 - Diagnostic Response / Diagnostic Response
+	FRAME SD_RS_CTRL_C (0x05E8)
+		I: SD_RS_CTRL_C, OFFSET 0 LEN 64 - System Diagnostic Response / System Diagnostic Response
+	FRAME SG_APPL_CTRL_C (0x0568)
+		I: SG_APPL_CTRL_C, OFFSET 0 LEN 64 - ECU to external application / control device to external application
+
+DISP_C
+	FRAME DISP_CTL_A1 (0x03BA)
+		I: DISP_CTL_Tilt_Stat, OFFSET 8 LEN 8 - Display controls tilt state / inclination status Display UNIT: °
+		I: DISP_CTL_OpnCls_Stat, OFFSET 21 LEN 3 - Display Controls Open / Close State / Display Control open / closed
+		B: DISP_CTL_OpenKey_Psd, OFFSET 17 LEN 1 - Open key pressed / Open key pressed
+		B: DISP_CTL_CloseKey_Psd, OFFSET 16 LEN 1 - Close key pressed / Close key pressed
+	FRAME DISP_C_A1 (0x01C5)
+		B: DISP_C_On_Stat, OFFSET 23 LEN 1 - Central display state / status display switch on / off
+		B: DISP_C_BackLgt_Stat, OFFSET 22 LEN 1 - Central display backlight state / Status of the background lighting of the central display
+		I: DISP_C_OpnCls_Stat, OFFSET 19 LEN 3 - Central Display Open / Close State / Central Display open / closed
+		B: DISP_C_L_Open_Psd, OFFSET 18 LEN 1 - DISP_C lid open pressed / open flap operated by DISP_C
+		B: DISP_C_Temp_Excess, OFFSET 16 LEN 1 - Central display excessive temperature / overtemperature central display
+	FRAME ECU_INFO_DISP_C (0x0611)
+		I: ECU_INFO_DISP_C_MsgPart, OFFSET 6 LEN 2 - ECU Info message part / ECU Info signal part number
+		I: ECU_INFO_DISP_C_DiagProt, OFFSET 2 LEN 2 - ECU Info diagnostic protocol / ECU Info diagnostic protocol
+		I: ECU_DATA_DISP_C, OFFSET 8 LEN 56 - ECU info / control unit data
+	FRAME NM_DISP_C (0x042A)
+		E: NM_Mode, OFFSET 0 LEN 8 - Network management mode / network management mode
+			RAW: 252 - Limp-home mode / LHOM
+			RAW: 253 - Ring mode / RING
+			RAW: 254 - Alive mode / ALIVE
+			RAW: 255 - Signal not available / SNA
+		I: NM_Successor, OFFSET 8 LEN 8 - Network management logical successor / network management logical successor
+		E: NM_Ud_Launch, OFFSET 18 LEN 6 - Network management user data launch type / network management user data transmission type
+			RAW: 4 - Broadcast or Start Alive / BROADCAST
+			RAW: 63 - Signal not available / SNA
+		B: NM_Sleep_Ack, OFFSET 17 LEN 1 - Network management sleep acknowledge / Netzmanagement Sleep Acknowledge
+		B: NM_Sleep_Ind, OFFSET 16 LEN 1 - Network management sleep indication / Netzmanagement Sleep Indication
+		E: NM_Ud_Srv, OFFSET 24 LEN 8 - Network management userdata service no./Netzmanagement Userdaten-Service
+			RAW: 1 - User data transmission ok (broadcast) / DATA_OK_BC
+			RAW: 2 - Wakeup status (start alive) / WAKEUP_SA
+			RAW: 5 - System basis chip status (broadcast) / SBC_STAT_BC
+			RAW: 15 - Stay awake reason (broadcast) / AWAKE_BC
+			RAW: 255 - Signal not available / SNA
+		B: Awake_NwSt, OFFSET 39 LEN 1 - Stay awake for network startup
+		B: Awake_Diag_Actv, OFFSET 38 LEN 1 - Stay awake for diagnostics active
+		B: Awake_Sw_Psd, OFFSET 37 LEN 1 - Stay awake for switch pressed / keep awake for pressed button
+		I: WakeupCnt, OFFSET 40 LEN 8 - Counter for module wakeup states during network sleep / counter for control units internal wake states during bus idle
+		E: Nw_Id, OFFSET 56 LEN 8 - Network identification no./Netzwerk-ID
+			RAW: 4 - Backbone CAN / BACKBONE
+			RAW: 5 - Diagnostics-CAN / DIAGNOSTICS
+			RAW: 6 - Body-CAN / BODY
+			RAW: 7 - Chassis CAN / CHASSIS
+			RAW: 8 - Powertrain-CAN / POWERTRAIN
+			RAW: 9 - Powertrain Sensor-CAN / PT_SENSOR
+			RAW: 11 - Dynamics-CAN / DYNAMICS
+			RAW: 14 - Headunit-CAN / HEADUNIT
+			RAW: 15 - Impact-CAN / IMPACT
+			RAW: 16 - Multipurpose-CAN / MULTIPURPOSE
+			RAW: 255 - Signal not available / SNA
+	FRAME D_RS_DISP_C (0x04EA)
+		I: D_RS_DISP_C, OFFSET 0 LEN 64 - Diagnostic Response / Diagnostic Response
+	FRAME D_RS_DISP_CTL (0x04F2)
+		I: D_RS_DISP_CTL, OFFSET 0 LEN 64 - Diagnostic Response / Diagnostic Response
+	FRAME SD_RS_DISP_C (0x05EA)
+		I: SD_RS_DISP_C, OFFSET 0 LEN 64 - System Diagnostic Response / System Diagnostic Response
+	FRAME SG_APPL_DISP_C (0x056A)
+		I: SG_APPL_DISP_C, OFFSET 0 LEN 64 - ECU to external application / control device to external application
+
+AVS
+	FRAME AVS_A1 (0x03A1)
+		B: AVS_HiVolt, OFFSET 10 LEN 1 - AVS high voltage / AVS high voltage
+		B: AVS_Temp_Excess, OFFSET 9 LEN 1 - AVS excessive temperature / AVS excessive temperature
+		B: AVS_DiscDrv_Temp_Excess, OFFSET 8 LEN 1 - AVS Disc drive excessive temperature / AVS Disc drive excessive temperature
+		E: RSE_ShutDn_Proc, OFFSET 45 LEN 3 - RSE Shutdown procedure / RSE shutdown sequence
+			RAW: 0 - Shutdown procedure off / SHUTDOWN_PROC_OFF
+			RAW: 1 - Shutdown request / SHUTDOWN_RQ
+			RAW: 2 - Shutdown state 1 / SHUTDOWN_STAT1
+			RAW: 3 - Shutdown state 2 / SHUTDOWN_STAT2
+			RAW: 4 - Shutdown state 3 / SHUTDOWN_STAT3
+			RAW: 7 - Signal not available / SNA
+		E: AVS_AuxStat, OFFSET 43 LEN 2 - State of Aux cable plugged into AVS / Status of cables plugged into the AVS
+			RAW: 0 - No cable plugged in / NO_CABLE
+			RAW: 1 - Cable plugged in / CABLE_IN
+			RAW: 2 - not defined / NDEF2
+			RAW: 3 - Signal not available / SNA
+		B: TV_On_Rq, OFFSET 55 LEN 1 - TV on request / switch TV on
+		B: TV_Appl_Actv, OFFSET 54 LEN 1 - TV application active / TV application active
+		E: Disp_R_Rq, OFFSET 52 LEN 2 - Displays rear request / control of rear displays
+			RAW: 0 - On / ON
+			RAW: 1 - Off / OFF
+			RAW: 2 - Off request / OFF_RQ
+			RAW: 3 - Signal not available / SNA
+		E: Volt_Low_AVS, OFFSET 49 LEN 3 - AVS detects undervoltage / AVS detects undervoltage
+			RAW: 0 - Normal voltage / NORM_VOLT
+			RAW: 1 - Undervoltage state 1 / UNDERVOLT_STAT1
+			RAW: 2 - Undervoltage state 2 / UNDERVOLT_STAT2
+			RAW: 3 - Undervoltage state 3 / UNDERVOLT_STAT3
+			RAW: 7 - Signal not available / SNA
+	FRAME AVS_A3 (0x0214)
+		I: TrackTmHour, OFFSET 0 LEN 8 - Track time hour UNIT: h
+		I: TrackTmMinute, OFFSET 8 LEN 8 - Track time minute / track time minute UNIT: min
+		I: TrackTmSecond, OFFSET 16 LEN 8 - Track time second UNIT: s
+		I: TrackHdl, OFFSET 24 LEN 8 - Track Handle / Track Handle
+	FRAME CONFIG_HU (0x035D)
+		E: Language_Rq, OFFSET 16 LEN 5 - Language request / language
+			RAW: 0 - German / GERMAN
+			RAW: 1 - English (imperial) / ENGLISH_IMP
+			RAW: 2 - French / FRENCH
+			RAW: 3 - Italian / ITALIAN
+			RAW: 4 - Spanish / SPANISH
+			RAW: 5 - Japanese / JAPANESE
+			RAW: 6 - English (metric) / ENGLISH_MET
+			RAW: 7 - Dutch / DUTCH
+			RAW: 8 - Danish / DANISH
+			RAW: 9 - Swedish / SWEDISH
+			RAW: 10 - Turkish / TURKISH
+			RAW: 11 - Portuguese / PORTUGUESE
+			RAW: 12 - Russian / RUSSIAN
+			RAW: 13 - Arabic / ARABIC
+			RAW: 14 - Chinese (simplified) / CHINESE
+			RAW: 15 - American English / ENGLISH_AM
+			RAW: 16 - Traditional Chinese (Taiwan, HK) / TRAD_CHINESE
+			RAW: 17 - Korean (Han 'Gul) / KOREAN
+			RAW: 18 - Finnish / FINNISH
+			RAW: 19 - Polish / POLISH
+			RAW: 31 - Signal not available / SNA
+	FRAME CTRL_U_A2 (0x0015)
+		I: SwIllLvl, OFFSET 0 LEN 8 - Switch illumination level (Term.58d) / search lighting (Kl.58d) UNIT:%
+	FRAME ECU_INFO_AVS (0x0601)
+		I: ECU_INFO_AVS_MsgPart, OFFSET 6 LEN 2 - ECU Info message part / ECU Info signal part number
+		I: ECU_INFO_AVS_DiagProt, OFFSET 2 LEN 2 - ECU Info diagnostic protocol / ECU Info diagnostic protocol
+		I: ECU_DATA_AVS, OFFSET 8 LEN 56 - ECU info / control unit data
+	FRAME EIS_A1 (0x0001)
+		E: ISw_Stat, OFFSET 5 LEN 3 - Ignition switch state / terminal status
+			RAW: 0 - Ignition lock (0) / IGN_LOCK
+			RAW: 1 - Ignition off (15c) / IGN_OFF
+			RAW: 2 - Ignition accessory (15r) / IGN_ACC
+			RAW: 4 - Ignition on (15) / IGN_ON
+			RAW: 5 - Ignition start (50) / IGN_START
+			RAW: 7 - Signal not available / SNA
+		B: Ign_On_StProc_Inact, OFFSET 4 LEN 1 - Ignition is on and starting procedure is inactive (15x) / ignition on / engine start off
+	FRAME IC_A1 (0x019F)
+		I: Odo, OFFSET 40 LEN 24 - Odometer (for everyone, FFFFFEh: Signal invalid) / Mileage (for everyone, FFFFFEh: Signal invalid) UNIT: km
+	FRAME LGTSENS_A1 (0x0025)
+		B: LgtSens_Night, OFFSET 1 LEN 1 - Light sensor detects night mode / light sensor actual value
+		B: LgtSens_SNA, OFFSET 15 LEN 1 - Light sensor information not available / values ​​from light sensor not available
+	FRAME NM_AVS (0x042C)
+		E: NM_Mode, OFFSET 0 LEN 8 - Network management mode / network management mode
+			RAW: 252 - Limp-home mode / LHOM
+			RAW: 253 - Ring mode / RING
+			RAW: 254 - Alive mode / ALIVE
+			RAW: 255 - Signal not available / SNA
+		I: NM_Successor, OFFSET 8 LEN 8 - Network management logical successor / network management logical successor
+		E: NM_Ud_Launch, OFFSET 18 LEN 6 - Network management user data launch type / network management user data transmission type
+			RAW: 4 - Broadcast or Start Alive / BROADCAST
+			RAW: 63 - Signal not available / SNA
+		B: NM_Sleep_Ack, OFFSET 17 LEN 1 - Network management sleep acknowledge / Netzmanagement Sleep Acknowledge
+		B: NM_Sleep_Ind, OFFSET 16 LEN 1 - Network management sleep indication / Netzmanagement Sleep Indication
+		E: NM_Ud_Srv, OFFSET 24 LEN 8 - Network management userdata service no./Netzmanagement Userdaten-Service
+			RAW: 1 - User data transmission ok (broadcast) / DATA_OK_BC
+			RAW: 2 - Wakeup status (start alive) / WAKEUP_SA
+			RAW: 5 - System basis chip status (broadcast) / SBC_STAT_BC
+			RAW: 15 - Stay awake reason (broadcast) / AWAKE_BC
+			RAW: 255 - Signal not available / SNA
+		B: Awake_NwSt, OFFSET 39 LEN 1 - Stay awake for network startup
+		B: Awake_Diag_Actv, OFFSET 38 LEN 1 - Stay awake for diagnostics active
+		B: Awake_AVS_On, OFFSET 35 LEN 1 - Stay awake for AVS on / keep awake for AVS switched on
+		I: WakeupCnt, OFFSET 40 LEN 8 - Counter for module wakeup states during network sleep / counter for control units internal wake states during bus idle
+		E: Nw_Id, OFFSET 56 LEN 8 - Network identification no./Netzwerk-ID
+			RAW: 4 - Backbone CAN / BACKBONE
+			RAW: 5 - Diagnostics-CAN / DIAGNOSTICS
+			RAW: 6 - Body-CAN / BODY
+			RAW: 7 - Chassis CAN / CHASSIS
+			RAW: 8 - Powertrain-CAN / POWERTRAIN
+			RAW: 9 - Powertrain Sensor-CAN / PT_SENSOR
+			RAW: 11 - Dynamics-CAN / DYNAMICS
+			RAW: 14 - Headunit-CAN / HEADUNIT
+			RAW: 15 - Impact-CAN / IMPACT
+			RAW: 16 - Multipurpose-CAN / MULTIPURPOSE
+			RAW: 255 - Signal not available / SNA
+	FRAME D_RQ_DISP_RL (0x06D9)
+		I: D_RQ_DISP_RL, OFFSET 0 LEN 64 - Diagnostic Request / Diagnostic Request
+	FRAME D_RQ_DISP_RR (0x06F9)
+		I: D_RQ_DISP_RR, OFFSET 0 LEN 64 - Diagnostic Request / Diagnostic Request
+	FRAME D_RS_AVS (0x04EC)
+		I: D_RS_AVS, OFFSET 0 LEN 64 - Diagnostic Response / Diagnostic Response
+	FRAME DG_RQ_GLOBAL_UDS (0x0441)
+		I: DG_RQ_GLOBAL_UDS, OFFSET 0 LEN 64 - Functional Diagnostic Request (UDS) / Functional Diagnostic Request (UDS)
+	FRAME SD_RS_AVS (0x05EC)
+		I: SD_RS_AVS, OFFSET 0 LEN 64 - System Diagnostic Response / System Diagnostic Response
+	FRAME TP_AVS_DISP_RL_CTRL4 (0x0390)
+		I: TP_AVS_DISP_RL_CTRL, OFFSET 0 LEN 64 - Transport protocol control AVS to DISP_RL / Transport protocol control AVS to DISP_RL
+	FRAME TP_AVS_DISP_RL_DATA4 (0x0392)
+		I: TP_AVS_DISP_RL_DATA, OFFSET 0 LEN 64 - Transport protocol data AVS to DISP_RL / Transport protocol data AVS to DISP_RL
+	FRAME TP_AVS_DISP_RR_CTRL4 (0x0398)
+		I: TP_AVS_DISP_RR_CTRL, OFFSET 0 LEN 64 - Transport protocol control AVS to DISP_RR / Transport protocol control AVS to DISP_RR
+	FRAME TP_AVS_DISP_RR_DATA4 (0x039A)
+		I: TP_AVS_DISP_RR_DATA, OFFSET 0 LEN 64 - Transport protocol data AVS to DISP_RR / Transport protocol data AVS to DISP_RR
+	FRAME TP_AVS_TVT9 (0x03A7)
+		I: TP_AVS_TVT, OFFSET 0 LEN 64 - Transport protocol AVS to TVT / Transport protocol AVS to TVT
+	FRAME SG_APPL_AVS (0x056C)
+		I: SG_APPL_AVS, OFFSET 0 LEN 64 - ECU to external application / control device to external application
+
+DISP_RL
+	FRAME DISP_RL_A4 (0x0250)
+		E: DISP_RL_Actv_Stat, OFFSET 5 LEN 3 - DISP_RL active state / DISP_RL active state
+			RAW: 0 - Active, entertainment off / ACTV_ENT_OFF
+			RAW: 1 - Active, entertainment on / ACTV_ENT_ON
+			RAW: 2 - Inactive / INACTV
+			RAW: 7 - Signal not available / SNA
+		E: DISP_RL_Actv_Appl, OFFSET 0 LEN 5 - DISP_RL active application / DISP_RL active application
+			RAW: 0 - Font Unit disk drive / FU_DSK_DRV
+			RAW: 1 - TV Tuner / TV_TUNER
+			RAW: 2 - Headunit application / HU_APPL
+			RAW: 3 - Fond Unit auxiliaries / FU_AUX
+			RAW: 4 - Display unit auxiliaries / DU_AUX
+			RAW: 5 - Rear seat entertainment off / OFF
+			RAW: 31 - Signal not available / SNA
+		E: DISP_RL_Tkn_Stat, OFFSET 8 LEN 3 - DISP_RL Token state / DISP_RL Token state
+			RAW: 0 - Not holding and not requesting token / NOT_HOLD_NOT_REQ_TKN
+			RAW: 1 - Holding token / HOLD_TKN
+			RAW: 2 - Requesting token / REQ_TKN
+			RAW: 7 - Signal not available / SNA
+		B: Prcd_DISP_RL, OFFSET 23 LEN 1 - Proceed / Continue
+	FRAME ECU_INFO_DISP_RL (0x0619)
+		I: ECU_INFO_DISP_RL_MsgPart, OFFSET 6 LEN 2 - ECU Info message part / ECU Info signal part number
+		I: ECU_INFO_DISP_RL_DiagProt, OFFSET 2 LEN 2 - ECU Info diagnostic protocol / ECU Info diagnostic protocol
+		I: ECU_DATA_DISP_RL, OFFSET 8 LEN 56 - ECU info / control unit data
+	FRAME NM_DISP_RL (0x042D)
+		E: NM_Mode, OFFSET 0 LEN 8 - Network management mode / network management mode
+			RAW: 252 - Limp-home mode / LHOM
+			RAW: 253 - Ring mode / RING
+			RAW: 254 - Alive mode / ALIVE
+			RAW: 255 - Signal not available / SNA
+		I: NM_Successor, OFFSET 8 LEN 8 - Network management logical successor / network management logical successor
+		E: NM_Ud_Launch, OFFSET 18 LEN 6 - Network management user data launch type / network management user data transmission type
+			RAW: 4 - Broadcast or Start Alive / BROADCAST
+			RAW: 63 - Signal not available / SNA
+		B: NM_Sleep_Ack, OFFSET 17 LEN 1 - Network management sleep acknowledge / Netzmanagement Sleep Acknowledge
+		B: NM_Sleep_Ind, OFFSET 16 LEN 1 - Network management sleep indication / Netzmanagement Sleep Indication
+		E: NM_Ud_Srv, OFFSET 24 LEN 8 - Network management userdata service no./Netzmanagement Userdaten-Service
+			RAW: 1 - User data transmission ok (broadcast) / DATA_OK_BC
+			RAW: 2 - Wakeup status (start alive) / WAKEUP_SA
+			RAW: 5 - System basis chip status (broadcast) / SBC_STAT_BC
+			RAW: 15 - Stay awake reason (broadcast) / AWAKE_BC
+			RAW: 255 - Signal not available / SNA
+		B: Awake_NwSt, OFFSET 39 LEN 1 - Stay awake for network startup
+		B: Awake_Diag_Actv, OFFSET 38 LEN 1 - Stay awake for diagnostics active
+		B: Awake_Disp_R_On, OFFSET 37 LEN 1 - Stay awake for display rear on / keep awake for display rear on
+		I: WakeupCnt, OFFSET 40 LEN 8 - Counter for module wakeup states during network sleep / counter for control units internal wake states during bus idle
+		E: Nw_Id, OFFSET 56 LEN 8 - Network identification no./Netzwerk-ID
+			RAW: 4 - Backbone CAN / BACKBONE
+			RAW: 5 - Diagnostics-CAN / DIAGNOSTICS
+			RAW: 6 - Body-CAN / BODY
+			RAW: 7 - Chassis CAN / CHASSIS
+			RAW: 8 - Powertrain-CAN / POWERTRAIN
+			RAW: 9 - Powertrain Sensor-CAN / PT_SENSOR
+			RAW: 11 - Dynamics-CAN / DYNAMICS
+			RAW: 14 - Headunit-CAN / HEADUNIT
+			RAW: 15 - Impact-CAN / IMPACT
+			RAW: 16 - Multipurpose-CAN / MULTIPURPOSE
+			RAW: 255 - Signal not available / SNA
+	FRAME D_RS_DISP_RL (0x045B)
+		I: D_RS_DISP_RL, OFFSET 0 LEN 64 - Diagnostic Response / Diagnostic Response
+	FRAME SD_RS_DISP_RL (0x0473)
+		I: SD_RS_DISP_RL, OFFSET 0 LEN 64 - System Diagnostic Response / System Diagnostic Response
+	FRAME TP_DISP_RL_AVS_CTRL4 (0x0391)
+		I: TP_DISP_RL_AVS_CTRL, OFFSET 0 LEN 64 - Transport protocol control DISP_RL to AVS / Transport protocol control DISP_RL to AVS
+	FRAME TP_DISP_RL_AVS_DATA4 (0x0393)
+		I: TP_DISP_RL_AVS_DATA, OFFSET 0 LEN 64 - Transport protocol data DISP_RL to AVS / Transport protocol data DISP_RL to AVS
+	FRAME TP_DISP_RL_TGW_CTRL4 (0x032A)
+		I: TP_DISP_RL_TGW_CTRL, OFFSET 0 LEN 64 - Transport protocol control DISP_RL to TGW / Transport protocol control DISP_RL to TGW
+	FRAME TP_DISP_RL_TGW_DATA4 (0x0331)
+		I: TP_DISP_RL_TGW_DATA, OFFSET 0 LEN 64 - Transport protocol data DISP_RL to TGW / Transport protocol data DISP_RL to TGW
+	FRAME TP_DISP_RL_TVT48 (0x0344)
+		I: TP_DISP_RL_TVT, OFFSET 0 LEN 64 - Transport protocol DISP_RL to TVT / Transport protocol DISP_RL to TVT
+	FRAME SG_APPL_DISP_RL (0x056D)
+		I: SG_APPL_DISP_RL, OFFSET 0 LEN 64 - ECU to external application / control device to external application
+
+DISP_RR
+	FRAME DISP_RR_A4 (0x0251)
+		E: DISP_RR_Actv_Stat, OFFSET 5 LEN 3 - DISP_RR active state / DISP_RR active state
+			RAW: 0 - Active, entertainment off / ACTV_ENT_OFF
+			RAW: 1 - Active, entertainment on / ACTV_ENT_ON
+			RAW: 2 - Inactive / INACTV
+			RAW: 7 - Signal not available / SNA
+		E: DISP_RR_Actv_Appl, OFFSET 0 LEN 5 - DISP_RR active application / DISP_RR active application
+			RAW: 0 - Font Unit disk drive / FU_DSK_DRV
+			RAW: 1 - TV Tuner / TV_TUNER
+			RAW: 2 - Headunit application / HU_APPL
+			RAW: 3 - Fond Unit auxiliaries / FU_AUX
+			RAW: 4 - Display unit auxiliaries / DU_AUX
+			RAW: 5 - Rear seat entertainment off / OFF
+			RAW: 31 - Signal not available / SNA
+		E: DISP_RR_Tkn_Stat, OFFSET 8 LEN 3 - DISP_RR Token state / DISP_RR Token state
+			RAW: 0 - Not holding and not requesting token / NOT_HOLD_NOT_REQ_TKN
+			RAW: 1 - Holding token / HOLD_TKN
+			RAW: 2 - Requesting token / REQ_TKN
+			RAW: 7 - Signal not available / SNA
+		B: Prcd_DISP_RR, OFFSET 23 LEN 1 - Proceed / Continue
+	FRAME ECU_INFO_DISP_RR (0x0621)
+		I: ECU_INFO_DISP_RR_MsgPart, OFFSET 6 LEN 2 - ECU Info message part / ECU Info signal part number
+		I: ECU_INFO_DISP_RR_DiagProt, OFFSET 2 LEN 2 - ECU Info diagnostic protocol / ECU Info diagnostic protocol
+		I: ECU_DATA_DISP_RR, OFFSET 8 LEN 56 - ECU info / control unit data
+	FRAME NM_DISP_RR (0x042F)
+		E: NM_Mode, OFFSET 0 LEN 8 - Network management mode / network management mode
+			RAW: 252 - Limp-home mode / LHOM
+			RAW: 253 - Ring mode / RING
+			RAW: 254 - Alive mode / ALIVE
+			RAW: 255 - Signal not available / SNA
+		I: NM_Successor, OFFSET 8 LEN 8 - Network management logical successor / network management logical successor
+		E: NM_Ud_Launch, OFFSET 18 LEN 6 - Network management user data launch type / network management user data transmission type
+			RAW: 4 - Broadcast or Start Alive / BROADCAST
+			RAW: 63 - Signal not available / SNA
+		B: NM_Sleep_Ack, OFFSET 17 LEN 1 - Network management sleep acknowledge / Netzmanagement Sleep Acknowledge
+		B: NM_Sleep_Ind, OFFSET 16 LEN 1 - Network management sleep indication / Netzmanagement Sleep Indication
+		E: NM_Ud_Srv, OFFSET 24 LEN 8 - Network management userdata service no./Netzmanagement Userdaten-Service
+			RAW: 1 - User data transmission ok (broadcast) / DATA_OK_BC
+			RAW: 2 - Wakeup status (start alive) / WAKEUP_SA
+			RAW: 5 - System basis chip status (broadcast) / SBC_STAT_BC
+			RAW: 15 - Stay awake reason (broadcast) / AWAKE_BC
+			RAW: 255 - Signal not available / SNA
+		B: Awake_NwSt, OFFSET 39 LEN 1 - Stay awake for network startup
+		B: Awake_Diag_Actv, OFFSET 38 LEN 1 - Stay awake for diagnostics active
+		B: Awake_Disp_R_On, OFFSET 37 LEN 1 - Stay awake for display rear on / keep awake for display rear on
+		I: WakeupCnt, OFFSET 40 LEN 8 - Counter for module wakeup states during network sleep / counter for control units internal wake states during bus idle
+		E: Nw_Id, OFFSET 56 LEN 8 - Network identification no./Netzwerk-ID
+			RAW: 4 - Backbone CAN / BACKBONE
+			RAW: 5 - Diagnostics-CAN / DIAGNOSTICS
+			RAW: 6 - Body-CAN / BODY
+			RAW: 7 - Chassis CAN / CHASSIS
+			RAW: 8 - Powertrain-CAN / POWERTRAIN
+			RAW: 9 - Powertrain Sensor-CAN / PT_SENSOR
+			RAW: 11 - Dynamics-CAN / DYNAMICS
+			RAW: 14 - Headunit-CAN / HEADUNIT
+			RAW: 15 - Impact-CAN / IMPACT
+			RAW: 16 - Multipurpose-CAN / MULTIPURPOSE
+			RAW: 255 - Signal not available / SNA
+	FRAME D_RS_DISP_RR (0x045F)
+		I: D_RS_DISP_RR, OFFSET 0 LEN 64 - Diagnostic Response / Diagnostic Response
+	FRAME SD_RS_DISP_RR (0x0477)
+		I: SD_RS_DISP_RR, OFFSET 0 LEN 64 - System Diagnostic Response / System Diagnostic Response
+	FRAME TP_DISP_RR_AVS_CTRL4 (0x0399)
+		I: TP_DISP_RR_AVS_CTRL, OFFSET 0 LEN 64 - Transport protocol control DISP_RR to AVS / Transport protocol control DISP_RR to AVS
+	FRAME TP_DISP_RR_AVS_DATA4 (0x039B)
+		I: TP_DISP_RR_AVS_DATA, OFFSET 0 LEN 64 - Transport protocol data DISP_RR to AVS / Transport protocol data DISP_RR to AVS
+	FRAME TP_DISP_RR_TGW_CTRL4 (0x032C)
+		I: TP_DISP_RR_TGW_CTRL, OFFSET 0 LEN 64 - Transport protocol control DISP_RR to TGW / Transport protocol control DISP_RR to TGW
+	FRAME TP_DISP_RR_TGW_DATA4 (0x0333)
+		I: TP_DISP_RR_TGW_DATA, OFFSET 0 LEN 64 - Transport protocol data DISP_RR to TGW / Transport protocol data DISP_RR to TGW
+	FRAME TP_DISP_RR_TVT49 (0x0346)
+		I: TP_DISP_RR_TVT, OFFSET 0 LEN 64 - Transport protocol DISP_RR to TVT / Transport protocol DISP_RR to TVT
+	FRAME SG_APPL_DISP_RR (0x056F)
+		I: SG_APPL_DISP_RR, OFFSET 0 LEN 64 - ECU to external application / control device to external application
+
+TVT
+	FRAME ECU_INFO_TVT (0x0641)
+		I: ECU_INFO_TVT_MsgPart, OFFSET 6 LEN 2 - ECU Info message part / ECU Info signal part number
+		I: ECU_INFO_TVT_DiagProt, OFFSET 2 LEN 2 - ECU Info diagnostic protocol / ECU Info diagnostic protocol
+		I: ECU_DATA_TVT, OFFSET 8 LEN 56 - ECU info / control unit data
+	FRAME NM_TVT (0x0431)
+		E: NM_Mode, OFFSET 0 LEN 8 - Network management mode / network management mode
+			RAW: 252 - Limp-home mode / LHOM
+			RAW: 253 - Ring mode / RING
+			RAW: 254 - Alive mode / ALIVE
+			RAW: 255 - Signal not available / SNA
+		I: NM_Successor, OFFSET 8 LEN 8 - Network management logical successor / network management logical successor
+		E: NM_Ud_Launch, OFFSET 18 LEN 6 - Network management user data launch type / network management user data transmission type
+			RAW: 4 - Broadcast or Start Alive / BROADCAST
+			RAW: 63 - Signal not available / SNA
+		B: NM_Sleep_Ack, OFFSET 17 LEN 1 - Network management sleep acknowledge / Netzmanagement Sleep Acknowledge
+		B: NM_Sleep_Ind, OFFSET 16 LEN 1 - Network management sleep indication / Netzmanagement Sleep Indication
+		E: NM_Ud_Srv, OFFSET 24 LEN 8 - Network management userdata service no./Netzmanagement Userdaten-Service
+			RAW: 1 - User data transmission ok (broadcast) / DATA_OK_BC
+			RAW: 2 - Wakeup status (start alive) / WAKEUP_SA
+			RAW: 5 - System basis chip status (broadcast) / SBC_STAT_BC
+			RAW: 15 - Stay awake reason (broadcast) / AWAKE_BC
+			RAW: 255 - Signal not available / SNA
+		B: Awake_NwSt, OFFSET 39 LEN 1 - Stay awake for network startup
+		B: Awake_Diag_Actv, OFFSET 38 LEN 1 - Stay awake for diagnostics active
+		I: WakeupCnt, OFFSET 40 LEN 8 - Counter for module wakeup states during network sleep / counter for control units internal wake states during bus idle
+		E: Nw_Id, OFFSET 56 LEN 8 - Network identification no./Netzwerk-ID
+			RAW: 4 - Backbone CAN / BACKBONE
+			RAW: 5 - Diagnostics-CAN / DIAGNOSTICS
+			RAW: 6 - Body-CAN / BODY
+			RAW: 7 - Chassis CAN / CHASSIS
+			RAW: 8 - Powertrain-CAN / POWERTRAIN
+			RAW: 9 - Powertrain Sensor-CAN / PT_SENSOR
+			RAW: 11 - Dynamics-CAN / DYNAMICS
+			RAW: 14 - Headunit-CAN / HEADUNIT
+			RAW: 15 - Impact-CAN / IMPACT
+			RAW: 16 - Multipurpose-CAN / MULTIPURPOSE
+			RAW: 255 - Signal not available / SNA
+	FRAME D_RS_TVT (0x04F1)
+		I: D_RS_TVT, OFFSET 0 LEN 64 - Diagnostic Response / Diagnostic Response
+	FRAME SD_RS_TVT (0x05F1)
+		I: SD_RS_TVT, OFFSET 0 LEN 64 - System Diagnostic Response / System Diagnostic Response
+	FRAME TP_TVT_AVS9 (0x0367)
+		I: TP_TVT_AVS, OFFSET 0 LEN 64 - Transport protocol TVT to AVS / Transport protocol TVT to AVS
+	FRAME TP_TVT_DISP_RL48 (0x0345)
+		I: TP_TVT_DISP_RL, OFFSET 0 LEN 64 - Transport protocol TVT to DISP_RL / Transport protocol TVT to DISP_RL
+	FRAME TP_TVT_DISP_RR49 (0x0347)
+		I: TP_TVT_DISP_RR, OFFSET 0 LEN 64 - Transport protocol TVT to DISP_RR / Transport protocol TVT to DISP_RR
+	FRAME SG_APPL_TVT (0x0571)
+		I: SG_APPL_TVT, OFFSET 0 LEN 64 - ECU to external application / control device to external application
+
+ 
+	FRAME APPL_SG_AVS (0x0765)
+		I: APPL_SG_AVS, OFFSET 0 LEN 64 - External application to ECU / external application to control unit
+	FRAME APPL_SG_CTRL_C (0x0745)
+		I: APPL_SG_CTRL_C, OFFSET 0 LEN 64 - External application to ECU / external application to control unit
+	FRAME APPL_SG_DISP_C (0x0755)
+		I: APPL_SG_DISP_C, OFFSET 0 LEN 64 - External application to ECU / external application to control unit
+	FRAME APPL_SG_DISP_RL (0x076D)
+		I: APPL_SG_DISP_RL, OFFSET 0 LEN 64 - External application to ECU / external application to control unit
+	FRAME APPL_SG_DISP_RR (0x077D)
+		I: APPL_SG_DISP_RR, OFFSET 0 LEN 64 - External application to ECU / external application to control unit
+	FRAME APPL_SG_TVT (0x078D)
+		I: APPL_SG_TVT, OFFSET 0 LEN 64 - External application to ECU / external application to control unit
+

@@ -5,15 +5,13 @@
 #include <string>
 #include "CanbusDecoder.h"
 
+
 void CanbusDecoder::processFrame(CanFrame *frame) {
-    int pos = 0;
-    char buf[25] = {0x00};
-    for (int i = 0; i < frame->dlc; i++) {
-        pos += sprintf(buf+pos, "%02X ", frame->data[i]);
-    }
-    //__android_log_print(ANDROID_LOG_DEBUG, "CanbusDecoer", "CAN FRAME: Bus: %c, ID: %04X, DLC: %d. Data: [%s]", frame->busID, frame->id, frame->dlc, buf);
     switch (frame->busID) {
         case CANB:
+            if (frame->id == 0x01D0) {
+                this->kombi->processKombiMsg(frame);
+            }
             canB.processFrame(frame);
             break;
         case CANC:
@@ -44,6 +42,10 @@ CanFrame *CanbusDecoder::getFrame(char bus, int ecuAddr) {
         default:
             throw InvalidBusException(bus);
     }
+}
+
+CanbusDecoder::CanbusDecoder() {
+    this->kombi = new kombiCom();
 }
 
 void CanDB::processFrame(CanFrame *frame) {

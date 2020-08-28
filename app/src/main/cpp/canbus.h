@@ -1,12 +1,10 @@
 #ifndef MERCEDES_UI_CANBUS_H
 #define MERCEDES_UI_CANBUS_H
 
-#include <queue>
 #include <android/log.h>
 #include <jni.h>
 #include "readBuffer.h"
 #include <thread>
-#include "ECUs/ECU.h"
 #include "CanbusDecoder.h"
 
 #define LOG_TAG "CanbusNative"
@@ -14,7 +12,6 @@
 // Canbus data
 
 uint8_t strToInt(char x);
-std::queue<CanFrame> sendQueue; // Queue of frames to send to Arduino
 readBuffer* readbuff = new readBuffer(8192); // 8KB Read buffer
 
 bool thread_cancel = false;
@@ -99,4 +96,25 @@ Java_com_rndash_mbheadunit_nativeCan_CanBusNative_getNativeFrame(JNIEnv *env, jo
     return NULL;
 }
 
+
+extern "C"
+JNIEXPORT void JNICALL
+Java_com_rndash_mbheadunit_nativeCan_KombiDisplay_setPage(JNIEnv *env, jobject thiz, jbyte pg) {
+    decoder->kombi->setCurrentPage((uint8_t)pg);
+}
+
+
+
+
 #endif
+extern "C"
+JNIEXPORT void JNICALL
+Java_com_rndash_mbheadunit_nativeCan_KombiDisplay_setHeaderAttrs(JNIEnv *env, jobject thiz,jbyte page, jbyte fmt,jstring text) {
+    const char* c = env->GetStringUTFChars(text, nullptr);
+    if (page == 0x03) {
+        decoder->kombi->audioPage.setHeader(std::string(c), (uint8_t)fmt);
+    } else if (page == 0x05) {
+
+    }
+    env->ReleaseStringUTFChars(text, c);
+}

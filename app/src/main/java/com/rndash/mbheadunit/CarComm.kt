@@ -40,11 +40,12 @@ class CarComm(device: UsbDevice, manager: UsbManager) {
                 }
                 // Check Native frame queue (Used by AGW<->IC)
                 CanBusNative.getSendFrame()?.let {
+                    println(it.map {x -> String.format("%02X", x)}.joinToString(", "))
                     serialDevice?.write(it, 100)
                     hasFrame = true
                 }
                 if (!hasFrame) {
-                    Thread.sleep(1)
+                    Thread.sleep(1000)
                 }
             }
         }

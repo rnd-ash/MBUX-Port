@@ -1,10 +1,12 @@
 package com.rndash.mbheadunit
 
 import android.app.PendingIntent
+import android.app.Service
 import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
+import android.content.pm.PackageManager
 import android.hardware.usb.UsbDevice
 import android.hardware.usb.UsbManager
 import android.media.AudioManager
@@ -17,17 +19,23 @@ import android.view.WindowManager
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.annotation.RequiresApi
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
 import com.rndash.mbheadunit.car.KeyManager
 import com.rndash.mbheadunit.nativeCan.CanBusNative
-import com.rndash.mbheadunit.nativeCan.canB.*
-import com.rndash.mbheadunit.nativeCan.canC.*
-import com.rndash.mbheadunit.ui.*
-import com.rndash.mbheadunit.ui.dialog.MBUXDialog
+import com.rndash.mbheadunit.nativeCan.KombiDisplay
+import com.rndash.mbheadunit.nativeCan.canB.DBE_A1
+import com.rndash.mbheadunit.nativeCan.canB.SAM_H_A2
+import com.rndash.mbheadunit.ui.ACDisplay
+import com.rndash.mbheadunit.ui.LightsDisplay
+import com.rndash.mbheadunit.ui.MPGDisplay
+import com.rndash.mbheadunit.ui.PTDisplay
 import java.util.*
+import java.util.jar.Manifest
 
 
 /**
@@ -37,9 +45,9 @@ import java.util.*
 @ExperimentalStdlibApi
 @ExperimentalUnsignedTypes
 class FullscreenActivity : FragmentActivity() {
-    private val carManager = CarManager()
     private lateinit var viewPager: ViewPager2
     companion object {
+        val carManager = CarManager()
         private lateinit var audiomanager: AudioManager
         var comm: CarComm? = null
         lateinit var volContext: Context
@@ -70,6 +78,8 @@ class FullscreenActivity : FragmentActivity() {
         val pagerAdapter = ScreenSlidePagerAdapter(this)
         viewPager.setPageTransformer(ZoomOutPageTransformer())
         viewPager.adapter = pagerAdapter
+
+        askForPermission(android.Manifest.permission.RECORD_AUDIO, 137)
     }
 
     override fun onWindowFocusChanged(hasFocus: Boolean) {
@@ -99,8 +109,8 @@ class FullscreenActivity : FragmentActivity() {
             println("Found device V: ${u.vendorId} D: ${u.deviceId}")
             if (u.vendorId == 0x1a86) { // Arduino Uno
                 val pi = PendingIntent.getBroadcast(
-                    this, 0,
-                    Intent("com.rnd-ash.github.mbui"), 0
+                        this, 0,
+                        Intent("com.rnd-ash.github.mbui"), 0
                 )
                 dev = u
                 x.requestPermission(dev, pi)
@@ -114,7 +124,7 @@ class FullscreenActivity : FragmentActivity() {
             Thread {
                 Thread.sleep(1000)
                 //CanBusNative.sendBytesToBuffer("C06086F43062DFA003600\r\n".toByteArray(Charsets.US_ASCII), 23)
-                sendToBusTest(CanFrame(0x0090, 'B' ,byteArrayOf(0xB0.toByte(), 0x59, 0x57)))
+                sendToBusTest(CanFrame(0x0090, 'B', byteArrayOf(0xB0.toByte(), 0x59, 0x57)))
                 sendToBusTest(CanFrame(0x608, 'C', byteArrayOf(0x6E, 0x41, 0x06, 0x2D, 0xFA.toByte(), 0x02, 0x5C, 0x00)))
 
                 Thread.sleep(10)
@@ -168,7 +178,7 @@ class FullscreenActivity : FragmentActivity() {
         registerReceiver(IntentManager(), intentFilter)
         KeyManager.watcher.start()
 
-        KeyManager.registerPageUpListener(KeyManager.KEY.VOLUME_UP, object: KeyManager.KeyListener {
+        KeyManager.registerPageUpListener(KeyManager.KEY.VOLUME_UP, object : KeyManager.KeyListener {
             override fun onLongPress(pg: KeyManager.PAGE) {
                 // Ignore long presses for volume
             }
@@ -179,7 +189,7 @@ class FullscreenActivity : FragmentActivity() {
             }
         })
 
-        KeyManager.registerPageUpListener(KeyManager.KEY.VOLUME_DOWN, object: KeyManager.KeyListener {
+        KeyManager.registerPageUpListener(KeyManager.KEY.VOLUME_DOWN, object : KeyManager.KeyListener {
             override fun onLongPress(pg: KeyManager.PAGE) {
                 // Ignore long presses for volume
             }
@@ -190,29 +200,37 @@ class FullscreenActivity : FragmentActivity() {
             }
         })
 
-        KeyManager.registerPageUpListener(KeyManager.KEY.PAGE_UP, object: KeyManager.KeyListener {
+        KeyManager.registerPageUpListener(KeyManager.KEY.PAGE_UP, object : KeyManager.KeyListener {
             override fun onLongPress(pg: KeyManager.PAGE) {
                 println("Page up long press. Page: $pg")
             }
 
             override fun onShortPress(pg: KeyManager.PAGE) {
-                if (pg == KeyManager.PAGE.AUDIO) { BTMusic.playNext() }
+                if (pg == KeyManager.PAGE.AUDIO) {
+                    BTMusic.playNext()
+                }
             }
         })
 
-        KeyManager.registerPageUpListener(KeyManager.KEY.PAGE_DOWN, object: KeyManager.KeyListener {
+        KeyManager.registerPageUpListener(KeyManager.KEY.PAGE_DOWN, object : KeyManager.KeyListener {
             override fun onLongPress(pg: KeyManager.PAGE) {
                 println("Page up long press. Page: $pg")
             }
- 
+
             override fun onShortPress(pg: KeyManager.PAGE) {
-                if (pg == KeyManager.PAGE.AUDIO) { BTMusic.playPrev() }
+                if (pg == KeyManager.PAGE.AUDIO) {
+                    BTMusic.playPrev()
+                }
             }
         })
-        carManager.setParameters("av_channel_enter=gsm_bt")
+
+        BTMusic.setAudioManager(getSystemService(Service.AUDIO_SERVICE) as AudioManager)
+        BTMusic.focusBTMusic()
         val i = Intent()
         i.component = ComponentName("android.microntek.mtcser", "android.microntek.mtcser.BlueToothService")
         bindService(i, BTMusic.serviceConnection, BIND_AUTO_CREATE)
+        KombiDisplay.setAudioBodyText("NO MUSIC", arrayOf(KombiDisplay.TEXT_FMT.CENTER_JUSTIFIED, KombiDisplay.TEXT_FMT.FLASHING))
+        KombiDisplay.setAudioHeaderText("No audio src", arrayOf(KombiDisplay.TEXT_FMT.LEFT_JUSTIFIED))
     }
 
     private inner class ScreenSlidePagerAdapter(fa: FragmentActivity) : FragmentStateAdapter(fa) {
@@ -261,6 +279,17 @@ class FullscreenActivity : FragmentActivity() {
             this.putExtra("type", if (increase) "add" else "sub")
         }
         applicationContext.sendBroadcast(intent)
+    }
+
+    private fun askForPermission(permission: String, requestCode: Int) {
+        if (ContextCompat.checkSelfPermission(applicationContext, permission) != PackageManager.PERMISSION_GRANTED) {
+            if (ActivityCompat.shouldShowRequestPermissionRationale(this, permission)) {
+                Toast.makeText(applicationContext, "Please grant the requested permission to get your task done!", Toast.LENGTH_LONG).show()
+                ActivityCompat.requestPermissions(this, arrayOf(permission), requestCode)
+            } else {
+                ActivityCompat.requestPermissions(this, arrayOf(permission), requestCode)
+            }
+        }
     }
 
 }
