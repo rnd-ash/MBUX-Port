@@ -10,7 +10,7 @@ void CanbusDecoder::processFrame(CanFrame *frame) {
     switch (frame->busID) {
         case CANB:
             if (frame->id == 0x01D0) {
-                this->kombi->processKombiMsg(frame);
+                this->agw->processKombiFrame(frame);
             }
             canB.processFrame(frame);
             break;
@@ -45,7 +45,7 @@ CanFrame *CanbusDecoder::getFrame(char bus, int ecuAddr) {
 }
 
 CanbusDecoder::CanbusDecoder() {
-    this->kombi = new kombiCom();
+    this->agw = new AGW();
 }
 
 void CanDB::processFrame(CanFrame *frame) {

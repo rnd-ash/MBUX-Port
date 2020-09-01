@@ -100,7 +100,7 @@ Java_com_rndash_mbheadunit_nativeCan_CanBusNative_getNativeFrame(JNIEnv *env, jo
 extern "C"
 JNIEXPORT void JNICALL
 Java_com_rndash_mbheadunit_nativeCan_KombiDisplay_setPage(JNIEnv *env, jobject thiz, jbyte pg) {
-    decoder->kombi->setCurrentPage((uint8_t)pg);
+    //decoder->agw->setCurrentPage((uint8_t)pg);
 }
 
 
@@ -112,7 +112,8 @@ JNIEXPORT void JNICALL
 Java_com_rndash_mbheadunit_nativeCan_KombiDisplay_setHeaderAttrs(JNIEnv *env, jobject thiz,jbyte page, jbyte fmt,jstring text) {
     const char* c = env->GetStringUTFChars(text, nullptr);
     if (page == 0x03) {
-        decoder->kombi->audioPage.setHeader(std::string(c), (uint8_t)fmt);
+        decoder->agw->audio_display->header =std::string(c);
+        decoder->agw->audio_display->header_fmt = (uint8_t)fmt;
     } else if (page == 0x05) {
 
     }

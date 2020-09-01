@@ -36,7 +36,9 @@ object KeyManager {
     private var page: KI_STAT by Delegates.observable(KI_STAT.RESERVED) { _, o, n ->
         if (o != n) {
             println("Cluster page: $n")
-            KombiDisplay.setPage(page.raw.toByte())
+            if (n != KI_STAT.RESERVED) {
+                KombiDisplay.setPage(page.raw.toByte())
+            }
             simplePage = when(n) {
                 KI_STAT.RESERVED -> simplePage // Itself if reserved
                 KI_STAT.AUDIO -> PAGE.AUDIO

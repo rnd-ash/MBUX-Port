@@ -3,6 +3,7 @@ package com.rndash.mbheadunit
 import android.hardware.usb.UsbDevice
 import android.hardware.usb.UsbManager
 import android.os.Process
+import android.util.Log
 import com.hoho.android.usbserial.driver.UsbSerialDriver
 import com.hoho.android.usbserial.driver.UsbSerialPort
 import com.hoho.android.usbserial.driver.UsbSerialProber
@@ -18,40 +19,40 @@ class CarComm(device: UsbDevice, manager: UsbManager) {
     }
 
     companion object {
-        private var serialDevice: UsbSerialPort? = null
+        fun init_test() {
+            Log.w("CARCOMM", "No arduino found - launching in test mode (assuming bench test)!")
+            sendThread.start()
+            CanBusNative.init()
+        }
+
+        var serialDevice: UsbSerialPort? = null
         private val SERIAL_INPUT_OUTPUT_MANAGER_THREAD_PRIORITY: Int = Process.THREAD_PRIORITY_URGENT_AUDIO
         val frameQueue = ArrayDeque<CanFrame>()
 
         // This thread polls for can frames from JNI. If a frame is available, it is sent to arduino
         val sendThread = Thread {
-            var hasFrame = false
+            println("Send thread started!")
+            var hasFrame: Boolean
             while (true) {
+                hasFrame = false
+                // Check Native frame queue (Used by AGW<->IC)
+                CanBusNative.getSendFrame()?.let { nativeBA ->
+                    println(nativeBA.joinToString(" ") { x -> String.format("%02X", x) })
+                    serialDevice?.write(nativeBA, 10)
+                    hasFrame = true
+                }
                 // Check JVM frame queue
                 if (frameQueue.isNotEmpty()) {
                     val f = frameQueue.removeFirstOrNull()
-                    if (serialDevice != null) {
-                        f?.let {
-                            serialDevice?.write(it.toStruct(), 100)
-                        }
-                    } else {
-                        println("Writing ${frameQueue.removeFirst()} to bus")
+                    f?.let {
+                        serialDevice?.write(it.toStruct(), 100)
                     }
                     hasFrame = true
                 }
-                // Check Native frame queue (Used by AGW<->IC)
-                CanBusNative.getSendFrame()?.let {
-                    println(it.map {x -> String.format("%02X", x)}.joinToString(", "))
-                    serialDevice?.write(it, 100)
-                    hasFrame = true
-                }
                 if (!hasFrame) {
-                    Thread.sleep(1000)
+                    Thread.sleep(10)
                 }
             }
-        }
-
-        init {
-            sendThread.start()
         }
     }
 
@@ -66,6 +67,9 @@ class CarComm(device: UsbDevice, manager: UsbManager) {
         val connection = manager.openDevice(driver.device)
         val port = driver.ports[0]
         port.open(connection)
+        try {
+            sendThread.start()
+        } catch (e: IllegalThreadStateException){}
         CanBusNative.init()
         port.setParameters(115200, 8, UsbSerialPort.STOPBITS_1, UsbSerialPort.PARITY_NONE)
         serialDevice = port

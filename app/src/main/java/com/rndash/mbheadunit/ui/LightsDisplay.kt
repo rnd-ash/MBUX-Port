@@ -137,13 +137,11 @@ class LightsDisplay : Fragment() {
         super.onPause()
         isInPage = false
         PartyMode.stopThread()
-        //BTMusic.tearDownSampler()
     }
 
     override fun onResume() {
         super.onResume()
         isInPage = true
         PartyMode.startThread()
-        BTMusic.setupSampler()
     }
 }

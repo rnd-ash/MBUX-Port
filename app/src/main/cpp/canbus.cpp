@@ -16,7 +16,7 @@ JNIEXPORT void JNICALL
 Java_com_rndash_mbheadunit_nativeCan_CanBusNative_destroy(JNIEnv *env, jobject thiz) {
     __android_log_print(ANDROID_LOG_DEBUG, LOG_TAG, "Native canbus shutdown!");
     thread_cancel = true; // Tells parser thread to quit
-    decoder->kombi->stopThread();
+    decoder->agw->stopThread();
 }
 
 extern "C"
@@ -49,9 +49,6 @@ Java_com_rndash_mbheadunit_nativeCan_CanBusNative_getSendFrame(JNIEnv *env, jobj
 
 void processFrames() {
     __android_log_print(ANDROID_LOG_DEBUG, "ParseThread", "Starting thread");
-    // Wake up KOMBI - Tell KOMBI AGW Is awake!
-    sendFrames.pushFrame({'B', 0x01A4, 0x08, 0x05, 0x05, 0x20, 0x02, 0x11, 0xC1});
-    sendFrames.pushFrame({'B', 0x01A4, 0x08, 0x05, 0x03, 0x20, 0x02, 0x11, 0xC3});
     CanFrame read = {0x00};
     while(!thread_cancel) {
         // Now check if we can read a canframe
@@ -92,9 +89,17 @@ JNIEXPORT void JNICALL
 Java_com_rndash_mbheadunit_nativeCan_KombiDisplay_setBodyAttrs(JNIEnv *env, jobject thiz, jbyte page, jbyte fmt, jstring text) {
     const char* c = env->GetStringUTFChars(text, nullptr);
     if (page == 0x03) {
-        decoder->kombi->audioPage.setBody(std::string(c), (uint8_t)fmt);
+        decoder->agw->audio_display->body =std::string(c);
+        decoder->agw->audio_display->body_fmt = (uint8_t)fmt;
     } else if (page == 0x05) {
 
     }
     env->ReleaseStringUTFChars(text, c);
+}
+
+extern "C"
+JNIEXPORT void JNICALL
+Java_com_rndash_mbheadunit_nativeCan_KombiDisplay_setAudioSymbolBytes(JNIEnv *env, jobject thiz, jbyte u, jbyte d) {
+    decoder->agw->audio_display->symbolLower = d;
+    decoder->agw->audio_display->symbolUpper = d;
 }

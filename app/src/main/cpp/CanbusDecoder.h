@@ -5,7 +5,7 @@
 #ifndef MERCEDES_UI_CANBUSDECODER_H
 #define MERCEDES_UI_CANBUSDECODER_H
 
-#include "kombiCom.h"
+#include "AGW.h"
 #include <map>
 
 class InvalidBusException : public std::exception {
@@ -72,7 +72,7 @@ public:
      * @return Nullptr if frame not found, else pointer to can frame
      */
     CanFrame* getFrame(char bus, int ecuAddr);
-    kombiCom* kombi;
+    AGW* agw;
 };
 
 

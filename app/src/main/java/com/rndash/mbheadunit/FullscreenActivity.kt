@@ -120,15 +120,15 @@ class FullscreenActivity : FragmentActivity() {
         if (dev == null) {
             Log.e("MAIN", "No Arduino found!")
             Toast.makeText(this, "Error. Arduino not found!", Toast.LENGTH_LONG).show()
-            CanBusNative.init()
+            CarComm.init_test()
             Thread {
                 Thread.sleep(1000)
-                //CanBusNative.sendBytesToBuffer("C06086F43062DFA003600\r\n".toByteArray(Charsets.US_ASCII), 23)
-                sendToBusTest(CanFrame(0x0090, 'B', byteArrayOf(0xB0.toByte(), 0x59, 0x57)))
-                sendToBusTest(CanFrame(0x608, 'C', byteArrayOf(0x6E, 0x41, 0x06, 0x2D, 0xFA.toByte(), 0x02, 0x5C, 0x00)))
-
-                Thread.sleep(10)
-                println(SAM_H_A2)
+                sendToBusTest(
+                        CanFrame(
+                                0x01D0,
+                                'B',
+                                byteArrayOf(0x03,0x05,0x22,0xD7.toByte(),0x01,0x00,0xC2.toByte(),0x00)
+                        ))
             }.start()
         } else {
             Log.d("MAIN", "Arduino found!")
@@ -138,7 +138,6 @@ class FullscreenActivity : FragmentActivity() {
         //val mbux = MBUXDialog(this)
         //mbux.show()
         val bg = findViewById<ImageView>(R.id.ui_bg)
-
         Thread {
             while(true) {
                 if (DBE_A1.get_daemmer()) { // Light sensor request dim please
@@ -224,13 +223,13 @@ class FullscreenActivity : FragmentActivity() {
             }
         })
 
-        BTMusic.setAudioManager(getSystemService(Service.AUDIO_SERVICE) as AudioManager)
-        BTMusic.focusBTMusic()
         val i = Intent()
         i.component = ComponentName("android.microntek.mtcser", "android.microntek.mtcser.BlueToothService")
         bindService(i, BTMusic.serviceConnection, BIND_AUTO_CREATE)
-        KombiDisplay.setAudioBodyText("NO MUSIC", arrayOf(KombiDisplay.TEXT_FMT.CENTER_JUSTIFIED, KombiDisplay.TEXT_FMT.FLASHING))
-        KombiDisplay.setAudioHeaderText("No audio src", arrayOf(KombiDisplay.TEXT_FMT.LEFT_JUSTIFIED))
+
+        KombiDisplay.setAudioHeaderText("HEADER", arrayOf(KombiDisplay.TEXT_FMT.CENTER_JUSTIFIED))
+        KombiDisplay.setAudioSymbol(KombiDisplay.AUDIO_SYMBOL.NONE, KombiDisplay.AUDIO_SYMBOL.UP_ARROW)
+        KombiDisplay.setAudioBodyText("BODY LONG TEXT", arrayOf(KombiDisplay.TEXT_FMT.CENTER_JUSTIFIED))
     }
 
     private inner class ScreenSlidePagerAdapter(fa: FragmentActivity) : FragmentStateAdapter(fa) {
@@ -269,7 +268,6 @@ class FullscreenActivity : FragmentActivity() {
         tmp += "\r\n"
         val bs = tmp.toByteArray(Charsets.US_ASCII)
         CanBusNative.sendBytesToBuffer(bs, bs.size)
-        println(bs.size)
     }
 
     // Sends an intent asking the headunit to set volume

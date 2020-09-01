@@ -1,5 +1,6 @@
 package com.rndash.mbheadunit.car
 
+import com.rndash.mbheadunit.BTMusic
 import com.rndash.mbheadunit.CanFrame
 import com.rndash.mbheadunit.CarComm
 import com.rndash.mbheadunit.nativeCan.canB.EZS_A2
@@ -10,6 +11,7 @@ import com.rndash.mbheadunit.nativeCan.canB.SAM_H_A5
  * Object that deals with special effects such as disco lights on the car
  */
 @ExperimentalStdlibApi
+@ExperimentalUnsignedTypes
 object PartyMode {
     private fun millis() = System.currentTimeMillis()
 
@@ -38,9 +40,15 @@ object PartyMode {
     private var sha3 = CanFrame(0x000E, 'B', byteArrayOf(0x00, 0x00))
     private var sha5 = CanFrame(0x0230, 'B', byteArrayOf(0x00, 0x00))
 
+    private var lastSampleTime = millis()
     private var partyThread : Thread? = null
     private fun threadLoop() {
+        BTMusic.setupSampler()
         println("Party mode thread start!")
+        if (millis() - lastSampleTime > 500) {
+            lastSampleTime = millis()
+            println("Amplitude: ${BTMusic.sampler?.maxAmplitude}")
+        }
         while(true) {
             if (!isEngineOn()) {
 
@@ -105,6 +113,7 @@ object PartyMode {
                 break
             }
         }
+        BTMusic.tearDownSampler()
     }
 
     // Check if engine is on. If it is party thread MUST exit
