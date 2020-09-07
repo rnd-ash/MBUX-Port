@@ -21,7 +21,7 @@ void AGW::processKombiFrame(CanFrame *f) {
             unpackKombiMsg(f);
             break;
         case 0x30:
-            onFlowControl();
+            this->hasFC = true;
             break;
         default:
             __android_log_print(ANDROID_LOG_ERROR, "AGW", "Unknown Kombi frame starting with %02X", f->data[0]);
@@ -29,7 +29,7 @@ void AGW::processKombiFrame(CanFrame *f) {
 }
 
 void AGW::onFlowControl() {
-    __android_log_print(ANDROID_LOG_DEBUG, "AGW", "Flow control received");
+    //__android_log_print(ANDROID_LOG_DEBUG, "AGW", "Flow control received");
     uint8_t frame_index = 0x21;
     CanFrame f = {'B', 0x01A4, 0x08};
     if (isSending) {
@@ -39,8 +39,17 @@ void AGW::onFlowControl() {
             frame_index++;
             tempBufferPos += 7;
             sendFrames.pushFrame(f);
+            std::this_thread::sleep_for(std::chrono::milliseconds(2));
+            if (frame_index == 0x30) { // Overflow detected - Wait for next flow control frame
+                this->isSending = true;
+                this->hasFC = false;
+                this->lastSendMillis = get_millis(); // Prevent timeout
+                return;
+            }
         }
         isSending = false;
+        this->hasFC = false;
+        std::this_thread::sleep_for(std::chrono::milliseconds(20));
     }
 }
 
@@ -118,29 +127,36 @@ void AGW::processKombiPayload(uint8_t page, uint8_t pkg, uint8_t len, uint8_t *d
  * Worker loop thread for AGW. This handles updating pages on a timer and sending them to Kombi
  */
 void AGW::worker_loop() {
-    bool updateTel = false;
-    //this->tel_display->start_init();
-    this->audio_display->start_init();
+    this->tel_display->start_init(false);
+    this->audio_display->start_init(false);
+    uint8_t update_screen = PAGE_TEL;
     while(!thread_stop) {
+        if (this->hasFC && this->isSending) {
+            this->onFlowControl();
+        }
+        if (isSending && get_millis() - lastSendMillis > 2000) {
+            __android_log_print(ANDROID_LOG_WARN,"AGW", "TIMEOUT SENDING, RESETTING BUFFER");
+            // Resend package
+            sendPayload(this->tempBuffer);
+        }
         if (!isSending) {
-            //if (!updateTel) {
+            if (update_screen == PAGE_AUDIO) {
                 audio_display->update();
                 AGWPayload *p = audio_display->getOutgoing();
                 if (p != nullptr) {
                     sendPayload(*p);
                     audio_display->popSendQueue();
                 }
-            //} else {
-                /*
+                update_screen = PAGE_TEL;
+            } else if (update_screen == PAGE_TEL) {
                 tel_display->update();
                 AGWPayload *p = tel_display->getOutgoing();
                 if (p != nullptr) {
                     sendPayload(*p);
                     tel_display->popSendQueue();
                 }
-                 */
-            //}
-            //updateTel = !updateTel; // Alternate on ticks as to who to update
+                update_screen = PAGE_AUDIO;
+            }
         }
         std::this_thread::sleep_for(std::chrono::milliseconds(1));
     }
@@ -150,10 +166,12 @@ void AGW::worker_loop() {
 void AGW::sendPayload(AGWPayload p) {
     CanFrame f = { 'B', 0x01A4, 0x08, p.len };
     if (p.len <= 7) { // Can be done in 1 frame!
+        lastSendMillis = get_millis();
         isSending = true;
         memcpy(&f.data[1], &p.data[0], p.len);
         sendFrames.pushFrame(f);
         isSending = false;
+        std::this_thread::sleep_for(std::chrono::milliseconds(20));
     } else {
         isSending = true;
         f.data[0] = 0x10;
@@ -162,5 +180,19 @@ void AGW::sendPayload(AGWPayload p) {
         tempBufferPos = 6;
         memcpy(&f.data[2], &p.data[0], 6);
         sendFrames.pushFrame(f);
+        lastSendMillis = get_millis();
+    }
+}
+
+void AGW::setCurrentPage(uint8_t page) {
+    if (page == PAGE_AUDIO) {
+        audio_display->setState(true);
+        tel_display->setState(false);
+    } else if (page == PAGE_TEL) {
+        audio_display->setState(false);
+        tel_display->setState(true);
+    } else {
+        audio_display->setState(false);
+        tel_display->setState(false);
     }
 }

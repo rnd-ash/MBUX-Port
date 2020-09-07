@@ -40,14 +40,6 @@ void readBuffer::insertElements(uint8_t *ptr, int numElements) {
         mutex.unlock();
         return;
     }
-    /*
-    char buf[400] = {0x00};
-    int pos = 0;
-    for (int i = 0; i < std::min(50,numElements); i++) {
-        pos += sprintf(buf+pos, "%02X ", ptr[i]);
-    }
-    __android_log_print(ANDROID_LOG_DEBUG, RLOG_TAG, "IN : %s", buf);
-     */
     memcpy(&buffer[storedElements], &ptr[0], numElements);
     storedElements += numElements;
     //__android_log_print(ANDROID_LOG_DEBUG, RLOG_TAG, "Buffer has %d elements", storedElements);

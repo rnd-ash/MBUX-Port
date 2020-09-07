@@ -20,8 +20,8 @@ add_library( # Sets the name of the library.
         src/main/cpp/canbus.cpp
         src/main/cpp/readBuffer.cpp
         src/main/cpp/CanbusDecoder.cpp
-        src/main/cpp/kombiCom.cpp
-        src/main/cpp/KombiDisplay.cpp
+        src/main/cpp/AGW.cpp
+        src/main/cpp/AGWDisplay.cpp
         )
 
 # Searches for a specified prebuilt library and stores the path as a

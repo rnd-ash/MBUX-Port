@@ -35,7 +35,9 @@ public:
     void stopThread();
     TelephoneDisplay* tel_display;
     AudioDisplay* audio_display;
+    void setCurrentPage(uint8_t page);
 private:
+    char pkg25buf[3];
     void sendPayload(AGWPayload p);
     void unpackKombiMsg(CanFrame *f);
     void processKombiResponse(uint8_t page, uint8_t pkg, uint8_t result);
@@ -47,6 +49,8 @@ private:
     AGWPayload tempBuffer;
     uint8_t tempBufferPos;
     bool isSending = false;
+    unsigned long lastSendMillis = get_millis();
+    bool hasFC = false;
 };
 
 
