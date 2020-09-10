@@ -53,11 +53,12 @@ void writeFrame(char bus_id, can_frame* f) {
     for (int i = 0; i < f->can_dlc; i++) {
         pos+=sprintf(writeBuf+pos, "%02X", f->data[i]);
     }
-    Serial.println(writeBuf);
+    Serial.print(writeBuf);
+    Serial.print('\n');
 }
 
-
-unsigned long lastTime = millis();
+uint32_t last_sent_b = 0xFFFF;
+uint32_t last_sent_c = 0xFFFF;
 void loop() {
     // Incomming request from tablet! - Send to CAN
     if (Serial.available() >= FRAME_SIZE) {
@@ -69,9 +70,11 @@ void loop() {
         {
         case 'C':
             canC->sendMessage(&io_can_frame);
+            last_sent_c = io_can_frame.can_id;
             break;
         case 'B':
             canB->sendMessage(&io_can_frame);
+            last_sent_b = io_can_frame.can_id;
             break;
         default:
             break;
@@ -79,29 +82,14 @@ void loop() {
     }
     // Poll for any new CAN frames on Bus B
     if (canB->readMessage(&io_can_frame) == MCP2515::ERROR_OK) {
-        writeFrame('B', &io_can_frame);
+        if (io_can_frame.can_id != last_sent_b) {
+            writeFrame('B', &io_can_frame);
+        }
     }
     // Poll for any new CAN frames on Bus C
     if (canC->readMessage(&io_can_frame) == MCP2515::ERROR_OK) {
-        writeFrame('C', &io_can_frame);
+        if (io_can_frame.can_id != last_sent_c) {
+            writeFrame('C', &io_can_frame);
+        }
     }
-
-    /*
-    // Debug only for desk purposes
-    io_can_frame.can_dlc = 8;
-    io_can_frame.can_id = 0x00AA;
-    io_can_frame.data[0] = 0x00;
-    io_can_frame.data[1] = 0x01;
-    io_can_frame.data[2] = 0x02;
-    io_can_frame.data[3] = 0x03;
-    io_can_frame.data[4] = 0x04;
-    io_can_frame.data[5] = 0x05;
-    io_can_frame.data[6] = 0x06;
-    io_can_frame.data[7] = 0x07;
-    if (random(1) == 1) {
-        writeFrame('B', &io_can_frame);
-    } else {
-        writeFrame('C', &io_can_frame);
-    }
-    */
 }
