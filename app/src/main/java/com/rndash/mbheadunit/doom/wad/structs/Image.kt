@@ -1,6 +1,23 @@
 package com.rndash.mbheadunit.doom.wad.structs
 
+import com.rndash.mbheadunit.doom.wad.Int16
 import com.rndash.mbheadunit.doom.wad.Int32
+import com.rndash.mbheadunit.doom.wad.UInt16
+
+
+@ExperimentalUnsignedTypes
+class Texture(val heaader: TextureHeader, val patches: Array<Patch>): Struct
+
+@ExperimentalUnsignedTypes
+class TextureHeader(
+        val name: String,
+        val masked: Int32,
+        val width: Int32,
+        val height: Int32,
+        val columnDir: Int32,
+        val numPatches: UInt16
+): Struct
+
 
 @ExperimentalUnsignedTypes
 data class Patch(
@@ -12,6 +29,9 @@ data class Patch(
 
 @ExperimentalUnsignedTypes
 data class Image constructor(val width: Int32, val height: Int32, val pixels: UByteArray) : Struct{
+    /**
+     * Creates a RGBA bytearray texture
+     */
     fun toByteStream(palette: Palette): ByteArray {
         val bytes = ByteArray(width*height*4){0xFF.toByte()}
         var index = 0

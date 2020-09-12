@@ -2,13 +2,11 @@ package com.rndash.mbheadunit.doom.wad
 
 import android.content.Context
 import com.rndash.mbheadunit.doom.Logger.Companion.logDebug
-import com.rndash.mbheadunit.doom.wad.structs.Header
+import com.rndash.mbheadunit.doom.Logger.Companion.logInfo
+import com.rndash.mbheadunit.doom.wad.structs.*
 import java.io.File
 import java.nio.ByteBuffer
 import java.nio.ByteOrder
-import com.rndash.mbheadunit.doom.wad.structs.Directory
-import com.rndash.mbheadunit.doom.wad.structs.Image
-import com.rndash.mbheadunit.doom.wad.structs.Palettes
 
 
 @ExperimentalUnsignedTypes
@@ -19,6 +17,8 @@ class WadFile {
     private lateinit var directories: Array<Directory>
     lateinit var colourPalettes: Palettes
     private var patches = HashMap<String, Image>()
+    private var textures = HashMap<String, Texture>()
+    private lateinit var levels: Array<LevelData>
     var sprites = HashMap<String, Image>()
 
     constructor(file: File) {
@@ -105,6 +105,10 @@ class WadFile {
             .dropLast(1) // Remove end
     }
 
+    private fun extractFirstAfter(after: String, targName: String) : Directory? {
+        return directories.dropWhile { it.name != after }.firstOrNull { it.name == targName }
+    }
+
     private fun extractPatchImage(dir: Directory) : Image {
         val ret = HashMap<String, Image>()
         seek(dir.filePos) // Seek to directories location in file
@@ -141,8 +145,69 @@ class WadFile {
         return ret
     }
 
-    private fun extractThings(dir: Directory) {
+    private inline fun <reified T: Struct> extractType(dir: Directory, sizeStruct: Int, map: () -> T) : Array<T> {
+        seek(dir.filePos)
+        val extractCount = dir.size / sizeStruct
+        val list = ArrayList<T>()
+        (0 until extractCount).forEach { _ ->
+            list.add(map())
+        }
+        return list.toTypedArray()
+    }
 
+    private fun extractLevel(levelName: String) : LevelData {
+        val l = LevelData(levelName)
+        val things = extractFirstAfter(levelName, "THINGS") ?: throw Exception("$levelName THINGS not found")
+        l.things = extractType(things, 10) {
+            Thing(readInt16(), readInt16(), readUInt16(), readUInt16(), readUInt16())
+        }
+
+        val linedefs = extractFirstAfter(levelName, "LINEDEFS") ?: throw Exception("$levelName LINEDEFS not found")
+        l.lineDefs = extractType(linedefs, 14) {
+            LineDef(readInt16(), readInt16(), readInt16(), readInt16(), readInt16(), readInt16(), readInt16())
+        }
+
+        val sidedefs = extractFirstAfter(levelName, "SIDEDEFS") ?: throw Exception("$levelName SIDEDEFS not found")
+        l.sideDefs = extractType(linedefs, 30) {
+            SideDef(readInt16(), readInt16(), readString8(), readString8(), readString8(), readUInt16())
+        }
+
+        val vertexes = extractFirstAfter(levelName, "VERTEXES") ?: throw Exception("$levelName VERTEXES not found")
+        l.vertexes = extractType(vertexes, 4) {
+            Vertex(readInt16(), readInt16())
+        }
+
+        val segs = extractFirstAfter(levelName, "SEGS") ?: throw Exception("$levelName SEGS not found")
+        l.segs = extractType(segs, 12) {
+            Seg(readInt16(), readInt16(), readInt16(), readUInt16(), readInt16(), readInt16())
+        }
+
+        val ssectors = extractFirstAfter(levelName, "SSECTORS") ?: throw Exception("$levelName SSECTORS not found")
+        l.ssectors = extractType(ssectors, 4) {
+            SSector(readInt16(), readInt16())
+        }
+
+        val nodes = extractFirstAfter(levelName, "NODES") ?: throw Exception("$levelName NDOES not found")
+        l.nodes = extractType(nodes, 28) {
+            Node(readInt16(), readInt16(), readInt16(), readInt16()).apply {
+                this.bbox = Array(2) { BBox(readInt16(), readInt16(), readInt16(), readInt16()) }
+                this.child = Array(2) { readInt16() }
+            }
+        }
+
+        val sectors = extractFirstAfter(levelName, "SECTORS") ?: throw Exception("$levelName SECTORS not found")
+        l.sectors = extractType(sectors, 26) {
+            Sector(readInt16(), readInt16(), readString8(), readString8(), readInt16(), readUInt16(), readUInt16())
+        }
+
+        // Ignore REJECT block - Not needed as AI is fast on modern HW
+
+        // Ignore BLOCKMAP block - little documentation on how this works TODO blockmap collision detection
+        //val blockmap = extractFirstAfter(levelName, "BLOCKMAP") ?: throw Exception("$levelName BLOCKMAP not found")
+
+
+        // Ignore BEHAVIOUR block - Not used in Vanilla DOOM
+        return l
     }
 
     private fun extractPlaypal(dir: Directory) : Palettes {
@@ -160,6 +225,26 @@ class WadFile {
         return p
     }
 
+    private fun extractTextures(dirs: List<Directory>): HashMap<String, Texture> {
+        val ret = HashMap<String, Texture>()
+        dirs.forEach { lump ->
+            seek(lump.filePos)
+            val count = readUInt32()
+            // Offset for each texture
+            val offsets = Array(count.toInt()){ readInt32() }
+            offsets.forEach { offset ->
+                seek(lump.filePos + offset)
+                val header = TextureHeader(readString8(), readInt32(), readInt32(), readInt32(), readInt32(), readUInt16())
+                val patches = Array(header.numPatches.toInt()) {
+                    Patch(readInt32(), readInt32(), readInt32(), readInt32(), readInt32())
+                }
+                val tex = Texture(header, patches)
+                ret[header.name] = tex
+            }
+        }
+        return ret
+    }
+
     /**
      * Processes the WADs directories, to extract flats and sprites between
      * F_START - F_END and S_START - S_END
@@ -169,12 +254,22 @@ class WadFile {
         val playpal = directories.first { it.name == "PLAYPAL" }
         colourPalettes = extractPlaypal(playpal)
 
-        // TODO level extraction
-        //val things: Directory = directories.first { it.name == "THINGS" }
-        //extractThings(things) // Extract all things
-        //logDebug("WAD_proc_dir", "Found things lump: Size: ${things.size} bytes")
+        val levels = ArrayList<LevelData>()
+        directories.forEachIndexed { index, directory ->
+            if (directory.name == "THINGS") {
+                levels.add(extractLevel(directories[index-1].name))
+            }
+        }
+        this.levels = levels.toTypedArray()
+        logInfo("WAD_READ", "Read ${this.levels.size} levels OK!")
+
         val patches: List<Directory> = extractVirtualFS("P_START", "P_END")
-        logDebug("WAD_proc_dir", "Found ${patches.size} patches")
+        logInfo("WAD_READ", "Read ${this.patches.size} patches OK!")
+
+        // Extract all textures from WAD
+        this.textures = extractTextures(directories.filter { it.name.startsWith("TEXTURE") })
+        logInfo("WAD_READ", "Read ${this.textures.size} textures OK!")
+
 
         val flats: List<Directory> = extractVirtualFS("F_START", "F_END")
         logDebug("WAD_proc_dir", "Found ${flats.size} flats")
