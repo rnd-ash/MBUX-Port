@@ -14,12 +14,13 @@ class WadFile {
     private val data: ByteBuffer
     private lateinit var header: Header
     var pos = 0
-    private lateinit var directories: Array<Directory>
+    lateinit var directories: Array<Directory>
     lateinit var colourPalettes: Palettes
-    private var patches = HashMap<String, Image>()
-    private var textures = HashMap<String, Texture>()
-    private lateinit var levels: Array<LevelData>
-    var sprites = HashMap<String, Image>()
+    var patches = HashMap<String, PatchImage>()
+    var textures = HashMap<String, Texture>()
+    lateinit var levels: Array<LevelData>
+    var sprites = HashMap<String, PatchImage>()
+    lateinit var patchNames: Array<String>
 
     constructor(file: File) {
         data = ByteBuffer.wrap(file.readBytes()).order(ByteOrder.LITTLE_ENDIAN)
@@ -109,13 +110,12 @@ class WadFile {
         return directories.dropWhile { it.name != after }.firstOrNull { it.name == targName }
     }
 
-    private fun extractPatchImage(dir: Directory) : Image {
-        val ret = HashMap<String, Image>()
+    private fun extractPatchImage(dir: Directory) : PatchImage {
         seek(dir.filePos) // Seek to directories location in file
-        val width = readUInt16().toInt()
-        val height = readUInt16().toInt()
-        val leftOffset = readUInt16()
-        val topOffset = readUInt16()
+        val width = readInt16().toInt()
+        val height = readInt16().toInt()
+        val leftOffset = readInt16()
+        val topOffset = readInt16()
         val columnsOffsets = Array(width) { readUInt32() }
         //logDebug("WAD-patch-extract", "Extracting patch ${dir.name}. Size $width x $height")
         val pixels = UByteArray(width * height){0xFF.toUByte()} // Not RGB Pixels, but pointers to the colour map
@@ -134,11 +134,30 @@ class WadFile {
                 readByte() // Dummy
             }
         }
-        return Image(width, height, pixels)
+        return PatchImage(width, height, pixels.toByteArray(), leftOffset.toUShort(), topOffset.toUShort(), dir.name)
     }
 
-    private fun extractSprites(dirs: List<Directory>): HashMap<String, Image> {
-        val ret = HashMap<String, Image>()
+    fun extractPatchByName(name: String) : PatchImage? {
+        return try {
+            extractPatchImage(directories.first { it.name == name })
+        } catch (e: Exception) {
+            System.err.println("Cannot extract $name due to $e")
+            null
+        }
+    }
+
+    fun extractPatchesByName(matchString: String) : Array<PatchImage> {
+        return try {
+            directories.filter { it.name.startsWith(matchString) }.map {
+                extractPatchImage(it)
+            }.toTypedArray()
+        } catch (e: Exception) {
+            arrayOf()
+        }
+    }
+
+    private fun extractSprites(dirs: List<Directory>): HashMap<String, PatchImage> {
+        val ret = HashMap<String, PatchImage>()
         dirs.forEach {
             ret[it.name] = extractPatchImage(it)
         }
@@ -168,7 +187,7 @@ class WadFile {
         }
 
         val sidedefs = extractFirstAfter(levelName, "SIDEDEFS") ?: throw Exception("$levelName SIDEDEFS not found")
-        l.sideDefs = extractType(linedefs, 30) {
+        l.sideDefs = extractType(sidedefs, 30) {
             SideDef(readInt16(), readInt16(), readString8(), readString8(), readString8(), readUInt16())
         }
 
@@ -234,15 +253,22 @@ class WadFile {
             val offsets = Array(count.toInt()){ readInt32() }
             offsets.forEach { offset ->
                 seek(lump.filePos + offset)
-                val header = TextureHeader(readString8(), readInt32(), readInt32(), readInt32(), readInt32(), readUInt16())
+                val header = TextureHeader(readString8(), readInt32(), readInt16(), readInt16(), readInt32(), readUInt16())
                 val patches = Array(header.numPatches.toInt()) {
-                    Patch(readInt32(), readInt32(), readInt32(), readInt32(), readInt32())
+                    Patch(readInt16(), readInt16(), readInt16(), readInt16(), readInt16())
                 }
                 val tex = Texture(header, patches)
                 ret[header.name] = tex
             }
         }
         return ret
+    }
+
+    private fun extractPatches() {
+        patchNames.forEach { pName ->
+            val lump = directories.firstOrNull { it.name == pName } ?: return@forEach // Ignore missing
+            patches[pName] = extractPatchImage(lump)
+        }
     }
 
     /**
@@ -263,8 +289,16 @@ class WadFile {
         this.levels = levels.toTypedArray()
         logInfo("WAD_READ", "Read ${this.levels.size} levels OK!")
 
+        this.patchNames = directories.first { it.name == "PNAMES" }.let {
+            seek(it.filePos)
+            val count = readUInt32()
+            logInfo("WAD_READ", "Read $count patch names")
+            Array(count.toInt()) { readString8() }
+        }
+        extractPatches()
+
         val patches: List<Directory> = extractVirtualFS("P_START", "P_END")
-        logInfo("WAD_READ", "Read ${this.patches.size} patches OK!")
+        logInfo("WAD_READ", "Read ${patches.size} patches OK!")
 
         // Extract all textures from WAD
         this.textures = extractTextures(directories.filter { it.name.startsWith("TEXTURE") })

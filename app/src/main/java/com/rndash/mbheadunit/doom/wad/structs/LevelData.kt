@@ -27,7 +27,8 @@ data class Thing(val x_pos: Int16, val y_pos: Int16, val angle: UInt16, val type
     }
 }
 
-class LineDef(vStart: Int16, vEnd: Int16, flags: Int16, func: Int16, tag: Int16, sdr: Int16, sdl: Int16): Struct
+@ExperimentalUnsignedTypes
+class LineDef(val vStart: Int16, val vEnd: Int16, val flags: Int16, val func: Int16, val tag: Int16, val sdr: Int16, val sdl: Int16): Struct
 
 @ExperimentalUnsignedTypes
 class SideDef constructor(
@@ -47,7 +48,7 @@ class Seg(
         val endVertex: Int16,
         val angle: Int16,
         val lindef: UInt16,
-        val dir: Int16,
+        val segSide: Int16,
         val offset: Int16) : Struct
 
 @ExperimentalUnsignedTypes
