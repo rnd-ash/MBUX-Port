@@ -6,6 +6,8 @@ import android.os.Handler
 import android.view.View
 import com.rndash.mbheadunit.R
 import com.rndash.mbheadunit.doom.engine.FrameBuffer
+import com.rndash.mbheadunit.doom.engine.GameEngine
+import com.rndash.mbheadunit.doom.engine.ViewPort
 import com.rndash.mbheadunit.doom.wad.WadFile
 import java.nio.ByteBuffer
 import kotlin.math.min
@@ -25,7 +27,6 @@ class DoomSurfaceView(context: Context, stretchScreen: Boolean = false) : View(c
         lateinit var wadFile: WadFile
         var scaleWidth = 1F
         var scaleHeight = 1F
-
         var stretch = false // Integer scaling by default
         fun calcSF(w: Int, h: Int) {
             scaleWidth = w.toFloat() / NATIVE_WIDTH.toFloat()
@@ -36,7 +37,7 @@ class DoomSurfaceView(context: Context, stretchScreen: Boolean = false) : View(c
         }
     }
 
-    var gameFrameBuffer : FrameBuffer
+    var gameEngine: GameEngine
     val renderHandler = Handler()
     val runner = object: Runnable {
         override fun run() {
@@ -50,7 +51,7 @@ class DoomSurfaceView(context: Context, stretchScreen: Boolean = false) : View(c
         wadFile.readWad()
         runner.run()
         stretch = stretchScreen
-        gameFrameBuffer = FrameBuffer(wadFile)
+        gameEngine = GameEngine(wadFile)
     }
 
     lateinit var virtualFrameBuffer: ByteArray
@@ -69,7 +70,7 @@ class DoomSurfaceView(context: Context, stretchScreen: Boolean = false) : View(c
      * native res
      */
     private fun upscaleToFrameBuffer() {
-        frameBufferBitmap = Bitmap.createScaledBitmap(gameFrameBuffer.drawFrameBuffer(), screenWidth, screenHeight, true)
+        frameBufferBitmap = Bitmap.createScaledBitmap(gameEngine.render(), screenWidth, screenHeight, true)
     }
 
     var drawCalls = 0
@@ -79,11 +80,6 @@ class DoomSurfaceView(context: Context, stretchScreen: Boolean = false) : View(c
     var lastFPSTime = System.currentTimeMillis()
     override fun onDraw(canvas: Canvas) {
         canvas.drawColor(Color.BLACK) // Set background to be black
-        // Create internal frame buffer
-        virtualFrameBuffer = Random.nextBytes(NATIVE_WIDTH * NATIVE_HEIGHT * 4)
-
-
-
         // Upscale frame buffer, and display on screen
         upscaleToFrameBuffer()
         canvas.drawBitmap(frameBufferBitmap, null, frameBufferRect, null)
@@ -94,12 +90,12 @@ class DoomSurfaceView(context: Context, stretchScreen: Boolean = false) : View(c
         paint.color = Color.WHITE
         paint.textSize = 20F
         canvas.drawText("FPS: $fps", 10F, 15F, paint)
-        canvas.drawText("${fbDrawCalls} Draw calls / sec", 10F, 40F, paint)
+        canvas.drawText("$fbDrawCalls Pixel updates / sec", 10F, 40F, paint)
 
         if (System.currentTimeMillis() - lastFPSTime > 1000) {
+            fbDrawCalls = ViewPort.pixelUpdates
+            ViewPort.pixelUpdates = 0
             fps = drawCalls
-            fbDrawCalls = FrameBuffer.drawCalls
-            FrameBuffer.drawCalls = 0
             drawCalls = 0
             lastFPSTime = System.currentTimeMillis()
         }

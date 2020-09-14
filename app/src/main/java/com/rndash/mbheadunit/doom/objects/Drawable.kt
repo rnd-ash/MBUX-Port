@@ -6,6 +6,6 @@ import com.rndash.mbheadunit.doom.engine.FrameBuffer
 @ExperimentalStdlibApi
 @ExperimentalUnsignedTypes
 interface Drawable {
-    fun render(fb: FrameBuffer)
+    fun render()
     fun update()
 }
