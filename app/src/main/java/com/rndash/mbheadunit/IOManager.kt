@@ -7,6 +7,7 @@ import com.hoho.android.usbserial.util.SerialInputOutputManager
 import com.rndash.mbheadunit.nativeCan.CanBusNative
 import java.nio.ByteBuffer
 
+@ExperimentalStdlibApi
 open class IOManager(readBufSize: Int, private val serialPort: UsbSerialPort) : SerialInputOutputManager(serialPort, null) {
     enum class ManagerState {
         STOPPED,

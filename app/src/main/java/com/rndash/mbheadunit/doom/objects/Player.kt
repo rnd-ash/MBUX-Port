@@ -1,66 +1,156 @@
 package com.rndash.mbheadunit.doom.objects
 
-import com.rndash.mbheadunit.doom.SCREENHEIGHT
-import com.rndash.mbheadunit.doom.renderer.Renderer
-import com.rndash.mbheadunit.doom.wad.mapData.Level
+import android.R.attr
+import com.rndash.mbheadunit.doom.wad.mapData.*
 import kotlin.math.cos
 import kotlin.math.sin
 
 
-class Player(l: Level) {
+@ExperimentalUnsignedTypes
+class Player(private val l: Level) {
+
     companion object {
         const val EYEHEIGHT = 56
     }
 
-    private var x: Double = 0.0 // Left / Right
-    private var y: Double = 0.0 // Forwards/Backwards
-    private var ang = 0.0
-    private var sinAngle = 0.0
-    private var cosAngle = 0.0
-    private var z: Int = EYEHEIGHT
+    private var xPos: Double = 0.0
+    private var yPos: Double = 0.0
+    private var zPos: Double = 0.0
+    private var xDir: Double = -1.0
+    private var yDir: Double = 0.0
+    private var xPlane: Double = 0.0
+    private var yPlane: Double = 0.66
 
-    private val DEGREES_90 : Double by lazy { Math.toRadians(90.0) }
+    private var speed = 1.0
+    private var rotSpeed = 1.0
+
+    private var left = false
+    private var right = false
+    private var forward = false
+    private var backward = false
+    private var sector: Sector? = null
+
+    fun setSpeed(spd: Double) {
+        this.speed = spd
+    }
+
+    fun forwards(b: Boolean) {
+        forward = true
+        update()
+        forward = false
+    }
+
+    fun backwards(b: Boolean) {
+        backward = true
+        update()
+        backward = false
+    }
+    fun left(b: Boolean) {
+        left = true
+        update()
+        left = false
+    }
+    fun right(b: Boolean) {
+        right = true
+        update()
+        right = false
+    }
+
+    fun getXPos()  = xPos
+    fun getYPos() = yPos
+    fun getXDir() = xDir
+    fun getYDir() = yDir
+    fun getXPlane() = xPlane
+    fun getYPlane() = yPlane
 
     fun setFloorHeight(floorHeight: Int) {
-        z = floorHeight + EYEHEIGHT
+        zPos = (floorHeight + EYEHEIGHT).toDouble()
     }
 
-    fun setAngle(x: Int) {
-        ang = Math.toRadians(x.toDouble())
-        sinAngle = sin(ang)
-        cosAngle = cos(ang)
+    fun getX() = xPos.toInt()
+    fun getY() = yPos.toInt()
+    fun getSector(): Sector? = this.sector
+
+    fun setPosition(x: Int, y: Int, rot: Int) {
+        this.xPos = x.toDouble()
+        this.yPos = y.toDouble()
+        //val ang = Math.toRadians(rot.toDouble())
+        //rotate(ang - rot.toDouble())
     }
 
-    fun fwd(dist: Int) {
-        x += cosAngle * dist
-        y += sinAngle * dist
+    private fun segSideDef(seg: Seg, line: LineDef) : SideDef? {
+        if (seg.segSide.toInt() == 0) {
+            return l.sideDefs[line.sideDefRight.toInt()]
+        } else {
+            if (line.sideDefLeft.toInt() == -1) {
+                return null
+            }
+            return l.sideDefs[line.sideDefLeft.toInt()]
+        }
     }
 
-    fun rev(dist: Int) {
-        x -= cosAngle * dist
-        y -= sinAngle * dist
+    private fun segOppositeSideDef(seg: Seg, line: LineDef) : SideDef? {
+        if (seg.segSide.toInt() == 0) {
+            return l.sideDefs[line.sideDefRight.toInt()]
+        } else {
+            if (line.sideDefLeft.toInt() == -1) {
+                return null
+            }
+            return l.sideDefs[line.sideDefLeft.toInt()]
+        }
     }
 
-    fun getX() = x.toInt()
-    fun getY() = y.toInt()
-
-    fun setPos(x: Int, y: Int) {
-        this.x = x.toDouble()
-        this.y = y.toDouble()
+    private fun intersects(x: Double, y: Double, box: Bbox): Boolean {
+        return x.toInt() in (box.left .. box.right) && y.toInt() in (box.bottom .. box.top)
     }
 
-    fun left(dist: Int) {
-        // TODO
+
+    fun update() {
+        if (forward) {
+            xPos += xDir*speed
+            yPos += yDir*speed
+        }
+        if (backward) {
+            xPos -= xDir*speed
+            yPos -= yDir*speed
+        }
+        if (right) {
+            rotate(-rotSpeed)
+        }
+        if (left) {
+            rotate(rotSpeed)
+        }
+        sector = findSector(l.nodes.size - 1)
     }
 
-    fun right(dist: Int) {
-        // TODO
+    private fun rotate(angle: Double) {
+        val oldxDir = xDir
+        xDir = xDir * cos(angle) - yDir * sin(angle)
+        yDir = oldxDir * sin(angle) + yDir * cos(angle)
+        val oldxPlane = xPlane
+        xPlane = xPlane * cos(angle) - yPlane * sin(angle)
+        yPlane = oldxPlane * sin(angle) + yPlane * cos(angle)
     }
 
-    fun getCosAngle() = cosAngle
-    fun getSinAngle() = sinAngle
+    private fun findSector(id: Int) : Sector? {
+        if (id and Scene.subsectorBit == Scene.subsectorBit) {
+            val idx = (id.toUShort() and Scene.subsectorBit.toUShort().inv()).toInt()
+            val ssector = l.subSectors[idx]
+            for (segIdx in ssector.startSeg until ssector.startSeg + ssector.numSegs) {
+                val seg = l.segs[segIdx]
+                val linedef = l.lineDefs[seg.lineNum.toInt()]
+                segSideDef(seg, linedef)?.let { return l.sectors[it.sectorRef.toInt()] }
+                segOppositeSideDef(seg, linedef)?.let { return l.sectors[it.sectorRef.toInt()] }
+            }
 
-    fun getAngleDegrees() = Math.toDegrees(ang)
-
-    fun getEyeHeight(): Int = z
+        }
+        val node = l.nodes[id]
+        if (intersects(xPos, yPos, node.bbox[0])) {
+            return findSector(node.child[0].toInt())
+        }
+        if (intersects(xPos, yPos, node.bbox[1])) {
+            return findSector(node.child[1].toInt())
+        }
+        return null
+    }
 }

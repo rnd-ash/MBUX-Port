@@ -1,13 +1,17 @@
 package com.rndash.mbheadunit.ui
 
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.rndash.mbheadunit.R
 import com.rndash.mbheadunit.nativeCan.canB.*
+import java.nio.ByteBuffer
 import java.util.*
 
 @ExperimentalUnsignedTypes
@@ -52,8 +56,8 @@ class ACDisplay : Fragment() {
                 if(!isInPage){return}
                 activity?.runOnUiThread {
                     fan_speed_text.text = String.format("Fan speed: %3d %%", KLA_A1.get_geb_lstg())
-                    interior_text.text = String.format("Interior temp: %2.1f C", (KLA_A1.get_t_innen_kla().toFloat() / 2.0) - 40)
-                    exterior_text.text = String.format("Exterior temp: %2.1f C", SAM_V_A2.get_t_aussen_b().toFloat() / 4.0)
+                    interior_text.text = String.format("Interior temp: %2.1f C", (KLA_A1.get_t_innen_kla().toFloat() - 40) /  4.0)
+                    exterior_text.text = String.format("Exterior temp: %2.1f C", (SAM_V_A2.get_t_aussen_b().toFloat() - 40) / 4.0)
                     rl_window_text.text = String.format("%3d %%", THL_A1.get_feste_hl())
                     rr_window_text.text = String.format("%3d %%", THR_A1.get_feste_hr())
                     fl_window_text.text = String.format("%3d %%", TVL_A3.get_feste_vl())
@@ -63,7 +67,7 @@ class ACDisplay : Fragment() {
                     low_flap_pos.text = "Footwell: ${KLA_A1.get_lku_vorn()}"
                 }
             }
-        }, 0, 100)
+        }, 0, 250)
     }
 
     override fun onPause() {

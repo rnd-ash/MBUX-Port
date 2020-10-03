@@ -11,8 +11,9 @@ void CanbusDecoder::processFrame(CanFrame *frame) {
         case CANB:
             if (frame->id == 0x01D0) {
                 this->agw->processKombiFrame(frame);
+            } else if (frame->id != 0x01A0) {
+                canB.processFrame(frame);
             }
-            canB.processFrame(frame);
             break;
         case CANC:
             canC.processFrame(frame);

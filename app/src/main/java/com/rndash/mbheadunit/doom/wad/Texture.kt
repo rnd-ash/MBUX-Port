@@ -1,6 +1,7 @@
 package com.rndash.mbheadunit.doom.wad
 
 import java.lang.Integer.min
+import java.nio.ByteBuffer
 
 class TextureHeader(
     val name: String,
@@ -11,26 +12,32 @@ class TextureHeader(
     val numPatches: Short
 )
 
+@ExperimentalUnsignedTypes
 class Texture(
     val header: TextureHeader,
-    patches: Array<Patch>
+    private val p: Array<String>
 ) {
-    val bytes = ByteArray(header.width * header.height){0xFF.toByte()} // Transparent by default
+    val bytes = ByteBuffer.allocateDirect(header.width * header.height) // Transparent by default
 
-    init {
-        println("${header.name} Texture size: ${header.width} x ${header.height}")
+    fun cacheTexture(w: WadFile) {
+        val patches = ArrayList<Patch>()
+        p.forEach {
+            try {
+                patches.add(w.readPatch(it))
+            } catch (e: Exception) {
+                System.err.println("WARNING. Missing patch $it for texture ${header.name}")
+            }
+        }
         patches.forEach { patch ->
-            println("${header.name} patch size: ${patch.width} x ${patch.height}")
-            println("${header.name} patch offsets: ${patch.leftOffset} x ${patch.topOffset}")
             (0 until patch.height).forEach yLoop@{ y -> // Each row
                 (0 until patch.width).forEach xLoop@{ x ->
                     val pixel = patch.pixels[y * patch.width + x]
                     val imgPos = ((patch.leftOffset + x) * patch.height) + (patch.topOffset + y)
                     if (pixel != 0xFF.toByte()) {
-                        if (imgPos >= bytes.size) {
+                        if (imgPos >= bytes.capacity()) {
                             return@xLoop
                         }
-                        bytes[imgPos] = pixel
+                        bytes.put(imgPos, pixel)
                     }
                 }
             }

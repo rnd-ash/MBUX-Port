@@ -76,8 +76,6 @@ class CanFrame(val canID: Int, val bus: Char, bytes: ByteArray) {
                 (canID).toByte(),
                 (canID shr 8).toByte(),
                 dlc.toByte()
-        ) + this.data.array()).apply {
-            println("B: "+this.map { String.format("%02X", it) }.joinToString(" "))
-        }
+        ) + this.data.array())
     }
 }

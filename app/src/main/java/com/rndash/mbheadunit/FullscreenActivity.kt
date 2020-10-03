@@ -73,13 +73,14 @@ class FullscreenActivity : FragmentActivity() {
         window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_FULLSCREEN
         actionBar?.hide()
         setContentView(R.layout.activity_fullscreen)
-        //val bar = findViewById<Fragment>(R.id.status_bar_fragment)
         viewPager = findViewById(R.id.ui_fragment)
         val pagerAdapter = ScreenSlidePagerAdapter(this)
         viewPager.setPageTransformer(ZoomOutPageTransformer())
         viewPager.adapter = pagerAdapter
 
         askForPermission(android.Manifest.permission.RECORD_AUDIO, 137)
+        askForPermission(android.Manifest.permission.WRITE_EXTERNAL_STORAGE, 137)
+        askForPermission(android.Manifest.permission.READ_EXTERNAL_STORAGE, 137)
     }
 
     override fun onWindowFocusChanged(hasFocus: Boolean) {
@@ -155,7 +156,7 @@ class FullscreenActivity : FragmentActivity() {
                     in 18..21 -> runOnUiThread { bg.setImageResource(R.drawable.bg_dusk) }
                     else -> runOnUiThread { bg.setImageResource(R.drawable.bg_night) }
                 }
-                Thread.sleep(2000)
+                Thread.sleep(60000)
             }
         }.start()
 
@@ -199,6 +200,8 @@ class FullscreenActivity : FragmentActivity() {
             }
         })
 
+        var b1 = 0x00.toByte()
+        var b2 = 0x01.toByte()
         KeyManager.registerPageUpListener(KeyManager.KEY.PAGE_UP, object : KeyManager.KeyListener {
             override fun onLongPress(pg: KeyManager.PAGE) {
                 println("Page up long press. Page: $pg")
@@ -227,9 +230,17 @@ class FullscreenActivity : FragmentActivity() {
         i.component = ComponentName("android.microntek.mtcser", "android.microntek.mtcser.BlueToothService")
         bindService(i, BTMusic.serviceConnection, BIND_AUTO_CREATE)
 
-        KombiDisplay.setAudioHeaderText("HEADER", arrayOf(KombiDisplay.TEXT_FMT.CENTER_JUSTIFIED))
-        KombiDisplay.setAudioSymbol(KombiDisplay.AUDIO_SYMBOL.NONE, KombiDisplay.AUDIO_SYMBOL.UP_ARROW)
-        KombiDisplay.setAudioBodyText("BODY LONG TEXT", arrayOf(KombiDisplay.TEXT_FMT.CENTER_JUSTIFIED))
+        KombiDisplay.setAudioHeaderText("AUDIO", arrayOf(KombiDisplay.TEXT_FMT.CENTER_JUSTIFIED))
+        KombiDisplay.setAudioSymbol(KombiDisplay.AUDIO_SYMBOL.NONE, KombiDisplay.AUDIO_SYMBOL.NONE)
+        KombiDisplay.setAudioBodyText("NO SOURCE", arrayOf(KombiDisplay.TEXT_FMT.CENTER_JUSTIFIED))
+
+        KombiDisplay.setTelHeaderText("TELEPHONE", arrayOf(KombiDisplay.TEXT_FMT.CENTER_JUSTIFIED))
+        KombiDisplay.setTelBodyText("NOT", arrayOf(KombiDisplay.TEXT_FMT.CENTER_JUSTIFIED),
+                "CONNECTED", arrayOf(KombiDisplay.TEXT_FMT.CENTER_JUSTIFIED),
+                "", arrayOf(KombiDisplay.TEXT_FMT.CENTER_JUSTIFIED),
+                "", arrayOf(KombiDisplay.TEXT_FMT.CENTER_JUSTIFIED)
+        )
+        BTMusic.focusBT()
     }
 
     private inner class ScreenSlidePagerAdapter(fa: FragmentActivity) : FragmentStateAdapter(fa) {
@@ -282,12 +293,10 @@ class FullscreenActivity : FragmentActivity() {
     private fun askForPermission(permission: String, requestCode: Int) {
         if (ContextCompat.checkSelfPermission(applicationContext, permission) != PackageManager.PERMISSION_GRANTED) {
             if (ActivityCompat.shouldShowRequestPermissionRationale(this, permission)) {
-                Toast.makeText(applicationContext, "Please grant the requested permission to get your task done!", Toast.LENGTH_LONG).show()
                 ActivityCompat.requestPermissions(this, arrayOf(permission), requestCode)
             } else {
                 ActivityCompat.requestPermissions(this, arrayOf(permission), requestCode)
             }
         }
     }
-
 }

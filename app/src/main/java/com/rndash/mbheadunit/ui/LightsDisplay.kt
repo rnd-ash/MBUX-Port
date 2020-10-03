@@ -67,7 +67,8 @@ class LightsDisplay : Fragment() {
                     }
                 }
             }
-            Thread.sleep(10)
+            println("AMP: ${BTMusic.getAmplitude()}")
+            Thread.sleep(100)
         }
     }
 
@@ -129,7 +130,6 @@ class LightsDisplay : Fragment() {
         }, 0, 250)
         PartyMode.startThread()
         controlThread.start()
-        BTMusic.setupSampler()
     }
 
 
@@ -137,11 +137,13 @@ class LightsDisplay : Fragment() {
         super.onPause()
         isInPage = false
         PartyMode.stopThread()
+        BTMusic.tearDownSampler()
     }
 
     override fun onResume() {
         super.onResume()
         isInPage = true
         PartyMode.startThread()
+        BTMusic.setupSampler()
     }
 }

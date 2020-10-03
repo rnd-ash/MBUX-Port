@@ -71,6 +71,14 @@ object BTMusic {
         }
     }
 
+    fun focusBT() {
+        FullscreenActivity.carManager.setParameters("av_focus_gain=gsm_bt")
+    }
+
+    fun unfocusBT() {
+        FullscreenActivity.carManager.setParameters("av_focus_loss=gsm_bt")
+    }
+
     fun tearDownSampler() {
         println("Goodbye sampler")
         sampler?.let { s ->

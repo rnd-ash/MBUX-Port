@@ -24,36 +24,50 @@ class CarComm(device: UsbDevice, manager: UsbManager) {
             sendThread.start()
             CanBusNative.init()
         }
+        const val extra_bytes = 6 // Bytes added to canframe (Header + CRC)
 
         var serialDevice: UsbSerialPort? = null
-        private val SERIAL_INPUT_OUTPUT_MANAGER_THREAD_PRIORITY: Int = Process.THREAD_PRIORITY_URGENT_AUDIO
         val frameQueue = ArrayDeque<CanFrame>()
 
         // This thread polls for can frames from JNI. If a frame is available, it is sent to arduino
         val sendThread = Thread {
             println("Send thread started!")
             var hasFrame: Boolean
+            while (serialDevice == null) {
+                Thread.sleep(1);
+            }
             while (true) {
                 hasFrame = false
                 // Check Native frame queue (Used by AGW<->IC)
                 CanBusNative.getSendFrame()?.let { nativeBA ->
-                    println(nativeBA.joinToString(" ") { x -> String.format("%02X", x) })
+                    //println(nativeBA.joinToString(" ") { x -> String.format("%02X", x) })
                     serialDevice?.write(nativeBA, 10)
                     hasFrame = true
+                    txBytes += nativeBA[3].toInt() + extra_bytes
                 }
                 // Check JVM frame queue
                 if (frameQueue.isNotEmpty()) {
                     val f = frameQueue.removeFirstOrNull()
                     f?.let {
                         serialDevice?.write(it.toStruct(), 100)
+                        txBytes += f.dlc + extra_bytes
                     }
                     hasFrame = true
                 }
-                if (!hasFrame) {
-                    Thread.sleep(10)
-                }
+                Thread.sleep(1)
             }
         }
+
+        @Volatile
+        internal var txBytes = 0L
+
+        fun getTxRate() : Long {
+            val tmp = txBytes
+            txBytes = 0L
+            return tmp
+        }
+
+        external fun getRxRate() : Long
     }
 
     init {

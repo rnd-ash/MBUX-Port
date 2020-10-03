@@ -83,7 +83,7 @@ void processFrames() {
     __android_log_print(ANDROID_LOG_DEBUG, "ParseThread", "Quitting parser thread");
 }
 
-uint8_t strToInt(char x) {
+inline uint8_t strToInt(char x) {
     return (x >= 'A') ? (x - 'A' + 10) : (x - '0');
 }
 

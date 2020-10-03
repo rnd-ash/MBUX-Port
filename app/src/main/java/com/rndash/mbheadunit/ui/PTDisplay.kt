@@ -8,6 +8,8 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.rndash.mbheadunit.R
 import com.rndash.mbheadunit.nativeCan.canC.*
+import java.lang.Integer.max
+import java.lang.Integer.min
 import java.util.*
 
 @ExperimentalUnsignedTypes
@@ -34,6 +36,14 @@ class PTDisplay : Fragment() {
         Timer().schedule(object: TimerTask() {
             override fun run() {
                 if (!isInPage){return}
+
+                val tcrpm = GS_338h.get_nturbine()
+                val engrpm = MS_308h.get_nmot()
+                val mx = max(tcrpm, engrpm)
+                val mn = min(tcrpm, engrpm)
+                val slip = if (tcrpm == 0 || engrpm == 0) 0 else mx - mn
+                val slipPerc = if (tcrpm == 0 || engrpm == 0) 0.0f else (mn.toFloat() / mx.toFloat()) * 100.0f
+
                 activity?.runOnUiThread {
                     engCoolant.text = String.format("Coolant temperature: %2d C", MS_608h.get_t_mot() - 40)
                     engOil.text = String.format("Oil temperature: %2d C", MS_308h.get_t_oel() - 40)
@@ -42,8 +52,8 @@ class PTDisplay : Fragment() {
                     engRpm.text = String.format("Engine speed: %4d RPM", MS_308h.get_nmot())
 
                     transTemp.text = String.format("Oil temperature: %2d C", GS_418h.get_t_get() - 40)
-                    transTorque.text = String.format("Torque: %3.1f Nm", MS_312h.get_m_max_atl().toFloat()/10.0)
-                    //transTC.text = String.format("TC clutch duty: %3d%%", CanBusC.getTCDuty())
+                    transTorque.text = String.format("Torque available: %3d Nm", MS_312h.get_m_max_atl())
+                    transTC.text = String.format("TC Slip: %4d RPM (%2.1f %%)", slip, slipPerc)
                     turbineRPM.text = String.format("Turbine speed: %4d RPM", GS_338h.get_nturbine())
                 }
             }

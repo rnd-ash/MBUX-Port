@@ -136,8 +136,7 @@ void AGW::worker_loop() {
         }
         if (isSending && get_millis() - lastSendMillis > 2000) {
             __android_log_print(ANDROID_LOG_WARN,"AGW", "TIMEOUT SENDING, RESETTING BUFFER");
-            // Resend package
-            sendPayload(this->tempBuffer);
+            isSending = false;
         }
         if (!isSending) {
             if (update_screen == PAGE_AUDIO) {

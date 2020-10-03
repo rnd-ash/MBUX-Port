@@ -1,5 +1,6 @@
 package com.rndash.mbheadunit.ui
 
+import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -8,10 +9,13 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.rndash.mbheadunit.R
 import com.rndash.mbheadunit.nativeCan.canB.KOMBI_A1
+import com.rndash.mbheadunit.nativeCan.canB.KOMBI_A5
 import com.rndash.mbheadunit.nativeCan.canB.SAM_H_A2
 import com.rndash.mbheadunit.nativeCan.canB.SAM_V_A2
+import com.rndash.mbheadunit.nativeCan.canC.KOMBI_412h
 import com.rndash.mbheadunit.nativeCan.canC.MS_608h
 import java.util.*
+import kotlin.math.min
 
 @ExperimentalUnsignedTypes
 @ExperimentalStdlibApi
@@ -26,6 +30,13 @@ class MPGDisplay : Fragment() {
         return inflater.inflate(R.layout.mpg_display, container, false)
     }
 
+    private var total_fuel = 0L
+    private var fuel_last_sec = 0L
+
+    private var avg_spd = 0L
+
+    private var distance = 0.0
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         isInPage = true
         super.onViewCreated(view, savedInstanceState)
@@ -37,19 +48,74 @@ class MPGDisplay : Fragment() {
 
         Timer().schedule(object: TimerTask() {
             override fun run() {
+                val consumption = MS_608h.get_vb()
+                total_fuel += consumption
+                fuel_last_sec += consumption
+                val spd = KOMBI_412h.get_v_anz()
+                avg_spd += spd
+            }
+        }, 0, 100)
+
+        Timer().schedule(object: TimerTask() {
+            override fun run() {
                 if (!isInPage){return}
-                //val consumedLitres = CanBusC.getFuelConsumedTotal() / 1000000.0 //ul  to L
                 activity?.runOnUiThread {
                     fuel_consumed_curr.text = String.format("Fuel usage: %4d ul/s", MS_608h.get_vb())
-                    fuel_usage.text = String.format("Tank Level: %2.1f%% (R: %3d%% - L: %3d%%)",
+                    fuel_usage.text = String.format("Tank Level: %2.1f%% (R: %3d%% - L: %3d%%) - %2.1f L",
                             SAM_H_A2.get_tank_fs_b().toFloat() / 2,
                             SAM_H_A2.get_tank_ge_re(),
-                            SAM_H_A2.get_tank_ge_li()
+                            SAM_H_A2.get_tank_ge_li(),
+                            62.0 * ((SAM_H_A2.get_tank_fs_b().toFloat() / 2) / 100.0)
                     )
-                        //mpg_text.text = String.format("Current: %2.1f MPG", CanBusC.getMPG()
+
+                    val consumption = (fuel_last_sec / 10.0).toInt()
+                    val spd = (avg_spd / 10.0).toInt()
+                    fuel_last_sec = 0
+                    avg_spd = 0
+                    if (spd != 0) {
+                        distance += (spd / 3600.0) // Distance in miles
+                    }
+                    when {
+                        spd == 0 -> {
+                            // Idle so 0 MPG!
+                            mpg_text.setTextColor(Color.WHITE)
+                            mpg_text.text = "Current: 0.0 MPG (Idle)"
+                        }
+                        consumption == 0 -> {
+                            // 0 Fuel used, (Infinite MPG!)
+                            mpg_text.setTextColor(Color.GREEN)
+                            mpg_text.text = "Current: Inf MPG (REGEN ACTIVE!)"
+
+                        }
+                        // Using fuel and cruising
+                        else -> {
+                            // calculate how much fuel used in 1km based on current consumption
+                            val km_per_l = spd.toDouble() / (3600.0 * (consumption.toDouble() / 1000000.0))
+                            // TODO add Europe units (KM/L)
+                            // Convert to MPG
+                            // UK MPG is km_l * 2.824809363
+                            val mpg = km_per_l * 2.824809363 // TODO Add US MPG (km_l * 2.35215)
+                            when {
+                                // Set colour of text based on MPG
+                                mpg >= 40 -> mpg_text.setTextColor(Color.WHITE)
+                                mpg >= 20 -> mpg_text.setTextColor(Color.parseColor("#FF8C00"))
+                                else -> mpg_text.setTextColor(Color.RED)
+                            }
+                            // Display current MPG
+                            mpg_text.text = String.format("Current: %3.1f MPG", min(999.9, mpg))
+                        }
+                    }
+                    // How far have we travelled since engine on?
+                    tank_mpg.text = String.format("Trip distance: %2.2f miles", distance)
+                    // If trip has gone a distance and used some fuel, calculate average MPG
+                    // based on running totals of distance and fuel usage
+                    if (distance != 0.0 && total_fuel != 0L) {
+                        avg_mpg_text.text = String.format("Average MPG: %2.1f",
+                                (distance / (total_fuel / 10000000.0)) * 2.824809363)
+                    }
                 }
             }
-        }, 0, 500)
+        }, 0, 1000)
     }
 
     override fun onPause() {

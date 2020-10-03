@@ -3,11 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:layout_height="25dp"
     android:background="@drawable/status_bar"
-    android:paddingStart="2dp"
-    android:paddingTop="2dp"
-    android:paddingBottom="2dp"
-    android:layout_height="25dp">
+    android:paddingStart="2dp">
 
 
     <TextView
@@ -20,4 +18,29 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:textColor="#FFFFFF"
+        android:id="@+id/bytes_tx"
+        android:layout_width="wrap_content"
+        android:layout_height="12dp"
+        android:text="TextView"
+        android:textSize="10sp"
+        app:layout_constraintBottom_toTopOf="@+id/bytes_rx"
+        app:layout_constraintStart_toStartOf="@+id/bytes_rx"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:textColor="#FFFFFF"
+        android:id="@+id/bytes_rx"
+        android:layout_width="wrap_content"
+        android:layout_height="12dp"
+        android:layout_marginStart="8dp"
+        android:text="TextView"
+        android:textSize="10sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bytes_tx" />
 </androidx.constraintlayout.widget.ConstraintLayout>

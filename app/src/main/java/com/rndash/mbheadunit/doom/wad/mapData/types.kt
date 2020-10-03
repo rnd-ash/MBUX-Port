@@ -1,5 +1,10 @@
 package com.rndash.mbheadunit.doom.wad.mapData
 
+import com.rndash.mbheadunit.doom.wad.Patch
+import com.rndash.mbheadunit.doom.wad.Texture
+import com.rndash.mbheadunit.doom.wad.WadFile
+import java.nio.ByteBuffer
+
 const val THING_SIZE_BYTES = 10
 const val LINDEF_SIZE_BYTES = 14
 const val SIDEDEF_SIZE_BYTES = 30
@@ -10,7 +15,7 @@ const val BBOX_SIZE_BYTES = 8
 const val NODE_SIZE_BYTES = 8 + (2* BBOX_SIZE_BYTES) + 4
 const val SECTOR_SIZE_BYTES = 26
 
-
+@ExperimentalUnsignedTypes
 class Level(
     val name: String,
     val things: Array<Thing>,
@@ -21,7 +26,26 @@ class Level(
     val subSectors: Array<SubSector>,
     val nodes: Array<Node>,
     val sectors: Array<Sector>
-)
+) {
+    val flats = HashMap<String, ByteBuffer>()
+    fun cacheFlats(w: WadFile) {
+        sectors.forEach {
+            cacheFlat(it.ceilingPic, w)
+            cacheFlat(it.floorPic, w)
+        }
+    }
+
+    private fun cacheFlat(name: String, w: WadFile) {
+        if (name != "-" && flats[name] == null) {
+            println("Caching $name")
+            try {
+                flats[name] = w.readFlat(name)
+            } catch (e: Exception) {
+                System.err.println("Patch $name not found for ${this.name}")
+            }
+        }
+    }
+}
 
 class Flat(val data: ByteArray)
 

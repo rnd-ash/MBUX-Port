@@ -12,9 +12,10 @@ import java.lang.Integer.max
 import java.lang.Integer.min
 import java.nio.*
 import kotlin.math.sign
+import kotlin.random.Random
 
 @ExperimentalUnsignedTypes
-class StatusBar(private val w: WadFile) {
+class StatusBar(private val w: WadFile, private val player: Player) {
     companion object {
         const val ST_HEIGHT = 32 * SCREEN_MUL
         const val ST_WIDTH = SCREENWIDTH
@@ -25,6 +26,8 @@ class StatusBar(private val w: WadFile) {
         const val ST_NUMPAINFACES = 5
         const val ST_NUMSTRAIGHTFACES = 3
     }
+
+    val statusBarLayer = ByteBuffer.allocateDirect(ST_HEIGHT * 320)
 
     val sbar = w.readPatch("STBAR")
 
@@ -169,7 +172,7 @@ class StatusBar(private val w: WadFile) {
     }
 
     private var headUpdate = System.currentTimeMillis()
-    private var headNumber = 0
+    private var oldAngle = 0
     private fun updateHead() {
         headUpdate = System.currentTimeMillis()
         if (health <= 0) {
@@ -179,13 +182,27 @@ class StatusBar(private val w: WadFile) {
 
             // calculate pain index. Larger numbers > more damage (Blood on face)
             val painIndex = max(0, ST_NUMPAINFACES - 1 - (healthNormalized / 20))
-            headPic = faces[painIndex].straightFaces[headNumber]
-            headNumber++
-            if (headNumber >= ST_NUMSTRAIGHTFACES) {
-                headNumber = 0
+
+            val ang = 0 //(player.getAngleDegrees() / 10).toInt()
+            headPic = when {
+                ang < oldAngle -> faces[painIndex].turnLeft
+                ang > oldAngle -> faces[painIndex].turnRight
+                else -> {
+                    if (Random.nextInt(20) == 0) {
+                        if (Random.nextBoolean()) {
+                            faces[painIndex].pissed
+                        } else {
+                            faces[painIndex].evilGrin
+                        }
+                    } else {
+                        faces[painIndex].straightFaces[Random.nextInt(3)]
+                    }
+                }
             }
+            oldAngle = ang
         }
     }
+
 
     fun render() {
         Renderer.drawPatch(ST_X, ST_Y, sbar)
@@ -194,7 +211,7 @@ class StatusBar(private val w: WadFile) {
         drawHealth(health.toInt())
         drawArmour(health.toInt())
         drawHead()
-        if (System.currentTimeMillis() - headUpdate > 250) {
+        if (System.currentTimeMillis() - headUpdate > 500) {
             updateHead()
         }
     }

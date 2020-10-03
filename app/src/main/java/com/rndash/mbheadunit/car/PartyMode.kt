@@ -43,17 +43,11 @@ object PartyMode {
     private var lastSampleTime = millis()
     private var partyThread : Thread? = null
     private fun threadLoop() {
-        BTMusic.setupSampler()
+        //BTMusic.setupSampler()
         println("Party mode thread start!")
-        if (millis() - lastSampleTime > 500) {
-            lastSampleTime = millis()
-            println("Amplitude: ${BTMusic.sampler?.maxAmplitude}")
-        }
         while(true) {
             if (!isEngineOn()) {
-
                 // -- DO BLINKER STUFF --
-
                 if (millis() >= leftInidicatorCutoff && leftIndicatorOn) {
                     leftIndicatorOn = false
                     blinkerStateChange = true
@@ -113,7 +107,7 @@ object PartyMode {
                 break
             }
         }
-        BTMusic.tearDownSampler()
+        //BTMusic.tearDownSampler()
     }
 
     // Check if engine is on. If it is party thread MUST exit
