@@ -1,23 +1,20 @@
 package com.rndash.mbheadunit
 
 import android.app.AlertDialog
-import android.app.Dialog
-import android.content.DialogInterface
+import android.content.Context
 import android.microntek.CarManager
+import android.opengl.GLSurfaceView
 import android.os.Bundle
 import android.os.Environment
-import android.view.KeyEvent
-import android.view.View
-import android.view.Window
-import android.view.WindowManager
+import android.view.*
 import android.widget.Toast
 import androidx.fragment.app.FragmentActivity
 import com.rndash.mbheadunit.car.PartyMode
 import com.rndash.mbheadunit.car.PartyMode.isEngineOn
-import com.rndash.mbheadunit.doom.DoomSurfaceView
+import com.rndash.mbheadunit.doom.DoomGlView
 import com.rndash.mbheadunit.doom.wad.WadFile
 import java.io.File
-import java.util.stream.Collectors
+import java.lang.NullPointerException
 
 
 /**
@@ -28,7 +25,21 @@ import java.util.stream.Collectors
 @ExperimentalUnsignedTypes
 class DoomActivity : FragmentActivity() {
 
-    lateinit var cview: DoomSurfaceView
+    inner class DoomGLSurfaceView(ctx: Context, w: WadFile, l: String) : GLSurfaceView(ctx) {
+        var renderer: DoomGlView
+        init {
+            setEGLContextClientVersion(2)
+            renderer = DoomGlView(w, l, ctx)
+            setRenderer(renderer)
+        }
+
+        override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
+            renderer.onKeyDown(keyCode)
+            return super.onKeyDown(keyCode, event)
+        }
+    }
+
+    lateinit var glview: DoomGLSurfaceView
     companion object {
         val carManager = CarManager()
         init {
@@ -65,17 +76,6 @@ class DoomActivity : FragmentActivity() {
             e.printStackTrace()
             finish()
         }
-
-        try {
-            cview.inputThread.start()
-        } catch (e: Exception) {
-            Toast.makeText(this, "Input manager could not be started", Toast.LENGTH_SHORT).show()
-        }
-        try {
-            PartyMode.startThread()
-        } catch (e: Exception) {
-            Toast.makeText(this, "Light thread could not be started", Toast.LENGTH_SHORT).show()
-        }
     }
 
     override fun onWindowFocusChanged(hasFocus: Boolean) {
@@ -99,8 +99,8 @@ class DoomActivity : FragmentActivity() {
         builder.setTitle("Chose a level")
         builder.setItems(levels) { dialog, which ->
             level = levels[which]
-            cview = DoomSurfaceView(this, false, w, level)
-            setContentView(cview)
+            glview = DoomGLSurfaceView(this, w, level)
+            setContentView(glview)
             dialog.cancel()
         }
         val dialog: AlertDialog = builder.create()
@@ -108,22 +108,16 @@ class DoomActivity : FragmentActivity() {
     }
 
     override fun onDestroy() {
-        try {
-            PartyMode.stopThread()
-        } catch (e: Exception){}
-        try {
-            cview.inputThread.interrupt()
-        } catch (e: Exception){}
-
-
         super.onDestroy()
     }
 
     override fun onKeyDown(keyCode: Int, event: KeyEvent): Boolean {
-        return cview.processKeyDown(keyCode, event)
+        return glview.onKeyDown(keyCode, event)
+        //return cview.processKeyDown(keyCode, event)
     }
 
     override fun onKeyUp(keyCode: Int, event: KeyEvent): Boolean {
-        return cview.processKeyUp(keyCode, event)
+        return true
+        //return cview.processKeyUp(keyCode, event)
     }
 }

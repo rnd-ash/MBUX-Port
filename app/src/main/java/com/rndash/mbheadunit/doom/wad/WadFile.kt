@@ -78,13 +78,6 @@ class WadFile {
     /**
      * Temp class for readTextures function
      */
-    inner class PatchTemp(
-        val XOffset: Short,
-        val YOffset: Short,
-        val pNameNumber: Short,
-        val stepDir: Short,
-        val cMap: Short
-    )
 
     private val textures = HashMap<String, Texture>()
     fun readTextures() {
@@ -105,9 +98,9 @@ class WadFile {
                 seek(l.filePos + offset)
                 val header = TextureHeader(readString8().toUpperCase(), readInt(), readShort(), readShort(), readInt(), readShort())
                 val patches = Array(header.numPatches.toInt()) {
-                    PatchTemp(readShort(), readShort(), readShort(), readShort(), readShort())
+                    TexturePatch(readShort().toInt(), readShort().toInt(), readShort().toInt(), readShort().toInt(), readShort().toInt())
                 }
-                textures[header.name] = Texture(header, patches.map { patchNames[it.pNameNumber.toInt()] }.toTypedArray())
+                textures[header.name] = Texture(header, patches)
             }
         }
         println("Loaded ${textures.size} textures")

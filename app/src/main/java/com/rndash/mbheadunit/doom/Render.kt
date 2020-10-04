@@ -1,0 +1,105 @@
+package com.rndash.mbheadunit.doom
+
+import android.graphics.Bitmap
+import android.opengl.GLES20.*
+import android.opengl.GLUtils
+import com.rndash.mbheadunit.doom.renderer.ColourMap
+import com.rndash.mbheadunit.doom.wad.WadFile
+import java.nio.ByteBuffer
+
+object Render {
+    const val vertexShader = """
+        uniform mat4 u_MVPMatrix;
+        attribute vec4 a_Position;
+        attribute vec2 a_texcoords;
+        varying vec2 v_texcoords;
+        
+        void main() {
+            v_texcoords = a_texcoords;
+            gl_Position = u_MVPMatrix * a_Position;
+        }
+    """
+
+    const val fragmentShader = """
+        precision mediump float; 
+
+        uniform sampler2D u_sampler;
+        varying vec2 v_texcoords;
+        
+        void main() {
+            gl_FragColor = texture2D(u_sampler, v_texcoords);
+        }
+    """
+
+
+    fun loadShader(str: String, type: Int): Int {
+        var shaderHandle = glCreateShader(type)
+        if (shaderHandle != 0) {
+            glShaderSource(shaderHandle, str)
+            glCompileShader(shaderHandle)
+
+            val compileStatus = IntArray(1)
+            glGetShaderiv(shaderHandle, GL_COMPILE_STATUS, compileStatus, 0)
+            if (compileStatus[0] == 0) {
+                System.err.println(glGetShaderInfoLog(shaderHandle))
+                glDeleteShader(shaderHandle)
+                shaderHandle = 0
+            }
+        }
+        return shaderHandle
+    }
+
+    fun createProgram(): Int {
+        var handle = glCreateProgram()
+        if (handle != 0) {
+            loadShader(vertexShader, GL_VERTEX_SHADER).let {
+                if (it != 0) { glAttachShader(handle, it) } else {
+                    throw Exception("Error attaching vertex shader")
+                }
+            }
+            loadShader(fragmentShader, GL_FRAGMENT_SHADER).let {
+                if (it != 0) { glAttachShader(handle, it) } else {
+                    throw Exception("Error attaching fragment shader")
+                }
+            }
+
+            glBindAttribLocation(handle, 0, "a_Position")
+            glBindAttribLocation(handle, 1, "a_Color")
+            glLinkProgram(handle)
+
+            val linkStatus = IntArray(1)
+            glGetProgramiv(handle, GL_LINK_STATUS, linkStatus, 0)
+            if (linkStatus[0] == 0) {
+                System.err.println(glGetProgramInfoLog(handle))
+                glDeleteProgram(handle)
+                handle = 0
+            }
+        }
+        return handle
+    }
+
+    @ExperimentalUnsignedTypes
+    fun loadTexture(name: String, w: WadFile, p: Array<ColourMap>, ignByte: Byte = 0xFF.toByte()): Int {
+        val texHandle = IntArray(1)
+        glGenTextures(1, texHandle, 0)
+        if (texHandle[0] != 0) {
+            w.cacheTexture(name)?.let {
+                it.cacheTexture(w, p) // Cache the RGB values from colour palette
+                val bitmap = Bitmap.createBitmap(it.header.width.toInt(), it.header.height.toInt(), Bitmap.Config.ARGB_8888)
+                it.rgba.position(0)
+                bitmap.copyPixelsFromBuffer(it.rgba)
+                glActiveTexture(GL_TEXTURE0)
+                glBindTexture(GL_TEXTURE_2D, texHandle[0])
+                glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR)
+                glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR)
+                glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE)
+                glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE)
+                GLUtils.texImage2D(GL_TEXTURE_2D, 0, bitmap, 0)
+                bitmap.recycle()
+            }
+        } else {
+            System.err.println("Error caching texture $name")
+        }
+        return texHandle[0]
+    }
+}

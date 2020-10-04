@@ -7,8 +7,8 @@ class ColourMap(val data: ByteBuffer) {
         require(data.capacity() == 256 * 3) { "Data size ${data.capacity()} != 256*3" }
     }
     fun getRgb(index: Int): Int {
-        return ((data[index * 3 + 0].toInt() and 0xFF) shl 24) or
+        return  ((data[index * 3 + 0].toInt() and 0xFF) shl 24) or
                 ((data[index * 3 + 1].toInt() and 0xFF) shl 16) or
-                 ((data[index * 3 + 2].toInt() and 0xFF) shl 8) or 0xFF
+                ((data[index * 3 + 2].toInt() and 0xFF) shl 8) or 0xFF
     }
 }

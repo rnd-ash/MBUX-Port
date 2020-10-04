@@ -18,9 +18,9 @@ object Renderer {
     fun getFrameBuffer(): Bitmap {
         // Iterate over each screen, starting with the background display, and ending on the foreground
         frameBuffer.rewind()
-        for (i in 0..PIX_LIM) {
-            frameBuffer.putInt(palette.getRgb(pixelScreenBuffer[i].toInt() and 0xFF))
-        }
+        //for (i in 0..PIX_LIM) {
+        //    frameBuffer.putInt(palette.getRgb(pixelScreenBuffer[i].toInt() and 0xFF))
+        //}
         frameBuffer.rewind()
         return bitmap.apply { this.copyPixelsFromBuffer(frameBuffer) }
     }
@@ -160,29 +160,5 @@ object Renderer {
     fun copyStatusBar(b: ByteBuffer) {
         pixelScreenBuffer.position(320 * ST_Y)
         pixelScreenBuffer.put(b.array(), 0 ,320 * ST_HEIGHT)
-    }
-
-    fun drawTexture(x: Int, y: Int, p: Texture, ignore: Byte = 0xFF.toByte()) {
-        var startPos = y * SCREENWIDTH + x
-        try {
-            (0 until p.header.height).forEach { r ->
-                pixelScreenBuffer.position(startPos)
-                // Ensure transparent pixels are NOT copied
-                (0 until p.header.width).forEach { pxc ->
-                    val px = p.bytes[p.header.width * r + pxc]
-                    if (px != ignore) {
-                        pixelScreenBuffer.put(px)
-                    } else {
-                        pixelScreenBuffer.position(pixelScreenBuffer.position() + 1)
-                    }
-                }
-                startPos += SCREENWIDTH
-                if (startPos + SCREENWIDTH > pixelScreenBuffer.capacity()) {
-                    return
-                }
-            }
-        } catch (e: IllegalArgumentException) {
-            System.err.println("Out of bounds detected! Orig: ($x,$y) - Patch size: (${p.header.width} by ${p.header.height})")
-        }
     }
 }
