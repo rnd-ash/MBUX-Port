@@ -89,7 +89,7 @@ object KeyManager {
                     if (KOMBI_A5.get_button_4_2()) { telDown.press(simplePage) }
                 }
             }
-            Thread.sleep(10)
+            Thread.sleep(25)
         }
     }
 }

@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
@@ -24,6 +25,8 @@ class StatusBar : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val trackName = view.findViewById<TextView>(R.id.trackName)
+        val trackNext = view.findViewById<ImageView>(R.id.track_next)
+        val trackPrev = view.findViewById<ImageView>(R.id.track_prev)
         val rx_metric = view.findViewById<TextView>(R.id.bytes_rx)
         val tx_metric = view.findViewById<TextView>(R.id.bytes_tx)
         Timer().schedule(object: TimerTask() {
@@ -50,11 +53,15 @@ class StatusBar : Fragment() {
                     tx_metric.text = "Tx: $tx KB/s"
                 }
             }
-        }, 0, 1000) // Poll for Rx/Tx every second
+        }, 0, 1000) // Poll for Rx/Tx every secondk
 
         trackName.setOnLongClickListener {
             startActivity(Intent(activity, DoomActivity::class.java))
             return@setOnLongClickListener true
         }
+
+        trackNext.setOnClickListener { BTMusic.playNext() }
+        trackPrev.setOnClickListener { BTMusic.playPrev() }
+
     }
 }

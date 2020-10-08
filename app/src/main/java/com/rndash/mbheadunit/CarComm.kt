@@ -27,34 +27,28 @@ class CarComm(device: UsbDevice, manager: UsbManager) {
         const val extra_bytes = 6 // Bytes added to canframe (Header + CRC)
 
         var serialDevice: UsbSerialPort? = null
-        val frameQueue = ArrayDeque<CanFrame>()
+
+        fun sendFrame(cf: CanFrame) {
+            serialDevice?.write(cf.toStruct(), 100)
+            txBytes += cf.dlc + extra_bytes
+        }
 
         // This thread polls for can frames from JNI. If a frame is available, it is sent to arduino
         val sendThread = Thread {
             println("Send thread started!")
-            var hasFrame: Boolean
             while (serialDevice == null) {
-                Thread.sleep(1);
+                Thread.sleep(10)
             }
+            var nativeBA: ByteArray?
             while (true) {
-                hasFrame = false
-                // Check Native frame queue (Used by AGW<->IC)
-                CanBusNative.getSendFrame()?.let { nativeBA ->
+                nativeBA = CanBusNative.getSendFrame()
+                if (nativeBA != null) {
                     //println(nativeBA.joinToString(" ") { x -> String.format("%02X", x) })
                     serialDevice?.write(nativeBA, 10)
-                    hasFrame = true
                     txBytes += nativeBA[3].toInt() + extra_bytes
+                } else {
+                    Thread.sleep(25)
                 }
-                // Check JVM frame queue
-                if (frameQueue.isNotEmpty()) {
-                    val f = frameQueue.removeFirstOrNull()
-                    f?.let {
-                        serialDevice?.write(it.toStruct(), 100)
-                        txBytes += f.dlc + extra_bytes
-                    }
-                    hasFrame = true
-                }
-                Thread.sleep(1)
             }
         }
 

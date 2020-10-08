@@ -78,8 +78,16 @@ class SideDef(
 
 class Vertex(
     val x: Short,
-    val y: Short
-)
+    val y: Short,
+) {
+    // Needed for Shape Mesh building
+    override fun equals(other: Any?): Boolean {
+        if (other is Vertex) {
+            return other.x == x && other.y == y
+        }
+        return false
+    }
+}
 
 class Seg(
     val vertexStart: Short,

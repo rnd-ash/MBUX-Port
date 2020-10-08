@@ -68,7 +68,7 @@ object PartyMode {
                     } else {
                         SAM_H_A3.set_hell_blink(sha3, 0x00) // Tell SAM to turn off
                     }
-                    CarComm.frameQueue.addLast(sha3)
+                    CarComm.sendFrame(sha3)
                 }
 
                 // Do lights stuff
@@ -93,7 +93,7 @@ object PartyMode {
                     } else {
                         SAM_H_A5.set_hell_edw(sha5, 0x00) // Tell SAM to turn off
                     }
-                    CarComm.frameQueue.addLast(sha5)
+                    CarComm.sendFrame(sha5)
                 }
             }
 

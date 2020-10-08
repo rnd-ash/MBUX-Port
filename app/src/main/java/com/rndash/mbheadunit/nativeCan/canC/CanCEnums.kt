@@ -1401,4 +1401,3 @@ enum class ANFN_VG(val raw: Int) {
 	 /** signal not available **/
 	 SNV(3),
 }
-

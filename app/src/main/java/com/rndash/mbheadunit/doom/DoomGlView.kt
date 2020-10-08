@@ -15,9 +15,14 @@ import com.rndash.mbheadunit.doom.renderer.ColourMap
 import com.rndash.mbheadunit.doom.renderer.Vector3D
 import com.rndash.mbheadunit.doom.wad.WadFile
 import com.rndash.mbheadunit.doom.wad.mapData.*
+import com.rndash.mbheadunit.nativeCan.canC.LRT_PM3
+import com.rndash.mbheadunit.nativeCan.canC.MS_210h
+import com.rndash.mbheadunit.nativeCan.canC.SBW_232h
 import javax.microedition.khronos.egl.EGLConfig
 import javax.microedition.khronos.opengles.GL10
 import kotlin.math.cos
+import kotlin.math.max
+import kotlin.math.min
 import kotlin.math.sin
 
 @ExperimentalUnsignedTypes
@@ -74,6 +79,41 @@ class DoomGlView(private val w: WadFile, lName: String, private val ctx: Context
 
     }
 
+    val carinput = Thread() {
+        while(true) {
+            MS_210h.get_pw().toFloat().let { perc ->
+                if (perc != 0f) {
+                    posX += (-dirX) * perc / 50.0f
+                    posY += (dirZ) * perc / 50.0f
+                }
+            }
+            updatePos()
+            Thread.sleep(50L)
+        }
+    }
+
+    val physThread = Thread() {
+        while(true) {
+            ang += dRot
+            if (dFwd != 0.0f) {
+                posX += (-dirX) * dFwd
+                posY += (dirZ) * dFwd
+            }
+            if (dFwd > 0) {
+                dFwd -= 0.25f
+            } else if (dFwd < 0) {
+                dFwd += 0.25f
+            }
+            if (dRot > 0) {
+                dRot -= 0.5f
+            } else if (dRot < 0) {
+                dRot += 0.5f
+            }
+            updatePos()
+            Thread.sleep(100/6) // 60 updates per second
+        }
+    }
+
     override fun onSurfaceChanged(gl: GL10?, width: Int, height: Int) {
         // Set the OpenGL viewport to the same size as the surface.
         glViewport(0, 0, width, height)
@@ -90,6 +130,7 @@ class DoomGlView(private val w: WadFile, lName: String, private val ctx: Context
         Matrix.frustumM(mProjectionMatrix, 0, left, right, bottom, top, near, far)
     }
 
+    private var sectorMap = HashMap<Short, ArrayList<LineDef>>()
     override fun onSurfaceCreated(gl: GL10?, config: EGLConfig?) {
         Render.createProgram().let {
             if (it == 0) {
@@ -116,6 +157,27 @@ class DoomGlView(private val w: WadFile, lName: String, private val ctx: Context
         }
         updatePos()
         startMusic()
+        physThread.start()
+        carinput.start()
+        sectorMap.forEach {
+            if (it.value.size == 4) {
+                // Build a mesh for each ceiling and floor in each sector
+                println("Sector ${it.key}")
+                val sec = level.sectors[it.key.toInt()]
+                val lines = it.value
+                val vs = ArrayList<MeshBuilder.Line>()
+                println("Sector ${it.key} - ${it.value.size} LineDefs")
+                lines.forEach {
+                    val s = level.vertexes[it.vertexStart.toInt()]
+                    val e = level.vertexes[it.vertexEnd.toInt()]
+                    vs.add(MeshBuilder.Line(s, e))
+                }
+                try {
+                    meshes.add(MeshBuilder(false, sec, *vs.toTypedArray()).toFloorMesh().apply { cacheFlat(sec.floorPic, w, cMap, 0) })
+                    meshes.add(MeshBuilder(true, sec, *vs.toTypedArray()).toFloorMesh().apply { cacheFlat(sec.ceilingPic, w, cMap, 0) })
+                } catch (e: Exception){}
+            }
+        }
     }
 
     private lateinit var mp: MediaPlayer
@@ -138,6 +200,8 @@ class DoomGlView(private val w: WadFile, lName: String, private val ctx: Context
         }
     }
 
+    private var dFwd = 0.0f
+    private var dRot = 0.0f
     override fun onDrawFrame(gl: GL10?) {
         glClear(GL_DEPTH_BUFFER_BIT or GL_COLOR_BUFFER_BIT)
         glClearColor(0.3f, 0.3f, 0.3f, 0.5f)
@@ -146,23 +210,20 @@ class DoomGlView(private val w: WadFile, lName: String, private val ctx: Context
         glDepthFunc(GL_LEQUAL)
         glDepthMask(true)
         glActiveTexture(GL_TEXTURE0)
+        //glEnable(GL_BLEND)
+        //glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA)
         meshes.forEach { m ->
             m.draw(
                 mViewMatrix,
                 mProjectionMatrix
             )
         }
-        var err = glGetError()
-        while(err != GL_NO_ERROR) {
-            println("GL ERROR: $err")
-            err = glGetError()
-        }
     }
 
     private var eyeHeight = 32.0f
     fun updatePos() {
-        println("Pos updated")
         eyeX = -posX
+        //eyeY = findSector(level.nodes.size-1)?.let { it.floorHeight + eyeHeight } ?: posZ
         eyeY = posZ
         eyeZ = posY
 
@@ -179,34 +240,12 @@ class DoomGlView(private val w: WadFile, lName: String, private val ctx: Context
     fun onKeyDown(keyEvent: Int) {
         val angle = Math.toRadians(ang)
         when(keyEvent) {
-            KEYCODE_W -> {
-                posX += (-dirX) * 10.0f
-                posY += (dirZ) * 10.0f
-            }
-            KEYCODE_S -> {
-                posX -= (-dirX) * 10.0f
-                posY -= (dirZ) * 10.0f
-            }
-            KEYCODE_Q -> { ang -= 10 }
-            KEYCODE_E -> { ang += 10 }
-            KEYCODE_Z -> {
-                findSector(level.nodes.size-1)?.let {
-                    if (it != lastSector) {
-                        posZ = it.floorHeight.toFloat() + eyeHeight
-                        lastSector = it
-                    }
-                }
-                posZ += 10
-            }
-            KEYCODE_X -> {
-                findSector(level.nodes.size-1)?.let {
-                    if (it != lastSector) {
-                        posZ = it.floorHeight.toFloat() + eyeHeight
-                        lastSector = it
-                    }
-                }
-                posZ -= 10
-            }
+            KEYCODE_W -> { dFwd += 5f }
+            KEYCODE_S -> { dFwd -= 5f }
+            KEYCODE_Q -> { dRot -= 2f }
+            KEYCODE_E -> { dRot += 2f }
+            KEYCODE_Z -> { posZ -= 10 }
+            KEYCODE_X -> { posZ += 10 }
         }
         updatePos()
     }
@@ -291,25 +330,9 @@ class DoomGlView(private val w: WadFile, lName: String, private val ctx: Context
 
     private fun genSubSector(ssectorID: Int) {
         val s = level.subSectors[ssectorID]
-        var maxX = 0
-        var minX = 99999
-        var maxY = 0
-        var minY = 99999
         (s.startSeg until s.startSeg + s.numSegs).forEach { i ->
             val sec = level.segs[i]
             genSeg(s, i)
-            level.vertexes[sec.vertexStart.toInt()].let {
-                if (it.x > maxX) { maxX = it.x.toInt() }
-                if (it.x < minX) { minX = it.x.toInt() }
-                if (it.y > maxY) { maxY = it.y.toInt() }
-                if (it.y < minY) { minY = it.y.toInt() }
-            }
-            level.vertexes[sec.vertexEnd.toInt()].let {
-                if (it.x > maxX) { maxX = it.x.toInt() }
-                if (it.x < minX) { minX = it.x.toInt() }
-                if (it.y > maxY) { maxY = it.y.toInt() }
-                if (it.y < minY) { minY = it.y.toInt() }
-            }
         }
     }
 
@@ -327,6 +350,12 @@ class DoomGlView(private val w: WadFile, lName: String, private val ctx: Context
 
         val start = level.vertexes[seg.vertexStart.toInt()]
         val end = level.vertexes[seg.vertexEnd.toInt()]
+
+        if (sectorMap[sideDef.sectorRef] == null) {
+            sectorMap[sideDef.sectorRef] = ArrayList()
+        }
+        // Build up a triage of lineDefs within the sector
+        sectorMap[sideDef.sectorRef]?.add(lineDef)
 
         if (ut != "-" && oppSideDef != null) {
             val oppSector = level.sectors[oppSideDef.sectorRef.toInt()]

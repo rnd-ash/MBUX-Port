@@ -30,6 +30,7 @@ import com.rndash.mbheadunit.nativeCan.CanBusNative
 import com.rndash.mbheadunit.nativeCan.KombiDisplay
 import com.rndash.mbheadunit.nativeCan.canB.DBE_A1
 import com.rndash.mbheadunit.nativeCan.canB.SAM_H_A2
+import com.rndash.mbheadunit.nativeCan.canB.TPM_A1
 import com.rndash.mbheadunit.ui.ACDisplay
 import com.rndash.mbheadunit.ui.LightsDisplay
 import com.rndash.mbheadunit.ui.MPGDisplay
@@ -141,12 +142,6 @@ class FullscreenActivity : FragmentActivity() {
         val bg = findViewById<ImageView>(R.id.ui_bg)
         Thread {
             while(true) {
-                if (DBE_A1.get_daemmer()) { // Light sensor request dim please
-                    println("Sensor activated - Dimming!")
-                    window.attributes.screenBrightness = 0.5f
-                } else {
-                    window.attributes.screenBrightness = 1.0f
-                }
                 when (Calendar.getInstance().get(Calendar.HOUR_OF_DAY)) {
                     in 5..7 -> runOnUiThread { bg.setImageResource(R.drawable.bg_dusk) }
                     in 7..9 -> runOnUiThread { bg.setImageResource(R.drawable.bg_mid) }
@@ -159,7 +154,6 @@ class FullscreenActivity : FragmentActivity() {
                 Thread.sleep(60000)
             }
         }.start()
-
         // Register for all Microntek intents
         val intentFilter = IntentFilter()
         intentFilter.addAction("com.microntek.bootcheck")
@@ -241,6 +235,7 @@ class FullscreenActivity : FragmentActivity() {
                 "", arrayOf(KombiDisplay.TEXT_FMT.CENTER_JUSTIFIED)
         )
         BTMusic.focusBT()
+        CarData.dataCollector.start()
     }
 
     private inner class ScreenSlidePagerAdapter(fa: FragmentActivity) : FragmentStateAdapter(fa) {

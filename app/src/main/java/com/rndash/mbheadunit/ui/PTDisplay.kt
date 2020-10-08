@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import com.rndash.mbheadunit.CarData
 import com.rndash.mbheadunit.R
 import com.rndash.mbheadunit.nativeCan.canC.*
 import java.lang.Integer.max
@@ -48,7 +49,7 @@ class PTDisplay : Fragment() {
                     engCoolant.text = String.format("Coolant temperature: %2d C", MS_608h.get_t_mot() - 40)
                     engOil.text = String.format("Oil temperature: %2d C", MS_308h.get_t_oel() - 40)
                     engIntake.text = String.format("Intake temperature: %2d C", MS_608h.get_t_luft() - 40)
-                    engFuel.text = String.format("Fuel usage: %4d ul/s", MS_608h.get_vb())
+                    engFuel.text = String.format("Fuel usage: %4d ul/s", CarData.fuelCurrent.toInt())
                     engRpm.text = String.format("Engine speed: %4d RPM", MS_308h.get_nmot())
 
                     transTemp.text = String.format("Oil temperature: %2d C", GS_418h.get_t_get() - 40)

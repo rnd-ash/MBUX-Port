@@ -33,6 +33,17 @@ open class Mesh(
             textureHandles[name] = res
             return res
         }
+
+        private val flatHandles = HashMap<String, Int>()
+        private fun cacheFlat(name: String, w: WadFile, p: Array<ColourMap>): Int {
+            flatHandles[name]?.let { return it }
+            val res = Render.loadFlat(name, w, p)
+            if (res == 0) {
+                System.err.println("Texture for $name not bound!")
+            }
+            flatHandles[name] = res
+            return res
+        }
     }
 
     var lightLevel: Float = 1.0f
@@ -45,21 +56,11 @@ open class Mesh(
         texHandle = Tex.cacheTexture(name, w, p)
     }
 
-    private var colourBuffer: FloatBuffer =
-        ByteBuffer.allocateDirect(16 * numVecs).run {
-            order(ByteOrder.nativeOrder())
-            asFloatBuffer().apply {
-                vecs.indices.forEach { _ -> put(
-                    floatArrayOf(
-                        Random.nextFloat() % 255,
-                        Random.nextFloat() % 255,
-                        Random.nextFloat() % 255,
-                        1.0f)
-                ) }
-                position(0)
-            }
-        }
-
+    private var isFlat = false
+    fun cacheFlat(name: String, w: WadFile, p: Array<ColourMap>, ll: Int) {
+        texHandle = Tex.cacheFlat(name, w, p)
+        isFlat = true
+    }
 
     private var vertexBuffer : FloatBuffer =
         ByteBuffer.allocateDirect(12 * numVecs).run {
@@ -102,10 +103,6 @@ open class Mesh(
         glVertexAttribPointer(DoomGlView.mPositionHandle, 3, GL_FLOAT, false, 3*4, vertexBuffer)
         glEnableVertexAttribArray(DoomGlView.mPositionHandle)
 
-        //colourBuffer.position(0)
-        //glVertexAttribPointer(DoomGlView.mColourHandle, 4, GL_FLOAT, false, 4*4, colourBuffer)
-        //glEnableVertexAttribArray(DoomGlView.mColourHandle)
-
         mCubeTexCoordinates.position(0)
         glVertexAttribPointer(DoomGlView.mTextureCoordinateHandle, 2, GL_FLOAT, false, 0, mCubeTexCoordinates)
         glEnableVertexAttribArray(DoomGlView.mTextureCoordinateHandle)
@@ -114,7 +111,7 @@ open class Mesh(
         Matrix.multiplyMM(mVPMatrix, 0, projMatrix, 0, mVPMatrix, 0)
 
         glUniformMatrix4fv(DoomGlView.mMVPMatrixHandle, 1, false, mVPMatrix, 0)
-        glDrawArrays(GL_TRIANGLE_STRIP, 0, numVecs)
+        glDrawArrays(GL_TRIANGLES, 0, numVecs)
 
     }
 }

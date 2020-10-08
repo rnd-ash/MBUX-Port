@@ -112,10 +112,11 @@ class WadFile {
                 throw Exception("Cannot find flat $name")
             } else {
                 val lump = lumps[it]
-                val b = ByteBuffer.allocateDirect(4096)
-                data.position(lump.filePos)
-                b.put(readBytes(4096))
-                return b
+                seek(lump.filePos)
+                return ByteBuffer.allocateDirect(4096).apply {
+                    put(readBytes(4096))
+                    position(0)
+                }
             }
         }
     }

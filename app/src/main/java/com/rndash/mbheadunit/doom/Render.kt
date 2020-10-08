@@ -90,10 +90,39 @@ object Render {
                 bitmap.copyPixelsFromBuffer(it.rgba)
                 glActiveTexture(GL_TEXTURE0)
                 glBindTexture(GL_TEXTURE_2D, texHandle[0])
-                glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR)
-                glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR)
-                glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE)
-                glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE)
+                glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST)
+                glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST)
+                glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT)
+                glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT)
+                GLUtils.texImage2D(GL_TEXTURE_2D, 0, bitmap, 0)
+                bitmap.recycle()
+            }
+        } else {
+            System.err.println("Error caching texture $name")
+        }
+        return texHandle[0]
+    }
+
+    @ExperimentalUnsignedTypes
+    fun loadFlat(name: String, w: WadFile, p: Array<ColourMap>, ignByte: Byte = 0xFF.toByte()): Int {
+        val texHandle = IntArray(1)
+        glGenTextures(1, texHandle, 0)
+        if (texHandle[0] != 0) {
+            w.readFlat(name).let {
+                println("loading flat $name")
+                val bitmap = Bitmap.createBitmap(64, 64, Bitmap.Config.ARGB_8888)
+                val rgba = ByteBuffer.allocate(64*64*4).apply { asIntBuffer() }
+                for (i in 0 until it.capacity()) {
+                    rgba.putInt(p[0].getRgb(it[i].toInt() and 0xFF))
+                }
+                rgba.position(0)
+                bitmap.copyPixelsFromBuffer(rgba)
+                glActiveTexture(GL_TEXTURE0)
+                glBindTexture(GL_TEXTURE_2D, texHandle[0])
+                glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST)
+                glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST)
+                glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT)
+                glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT)
                 GLUtils.texImage2D(GL_TEXTURE_2D, 0, bitmap, 0)
                 bitmap.recycle()
             }
