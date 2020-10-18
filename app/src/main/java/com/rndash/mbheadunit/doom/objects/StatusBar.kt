@@ -1,21 +1,14 @@
 package com.rndash.mbheadunit.doom.objects
 
-import android.opengl.GLES20
-import android.opengl.GLES20.*
-import com.rndash.mbheadunit.doom.SCREENHEIGHT
-import com.rndash.mbheadunit.doom.SCREENWIDTH
-import com.rndash.mbheadunit.doom.SCREEN_MUL
-import com.rndash.mbheadunit.doom.renderer.Renderer
+import com.rndash.mbheadunit.doom.*
 import com.rndash.mbheadunit.doom.wad.Patch
 import com.rndash.mbheadunit.doom.wad.WadFile
-import java.lang.Integer.max
 import java.lang.Integer.min
-import java.nio.*
-import kotlin.math.sign
-import kotlin.random.Random
 
 @ExperimentalUnsignedTypes
-class StatusBar(private val w: WadFile, private val player: Player) {
+@ExperimentalStdlibApi
+class StatusBar(private val w: WadFile) {
+    private val cMap = w.readPalette()[0] // Always
     companion object {
         const val ST_HEIGHT = 32 * SCREEN_MUL
         const val ST_WIDTH = SCREENWIDTH
@@ -27,53 +20,43 @@ class StatusBar(private val w: WadFile, private val player: Player) {
         const val ST_NUMSTRAIGHTFACES = 3
     }
 
-    val statusBarLayer = ByteBuffer.allocateDirect(ST_HEIGHT * 320)
+    private lateinit var sbar: HudElement
 
-    val sbar = w.readPatch("STBAR")
-
-    val minusPatch = w.readPatch("STTMINUS")
+    private lateinit var minusPatch: HudElement
 
     // Tall Numbers
-    val tallNums = w.readPatches("STTNUM").also {
-        require(it.size == 10) { "Could not load all STNUM patches" }
-    }
+    private lateinit var tallNums: Array<HudElement>
 
-    val shortNums = w.readPatches("STYSNUM").also {
-        require(it.size == 10) { "Could not load all STNUM patches" }
-    }
+    private lateinit var shortNums: Array<HudElement>
 
-    val tallPercent = w.readPatch("STTPRCNT")
+    private lateinit var tallPercent: HudElement
 
-    val armsBg = w.readPatch("STARMS")
+    private lateinit var armsBg: Mesh2D
+
 
     private val faces = Array(ST_NUMPAINFACES) { FaceAnimation() }
 
     class FaceAnimation() {
-        lateinit var straightFaces: Array<Patch>
-        lateinit var turnLeft: Patch
-        lateinit var turnRight: Patch
-        lateinit var pain: Patch
-        lateinit var evilGrin: Patch
-        lateinit var pissed: Patch
+        lateinit var straightFaces: Array<HudElement>
+        lateinit var turnLeft: HudElement
+        lateinit var turnRight: HudElement
+        lateinit var pain: HudElement
+        lateinit var evilGrin: HudElement
+        lateinit var pissed: HudElement
     }
-    private var faceDead: Patch
-    private var faceGod: Patch
+    @ExperimentalStdlibApi
+    private lateinit var faceDead: HudElement
+    private lateinit var faceGod: HudElement
 
-    init {
-        (0 until ST_NUMPAINFACES).forEach { i ->
-            val straights = ArrayList<Patch>()
-            (0 until ST_NUMSTRAIGHTFACES).forEach { j ->
-                straights.add(w.readPatch(String.format("STFST%d%d", i, j))) // Straight faces
-            }
-            faces[i].straightFaces = straights.toTypedArray()
-            faces[i].turnRight = w.readPatch(String.format("STFTR%d0", i)) // Turn right
-            faces[i].turnLeft = w.readPatch(String.format("STFTL%d0", i)) // Turn left
-            faces[i].pain = w.readPatch(String.format("STFOUCH%d", i)) // Ouch!
-            faces[i].evilGrin = w.readPatch(String.format("STFEVL%d", i))// Evil grin face!
-            faces[i].pissed = w.readPatch(String.format("STFKILL%d", i)) // Pissed off!
+    private fun patchToHud(p: Patch): HudElement {
+        return HudElement(
+                p.width.toFloat(),
+                p.height.toFloat(),
+                p.leftOffset.toFloat(),
+                p.topOffset.toFloat()
+        ).apply {
+            cachePatch(p, cMap, 0x00)
         }
-        faceGod = w.readPatch("STFGOD0")
-        faceDead = w.readPatch("STFDEAD0")
     }
 
     /**
@@ -94,7 +77,8 @@ class StatusBar(private val w: WadFile, private val player: Player) {
         // Lowest digit
         drawLargeNum(drawPercent % 10, 74)
         // percent
-        Renderer.drawPatch(90, ST_Y + 2, tallPercent, 0x00)
+        tallPercent.setPosition(90f, 10f)
+        tallPercent.draw()
     }
 
     /**
@@ -115,7 +99,8 @@ class StatusBar(private val w: WadFile, private val player: Player) {
         // Lowest digit
         drawLargeNum(drawPercent % 10, 205)
         // percent
-        Renderer.drawPatch(221, ST_Y + 2, tallPercent, 0x00)
+        tallPercent.setPosition(221f, 10f)
+        tallPercent.draw()
     }
 
     private fun drawAmmo(amount: Int) {
@@ -143,7 +128,9 @@ class StatusBar(private val w: WadFile, private val player: Player) {
         if (num > 9) {
             drawNum = 9
         }
-        Renderer.drawPatch(X, ST_Y + 2, tallNums[drawNum], 0x00)
+        tallNums[drawNum].setPosition(X.toFloat(), 10f)
+        tallNums[drawNum].draw()
+        //Renderer.drawPatch(X, ST_Y + 2, tallNums[drawNum], 0x00)
     }
 
     private fun drawSmallNum(num: Int, X: Int, Y: Int) {
@@ -151,68 +138,65 @@ class StatusBar(private val w: WadFile, private val player: Player) {
         if (num > 9) {
             drawNum = 9
         }
-        Renderer.drawPatch(X, ST_Y + Y, shortNums[drawNum], 0x00)
+        //Renderer.drawPatch(X, ST_Y + Y, shortNums[drawNum], 0x00)
     }
 
-    private var stopped = false
-    fun start() {
-        if (!stopped) {
-            stop()
+    private lateinit var headPic: HudElement
+
+    private fun setHead() {
+        headPic = faces[0].straightFaces.random().apply {
+            setPosition(SCREENWIDTH/2 - w/2 - xoffset/2, 0f)
         }
-        stopped = false
     }
 
-    fun stop() {
-        stopped = true
+    private fun drawArmsBG() {
+        armsBg.draw()
     }
 
-    var headPic: Patch = faceDead
-    private fun drawHead() {
-        Renderer.drawPatch(SCREENWIDTH/2 - headPic.width/2 - headPic.leftOffset, SCREENHEIGHT-headPic.height+1, headPic, 0x00)
-    }
-
-    private var headUpdate = System.currentTimeMillis()
-    private var oldAngle = 0
-    private fun updateHead() {
-        headUpdate = System.currentTimeMillis()
-        if (health <= 0) {
-            headPic = faceDead
-        } else {
-            val healthNormalized = max(min(100, health.toInt()), 0)
-
-            // calculate pain index. Larger numbers > more damage (Blood on face)
-            val painIndex = max(0, ST_NUMPAINFACES - 1 - (healthNormalized / 20))
-
-            val ang = 0 //(player.getAngleDegrees() / 10).toInt()
-            headPic = when {
-                ang < oldAngle -> faces[painIndex].turnLeft
-                ang > oldAngle -> faces[painIndex].turnRight
-                else -> {
-                    if (Random.nextInt(20) == 0) {
-                        if (Random.nextBoolean()) {
-                            faces[painIndex].pissed
-                        } else {
-                            faces[painIndex].evilGrin
-                        }
-                    } else {
-                        faces[painIndex].straightFaces[Random.nextInt(3)]
-                    }
-                }
+    @ExperimentalStdlibApi
+    fun setup() {
+        sbar = patchToHud(w.readPatch("STBAR"))
+        (0 until ST_NUMPAINFACES).forEach { i ->
+            val straights = ArrayList<HudElement>()
+            (0 until ST_NUMSTRAIGHTFACES).forEach { j ->
+                straights.add(patchToHud(w.readPatch(String.format("STFST%d%d", i, j)))) // Straight faces
             }
-            oldAngle = ang
+            faces[i].straightFaces = straights.toTypedArray()
+            faces[i].turnRight = patchToHud(w.readPatch(String.format("STFTR%d0", i))) // Turn right
+            faces[i].turnLeft = patchToHud(w.readPatch(String.format("STFTL%d0", i))) // Turn left
+            faces[i].pain = patchToHud(w.readPatch(String.format("STFOUCH%d", i))) // Ouch!
+            faces[i].evilGrin = patchToHud(w.readPatch(String.format("STFEVL%d", i)))// Evil grin face!
+            faces[i].pissed = patchToHud(w.readPatch(String.format("STFKILL%d", i))) // Pissed off!
+        }
+        faceGod = patchToHud(w.readPatch("STFGOD0"))
+        faceDead = patchToHud(w.readPatch("STFDEAD0"))
+
+        minusPatch = patchToHud(w.readPatch("STTMINUS"))
+        tallPercent = patchToHud(w.readPatch("STTPRCNT"))
+        shortNums = w.readPatches("STYSNUM").also {
+            require(it.size == 10) { "Could not load all STNUM patches" }
+        }.map { patchToHud(it) }.toTypedArray()
+
+        tallNums = w.readPatches("STTNUM").also {
+            require(it.size == 10) { "Could not load all STNUM patches" }
+        }.map { patchToHud(it) }.toTypedArray()
+        armsBg = patchToHud(w.readPatch("STARMS")).apply {
+            setPosition(104f, 0f) // Always
         }
     }
 
-
-    fun render() {
-        Renderer.drawPatch(ST_X, ST_Y, sbar)
-        Renderer.drawPatch(104, ST_Y, armsBg)
-        drawAmmo(ammo)
-        drawHealth(health.toInt())
-        drawArmour(health.toInt())
-        drawHead()
-        if (System.currentTimeMillis() - headUpdate > 500) {
-            updateHead()
+    var lastHeadTime = System.currentTimeMillis() - 1000
+    @ExperimentalStdlibApi
+    fun render(ammo: Int, health: Int, armour: Int) {
+        sbar.draw()
+        if (System.currentTimeMillis() - lastHeadTime >= 500) {
+            lastHeadTime = System.currentTimeMillis()
+            setHead()
         }
+        headPic.draw()
+        drawHealth(health)
+        drawArmour(armour)
+        drawAmmo(ammo)
+        drawArmsBG()
     }
 }

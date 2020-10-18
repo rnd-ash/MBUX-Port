@@ -326,7 +326,7 @@ class WadFile {
                         readByte() // Dummy
                     }
                 }
-                return Patch(ph.width, ph.height, ph.leftOffset, ph.topOffset, pixels)
+                return Patch(name, ph.width, ph.height, ph.leftOffset, ph.topOffset, pixels)
             }
         }
     }

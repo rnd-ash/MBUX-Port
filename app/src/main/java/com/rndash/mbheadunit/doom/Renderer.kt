@@ -4,10 +4,11 @@ import android.graphics.Bitmap
 import android.opengl.GLES20.*
 import android.opengl.GLUtils
 import com.rndash.mbheadunit.doom.renderer.ColourMap
+import com.rndash.mbheadunit.doom.wad.Patch
 import com.rndash.mbheadunit.doom.wad.WadFile
 import java.nio.ByteBuffer
 
-object Render {
+object Renderer {
     const val vertexShader = """
         uniform mat4 u_MVPMatrix;
         attribute vec4 a_Position;
@@ -130,5 +131,41 @@ object Render {
             System.err.println("Error caching texture $name")
         }
         return texHandle[0]
+    }
+
+    @ExperimentalUnsignedTypes
+    fun loadPatch(patch: Patch, map: ColourMap, ignByte: Int = 0xFF): Int {
+        val pHandle = IntArray(1)
+        glGenTextures(1, pHandle, 0)
+        if (pHandle[0] != 0) {
+            val bitmap = Bitmap.createBitmap(patch.width, patch.height, Bitmap.Config.ARGB_8888)
+            val rgba = ByteBuffer.allocate(patch.width*patch.height*4).apply { asIntBuffer() }
+            for (row in 0 until patch.height) {
+                // I dont know why, but splitting and adding the latter portion first seems to fix
+                // odd patch shift
+                patch.getRow(row).map { map.getRgb(it.toInt() and 0xFF, ignByte and 0xFF) }.let { l ->
+                    val right = l.take(4) // Last 5
+                    l.drop(4).forEach {
+                        rgba.putInt(it)
+                    }
+                    right.forEach {
+                        rgba.putInt(it)
+                    }
+                }
+            }
+            rgba.position(0)
+            bitmap.copyPixelsFromBuffer(rgba)
+            glActiveTexture(GL_TEXTURE0)
+            glBindTexture(GL_TEXTURE_2D, pHandle[0])
+            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST)
+            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST)
+            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE)
+            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE)
+            GLUtils.texImage2D(GL_TEXTURE_2D, 0, bitmap, 0)
+            bitmap.recycle()
+        } else {
+            System.err.println("Error caching patch ${patch}")
+        }
+        return pHandle[0]
     }
 }

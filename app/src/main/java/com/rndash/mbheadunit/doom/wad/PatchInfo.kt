@@ -3,6 +3,7 @@ package com.rndash.mbheadunit.doom.wad
 import java.nio.ByteBuffer
 
 class Patch (
+    val name: String,
     val width: Int,
     val height: Int,
     val leftOffset: Int,
