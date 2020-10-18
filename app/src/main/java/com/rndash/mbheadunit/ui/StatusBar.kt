@@ -11,6 +11,8 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.rndash.mbheadunit.*
 import com.rndash.mbheadunit.car.PartyMode.isEngineOn
+import com.rndash.mbheadunit.nativeCan.canC.GS_218h
+import com.rndash.mbheadunit.nativeCan.canC.GS_418h
 import java.util.*
 
 @ExperimentalUnsignedTypes
@@ -29,6 +31,9 @@ class StatusBar : Fragment() {
         val trackPrev = view.findViewById<ImageView>(R.id.track_prev)
         val rx_metric = view.findViewById<TextView>(R.id.bytes_rx)
         val tx_metric = view.findViewById<TextView>(R.id.bytes_tx)
+
+        val spd_display = view.findViewById<TextView>(R.id.spd_view)
+        val gear_display = view.findViewById<TextView>(R.id.gear_disp)
         Timer().schedule(object: TimerTask() {
             override fun run() {
                 activity?.runOnUiThread {
@@ -48,12 +53,23 @@ class StatusBar : Fragment() {
             override fun run() {
                 val rx = String.format("%.1f", CarComm.getRxRate().toDouble() / 1024.0)
                 val tx = String.format("%.1f", CarComm.getTxRate().toDouble() / 1024.0)
+                val currGear = GS_218h.get_gic().toString()
+                val targGear = GS_218h.get_gzc().toString()
+                val prof = GS_418h.get_fpc().toString()
+                val gearText : String
+                if (currGear != targGear) {
+                    gearText = "$currGear -> $targGear ($prof)"
+                } else {
+                    gearText = "$currGear ($prof)"
+                }
                 activity?.runOnUiThread {
                     rx_metric.text = "Rx: $rx KB/s"
                     tx_metric.text = "Tx: $tx KB/s"
+                    gear_display.text = gearText
+                    spd_display.text = "${CarData.currSpd * 5 / 8} mph"
                 }
             }
-        }, 0, 1000) // Poll for Rx/Tx every secondk
+        }, 0, 500) // Poll for Rx/Tx every secondk
 
         trackName.setOnLongClickListener {
             startActivity(Intent(activity, DoomActivity::class.java))

@@ -1,6 +1,7 @@
 package com.rndash.mbheadunit
 
 import android.app.AlertDialog
+import android.app.Dialog
 import android.content.Context
 import android.microntek.CarManager
 import android.opengl.GLSurfaceView
@@ -48,33 +49,32 @@ class DoomActivity : FragmentActivity() {
     }
     private lateinit var w: WadFile
     override fun onCreate(savedInstanceState: Bundle?) {
+        requestWindowFeature(Window.FEATURE_NO_TITLE)
+        window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN)
+        super.onCreate(savedInstanceState)
+        window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_FULLSCREEN
+        actionBar?.hide()
         val f = File(Environment.getExternalStorageDirectory(), "doom.wad")
         if (!f.exists()) {
             val res = applicationContext.resources.openRawResource(R.raw.doom)
             f.createNewFile()
             f.writeBytes(res.readBytes())
         }
-        requestWindowFeature(Window.FEATURE_NO_TITLE)
-        window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN)
-        super.onCreate(savedInstanceState)
-        window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_FULLSCREEN
-        actionBar?.hide()
         if (isEngineOn()) {
             Toast.makeText(this, "DOOM cannot run with engine on!", Toast.LENGTH_SHORT).show()
             finish()
+            return
         }
-        val t = Toast.makeText(this, "DOOM LOADING!", Toast.LENGTH_LONG)
-        t.show()
         try {
             w = WadFile(f)
             w.loadLevels()
             // Show the select menu
-            showLevelMenu(w.getLevelNames().toTypedArray())
+            showLevelMenu(w.getLevelNames().toTypedArray()).show()
         } catch (e: Exception) {
-            t.cancel()
             Toast.makeText(this, "Doom failed to load: ${e.message}", Toast.LENGTH_SHORT).show()
             e.printStackTrace()
             finish()
+            return
         }
     }
 
@@ -94,17 +94,17 @@ class DoomActivity : FragmentActivity() {
 
     private var level = ""
 
-    private fun showLevelMenu(levels: Array<String>) {
+    private fun showLevelMenu(levels: Array<String>): AlertDialog {
         val builder: AlertDialog.Builder = AlertDialog.Builder(this)
         builder.setTitle("Chose a level")
+        builder.setCancelable(false)
         builder.setItems(levels) { dialog, which ->
             level = levels[which]
             glview = DoomGLSurfaceView(this, w, level)
-            setContentView(glview)
+            this.setContentView(glview)
             dialog.cancel()
         }
-        val dialog: AlertDialog = builder.create()
-        dialog.show()
+        return builder.create()
     }
 
     override fun onDestroy() {

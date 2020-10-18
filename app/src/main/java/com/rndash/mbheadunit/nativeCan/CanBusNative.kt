@@ -77,7 +77,9 @@ object CanBusNative {
         return try {
             getNativeFrame(ecuAddr, bus_id)?.let {
                 val id = (it[0].toInt() shl 8) or it[1].toInt()
-                return CanFrame(id, bus_id, it.drop(2).toByteArray())
+                return CanFrame(id, bus_id, it.drop(2).toByteArray()).let { f ->
+                    if (f.dlc == 0) { null } else f
+                }
             }
             return null
         } catch (e: Exception) {

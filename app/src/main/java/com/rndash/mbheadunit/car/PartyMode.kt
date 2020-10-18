@@ -117,25 +117,25 @@ object PartyMode {
 
     fun activateLeftBlinker(durationMs: Long) {
         leftInidicatorCutoff = millis() + durationMs
-        leftIndicatorOn = true
+        leftIndicatorOn = durationMs > 0
         blinkerStateChange = true
     }
 
     fun activateRightBlinker(durationMs: Long) {
         rightIndicatorCutOff = millis() + durationMs
-        rightIndicatorOn = true
+        rightIndicatorOn = durationMs > 0
         blinkerStateChange = true
     }
 
     fun activateFog(durationMs: Long) {
         fogCutoff = millis() + durationMs
-        fogOn = true
+        fogOn = durationMs > 0
         lightStateChange = true
     }
 
     fun activateDipped(durationMs: Long) {
         dippedCutOff = millis() + durationMs
-        dippedOn = true
+        dippedOn = durationMs > 0
         lightStateChange = true
     }
 

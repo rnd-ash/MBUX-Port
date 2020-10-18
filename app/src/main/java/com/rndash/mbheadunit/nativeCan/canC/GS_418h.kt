@@ -33,8 +33,7 @@ object GS_418h {
 		 78 -> FSC.N
 		 80 -> FSC.P
 		 82 -> FSC.R
-		 255 -> FSC.SNV
-		 else -> throw Exception("Invalid raw value for FSC")
+		 else -> FSC.SNV
 	}
 	
 	/** Sets speed step **/
@@ -85,8 +84,7 @@ object GS_418h {
 		 147 -> FPC.S_MGW
 		 151 -> FPC.W_MGW
 		 159 -> FPC.__MGW
-		 255 -> FPC.SNV
-		 else -> throw Exception("Invalid raw value for FPC")
+		 else -> FPC.SNV
 	}
 	
 	/** Sets driving program **/
