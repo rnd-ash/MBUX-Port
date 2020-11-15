@@ -83,6 +83,8 @@ void processFrames() {
     __android_log_print(ANDROID_LOG_DEBUG, "ParseThread", "Quitting parser thread");
 }
 
+// Converts Hex Char to its uint8_t equivilent
+// NO SANITIZATION ! - Relying on the Arduino spitting correct data
 inline uint8_t strToInt(char x) {
     return (x >= 'A') ? (x - 'A' + 10) : (x - '0');
 }
@@ -111,9 +113,7 @@ Java_com_rndash_mbheadunit_CarComm_00024Companion_getRxRate(JNIEnv *env, jobject
 
 extern "C"
 JNIEXPORT void JNICALL
-Java_com_rndash_mbheadunit_nativeCan_KombiDisplay_setTelSymbolBytes(JNIEnv *env, jobject thiz,
-                                                                    jbyte s1, jbyte s2, jbyte s3,
-                                                                    jbyte s4) {
+Java_com_rndash_mbheadunit_nativeCan_KombiDisplay_setTelSymbolBytes(JNIEnv *env, jobject thiz, jbyte s1, jbyte s2, jbyte s3, jbyte s4) {
     decoder->agw->tel_display->setSymbols(s1, s2, s3, s4);
 }
 

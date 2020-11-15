@@ -66,6 +66,7 @@ class ECUFrame {
 public:
     void setData(CanFrame* f) { memcpy(&this->data, f, sizeof(CanFrame)); };
     virtual CanFrame* getData() { return &this->data; };
+
     int getParam(int offset, int len) {
         if (offset + len > data.dlc*8) {
             throw InvalidSizeException(this->data.dlc*8, offset+len-1);
@@ -73,22 +74,24 @@ public:
         // Shortcut for booleans - just check 1 bit
         if (len == 1) {
             return (this->data.data[offset / 8] >> (7 - (offset % 8))) & 1;
-        }
-        int start = offset / 8;
-        int end = (offset+len-1) / 8; //-1 here as we start inclusive of start
-        uint32_t d = this->data.data[start];
-        if (start != end) {
-            for (int i = start+1; i <= end; i++) {
-                d <<= 8;
-                d |= data.data[i];
+        } else {
+            int start = offset / 8;
+            int end = (offset + len - 1) / 8; //-1 here as we start inclusive of start
+            uint32_t d = this->data.data[start];
+            if (start != end) {
+                for (int i = start; i <= end; i++) {
+                    d <<= 8;
+                    d |= data.data[i];
+                }
             }
+            uint32_t mask = 0x00;
+            for (int i = 0; i < len; i++) {
+                mask |= (1 << i);
+            }
+            // Now bit shift so that masking values start at the start of the byte
+            return (d >> (offset % 8)) & mask;
+            return d;
         }
-        uint32_t mask = 0x00;
-        for (int i = 0; i < len; i++) {
-            mask |= (1 << i);
-        }
-        // Now bit shift so that masking values start at the start of the byte
-        return (d >> (offset % 8)) & mask;
     }
 
     bool setParam(int value, int offset, int len) {
