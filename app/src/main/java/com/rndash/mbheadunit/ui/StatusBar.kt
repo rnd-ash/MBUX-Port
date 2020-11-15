@@ -1,6 +1,7 @@
 package com.rndash.mbheadunit.ui
 
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -51,25 +52,32 @@ class StatusBar : Fragment() {
         CarComm.getTxRate()
         Timer().schedule(object: TimerTask() {
             override fun run() {
-                val rx = String.format("%.1f", CarComm.getRxRate().toDouble() / 1024.0)
-                val tx = String.format("%.1f", CarComm.getTxRate().toDouble() / 1024.0)
-                val currGear = GS_218h.get_gic().toString()
-                val targGear = GS_218h.get_gzc().toString()
+                val rx = String.format("%.1f", CarComm.getRxRate().toDouble() * 4 / 1024.0)
+                val tx = String.format("%.1f", CarComm.getTxRate().toDouble() * 4 / 1024.0)
+                // TODO Find why GIC and GZC are swapped
+                val targGear = GS_218h.get_gic().toString()
+                val currGear = GS_218h.get_gzc().toString()
                 val prof = GS_418h.get_fpc().toString()
                 val gearText : String
-                if (currGear != targGear) {
-                    gearText = "$currGear -> $targGear ($prof)"
+                gearText = if (currGear != targGear) {
+                    "$currGear -> $targGear ($prof)"
                 } else {
-                    gearText = "$currGear ($prof)"
+                    "$currGear ($prof)"
                 }
                 activity?.runOnUiThread {
                     rx_metric.text = "Rx: $rx KB/s"
                     tx_metric.text = "Tx: $tx KB/s"
                     gear_display.text = gearText
-                    spd_display.text = "${CarData.currSpd * 5 / 8} mph"
+                    spd_display.text = "${CarData.currSpd} mph"
+
+                    if (CarData.currSpd > 70) {
+                        spd_display.setTextColor(Color.RED)
+                    } else {
+                        spd_display.setTextColor(Color.WHITE)
+                    }
                 }
             }
-        }, 0, 500) // Poll for Rx/Tx every secondk
+        }, 0, 250) // Poll for Rx/Tx every secondk
 
         trackName.setOnLongClickListener {
             startActivity(Intent(activity, DoomActivity::class.java))
