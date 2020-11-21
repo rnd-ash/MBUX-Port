@@ -23,9 +23,9 @@ open class Mesh2D(
     companion object PatchC {
         private val patchHandles = HashMap<String, Int>()
 
-        private fun cachePatch(p: Patch, map: ColourMap, ignByte: Int = 0xFF): Int {
+        private fun cachePatch(p: Patch, map: ColourMap): Int {
             patchHandles[p.name]?.let { return it }
-            val res = Renderer.loadPatch(p, map, ignByte)
+            val res = Renderer.loadPatch(p, map)
             if (res == 0) {
                 System.err.println("Patch for $p not bound!")
             }
@@ -35,8 +35,8 @@ open class Mesh2D(
     }
 
     private var patchHandle: Int = 0
-    fun cachePatch(p: Patch, map: ColourMap, ignByte: Int = 0xFF) {
-        patchHandle = PatchC.cachePatch(p, map, ignByte)
+    fun cachePatch(p: Patch, map: ColourMap) {
+        patchHandle = PatchC.cachePatch(p, map)
     }
 
     // Vertex buffer for Hude element - This can change if the element gets moved

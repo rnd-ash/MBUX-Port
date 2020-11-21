@@ -55,7 +55,7 @@ class StatusBar(private val w: WadFile) {
                 p.leftOffset.toFloat(),
                 p.topOffset.toFloat()
         ).apply {
-            cachePatch(p, cMap, 0x00)
+            cachePatch(p, cMap)
         }
     }
 
@@ -145,7 +145,7 @@ class StatusBar(private val w: WadFile) {
 
     private fun setHead() {
         headPic = faces[0].straightFaces.random().apply {
-            setPosition(SCREENWIDTH/2 - w/2 - xoffset/2, 0f)
+            setPosition(SCREENWIDTH/2 - w/2 - xoffset/2 - 2, 0f)
         }
     }
 

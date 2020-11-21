@@ -209,6 +209,7 @@ class DoomGlView(private val w: WadFile, lName: String, private val ctx: Context
         println("$mVMatrixHandle $mPositionHandle $mTextureCoordinateHandle $mSamplerHandle")
         // Register weapons
         weapons.add(Pistol(w, cMap[0], ctx))
+        weapons.add(Chaingun(w, cMap[0], ctx))
         weapons.add(Plasma(w, cMap[0], ctx))
         weapons.add(BFG9000(w, cMap[0], ctx))
         weapons[weaponIdx].onSelect()
@@ -232,6 +233,27 @@ class DoomGlView(private val w: WadFile, lName: String, private val ctx: Context
                 selectPrevWeapon()
             }
         })
+
+        KeyManager.registerPageUpListener(KeyManager.KEY.TEL_ANSWER, object : KeyManager.KeyListener {
+            override fun onLongPress(pg: KeyManager.PAGE) {
+                println("Page up long press. Page: $pg")
+            }
+
+            override fun onShortPress(pg: KeyManager.PAGE) {
+                DisplayManager.changeMode(true)
+            }
+        })
+
+        KeyManager.registerPageUpListener(KeyManager.KEY.TEL_DECLINE, object : KeyManager.KeyListener {
+            override fun onLongPress(pg: KeyManager.PAGE) {
+                println("Page up long press. Page: $pg")
+            }
+
+            override fun onShortPress(pg: KeyManager.PAGE) {
+                DisplayManager.changeMode(false)
+            }
+        })
+        DisplayManager.init()
 
         map.genMap()
         sBar.setup()

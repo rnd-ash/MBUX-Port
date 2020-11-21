@@ -18,6 +18,10 @@ class Patch (
     fun getRow(index: Int): ByteArray {
         return pixels.array().copyOfRange(width*index, width*index + width)
     }
+
+    override fun toString(): String {
+        return "Patch $name Dimensions: ($width x $height) Offsets: ($leftOffset x $topOffset)"
+    }
 }
 
 class PicHeader (

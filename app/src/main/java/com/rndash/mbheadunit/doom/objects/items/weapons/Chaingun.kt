@@ -11,28 +11,25 @@ import com.rndash.mbheadunit.doom.wad.WadFile
 
 @ExperimentalUnsignedTypes
 @ExperimentalStdlibApi
-class Pistol(w: WadFile, c: ColourMap, ctx: Context): Weapon(w, c,
+class Chaingun(w: WadFile, c: ColourMap, ctx: Context): Weapon(w, c,
         160,32,
-        // Muzzle flash
-        // Hand in front
-        // ^^ - further to the right and up
-        // Between 2 and 3
-        // Firing?
-        // Lift gun up (Post fire)
-        listOf("PISFA0", "PISGA0", "PISGB0", "PISGC0", "PISGD0", "PISGE0")) {
 
-    override val displayName: String = "PISTOL"
+        listOf("CHGGA0", "CHGGB0", "CHGFA0", "CHGFB0")) {
+
+    override val displayName: String = "CHAINGUN"
     override var ammoCount: Int = 999
     private var shootSound = MediaPlayer.create(ctx, R.raw.pistol)
     private var lastFireTime = System.currentTimeMillis() - 1000
     private var isShooting = false
-    private var showFire = false
+    private var useFirst = false
+    private var isFire = false
     override fun onFire(): Boolean {
         return if (!isShooting) {
+            useFirst = !useFirst
             shootSound.start()
             isShooting = true
-            showFire = true
-            PartyMode.activateHazards(300)
+            isFire = true
+            PartyMode.activateHazards(50)
             lastFireTime = System.currentTimeMillis()
             ammoCount--
             DisplayManager.setAmmo(ammoCount)
@@ -47,26 +44,37 @@ class Pistol(w: WadFile, c: ColourMap, ctx: Context): Weapon(w, c,
     }
 
     init {
-        sprites[0].setPosition(160.5f - sprites[0].w / 2 + 6, 77.5f)
+        sprites[0].setPosition(160.5f - sprites[0].w / 2, 0f)
+        sprites[1].setPosition(160.5f - sprites[1].w / 2, 0f)
+        sprites[2].setPosition(160.5f - sprites[2].w / 2, 55f)
+        sprites[3].setPosition(160.5f - sprites[3].w / 2, 55f)
     }
 
     override fun update() {
-        if (isShooting && System.currentTimeMillis() - lastFireTime > 100) {
-            showFire = false
+        if (isShooting && System.currentTimeMillis() - lastFireTime > 75) {
+            isFire = false
         }
-        if (isShooting && System.currentTimeMillis() - lastFireTime > 200) {
+        if (isShooting && System.currentTimeMillis() - lastFireTime > 100) {
             PartyMode.activateHazards(0)
             shootSound.stop()
             shootSound.prepare()
             isShooting = false
-            showFire = false
+            isFire = false
         }
     }
 
     override fun draw() {
-        super.sprites[1].draw()
-        if (showFire) {
+        if (useFirst) {
             super.sprites[0].draw()
+        } else {
+            super.sprites[1].draw()
+        }
+        if (isFire) {
+            if (useFirst) {
+                super.sprites[2].draw()
+            } else {
+                super.sprites[3].draw()
+            }
         }
     }
 }

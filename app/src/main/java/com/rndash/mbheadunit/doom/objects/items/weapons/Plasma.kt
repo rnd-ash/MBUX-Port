@@ -4,6 +4,7 @@ import android.content.Context
 import android.media.MediaPlayer
 import com.rndash.mbheadunit.R
 import com.rndash.mbheadunit.car.PartyMode
+import com.rndash.mbheadunit.doom.DisplayManager
 import com.rndash.mbheadunit.doom.objects.items.Weapon
 import com.rndash.mbheadunit.doom.renderer.ColourMap
 import com.rndash.mbheadunit.doom.wad.WadFile
@@ -33,6 +34,7 @@ class Plasma(w: WadFile, c: ColourMap, ctx: Context): Weapon(w, c,
             isShooting = true
             lastFireTime = System.currentTimeMillis()
             ammoCount--
+            DisplayManager.setAmmo(ammoCount)
             true
         } else {
             false

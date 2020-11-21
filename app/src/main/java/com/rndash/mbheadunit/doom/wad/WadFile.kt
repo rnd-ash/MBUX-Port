@@ -7,6 +7,7 @@ import org.w3c.dom.Text
 import java.io.File
 import java.nio.ByteBuffer
 import java.nio.ByteOrder
+import kotlin.experimental.and
 
 @ExperimentalUnsignedTypes
 class WadFile {
@@ -304,13 +305,16 @@ class WadFile {
                 val p = lumps[it]
                 seek(p.filePos)
                 val ph = PicHeader(
-                        readUShort().toInt(), // Width
-                        readUShort().toInt(), // Height
+                    readShort().toInt(), // Width
+                    readShort().toInt(), // Height
                         readShort().toInt(), // Left offset
                         readShort().toInt(), // Right offset
                 )
                 val offsets = IntArray(ph.width) { readUInt().toInt() }
                 val pixels = ByteBuffer.allocateDirect(ph.width*ph.height)
+                for (px in 0 until ph.width*ph.height) {
+                    pixels.put(px, 0xFF.toByte())
+                }
                 offsets.forEachIndexed { colIndex, offset ->
                     seek(p.filePos + offset) // Seek to offset column
                     var rowStart = 0
@@ -321,7 +325,7 @@ class WadFile {
                         readByte() // Dummy
                         for(pix in 0 until pixelCount) {
                             // Read a pixel pointer, and store it in the images array
-                            pixels.put((pix + rowStart) * ph.width+colIndex, data.get())
+                            pixels.put(((pix + rowStart)*ph.width)+colIndex, data.get())
                         }
                         readByte() // Dummy
                     }
