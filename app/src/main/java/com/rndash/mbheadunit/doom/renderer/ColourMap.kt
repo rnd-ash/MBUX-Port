@@ -10,9 +10,10 @@ class ColourMap(val data: ByteBuffer) {
         return if (index == ign) {
             0x00000000
         } else {
-            ((data[index * 3 + 0].toInt() and 0xFF) shl 24) or
-            ((data[index * 3 + 1].toInt() and 0xFF) shl 16) or
-            ((data[index * 3 + 2].toInt() and 0xFF) shl 8) or 0xFF
+            ((data[index * 3 + 0].toInt() and 0xFF)) or // R
+            ((data[index * 3 + 1].toInt() and 0xFF) shl 8) or // G
+            ((data[index * 3 + 2].toInt() and 0xFF) shl 16) or // B
+            (0xFF shl 24) // A
         }
     }
 }

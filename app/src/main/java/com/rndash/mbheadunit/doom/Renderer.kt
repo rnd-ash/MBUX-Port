@@ -7,6 +7,7 @@ import com.rndash.mbheadunit.doom.renderer.ColourMap
 import com.rndash.mbheadunit.doom.wad.Patch
 import com.rndash.mbheadunit.doom.wad.WadFile
 import java.nio.ByteBuffer
+import java.nio.IntBuffer
 
 object Renderer {
     const val vertexShader = """
@@ -80,7 +81,7 @@ object Renderer {
     }
 
     @ExperimentalUnsignedTypes
-    fun loadTexture(name: String, w: WadFile, p: Array<ColourMap>, ignByte: Byte = 0xFF.toByte()): Int {
+    fun loadTexture(name: String, w: WadFile, p: Array<ColourMap>): Int {
         val texHandle = IntArray(1)
         glGenTextures(1, texHandle, 0)
         if (texHandle[0] != 0) {
@@ -105,16 +106,16 @@ object Renderer {
     }
 
     @ExperimentalUnsignedTypes
-    fun loadFlat(name: String, w: WadFile, p: Array<ColourMap>, ignByte: Byte = 0xFF.toByte()): Int {
+    fun loadFlat(name: String, w: WadFile, p: Array<ColourMap>): Int {
         val texHandle = IntArray(1)
         glGenTextures(1, texHandle, 0)
         if (texHandle[0] != 0) {
             w.readFlat(name).let {
                 println("loading flat $name")
                 val bitmap = Bitmap.createBitmap(64, 64, Bitmap.Config.ARGB_8888)
-                val rgba = ByteBuffer.allocate(64*64*4).apply { asIntBuffer() }
+                val rgba = IntBuffer.allocate(64*64*4)
                 for (i in 0 until it.capacity()) {
-                    rgba.putInt(p[0].getRgb(it[i].toInt() and 0xFF))
+                    rgba.put(p[0].getRgb(it[i].toInt() and 0xFF))
                 }
                 rgba.position(0)
                 bitmap.copyPixelsFromBuffer(rgba)
@@ -134,22 +135,17 @@ object Renderer {
     }
 
     @ExperimentalUnsignedTypes
-    fun loadPatch(patch: Patch, map: ColourMap, ignByte: Int = 0xFF): Int {
+    fun loadPatch(patch: Patch, map: ColourMap): Int {
         val pHandle = IntArray(1)
         glGenTextures(1, pHandle, 0)
         if (pHandle[0] != 0) {
             val bitmap = Bitmap.createBitmap(patch.width, patch.height, Bitmap.Config.ARGB_8888)
-            val rgba = ByteBuffer.allocate(patch.width*patch.height*4).apply { asIntBuffer() }
-            for (row in 0 until patch.height) {
-                // I dont know why, but splitting and adding the latter portion first seems to fix
-                // odd patch shift
-                patch.getRow(row).map { map.getRgb(it.toInt() and 0xFF, ignByte and 0xFF) }.let { l ->
-                    val right = l.take(4) // Last 5
-                    l.drop(4).forEach {
-                        rgba.putInt(it)
-                    }
-                    right.forEach {
-                        rgba.putInt(it)
+            val rgba = IntBuffer.allocate(patch.width*patch.height)
+            for (y in 0 until patch.height) {
+                for (x in 0 until patch.width) {
+                    val pixel = map.getRgb(patch.pixels[(y*patch.width)+x].toInt() and 0xFF)
+                    if (x in 0..patch.width && y in 0..patch.height) {
+                        rgba.put((y * patch.width) + x, pixel)
                     }
                 }
             }
@@ -164,7 +160,7 @@ object Renderer {
             GLUtils.texImage2D(GL_TEXTURE_2D, 0, bitmap, 0)
             bitmap.recycle()
         } else {
-            System.err.println("Error caching patch ${patch}")
+            System.err.println("Error caching patch $patch")
         }
         return pHandle[0]
     }
