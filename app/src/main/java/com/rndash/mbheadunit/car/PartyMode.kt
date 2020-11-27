@@ -6,6 +6,7 @@ import com.rndash.mbheadunit.CarComm
 import com.rndash.mbheadunit.nativeCan.canB.EZS_A2
 import com.rndash.mbheadunit.nativeCan.canB.SAM_H_A3
 import com.rndash.mbheadunit.nativeCan.canB.SAM_H_A5
+import java.lang.Long.max
 
 /**
  * Object that deals with special effects such as disco lights on the car
@@ -45,15 +46,17 @@ object PartyMode {
     private fun threadLoop() {
         //BTMusic.setupSampler()
         println("Party mode thread start!")
+        var millis: Long
         while(true) {
             if (!isEngineOn()) {
+                millis = System.currentTimeMillis()
                 // -- DO BLINKER STUFF --
-                if (millis() >= leftInidicatorCutoff && leftIndicatorOn) {
+                if (millis >= leftInidicatorCutoff && leftIndicatorOn) {
                     leftIndicatorOn = false
                     blinkerStateChange = true
                 }
                 // Do i turn off the right indicator?
-                if (millis() >= rightIndicatorCutOff && rightIndicatorOn) {
+                if (millis >= rightIndicatorCutOff && rightIndicatorOn) {
                     rightIndicatorOn = false
                     blinkerStateChange = true
                 }
@@ -64,7 +67,10 @@ object PartyMode {
                     SAM_H_A3.set_bli_li_ein(sha3, leftIndicatorOn)
                     SAM_H_A3.set_bli_re_ein(sha3, rightIndicatorOn)
                     if (leftIndicatorOn || rightIndicatorOn) {
-                        SAM_H_A3.set_hell_blink(sha3, 0xFF) // FF as we will tell SAM When to turn off
+                        SAM_H_A3.set_hell_blink(
+                            sha3,
+                            0xFF
+                        ) // FF as we will tell SAM When to turn off
                     } else {
                         SAM_H_A3.set_hell_blink(sha3, 0x00) // Tell SAM to turn off
                     }
@@ -73,12 +79,12 @@ object PartyMode {
 
                 // Do lights stuff
 
-                if (millis() >= fogCutoff && fogOn) {
+                if (millis >= fogCutoff && fogOn) {
                     fogOn = false
                     lightStateChange = true
                 }
                 // Do i turn off the right indicator?
-                if (millis() >= dippedCutOff && dippedOn) {
+                if (millis >= dippedCutOff && dippedOn) {
                     dippedOn = false
                     lightStateChange = true
                 }
@@ -96,23 +102,20 @@ object PartyMode {
                     CarComm.sendFrame(sha5)
                 }
             }
-
-
             // -- Finally sleep a bit
-
             try {
-                Thread.sleep(1)
+                Thread.sleep(2)
             } catch (e: InterruptedException) {
                 println("Party thread terminated by host!")
                 break
             }
         }
-        //BTMusic.tearDownSampler()
     }
 
     // Check if engine is on. If it is party thread MUST exit
     fun isEngineOn() : Boolean {
-        return EZS_A2.get_n_mot() != 65535 && EZS_A2.get_n_mot() != 0
+        //return EZS_A2.get_n_mot() != 65535 && EZS_A2.get_n_mot() != 0
+        return false
     }
 
     fun activateLeftBlinker(durationMs: Long) {

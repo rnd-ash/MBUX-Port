@@ -140,20 +140,18 @@ class FullscreenActivity : FragmentActivity() {
         //val mbux = MBUXDialog(this)
         //mbux.show()
         val bg = findViewById<ImageView>(R.id.ui_bg)
-        Thread {
-            while(true) {
-                when (Calendar.getInstance().get(Calendar.HOUR_OF_DAY)) {
-                    in 5..7 -> runOnUiThread { bg.setImageResource(R.drawable.bg_dusk) }
-                    in 7..9 -> runOnUiThread { bg.setImageResource(R.drawable.bg_mid) }
-                    in 9..11 -> runOnUiThread { bg.setImageResource(R.drawable.bg_rise) }
-                    in 11..15 -> runOnUiThread { bg.setImageResource(R.drawable.bg_day) }
-                    in 15..18 -> runOnUiThread { bg.setImageResource(R.drawable.bg_mid) }
-                    in 18..21 -> runOnUiThread { bg.setImageResource(R.drawable.bg_dusk) }
-                    else -> runOnUiThread { bg.setImageResource(R.drawable.bg_night) }
+        Timer().schedule(object: TimerTask() {
+            override fun run() {
+                runOnUiThread {
+                    if (CarData.isSportFeel) {
+                        bg.setImageResource(R.drawable.bg_sport)
+                    } else {
+                        bg.setImageResource(R.drawable.bg_normal)
+                    }
                 }
-                Thread.sleep(60000)
             }
-        }.start()
+        }, 0, 500)
+
         // Register for all Microntek intents
         val intentFilter = IntentFilter()
         intentFilter.addAction("com.microntek.bootcheck")

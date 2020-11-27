@@ -32,7 +32,6 @@ open class IOManager(readBufSize: Int, private val serialPort: UsbSerialPort) : 
             check(state == ManagerState.STOPPED) { "Already running" }
             state = ManagerState.RUNNING
         }
-
         Log.i("IOManager", "Running ...")
         try {
             while (true) {
@@ -63,7 +62,7 @@ open class IOManager(readBufSize: Int, private val serialPort: UsbSerialPort) : 
 
     fun step() {
         // Handle incoming data.
-        var len = serialPort.read(readBuffer.array(), 100)
+        var len = serialPort.read(readBuffer.array(), 50)
         if (len > 0) {
             CanBusNative.sendBytesToBuffer(readBuffer.array(), len)
             readBuffer.clear()

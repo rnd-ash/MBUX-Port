@@ -44,10 +44,10 @@ class CarComm(device: UsbDevice, manager: UsbManager) {
                 nativeBA = CanBusNative.getSendFrame()
                 if (nativeBA != null) {
                     //println(nativeBA.joinToString(" ") { x -> String.format("%02X", x) })
-                    serialDevice?.write(nativeBA, 10)
+                    serialDevice?.write(nativeBA, 100)
                     txBytes += nativeBA[3].toInt() + extra_bytes
                 } else {
-                    Thread.sleep(25)
+                    Thread.sleep(5)
                 }
             }
         }

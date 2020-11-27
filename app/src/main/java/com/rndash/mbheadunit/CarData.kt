@@ -1,8 +1,11 @@
 package com.rndash.mbheadunit
 
+import android.content.Intent
+import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import com.rndash.mbheadunit.car.PartyMode
 import com.rndash.mbheadunit.nativeCan.canC.KOMBI_412h
 import com.rndash.mbheadunit.nativeCan.canC.MS_608h
+import kotlin.properties.Delegates
 
 @ExperimentalUnsignedTypes
 @ExperimentalStdlibApi
@@ -11,6 +14,7 @@ object CarData {
     var currSpd = 0
     var tripFuelUsed = 0L
     var fuelCurrent = 0.0
+    var isSportFeel: Boolean = false
 
     val dataCollector = Thread() {
         while(true) {

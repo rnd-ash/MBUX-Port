@@ -12,6 +12,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.rndash.mbheadunit.*
 import com.rndash.mbheadunit.car.PartyMode.isEngineOn
+import com.rndash.mbheadunit.nativeCan.canC.FPC
 import com.rndash.mbheadunit.nativeCan.canC.GS_218h
 import com.rndash.mbheadunit.nativeCan.canC.GS_418h
 import java.util.*
@@ -57,7 +58,20 @@ class StatusBar : Fragment() {
                 // TODO Find why GIC and GZC are swapped
                 val targGear = GS_218h.get_gic().toString()
                 val currGear = GS_218h.get_gzc().toString()
-                val prof = GS_418h.get_fpc().toString()
+                val drv_profile = GS_418h.get_fpc()
+                val prof = when(GS_418h.get_fpc()) {
+                    FPC.SNV -> "Signal NA"
+                    FPC.S -> "Sport"
+                    FPC.C -> "Comfort"
+                    FPC.M -> "Manual"
+                    FPC.A -> "Agility"
+                    else -> "${GS_418h.get_fpc()}"
+                }
+                // The following 3 profiles count as 'sporty':
+                // 1. A (Agility - Although has to be coded to be enabled on 722.x series)
+                // 2. M (Manual)
+                CarData.isSportFeel = drv_profile == FPC.M || drv_profile == FPC.A
+
                 val gearText : String
                 gearText = if (currGear != targGear) {
                     "$currGear -> $targGear ($prof)"
@@ -68,6 +82,11 @@ class StatusBar : Fragment() {
                     rx_metric.text = "Rx: $rx KB/s"
                     tx_metric.text = "Tx: $tx KB/s"
                     gear_display.text = gearText
+                    if (CarData.isSportFeel) {
+                        gear_display.setTextColor(Color.RED)
+                    } else {
+                        gear_display.setTextColor(Color.WHITE)
+                    }
                     spd_display.text = "${CarData.currSpd} mph"
 
                     if (CarData.currSpd > 70) {
