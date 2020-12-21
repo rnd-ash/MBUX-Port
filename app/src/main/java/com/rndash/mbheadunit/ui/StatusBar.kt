@@ -46,8 +46,8 @@ class StatusBar : UIFragment(250) {
             }
 
             // These 2 calls reset the metrics so not to get an insane number
-            val rx = String.format("%.1f", CarComm.getRxRate().toDouble() * 4 / 1024.0)
-            val tx = String.format("%.1f", CarComm.getTxRate().toDouble() * 4 / 1024.0)
+            val rx = String.format("%.1f", CarComm.getRxRate().toDouble() * 4 / 1000.0)
+            val tx = String.format("%.1f", CarComm.getTxRate().toDouble() * 4 / 1000.0)
             // TODO Find why GIC and GZC are swapped
             val targGear = GS_218h.get_gic().toString()
             val currGear = GS_218h.get_gzc().toString()
@@ -72,8 +72,8 @@ class StatusBar : UIFragment(250) {
                 "$currGear ($prof)"
             }
             activity?.runOnUiThread {
-                rx_metric.text = "Rx: $rx KB/s"
-                tx_metric.text = "Tx: $tx KB/s"
+                rx_metric.text = "Rx: $rx kb/s"
+                tx_metric.text = "Tx: $tx kb/s"
                 gear_display.text = gearText
                 if (CarData.isSportFeel) {
                     gear_display.setTextColor(Color.RED)

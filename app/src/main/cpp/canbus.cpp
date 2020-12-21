@@ -1,8 +1,19 @@
 #include "canbus.h"
 #include <unistd.h>
 
-unsigned long bytes_from_bus = 0;
-const int extra_bytes = 6; // Bytes added to canframe (Header + CRC)
+unsigned long bits_from_bus = 0;
+
+// 1 (START OF FRAME
+// 11 (CANID STD)
+// 1 (RTR)
+// 2 (RESERVED)
+// 4 (DLC)
+// 15 (CRC)
+// 1 (CRC DELIMITER)
+// 1 (ACK SLOT)
+// 1 (ACK DELIMITER)
+// 1 (EOF)
+const int extra_bits = 38; // Bytes added to canframe (Header + CRC)
 char* charreadbuf = new char[50]; // Max size of can frame encoded from Arduino
 extern "C"
 JNIEXPORT void JNICALL
@@ -75,7 +86,7 @@ void processFrames() {
                 nibpos+=2;
             }
             decoder->processFrame(&read);
-            bytes_from_bus += read.dlc + extra_bytes;
+            bits_from_bus += read.dlc*8 + extra_bits;
         } else {
             usleep(100); // Don't destroy the CPU when there is no data!
         }
@@ -106,8 +117,8 @@ Java_com_rndash_mbheadunit_nativeCan_KombiDisplay_setAudioSymbolBytes(JNIEnv *en
 extern "C"
 JNIEXPORT jlong JNICALL
 Java_com_rndash_mbheadunit_CarComm_00024Companion_getRxRate(JNIEnv *env, jobject thiz) {
-    unsigned long tmp = bytes_from_bus;
-    bytes_from_bus = 0;
+    unsigned long tmp = bits_from_bus;
+    bits_from_bus = 0;
     return tmp;
 }
 

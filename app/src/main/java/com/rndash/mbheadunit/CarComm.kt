@@ -2,7 +2,6 @@ package com.rndash.mbheadunit
 
 import android.hardware.usb.UsbDevice
 import android.hardware.usb.UsbManager
-import android.os.Process
 import android.util.Log
 import com.hoho.android.usbserial.driver.UsbSerialDriver
 import com.hoho.android.usbserial.driver.UsbSerialPort
@@ -24,13 +23,24 @@ class CarComm(device: UsbDevice, manager: UsbManager) {
             sendThread.start()
             CanBusNative.init()
         }
-        const val extra_bytes = 6 // Bytes added to canframe (Header + CRC)
+
+        // 1 (START OF FRAME
+        // 11 (CANID STD)
+        // 1 (RTR)
+        // 2 (RESERVED)
+        // 4 (DLC)
+        // 15 (CRC)
+        // 1 (CRC DELIMITER)
+        // 1 (ACK SLOT)
+        // 1 (ACK DELIMITER)
+        // 1 (EOF)
+        const val bits = 38 // Bits added to canframe that are not part of the data (Excluding bit stuffing)
 
         var serialDevice: UsbSerialPort? = null
 
         fun sendFrame(cf: CanFrame) {
             serialDevice?.write(cf.toStruct(), 100)
-            txBytes += cf.dlc + extra_bytes
+            txBits += cf.dlc + bits
         }
 
         // This thread polls for can frames from JNI. If a frame is available, it is sent to arduino
@@ -44,7 +54,8 @@ class CarComm(device: UsbDevice, manager: UsbManager) {
                 nativeBA = CanBusNative.getSendFrame()
                 if (nativeBA != null) {
                     serialDevice?.write(nativeBA, 100)
-                    txBytes += nativeBA[3].toInt() + extra_bytes
+                    // DLC*8 for bits + extra bits on the frame
+                    txBits += nativeBA[3].toInt()*8 + bits
                 } else {
                     Thread.sleep(5)
                 }
@@ -52,11 +63,11 @@ class CarComm(device: UsbDevice, manager: UsbManager) {
         }
 
         @Volatile
-        internal var txBytes = 0L
+        internal var txBits = 0L
 
         fun getTxRate() : Long {
-            val tmp = txBytes
-            txBytes = 0L
+            val tmp = txBits
+            txBits = 0L
             return tmp
         }
 
