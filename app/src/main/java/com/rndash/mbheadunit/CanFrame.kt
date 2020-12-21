@@ -1,14 +1,17 @@
 package com.rndash.mbheadunit
 import java.nio.ByteBuffer
+import kotlin.experimental.and
 
 class CanFrame(val canID: Int, val bus: Char, bytes: ByteArray) {
 
-    constructor(canID: Int, bus: Char, size: Int) : this(canID, bus, ByteArray(size){0x00})
+    constructor(canID: Int, bus: Char, size: Int) : this(canID, bus, ByteArray(size))
 
-    var data : ByteBuffer
+    private var data : Long = 0
     init {
         require (bytes.size <= 8) { "Too many bytes for frame content! Max size is 8" }
-        data = ByteBuffer.allocate(8).put(bytes)
+        for (i in bytes.indices) {
+            data = data or (bytes[i].toLong() and 0xFF shl i*8)
+        }
     }
     var dlc = bytes.size
 
@@ -16,14 +19,18 @@ class CanFrame(val canID: Int, val bus: Char, bytes: ByteArray) {
         if (offset+len > dlc*8) {
             throw IndexOutOfBoundsException("Offset+Len > ${dlc*8}")
         }
-        var temp = value
-        (0 until len).forEach { counter ->
-            var byte = data[(offset + counter) / 8].toInt()
-            val bit = ((offset + counter) % 8)
-            byte = byte or ((temp and 1) shl 7-bit)
-            temp = temp shr 1
-            data.put((offset + counter) / 8, byte.toByte())
+        // Zero out area to be set
+        for(i in 0 until len) {
+            data = data and (1 shl offset+i).toLong().inv()
         }
+
+        // Set new value
+        var mask = 0L
+        for (i in 0 until len) {
+            mask = (mask or (1 shl i).toLong())
+        }
+        val v = (mask and value.toLong())
+        data = data or (v shl offset)
     }
 
     override fun equals(other: Any?): Boolean {
@@ -31,43 +38,34 @@ class CanFrame(val canID: Int, val bus: Char, bytes: ByteArray) {
         if (other is CanFrame) {
             return other.dlc == this.dlc
                     && other.canID == this.canID
-                    && other.data.array().contentEquals(this.data.array())
+                    && other.data == this.data
         }
         return false
     }
 
     // Sets all bytes to 0x00
     fun clear() {
-        (0 until dlc).forEach { data.put(it, 0x00) }
+        data = 0
     }
 
     override fun toString(): String {
-        return String.format("BUS %c, CID 0x%04X, DLC: %d, Data: [%s]", bus, canID, dlc, data.array().take(dlc).map { x -> String.format("%02X", x) }.joinToString(" "))
+        var ret = String.format("BUS %c, ID 0x%04X, Data: [", bus, canID)
+        for (i in 0 until dlc) {
+            ret += String.format("%02X ", (data shr (i*8)) and 0xFF)
+        }
+        return ret.replaceRange(ret.length-1, ret.length-1, "]")
     }
 
     fun getBitRange(offset: Int, len: Int) : Int {
         if (offset+len > dlc*8) {
             throw IndexOutOfBoundsException("Offset+Len > ${dlc*8}")
         }
-        if (len == 1) { // Boolean shortcut
-            return (this.data[offset / 8].toInt() shr (7 - (offset % 8))) and 1
-        } else {
-            val start = offset / 8
-            val end = (offset + len - 1) / 8
-            var d : Int = this.data[start].toInt()
-            if (start != end) {
-                (start..end).forEach { i ->
-                    d = d or data[i].toInt()
-                    d = d shl 8
-                }
-            }
-            var mask: Int = 0x00
-            (0 until len).forEach {
-                mask = mask or (1 shl it)
-            }
-            // Now bit shift so that masking values start at the start of the byte
-            return (d shr offset % 8) and mask
+        var mask = 0L
+        for (i in 0 until len) {
+            mask = (mask or (1 shl i).toLong())
         }
+        mask = mask shl offset
+        return ((data and mask) shr offset).toInt()
     }
 
     fun toStruct(): ByteArray {
@@ -75,7 +73,15 @@ class CanFrame(val canID: Int, val bus: Char, bytes: ByteArray) {
                 bus.toByte(),
                 (canID).toByte(),
                 (canID shr 8).toByte(),
-                dlc.toByte()
-        ) + this.data.array())
+                dlc.toByte(),
+                (data shr 56).toByte(),
+                (data shr 48).toByte(),
+                (data shr 40).toByte(),
+                (data shr 32).toByte(),
+                (data shr 24).toByte(),
+                (data shr 16).toByte(),
+                (data shr 8).toByte(),
+                (data shr 0).toByte()
+        ))
     }
 }
