@@ -1,5 +1,7 @@
 package com.rndash.mbheadunit.car
 
+@ExperimentalUnsignedTypes
+@ExperimentalStdlibApi
 internal class KeyState {
     var lastPressTime: Long = System.currentTimeMillis()
     var isPressed: Boolean = false

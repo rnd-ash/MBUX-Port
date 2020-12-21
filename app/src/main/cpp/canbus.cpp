@@ -45,7 +45,7 @@ Java_com_rndash_mbheadunit_nativeCan_CanBusNative_getSendFrame(JNIEnv *env, jobj
         env->SetByteArrayRegion(ret, 4, 8, (jbyte*)&front.data);
         return ret; // Return the populated array
     } else {
-        return NULL; // No data, return empty jbytearray
+        return nullptr; // No data, return empty jbytearray
     }
 }
 

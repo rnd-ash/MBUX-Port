@@ -34,7 +34,7 @@ import java.util.zip.ZipInputStream
 
 @ExperimentalUnsignedTypes
 @ExperimentalStdlibApi
-class LightsDisplay : UIFragment() {
+class LightsDisplay : UIFragment(0) {
     var isInPage = false
 
     lateinit var beatsaberview: BeatSaberGLView
@@ -139,7 +139,7 @@ class LightsDisplay : UIFragment() {
 
             try { // Delete our old temp directory
                 File("/sdcard/mbux_tmp/").deleteRecursively()
-            } catch (e: Exception){}
+            } catch (e: Exception){e.printStackTrace()}
 
             // Unzip the whole file into our temp directory
             while (entry != null) {
@@ -149,7 +149,7 @@ class LightsDisplay : UIFragment() {
                     val out = FileOutputStream("/sdcard/mbux/bs_tmp/"+fileName)
                     out.write(zipStream.readBytes())
                     out.close()
-                } catch (e: FileNotFoundException){} // Can happen with autosave files, ignore
+                } catch (e: FileNotFoundException){e.printStackTrace()} // Can happen with autosave files, ignore
                 zipStream.closeEntry()
                 entry = zipStream.nextEntry
             }
@@ -213,7 +213,7 @@ class LightsDisplay : UIFragment() {
                         if (gameEngine.processChosenLevel(info, 0)) {
                             // Start the UI runnable that updates the light display
                             mapText.text = "Song: ${info.songName} by ${info.songAuthor}\nMapper: ${info.levelAuthor}"
-                            Timer().schedule(uiUpdater, 0, 10)
+                            Timer().schedule(uiUpdater, 0, 20)
                         }
 
                     }
@@ -225,6 +225,7 @@ class LightsDisplay : UIFragment() {
 
 
             } catch (e: Exception) {
+                e.printStackTrace()
                 Toast.makeText(requireContext(), "Level processing failed", Toast.LENGTH_LONG).show()
                 // TODO
             }
@@ -239,7 +240,7 @@ class LightsDisplay : UIFragment() {
             Toast.makeText(requireContext(), "Processing ${map.levels[which].difficulty}", Toast.LENGTH_SHORT).show()
             if(gameEngine.processChosenLevel(map, which)) {
                 mapText.text = "Song: ${map.songName} by ${map.songAuthor}\nMapper: ${map.levelAuthor}"
-                Timer().schedule(uiUpdater, 0, 10)
+                Timer().schedule(uiUpdater, 0, 20)
             }
             dialog.cancel()
         }

@@ -35,19 +35,12 @@ class Block(x: Int, y: Int, z: Float, ang: Float, r: Float, g: Float, b: Float, 
     private var yPos = y * BLOCK_SPACE
     private var xPos = x * BLOCK_SPACE
     private var zPos = z
-    private var rot = ang
 
     // Colour data
     private var red = r
     private var green = g
     private var blue = b
     private var alpha = a
-
-    fun setRotation(ang: Float) {
-        rot = ang
-    }
-
-    fun getRotation() = rot
 
     private var colourBuffer: FloatBuffer = ByteBuffer.allocateDirect(4*32).run {
         order(ByteOrder.nativeOrder())
@@ -61,7 +54,7 @@ class Block(x: Int, y: Int, z: Float, ang: Float, r: Float, g: Float, b: Float, 
                     r,g,b,a,
                     r,g,b,a,
                     r,g,b,a,
-                    r,g,b,a
+                    r,g,b,a,
                 )
             )
             position(0)
@@ -70,7 +63,7 @@ class Block(x: Int, y: Int, z: Float, ang: Float, r: Float, g: Float, b: Float, 
 
     fun setColour(r: Float, g: Float, b: Float, a: Float) {
         colourBuffer.position(0)
-        for (i in (0 until 8)) {
+        for (i in (0 until 8)) { // Only set the block colour and not the arrow colour!
             colourBuffer.put(4*i+0, r)
             colourBuffer.put(4*i+1, g)
             colourBuffer.put(4*i+2, b)
@@ -86,22 +79,21 @@ class Block(x: Int, y: Int, z: Float, ang: Float, r: Float, g: Float, b: Float, 
     fun getBlue() = this.blue
     fun getAlpha() = this.alpha
 
-
     // 12 bytes per vertex, 4 vertex's per face, 6 faces
     private var vertexBuffer: FloatBuffer = ByteBuffer.allocateDirect(12*8).run {
+
         order(ByteOrder.nativeOrder())
         asFloatBuffer().apply {
             put(floatArrayOf(
-                -1.0f, -1.0f, -1.0f,
-                1.0f, -1.0f, -1.0f,
-                1.0f,  1.0f, -1.0f,
-                -1.0f, 1.0f, -1.0f,
+                -1.0f, -1.0f, -1.0f, //
+                1.0f, -1.0f, -1.0f,  //
+                1.0f,  1.0f, -1.0f,  //
+                -1.0f, 1.0f, -1.0f,  //
                 -1.0f, -1.0f,  1.0f,
                 1.0f, -1.0f,  1.0f,
                 1.0f,  1.0f,  1.0f,
-                -1.0f,  1.0f,  1.0f
+                -1.0f,  1.0f,  1.0f,
             ))
-
             position(0)
         }
     }
@@ -110,7 +102,8 @@ class Block(x: Int, y: Int, z: Float, ang: Float, r: Float, g: Float, b: Float, 
 
     init {
         Matrix.setIdentityM(modelMatrix, 0)
-        setRotation(ang)
+        Matrix.translateM(modelMatrix, 0, xPos, yPos, zPos)
+        Matrix.rotateM(modelMatrix, 0, ang, 0f, 0f, 1f)
     }
 
     // Short buffer (2 bytes). 6 faces x 6 coordinates per face
@@ -123,83 +116,76 @@ class Block(x: Int, y: Int, z: Float, ang: Float, r: Float, g: Float, b: Float, 
                     2, 6, 7, 2, 7, 3,
                     3, 7, 4, 3, 4, 0,
                     4, 7, 6, 4, 6, 5,
-                    3, 0, 1, 3, 1, 2
+                    3, 0, 1, 3, 1, 2,
                 )
             )
             position(0)
     }
 
     private var isHighlight = false
-    private var isDrawable = true
     private var finalMpvMatrix = FloatArray(16)
 
-    override fun draw(viewMatrix: FloatArray, projectMatrix: FloatArray, camZ: Float) {
-        if (isDrawable) {
-            val delta = zPos - camZ
 
-            if (!isHighlight && delta < NOTE_ACTION_DISTANCE) {
-                isHighlight = true
-                this.setColour(1.0f, 1.0f, 0.0f, 1.0f)
-                if (this.ind == Indicator.RIGHT) { // Turn on right indicator
-                    PartyMode.activateRightBlinker(0xFF)
-                } else { // Turn on the left one
-                    PartyMode.activateLeftBlinker(0xFF)
-                }
-            }
+    override fun draw(viewMatrix: FloatArray, projectMatrix: FloatArray, camZ: Float): Renderable.RenderPosition {
+        val delta = zPos - camZ
 
-            if (delta < NOTE_HIDE_DISTANCE) {
-                isDrawable = false
-                // Turn off the indicator that was turned on
-                if (this.ind == Indicator.RIGHT) { // Turn on right indicator
-                    PartyMode.activateRightBlinker(0x00)
-                } else { // Turn on the left one
-                    PartyMode.activateLeftBlinker(0x00)
-                }
-            }
-
-            if (delta < 300) { // In View distance
-                colourBuffer.position(0)
-                vertexBuffer.position(0)
-                indexBuffer.position(0)
-
-
-                Matrix.setIdentityM(modelMatrix, 0)
-                Matrix.translateM(modelMatrix, 0, xPos, yPos, zPos)
-                Matrix.rotateM(modelMatrix, 0, rot, 0f, 0f, 1f)
-
-
-
-                Matrix.multiplyMM(finalMpvMatrix, 0, viewMatrix, 0, modelMatrix, 0)
-                Matrix.multiplyMM(finalMpvMatrix, 0, projectMatrix, 0, finalMpvMatrix, 0)
-
-                glEnableVertexAttribArray(GlView.positionHandle)
-                glVertexAttribPointer(
-                    GlView.positionHandle,
-                    3,
-                    GL_FLOAT,
-                    false,
-                    VERTEX_STRIDE,
-                    vertexBuffer
-                )
-
-                glEnableVertexAttribArray(GlView.colourHandle)
-                glVertexAttribPointer(
-                    GlView.colourHandle,
-                    4,
-                    GL_FLOAT,
-                    false,
-                    COLOUR_STRIDE,
-                    colourBuffer
-                )
-
-                glUniformMatrix4fv(GlView.mvpMatrixHandle, 1, false, finalMpvMatrix, 0)
-
-
-                glDrawElements(GL_TRIANGLES, 6 * 6, GL_UNSIGNED_BYTE, indexBuffer)
-
-                glDisableVertexAttribArray(GlView.positionHandle)
-                glDisableVertexAttribArray(GlView.colourHandle)
+        if (!isHighlight && delta < NOTE_ACTION_DISTANCE) {
+            isHighlight = true
+            this.setColour(1.0f, 1.0f, 0.0f, 1.0f)
+            if (this.ind == Indicator.RIGHT) { // Turn on right indicator
+                PartyMode.activateRightBlinker(0xFF)
+            } else { // Turn on the left one
+                PartyMode.activateLeftBlinker(0xFF)
             }
         }
+
+        if (delta < NOTE_HIDE_DISTANCE) {
+            // Turn off the indicator that was turned on
+            if (this.ind == Indicator.RIGHT) { // Turn on right indicator
+                PartyMode.activateRightBlinker(0x00)
+            } else { // Turn on the left one
+                PartyMode.activateLeftBlinker(0x00)
+            }
+            return Renderable.RenderPosition.BEHIND_CAMERA
+        }
+
+        if (delta < 300) { // In View distance
+            colourBuffer.position(0)
+            vertexBuffer.position(0)
+            indexBuffer.position(0)
+
+            Matrix.multiplyMM(finalMpvMatrix, 0, viewMatrix, 0, modelMatrix, 0)
+            Matrix.multiplyMM(finalMpvMatrix, 0, projectMatrix, 0, finalMpvMatrix, 0)
+
+            glEnableVertexAttribArray(GlView.positionHandle)
+            glVertexAttribPointer(
+                GlView.positionHandle,
+                3,
+                GL_FLOAT,
+                false,
+                VERTEX_STRIDE,
+                vertexBuffer
+            )
+
+            glEnableVertexAttribArray(GlView.colourHandle)
+            glVertexAttribPointer(
+                GlView.colourHandle,
+                4,
+                GL_FLOAT,
+                false,
+                COLOUR_STRIDE,
+                colourBuffer
+            )
+
+            glUniformMatrix4fv(GlView.mvpMatrixHandle, 1, false, finalMpvMatrix, 0)
+
+            glDrawElements(GL_TRIANGLES, 6 * 6, GL_UNSIGNED_BYTE, indexBuffer)
+
+            glDisableVertexAttribArray(GlView.positionHandle)
+            glDisableVertexAttribArray(GlView.colourHandle)
+        } else {
+            return Renderable.RenderPosition.DISTANT
+        }
+        return Renderable.RenderPosition.REDERED
     }
 }

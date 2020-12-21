@@ -1,12 +1,15 @@
 package com.rndash.mbheadunit.car
 
 import android.os.Looper
+import com.rndash.mbheadunit.CarData
 import com.rndash.mbheadunit.nativeCan.KombiDisplay
 import com.rndash.mbheadunit.nativeCan.canB.KI_STAT
 import com.rndash.mbheadunit.nativeCan.canB.KOMBI_A5
 import java.security.Key
 import kotlin.properties.Delegates
 
+@ExperimentalUnsignedTypes
+@ExperimentalStdlibApi
 object KeyManager {
     var LONG_PRESS_THRESHOLD_MS = 1000
 
@@ -65,31 +68,32 @@ object KeyManager {
             KEY.VOLUME_DOWN -> volDown.registerListener(l)
         }
     }
+    init {
+        CarData.registerCarTask(
+            {
+                KOMBI_A5.get_ki_stat().let {
+                    page = it
+                    if (it == KI_STAT.RESERVED && !isIdle) { // Key released
+                        isIdle = true
+                        volUp.release(simplePage)
+                        volDown.release(simplePage)
+                        telUp.release(simplePage)
+                        telDown.release(simplePage)
+                        pgUp.release(simplePage)
+                        pgDown.release(simplePage)
 
-    val watcher = Thread() {
-        while(true) {
-            KOMBI_A5.get_ki_stat().let {
-                page = it
-                if (it == KI_STAT.RESERVED && !isIdle) { // Key released
-                    isIdle = true
-                    volUp.release(simplePage)
-                    volDown.release(simplePage)
-                    telUp.release(simplePage)
-                    telDown.release(simplePage)
-                    pgUp.release(simplePage)
-                    pgDown.release(simplePage)
-
-                } else if (it != KI_STAT.RESERVED) {
-                    isIdle = false
-                    if (KOMBI_A5.get_button_1_1()) { pgUp.press(simplePage) }
-                    if (KOMBI_A5.get_button_1_2()) { pgDown.press(simplePage) }
-                    if (KOMBI_A5.get_button_3_1()) { volUp.press(simplePage) }
-                    if (KOMBI_A5.get_button_3_2()) { volDown.press(simplePage) }
-                    if (KOMBI_A5.get_button_4_1()) { telUp.press(simplePage) }
-                    if (KOMBI_A5.get_button_4_2()) { telDown.press(simplePage) }
+                    } else if (it != KI_STAT.RESERVED) {
+                        isIdle = false
+                        if (KOMBI_A5.get_button_1_1()) { pgUp.press(simplePage) }
+                        if (KOMBI_A5.get_button_1_2()) { pgDown.press(simplePage) }
+                        if (KOMBI_A5.get_button_3_1()) { volUp.press(simplePage) }
+                        if (KOMBI_A5.get_button_3_2()) { volDown.press(simplePage) }
+                        if (KOMBI_A5.get_button_4_1()) { telUp.press(simplePage) }
+                        if (KOMBI_A5.get_button_4_2()) { telDown.press(simplePage) }
+                    }
                 }
             }
-            Thread.sleep(25)
-        }
+            , 10
+        )
     }
 }

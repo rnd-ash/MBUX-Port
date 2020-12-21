@@ -19,9 +19,4 @@ class BeatSaberGLView(ctx: Context, a: AttributeSet) : GLSurfaceView(ctx, a) {
         renderer = GlView(ctx)
         setRenderer(renderer)
     }
-
-    override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
-        renderer.onKeyDown(keyCode)
-        return super.onKeyDown(keyCode, event)
-    }
 }

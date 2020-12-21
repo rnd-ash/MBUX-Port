@@ -30,8 +30,8 @@ public:
         sendQueue.push(f);
         queueMutex.unlock();
     }
-    bool hasFrame() {
-        return sendQueue.size() != 0;
+    const inline bool hasFrame() {
+        return !sendQueue.empty();
     }
     CanFrame getFront() {
         CanFrame f;
@@ -80,8 +80,7 @@ public:
             uint32_t d = this->data.data[start];
             if (start != end) {
                 for (int i = start; i <= end; i++) {
-                    d <<= 8;
-                    d |= data.data[i];
+                    d = (d | data.data[i]) << 8;
                 }
             }
             uint32_t mask = 0x00;
@@ -90,7 +89,6 @@ public:
             }
             // Now bit shift so that masking values start at the start of the byte
             return (d >> (offset % 8)) & mask;
-            return d;
         }
     }
 

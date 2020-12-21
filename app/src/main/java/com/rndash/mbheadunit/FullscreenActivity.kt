@@ -121,15 +121,6 @@ class FullscreenActivity : FragmentActivity() {
             Log.e("MAIN", "No Arduino found!")
             Toast.makeText(this, "Error. Arduino not found!", Toast.LENGTH_LONG).show()
             CarComm.init_test()
-            Thread {
-                Thread.sleep(1000)
-                sendToBusTest(
-                        CanFrame(
-                                0x01D0,
-                                'B',
-                                byteArrayOf(0x03,0x05,0x22,0xD7.toByte(),0x01,0x00,0xC2.toByte(),0x00)
-                        ))
-            }.start()
         } else {
             Log.d("MAIN", "Arduino found!")
             comm = CarComm(dev!!, x)
@@ -166,8 +157,6 @@ class FullscreenActivity : FragmentActivity() {
         intentFilter.addAction("a2dp_play_type")
 
         registerReceiver(IntentManager(), intentFilter)
-        KeyManager.watcher.start()
-
         KeyManager.registerPageUpListener(KeyManager.KEY.VOLUME_UP, object : KeyManager.KeyListener {
             override fun onLongPress(pg: KeyManager.PAGE) {
                 // Ignore long presses for volume
@@ -229,7 +218,6 @@ class FullscreenActivity : FragmentActivity() {
                 "", arrayOf(KombiDisplay.TEXT_FMT.CENTER_JUSTIFIED)
         )
         BTMusic.focusBT()
-        CarData.dataCollector.start()
     }
 
     private inner class ScreenSlidePagerAdapter(fa: FragmentActivity) : FragmentStateAdapter(fa) {
@@ -265,16 +253,6 @@ class FullscreenActivity : FragmentActivity() {
                 }
             }
         }
-    }
-
-    private fun sendToBusTest(f: CanFrame) {
-        var tmp = String.format("%c%04X", f.bus, f.canID)
-        (0 until f.dlc).forEach {
-            tmp += String.format("%02X", f.data[it])
-        }
-        tmp += "\r\n"
-        val bs = tmp.toByteArray(Charsets.US_ASCII)
-        CanBusNative.sendBytesToBuffer(bs, bs.size)
     }
 
     // Sends an intent asking the headunit to set volume
