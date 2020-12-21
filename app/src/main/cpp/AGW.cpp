@@ -49,7 +49,6 @@ void AGW::onFlowControl() {
         }
         isSending = false;
         this->hasFC = false;
-        std::this_thread::sleep_for(std::chrono::milliseconds(20));
     }
 }
 
@@ -90,6 +89,9 @@ void AGW::processKombiResponse(uint8_t page, uint8_t pkg, uint8_t result) {
         case PAGE_AUDIO:
             audio_display->processResponse(pkg, result);
             break;
+        case PAGE_NAVI:
+            __android_log_print(ANDROID_LOG_WARN, "AGW_HANDLER", "NAVI Page is not implemented yet");
+            break;
         case PAGE_TEL:
             tel_display->processResponse(pkg, result);
             break;
@@ -108,6 +110,9 @@ void AGW::processKombiPayload(uint8_t page, uint8_t pkg, uint8_t len, uint8_t *d
     switch (page) {
         case PAGE_AUDIO:
             audio_display->processIncommingMessage(pkg, len, data);
+            break;
+        case PAGE_NAVI:
+            __android_log_print(ANDROID_LOG_WARN, "AGW_HANDLER", "NAVI Page is not implemented yet");
             break;
         case PAGE_TEL:
             tel_display->processIncommingMessage(pkg, len, data);

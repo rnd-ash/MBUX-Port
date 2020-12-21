@@ -15,7 +15,7 @@ import java.util.*
 
 @ExperimentalUnsignedTypes
 @ExperimentalStdlibApi
-class PTDisplay : Fragment() {
+class PTDisplay : UIFragment() {
     var isInPage = false
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.engine_display, container, false)
@@ -53,12 +53,12 @@ class PTDisplay : Fragment() {
                     engRpm.text = String.format("Engine speed: %4d RPM", MS_308h.get_nmot())
 
                     transTemp.text = String.format("Oil temperature: %2d C", GS_418h.get_t_get() - 40)
-                    transTorque.text = String.format("Torque available: %3d Nm", MS_312h.get_m_max_atl())
+                    transTorque.text = String.format("Torque available: %3d Nm", MS_312h.get_m_max_atl() / 2)
                     transTC.text = String.format("TC Slip: %4d RPM (%2.1f %%)", slip, slipPerc)
                     turbineRPM.text = String.format("Turbine speed: %4d RPM", GS_338h.get_nturbine())
                 }
             }
-        }, 0, 250)
+        }, 0, 100)
     }
 
     override fun onPause() {

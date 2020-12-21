@@ -12,7 +12,7 @@
         android:adjustViewBounds="true"
         android:scaleType="fitXY"
         android:id="@+id/ui_bg"
-        android:src="@drawable/bg_night"/>
+        android:src="@drawable/bg_normal"/>
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"

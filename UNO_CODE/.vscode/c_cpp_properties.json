@@ -4,10 +4,12 @@
             "name": "Linux",
             "includePath": [
                 "/home/ashcon/.arduino15/packages/arduino/tools/**",
-                "/home/ashcon/.arduino15/packages/arduino/hardware/avr/1.8.2/**"
+                "/home/ashcon/.arduino15/packages/arduino/hardware/avr/1.8.2/**",
+                "/home/ashcon/.arduino15/packages/arduino/hardware/avr/1.8.3/**"
             ],
             "forcedInclude": [
-                "/home/ashcon/.arduino15/packages/arduino/hardware/avr/1.8.2/cores/arduino/Arduino.h"
+                "/home/ashcon/.arduino15/packages/arduino/hardware/avr/1.8.2/cores/arduino/Arduino.h",
+                "/home/ashcon/.arduino15/packages/arduino/hardware/avr/1.8.3/cores/arduino/Arduino.h"
             ],
             "intelliSenseMode": "gcc-x64",
             "compilerPath": "/usr/bin/clang",

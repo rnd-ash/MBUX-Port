@@ -845,9 +845,9 @@ enum class WSS_ANZ(val raw: Int) {
 
 enum class LKU_VORN(val raw: Int) {
 	 /** middle position **/
-	 CENTER(0),
+	 PARTIAL(0),
 	 /** position up **/
-	 UP(1),
+	 OPEN(1),
 	 /** position closed **/
 	 CLOSED(2),
 	 /** signal invalid **/
@@ -856,9 +856,9 @@ enum class LKU_VORN(val raw: Int) {
 
 enum class LKM_VORN(val raw: Int) {
 	 /** middle position **/
-	 CENTER(0),
+	 PARTIAL(0),
 	 /** position up **/
-	 UP(1),
+	 OPEN(1),
 	 /** position closed **/
 	 CLOSED(2),
 	 /** signal invalid **/
@@ -867,9 +867,9 @@ enum class LKM_VORN(val raw: Int) {
 
 enum class LKO_VORN(val raw: Int) {
 	 /** middle position **/
-	 CENTER(0),
+	 PARTIAL(0),
 	 /** position up **/
-	 UP(1),
+	 OPEN(1),
 	 /** position closed **/
 	 CLOSED(2),
 	 /** signal invalid **/

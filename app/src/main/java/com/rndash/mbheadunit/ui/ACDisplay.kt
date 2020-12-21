@@ -16,7 +16,7 @@ import java.util.*
 
 @ExperimentalUnsignedTypes
 @ExperimentalStdlibApi
-class ACDisplay : Fragment() {
+class ACDisplay : UIFragment() {
 
     lateinit var fan_speed_text : TextView
     lateinit var interior_text: TextView
@@ -56,18 +56,38 @@ class ACDisplay : Fragment() {
                 if(!isInPage){return}
                 activity?.runOnUiThread {
                     fan_speed_text.text = String.format("Fan speed: %3d %%", KLA_A1.get_geb_lstg())
-                    interior_text.text = String.format("Interior temp: %2.1f C", (KLA_A1.get_t_innen_kla().toFloat() - 40) /  4.0)
-                    exterior_text.text = String.format("Exterior temp: %2.1f C", (SAM_V_A2.get_t_aussen_b().toFloat() - 40) / 4.0)
-                    rl_window_text.text = String.format("%3d %%", THL_A1.get_feste_hl())
-                    rr_window_text.text = String.format("%3d %%", THR_A1.get_feste_hr())
-                    fl_window_text.text = String.format("%3d %%", TVL_A3.get_feste_vl())
-                    fr_window_text.text = String.format("%3d %%", TVR_A3.get_feste_vr())
+                    interior_text.text = String.format("Interior temp: %2.1f C", (KLA_A1.get_t_innen_kla().toFloat() / 2.0))
+                    exterior_text.text = String.format("Exterior temp: %2.1f C", ((SAM_V_A2.get_t_aussen_b().toFloat() / 2.0) - 40))
+                    if (!THL_A1.get_fhl_auf()) {
+                        rl_window_text.text = "0%"
+                    } else {
+                        rl_window_text.text = String.format("%3d %%", THL_A1.get_feste_hl())
+                    }
+                    if (!THR_A1.get_fhr_auf()) {
+                        rl_window_text.text = "0%"
+                    } else {
+                        rr_window_text.text = String.format("%3d %%", THR_A1.get_feste_hr())
+                    }
+                    if (!TVL_A3.get_fvl_auf()) {
+                        fl_window_text.text = "0%"
+                    } else {
+                        fl_window_text.text = String.format("%3d %%", TVL_A3.get_feste_vl())
+                    }
+                    if (!TVR_A3.get_fvr_auf()) {
+                        fr_window_text.text = "0%"
+                    } else {
+                        fr_window_text.text = String.format("%3d %%", TVR_A3.get_feste_vr())
+                    }
                     up_flap_pos.text = "Windshield: ${KLA_A1.get_lko_vorn()}"
                     cent_flap_pos.text = "Center: ${KLA_A1.get_lkm_vorn()}"
                     low_flap_pos.text = "Footwell: ${KLA_A1.get_lku_vorn()}"
                 }
             }
         }, 0, 250)
+    }
+
+    private fun getWindowPercent() {
+
     }
 
     override fun onPause() {

@@ -6,6 +6,7 @@ import com.rndash.mbheadunit.CarComm
 import com.rndash.mbheadunit.nativeCan.canB.EZS_A2
 import com.rndash.mbheadunit.nativeCan.canB.SAM_H_A3
 import com.rndash.mbheadunit.nativeCan.canB.SAM_H_A5
+import com.rndash.mbheadunit.nativeCan.canB.SAM_V_A1
 import java.lang.Long.max
 
 /**
@@ -38,13 +39,16 @@ object PartyMode {
     @Volatile
     private var lightStateChange = false
 
+    //private var sha1 = CanFrame(0x000A, 'B', byteArrayOf(0x00,0x00,0x00,0x00,0x00,0x00))
     private var sha3 = CanFrame(0x000E, 'B', byteArrayOf(0x00, 0x00))
     private var sha5 = CanFrame(0x0230, 'B', byteArrayOf(0x00, 0x00))
+
+    fun getSam3() : CanFrame = sha3
+    fun getSam5() : CanFrame = sha5
 
     private var lastSampleTime = millis()
     private var partyThread : Thread? = null
     private fun threadLoop() {
-        //BTMusic.setupSampler()
         println("Party mode thread start!")
         var millis: Long
         while(true) {
@@ -104,7 +108,7 @@ object PartyMode {
             }
             // -- Finally sleep a bit
             try {
-                Thread.sleep(2)
+                Thread.sleep(5)
             } catch (e: InterruptedException) {
                 println("Party thread terminated by host!")
                 break
@@ -115,34 +119,34 @@ object PartyMode {
     // Check if engine is on. If it is party thread MUST exit
     fun isEngineOn() : Boolean {
         //return EZS_A2.get_n_mot() != 65535 && EZS_A2.get_n_mot() != 0
-        return false
+        return false // Engine is always off for 'testing'
     }
 
-    fun activateLeftBlinker(durationMs: Long) {
+    fun activateLeftBlinker(durationMs: Int) {
         leftInidicatorCutoff = millis() + durationMs
         leftIndicatorOn = durationMs > 0
         blinkerStateChange = true
     }
 
-    fun activateRightBlinker(durationMs: Long) {
+    fun activateRightBlinker(durationMs: Int) {
         rightIndicatorCutOff = millis() + durationMs
         rightIndicatorOn = durationMs > 0
         blinkerStateChange = true
     }
 
-    fun activateFog(durationMs: Long) {
+    fun activateFog(durationMs: Int) {
         fogCutoff = millis() + durationMs
         fogOn = durationMs > 0
         lightStateChange = true
     }
 
-    fun activateDipped(durationMs: Long) {
+    fun activateDipped(durationMs: Int) {
         dippedCutOff = millis() + durationMs
         dippedOn = durationMs > 0
         lightStateChange = true
     }
 
-    fun activateHazards(durationMs: Long) {
+    fun activateHazards(durationMs: Int) {
         activateLeftBlinker(durationMs)
         activateRightBlinker(durationMs)
     }
@@ -152,6 +156,7 @@ object PartyMode {
     fun isHazardOn(): Boolean = rightIndicatorOn && leftIndicatorOn
     fun isDippedOn(): Boolean = dippedOn
     fun isFogOn(): Boolean = fogOn
+
 
     fun stopThread() {
         partyThread?.let {

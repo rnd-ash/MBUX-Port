@@ -4,97 +4,108 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:id="@+id/party_layout"
     android:layout_height="match_parent">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+    <Button
+            android:text="Select Beatmap"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/select_beatmap_btn"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintVertical_bias="1.0" />
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="50dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginRight="50dp"
-            android:layout_marginBottom="50dp">
+    <com.rndash.mbheadunit.BeatSaberGLView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:id="@+id/bsview"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintVertical_bias="0.0"
+            app:layout_constraintBottom_toBottomOf="parent" />
 
-            <Switch
-                android:id="@+id/indicator_toggle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Hazard control"
-                android:textColor="#FFFFFF"
-                app:layout_constraintBottom_toTopOf="@+id/fog_toggle"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+    <View
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:id="@+id/dipped_left"
+            app:layout_constraintTop_toTopOf="@+id/indicator_left"
+            app:layout_constraintBottom_toBottomOf="@+id/indicator_left"
+            app:layout_constraintEnd_toStartOf="@+id/dipped_right"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintVertical_bias="0.0" />
 
-            <SeekBar
-                android:id="@+id/hazard_seek"
-                android:layout_width="200dp"
-                android:layout_height="wrap_content"
-                android:max="1000"
-                android:min="10"
-                android:progress="100"
-                android:progressTint="#FFFFFF"
-                app:layout_constraintBottom_toBottomOf="@+id/indicator_toggle"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/indicator_toggle"
-                app:layout_constraintTop_toTopOf="@+id/indicator_toggle" />
+    <View
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:id="@+id/indicator_right"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="4dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="18dp" />
 
-            <Switch
-                android:id="@+id/fog_toggle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="4dp"
-                android:text="Fog control"
-                android:textColor="#FFFFFF"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/indicator_toggle" />
+    <View
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:id="@+id/fog_right"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/dipped_right"
+            android:layout_marginTop="8dp"
+            app:layout_constraintVertical_bias="1.0"
+            app:layout_constraintStart_toStartOf="@+id/dipped_right"
+            app:layout_constraintEnd_toEndOf="@+id/dipped_right"
+            android:layout_marginBottom="8dp" />
 
-            <SeekBar
-                android:id="@+id/fog_seek"
-                android:layout_width="200dp"
-                android:layout_height="wrap_content"
-                android:max="1000"
-                android:min="10"
-                android:progress="100"
-                android:progressTint="#FFFFFF"
-                app:layout_constraintBottom_toBottomOf="@+id/fog_toggle"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/fog_toggle"
-                app:layout_constraintTop_toTopOf="@+id/fog_toggle" />
+    <View
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:id="@+id/dipped_right"
+            app:layout_constraintEnd_toStartOf="@+id/indicator_right"
+            app:layout_constraintTop_toTopOf="@+id/indicator_right"
+            app:layout_constraintBottom_toBottomOf="@+id/indicator_right" />
 
-            <TextView
-                android:id="@+id/indicator_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="0ms"
-                android:textColor="#FFFFFF"
-                app:layout_constraintBottom_toBottomOf="@+id/hazard_seek"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toEndOf="@+id/hazard_seek"
-                app:layout_constraintTop_toTopOf="@+id/hazard_seek"
-                app:layout_constraintVertical_bias="0.0" />
+    <View
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:id="@+id/indicator_left"
+            app:layout_constraintEnd_toStartOf="@+id/dipped_left"
+            app:layout_constraintBottom_toTopOf="@+id/fog_left"
+            app:layout_constraintTop_toTopOf="@+id/indicator_right" />
 
-            <TextView
-                android:id="@+id/fog_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="0ms"
-                android:textColor="#FFFFFF"
-                app:layout_constraintBottom_toBottomOf="@+id/fog_seek"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toEndOf="@+id/fog_seek"
-                app:layout_constraintTop_toTopOf="@+id/fog_seek"
-                app:layout_constraintVertical_bias="0.0" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </LinearLayout>
+    <View
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:id="@+id/fog_left"
+            app:layout_constraintStart_toStartOf="@+id/dipped_left"
+            app:layout_constraintEnd_toEndOf="@+id/dipped_left"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="8dp" />
+
+    <TextView
+            android:text="Map info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/text_map"
+            app:layout_constraintTop_toTopOf="@+id/select_beatmap_btn"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/select_beatmap_btn"
+            android:textColor="#FFFFFF"
+            app:layout_constraintEnd_toStartOf="@+id/indicator_left" />
+
+    <TextView
+            android:text="DEBUG"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/beatsaber_debug"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="16dp"
+            android:textColor="#FFFFFF"
+            android:layout_marginStart="8dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

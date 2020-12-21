@@ -20,7 +20,7 @@ import kotlin.math.min
 
 @ExperimentalUnsignedTypes
 @ExperimentalStdlibApi
-class MPGDisplay : Fragment() {
+class MPGDisplay : UIFragment() {
     lateinit var mpg_text: TextView
     lateinit var avg_mpg_text: TextView
     lateinit var tank_mpg: TextView

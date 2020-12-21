@@ -13,6 +13,7 @@ import android.media.AudioManager
 import android.microntek.CarManager
 import android.os.Bundle
 import android.util.Log
+import android.view.KeyEvent
 import android.view.View
 import android.view.Window
 import android.view.WindowManager
@@ -31,10 +32,7 @@ import com.rndash.mbheadunit.nativeCan.KombiDisplay
 import com.rndash.mbheadunit.nativeCan.canB.DBE_A1
 import com.rndash.mbheadunit.nativeCan.canB.SAM_H_A2
 import com.rndash.mbheadunit.nativeCan.canB.TPM_A1
-import com.rndash.mbheadunit.ui.ACDisplay
-import com.rndash.mbheadunit.ui.LightsDisplay
-import com.rndash.mbheadunit.ui.MPGDisplay
-import com.rndash.mbheadunit.ui.PTDisplay
+import com.rndash.mbheadunit.ui.*
 import java.util.*
 import java.util.jar.Manifest
 
@@ -49,7 +47,6 @@ class FullscreenActivity : FragmentActivity() {
     private lateinit var viewPager: ViewPager2
     companion object {
         val carManager = CarManager()
-        private lateinit var audiomanager: AudioManager
         var comm: CarComm? = null
         lateinit var volContext: Context
         var volume = 10
@@ -67,6 +64,7 @@ class FullscreenActivity : FragmentActivity() {
             System.loadLibrary("canbus-lib")
         }
     }
+    private lateinit var pagerAdapter: ScreenSlidePagerAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN)
@@ -75,7 +73,7 @@ class FullscreenActivity : FragmentActivity() {
         actionBar?.hide()
         setContentView(R.layout.activity_fullscreen)
         viewPager = findViewById(R.id.ui_fragment)
-        val pagerAdapter = ScreenSlidePagerAdapter(this)
+        pagerAdapter = ScreenSlidePagerAdapter(this)
         viewPager.setPageTransformer(ZoomOutPageTransformer())
         viewPager.adapter = pagerAdapter
 
@@ -192,8 +190,6 @@ class FullscreenActivity : FragmentActivity() {
             }
         })
 
-        var b1 = 0x00.toByte()
-        var b2 = 0x01.toByte()
         KeyManager.registerPageUpListener(KeyManager.KEY.PAGE_UP, object : KeyManager.KeyListener {
             override fun onLongPress(pg: KeyManager.PAGE) {
                 println("Page up long press. Page: $pg")
@@ -238,12 +234,19 @@ class FullscreenActivity : FragmentActivity() {
 
     private inner class ScreenSlidePagerAdapter(fa: FragmentActivity) : FragmentStateAdapter(fa) {
         override fun getItemCount(): Int = 4
+        private lateinit var curr_fragment: UIFragment
+        override fun createFragment(position: Int): Fragment {
+            curr_fragment = when (position) {
+                1 -> ACDisplay()
+                2 -> MPGDisplay()
+                3 -> LightsDisplay()
+                else -> PTDisplay()
+            }
+            return curr_fragment
+        }
 
-        override fun createFragment(position: Int): Fragment = when(position) {
-            1 -> ACDisplay()
-            2 -> MPGDisplay()
-            3 -> LightsDisplay()
-            else -> PTDisplay()
+        fun keyEvent(code: Int, event: KeyEvent): Boolean {
+            return curr_fragment.onKeyDown(code, event)
         }
     }
 
@@ -291,5 +294,9 @@ class FullscreenActivity : FragmentActivity() {
                 ActivityCompat.requestPermissions(this, arrayOf(permission), requestCode)
             }
         }
+    }
+
+    override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
+        return pagerAdapter.keyEvent(keyCode, event!!)
     }
 }

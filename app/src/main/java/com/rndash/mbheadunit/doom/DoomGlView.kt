@@ -188,7 +188,7 @@ class DoomGlView(private val w: WadFile, lName: String, private val ctx: Context
     private val map = GLMap(level, w, cMap)
     private val sBar = StatusBar(w)
     override fun onSurfaceCreated(gl: GL10?, config: EGLConfig?) {
-        Renderer.createProgram().let {
+        Renderer.createProgramDOOM().let {
             if (it == 0) {
                 throw Exception("Error creating GL Program")
             } else {
@@ -203,7 +203,8 @@ class DoomGlView(private val w: WadFile, lName: String, private val ctx: Context
         mMVPMatrixHandle = glGetUniformLocation(mProgramHandle, "u_MVPMatrix")
         //mVMatrixHandle = glGetUniformLocation(mProgramHandle, "u_MVMatrix")
         //mLightPosHandle = glGetUniformLocation(mProgramHandle, "u_LightPos")
-        //mTextureUniformHandle = glGetUniformLocation(mProgramHandle, "u_Texture")
+        //mTextureUniformHandle = glGetUniformLocation(mProgramHandl
+        // e, "u_Texture")
         //mColourHandle = glGetAttribLocation(mProgramHandle, "a_Color")
         //mNormalHandle = glGetAttribLocation(mProgramHandle, "a_Normal")
         println("$mVMatrixHandle $mPositionHandle $mTextureCoordinateHandle $mSamplerHandle")

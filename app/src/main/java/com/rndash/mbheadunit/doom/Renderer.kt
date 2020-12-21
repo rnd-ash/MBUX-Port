@@ -10,7 +10,7 @@ import java.nio.ByteBuffer
 import java.nio.IntBuffer
 
 object Renderer {
-    const val vertexShader = """
+    const val vertexShaderDOOM = """
         uniform mat4 u_MVPMatrix;
         attribute vec4 a_Position;
         attribute vec2 a_texcoords;
@@ -22,7 +22,7 @@ object Renderer {
         }
     """
 
-    const val fragmentShader = """
+    const val fragmentShaderDOOM = """
         precision mediump float; 
 
         uniform sampler2D u_sampler;
@@ -30,6 +30,26 @@ object Renderer {
         
         void main() {
             gl_FragColor = texture2D(u_sampler, v_texcoords);
+        }
+    """
+
+    const val vertexShaderBS = """
+        uniform mat4 u_MVPMatrix;
+        attribute vec4 vPosition;
+        attribute vec4 vColour;
+        varying vec4 _vColour;
+        void main() {
+            _vColour = vColour;
+            gl_Position = u_MVPMatrix * vPosition;
+        }
+    """
+
+    const val fragmentShaderBS = """
+        precision mediump float;
+        varying vec4 _vColour;
+        vec4 ambientlighting = vec4(1, 1, 1, 1);
+        void main() {
+            gl_FragColor = _vColour * ambientlighting;
         }
     """
 
@@ -51,15 +71,44 @@ object Renderer {
         return shaderHandle
     }
 
-    fun createProgram(): Int {
+    fun createProgramDOOM(): Int {
         var handle = glCreateProgram()
         if (handle != 0) {
-            loadShader(vertexShader, GL_VERTEX_SHADER).let {
+            loadShader(vertexShaderDOOM, GL_VERTEX_SHADER).let {
                 if (it != 0) { glAttachShader(handle, it) } else {
                     throw Exception("Error attaching vertex shader")
                 }
             }
-            loadShader(fragmentShader, GL_FRAGMENT_SHADER).let {
+            loadShader(fragmentShaderDOOM, GL_FRAGMENT_SHADER).let {
+                if (it != 0) { glAttachShader(handle, it) } else {
+                    throw Exception("Error attaching fragment shader")
+                }
+            }
+
+            glBindAttribLocation(handle, 0, "a_Position")
+            glBindAttribLocation(handle, 1, "a_Color")
+            glLinkProgram(handle)
+
+            val linkStatus = IntArray(1)
+            glGetProgramiv(handle, GL_LINK_STATUS, linkStatus, 0)
+            if (linkStatus[0] == 0) {
+                System.err.println(glGetProgramInfoLog(handle))
+                glDeleteProgram(handle)
+                handle = 0
+            }
+        }
+        return handle
+    }
+
+    fun createProgramBS(): Int {
+        var handle = glCreateProgram()
+        if (handle != 0) {
+            loadShader(vertexShaderBS, GL_VERTEX_SHADER).let {
+                if (it != 0) { glAttachShader(handle, it) } else {
+                    throw Exception("Error attaching vertex shader")
+                }
+            }
+            loadShader(fragmentShaderBS, GL_FRAGMENT_SHADER).let {
                 if (it != 0) { glAttachShader(handle, it) } else {
                     throw Exception("Error attaching fragment shader")
                 }

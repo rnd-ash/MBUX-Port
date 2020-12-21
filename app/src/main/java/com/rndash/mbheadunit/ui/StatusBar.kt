@@ -19,7 +19,7 @@ import java.util.*
 
 @ExperimentalUnsignedTypes
 @ExperimentalStdlibApi
-class StatusBar : Fragment() {
+class StatusBar : UIFragment() {
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {

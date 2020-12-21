@@ -145,8 +145,8 @@ object KLA_A1 {
 	
 	/** Gets position ventilation flap down **/
 	fun get_lku_vorn() : LKU_VORN = when(CanBusNative.getECUParameterB(CanBAddrs.KLA_A1, 54, 2)) {
-		 0 -> LKU_VORN.CENTER
-		 1 -> LKU_VORN.UP
+		 0 -> LKU_VORN.PARTIAL
+		 1 -> LKU_VORN.OPEN
 		 2 -> LKU_VORN.CLOSED
 		 3 -> LKU_VORN.SNV
 		 else -> throw Exception("Invalid raw value for LKU_VORN")
@@ -160,8 +160,8 @@ object KLA_A1 {
 	
 	/** Gets Position ventilation flap center **/
 	fun get_lkm_vorn() : LKM_VORN = when(CanBusNative.getECUParameterB(CanBAddrs.KLA_A1, 52, 2)) {
-		 0 -> LKM_VORN.CENTER
-		 1 -> LKM_VORN.UP
+		 0 -> LKM_VORN.PARTIAL
+		 1 -> LKM_VORN.OPEN
 		 2 -> LKM_VORN.CLOSED
 		 3 -> LKM_VORN.SNV
 		 else -> throw Exception("Invalid raw value for LKM_VORN")
@@ -175,8 +175,8 @@ object KLA_A1 {
 	
 	/** Gets position ventilation flap up **/
 	fun get_lko_vorn() : LKO_VORN = when(CanBusNative.getECUParameterB(CanBAddrs.KLA_A1, 50, 2)) {
-		 0 -> LKO_VORN.CENTER
-		 1 -> LKO_VORN.UP
+		 0 -> LKO_VORN.PARTIAL
+		 1 -> LKO_VORN.OPEN
 		 2 -> LKO_VORN.CLOSED
 		 3 -> LKO_VORN.SNV
 		 else -> throw Exception("Invalid raw value for LKO_VORN")

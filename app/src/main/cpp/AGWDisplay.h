@@ -9,6 +9,7 @@
 #include <queue>
 
 #define PAGE_AUDIO 0x03
+#define PAGE_NAVI 0x04
 #define PAGE_TEL 0x05
 
 #define TEXT_SCROLL_MS 200
