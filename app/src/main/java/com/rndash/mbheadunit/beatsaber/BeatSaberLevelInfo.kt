@@ -1,5 +1,6 @@
 package com.rndash.mbheadunit.beatsaber
 
+import com.rndash.mbheadunit.beatsaber.Block.Companion.NOTE_ACTION_DISTANCE
 import com.rndash.mbheadunit.beatsaber.Block.Companion.NOTE_SPEED
 import org.json.JSONObject
 import java.io.File
@@ -23,15 +24,16 @@ data class BeatSaberLevelInfo(
 ) {
     private var msPerBeat = 1
     // Test - just returns all the blocks from the level
-    fun processBlocks(bpm: Int) : ArrayList<Block> {
+    fun processBlocks(bpm: Float) : ArrayList<Block> {
         val json = JSONObject(beatmapFile.readLines().joinToString(""))
         val blocks = ArrayList<Block>()
         val blockJson = json.getJSONArray("_notes")
+        val msPerBeat = 60000f / bpm
         for (i in 0 until blockJson.length()) {
             val blockData = JSONObject(blockJson[i].toString())
             val xPos = blockData.getInt("_lineIndex")
             val yPos = blockData.getInt("_lineLayer")
-            val zPos = blockData.getDouble("_time").toFloat() * NOTE_SPEED
+            val zPos = ((msPerBeat * blockData.getDouble("_time").toFloat()) / NOTE_SPEED) + NOTE_ACTION_DISTANCE
             val type = blockData.getInt("_type")
             // Block rotation in degrees
             val angle = when(blockData.getInt("_cutDirection")) {
@@ -45,13 +47,12 @@ data class BeatSaberLevelInfo(
                 7 -> 135 // down right
                 else -> 0 // Any
             }.toFloat()
-            val indicator = if (xPos < 2) { Block.Indicator.LEFT } else Block.Indicator.RIGHT
             when (type) {
                 0 -> { // Red note
-                    blocks.add(Block(xPos, yPos, zPos, angle, 1.0f, 0.0f, 0.0f, 1.0f, indicator))
+                    blocks.add(Block(xPos, yPos, zPos, angle, 1.0f, 0.0f, 0.0f, 1.0f, Block.Indicator.RIGHT))
                 }
                 1 -> { // Blue note
-                    blocks.add(Block(xPos, yPos, zPos, angle, 0.0f, 0.0f, 1.0f, 1.0f, indicator))
+                    blocks.add(Block(xPos, yPos, zPos, angle, 0.0f, 0.0f, 1.0f, 1.0f, Block.Indicator.LEFT))
                 }
                 else -> {} // Bomb or unused - Ignore
             }
@@ -87,7 +88,7 @@ data class BeatSaberLevelInfo(
     }
 
 
-    fun processLights(bpm: Int, resolution: Int) : ArrayList<LightEvent> {
+    fun processLights(bpm: Float, resolution: Int) : ArrayList<LightEvent> {
         val json = JSONObject(beatmapFile.readLines().joinToString(""))
         val lights = ArrayList<LightEvent>()
         val lightJson = json.getJSONArray("_events")
@@ -100,8 +101,8 @@ data class BeatSaberLevelInfo(
         for (i in 0 until lightJson.length()) {
             val eventJson = JSONObject(lightJson[i].toString())
             val type = eventJson.getInt("_type") // Type of lighting event
-            val timestamp = ((eventJson.getDouble("_time").toFloat() * msPerBeat) // Raw timestamp
-                / resolution).toInt() * resolution // Now this divison and multiplication will make it to the resolution
+            val timestamp = (((eventJson.getDouble("_time").toFloat() * msPerBeat) // Raw timestamp
+                / resolution).toInt() * resolution) // Now this divison and multiplication will make it to the resolution
             val value = eventJson.getInt("_value")
             val event: Array<LightEvent>? = when(type) {
                 0 -> generateLightingEvent(LightEvent.Light.FOG, value, timestamp) // Back laser

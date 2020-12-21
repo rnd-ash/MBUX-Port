@@ -3,6 +3,7 @@ package com.rndash.mbheadunit.beatsaber
 import android.opengl.GLES20.*
 import android.opengl.Matrix
 import com.rndash.mbheadunit.car.PartyMode
+import com.rndash.mbheadunit.ui.LightsDisplay
 import java.nio.ByteBuffer
 import java.nio.ByteOrder
 import java.nio.FloatBuffer
@@ -22,8 +23,13 @@ class Block(x: Int, y: Int, z: Float, ang: Float, r: Float, g: Float, b: Float, 
         const val VERTEX_STRIDE = 12
         const val COLOUR_STRIDE = 16
         const val BLOCK_SPACE = 2.5f
-        const val NOTE_ACTION_DISTANCE = 20f
-        const val NOTE_HIDE_DISTANCE = 18f
+        // At this distance, the block will turn yellow, and indicator will turn on
+        const val NOTE_ACTION_DISTANCE = 30f
+        // At this distance, the block will disappear, and indicator will turn off
+        const val NOTE_HIDE_DISTANCE = 20f
+        // Divider for block speed towards the camera
+        // Lower number -> Slower blocks
+        // Higher number -> Faster blocks
         const val NOTE_SPEED = 20f
     }
 
@@ -132,6 +138,7 @@ class Block(x: Int, y: Int, z: Float, ang: Float, r: Float, g: Float, b: Float, 
         if (!isHighlight && delta < NOTE_ACTION_DISTANCE) {
             isHighlight = true
             this.setColour(1.0f, 1.0f, 0.0f, 1.0f)
+            LightsDisplay.lightingEvents++
             if (this.ind == Indicator.RIGHT) { // Turn on right indicator
                 PartyMode.activateRightBlinker(0xFF)
             } else { // Turn on the left one
@@ -140,6 +147,7 @@ class Block(x: Int, y: Int, z: Float, ang: Float, r: Float, g: Float, b: Float, 
         }
 
         if (delta < NOTE_HIDE_DISTANCE) {
+            LightsDisplay.lightingEvents++
             // Turn off the indicator that was turned on
             if (this.ind == Indicator.RIGHT) { // Turn on right indicator
                 PartyMode.activateRightBlinker(0x00)
@@ -150,6 +158,7 @@ class Block(x: Int, y: Int, z: Float, ang: Float, r: Float, g: Float, b: Float, 
         }
 
         if (delta < 300) { // In View distance
+            Matrix.setIdentityM(finalMpvMatrix, 0)
             colourBuffer.position(0)
             vertexBuffer.position(0)
             indexBuffer.position(0)

@@ -6,9 +6,11 @@ import android.opengl.GLSurfaceView
 import android.opengl.Matrix
 import android.view.KeyEvent.*
 import com.rndash.mbheadunit.beatsaber.Block.Companion.NOTE_ACTION_DISTANCE
+import com.rndash.mbheadunit.beatsaber.Block.Companion.NOTE_HIDE_DISTANCE
 import com.rndash.mbheadunit.beatsaber.Block.Companion.NOTE_SPEED
 import com.rndash.mbheadunit.car.PartyMode
 import com.rndash.mbheadunit.doom.Renderer
+import com.rndash.mbheadunit.ui.LightsDisplay
 import java.lang.Math.cos
 import java.lang.Math.sin
 import javax.microedition.khronos.egl.EGLConfig
@@ -25,9 +27,8 @@ class GlView(private val ctx: Context) : GLSurfaceView.Renderer {
         const val LIGHTING_RESOLUTION_MS = 10
     }
 
-    private val viewMatrix = FloatArray(16)
+    private var viewMatrix = FloatArray(16)
     private val projMatrix = FloatArray(16)
-    private val mvpmatrix = FloatArray(16)
 
     private var eyeX = 3.5f
     private var eyeY = 3.5f
@@ -116,29 +117,29 @@ class GlView(private val ctx: Context) : GLSurfaceView.Renderer {
         // Start the party mode thread
         PartyMode.startThread()
         level.songFile.start()
-        val msPerBeat = 60000.0f / level.bpm.toFloat()
+        val msPerBeat = 60000f / level.bpm
+        println("MS PER BEAT ${msPerBeat}")
+        println("NOTE SPEED: ${Block.NOTE_SPEED}")
         var startIdx = 0
-        var time = 0L
+        LightsDisplay.lightingEvents = 0
+        var pos = 0f
         while(level.songFile.isPlaying) {
-            time = measureTimeMillis {
-                eyeZ =
-                    ((level.songFile.currentPosition / msPerBeat) * NOTE_SPEED) - NOTE_ACTION_DISTANCE
-                updateCameraPos()
-                val lightTimestamp =
-                    (level.songFile.currentPosition.toFloat() / LIGHTING_RESOLUTION_MS.toFloat()).toInt() * LIGHTING_RESOLUTION_MS
-                for (i in (startIdx until lightingEvents.size)) {
-                    // Found light event in time bucket, animate it
-                    if (lightingEvents[i].timestampMs == lightTimestamp) {
-                        lightingEvents[i].animate()
-                        // This event is done, move the start index
-                        startIdx++
-                    } else if (lightingEvents[i].timestampMs > lightTimestamp) {
-                        // Later on, stop looping
-                        break
-                    }
+            pos = level.songFile.currentPosition.toFloat()
+            eyeZ = (pos / NOTE_SPEED)
+            updateCameraPos()
+            val lightTimestamp = (pos / LIGHTING_RESOLUTION_MS).toInt() * LIGHTING_RESOLUTION_MS
+            for (i in (startIdx until lightingEvents.size)) {
+                // Found light event in time bucket, animate it
+                if (lightingEvents[i].timestampMs == lightTimestamp) {
+                    lightingEvents[i].animate()
+                    // This event is done, move the start index
+                    startIdx++
+                } else if (lightingEvents[i].timestampMs > lightTimestamp) {
+                    // Later on, stop looping
+                    break
                 }
             }
-            if (10-time > 0) { Thread.sleep(10 - time) }
+            Thread.sleep(5)
         }
     }
 }

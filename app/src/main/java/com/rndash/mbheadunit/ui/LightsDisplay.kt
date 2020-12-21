@@ -37,6 +37,10 @@ import java.util.zip.ZipInputStream
 class LightsDisplay : UIFragment(0) {
     var isInPage = false
 
+    companion object {
+        var lightingEvents = 0
+    }
+
     lateinit var beatsaberview: BeatSaberGLView
     lateinit var gameEngine: GlView
     lateinit var mapText: TextView
@@ -72,12 +76,7 @@ class LightsDisplay : UIFragment(0) {
 
                 setUIElement(PartyMode.isFogOn(), Color.WHITE, lightDisplay[4])
                 setUIElement(PartyMode.isFogOn(), Color.WHITE, lightDisplay[5])
-                debugText.text = """
-                    |Debug (CAN TX)
-                    |SAM_A_3: ${PartyMode.getSam3()}
-                    |SAM_A_5: ${PartyMode.getSam5()}
-                """.trimMargin()
-
+                debugText.text = "Debug (CAN TX)\nSAM_A_3: ${PartyMode.getSam3()}\nSAM_A_5: ${PartyMode.getSam5()}\nTotal exterior lighting events: $lightingEvents"
             }
         }
     }
@@ -168,7 +167,7 @@ class LightsDisplay : UIFragment(0) {
                     json.getString("_songName"),
                     json.getString("_songAuthorName"),
                     json.getString("_levelAuthorName"),
-                    json.getInt("_beatsPerMinute"),
+                    json.getDouble("_beatsPerMinute").toFloat(),
                     MediaPlayer.create(requireContext(), Uri.fromFile(File("/sdcard/mbux/bs_tmp/"+json.getString("_songFilename").replace(".egg", ".ogg")))),
                     File("/sdcard/mbux/bs_tmp/cover.jpg")
                 )
@@ -213,7 +212,7 @@ class LightsDisplay : UIFragment(0) {
                         if (gameEngine.processChosenLevel(info, 0)) {
                             // Start the UI runnable that updates the light display
                             mapText.text = "Song: ${info.songName} by ${info.songAuthor}\nMapper: ${info.levelAuthor}"
-                            Timer().schedule(uiUpdater, 0, 20)
+                            Timer().schedule(uiUpdater, 0, 15)
                         }
 
                     }
@@ -240,7 +239,7 @@ class LightsDisplay : UIFragment(0) {
             Toast.makeText(requireContext(), "Processing ${map.levels[which].difficulty}", Toast.LENGTH_SHORT).show()
             if(gameEngine.processChosenLevel(map, which)) {
                 mapText.text = "Song: ${map.songName} by ${map.songAuthor}\nMapper: ${map.levelAuthor}"
-                Timer().schedule(uiUpdater, 0, 20)
+                Timer().schedule(uiUpdater, 0, 15)
             }
             dialog.cancel()
         }

@@ -80,7 +80,7 @@ public:
             uint32_t d = this->data.data[start];
             if (start != end) {
                 for (int i = start; i <= end; i++) {
-                    d = (d | data.data[i]) << 8;
+                    d = (d << 8) | data.data[i];
                 }
             }
             uint32_t mask = 0x00;

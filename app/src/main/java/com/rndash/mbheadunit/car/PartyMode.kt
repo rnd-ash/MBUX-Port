@@ -53,7 +53,7 @@ object PartyMode {
                     sam3CutOff = false
                     SAM_H_A3.set_hell_blink(sha3, 0xFF) // FF as we will tell SAM When to turn off
                     CarComm.sendFrame(sha3)
-                } else if (!sam3CutOff) {
+                } else if (!isLeftOn && !isRightOn && !sam3CutOff) {
                     sam3CutOff = true
                     sha3.clear()
                     CarComm.sendFrame(sha3)
@@ -69,7 +69,7 @@ object PartyMode {
                     sam5CutOff = false
                     SAM_H_A5.set_hell_edw(sha5, 0xFF) // FF as we will tell SAM When to turn off
                     CarComm.sendFrame(sha5)
-                } else if (!sam5CutOff){
+                } else if (!fogOn && !dippedOn && !sam5CutOff){
                     sam5CutOff = true
                     sha5.clear()
                     CarComm.sendFrame(sha5)

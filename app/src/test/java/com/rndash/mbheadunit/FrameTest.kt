@@ -9,28 +9,15 @@ import kotlin.time.measureTime
 class FrameTest {
     @Test
     fun testECUSet() {
-        var f : OldCanFrame = OldCanFrame(0x01D0, 'B', byteArrayOf(0x05,0x03,0x20, 0x02, 0x11, 0xC3.toByte(), 0x00, 0x00))
-        var new_f = CanFrame(0x01D0, 'B', byteArrayOf(0x05,0x03,0x20, 0x02, 0x11, 0xC3.toByte(), 0x00, 0x00))
+        var new_f = CanFrame(0x0230, 'B', byteArrayOf(0xC0.toByte(),0xFF.toByte()))
 
-        println(f.getBitRange(0, 8))
-        println(f.getBitRange(0, 3))
-        println(new_f.getBitRange(0, 8))
-        println(new_f.getBitRange(0, 3))
+        var test_f = CanFrame(0x0230, 'B', byteArrayOf(0x00.toByte(),0x00.toByte()))
+        test_f.setBitRange(0, 1, 1)
+        test_f.setBitRange(1, 1, 1)
+        test_f.setBitRange(8, 8, 0xFF)
 
-        val cfTime = measureNanoTime {
-            OldCanFrame(0x01D0, 'B', byteArrayOf(0x05,0x03,0x20, 0x02, 0x11, 0xC3.toByte(), 0x00, 0x00)).run {
-                getBitRange(0, 5)
-                getBitRange(3, 10)
-            }
-        }
-
-        val ncfTime = measureNanoTime {
-            CanFrame(0x01D0, 'B', byteArrayOf(0x05,0x03,0x20, 0x02, 0x11, 0xC3.toByte(), 0x00, 0x00)).run {
-                getBitRange(0, 5)
-                getBitRange(3, 10)
-            }
-        }
-
-        println("Times: $cfTime $ncfTime")
+        println(String.format("%02X %02X", new_f.getBitRange(0, 8), test_f.getBitRange(0, 8)))
+        println(new_f.toStruct().joinToString(" ") { String.format("%02X", it) })
+        println(test_f.toStruct().joinToString(" ") { String.format("%02X", it) })
     }
 }

@@ -12,7 +12,7 @@ data class Info(
     val songName: String,
     val songAuthor: String,
     val levelAuthor: String,
-    val bpm: Int,
+    val bpm: Float,
     val songFile: MediaPlayer,
     val coverImage: File) {
     val levels = ArrayList<BeatSaberLevelInfo>()

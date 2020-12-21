@@ -12,7 +12,7 @@
 #define PAGE_NAVI 0x04
 #define PAGE_TEL 0x05
 
-#define TEXT_SCROLL_MS 200
+#define TEXT_SCROLL_MS 400
 #define DISPLAY_WIDTH_PX 56
 const uint8_t CHAR_WIDTHS_BODY[256] = {   // Global variable so PROGMEM attribute can be used
         0, 0, 0, 0, 0, 0, 0, 0,

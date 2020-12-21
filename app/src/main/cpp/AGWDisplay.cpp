@@ -381,7 +381,7 @@ void AudioDisplay::custom_update() {
         __android_log_print(ANDROID_LOG_DEBUG, "AGW-AUDIO", "Need to update body");
         this->outgoingPayloads.push(createPkg26());
         this->update_body = false;
-        this->lastUpdateMillis = get_millis()+1000; // This way text stays on the screen for a bit before scrolling
+        this->lastUpdateMillis = get_millis()+2000; // This way text stays on the screen for a bit before scrolling
         return;
     }
     if (textScroll && get_millis() - lastUpdateMillis >= TEXT_SCROLL_MS) {
