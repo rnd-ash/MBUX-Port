@@ -87,8 +87,8 @@ object PartyMode {
 
     // Check if engine is on. If it is party thread MUST exit
     fun isEngineOn() : Boolean {
-        //return EZS_A2.get_n_mot() != 65535 && EZS_A2.get_n_mot() != 0
-        return false // Engine is always off for 'testing'
+        return EZS_A2.get_n_mot() != 65535 && EZS_A2.get_n_mot() != 0
+        //return false // Engine is always off for 'testing'
     }
 
     fun activateLeftBlinker(durationMs: Int) {

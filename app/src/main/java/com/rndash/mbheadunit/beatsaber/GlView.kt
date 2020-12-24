@@ -55,7 +55,6 @@ class GlView(private val ctx: Context) : GLSurfaceView.Renderer {
     // +x is left -x is right
     // +z
     private var blocks = ArrayList<Block>()
-
     // Processes the input level and returns in processing was OK
     private lateinit var level: Info
     private var numBlocks = blocks.size
@@ -104,7 +103,7 @@ class GlView(private val ctx: Context) : GLSurfaceView.Renderer {
             when(blocks[i].draw(viewMatrix, projMatrix, eyeZ)) {
                 Renderable.RenderPosition.BEHIND_CAMERA -> startPos++
                 Renderable.RenderPosition.REDERED -> {}
-                Renderable.RenderPosition.DISTANT -> return
+                Renderable.RenderPosition.DISTANT -> break
             }
         }
     }
@@ -117,15 +116,13 @@ class GlView(private val ctx: Context) : GLSurfaceView.Renderer {
         // Start the party mode thread
         PartyMode.startThread()
         level.songFile.start()
-        val msPerBeat = 60000f / level.bpm
-        println("MS PER BEAT ${msPerBeat}")
-        println("NOTE SPEED: ${Block.NOTE_SPEED}")
+        val beatPerMs = level.bpm / 60000f
         var startIdx = 0
         LightsDisplay.lightingEvents = 0
         var pos = 0f
         while(level.songFile.isPlaying) {
             pos = level.songFile.currentPosition.toFloat()
-            eyeZ = (pos / NOTE_SPEED)
+            eyeZ = ((beatPerMs * pos) * NOTE_SPEED) - NOTE_ACTION_DISTANCE
             updateCameraPos()
             val lightTimestamp = (pos / LIGHTING_RESOLUTION_MS).toInt() * LIGHTING_RESOLUTION_MS
             for (i in (startIdx until lightingEvents.size)) {
@@ -141,5 +138,9 @@ class GlView(private val ctx: Context) : GLSurfaceView.Renderer {
             }
             Thread.sleep(5)
         }
+        // Reset when done
+        blocks.clear()
+        lightingEvents.clear()
+        eyeZ = 0f
     }
 }

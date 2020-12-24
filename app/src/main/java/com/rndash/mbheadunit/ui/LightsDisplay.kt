@@ -104,15 +104,19 @@ class LightsDisplay : UIFragment(0) {
         debugText.textSize = 11f
 
         selectBeatmap.setOnClickListener {
-            if (PartyMode.isEngineOn()) { // IMPORTANT - check if engine is running
-                Toast.makeText(requireContext(), "Engine is running!", Toast.LENGTH_LONG).show()
-            } else if (gameEngine.isLevelPlaying()) { // Then check if a level is already playing
-                Toast.makeText(requireContext(), "Level is already playing!", Toast.LENGTH_LONG).show()
-            } else { // We can load a level!
-                val intent = Intent(Intent.ACTION_GET_CONTENT)
-                intent.type = "*/*" // Only want ZIP files
-                intent.addCategory(Intent.CATEGORY_OPENABLE)
-                startActivityForResult(Intent.createChooser(intent, "Select a BeatSaber map zip"), 1234)
+            when {
+                PartyMode.isEngineOn() -> { // IMPORTANT - check if engine is running
+                    Toast.makeText(requireContext(), "Engine is running!", Toast.LENGTH_LONG).show()
+                }
+                gameEngine.isLevelPlaying() -> { // Then check if a level is already playing
+                    Toast.makeText(requireContext(), "Level is already playing!", Toast.LENGTH_LONG).show()
+                }
+                else -> { // We can load a level!
+                    val intent = Intent(Intent.ACTION_GET_CONTENT)
+                    intent.type = "*/*" // Only want ZIP files
+                    intent.addCategory(Intent.CATEGORY_OPENABLE)
+                    startActivityForResult(Intent.createChooser(intent, "Select a BeatSaber map zip"), 1234)
+                }
             }
         }
     }

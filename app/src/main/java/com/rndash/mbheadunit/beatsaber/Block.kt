@@ -24,13 +24,13 @@ class Block(x: Int, y: Int, z: Float, ang: Float, r: Float, g: Float, b: Float, 
         const val COLOUR_STRIDE = 16
         const val BLOCK_SPACE = 2.5f
         // At this distance, the block will turn yellow, and indicator will turn on
-        const val NOTE_ACTION_DISTANCE = 30f
+        const val NOTE_ACTION_DISTANCE = 20f
         // At this distance, the block will disappear, and indicator will turn off
-        const val NOTE_HIDE_DISTANCE = 20f
+        const val NOTE_HIDE_DISTANCE = 15f
         // Divider for block speed towards the camera
         // Lower number -> Slower blocks
         // Higher number -> Faster blocks
-        const val NOTE_SPEED = 20f
+        const val NOTE_SPEED = 30f
     }
 
     enum class Indicator {

@@ -28,12 +28,11 @@ data class BeatSaberLevelInfo(
         val json = JSONObject(beatmapFile.readLines().joinToString(""))
         val blocks = ArrayList<Block>()
         val blockJson = json.getJSONArray("_notes")
-        val msPerBeat = 60000f / bpm
         for (i in 0 until blockJson.length()) {
             val blockData = JSONObject(blockJson[i].toString())
             val xPos = blockData.getInt("_lineIndex")
             val yPos = blockData.getInt("_lineLayer")
-            val zPos = ((msPerBeat * blockData.getDouble("_time").toFloat()) / NOTE_SPEED) + NOTE_ACTION_DISTANCE
+            val zPos = blockData.getDouble("_time").toFloat() * NOTE_SPEED
             val type = blockData.getInt("_type")
             // Block rotation in degrees
             val angle = when(blockData.getInt("_cutDirection")) {
@@ -68,19 +67,20 @@ data class BeatSaberLevelInfo(
             1,6 -> { // Changes the lights to blue/red, and turns the lights on.
                 arrayOf(
                     LightEvent(targetLight, 0, timestamp-50),
-                    LightEvent(targetLight, msPerBeat, timestamp),
+                    LightEvent(targetLight, msPerBeat/2, timestamp),
                 )
             }
             2,7 -> { // Changes the lights to blue/red, and flashes brightly before returning to normal.
                 arrayOf(
-                    LightEvent(targetLight, msPerBeat/2, timestamp), // Flash bright
+                    LightEvent(targetLight, 0, timestamp-50),
+                    LightEvent(targetLight, msPerBeat/4, timestamp), // Flash bright
                     //LightEvent(targetLight, 500, timestamp+1000), // Flash normal
                 )
             }
             3 -> { // Changes the lights to blue/red, and flashes brightly before fading to black.
                 arrayOf(
                     LightEvent(targetLight, 0, timestamp-50),
-                    LightEvent(targetLight, msPerBeat*2, timestamp),
+                    LightEvent(targetLight, msPerBeat, timestamp),
                 )
             }
             else -> null // Unrecognised event
