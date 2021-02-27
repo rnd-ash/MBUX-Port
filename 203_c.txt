@@ -539,7 +539,7 @@ GS
 			RAW: 14 - circuit termination / CANCEL
 			RAW: 15 - signal not available / SNV
 		B: HSM, OFFSET 31 LEN 1 - manual switching mode
-		B: SWITCH, OFFSET 30 LEN 1 switching
+		B: SWITCH, OFFSET 30 LEN 1 - switching
 		B: FW_HOCH, OFFSET 29 LEN 1 - driving resistance high
 		B: GSP_OK, OFFSET 28 LEN 1 - basic switching program o.k.
 		B: G_G, OFFSET 27 LEN 1 - off-road gear
@@ -642,7 +642,7 @@ GS
 			RAW: 2 - NAG2, Large Gear / GROSS2
 			RAW: 3 - NAG2, Small Gear / KLEIN2
 		B: CVT, OFFSET 27 LEN 1 - continuously variable transmission [1], multi-step transmission [0]
-		B: SWITCH, OFFSET 26 LEN 1 switching
+		B: SWITCH, OFFSET 26 LEN 1 - switching
 		B: FRONT, OFFSET 25 LEN 1 - front-wheel drive [1], rear-wheel drive [0]
 		B: ALL-WHEEL, OFFSET 24 LEN 1 - all-wheel drive
 		E: GIC, OFFSET 36 LEN 4 - actual gear
