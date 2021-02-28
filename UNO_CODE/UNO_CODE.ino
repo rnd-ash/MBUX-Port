@@ -37,8 +37,6 @@ can_frame io_can_frame = {0x00}; // Reserve this in memory as well
 void setup() {
     Serial.begin(115200);
 
-    pinMode(13, OUTPUT);
-
     // Init the CAN modules
     canB = new MCP2515(CANB_CS);
     canC = new MCP2515(CANC_CS);
@@ -54,10 +52,13 @@ void setup() {
     // Set it as read only!
     canC->setListenOnlyMode(); 
 
+
+    // CAN B - Listen to this data:
+
+
     // Setup the RGB!
 #ifdef RGB
     rgb = new RGB_Manager();
-    rgb->write_channel(4, 255, 0, 0, 0);
 #endif
 
     // TODO - Filtering - We don't need EVERY message on either bus!
@@ -65,14 +66,12 @@ void setup() {
 
 char writeBuf[30]={0x00};
 void writeFrame(char bus_id, can_frame* f) {
-    memset(writeBuf, 0x00, sizeof(writeBuf));
-    uint8_t pos = 0;
-    pos += sprintf(writeBuf, "%c%04X", bus_id, f->can_id);
+    uint8_t pos = sprintf(writeBuf, "%c%04X", bus_id, f->can_id);
     for (int i = 0; i < f->can_dlc; i++) {
         pos+=sprintf(writeBuf+pos, "%02X", f->data[i]);
     }
-    Serial.print(writeBuf);
-    Serial.print('\n');
+    writeBuf[pos] = '\n';
+    Serial.write(writeBuf, pos+1);
 }
 
 uint32_t last_sent_b = 0xFFFF;
@@ -98,16 +97,18 @@ void loop() {
             // Byte 2 - R
             // Byte 3 - G
             // Byte 4 - B
-            rgb->write_channel(io_can_frame.data[0], io_can_frame.data[1], io_can_frame.data[2], io_can_frame.data[3], io_can_frame.data[4]);
+            // Byte 5 - Boolean indicating if we should save the colour of the zone to EEPROM
+            if (io_can_frame.can_dlc == 6) {
+                rgb->write_channel(io_can_frame.data[0], io_can_frame.data[1], io_can_frame.data[2], io_can_frame.data[3], io_can_frame.data[4], io_can_frame.data[5]);
+            }
             break;
 #endif
-        case 'C':
-            canC->sendMessage(&io_can_frame);
-            last_sent_c = io_can_frame.can_id;
-            break;
+        // DO NOT SEND C DATA
+        //case 'C':
+        //    canC->sendMessage(&io_can_frame);
+        //    break;
         case 'B':
             canB->sendMessage(&io_can_frame);
-            last_sent_b = io_can_frame.can_id;
             break;
         default:
             break;
@@ -115,15 +116,14 @@ void loop() {
     }
     // Poll for any new CAN frames on Bus B
     if (canB->readMessage(&io_can_frame) == MCP2515::ERROR_OK) {
-        if (io_can_frame.can_id != last_sent_b) {
+        // Don't send AGW_KOMBI, SAM_H_A2, SAM_H_A4 back to headunit as headunit sends those frames
+        if (io_can_frame.can_id != 0x01A4 && io_can_frame.can_id != 0x000E && io_can_frame.can_id != 0x0230) {
             writeFrame('B', &io_can_frame);
         }
     }
     // Poll for any new CAN frames on Bus C
     if (canC->readMessage(&io_can_frame) == MCP2515::ERROR_OK) {
-        if (io_can_frame.can_id != last_sent_c) {
-            writeFrame('C', &io_can_frame);
-        }
+        writeFrame('C', &io_can_frame);
     }
     if (millis() >= last_update_millis + 10) {
         last_update_millis = millis();

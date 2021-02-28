@@ -16,8 +16,8 @@ class RGB_Channel {
 public:
     RGB_Channel(uint8_t idx);
     // Called every 10ms
-    void update(Adafruit_TLC5947* tlc);
-    void set_colour(uint8_t step_count, uint8_t r, uint8_t g, uint8_t b);
+    int update(Adafruit_TLC5947* tlc);
+    void set_colour(uint8_t step_count, uint8_t r, uint8_t g, uint8_t b, bool save_to_eeprom);
 private:
     uint8_t idx;
 
@@ -35,7 +35,7 @@ private:
 class RGB_Manager {
 public:
     RGB_Manager();
-    void write_channel(uint8_t channel_id, uint8_t step_count, uint8_t r, uint8_t g, uint8_t b);
+    void write_channel(uint8_t channel_id, uint8_t step_count, uint8_t r, uint8_t g, uint8_t b, bool save_to_eeprom);
     // Called every 10ms
     void update();
 private:
