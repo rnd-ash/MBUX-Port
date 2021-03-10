@@ -139,13 +139,11 @@ class Parser:
             #print("Found table {0} (ID: {1})".format(tab_name, table_id))
             elm_ids=[] # List of numbers
             elm_names=[] # List of names
-            elm_count = self.read_range(1)[0] # Number of raw values
-            self.read_range(1) # Padding
+            elm_count = int.from_bytes(bytes(self.read_range(2)), "little") # Number of raw values
             for i in range(0, elm_count):
                 value = int.from_bytes(bytes(self.read_range(4)), "little")
                 elm_ids.append(value)
-            elm_count = self.read_range(1)[0] # Number of strings
-            self.read_range(1) # Padding
+            elm_count = int.from_bytes(bytes(self.read_range(2)), "little") # Number of strings
             for i in range(0, elm_count):
                 elm_names.append(self.readString())
             entrys=[]
