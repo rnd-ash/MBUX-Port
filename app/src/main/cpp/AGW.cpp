@@ -16,39 +16,21 @@ void AGW::stopThread() {
 }
 
 void AGW::processKombiFrame(CanFrame *f) {
-    switch (f->data[0] & 0xF0) {
+    switch (f->data.bytes[0] & 0xF0) {
         case 0x00:
             unpackKombiMsg(f);
             break;
         case 0x30:
-            this->hasFC = true;
+            if (f->data.bytes[0] == 0x30) {
+                this->hasFC = true;
+                this->bs = f->data.bytes[1];
+                this->st_min = f->data.bytes[2];
+                this->lastSendMillis = get_millis();
+            }
             break;
         default:
-            __android_log_print(ANDROID_LOG_ERROR, "AGW", "Unknown Kombi frame starting with %02X", f->data[0]);
-    }
-}
-
-void AGW::onFlowControl() {
-    //__android_log_print(ANDROID_LOG_DEBUG, "AGW", "Flow control received");
-    uint8_t frame_index = 0x21;
-    CanFrame f = {'B', 0x01A4, 0x08};
-    if (isSending) {
-        while(tempBufferPos < tempBuffer.len) {
-            memcpy(&f.data[1], &tempBuffer.data[tempBufferPos], std::min(7, tempBuffer.len - tempBufferPos));
-            f.data[0] = frame_index;
-            frame_index++;
-            tempBufferPos += 7;
-            sendFrames.pushFrame(f);
-            std::this_thread::sleep_for(std::chrono::milliseconds(2));
-            if (frame_index == 0x30) { // Overflow detected - Wait for next flow control frame
-                this->isSending = true;
-                this->hasFC = false;
-                this->lastSendMillis = get_millis(); // Prevent timeout
-                return;
-            }
-        }
-        isSending = false;
-        this->hasFC = false;
+            __android_log_print(ANDROID_LOG_ERROR, "AGW", "Unknown Kombi frame starting with %02X", f->data.bytes[0]);
+            break;
     }
 }
 
@@ -69,17 +51,17 @@ void AGW::unpackKombiMsg(CanFrame *f) {
     // Kombi ACK Package:
     // 0x03 0x05 0x20 0x06
     // 0x03 <PG> <PKG> <RES>
-    if (f->data[0] == 0x03 && (f->data[3] == 0x06 || f->data[3] == 0x15)) {
-        processKombiResponse(f->data[1], f->data[2], f->data[3]);
+    if (f->data.bytes[0] == 0x03 && (f->data.bytes[3] == 0x06 || f->data.bytes[3] == 0x15)) {
+        processKombiResponse(f->data.bytes[1], f->data.bytes[2], f->data.bytes[3]);
     } else {
         // Payload pkg
         // 0x05 0x05  0x20 0x02 0x11 0xC3
         //      <PG> <PKG> < ARGS >  <CS> (Last byte is always checksum)
-        if (f->data[0] == 0x03) { // Payload without args (No checksum included)!
-            processKombiPayload(f->data[1], f->data[2], 0, nullptr);
+        if (f->data.bytes[0] == 0x03) { // Payload without args (No checksum included)!
+            processKombiPayload(f->data.bytes[1], f->data.bytes[2], 0, nullptr);
         } else {
             // More than 3 bytes, last byte is checksum, so ignore it by reducing argSize by 1
-            processKombiPayload(f->data[1], f->data[2], f->data[0]-2, &f->data[3]);
+            processKombiPayload(f->data.bytes[1], f->data.bytes[2], f->data.bytes[0]-2, &f->data.bytes[3]);
         }
     }
 }
@@ -136,9 +118,6 @@ void AGW::worker_loop() {
     this->audio_display->start_init(false);
     uint8_t update_screen = PAGE_TEL;
     while(!thread_stop) {
-        if (this->hasFC && this->isSending) {
-            this->onFlowControl();
-        }
         if (isSending && get_millis() - lastSendMillis > 2000) {
             __android_log_print(ANDROID_LOG_WARN,"AGW", "TIMEOUT SENDING, RESETTING BUFFER");
             isSending = false;
@@ -161,30 +140,54 @@ void AGW::worker_loop() {
                 }
                 update_screen = PAGE_AUDIO;
             }
+        } else {
+            this->update_tx(); // Update sending to IC
         }
         std::this_thread::sleep_for(std::chrono::milliseconds(1));
     }
 }
 
+void AGW::update_tx() {
+    // Assume is_sending is true
+    if (this->hasFC && get_millis() - lastSendMillis >= this->st_min) {
+        // Tx next frame!
+        this->tx_frame.data.bytes[0] = this->pci;
+        memcpy(&this->tx_frame.data.bytes[1], &tempBuffer.data[this->tx_buf_pos], std::min(7, tempBuffer.len - tx_buf_pos));
+        this->tx_buf_pos += 7;
+        sendFrames.pushFrame(this->tx_frame);
+        if (this->tx_buf_pos >= tempBuffer.len) {
+            // Tx complete!
+            this->hasFC = false;
+            this->isSending = false;
+            return;
+        }
+        // Increment PCI by 1.
+        this->pci++;
+        if (this->pci == 0x30) { // PCI overflow!
+            this->pci = 0x20;
+        }
+        this->lastSendMillis = get_millis();
+    }
+}
 
 void AGW::sendPayload(AGWPayload p) {
-    CanFrame f = { 'B', 0x01A4, 0x08, p.len };
     if (p.len <= 7) { // Can be done in 1 frame!
         lastSendMillis = get_millis();
         isSending = true;
-        memcpy(&f.data[1], &p.data[0], p.len);
-        sendFrames.pushFrame(f);
+        memcpy(&this->tx_frame.data.bytes[1], &p.data[0], p.len);
+        sendFrames.pushFrame(this->tx_frame);
         isSending = false;
-        std::this_thread::sleep_for(std::chrono::milliseconds(20));
     } else {
         isSending = true;
-        f.data[0] = 0x10;
-        f.data[1] = p.len;
+        hasFC = false;
+        this->tx_frame.data.bytes[0] = 0x10;
+        this->tx_frame.data.bytes[1] = p.len;
         tempBuffer = p; // Copy
-        tempBufferPos = 6;
-        memcpy(&f.data[2], &p.data[0], 6);
-        sendFrames.pushFrame(f);
+        tx_buf_pos = 6;
+        memcpy(&this->tx_frame.data.bytes[2], &p.data[0], 6);
+        sendFrames.pushFrame(this->tx_frame);
         lastSendMillis = get_millis();
+        this->pci = 0x21; // Set PCI ID
     }
 }
 

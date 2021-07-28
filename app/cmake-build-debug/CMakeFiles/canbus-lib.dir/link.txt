@@ -1,0 +1,1 @@
+/usr/bin/c++ -fPIC -g -shared -Wl,-soname,libcanbus-lib.so -o libcanbus-lib.so CMakeFiles/canbus-lib.dir/src/main/cpp/canbus.cpp.o CMakeFiles/canbus-lib.dir/src/main/cpp/readBuffer.cpp.o CMakeFiles/canbus-lib.dir/src/main/cpp/CanbusDecoder.cpp.o CMakeFiles/canbus-lib.dir/src/main/cpp/AGW.cpp.o CMakeFiles/canbus-lib.dir/src/main/cpp/AGWDisplay.cpp.o  -llog-lib-NOTFOUND 

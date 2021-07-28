@@ -20,29 +20,26 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/bytes_tx"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView"
-        android:textColor="#FFFFFF"
-        android:textSize="15sp"
-        app:layout_constraintBottom_toTopOf="@+id/bytes_rx"
-        app:layout_constraintStart_toStartOf="@+id/bytes_rx"
-        app:layout_constraintTop_toTopOf="parent" />
-
+            android:id="@+id/bytes_tx"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            android:textColor="#FFFFFF"
+            android:textSize="15sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginStart="8dp" android:layout_marginTop="8dp"/>
     <TextView
-        android:id="@+id/bytes_rx"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:text="TextView"
-        android:textColor="#FFFFFF"
-        android:textSize="15sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bytes_tx" />
+            android:id="@+id/bytes_rx"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            android:textColor="#FFFFFF"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/bytes_tx" app:layout_constraintTop_toTopOf="@+id/bytes_tx"
+            app:layout_constraintBottom_toBottomOf="@+id/bytes_tx" android:layout_marginStart="8dp"/>
 
     <ImageView
         android:id="@+id/track_next"
@@ -67,17 +64,17 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/gear_disp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Gear"
-        android:textColor="#FFFFFF"
-        android:textSize="15sp"
-        app:layout_constraintBottom_toTopOf="@+id/spd_view"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.95"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+            android:id="@+id/gear_disp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Gear"
+            android:textColor="#FFFFFF"
+            android:textSize="15sp"
+            app:layout_constraintBottom_toTopOf="@+id/spd_view"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.95"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
 
     <TextView
         android:id="@+id/spd_view"
@@ -91,4 +88,34 @@
         app:layout_constraintHorizontal_bias="0.95"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/gear_disp" />
+
+    <ImageView
+            android:layout_width="50dp"
+            android:layout_height="35dp"
+            android:src="@drawable/lim_off"
+            android:id="@+id/cc_img"
+            app:layout_constraintTop_toTopOf="@+id/spd_view"
+            app:layout_constraintBottom_toBottomOf="@+id/spd_view"
+            app:layout_constraintEnd_toStartOf="@+id/spd_view"
+            app:layout_constraintVertical_bias="0.0"
+            android:layout_marginEnd="8dp" />
+    <ImageView
+            android:layout_width="25dp"
+            android:layout_height="wrap_content" android:src="@drawable/bat_white" android:id="@+id/bat_img"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/bytes_tx" app:layout_constraintStart_toStartOf="@+id/bytes_tx"/>
+    <TextView
+            android:text="0.0 V"
+            android:textColor="#FFFFFF"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:id="@+id/batt_text"
+            app:layout_constraintBottom_toBottomOf="@+id/bat_img"
+            app:layout_constraintTop_toTopOf="@+id/bat_img" app:layout_constraintStart_toEndOf="@+id/bat_img"
+            android:layout_marginStart="8dp"/>
+    <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp" android:src="@drawable/esp" android:id="@+id/esp_img"
+            app:layout_constraintEnd_toStartOf="@+id/gear_disp" app:layout_constraintTop_toTopOf="@+id/gear_disp"
+            app:layout_constraintBottom_toBottomOf="@+id/gear_disp" app:layout_constraintStart_toStartOf="@+id/cc_img"
+            app:layout_constraintHorizontal_bias="1.0"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

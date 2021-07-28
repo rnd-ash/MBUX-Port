@@ -32,7 +32,10 @@ import com.rndash.mbheadunit.nativeCan.KombiDisplay
 import com.rndash.mbheadunit.nativeCan.canB.DBE_A1
 import com.rndash.mbheadunit.nativeCan.canB.SAM_H_A2
 import com.rndash.mbheadunit.nativeCan.canB.TPM_A1
+import com.rndash.mbheadunit.nativeCan.canC.ART_258h
 import com.rndash.mbheadunit.ui.*
+import com.rndash.mbheadunit.ui.dialog.MBUXDialog
+import java.nio.ByteOrder
 import java.util.*
 import java.util.jar.Manifest
 
@@ -126,12 +129,20 @@ class FullscreenActivity : FragmentActivity() {
             comm = CarComm(dev!!, x)
         }
 
-        //val mbux = MBUXDialog(this)
-        //mbux.show()
         val bg = findViewById<ImageView>(R.id.ui_bg)
+
+        var display_esp_warning = true
+
         Timer().schedule(object: TimerTask() {
             override fun run() {
                 runOnUiThread {
+                    if (display_esp_warning && CarData.show_esp_warn) {
+                        display_esp_warning = false
+                        MBUXDialog(this@FullscreenActivity, "ESP Deactivated", "Drive safely", 1500, R.raw.alert_perm).show()
+                    } else if (!CarData.show_esp_warn) {
+                        display_esp_warning = true
+                    }
+
                     if (CarData.isSportFeel) {
                         bg.setImageResource(R.drawable.bg_sport)
                     } else {
@@ -139,7 +150,7 @@ class FullscreenActivity : FragmentActivity() {
                     }
                 }
             }
-        }, 0, 500)
+        }, 0, 100)
 
         // Register for all Microntek intents
         val intentFilter = IntentFilter()
@@ -155,7 +166,7 @@ class FullscreenActivity : FragmentActivity() {
         intentFilter.addAction("com.microntek.btbarstatechange")
         intentFilter.addAction("com.btmusic.finish")
         intentFilter.addAction("a2dp_play_type")
-
+        println(ByteOrder.nativeOrder());
         registerReceiver(IntentManager(), intentFilter)
         KeyManager.registerPageUpListener(KeyManager.KEY.VOLUME_UP, object : KeyManager.KeyListener {
             override fun onLongPress(pg: KeyManager.PAGE) {

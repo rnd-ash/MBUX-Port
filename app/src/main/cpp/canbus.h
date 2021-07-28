@@ -81,7 +81,7 @@ Java_com_rndash_mbheadunit_nativeCan_CanBusNative_getNativeFrame(JNIEnv *env, jo
             uint8_t* temp = new uint8_t [f->dlc+2];
             temp[0] = f->id >> 8;
             temp[1] = f->id;
-            memcpy(&temp[2], &f->data[0], f->dlc);
+            memcpy(&temp[2], &f->data.bytes[0], f->dlc);
 
             jbyteArray bytes = env->NewByteArray(2 + f->dlc);
             env->SetByteArrayRegion(bytes, 0, 2+f->dlc, (jbyte*)(temp));

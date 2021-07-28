@@ -15,12 +15,16 @@
 #define CANC 'C'
 #define CANB 'B'
 
+typedef union {
+    uint64_t uint64;
+    uint8_t bytes[8];
+} BytesUnion;
 
 typedef struct {
     char busID;
     uint16_t id;
     uint8_t dlc;
-    uint8_t data[8] __attribute__((aligned(8)));
+    BytesUnion data;
 } CanFrame;
 
 class FrameQueue {
@@ -71,25 +75,16 @@ public:
         if (offset + len > data.dlc*8) {
             throw InvalidSizeException(this->data.dlc*8, offset+len-1);
         }
-        // Shortcut for booleans - just check 1 bit
-        if (len == 1) {
-            return (this->data.data[offset / 8] >> (7 - (offset % 8))) & 1;
-        } else {
-            int start = offset / 8;
-            int end = (offset + len - 1) / 8; //-1 here as we start inclusive of start
-            uint32_t d = this->data.data[start];
-            if (start != end) {
-                for (int i = start; i <= end; i++) {
-                    d = (d << 8) | data.data[i];
-                }
-            }
-            uint32_t mask = 0x00;
-            for (int i = 0; i < len; i++) {
-                mask |= (1 << i);
-            }
-            // Now bit shift so that masking values start at the start of the byte
-            return (d >> (offset % 8)) & mask;
+        uint64_t data_tmp = data.data.uint64;
+        char* x = (char*)(&data_tmp);
+        char* y = (char*) x + sizeof(data_tmp);
+        std::reverse(x, y);
+
+        uint64_t mask = 0;
+        for (int i = 0; i < len; i++) {
+            mask |= (1 << i);
         }
+        return (data_tmp >> (64 -(offset+len))) & mask;
     }
 
     bool setParam(int value, int offset, int len) {

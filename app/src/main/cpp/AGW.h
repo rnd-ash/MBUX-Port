@@ -44,13 +44,18 @@ private:
     void processKombiPayload(uint8_t page, uint8_t pkg, uint8_t len, uint8_t* data);
     void onFlowControl();
     void worker_loop();
+    void update_tx();
     bool thread_stop;
     std::thread worker;
     AGWPayload tempBuffer;
-    uint8_t tempBufferPos;
     bool isSending = false;
     unsigned long lastSendMillis = get_millis();
     bool hasFC = false;
+    uint8_t bs = 8;
+    uint8_t st_min = 20;
+    uint8_t pci = 0x21;
+    uint8_t tx_buf_pos = 0;
+    CanFrame tx_frame = {'B', 0x01A4, 8};
 };
 
 

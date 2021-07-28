@@ -52,16 +52,16 @@
                 app:layout_constraintVertical_bias="0.0" />
 
             <TextView
-                android:id="@+id/trans_header"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="722.x transmission"
-                android:textColor="#FFFFFF"
-                android:textSize="20dp"
-                app:layout_constraintBottom_toBottomOf="@+id/engine_header"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/header"
-                app:layout_constraintTop_toTopOf="@+id/engine_header" />
+                    android:id="@+id/trans_header"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="722.x transmission"
+                    android:textColor="#FFFFFF"
+                    android:textSize="20dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/engine_header"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/header"
+                    app:layout_constraintTop_toTopOf="@+id/engine_header" app:layout_constraintHorizontal_bias="0.19"/>
 
             <TextView
                 android:id="@+id/trans_temp"

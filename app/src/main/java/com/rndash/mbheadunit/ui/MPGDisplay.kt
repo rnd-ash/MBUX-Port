@@ -41,7 +41,7 @@ class MPGDisplay : UIFragment(1000) {
 
         timerTask = {
             activity?.runOnUiThread {
-                fuel_consumed_curr.text = String.format("Fuel usage: %4d ul/s", CarData.fuelCurrent.toInt())
+                fuel_consumed_curr.text = String.format("Fuel usage: %4d ul/s", CarData.fuelCurrent)
                 fuel_usage.text = String.format("Tank Level: %2.1f%% (R: %3d%% - L: %3d%%) - %2.1f L",
                         SAM_H_A2.get_tank_fs_b().toFloat() / 2,
                         SAM_H_A2.get_tank_ge_re(),
@@ -49,43 +49,52 @@ class MPGDisplay : UIFragment(1000) {
                         62.0 * ((SAM_H_A2.get_tank_fs_b().toFloat() / 2) / 100.0)
                 )
 
+                val postfix = if(CarData.isMetric) {"l/100km"} else {"mpg"}
                 when {
-                    CarData.currSpd == 0 -> {
+                    CarData.currSpd == 0.0 -> {
                         // Idle so 0 MPG!
                         mpg_text.setTextColor(Color.WHITE)
-                        mpg_text.text = "Current: 0.0 MPG (Idle)"
+                        mpg_text.text = if (CarData.isMetric) { "Current: Inf "+postfix } else { "Current: 0.0 "+postfix }
                     }
-                    CarData.fuelCurrent == 0.0 -> {
+                    CarData.fuelCurrent == 0 -> {
                         // 0 Fuel used, (Infinite MPG!)
                         mpg_text.setTextColor(Color.GREEN)
-                        mpg_text.text = "Current: Inf MPG (REGEN ACTIVE!)"
+                        mpg_text.text = if (CarData.isMetric) { "Current: 0.0 "+postfix } else { "Current: Inf "+postfix }
 
                     }
                     // Using fuel and cruising
                     else -> {
                         // calculate how much fuel used in 1km based on current consumption
-                        val km_per_l = CarData.currSpd / (3600.0 * (CarData.fuelCurrent / 1000000.0))
-                        // TODO add Europe units (KM/L)
-                        // Convert to MPG
-                        // UK MPG is km_l * 2.824809363
-                        val mpg = km_per_l * 2.824809363 // TODO Add US MPG (km_l * 2.35215)
+                        var consump_curr = CarData.currSpd / (3600.0 * (CarData.fuelCurrent / 1000000.0))
+                        var comump_mpg = consump_curr*2.824809363
+                        consump_curr *= if (CarData.isMetric) {
+                            0.425144 // L/100km
+                        } else {
+                            2.824809363 // MPG UK
+                        }
                         when {
                             // Set colour of text based on MPG
-                            mpg >= 40 -> mpg_text.setTextColor(Color.WHITE)
-                            mpg >= 20 -> mpg_text.setTextColor(Color.parseColor("#FF8C00"))
+                            comump_mpg >= 40 -> mpg_text.setTextColor(Color.WHITE)
+                            comump_mpg >= 20 -> mpg_text.setTextColor(Color.parseColor("#FF8C00"))
                             else -> mpg_text.setTextColor(Color.RED)
                         }
                         // Display current MPG
-                        mpg_text.text = String.format("Current: %3.1f MPG", min(999.9, mpg))
+                        mpg_text.text = String.format("Current: %3.1f%s", min(999.9, consump_curr), postfix)
                     }
                 }
                 // How far have we travelled since engine on?
-                tank_mpg.text = String.format("Trip distance: %2.2f miles", CarData.tripDistance)
+                tank_mpg.text = if(CarData.isMetric) {
+                    String.format("Trip: %2.2f km, %2.2f L", CarData.tripDistance, CarData.tripFuelUsed / 1000000.0)
+                } else {
+                    String.format("Trip: %2.2f miles, %2.2f L", CarData.tripDistance * 5.0 / 8.0, CarData.tripFuelUsed / 1000000.0)
+                }
                 // If trip has gone a distance and used some fuel, calculate average MPG
                 // based on running totals of distance and fuel usage
-                if (CarData.tripDistance != 0.0 && CarData.tripFuelUsed != 0L) {
-                    avg_mpg_text.text = String.format("Average MPG: %2.1f",
-                            (CarData.tripDistance / (CarData.tripFuelUsed / 1000000.0)) * 2.824809363)
+                if (CarData.tripDistance != 0.0 && CarData.tripFuelUsed != 0.0) {
+                    avg_mpg_text.text = String.format("Average consumption: %2.1f %s",
+                            (CarData.tripDistance / (CarData.tripFuelUsed / 1000000.0)) * if(CarData.isMetric){ 0.425144 } else{ 2.824809363 }, postfix)
+                } else {
+                    avg_mpg_text.text = String.format("Average consumption: 0.0 %s", postfix)
                 }
             }
         }

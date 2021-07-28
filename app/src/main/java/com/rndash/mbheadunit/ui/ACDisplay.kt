@@ -11,6 +11,7 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.rndash.mbheadunit.R
 import com.rndash.mbheadunit.nativeCan.canB.*
+import java.lang.Integer.min
 import java.nio.ByteBuffer
 import java.util.*
 
@@ -34,6 +35,10 @@ class ACDisplay : UIFragment(250) {
         return inflater.inflate(R.layout.ac_display, container, false)
     }
 
+    fun get_window_percent(raw: Int): Int {
+        return min(100, (raw / 10))
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         fan_speed_text = view.findViewById(R.id.text_fan_speed)
@@ -51,28 +56,28 @@ class ACDisplay : UIFragment(250) {
 
          timerTask = {
             activity?.runOnUiThread {
-                fan_speed_text.text = String.format("Fan speed: %3d %%", KLA_A1.get_geb_lstg())
-                interior_text.text = String.format("Interior temp: %2.1f C", (KLA_A1.get_t_innen_kla().toFloat() / 2.0))
-                exterior_text.text = String.format("Exterior temp: %2.1f C", ((SAM_V_A2.get_t_aussen_b().toFloat() / 2.0) - 40))
+                fan_speed_text.text = String.format("Fan speed: %3d %%\nCompressor load: %d %% (%2d Nm)", KLA_A1.get_geb_lstg(), KLA_A1.get_komp_stell(), KLA_A1.get_m_komp())
+                interior_text.text = String.format("Interior temp:\nOverhead %2.1f C\nCenter %2.1f C", DBE_A1.get_t_innen().toFloat() / 4.0, KLA_A1.get_t_innen_kla().toFloat() / 4.0)
+                exterior_text.text = String.format("Exterior temp: %2.1f C", ((SAM_V_A2.get_t_aussen_b().toFloat() / 2.0) - 40.0))
                 if (!THL_A1.get_fhl_auf()) {
                     rl_window_text.text = "0%"
                 } else {
-                    rl_window_text.text = String.format("%3d %%", THL_A1.get_feste_hl())
+                    rl_window_text.text = String.format("%3d %%", get_window_percent(THL_A1.get_feste_hl()))
                 }
                 if (!THR_A1.get_fhr_auf()) {
-                    rl_window_text.text = "0%"
+                    rr_window_text.text = "0%"
                 } else {
-                    rr_window_text.text = String.format("%3d %%", THR_A1.get_feste_hr())
+                    rr_window_text.text = String.format("%3d %%", get_window_percent(THR_A1.get_feste_hr()))
                 }
                 if (!TVL_A3.get_fvl_auf()) {
                     fl_window_text.text = "0%"
                 } else {
-                    fl_window_text.text = String.format("%3d %%", TVL_A3.get_feste_vl())
+                    fl_window_text.text = String.format("%3d %%", get_window_percent(TVL_A3.get_feste_vl()))
                 }
                 if (!TVR_A3.get_fvr_auf()) {
                     fr_window_text.text = "0%"
                 } else {
-                    fr_window_text.text = String.format("%3d %%", TVR_A3.get_feste_vr())
+                    fr_window_text.text = String.format("%3d %%", get_window_percent(TVR_A3.get_feste_vr()))
                 }
                 up_flap_pos.text = "Windshield: ${KLA_A1.get_lko_vorn()}"
                 cent_flap_pos.text = "Center: ${KLA_A1.get_lkm_vorn()}"

@@ -9,7 +9,7 @@
 void CanbusDecoder::processFrame(CanFrame *frame) {
     switch (frame->busID) {
         case CANB:
-            if (frame->id == 0x01D0) {
+            if (frame->id == 0x01D0 && frame->dlc == 8) {
                 this->agw->processKombiFrame(frame);
             } else if (frame->id != 0x01A0) {
                 canB.processFrame(frame);

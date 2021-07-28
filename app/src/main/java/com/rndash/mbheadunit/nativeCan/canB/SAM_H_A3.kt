@@ -40,8 +40,9 @@ object SAM_H_A3 {
 	
 	/** Sets Switch on the right turn signal **/
 	fun set_bli_re_ein(f: CanFrame, p: Boolean) {
-		checkFrame(f)
-		CanBusNative.setFrameParameter(f, 0, 1, if(p) 1 else 0)
+		//checkFrame(f)
+		//CanBusNative.setFrameParameter(f, 0, 1, if(p) 1 else 0)
+		CanBusNative.setFrameParameter(f, 6, 1, if(p) 1 else 0)
 	}
 	
 	/** Gets Flashing-light-bright phase  **/
@@ -49,7 +50,7 @@ object SAM_H_A3 {
 	
 	/** Sets Flashing-light-bright phase  **/
 	fun set_hell_blink(f: CanFrame, p: Int) {
-		checkFrame(f)
+		//checkFrame(f)
 		CanBusNative.setFrameParameter(f, 8, 8, p)
 	}
 	

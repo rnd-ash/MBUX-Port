@@ -81,8 +81,9 @@ void processFrames() {
                     strToInt(charreadbuf[4]);
 
             int nibpos = 5;
+            read.data.uint64 = 0;
             for (int i = 0; i < read.dlc; i++) {
-                read.data[i] = strToInt(charreadbuf[nibpos]) << 4 | strToInt(charreadbuf[nibpos+1]);
+                read.data.bytes[i] = ( strToInt(charreadbuf[nibpos]) << 4 | strToInt(charreadbuf[nibpos+1]));
                 nibpos+=2;
             }
             decoder->processFrame(&read);

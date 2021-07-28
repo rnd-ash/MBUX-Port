@@ -93,7 +93,7 @@ object KeyManager {
                     }
                 }
             }
-            , 10
+            , 5
         )
     }
 }

@@ -49,10 +49,10 @@ class PTDisplay : UIFragment(250) {
                 engFuel.text = String.format("Fuel usage: %4d ul/s", CarData.fuelCurrent.toInt())
                 engRpm.text = String.format("Engine speed: %4d RPM", MS_308h.get_nmot())
 
-                transTemp.text = String.format("Oil temperature: %2d C", GS_418h.get_t_get() - 40)
-                transTorque.text = String.format("Torque available: %3d Nm", MS_312h.get_m_max_atl() / 2)
-                transTC.text = String.format("TC Slip: %4d RPM (%2.1f %%)", slip, slipPerc)
-                turbineRPM.text = String.format("Turbine speed: %4d RPM", GS_338h.get_nturbine())
+                transTemp.text = String.format("Oil temperature: %2d C", GS_418h.get_t_get() - 50)
+                transTorque.text = String.format("Torque max: %3d Nm", MS_312h.get_m_max_atl() / 10)
+                transTC.text = String.format("Torque max (Turbo): %3d Nm", MS_312h.get_m_max_atl() / 10)
+                turbineRPM.text = String.format("Torque static: %3d Nm", MS_312h.get_m_sta() / 10)
             }
         }
     }

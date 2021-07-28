@@ -74,7 +74,7 @@ open class IOManager(readBufSize: Int, private val serialPort: UsbSerialPort) : 
             if (len > 0) {
                 outBuff = ByteArray(len)
                 writeBuffer.rewind()
-                writeBuffer[outBuff, 0, len]
+                writeBuffer[outBuff!!, 0, len]
                 writeBuffer.clear()
             }
         }
