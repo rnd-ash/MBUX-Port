@@ -1,0 +1,2936 @@
+VERSION ""
+
+
+NS_ : 
+	NS_DESC_
+	CM_
+	BA_DEF_
+	BA_
+	VAL_
+	CAT_DEF_
+	CAT_
+	FILTER
+	BA_DEF_DEF_
+	EV_DATA_
+	ENVVAR_DATA_
+	SGTYPE_
+	SGTYPE_VAL_
+	BA_DEF_SGTYPE_
+	BA_SGTYPE_
+	SIG_TYPE_REF_
+	VAL_TABLE_
+	SIG_GROUP_
+	SIG_VALTYPE_
+	SIGTYPE_VALTYPE_
+	BO_TX_BU_
+	BA_DEF_REL_
+	BA_REL_
+	BA_DEF_DEF_REL_
+	BU_SG_REL_
+	BU_EV_REL_
+	BU_BO_REL_
+	SG_MUL_VAL_
+
+BS_:
+
+BU_: EZS VIN TP TELEAID CONFIG CP GW KOMBI MRM LRK SAM AAG TVL TVR THL THR VS DBE OBF STH ARMADA SVL SVR SH PFDS FDSVL FDSVR KLA FKLA KG ZVP BNS MSS PTS RDK FSS GPS TLM RADIO AGW
+
+
+BO_ 0 EZS_A1: 8 EZS
+ SG_ SD_ST1 : 32|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SPEI_NR : 29|3@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FERN_ALM : 28|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ PNK_ALM_AUS : 27|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ PNK_ALM_EIN : 26|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ BS_SL : 25|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SCHLUE_NEU : 24|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ U_BATT : 16|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ ZV_N_VER_MW_AKT : 12|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FZG_RECH : 11|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ APPL_AUS : 10|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ DIAG_TGL : 9|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ DIAG_AKT : 8|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ KL_15C_EIN : 7|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ KL_15R_EIN : 6|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ KL_15_EIN : 5|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ KL_15X_EIN : 4|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SCHLUE_ST : 3|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ KL_50_EIN : 1|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ KG_KL_AKT : 0|1@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 2 EZS_A2: 8 EZS
+ SG_ RIZ_VR : 48|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ RIZ_VL : 40|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ T_MOT : 32|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ N_MOT : 16|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ DVL : 2|14@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ DRTGVL : 0|2@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 1 EZS_A3: 8 EZS
+ SG_ HD_STOP : 8|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SN1_SEL_EZS : 7|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SN1_GLO_EZS : 6|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SN2_GLO_EZS : 5|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ HFE_EZS : 4|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ BLI_STAT : 3|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ ZVQ : 0|3@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 336 EZS_A4: 8 EZS
+ SG_ KM_EZS : 32|24@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SCHLUE_ID : 0|32@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 31 EZS_A5: 8 EZS
+ SG_ RDK_VH : 63|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ XEN_VH : 62|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ HR_VH : 61|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ ZZH_VH : 60|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FKLA_VH : 59|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ AHK_VH : 58|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ PTS_VH : 57|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SPI_VH : 56|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SBS_VH : 55|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ MFL_VH : 54|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ TEL_VH : 53|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ OMS_VH : 52|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FKSH_VH : 51|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ ASG_VH : 50|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ WWSHZG_VH : 49|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ ART_VH : 48|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FZGVERSN : 45|3@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ KP_VH : 44|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ MSS_VH : 42|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ STH_VH : 41|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ KG_VH : 40|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FCOD_MOT : 34|6@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ PRW_VH : 32|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FCOD_BR : 27|5@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FCOD_KAR : 24|3@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ EDW_VAR : 21|3@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ TANK_VAR : 19|2@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FSB_VAR : 16|3@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ ABC_VH : 15|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ ERS_LICHT : 14|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ LICHT_LD : 12|2@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ KLA_LD : 10|2@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ AHLFV_SPERR : 9|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ AHLFH_SPERR : 8|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ LL : 7|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ RL : 6|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ RDK_LD : 4|2@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ MSS_VAR : 1|3@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 464 EZS_A6: 8 EZS
+ SG_ ZB_FBC_EZS : 0|64@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 3 EZS_A7: 8 EZS
+ SG_ KPL : 38|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ WHST : 29|3@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ EHB_BN : 27|2@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ ART_ABW_AKT : 24|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ ST3_LEDL_DL : 23|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ ST3_LEDL_BL : 22|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ ST3_LEDR_DL : 21|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ ST3_LEDR_BL : 20|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ ST2_LED_DL : 19|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ LOADED : 17|2@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ CRASH_MS : 16|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ WHC : 12|4@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ LTG_CHK_POS : 11|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ EHB_PUMPE_LFT : 10|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ VGL_ST : 9|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ RG : 8|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ BLS : 6|2@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ BLS_UNT : 5|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ INF_RFE_FSG : 4|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ LUEFT_MOT_KL : 3|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ KOMP_NOTAUS : 2|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ KOMP_BAUS : 1|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ ANL_LFT : 0|1@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 382 EZS_A8: 8 EZS
+ SG_ FR_COOL : 31|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ GRSBS_AUS : 29|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ P_KNL : 20|4@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ GBL_KNL : 17|3@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ AHLF_AUS : 16|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ DSPL_POS : 15|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SAS_AUS : 14|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ MDSL_AUS : 13|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ CIRCULATING_AIR_LOCK : 12|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SGR_AUS : 11|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ AGE_AUS : 10|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ HLK_AUF : 9|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ GBL_AUS : 8|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ KFK_AUS : 7|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SUS_AUS : 6|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SUS_EIN : 5|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ TUNNEL_AUS : 4|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ GBA_MAN : 3|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ RHT_EIN : 2|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ UMLUFT_UBG : 1|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ DSPL_NEG : 0|1@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 29 VIN: 8 VIN
+ SG_ VIN : 0|64@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 818 EZS_ANZ: 8 EZS
+ SG_ EZS_M0 : 7|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ EZS_M1 : 6|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ EZS_M2 : 5|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ EZS_M3 : 4|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ EZS_M4 : 3|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ EZS_M5 : 2|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ EZS_M6 : 1|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ EZS_M7 : 0|1@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 958 TP_EZS_TELEAID5: 8 TP
+ SG_ TP_EZS_TELEAID : 0|64@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 383 TELEAID_A1: 8 TELEAID
+ SG_ RDU : 0|1@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 574 TELEAID_A2: 8 TELEAID
+ SG_ LIVE_TELEAID : 4|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ MK_ATRSRT : 0|1@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 30 CONFIG: 8 CONFIG
+ SG_ LAND : 12|4@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ VER_AE : 6|2@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ VER_JAHR : 1|5@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 810 CP_ANZ: 8 CP
+ SG_ CP_M0 : 7|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ CP_M1 : 6|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ CP_M2 : 5|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ CP_M3 : 4|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ CP_M4 : 3|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ CP_M5 : 2|1@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 152 GW_M_I1: 8 GW
+ SG_ FMMOTMAX : 56|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ GIER_ROH : 40|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FTK_VMI : 32|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FTK_LMI : 24|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FTK_BMI : 16|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ AY_S : 8|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ T_GET : 0|8@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 512 GW_M_I2: 8 GW
+ SG_ ZVB_EIN_MS : 51|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ N_VRBT_SBCSH_AKT : 50|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ NOTBRE : 49|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ ASV_KKL_169 : 48|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ PRESF_L_SHD : 46|2@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ PRESF_R_SHD : 44|2@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ PRESF_L_SVL : 38|2@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ PRESF_R_SVR : 36|2@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ PRESF_TGL : 32|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ LW : 21|11@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ LW_VZ : 20|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ LW_INI : 19|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ LW_CF : 18|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ LW_OV : 17|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ LW_PA : 16|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ MBRE_ESP : 4|12@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ BRE_AKT_ESP : 0|1@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 448 TP_TELEAID_AGW6: 8 TP
+ SG_ TP_TELEAID_AGW : 0|64@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 249 TP_TELEAID_EZS5: 8 TP
+ SG_ TP_TELEAID_EZS : 0|64@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 830 TP_TELEAID_KOMBI4: 8 TP
+ SG_ TP_TELEAID_KOMBI : 0|64@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 12 KOMBI_A1: 8 KOMBI
+ SG_ SD_ST1 : 56|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FDS_F_CHAR : 55|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ ESH_LS_EIN : 54|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ ESH_SITZ_EIN : 53|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FDS_B_CHAR : 52|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SPI_PARK_AUS : 51|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ VWZ_AUS_MFL : 50|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ VWZ_AKT : 49|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ STHL_EIN_KOMBI : 48|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ V_ANZ : 40|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ ABL_NLZ : 32|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ INLI_NLZ : 24|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ LANGUAGE : 20|4@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ UFB_EIN : 19|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ RDK_AKT : 18|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FL_OK : 17|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ IRS_VDK_EIN : 16|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ AFL_EIN : 15|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ TFL_EIN : 14|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ T_C : 13|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ AUTO_TUER : 12|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SBS_EIN : 11|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ RR_KM : 10|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SLF : 9|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SCHLUE_ABH_AUS : 8|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ KL_58D : 0|8@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 610 KOMBI_A2: 8 KOMBI
+ SG_ D6_KI : 56|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ D5_KI : 48|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ D4_KI : 40|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ D3_KI : 32|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ D2_KI : 24|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ D1_KI : 16|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ D0_KI : 8|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SNR_KI : 4|4@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ EOM_KI : 3|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ ANR_KI : 2|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ ST_KI : 1|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ TPDU_KI : 0|1@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 568 KOMBI_A3: 8 KOMBI
+ SG_ RW : 40|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ KM : 16|24@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ A_TIME : 0|16@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 820 KOMBI_A4: 8 KOMBI
+ SG_ OEL_FS : 24|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ T_OEL : 16|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ DIAG_KL : 14|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ OEL_KL : 13|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ UEHITZ : 8|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ BBV_KL : 7|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ ABS_KL : 5|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ ESP_KL : 4|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ BAS_KL : 1|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ TFSM : 0|1@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 824 KOMBI_A5: 8 KOMBI
+ SG_ RLS : 24|24@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ RLZ : 8|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ RLZS_OK : 2|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ RLZS_PRIO : 1|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ RLS_KM : 0|1@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 60 KOMBI_A6: 8 KOMBI
+ SG_ KOMBI_MW_OK : 11|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ HD_BEGRENZ : 10|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SP_ANKL_SPERR : 9|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ REST_EIN_KI : 8|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ DSPL_DIMM : 0|8@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 255 KOMBI_A7: 8 KOMBI
+ SG_ KM_KI : 32|24@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SCHLUE_ID_KI : 0|32@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 560 KOMBI_A8: 8 KOMBI
+ SG_ PTT_1_1 : 31|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ PTT_1_2 : 30|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ PTT_2_1 : 29|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ PTT_2_2 : 28|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ PTT_3_1 : 27|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ PTT_3_2 : 26|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ PTT_4_1 : 25|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ PTT_4_2 : 24|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ BUTTON_5_1 : 23|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ BUTTON_5_2 : 22|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ BUTTON_6_1 : 21|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ BUTTON_6_2 : 20|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ BUTTON_7_1 : 19|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ BUTTON_7_2 : 18|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ BUTTON_8_1 : 17|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ BUTTON_8_2 : 16|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ BUTTON_1_1 : 15|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ BUTTON_1_2 : 14|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ BUTTON_2_1 : 13|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ BUTTON_2_2 : 12|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ BUTTON_3_1 : 11|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ BUTTON_3_2 : 10|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ BUTTON_4_1 : 9|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ BUTTON_4_2 : 8|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ MFL_MENUE : 0|8@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 523 KOMBI_A9: 8 KOMBI
+ SG_ PRIO_KI : 5|3@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 639 TP_KOMBI_AGW1: 8 TP
+ SG_ TP_KOMBI_AGW : 0|64@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 959 TP_KOMBI_TELEAID4: 8 TP
+ SG_ TP_KOMBI_TELEAID : 0|64@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 257 MRM_A1: 8 MRM
+ SG_ WASHING : 14|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SCH_WI_INT : 13|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SCH_WI_1 : 12|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SCH_WI_2 : 11|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FL_EIN : 2|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ LHP_EIN : 1|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SGH_EIN_MRM : 0|1@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 5 MRM_A2: 8 MRM
+ SG_ BLI_HELL : 8|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ BLI_LI_EIN : 7|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ BLI_RE_EIN : 6|1@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 816 MRM_A3: 8 MRM
+ SG_ STOP : 15|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ VOICE_CTRL : 14|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ DISPLAY_UP : 7|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ DISPLAY_DN : 6|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SCROLL_UP : 5|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SCROLL_DN : 4|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ VOLUME_UP : 3|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ VOLUME_DN : 2|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ PHONE_END : 1|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ PHONE_SEND : 0|1@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 516 MRM_A4: 8 MRM
+ SG_ LS_AUF : 7|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ LS_AB : 6|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ LS_VOR : 5|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ LS_BACK : 4|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ ESH_EIN : 3|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ LSVH_OB : 2|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ LSVH_UN : 1|1@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 56 LRK_A1: 8 LRK
+ SG_ LRK_STOERG : 2|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ LH_LED_EIN : 1|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ LBLFT_LED_EIN : 0|1@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 10 SAM_F_A1: 8 SAM
+ SG_ I_KOMP : 56|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ MABL_ZU : 51|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ AS_AKT : 50|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ PNK_ALM_AKT : 49|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ HD_AKT : 48|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ LS_ZH : 47|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ EDW_AKT : 46|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ IRS_AKT : 45|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ KOMP_DEF : 44|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ KOMP_EIN : 43|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ HAS_KL : 42|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ BBV_VL : 41|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ BFL_KL : 40|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ P_KAELTE : 24|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ T_KAELTE : 8|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ T_OUTSIDE : 0|8@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 40 SAM_F_A2: 8 SAM
+ SG_ BLI_ERS_VL : 23|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ PL_ERS_VL : 22|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SWA_AKT : 16|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ BLI_DEF_VL : 15|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ PL_DEF_VL : 14|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ ABL_DEF_R : 13|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FL_DEF_L : 12|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ NSW_DEF_L : 11|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SM_DEF_VL : 10|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ AFL_ST_AKT : 8|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ PL_LI_EIN : 7|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ PL_RE_EIN : 6|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ STL_EIN : 5|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ ABL_EIN : 4|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ NSW_EIN : 3|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ NSL_EIN : 2|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FL_EIN_SAM_F : 1|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SRA_EIN : 0|1@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 840 SAM_F_A3: 8 SAM
+ SG_ INTERVAL : 7|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ KL_31B_EIN : 6|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ KL_86_EIN : 5|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ CONFIG : 2|3@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ PARITY_SAM_F : 0|1@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 272 SAM_F_A4: 8 SAM
+ SG_ HELL_EDW : 8|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ BLI_LI_EIN_EDW : 7|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ BLI_RE_EIN_EDW : 6|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SL_EIN_EDW : 5|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ ABL_EIN_EDW : 4|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ NSW_EIN_EDW : 3|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ ABL_DL_EDW : 2|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ IL_DL_EDW : 1|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ EDW_ALM : 0|1@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 14 SAM_B_A1: 8 SAM
+ SG_ GWHST_P_SAM_B : 31|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ KL_30A_EIN : 29|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ IZV_AUF : 25|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ IZV_ZU : 24|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ BLI_ERS_VR : 23|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ PL_ERS_VR : 22|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ MW_AKT_SAM_B : 20|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ VSTAT_A : 19|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SAM_B_PAS : 18|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ BLS_A : 17|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ INF_RFE_SAM : 16|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SGH_ST_EIN : 15|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ KWS_KL : 14|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ WWS_KL : 13|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ WWP_DEF : 12|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ ZWP_LFT : 11|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ ZWP_DEF : 10|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ BBV_VR : 9|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ KL_61_EIN : 8|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ BLI_DEF_VR : 7|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ PL_DEF_VR : 6|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ ABL_DEF_L : 5|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FL_DEF_R : 4|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ NSW_DEF_R : 3|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SM_DEF_VR : 2|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ MOT_AUF : 0|1@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 904 SAM_B_A3: 8 SAM
+ SG_ EDW_MOT : 1|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ EDW_HAND : 0|1@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 4 SAM_H_A1: 8 SAM
+ SG_ SK_HD_AUF : 16|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ HHS_ST_EIN : 15|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ HHS_ST_USPG : 14|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ GS_HL_GES : 13|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ GS_HM_GES : 12|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ GS_HR_GES : 11|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ KL_54_DEF : 10|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ BBV_H : 9|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ BRE_BET : 8|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ TVL_AUF : 7|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ TVR_AUF : 6|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ THL_AUF : 5|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ THR_AUF : 4|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ HD_AUF : 3|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ MABL_AUF : 2|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ PDM_SAM_H : 0|1@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 546 SAM_H_A2: 8 SAM
+ SG_ BLI_ERS_HL : 31|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SL_ERS_HL : 30|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ BL_ERS_HL : 29|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ BLI_ERS_HR : 27|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SL_ERS_HR : 26|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ BL_ERS_HR : 25|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ TANK_FS : 16|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ BLI_DEF_HR : 15|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SL_DEF_HR : 14|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ BL_DEF_HR : 13|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ NSL_DEF_HR : 12|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ RFL_DEF_HR : 11|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ KZL_DEF_HR : 10|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SM_DEF_HR : 9|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ BLI_DEF_HL : 7|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SL_DEF_HL : 6|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ BL_DEF_HL : 5|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ NSL_DEF_H : 4|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ RFL_DEF_HL : 3|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ KZL_DEF_HL : 2|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SM_DEF_HL : 1|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ BL3_DEF : 0|1@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 908 SAM_H_A4: 8 SAM
+ SG_ EDW_IRS_ALM : 15|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ EDW_FBL : 14|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ EDW_FBR : 13|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ EDW_MABL : 12|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ EDW_TANK_ALM : 11|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ EDW_FT_ENT : 8|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ EDW_TVL : 7|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ EDW_TVR : 6|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ EDW_THL : 5|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ EDW_THR : 4|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ EDW_HD : 3|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ EDW_TKD : 2|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ EDW_TUER_ZU : 1|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ EDW_AS_ALM : 0|1@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 48 AAG_A1: 8 AAG
+ SG_ ANHKL_54_DEF : 18|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ AHK_NOK : 17|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ ANH_ERK : 16|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ ANHBLI_DEF_R : 15|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ ANHSL_DEF_R : 14|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ ANHBLI_DEF_L : 7|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ ANHSL_DEF_L : 6|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ ANHBL_DEF : 5|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ ANHNSL_DEF : 4|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ ANHRFL_DEF : 3|1@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 912 AAG_A2: 8 AAG
+ SG_ EDW_ANH_ALM : 0|1@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 528 TVL_A1: 8 TVL
+ SG_ SBLFT_VL_NS : 21|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SH_VL_NS : 20|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SH_VL_S1 : 19|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SH_VL_S2 : 18|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SVL_LE_VOR : 15|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SVL_LE_ZUR : 14|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SVL_VO_AUF : 13|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SVL_VO_AB : 12|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SVL_KST_AUF : 11|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SVL_KST_AB : 10|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SVL_VOR : 7|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SVL_ZUR : 6|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SVL_SKT_VOR : 5|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SVL_SKT_ZUR : 4|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SVL_HI_AUF : 3|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SVL_HI_AB : 2|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SVL_TGL : 0|1@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 532 TVL_A2: 8 TVL
+ SG_ ISOFIX_EN_RL : 11|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ MVL_SP_BET : 10|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ MVL_MAN : 9|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ MVL_ATM : 8|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ MVL_P1_EN : 7|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ MVL_P2_EN : 6|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ MVL_P1_SP : 4|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ MVL_P2_SP : 3|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ MVL_PM_EN : 1|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ MVL_TGL : 0|1@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 536 TVL_A3: 8 TVL
+ SG_ FHL_AT_LL : 23|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FHL_MT_LL : 22|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FHL_MH_LL : 21|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FHL_AH_LL : 20|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FHR_AT_LL : 19|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FHR_MT_LL : 18|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FHR_MH_LL : 17|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FHR_AH_LL : 16|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FVR_AT : 15|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FVR_MT : 14|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FVR_MH : 13|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FVR_AH : 12|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FEVS_AT_LL : 11|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FEVS_MT_LL : 10|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FEVS_MH_LL : 9|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FEVS_AH_LL : 8|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SPI_RE_N_LI : 7|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SPI_RE_N_RE : 6|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SPI_RE_N_OBEN : 5|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SPI_RE_N_UNTEN : 4|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SPI_RE_GARAGE : 3|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SPI_RE_FAHREN : 2|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SPI_RE_SP : 1|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SPVS_BET_LL : 0|1@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 65 TVL_A4: 8 TVL
+ SG_ SN1_TVL : 7|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SN2_TVL : 6|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ KB_TVL : 5|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SHD_TVL : 4|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ ALF_TVL : 3|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FVR_TVL : 2|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FHL_TVL : 1|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FHR_TVL : 0|1@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 225 TVL_A5: 8 TVL
+ SG_ ZBC_TVL : 0|64@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 16 TVL_A6: 8 TVL
+ SG_ SD_ST3 : 48|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SD_ST2 : 40|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SD_ST1 : 32|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FVL_BLOCK_UN : 26|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FVL_BLOCK_OB : 25|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FVL_KZHB_OB : 24|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FESTE_VL : 12|12@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FVL_KZHB : 11|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FVL_AUF : 10|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FVL_BLOCK : 9|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FVL_NORM : 8|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FHWS_HI_LL : 7|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ HFS_LL : 6|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ BLI_DEF_L : 5|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ MV_VL_ST_ZV : 4|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ KISI_EIN_LL : 3|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ HFE_LL : 2|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SPVS_BF_LL : 1|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ P_ANF_TVL : 0|1@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 529 TVR_A1: 8 TVR
+ SG_ SBLFT_VR_NS : 21|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SH_VR_NS : 20|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SH_VR_S1 : 19|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SH_VR_S2 : 18|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SVR_LE_VOR : 15|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SVR_LE_ZUR : 14|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SVR_VO_AUF : 13|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SVR_VO_AB : 12|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SVR_KST_AUF : 11|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SVR_KST_AB : 10|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SVR_VOR : 7|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SVR_ZUR : 6|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SVR_SKT_VOR : 5|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SVR_SKT_ZUR : 4|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SVR_HI_AUF : 3|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SVR_HI_AB : 2|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SVR_TGL : 0|1@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 533 TVR_A2: 8 TVR
+ SG_ ISOFIX_EN_LL : 11|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ MVR_SP_BET : 10|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ MVR_MAN : 9|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ MVR_ATM : 8|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ MVR_P1_EN : 7|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ MVR_P2_EN : 6|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ MVR_P1_SP : 4|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ MVR_P2_SP : 3|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ MVR_PM_EN : 1|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ MVR_TGL : 0|1@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 537 TVR_A3: 8 TVR
+ SG_ FHL_AT_RL : 23|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FHL_MT_RL : 22|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FHL_MH_RL : 21|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FHL_AH_RL : 20|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FHR_AT_RL : 19|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FHR_MT_RL : 18|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FHR_MH_RL : 17|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FHR_AH_RL : 16|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FVL_AT : 15|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FVL_MT : 14|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FVL_MH : 13|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FVL_AH : 12|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FEVS_AT_RL : 11|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FEVS_MT_RL : 10|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FEVS_MH_RL : 9|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FEVS_AH_RL : 8|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SPI_LI_N_LI : 7|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SPI_LI_N_RE : 6|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SPI_LI_N_OBEN : 5|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SPI_LI_N_UNTEN : 4|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SPI_LI_GARAGE : 3|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SPI_LI_FAHREN : 2|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SPI_LI_SP : 1|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SPVS_BET_RL : 0|1@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 66 TVR_A4: 8 TVR
+ SG_ SN1_TVR : 7|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SN2_TVR : 6|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ KB_TVR : 5|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SHD_TVR : 4|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FVL_TVR : 3|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ ALF_TVR : 2|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FHL_TVR : 1|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FHR_TVR : 0|1@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 226 TVR_A5: 8 TVR
+ SG_ ZBC_TVR : 0|64@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 17 TVR_A6: 8 TVR
+ SG_ SD_ST3 : 48|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SD_ST2 : 40|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SD_ST1 : 32|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FVR_BLOCK_UN : 26|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FVR_BLOCK_OB : 25|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FVR_KZHB_OB : 24|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FESTE_VR : 12|12@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FVR_KZHB : 11|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FVR_AUF : 10|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FVR_BLOCK : 9|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FVR_NORM : 8|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FHWS_HI_RL : 7|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ HFS_RL : 6|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ BLI_DEF_R : 5|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ MV_VR_ST_ZV : 4|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ KISI_EIN_RL : 3|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ HFE_RL : 2|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SPVS_BF_RL : 1|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ P_ANF_TVR : 0|1@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 114 THL_A1: 8 THL
+ SG_ SBLFT_HL_NS : 21|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SH_HL_NS : 20|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SH_HL_S1 : 19|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SH_HL_S2 : 18|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SHL_KST_AUF : 11|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SHL_KST_AB : 10|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SHL_VOR : 7|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SHL_ZUR : 6|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SHL_AUF : 5|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SHL_AB : 4|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SHL_TGL : 0|1@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 626 THL_A2: 8 THL
+ SG_ MHL_P1_EN : 7|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ MHL_P2_EN : 6|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ MHL_P3_EN : 5|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ MHL_P1_SP : 4|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ MHL_P2_SP : 3|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ MHL_P3_SP : 2|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ MHL_TGL : 0|1@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 722 THL_A3: 8 THL
+ SG_ FV_SBLFT_VL_NS : 21|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FV_SH_VL_NS : 20|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FV_SH_VL_S1 : 19|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FV_SH_VL_S2 : 18|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FV_SVL_LE_VOR : 15|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FV_SVL_LE_ZUR : 14|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FV_SVL_KST_AUF : 11|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FV_SVL_KST_AB : 10|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FV_SVL_VOR : 7|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FV_SVL_ZUR : 6|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ MHL_RP_EN : 5|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FV_SVL_HI_AUF : 3|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FV_SVL_HI_AB : 2|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SWSL_VO : 1|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FV_SVL_TGL : 0|1@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 370 THL_A4: 8 THL
+ SG_ FESTE_HL : 12|12@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FHL_KZHB : 11|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FHL_AUF : 10|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FHL_BLOCK : 9|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FHL_NORM : 8|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ MV_HL_ST_ZV : 4|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ P_ANF_THL : 0|1@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 115 THR_A1: 8 THR
+ SG_ SBLFT_HR_NS : 21|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SH_HR_NS : 20|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SH_HR_S1 : 19|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SH_HR_S2 : 18|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SHR_KST_AUF : 11|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SHR_KST_AB : 10|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SHR_VOR : 7|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SHR_ZUR : 6|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SHR_AUF : 5|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SHR_AB : 4|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SHR_TGL : 0|1@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 627 THR_A2: 8 THR
+ SG_ MHR_P1_EN : 7|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ MHR_P2_EN : 6|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ MHR_P3_EN : 5|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ MHR_P1_SP : 4|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ MHR_P2_SP : 3|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ MHR_P3_SP : 2|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ MHR_TGL : 0|1@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 723 THR_A3: 8 THR
+ SG_ FV_SBLFT_VR_NS : 21|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FV_SH_VR_NS : 20|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FV_SH_VR_S1 : 19|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FV_SH_VR_S2 : 18|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FV_SVR_LE_VOR : 15|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FV_SVR_LE_ZUR : 14|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FV_SVR_KST_AUF : 11|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FV_SVR_KST_AB : 10|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FV_SVR_VOR : 7|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FV_SVR_ZUR : 6|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ MHR_RP_EN : 5|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FV_SVR_HI_AUF : 3|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FV_SVR_HI_AB : 2|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SWSR_VO : 1|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FV_SVR_TGL : 0|1@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 371 THR_A4: 8 THR
+ SG_ FESTE_HR : 12|12@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FHR_KZHB : 11|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FHR_AUF : 10|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FHR_BLOCK : 9|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FHR_NORM : 8|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ MV_HR_ST_ZV : 4|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ P_ANF_THR : 0|1@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 22 VS_A1: 8 VS
+ SG_ SD_ST2 : 40|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SD_ST1 : 32|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FHL_KZHB_VS : 31|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FHL_AUF_VS : 30|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FHL_BLOCK_VS : 29|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FHL_NORM_VS : 28|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FHR_KZHB_VS : 27|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FHR_AUF_VS : 26|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FHR_BLOCK_VS : 25|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FHR_NORM_VS : 24|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ VS_M1 : 23|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ VS_M2 : 22|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ VS_M3 : 21|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ VS_M4 : 20|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ VS_M5 : 19|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ VS_M6 : 18|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ VS_M7 : 17|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ VS_M8 : 16|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ VDK_WARN : 15|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ UERB_KL : 14|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ VDK_KL_DL : 13|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ VDK_KL_BL : 12|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ VS_M9 : 11|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ VS_M10 : 10|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ VS_M11 : 9|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ VS_M12 : 8|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ VDK_ST : 6|2@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ VDK_IR_AKT : 5|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ HFE_SPERR : 4|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FVL_SPERR : 3|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FVR_SPERR : 2|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FHL_SPERR : 1|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FHR_SPERR : 0|1@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 848 VS_A2: 8 VS
+ SG_ AHLF_EIN_VS : 7|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ KB_VS : 5|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FVL_VS : 3|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FVR_VS : 2|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ ALFL_VS : 1|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ ALFR_VS : 0|1@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 20 DBE_A1: 8 DBE
+ SG_ SD_ST2 : 48|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SD_ST1 : 40|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FRBL_HELL : 32|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FRBL_VL : 27|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FRBL_VR : 26|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FRBL_HL : 25|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FRBL_HR : 24|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ AFL_GRUND : 22|2@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ LISR_DEF : 21|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ VDK_ST_ZU : 20|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ AL_EIN : 19|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ KL_58D_EIN : 18|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ DSPL_INV_DBE : 17|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ AFL_ABL_EIN : 16|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ T_INSIDE : 8|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ EL_EIN : 7|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SHD_ST_ZU : 6|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SDA_ST_AUF : 5|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ HDA_ST_AUF : 4|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ INLI_ST_EIN : 3|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FOLI_ST_EIN : 2|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ LELI_ST_EIN : 1|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ IFG_LFT : 0|1@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 208 DBE_A2: 8 DBE
+ SG_ ZBC_DBE : 0|64@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 896 DBE_A3: 8 DBE
+ SG_ WIPER_ON : 7|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ ERROR : 4|3@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ NEU_INI_READY : 3|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SEND_WIEDER : 2|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SCH_WI_2_RS : 1|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ PARITY_DBE : 0|1@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 906 DBE_A4: 8 DBE
+ SG_ SHD_ZU_RS : 1|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ IRS_ALM : 0|1@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 688 OBF_A1: 8 OBF
+ SG_ WBL_EIN : 7|1@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 6 OBF_A2: 8 OBF
+ SG_ SD_ST2 : 56|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SD_ST1 : 48|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ ASG_SPORT_BET : 46|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ LED_STH_DEF : 42|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ STHL_BET : 40|2@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SPI_N_LI : 39|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SPI_N_RE : 38|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SPI_N_OBEN : 37|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SPI_N_UNTEN : 36|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SPI_KLAPPEN : 35|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SPVS_BET : 33|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SPVS_RE : 32|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ ART_ABSTAND : 24|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ ART_ABW_BET : 22|2@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ ESP_BET : 20|2@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ ST3_BET : 18|2@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ ST2_BET : 16|2@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ VDK_AUF : 15|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ VDK_ZU : 14|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ UERB_HOCH : 13|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ UERB_DOWN : 12|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ PTS_BET : 9|2@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ AFE_EIN : 7|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ AFE_AUS : 6|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FKS_BET : 4|2@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ HR_BET : 2|2@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ ZV_AUF_IS : 1|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ ZV_ZU_IS : 0|1@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 259 OBF_A3: 8 OBF
+ SG_ BLI_HELL_OBF : 8|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ BLI_LI_EIN_OBF : 7|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ BLI_RE_EIN_OBF : 6|1@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 264 OBF_A4: 8 OBF
+ SG_ IRS_AUS : 6|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ AS_AUS : 4|1@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 288 STH_A1: 8 STH
+ SG_ ZH_AUS_STH : 7|1@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 18 ARMADA_A1: 8 ARMADA
+ SG_ ISOFIX_BF : 34|2@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ GS_F : 24|2@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ OC_BF : 21|3@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ PSG_DETEC_FAST : 19|2@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ GS_BF : 16|2@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ KISI_ST : 13|3@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ KISI_POS : 12|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ KISI_AB_OFF : 11|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ RAST_SITZ_BF : 10|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SRS_WERK_FT1 : 7|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SRS_WERT_FT3 : 6|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SRS_BLINK : 5|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SRS_KL : 4|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SRS_ROLLE_KI : 3|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ KONTAKT_BF : 2|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ AKSE_BLINK : 1|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ AKSE_EIN : 0|1@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 144 ARMADA_A2: 8 ARMADA
+ SG_ CRASH_H : 15|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ CRASH_I : 14|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ CRASH_K : 13|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ CRASH_L : 12|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ CRASH_M : 11|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ CRASH_N : 10|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ CRASH_O : 9|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ X_CRASH : 8|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ CRASH_A : 7|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ CRASH_B : 6|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ CRASH_C : 5|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ CRASH_D : 4|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ CRASH_E : 3|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ CRASH_F : 2|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ CRASH_G : 1|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ CONF_CRASH : 0|1@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 276 SVL_A1: 8 SVL
+ SG_ SVL_LE_RP : 21|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ ISOFIX_RL : 20|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FSG_VL_KL : 19|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ MVL_ATM_AUS : 18|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ P1_MVL : 17|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ P2_MVL : 16|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SVL_POS : 8|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SBLFT_VL_ST : 6|2@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ LE_VL_ENT : 4|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SH_VL_STU1 : 3|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SH_VL_STU2 : 2|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SH_VL_USPG : 1|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ GS_VL_GES : 0|1@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 772 SVL_A2: 8 SVL
+ SG_ MVL_LS_EIN : 7|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ MVL_REST_EIN : 5|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ MVL_FAHR_AKT : 2|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ MVL_MAN_SP : 1|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ ESH_VL_AKT : 0|1@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 277 SVR_A1: 8 SVR
+ SG_ SVR_LE_RP : 21|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ ISOFIX_LL : 20|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FSG_VR_KL : 19|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ MVR_ATM_AUS : 18|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ P1_MVR : 17|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ P2_MVR : 16|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SVR_POS : 8|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SBLFT_VR_ST : 6|2@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ LE_VR_ENT : 4|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SH_VR_STU1 : 3|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SH_VR_STU2 : 2|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SH_VR_USPG : 1|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ GS_VR_GES : 0|1@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 773 SVR_A2: 8 SVR
+ SG_ MVR_LS_EIN : 7|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ MVR_REST_EIN : 5|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ MVR_FAHR_AKT : 2|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ MVR_MAN_SP : 1|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ ESH_VR_AKT : 0|1@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 728 SH_A1: 8 SH
+ SG_ SBLFT_HR_ST : 14|2@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SH_HR_STU1 : 11|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SH_HR_STU2 : 10|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SH_HR_USPG : 9|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SHR_RP : 8|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SBLFT_HL_ST : 6|2@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SH_HL_STU1 : 3|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SH_HL_STU2 : 2|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SH_HL_USPG : 1|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SHL_RP : 0|1@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 712 PFDS_A1: 8 PFDS
+ SG_ P_PFDS : 11|5@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ PFDSMOT_ST : 6|2@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ PFDS_OVLD : 5|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ PFDS_ENT : 4|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ PFDS_DEAKT : 3|1@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 716 FDSVL_A1: 8 FDSVL
+ SG_ PFDS_ANF_VL : 6|2@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FDSVL_STAT : 4|2@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SEIT_AKT_VL : 2|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ MITT_AKT_VL : 1|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FDS_AKT_VL : 0|1@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 717 FDSVR_A1: 8 FDSVR
+ SG_ PFDS_ANF_VR : 6|2@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FDSVR_STAT : 4|2@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SEIT_AKT_VR : 2|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ MITT_AKT_VR : 1|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FDS_AKT_VR : 0|1@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 8 KLA_A1: 8 KLA
+ SG_ P_SK_SOLL : 49|7@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SH_SBLFT : 48|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ REST_AKT : 45|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ STH_AKT : 44|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ HEATING : 43|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ VENTILATE : 42|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ KOMP_STELL : 32|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ M_KOMP : 24|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ U_GEBL : 16|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ NLFTS : 8|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ LL_DZA : 7|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ KLA_DEF : 6|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ ZH_EIN_OK : 5|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ ZWP_EIN : 4|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ IFG_EIN : 3|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ KOMP_EIN_KLA : 2|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ HHS_EIN : 1|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ MAXCOOL : 0|1@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 680 KLA_A2: 8 KLA
+ SG_ FOND_MODE : 55|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FKLA_GBA_MAN : 54|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FKLA_DSPL_NEG : 53|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FKLA_DSPL_POS : 52|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ TAKT_RED : 51|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FLR_LES : 50|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FLR_LOE : 49|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ WVK_EIN : 48|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SWA : 47|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ BLOWER_AUTO : 46|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ GE : 45|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ EC : 44|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ CALIBRATION : 43|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ RECIRCULATION : 42|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ KLA_OFF : 41|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ DEFROST : 40|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ GEBL_SOLL_H : 32|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SOLL_HR : 24|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SOLL_HL : 16|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ TBSOLL_HR : 8|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ TBSOLL_HL : 0|8@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 520 KLA_A3: 8 KLA
+ SG_ T_AUSSEN_WM : 56|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ T_TAU : 48|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SUN_MW : 32|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SONNE_HL : 24|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SUN_HR : 16|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SONNE_VR : 8|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SUN_VL : 0|8@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 592 KLA_A4: 8 KLA
+ SG_ AHLF_EIN : 7|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ KB_KLA : 5|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SHD_KLA : 4|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FVL_KLA : 3|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FVR_KLA : 2|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FHL_KLA : 1|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FHR_KLA : 0|1@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 368 FKLA_A1: 8 FKLA
+ SG_ FKLA_FLR4 : 56|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FKLA_FLR3 : 48|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FKLA_FLR2 : 40|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FKLA_FLR1 : 32|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ GEBLAUTO_FKLA : 29|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ REST_EIN : 26|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ R134A_AUF : 25|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FKLA_ST_AUS : 24|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FAN_H : 16|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FKLA_SOLL_HR : 8|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FKLA_SOLL_HL : 0|8@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 376 FKLA_A2: 8 FKLA
+ SG_ LVP : 40|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FKLA_HW : 32|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FKLA_SW : 24|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ TVERD_H : 16|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ TB_HR : 8|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ TB_HL : 0|8@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 812 KG_A1: 8 KG
+ SG_ M8 : 15|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ M9 : 14|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ M10 : 13|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ M11 : 12|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ M12 : 11|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ M13 : 10|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ M14 : 9|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ KG_SCHLUE_VH : 8|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ M6 : 7|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ DOOR_PRF : 6|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ M0 : 5|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ M1 : 4|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ M2 : 3|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ M3 : 2|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ M4 : 1|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ M5 : 0|1@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 224 KG_A2: 8 KG
+ SG_ ZB_FBC_KG : 0|64@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 584 KG_A3: 8 KG
+ SG_ AHLF_EIN_KG : 7|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ KB_KG : 5|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SHD_KG : 4|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FVL_KG : 3|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FVR_KG : 2|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FHL_KG : 1|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FHR_KG : 0|1@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 672 KG_A4: 8 KG
+ SG_ ZB_FBC_FSS : 0|64@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 468 KG_A5: 8 KG
+ SG_ HD_KGAS_BET : 3|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ HD_ZU_KG : 2|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ HD_STOP_KG : 1|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ WBL_EIN_KG : 0|1@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 7 ZVP_A1: 8 ZVP
+ SG_ SD_ST1 : 48|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ HD_KGIS_AKT : 41|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ HD_KGIS_BET : 40|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ HD_OEFWKL : 32|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ ZV_VL_SEL : 31|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ ZV_VR_SEL : 30|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ ZV_HL_SEL : 29|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ ZV_HR_SEL : 28|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ HD_ENT : 27|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ HD_IS_BET : 26|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ HD_LFT_AUF : 25|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ HD_LFT_ZU : 24|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ ZV_VL_ENT : 23|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ ZV_VR_ENT : 22|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ ZV_HL_ENT : 21|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ ZV_HR_ENT : 20|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ ZV_HD_ENT : 19|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ ZV_ENT_SEL : 18|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SEL_OK : 17|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ ZV_UNBKNT : 16|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ MV_VL_ZV : 15|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ MV_VR_ZV : 14|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ MV_HL_ZV : 13|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ MV_HR_ZV : 12|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ ZZH_VL_AKT : 11|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ ZZH_VR_AKT : 10|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ HD_IOEF_BET : 9|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ KOFABT_ZU : 8|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ ZV_AUSSEN : 7|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ ZV_AV : 6|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ DFS_BET : 5|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ HD_OEF : 4|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ ZV_NV : 3|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ KISI_WARN : 2|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ ZV_ST_ENT : 1|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ ZV_ST_VER : 0|1@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 67 ZVP_A2: 8 ZVP
+ SG_ SN1_ZVP : 7|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SN2_ZVP : 6|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ KB_ZVP : 5|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SHD_ZVP : 4|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FVL_ZVP : 3|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FVR_ZVP : 2|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FHL_ZVP : 1|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FHR_ZVP : 0|1@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 9 BNS_A1: 8 BNS
+ SG_ DISCONNECT : 22|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ BNS_AKT : 18|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ BN_SOCS1 : 14|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ BN_SOCS2 : 13|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ BN_SOHS_SB : 12|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ BN_SOHS_VB : 11|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ BN_WARN1 : 7|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ BN_WARN2 : 6|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ BN_WARN3 : 5|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ BN_WARN4 : 4|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ BN_WARN5 : 3|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ BN_NTLF_P2 : 2|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ BN_NTLF_P1 : 1|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ BN_NTLF : 0|1@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 258 MSS_A1: 8 MSS
+ SG_ FL_HELL_MSS : 24|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SGH_AN_MSS : 16|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ BLI_HELL_MSS : 8|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ BLI_LI_EIN_MSS : 7|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ BLI_RE_EIN_MSS : 6|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ TXHIRU_EIN : 5|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ NSW_EIN_MSS : 4|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SGH_EIN_MSS : 3|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ IL_EIN_MSS : 2|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ ZV_ZU_MSS : 1|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FL_EIN_MSS : 0|1@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 828 MSS_A2: 8 MSS
+ SG_ NOT_ALM_DEF : 7|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ TX_EL_DEF : 6|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ MSS_ALM : 5|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ MSS_USPG : 4|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ DZ_DEF : 3|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ DZ_PRF : 2|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ DZ_LA_DEF : 1|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ DZ_KL : 0|1@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 472 PTS_A1: 8 PTS
+ SG_ PTS_ST_AUS : 0|1@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 804 RDK_A1: 8 RDK
+ SG_ P_RR : 48|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ P_RHR : 40|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ P_RHL : 32|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ P_RVR : 24|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ P_RVL : 16|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ WITHPOS : 15|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ RVL : 14|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ RVR : 13|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ RHL : 12|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ RHR : 11|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ RR : 10|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ RDK_OFF : 8|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ WARNING_COLOR : 7|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ S_UE : 6|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ VBZ : 5|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ P_VERL_L : 4|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ P_MIN : 3|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ P_VERL_S : 2|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ RDK_INI : 1|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SERVICE : 0|1@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 476 FSS_A1: 8 FSS
+
+BO_ 570 GPS_A1: 8 GPS
+ SG_ LONGITUDE : 32|32@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ LATITUDE : 0|32@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 571 GPS_A2: 8 GPS
+ SG_ UTC_SECONDS : 48|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ UTC_MINUTES : 40|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ UTC_HOURS : 32|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ UTC_DAYS : 24|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ UTC_MONTHS : 16|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ UTC_YEARS : 0|16@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 572 GPS_A3: 8 GPS
+ SG_ H_DOP : 56|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ V_DOP : 48|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ CALI : 46|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ MDM : 45|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FDG : 44|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ IDG : 43|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ DEAD_RCK : 42|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ DIFF_POS_AVLB : 41|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ POS_AVLB : 40|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ GPS_FIX : 32|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ GPS_HEIGHT : 24|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ GPS_HEADING : 16|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ GPS_SPEED : 0|16@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 575 TLM_A1: 8 TLM
+ SG_ WM_AID_SYS0 : 31|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ WM_AID_SYS1 : 30|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ WM_TD_SYS : 29|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ KEIN_NETZ : 28|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ BACKUP_BATT : 27|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ WM_INF0 : 23|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ WM_INF1 : 22|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ WM_INF2 : 21|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ HU_INFO : 16|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ WM_TD0 : 15|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ WM_TD1 : 14|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ WM_TD2 : 13|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ HU_TD : 8|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ WM_AID0 : 7|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ WM_AID1 : 6|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ WM_AID2 : 5|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ HU_AID : 0|1@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 808 RADIO_A1: 8 RADIO
+ SG_ D6_HU : 56|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ D5_HU : 48|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ D4_HU : 40|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ D3_HU : 32|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ D2_HU : 24|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ D1_HU : 16|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ D0_HU : 8|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SNR_HU : 4|4@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ EOM_HU : 3|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ ANR_HU : 2|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ ST_HU : 1|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ TPDU_HU : 0|1@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 52 AGW_A1: 8 AGW
+ SG_ SBS_AKT : 8|1@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 524 AGW_A2: 8 AGW
+ SG_ PRIO_AGW : 5|3@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 831 TP_AGW_KOMBI1: 8 TP
+ SG_ TP_AGW_KOMBI : 0|64@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 995 TP_AGW_TELEAID6: 8 TP
+ SG_ TP_AGW_TELEAID : 0|64@1+ (1,0) [0|0] "" Vector__XXX
+
+
+
+
+CM_ BO_ 0 "";
+CM_ SG_ 0 SD_ST1 "System diagnosis status (R230)";
+CM_ SG_ 0 SPEI_NR "Current memory block number";
+CM_ SG_ 0 FERN_ALM "Remote triggering of the MSS alarm";
+CM_ SG_ 0 PNK_ALM_AUS "Switch off panic alarm with a key";
+CM_ SG_ 0 PNK_ALM_EIN "Switch on panic alarm with key";
+CM_ SG_ 0 BS_SL "brake switch for shift lock";
+CM_ SG_ 0 SCHLUE_NEU "Message: \"Renew key\"";
+CM_ SG_ 0 U_BATT "battery voltage";
+CM_ SG_ 0 ZV_N_VER_MW_AKT "Do not lock ZV while SBC added value is active";
+CM_ SG_ 0 FZG_RECH "Message: \"Vehicle is calculating, please wait\"";
+CM_ SG_ 0 APPL_AUS "Do not send application IDs, only NM IDs";
+CM_ SG_ 0 DIAG_TGL "Diagnosis toggle bit";
+CM_ SG_ 0 DIAG_AKT "diagnostic mode active (Diag_akt = 1 => cycle time = 20ms)";
+CM_ SG_ 0 KL_15C_EIN "Terminal 15c is switched on";
+CM_ SG_ 0 KL_15R_EIN "Terminal 15R is switched on";
+CM_ SG_ 0 KL_15_EIN "Terminal 15 is switched on";
+CM_ SG_ 0 KL_15X_EIN "Terminal 15x is switched on";
+CM_ SG_ 0 SCHLUE_ST "Key is inserted";
+CM_ SG_ 0 KL_50_EIN "Terminal 50 is switched on";
+CM_ SG_ 0 KG_KL_AKT "Keyless Go terminal control active";
+CM_ BO_ 2 "";
+CM_ SG_ 2 RIZ_VR "Pulse ring counter, front right wheel (48 per revolution)";
+CM_ SG_ 2 RIZ_VL "Pulse ring counter, front left wheel (48 per revolution)";
+CM_ SG_ 2 T_MOT "engine coolant temperature";
+CM_ SG_ 2 N_MOT "motor speed";
+CM_ SG_ 2 DVL "wheel speed front left";
+CM_ SG_ 2 DRTGVL "direction of rotation of front left wheel";
+CM_ BO_ 1 "";
+CM_ SG_ 1 HD_STOP "trunk lid stop";
+CM_ SG_ 1 SN1_SEL_EZS "lock nut 1 (open) selectively";
+CM_ SG_ 1 SN1_GLO_EZS "lock nut 1 (open) globally";
+CM_ SG_ 1 SN2_GLO_EZS "lock nut 2 (close) global";
+CM_ SG_ 1 HFE_EZS "remote trunk lid unlocking";
+CM_ SG_ 1 BLI_STAT "blinker status (open / close feedback)";
+CM_ SG_ 1 ZVQ "source ZV request";
+CM_ BO_ 336 "";
+CM_ SG_ 336 KM_EZS "mileage";
+CM_ SG_ 336 SCHLUE_ID "Identification key for pre-filtering";
+CM_ BO_ 31 "";
+CM_ SG_ 31 RDK_VH "SA tire pressure control available";
+CM_ SG_ 31 XEN_VH "Xenon light available";
+CM_ SG_ 31 HR_VH "SA rear roller blind available";
+CM_ SG_ 31 ZZH_VH "closing aid available";
+CM_ SG_ 31 FKLA_VH "SA rear KLA available";
+CM_ SG_ 31 AHK_VH "SA trailer coupling available";
+CM_ SG_ 31 PTS_VH "Parktronic system available";
+CM_ SG_ 31 SPI_VH "SA Automatic mirror dimming available";
+CM_ SG_ 31 SBS_VH "SA voice control system available";
+CM_ SG_ 31 MFL_VH "SA multi-function steering wheel available";
+CM_ SG_ 31 TEL_VH "SA telephone available";
+CM_ SG_ 31 OMS_VH "SA OMS available";
+CM_ SG_ 31 FKSH_VH "SA Raise rear head restraints available";
+CM_ SG_ 31 ASG_VH "SA Automated manual transmission available";
+CM_ SG_ 31 WWSHZG_VH "SA washing water hose heater available";
+CM_ SG_ 31 ART_VH "SA ART available (Code 219)";
+CM_ SG_ 31 FZGVERSN "model-dependent vehicle version (only 220/215/230)";
+CM_ SG_ 31 KP_VH "communication platform available";
+CM_ SG_ 31 MSS_VH "SA multifunction SG special vehicles available";
+CM_ SG_ 31 STH_VH "SA auxiliary heating available";
+CM_ SG_ 31 KG_VH "SA Keyless Go available";
+CM_ SG_ 31 FCOD_MOT "Vehicle code engine";
+CM_ SG_ 31 PRW_VH "Flat roll warning device available";
+CM_ SG_ 31 FCOD_BR "vehicle code series";
+CM_ SG_ 31 FCOD_KAR "vehicle code body";
+CM_ SG_ 31 EDW_VAR "EDW variant coding";
+CM_ SG_ 31 TANK_VAR "tank variant coding";
+CM_ SG_ 31 FSB_VAR "windscreen variant coding";
+CM_ SG_ 31 ABC_VH "ABC available";
+CM_ SG_ 31 ERS_LICHT "Complete replacement light allowed";
+CM_ SG_ 31 LICHT_LD "country coding light control";
+CM_ SG_ 31 KLA_LD "KLA country coding";
+CM_ SG_ 31 AHLFV_SPERR "Front window regulator: Disable automatic run-up";
+CM_ SG_ 31 AHLFH_SPERR "rear window regulator: disable automatic run-up";
+CM_ SG_ 31 LL "left-hand drive";
+CM_ SG_ 31 RL "right hand drive";
+CM_ SG_ 31 RDK_LD "RDK country coding";
+CM_ SG_ 31 MSS_VAR "MSS variant coding";
+CM_ BO_ 464 "";
+CM_ SG_ 464 ZB_FBC_EZS "access / drive authorization code";
+CM_ BO_ 3 "";
+CM_ SG_ 3 KPL "clutch stepped";
+CM_ SG_ 3 WHST "Gear selector lever position (NAG and KSG)";
+CM_ SG_ 3 EHB_BN "EHB electrical system status";
+CM_ SG_ 3 ART_ABW_AKT "ART distance warning is switched on";
+CM_ SG_ 3 ST3_LEDL_DL "Left LED 3-stage switch permanent light";
+CM_ SG_ 3 ST3_LEDL_BL "Left LED 3-position switch, flashing light";
+CM_ SG_ 3 ST3_LEDR_DL "Right LED 3-stage switch permanent light";
+CM_ SG_ 3 ST3_LEDR_BL "Right LED 3-position switch, flashing light";
+CM_ SG_ 3 ST2_LED_DL "LED 2-stage switch permanent light";
+CM_ SG_ 3 LOADED "loading";
+CM_ SG_ 3 CRASH_MS "crash signal from engine control";
+CM_ SG_ 3 WHC "gear selector lever position (only NAG)";
+CM_ SG_ 3 LTG_CHK_POS "line monitoring possible";
+CM_ SG_ 3 EHB_PUMPE_LFT "EHB pump is running";
+CM_ SG_ 3 VGL_ST "preheating status";
+CM_ SG_ 3 RG "reverse gear engaged (all transmissions)";
+CM_ SG_ 3 BLS "brake light switch";
+CM_ SG_ 3 BLS_UNT "brake light suppression";
+CM_ SG_ 3 INF_RFE_FSG "FSG: EHB-ASG in fall-back level";
+CM_ SG_ 3 LUEFT_MOT_KL "motor fan defective control lamp";
+CM_ SG_ 3 KOMP_NOTAUS "Air conditioning compressor emergency shutdown";
+CM_ SG_ 3 KOMP_BAUS "switch off air conditioning compressor: acceleration";
+CM_ SG_ 3 ANL_LFT "starter is running";
+CM_ BO_ 382 "";
+CM_ SG_ 382 FR_COOL "Cooling as footwell flushing inactive";
+CM_ SG_ 382 GRSBS_AUS "Fan reduction inactive on Linguatronic request";
+CM_ SG_ 382 P_KNL "pressure characteristic";
+CM_ SG_ 382 GBL_KNL "basic ventilation characteristic";
+CM_ SG_ 382 AHLF_AUS "Recirculation comfort function: Automatic deceleration off";
+CM_ SG_ 382 DSPL_POS "display always positive";
+CM_ SG_ 382 SAS_AUS "Key-dependent storage off";
+CM_ SG_ 382 MDSL_AUS "Center nozzle fast run inactive";
+CM_ SG_ 382 CIRCULATING_AIR_LOCK "100% circulating air not possible";
+CM_ SG_ 382 SGR_AUS "Immediate fan reaction off";
+CM_ SG_ 382 AGE_AUS "Automatic basic setting inactive";
+CM_ SG_ 382 HLK_AUF "Main air flap open in \"OFF\" mode";
+CM_ SG_ 382 GBL_AUS "E-suction fan: basic ventilation off";
+CM_ SG_ 382 KFK_AUS "refrigerant level control inactive";
+CM_ SG_ 382 SUS_AUS "Corrosive gas-dependent air recirculation switch with AKF inactive";
+CM_ SG_ 382 SUS_EIN "Corrosive gas-dependent recirculation switching generally active";
+CM_ SG_ 382 TUNNEL_AUS "tunnel function inactive";
+CM_ SG_ 382 GBA_MAN "Fan bar display only in manual mode";
+CM_ SG_ 382 RHT_EIN "REHEAT operation (t_Verd_Soll = 0 ° C fixed)";
+CM_ SG_ 382 UMLUFT_UBG "manual recirculation switching for an unlimited period";
+CM_ SG_ 382 DSPL_NEG "display always negative";
+CM_ BO_ 29 "";
+CM_ SG_ 29 VIN "Vehicle Identification Number";
+CM_ BO_ 818 "";
+CM_ SG_ 818 EZS_M0 "Message 0: \"MK status reduced\"";
+CM_ SG_ 818 EZS_M1 "message 1: \"MK reload immediately\"";
+CM_ SG_ 818 EZS_M2 "Message 2: \"MK expired, vehicle blocked\"";
+CM_ SG_ 818 EZS_M3 "Message 3: \"MK authorization error\"";
+CM_ SG_ 818 EZS_M4 "message 4: \"MK manual reloading done\"";
+CM_ SG_ 818 EZS_M5 "message 5: \"MK manual reload successful\"";
+CM_ SG_ 818 EZS_M6 "message 6: \"MK manual reloading failed\"";
+CM_ SG_ 818 EZS_M7 "Message 7: \"MK\"";
+CM_ BO_ 958 "";
+CM_ SG_ 958 TP_EZS_TELEAID "Communication EZS to TELEAID";
+CM_ BO_ 383 "";
+CM_ SG_ 383 RDU "Remote door unlock";
+CM_ BO_ 574 "";
+CM_ SG_ 574 LIVE_TELEAID "Alive message TELEAID";
+CM_ SG_ 574 MK_ATRSRT "mobility account authorized";
+CM_ BO_ 30 "";
+CM_ SG_ 30 LAND "Country-specific SA coding";
+CM_ SG_ 30 VER_AE "year of change";
+CM_ SG_ 30 VER_JAHR "year specification";
+CM_ BO_ 810 "";
+CM_ SG_ 810 CP_M0 "Message 0: \"MK status reduced\"";
+CM_ SG_ 810 CP_M1 "Message 1: \"Reload MK, Tel. Temporary not available\"";
+CM_ SG_ 810 CP_M2 "Message 2: \"Reload MK immediately\"";
+CM_ SG_ 810 CP_M3 "Message 3: \"MK end of duty in a few days\"";
+CM_ SG_ 810 CP_M4 "Message 4: \"\"";
+CM_ SG_ 810 CP_M5 "message 5: \"\"";
+CM_ BO_ 152 "";
+CM_ SG_ 152 FMMOTMAX "factor for depreciation. d. Max. Mom. When decreasing A. pressure";
+CM_ SG_ 152 GIER_ROH "Raw signal yaw rate without adjustment / filtering (+ = left)";
+CM_ SG_ 152 FTK_VMI "code number brake type (> 100: dynamic)";
+CM_ SG_ 152 FTK_LMI "code number lateral acceleration type (> 100: dynamic)";
+CM_ SG_ 152 FTK_BMI "code number acceleration type (> 100: dynamic)";
+CM_ SG_ 152 AY_S "vehicle lateral acceleration. in the center of gravity (+ = left)";
+CM_ SG_ 152 T_GET "transmission oil temperature";
+CM_ BO_ 512 "";
+CM_ SG_ 512 ZVB_EIN_MS "switch on additional consumer";
+CM_ SG_ 512 N_VRBT_SBCSH_AKT "SBC-S / H active, ASG must not switch to \"N\"";
+CM_ SG_ 512 NOTBRE "emergency braking (brake light flashing)";
+CM_ SG_ 512 ASV_KKL_169 "shut-off valve cooling circuit M266 ATL";
+CM_ SG_ 512 PRESF_L_SHD "Presafe adjustment, sliding / tilting roof";
+CM_ SG_ 512 PRESF_R_SHD "Presafe adjustment sliding / tilting roof";
+CM_ SG_ 512 PRESF_L_SVL "Presafe adjustment seat front left";
+CM_ SG_ 512 PRESF_R_SVR "Presafe adjustment seat front right";
+CM_ SG_ 512 PRESF_TGL "Presafe toggle bit";
+CM_ SG_ 512 LW "steering angle";
+CM_ SG_ 512 LW_VZ "steering angle sign (right [0], left [1])";
+CM_ SG_ 512 LW_INI "Steering angle sensor: not initialized";
+CM_ SG_ 512 LW_CF "Steering angle sensor: Code error";
+CM_ SG_ 512 LW_OV "Steering angle sensor: overflow";
+CM_ SG_ 512 LW_PA "Steering angle parity (even parity)";
+CM_ SG_ 512 MBRE_ESP "Set braking torque";
+CM_ SG_ 512 BRE_AKT_ESP "ESP brake intervention active";
+CM_ BO_ 448 "";
+CM_ SG_ 448 TP_TELEAID_AGW "Communication TELEAID to AGW";
+CM_ BO_ 249 "";
+CM_ SG_ 249 TP_TELEAID_EZS "Communication TELEAID to EZS";
+CM_ BO_ 830 "";
+CM_ SG_ 830 TP_TELEAID_KOMBI "Communication TELEAID to KOMBI";
+CM_ BO_ 12 "";
+CM_ SG_ 12 SD_ST1 "System diagnosis status (R230)";
+CM_ SG_ 12 FDS_F_CHAR "FDS characteristic driver dominant [1], subtle [0]";
+CM_ SG_ 12 ESH_LS_EIN "steering column adjustment with I / O help on [1], off [0]";
+CM_ SG_ 12 ESH_SITZ_EIN "Seat adjustment with I / O help on [1], off [0]";
+CM_ SG_ 12 FDS_B_CHAR "FDS characteristic co-driver dominant [1], subtle [0]";
+CM_ SG_ 12 SPI_PARK_AUS "Parking position exterior mirror on [1], off [0]";
+CM_ SG_ 12 VWZ_AUS_MFL "Preselection time deactivated via MFL, switch off LED";
+CM_ SG_ 12 VWZ_AKT "Preselection time activated, switch on LED";
+CM_ SG_ 12 STHL_EIN_KOMBI "switch on auxiliary heating / ventilation";
+CM_ SG_ 12 V_ANZ "Displayed vehicle speed";
+CM_ SG_ 12 ABL_NLZ "low beam afterglow time";
+CM_ SG_ 12 INLI_NLZ "afterglow time inside light";
+CM_ SG_ 12 LANGUAGE "language";
+CM_ SG_ 12 UFB_EIN "Switch on surrounding lighting";
+CM_ SG_ 12 RDK_AKT "activate RDK (W220 / C215)";
+CM_ SG_ 12 FL_OK "Switching on the high beam is permitted";
+CM_ SG_ 12 IRS_VDK_EIN "Interior protection with the convertible top open";
+CM_ SG_ 12 AFL_EIN "Switch on automatic headlights";
+CM_ SG_ 12 TFL_EIN "switch on daytime running lights";
+CM_ SG_ 12 T_C "temperature unit \"° C\" [1], \"° F\" [0]";
+CM_ SG_ 12 AUTO_TUER "Automatic door locking on / off";
+CM_ SG_ 12 SBS_EIN "switch on the voice control system";
+CM_ SG_ 12 RR_KM "trip calculator km / miles";
+CM_ SG_ 12 SLF "memory search [1], station search [0]";
+CM_ SG_ 12 SCHLUE_ABH_AUS "key dependency off [1], on [0]";
+CM_ SG_ 12 KL_58D "Brightness of instrument and search lighting";
+CM_ BO_ 610 "";
+CM_ SG_ 610 D6_KI "data byte 6";
+CM_ SG_ 610 D5_KI "data byte 5";
+CM_ SG_ 610 D4_KI "data byte 4";
+CM_ SG_ 610 D3_KI "data byte 3";
+CM_ SG_ 610 D2_KI "data byte 2";
+CM_ SG_ 610 D1_KI "data byte 1";
+CM_ SG_ 610 D0_KI "data byte 0";
+CM_ SG_ 610 SNR_KI "Sequence Number";
+CM_ SG_ 610 EOM_KI "End of message";
+CM_ SG_ 610 ANR_KI "Acknowledge not requested";
+CM_ SG_ 610 ST_KI "Service type";
+CM_ SG_ 610 TPDU_KI "Data [0], connection management [1]";
+CM_ BO_ 568 "";
+CM_ SG_ 568 RW "range";
+CM_ SG_ 568 KM "mileage";
+CM_ SG_ 568 A_TIME "Current time";
+CM_ BO_ 820 "";
+CM_ SG_ 820 OEL_FS "oil level";
+CM_ SG_ 820 T_OEL "oil temperature";
+CM_ SG_ 820 DIAG_KL "Diagnostic control lamp (OBD II)";
+CM_ SG_ 820 OEL_KL "Oil level / oil pressure control lamp";
+CM_ SG_ 820 UEHITZ "engine oil temperature too high (overheating)";
+CM_ SG_ 820 BBV_KL "Brake pad wear indicator lamp";
+CM_ SG_ 820 ABS_KL "ABS defective control lamp";
+CM_ SG_ 820 ESP_KL "ESP defective control lamp";
+CM_ SG_ 820 BAS_KL "BAS defective control lamp";
+CM_ SG_ 820 TFSM "minimum tank level";
+CM_ BO_ 824 "";
+CM_ SG_ 824 RLS "remaining distance";
+CM_ SG_ 824 RLZ "remaining time";
+CM_ SG_ 824 RLZS_OK "remaining running time / distance valid";
+CM_ SG_ 824 RLZS_PRIO "Priority: remaining distance [0]; Remaining term [1]";
+CM_ SG_ 824 RLS_KM "remaining distance in km [0]; in miles [1]";
+CM_ BO_ 60 "";
+CM_ SG_ 60 KOMBI_MW_OK "Kombi has added value";
+CM_ SG_ 60 HD_BEGRENZ "trunk lid limitation on";
+CM_ SG_ 60 SP_ANKL_SPERR "Mirror folding in with vehicle locking blocked [1], allowed [0]";
+CM_ SG_ 60 REST_EIN_KI "switch on residual heat";
+CM_ SG_ 60 DSPL_DIMM "display dimming";
+CM_ BO_ 255 "";
+CM_ SG_ 255 KM_KI "mileage";
+CM_ SG_ 255 SCHLUE_ID_KI "Key ID from the combination";
+CM_ BO_ 560 "";
+CM_ SG_ 560 PTT_1_1 "Activate Linguatronic";
+CM_ SG_ 560 PTT_1_2 "Deactivate Linguatronic";
+CM_ SG_ 560 PTT_2_1 "reserve";
+CM_ SG_ 560 PTT_2_2 "reserve";
+CM_ SG_ 560 PTT_3_1 "reserve";
+CM_ SG_ 560 PTT_3_2 "reserve";
+CM_ SG_ 560 PTT_4_1 "reserve";
+CM_ SG_ 560 PTT_4_2 "reserve";
+CM_ SG_ 560 BUTTON_5_1 "reserve";
+CM_ SG_ 560 BUTTON_5_2 "reserve";
+CM_ SG_ 560 BUTTON_6_1 "reserve";
+CM_ SG_ 560 BUTTON_6_2 "reserve";
+CM_ SG_ 560 BUTTON_7_1 "reserve";
+CM_ SG_ 560 BUTTON_7_2 "reserve";
+CM_ SG_ 560 BUTTON_8_1 "reserve";
+CM_ SG_ 560 BUTTON_8_2 "reserve";
+CM_ SG_ 560 BUTTON_1_1 "Next display";
+CM_ SG_ 560 BUTTON_1_2 "Previous display";
+CM_ SG_ 560 BUTTON_2_1 "reserve";
+CM_ SG_ 560 BUTTON_2_2 "reserve";
+CM_ SG_ 560 BUTTON_3_1 "\"+\" button";
+CM_ SG_ 560 BUTTON_3_2 "button \"-\"";
+CM_ SG_ 560 BUTTON_4_1 "Telephone send";
+CM_ SG_ 560 BUTTON_4_2 "Telephone End";
+CM_ SG_ 560 MFL_MENUE "Affected MFL menu";
+CM_ BO_ 523 "";
+CM_ SG_ 523 PRIO_KI "priorities on the combi";
+CM_ BO_ 639 "";
+CM_ SG_ 639 TP_KOMBI_AGW "communication KOMBI to AGW";
+CM_ BO_ 959 "";
+CM_ SG_ 959 TP_KOMBI_TELEAID "communication KOMBI to TELEAID";
+CM_ BO_ 257 "";
+CM_ SG_ 257 WASHING "switch washing on";
+CM_ SG_ 257 SCH_WI_INT "Switch on windshield wiper interval";
+CM_ SG_ 257 SCH_WI_1 "Switch on windshield wiper stage 1";
+CM_ SG_ 257 SCH_WI_2 "Switch on windshield wiper stage 2";
+CM_ SG_ 257 FL_EIN "switch on high beam";
+CM_ SG_ 257 LHP_EIN "switch on headlight flasher";
+CM_ SG_ 257 SGH_EIN_MRM "switch on the horn";
+CM_ BO_ 5 "";
+CM_ SG_ 5 BLI_HELL "Duration of the blinker light phase";
+CM_ SG_ 5 BLI_LI_EIN "Switch on the left turn signal";
+CM_ SG_ 5 BLI_RE_EIN "Switch on the right turn signal";
+CM_ BO_ 816 "";
+CM_ SG_ 816 STOP "\"Cancel\" lever pressed";
+CM_ SG_ 816 VOICE_CTRL "\"Push to talk\" lever pressed (W220 only from ÄJ 00/1)";
+CM_ SG_ 816 DISPLAY_UP "\"Display up\" key pressed";
+CM_ SG_ 816 DISPLAY_DN "\"Display down\" button pressed (W220 to ÄJ 00/1: Voice_Ctrl)";
+CM_ SG_ 816 SCROLL_UP "\"Scroll up\" button pressed";
+CM_ SG_ 816 SCROLL_DN "\"Scroll down\" button pressed";
+CM_ SG_ 816 VOLUME_UP "\"Volume +\" key pressed";
+CM_ SG_ 816 VOLUME_DN "\"Volume -\" key pressed";
+CM_ SG_ 816 PHONE_END "\"Phone end\" key pressed";
+CM_ SG_ 816 PHONE_SEND "\"Phone send\" key pressed";
+CM_ BO_ 516 "";
+CM_ SG_ 516 LS_AUF "steering column";
+CM_ SG_ 516 LS_AB "steering column";
+CM_ SG_ 516 LS_VOR "steering column";
+CM_ SG_ 516 LS_BACK "steering column";
+CM_ SG_ 516 ESH_EIN "switch on entry aid (W220 / C215)";
+CM_ SG_ 516 LSVH_OB "steering column adjustment lever turned up";
+CM_ SG_ 516 LSVH_UN "steering column adjustment lever turned down";
+CM_ BO_ 56 "";
+CM_ SG_ 56 LRK_STOERG "LRK LEDs flash because of. Disorder";
+CM_ SG_ 56 LH_LED_EIN "Switch on the LED steering wheel heating";
+CM_ SG_ 56 LBLFT_LED_EIN "Switch on the LED steering wheel ventilation";
+CM_ BO_ 10 "";
+CM_ SG_ 10 I_KOMP "Current compressor main control valve";
+CM_ SG_ 10 MABL_ZU "Message: \"Close center shelf! IRS cannot be activated\"";
+CM_ SG_ 10 AS_AKT "Activate towing protection";
+CM_ SG_ 10 PNK_ALM_AKT "Panic alarm is active";
+CM_ SG_ 10 HD_AKT "Activate trunk lid monitoring";
+CM_ SG_ 10 LS_ZH "steering column too high";
+CM_ SG_ 10 EDW_AKT "EDW sharpened";
+CM_ SG_ 10 IRS_AKT "activate interior protection";
+CM_ SG_ 10 KOMP_DEF "Refrigeration compressor control, current output defective";
+CM_ SG_ 10 KOMP_EIN "Air conditioning compressor switched on";
+CM_ SG_ 10 HAS_KL "handbrake applied (control lamp)";
+CM_ SG_ 10 BBV_VL "Brake pad wear, front left";
+CM_ SG_ 10 BFL_KL "Brake fluid level control lamp";
+CM_ SG_ 10 P_KAELTE "pressure refrigerant R134a";
+CM_ SG_ 10 T_KAELTE "temperature refrigerant R134a";
+CM_ SG_ 10 T_OUTSIDE "outside air temperature";
+CM_ BO_ 40 "";
+CM_ SG_ 40 BLI_ERS_VL "Front left blinker, replacement light active";
+CM_ SG_ 40 PL_ERS_VL "Parking light, front left, replacement light active";
+CM_ SG_ 40 SWA_AKT "headlight activation active";
+CM_ SG_ 40 BLI_DEF_VL "Front left turn signal defective";
+CM_ SG_ 40 PL_DEF_VL "Front left parking light defective";
+CM_ SG_ 40 ABL_DEF_R "RIGHT low beam defective (with cross cabling)";
+CM_ SG_ 40 FL_DEF_L "left high beam defective";
+CM_ SG_ 40 NSW_DEF_L "Left fog light defective";
+CM_ SG_ 40 SM_DEF_VL "Sidemarker front left defective";
+CM_ SG_ 40 AFL_ST_AKT "Automatic headlight switching is active";
+CM_ SG_ 40 PL_LI_EIN "switch on left parking light";
+CM_ SG_ 40 PL_RE_EIN "switch on right parking light";
+CM_ SG_ 40 STL_EIN "switch on parking lights";
+CM_ SG_ 40 ABL_EIN "switch on low beam";
+CM_ SG_ 40 NSW_EIN "switch on fog lights";
+CM_ SG_ 40 NSL_EIN "switch on rear fog light";
+CM_ SG_ 40 FL_EIN_SAM_F "switch on high beam";
+CM_ SG_ 40 SRA_EIN "switch on headlight cleaning system";
+CM_ BO_ 840 "";
+CM_ SG_ 840 INTERVAL "Steering column switch to \"Interval position\"";
+CM_ SG_ 840 KL_31B_EIN "wiper outside of parking position";
+CM_ SG_ 840 KL_86_EIN "washing activated";
+CM_ SG_ 840 CONFIG "configuration bit";
+CM_ SG_ 840 PARITY_SAM_F "Parity from bit 0 to bit 6 (even)";
+CM_ BO_ 272 "";
+CM_ SG_ 272 HELL_EDW "Duration light-bright phase";
+CM_ SG_ 272 BLI_LI_EIN_EDW "switch on the left turn signal";
+CM_ SG_ 272 BLI_RE_EIN_EDW "switch on the right turn signal";
+CM_ SG_ 272 SL_EIN_EDW "switch on tail light";
+CM_ SG_ 272 ABL_EIN_EDW "switch on low beam";
+CM_ SG_ 272 NSW_EIN_EDW "switch on fog lights";
+CM_ SG_ 272 ABL_DL_EDW "switch on low beam permanently";
+CM_ SG_ 272 IL_DL_EDW "switch on the interior light permanently";
+CM_ SG_ 272 EDW_ALM "EDW alarm triggered";
+CM_ BO_ 14 "";
+CM_ SG_ 14 GWHST_P_SAM_B "Gear selector lever position \"P\" recognized";
+CM_ SG_ 14 KL_30A_EIN "Connect 2nd battery";
+CM_ SG_ 14 IZV_AUF "inside central locking open";
+CM_ SG_ 14 IZV_ZU "Interior central locking closed";
+CM_ SG_ 14 BLI_ERS_VR "Front right indicator, replacement light active";
+CM_ SG_ 14 PL_ERS_VR "Parking light, front right, replacement light active";
+CM_ SG_ 14 MW_AKT_SAM_B "SBC added value: overrun active";
+CM_ SG_ 14 VSTAT_A "SAM / x: v-signal from EHB-ASG, x = B (230), V (211), F (240)";
+CM_ SG_ 14 SAM_B_PAS "SAM / B passive";
+CM_ SG_ 14 BLS_A "SAM / x: Brake light switch output EHB-ASG, x = B (230), V (211), F (240)";
+CM_ SG_ 14 INF_RFE_SAM "SAM / x: EHB-ASG in fall-back level, x = B (230), V (211,164,251), F (240)";
+CM_ SG_ 14 SGH_ST_EIN "Signal horn is switched on";
+CM_ SG_ 14 KWS_KL "cooling water level too low control lamp";
+CM_ SG_ 14 WWS_KL "wash water level too low control lamp";
+CM_ SG_ 14 WWP_DEF "washing water pump defective";
+CM_ SG_ 14 ZWP_LFT "auxiliary water pump is running";
+CM_ SG_ 14 ZWP_DEF "additional water pump defective";
+CM_ SG_ 14 BBV_VR "Brake pad wear, front right";
+CM_ SG_ 14 KL_61_EIN "Terminal 61 is switched on";
+CM_ SG_ 14 BLI_DEF_VR "Front right turn signal defective";
+CM_ SG_ 14 PL_DEF_VR "Front right parking light defective";
+CM_ SG_ 14 ABL_DEF_L "LEFT low beam defective (with cross cabling)";
+CM_ SG_ 14 FL_DEF_R "right high beam defective";
+CM_ SG_ 14 NSW_DEF_R "Right fog light defective";
+CM_ SG_ 14 SM_DEF_VR "Sidemarker front right defective";
+CM_ SG_ 14 MOT_AUF "bonnet open";
+CM_ BO_ 904 "";
+CM_ SG_ 904 EDW_MOT "EDW bonnet contact triggered";
+CM_ SG_ 904 EDW_HAND "EDW glove box contact triggered";
+CM_ BO_ 4 "";
+CM_ SG_ 4 SK_HD_AUF "pawl switch: trunk lid is open";
+CM_ SG_ 4 HHS_ST_EIN "heated rear window is switched on";
+CM_ SG_ 4 HHS_ST_USPG "The heated rear window is switched off due to undervoltage";
+CM_ SG_ 4 GS_HL_GES "Seat belt buckle at the rear left";
+CM_ SG_ 4 GS_HM_GES "Seat belt buckle inserted in the center at the back";
+CM_ SG_ 4 GS_HR_GES "Seat belt buckle at the rear right";
+CM_ SG_ 4 KL_54_DEF "Terminal 54 line (brake light control) defective";
+CM_ SG_ 4 BBV_H "rear brake pad wear";
+CM_ SG_ 4 BRE_BET "brake applied";
+CM_ SG_ 4 TVL_AUF "front left door is open";
+CM_ SG_ 4 TVR_AUF "front right door is open";
+CM_ SG_ 4 THL_AUF "rear left door is open";
+CM_ SG_ 4 THR_AUF "rear right door is open";
+CM_ SG_ 4 HD_AUF "trunk lid is open";
+CM_ SG_ 4 MABL_AUF "center offset is open";
+CM_ SG_ 4 PDM_SAM_H "SAM / H was in power down mode";
+CM_ BO_ 546 "";
+CM_ SG_ 546 BLI_ERS_HL "Rear left turn signal, replacement light active";
+CM_ SG_ 546 SL_ERS_HL "rear left tail light, replacement light active";
+CM_ SG_ 546 BL_ERS_HL "Brake light rear left replacement light active";
+CM_ SG_ 546 BLI_ERS_HR "Rear right turn signal, replacement light active";
+CM_ SG_ 546 SL_ERS_HR "rear right tail light, replacement light active";
+CM_ SG_ 546 BL_ERS_HR "Brake light rear right replacement light active";
+CM_ SG_ 546 TANK_FS "tank level";
+CM_ SG_ 546 BLI_DEF_HR "Rear right turn signal defective";
+CM_ SG_ 546 SL_DEF_HR "rear right tail light defective";
+CM_ SG_ 546 BL_DEF_HR "rear right brake light defective";
+CM_ SG_ 546 NSL_DEF_HR "rear right fog light defective";
+CM_ SG_ 546 RFL_DEF_HR "reversing light rear right defective";
+CM_ SG_ 546 KZL_DEF_HR "rear right license plate light defective";
+CM_ SG_ 546 SM_DEF_HR "Sidemarker at the rear right defective";
+CM_ SG_ 546 BLI_DEF_HL "Rear left turn signal defective";
+CM_ SG_ 546 SL_DEF_HL "rear left tail light defective";
+CM_ SG_ 546 BL_DEF_HL "rear left brake light defective";
+CM_ SG_ 546 NSL_DEF_H "rear fog light (left) defective";
+CM_ SG_ 546 RFL_DEF_HL "rear left reversing light defective";
+CM_ SG_ 546 KZL_DEF_HL "rear left license plate light defective";
+CM_ SG_ 546 SM_DEF_HL "Sidemarker rear left defective";
+CM_ SG_ 546 BL3_DEF "3rd brake light defective";
+CM_ BO_ 908 "";
+CM_ SG_ 908 EDW_IRS_ALM "EDW interior protection alarm triggered";
+CM_ SG_ 908 EDW_FBL "EDW rear box contact left triggered";
+CM_ SG_ 908 EDW_FBR "EDW rear box contact on the right triggered";
+CM_ SG_ 908 EDW_MABL "EDW center shelf contact triggered";
+CM_ SG_ 908 EDW_TANK_ALM "EDW tank monitoring alarm triggered";
+CM_ SG_ 908 EDW_FT_ENT "EDW driver's door unlocks when EDW is active";
+CM_ SG_ 908 EDW_TVL "EDW door contact front left triggered";
+CM_ SG_ 908 EDW_TVR "EDW door contact front right triggered";
+CM_ SG_ 908 EDW_THL "EDW door contact at the rear left triggered";
+CM_ SG_ 908 EDW_THR "EDW door contact rear right triggered";
+CM_ SG_ 908 EDW_HD "EDW trunk lid contact triggered";
+CM_ SG_ 908 EDW_TKD "EDW tank lid contact triggered";
+CM_ SG_ 908 EDW_TUER_ZU "EDW All doors, trunk lid and center shelf closed";
+CM_ SG_ 908 EDW_AS_ALM "EDW towing protection alarm triggered";
+CM_ BO_ 48 "";
+CM_ SG_ 48 ANHKL_54_DEF "Trailer terminal 54 error";
+CM_ SG_ 48 AHK_NOK "Trailer coupling not locked";
+CM_ SG_ 48 ANH_ERK "Trailer operation detected";
+CM_ SG_ 48 ANHBLI_DEF_R "Right trailer turn signal defective";
+CM_ SG_ 48 ANHSL_DEF_R "Right trailer tail light defective";
+CM_ SG_ 48 ANHBLI_DEF_L "Left trailer turn signal defective";
+CM_ SG_ 48 ANHSL_DEF_L "Left trailer tail light defective";
+CM_ SG_ 48 ANHBL_DEF "trailer brake light defective";
+CM_ SG_ 48 ANHNSL_DEF "trailer rear fog light defective";
+CM_ SG_ 48 ANHRFL_DEF "trailer reversing light defective";
+CM_ BO_ 912 "";
+CM_ SG_ 912 EDW_ANH_ALM "EDW trailer monitoring alarm triggered";
+CM_ BO_ 528 "";
+CM_ SG_ 528 SBLFT_VL_NS "seat ventilation, seat front left next level";
+CM_ SG_ 528 SH_VL_NS "seat heating, front left seat, next level";
+CM_ SG_ 528 SH_VL_S1 "Switch on seat heating, front left seat, level 1";
+CM_ SG_ 528 SH_VL_S2 "Switch on seat heating, front left seat, level 2";
+CM_ SG_ 528 SVL_LE_VOR "front left seat";
+CM_ SG_ 528 SVL_LE_ZUR "front left seat";
+CM_ SG_ 528 SVL_VO_AUF "seat front left";
+CM_ SG_ 528 SVL_VO_AB "seat front left";
+CM_ SG_ 528 SVL_KST_AUF "front left seat";
+CM_ SG_ 528 SVL_KST_AB "front left seat";
+CM_ SG_ 528 SVL_VOR "seat front left";
+CM_ SG_ 528 SVL_ZUR "seat front left";
+CM_ SG_ 528 SVL_SKT_VOR "seat front left";
+CM_ SG_ 528 SVL_SKT_ZUR "front left seat";
+CM_ SG_ 528 SVL_HI_AUF "seat front left";
+CM_ SG_ 528 SVL_HI_AB "seat front left";
+CM_ SG_ 528 SVL_TGL "front left seat";
+CM_ BO_ 532 "";
+CM_ SG_ 532 ISOFIX_EN_RL "take the ISOFIX position";
+CM_ SG_ 532 MVL_SP_BET "Front left memory";
+CM_ SG_ 532 MVL_MAN "memory front left";
+CM_ SG_ 532 MVL_ATM "memory front left";
+CM_ SG_ 532 MVL_P1_EN "memory front left";
+CM_ SG_ 532 MVL_P2_EN "memory front left";
+CM_ SG_ 532 MVL_P1_SP "memory front left";
+CM_ SG_ 532 MVL_P2_SP "memory front left";
+CM_ SG_ 532 MVL_PM_EN "memory front left";
+CM_ SG_ 532 MVL_TGL "memory front left";
+CM_ BO_ 536 "";
+CM_ SG_ 536 FHL_AT_LL "rear left window";
+CM_ SG_ 536 FHL_MT_LL "rear left window";
+CM_ SG_ 536 FHL_MH_LL "rear left window";
+CM_ SG_ 536 FHL_AH_LL "rear left window";
+CM_ SG_ 536 FHR_AT_LL "rear right window";
+CM_ SG_ 536 FHR_MT_LL "rear right window";
+CM_ SG_ 536 FHR_MH_LL "rear right window";
+CM_ SG_ 536 FHR_AH_LL "rear right window";
+CM_ SG_ 536 FVR_AT "front right window";
+CM_ SG_ 536 FVR_MT "front right window";
+CM_ SG_ 536 FVR_MH "front right window";
+CM_ SG_ 536 FVR_AH "front right window";
+CM_ SG_ 536 FEVS_AT_LL "Any window adjustment switch";
+CM_ SG_ 536 FEVS_MT_LL "Any window adjustment switch";
+CM_ SG_ 536 FEVS_MH_LL "Any window adjustment switch";
+CM_ SG_ 536 FEVS_AH_LL "Any window adjustment switch";
+CM_ SG_ 536 SPI_RE_N_LI "outside mirror right to left";
+CM_ SG_ 536 SPI_RE_N_RE "Outside mirror right to right";
+CM_ SG_ 536 SPI_RE_N_OBEN "Outside mirror right up";
+CM_ SG_ 536 SPI_RE_N_UNTEN "Outside mirror right down";
+CM_ SG_ 536 SPI_RE_GARAGE "Outside mirror on the right after garage position";
+CM_ SG_ 536 SPI_RE_FAHREN "Outside mirror right after driving position";
+CM_ SG_ 536 SPI_RE_SP "Save right outside mirror parking position";
+CM_ SG_ 536 SPVS_BET_LL "Mirror adjustment switch actuated";
+CM_ BO_ 65 "";
+CM_ SG_ 65 SN1_TVL "lock nut 1 (open)";
+CM_ SG_ 65 SN2_TVL "lock nut 2 (close)";
+CM_ SG_ 65 KB_TVL "Direction of comfort operation: Open [0], Close [1]";
+CM_ SG_ 65 SHD_TVL "SHD / open / close convertible top";
+CM_ SG_ 65 ALF_TVL "window front left automatic run active";
+CM_ SG_ 65 FVR_TVL "Open / close front right window";
+CM_ SG_ 65 FHL_TVL "Open / close rear left window";
+CM_ SG_ 65 FHR_TVL "Open / close rear right window";
+CM_ BO_ 225 "";
+CM_ SG_ 225 ZBC_TVL "code access authorization";
+CM_ BO_ 16 "";
+CM_ SG_ 16 SD_ST3 "System diagnosis status (R230)";
+CM_ SG_ 16 SD_ST2 "System diagnosis status (R230)";
+CM_ SG_ 16 SD_ST1 "System diagnosis status (R230)";
+CM_ SG_ 16 FVL_BLOCK_UN "Front left window: in the lower block";
+CM_ SG_ 16 FVL_BLOCK_OB "Front left window: in the upper block";
+CM_ SG_ 16 FVL_KZHB_OB "Front left window: short stroke position or above";
+CM_ SG_ 16 FESTE_VL "window position front left";
+CM_ SG_ 16 FVL_KZHB "Activate short-stroke rear left window";
+CM_ SG_ 16 FVL_AUF "Front left window: open (in convertible top release position)";
+CM_ SG_ 16 FVL_BLOCK "Front left window: Block shutdown";
+CM_ SG_ 16 FVL_NORM "Front left window: standardized";
+CM_ SG_ 16 FHWS_HI_LL "Window lifter selector switch in rear position (R230)";
+CM_ SG_ 16 HFS_LL "trunk lid remote locking";
+CM_ SG_ 16 BLI_DEF_L "Flashing light in the left exterior mirror defective";
+CM_ SG_ 16 MV_VL_ST_ZV "solenoid valve is activated";
+CM_ SG_ 16 KISI_EIN_LL "switch on child safety device";
+CM_ SG_ 16 HFE_LL "Remote trunk lid unlocking";
+CM_ SG_ 16 SPVS_BF_LL "Mirror adjustment switch in position passenger";
+CM_ SG_ 16 P_ANF_TVL "pressure request for closing aid";
+CM_ BO_ 529 "";
+CM_ SG_ 529 SBLFT_VR_NS "seat ventilation, front right seat next level";
+CM_ SG_ 529 SH_VR_NS "seat heating, front right seat, next level";
+CM_ SG_ 529 SH_VR_S1 "Switch on seat heating, front right seat, level 1";
+CM_ SG_ 529 SH_VR_S2 "Switch on seat heating, front right seat, level 2";
+CM_ SG_ 529 SVR_LE_VOR "seat front right";
+CM_ SG_ 529 SVR_LE_ZUR "front right seat";
+CM_ SG_ 529 SVR_VO_AUF "seat front right";
+CM_ SG_ 529 SVR_VO_AB "seat front right";
+CM_ SG_ 529 SVR_KST_AUF "front right seat";
+CM_ SG_ 529 SVR_KST_AB "front right seat";
+CM_ SG_ 529 SVR_VOR "seat front right";
+CM_ SG_ 529 SVR_ZUR "seat front right";
+CM_ SG_ 529 SVR_SKT_VOR "seat front right";
+CM_ SG_ 529 SVR_SKT_ZUR "seat front right";
+CM_ SG_ 529 SVR_HI_AUF "seat front right";
+CM_ SG_ 529 SVR_HI_AB "seat in front right";
+CM_ SG_ 529 SVR_TGL "front right seat";
+CM_ BO_ 533 "";
+CM_ SG_ 533 ISOFIX_EN_LL "take the ISOFIX position";
+CM_ SG_ 533 MVR_SP_BET "Front right memory";
+CM_ SG_ 533 MVR_MAN "memory front right";
+CM_ SG_ 533 MVR_ATM "memory front right";
+CM_ SG_ 533 MVR_P1_EN "memory front right";
+CM_ SG_ 533 MVR_P2_EN "memory front right";
+CM_ SG_ 533 MVR_P1_SP "front right memory";
+CM_ SG_ 533 MVR_P2_SP "front right memory";
+CM_ SG_ 533 MVR_PM_EN "memory front right";
+CM_ SG_ 533 MVR_TGL "front right memory";
+CM_ BO_ 537 "";
+CM_ SG_ 537 FHL_AT_RL "rear left window";
+CM_ SG_ 537 FHL_MT_RL "rear left window";
+CM_ SG_ 537 FHL_MH_RL "rear left window";
+CM_ SG_ 537 FHL_AH_RL "rear left window";
+CM_ SG_ 537 FHR_AT_RL "rear right window";
+CM_ SG_ 537 FHR_MT_RL "rear right window";
+CM_ SG_ 537 FHR_MH_RL "rear right window";
+CM_ SG_ 537 FHR_AH_RL "rear right window";
+CM_ SG_ 537 FVL_AT "front left window";
+CM_ SG_ 537 FVL_MT "front left window";
+CM_ SG_ 537 FVL_MH "front left window";
+CM_ SG_ 537 FVL_AH "front left window";
+CM_ SG_ 537 FEVS_AT_RL "Any window adjustment switch";
+CM_ SG_ 537 FEVS_MT_RL "Any window adjustment switch";
+CM_ SG_ 537 FEVS_MH_RL "Any window adjustment switch";
+CM_ SG_ 537 FEVS_AH_RL "Any window adjustment switch";
+CM_ SG_ 537 SPI_LI_N_LI "outside mirror left to left";
+CM_ SG_ 537 SPI_LI_N_RE "outside mirror left to right";
+CM_ SG_ 537 SPI_LI_N_OBEN "outside mirror left up";
+CM_ SG_ 537 SPI_LI_N_UNTEN "Left outside mirror down";
+CM_ SG_ 537 SPI_LI_GARAGE "Outside mirror left after garage position";
+CM_ SG_ 537 SPI_LI_FAHREN "Left outside mirror after driving position";
+CM_ SG_ 537 SPI_LI_SP "Save outside mirror left parking position";
+CM_ SG_ 537 SPVS_BET_RL "Mirror adjustment switch actuated";
+CM_ BO_ 66 "";
+CM_ SG_ 66 SN1_TVR "lock nut 1 (open)";
+CM_ SG_ 66 SN2_TVR "lock nut 2 (close)";
+CM_ SG_ 66 KB_TVR "Direction of comfort control: Open [0], Close [1]";
+CM_ SG_ 66 SHD_TVR "SHD / open / close convertible top";
+CM_ SG_ 66 FVL_TVR "Open / close front left window";
+CM_ SG_ 66 ALF_TVR "window front right automatic run active";
+CM_ SG_ 66 FHL_TVR "Open / close rear left window";
+CM_ SG_ 66 FHR_TVR "Open / close rear right window";
+CM_ BO_ 226 "";
+CM_ SG_ 226 ZBC_TVR "Access authorization code";
+CM_ BO_ 17 "";
+CM_ SG_ 17 SD_ST3 "System diagnosis status (R230)";
+CM_ SG_ 17 SD_ST2 "System diagnosis status (R230)";
+CM_ SG_ 17 SD_ST1 "System diagnosis status (R230)";
+CM_ SG_ 17 FVR_BLOCK_UN "Front right window: in the lower block";
+CM_ SG_ 17 FVR_BLOCK_OB "Front right window: in the upper block";
+CM_ SG_ 17 FVR_KZHB_OB "Front right window: short stroke position or above";
+CM_ SG_ 17 FESTE_VR "window position front right";
+CM_ SG_ 17 FVR_KZHB "Activate short-stroke window at the rear right";
+CM_ SG_ 17 FVR_AUF "Front right window: open (in convertible top release position)";
+CM_ SG_ 17 FVR_BLOCK "Front right window: Block shutdown";
+CM_ SG_ 17 FVR_NORM "Front right window: standardized";
+CM_ SG_ 17 FHWS_HI_RL "Window lifter selector switch in rear position (R230)";
+CM_ SG_ 17 HFS_RL "trunk lid remote locking";
+CM_ SG_ 17 BLI_DEF_R "Flashing light in the right wing mirror is defective";
+CM_ SG_ 17 MV_VR_ST_ZV "solenoid valve is activated";
+CM_ SG_ 17 KISI_EIN_RL "switch on child safety device";
+CM_ SG_ 17 HFE_RL "trunk lid remote release";
+CM_ SG_ 17 SPVS_BF_RL "Mirror adjustment switch in the passenger position";
+CM_ SG_ 17 P_ANF_TVR "pressure request for closing aid";
+CM_ BO_ 114 "";
+CM_ SG_ 114 SBLFT_HL_NS "seat ventilation, rear left seat next level";
+CM_ SG_ 114 SH_HL_NS "seat heating, seat rear left, next level";
+CM_ SG_ 114 SH_HL_S1 "Switch on seat heating, rear left seat, level 1";
+CM_ SG_ 114 SH_HL_S2 "Switch on seat heating, rear left seat, level 2";
+CM_ SG_ 114 SHL_KST_AUF "rear left seat";
+CM_ SG_ 114 SHL_KST_AB "rear left seat";
+CM_ SG_ 114 SHL_VOR "seat back left";
+CM_ SG_ 114 SHL_ZUR "seat back left";
+CM_ SG_ 114 SHL_AUF "seat back left";
+CM_ SG_ 114 SHL_AB "rear left seat";
+CM_ SG_ 114 SHL_TGL "rear left seat";
+CM_ BO_ 626 "";
+CM_ SG_ 626 MHL_P1_EN "memory rear left";
+CM_ SG_ 626 MHL_P2_EN "memory rear left";
+CM_ SG_ 626 MHL_P3_EN "memory rear left";
+CM_ SG_ 626 MHL_P1_SP "memory rear left";
+CM_ SG_ 626 MHL_P2_SP "memory rear left";
+CM_ SG_ 626 MHL_P3_SP "memory rear left";
+CM_ SG_ 626 MHL_TGL "memory back left";
+CM_ BO_ 722 "";
+CM_ SG_ 722 FV_SBLFT_VL_NS "seat ventilation, seat front left next level";
+CM_ SG_ 722 FV_SH_VL_NS "Seat heating, front left seat, next level";
+CM_ SG_ 722 FV_SH_VL_S1 "Switch on front left seat heating, level 1";
+CM_ SG_ 722 FV_SH_VL_S2 "Switch on seat heating, front left seat, level 2";
+CM_ SG_ 722 FV_SVL_LE_VOR "front left seat";
+CM_ SG_ 722 FV_SVL_LE_ZUR "front left seat";
+CM_ SG_ 722 FV_SVL_KST_AUF "front left seat";
+CM_ SG_ 722 FV_SVL_KST_AB "front left seat";
+CM_ SG_ 722 FV_SVL_VOR "seat front left";
+CM_ SG_ 722 FV_SVL_ZUR "seat front left";
+CM_ SG_ 722 MHL_RP_EN "Memory at the back left";
+CM_ SG_ 722 FV_SVL_HI_AUF "seat front left";
+CM_ SG_ 722 FV_SVL_HI_AB "seat front left";
+CM_ SG_ 722 SWSL_VO "Left seat selector switch in front position";
+CM_ SG_ 722 FV_SVL_TGL "seat front left";
+CM_ BO_ 370 "";
+CM_ SG_ 370 FESTE_HL "window position rear left";
+CM_ SG_ 370 FHL_KZHB "rear left window:> = short stroke position open";
+CM_ SG_ 370 FHL_AUF "window rear left: open (below KLA position)";
+CM_ SG_ 370 FHL_BLOCK "rear left window: block shutdown";
+CM_ SG_ 370 FHL_NORM "rear left window: standardized";
+CM_ SG_ 370 MV_HL_ST_ZV "solenoid valve is activated";
+CM_ SG_ 370 P_ANF_THL "pressure request for closing aid";
+CM_ BO_ 115 "";
+CM_ SG_ 115 SBLFT_HR_NS "seat ventilation, seat rear right next level";
+CM_ SG_ 115 SH_HR_NS "Seat heating, rear right seat, next level";
+CM_ SG_ 115 SH_HR_S1 "Switch on seat heating, rear right seat, level 1";
+CM_ SG_ 115 SH_HR_S2 "Switch on seat heating, rear right seat, level 2";
+CM_ SG_ 115 SHR_KST_AUF "rear right seat";
+CM_ SG_ 115 SHR_KST_AB "rear right seat";
+CM_ SG_ 115 SHR_VOR "seat back right";
+CM_ SG_ 115 SHR_ZUR "seat back right";
+CM_ SG_ 115 SHR_AUF "seat back right";
+CM_ SG_ 115 SHR_AB "seat back right";
+CM_ SG_ 115 SHR_TGL "rear right seat";
+CM_ BO_ 627 "";
+CM_ SG_ 627 MHR_P1_EN "memory rear right";
+CM_ SG_ 627 MHR_P2_EN "memory rear right";
+CM_ SG_ 627 MHR_P3_EN "memory rear right";
+CM_ SG_ 627 MHR_P1_SP "memory rear right";
+CM_ SG_ 627 MHR_P2_SP "memory rear right";
+CM_ SG_ 627 MHR_P3_SP "memory rear right";
+CM_ SG_ 627 MHR_TGL "Memory back right";
+CM_ BO_ 723 "";
+CM_ SG_ 723 FV_SBLFT_VR_NS "seat ventilation, seat front right next level";
+CM_ SG_ 723 FV_SH_VR_NS "Seat heating, front right seat, next level";
+CM_ SG_ 723 FV_SH_VR_S1 "Switch on the front right seat heating stage 1";
+CM_ SG_ 723 FV_SH_VR_S2 "Switch on the front right seat heating stage 2";
+CM_ SG_ 723 FV_SVR_LE_VOR "seat front right";
+CM_ SG_ 723 FV_SVR_LE_ZUR "front right seat";
+CM_ SG_ 723 FV_SVR_KST_AUF "front right seat";
+CM_ SG_ 723 FV_SVR_KST_AB "front right seat";
+CM_ SG_ 723 FV_SVR_VOR "seat front right";
+CM_ SG_ 723 FV_SVR_ZUR "seat front right";
+CM_ SG_ 723 MHR_RP_EN "Memory back right";
+CM_ SG_ 723 FV_SVR_HI_AUF "seat front right";
+CM_ SG_ 723 FV_SVR_HI_AB "seat in front right";
+CM_ SG_ 723 SWSR_VO "Right seat selector switch in front position";
+CM_ SG_ 723 FV_SVR_TGL "front right seat";
+CM_ BO_ 371 "";
+CM_ SG_ 371 FESTE_HR "window position rear right";
+CM_ SG_ 371 FHR_KZHB "rear right window:> = short stroke position open";
+CM_ SG_ 371 FHR_AUF "rear right window: open (below KLA position)";
+CM_ SG_ 371 FHR_BLOCK "Rear right window: Block shutdown";
+CM_ SG_ 371 FHR_NORM "rear right window: standardized";
+CM_ SG_ 371 MV_HR_ST_ZV "solenoid valve is activated";
+CM_ SG_ 371 P_ANF_THR "pressure request for closing aid";
+CM_ BO_ 22 "";
+CM_ SG_ 22 SD_ST2 "System diagnosis status (R230)";
+CM_ SG_ 22 SD_ST1 "System diagnosis status (R230)";
+CM_ SG_ 22 FHL_KZHB_VS "rear left window:> = short stroke position open";
+CM_ SG_ 22 FHL_AUF_VS "rear left window: open";
+CM_ SG_ 22 FHL_BLOCK_VS "Rear left window: Block shutdown";
+CM_ SG_ 22 FHL_NORM_VS "rear left window: standardized";
+CM_ SG_ 22 FHR_KZHB_VS "rear right window:> = short stroke position open";
+CM_ SG_ 22 FHR_AUF_VS "rear right window: open";
+CM_ SG_ 22 FHR_BLOCK_VS "Rear right window: Block shutdown";
+CM_ SG_ 22 FHR_NORM_VS "rear right window: standardized";
+CM_ SG_ 22 VS_M1 "Message 1: \"Close trunk lid\"";
+CM_ SG_ 22 VS_M2 "Message 2: \"Close trunk partition\"";
+CM_ SG_ 22 VS_M3 "Message 3: \"Start engine\"";
+CM_ SG_ 22 VS_M4 "Message 4: \"Lock convertible top\"";
+CM_ SG_ 22 VS_M5 "Message 5: \"Raise the roll bar\"";
+CM_ SG_ 22 VS_M6 "Message 6: \"Catch the roll bar\"";
+CM_ SG_ 22 VS_M7 "Message 7: \"Vario roof\"";
+CM_ SG_ 22 VS_M8 "Message 8: \"Please wait\"";
+CM_ SG_ 22 VDK_WARN "Combined warning buzzer on (interval 1 s)";
+CM_ SG_ 22 UERB_KL "roll bar control lamp";
+CM_ SG_ 22 VDK_KL_DL "Convertible top control lamp steady light";
+CM_ SG_ 22 VDK_KL_BL "Convertible top control lamp, flashing light";
+CM_ SG_ 22 VS_M9 "Message 9: \"Visit convertible top workshop\"";
+CM_ SG_ 22 VS_M10 "Message 10: \"Convertible top blocked due to driving operation\"";
+CM_ SG_ 22 VS_M11 "message 11: \"\"";
+CM_ SG_ 22 VS_M12 "message 12: \"\"";
+CM_ SG_ 22 VDK_ST "convertible top status";
+CM_ SG_ 22 VDK_IR_AKT "Convertible top active via IR";
+CM_ SG_ 22 HFE_SPERR "Lock trunk lid remote unlocking";
+CM_ SG_ 22 FVL_SPERR "Lock window lifter at the front left";
+CM_ SG_ 22 FVR_SPERR "lock the front right window regulator";
+CM_ SG_ 22 FHL_SPERR "Lock the rear left window regulator";
+CM_ SG_ 22 FHR_SPERR "Lock the rear right window regulator";
+CM_ BO_ 848 "";
+CM_ SG_ 848 AHLF_EIN_VS "Switch on automatic startup";
+CM_ SG_ 848 KB_VS "Direction of comfort actuation: Open [0], Close [1]";
+CM_ SG_ 848 FVL_VS "Open / close front left window";
+CM_ SG_ 848 FVR_VS "Open / close front right window";
+CM_ SG_ 848 ALFL_VS "window rear left automatic run active";
+CM_ SG_ 848 ALFR_VS "window rear right automatic run active";
+CM_ BO_ 20 "";
+CM_ SG_ 20 SD_ST2 "System diagnosis status (R230)";
+CM_ SG_ 20 SD_ST1 "System diagnosis status (R230)";
+CM_ SG_ 20 FRBL_HELL "Brightness of the footwell lighting";
+CM_ SG_ 20 FRBL_VL "front left footwell lighting on";
+CM_ SG_ 20 FRBL_VR "front right footwell lighting on";
+CM_ SG_ 20 FRBL_HL "rear left footwell lighting on";
+CM_ SG_ 20 FRBL_HR "rear right footwell lighting on";
+CM_ SG_ 20 AFL_GRUND "code switch-on reason";
+CM_ SG_ 20 LISR_DEF "light sensor defective / missing";
+CM_ SG_ 20 VDK_ST_ZU "convertible top is closed (R230)";
+CM_ SG_ 20 AL_EIN "exit lights on";
+CM_ SG_ 20 KL_58D_EIN "Switch on instrument and search lighting";
+CM_ SG_ 20 DSPL_INV_DBE "invert dislpay";
+CM_ SG_ 20 AFL_ABL_EIN "AFL request: switch on low beam";
+CM_ SG_ 20 T_INSIDE "inside temperature";
+CM_ SG_ 20 EL_EIN "entrance lights on";
+CM_ SG_ 20 SHD_ST_ZU "sliding / tilting roof is closed";
+CM_ SG_ 20 SDA_ST_AUF "Sunroof is open";
+CM_ SG_ 20 HDA_ST_AUF "lifting roof is open";
+CM_ SG_ 20 INLI_ST_EIN "interior light is switched on";
+CM_ SG_ 20 FOLI_ST_EIN "rear light is switched on";
+CM_ SG_ 20 LELI_ST_EIN "reading light is switched on";
+CM_ SG_ 20 IFG_LFT "indoor sensor fan is running";
+CM_ BO_ 208 "";
+CM_ SG_ 208 ZBC_DBE "Access authorization code";
+CM_ BO_ 896 "";
+CM_ SG_ 896 WIPER_ON "Wiper request";
+CM_ SG_ 896 ERROR "error coding";
+CM_ SG_ 896 NEU_INI_READY "Re-initialization done";
+CM_ SG_ 896 SEND_WIEDER "request not understood";
+CM_ SG_ 896 SCH_WI_2_RS "switch on windshield wiper stage 2";
+CM_ SG_ 896 PARITY_DBE "Parity from bit 0 to bit 6 (even)";
+CM_ BO_ 906 "";
+CM_ SG_ 906 SHD_ZU_RS "Sliding / tilting roof closed when it rains";
+CM_ SG_ 906 IRS_ALM "Interior protection triggered";
+CM_ BO_ 688 "";
+CM_ SG_ 688 WBL_EIN "hazard warning light on";
+CM_ BO_ 6 "";
+CM_ SG_ 6 SD_ST2 "System diagnosis status (R230)";
+CM_ SG_ 6 SD_ST1 "System diagnosis status (R230)";
+CM_ SG_ 6 ASG_SPORT_BET "ASG sport mode on / off activated (ST2_LED_DL if ABC is available)";
+CM_ SG_ 6 LED_STH_DEF "LEDs for auxiliary heater defective";
+CM_ SG_ 6 STHL_BET "Auxiliary heating / ventilation on / off activated";
+CM_ SG_ 6 SPI_N_LI "exterior mirror to the left ([1] => cycle time = 20ms)";
+CM_ SG_ 6 SPI_N_RE "exterior mirror to the right ([1] => cycle time = 20ms)";
+CM_ SG_ 6 SPI_N_OBEN "exterior mirror up ([1] => cycle time = 20ms)";
+CM_ SG_ 6 SPI_N_UNTEN "exterior mirror down ([1] => cycle time = 20ms)";
+CM_ SG_ 6 SPI_KLAPPEN "Fold out / in outside mirror ([1] => cycle time = 20ms)";
+CM_ SG_ 6 SPVS_BET "mirror adjustment switch actuated ([1] => cycle time = 20ms)";
+CM_ SG_ 6 SPVS_RE "Mirror adjustment switch position (left [0], right [1])";
+CM_ SG_ 6 ART_ABSTAND "distance factor";
+CM_ SG_ 6 ART_ABW_BET "ART distance warning on / off activated";
+CM_ SG_ 6 ESP_BET "ESP on / off actuated";
+CM_ SG_ 6 ST3_BET "LF / ABC 3-stage switch actuated";
+CM_ SG_ 6 ST2_BET "LF / ABC 2-stage switch actuated";
+CM_ SG_ 6 VDK_AUF "open convertible top ([1] => cycle time = 20ms) (R230)";
+CM_ SG_ 6 VDK_ZU "close convertible top ([1] => cycle time = 20ms) (R230)";
+CM_ SG_ 6 UERB_HOCH "raise the roll bar ([1] => cycle time = 20ms) (R230)";
+CM_ SG_ 6 UERB_DOWN "lower the roll bar ([1] => cycle time = 20ms) (R230)";
+CM_ SG_ 6 PTS_BET "Parctronic operated completely on / off";
+CM_ SG_ 6 AFE_EIN "Switch on automatic lane detection";
+CM_ SG_ 6 AFE_AUS "Switch off automatic lane detection";
+CM_ SG_ 6 FKS_BET "Rear head restraints raised / lowered actuated";
+CM_ SG_ 6 HR_BET "Open / close rear blind actuated";
+CM_ SG_ 6 ZV_AUF_IS "open ZV (internal switch actuated)";
+CM_ SG_ 6 ZV_ZU_IS "close ZV (internal switch actuated)";
+CM_ BO_ 259 "";
+CM_ SG_ 259 BLI_HELL_OBF "Duration of the blinker light phase";
+CM_ SG_ 259 BLI_LI_EIN_OBF "turn on the left turn signal";
+CM_ SG_ 259 BLI_RE_EIN_OBF "Switch on the right turn signal";
+CM_ BO_ 264 "";
+CM_ SG_ 264 IRS_AUS "EDW deselect interior protection";
+CM_ SG_ 264 AS_AUS "EDW deselect towing protection";
+CM_ BO_ 288 "";
+CM_ SG_ 288 ZH_AUS_STH "switch off auxiliary heater";
+CM_ BO_ 18 "";
+CM_ SG_ 18 ISOFIX_BF "Isofix switch front passenger (only Roadster)";
+CM_ SG_ 18 GS_F "seat belt buckle driver";
+CM_ SG_ 18 OC_BF "Occupant classification co-driver";
+CM_ SG_ 18 PSG_DETEC_FAST "Passenger detection fast";
+CM_ SG_ 18 GS_BF "seat belt buckle front passenger";
+CM_ SG_ 18 KISI_ST "Child seat status";
+CM_ SG_ 18 KISI_POS "correct child seat position";
+CM_ SG_ 18 KISI_AB_OFF "child seat detected, passenger airbag off";
+CM_ SG_ 18 RAST_SITZ_BF "Check seat locking, front passenger";
+CM_ SG_ 18 SRS_WERK_FT1 "SRS message \"workshop\", on [1], off [0]";
+CM_ SG_ 18 SRS_WERT_FT3 "reserved for BR 203";
+CM_ SG_ 18 SRS_BLINK "SRS control lamp flashing on [1], off [0]";
+CM_ SG_ 18 SRS_KL "Switch on SRS control lamp, on [1], off [0]";
+CM_ SG_ 18 SRS_ROLLE_KI "role N [0], W [1]";
+CM_ SG_ 18 KONTAKT_BF "Check contacting front passenger seat";
+CM_ SG_ 18 AKSE_BLINK "AKSE lights are flashing";
+CM_ SG_ 18 AKSE_EIN "switch on the AKSE lamp";
+CM_ BO_ 144 "";
+CM_ SG_ 144 CRASH_H "rollover event 2";
+CM_ SG_ 144 CRASH_I "rollover event 3";
+CM_ SG_ 144 CRASH_K "rear event 3";
+CM_ SG_ 144 CRASH_L "side event 2";
+CM_ SG_ 144 CRASH_M "event tbd";
+CM_ SG_ 144 CRASH_N "event tbd";
+CM_ SG_ 144 CRASH_O "event tbd";
+CM_ SG_ 144 X_CRASH "Any crash event";
+CM_ SG_ 144 CRASH_A "frontal event 1";
+CM_ SG_ 144 CRASH_B "rear event 1";
+CM_ SG_ 144 CRASH_C "frontal event 5";
+CM_ SG_ 144 CRASH_D "side event 1";
+CM_ SG_ 144 CRASH_E "rear event 2";
+CM_ SG_ 144 CRASH_F "frontal event 2";
+CM_ SG_ 144 CRASH_G "rollover event 1";
+CM_ SG_ 144 CONF_CRASH "Confirm bit for all crash events, toggling";
+CM_ BO_ 276 "";
+CM_ SG_ 276 SVL_LE_RP "front left seat";
+CM_ SG_ 276 ISOFIX_RL "ISOFIX position taken";
+CM_ SG_ 276 FSG_VL_KL "Vehicle-sensitive seat belt lock control lamp";
+CM_ SG_ 276 MVL_ATM_AUS "memory front left";
+CM_ SG_ 276 P1_MVL "Memory position 1 last taken / saved";
+CM_ SG_ 276 P2_MVL "Memory position 2 last taken / saved";
+CM_ SG_ 276 SVL_POS "Position fore / aft adjustment seat front left (frontmost section [0])";
+CM_ SG_ 276 SBLFT_VL_ST "Front seat ventilation status";
+CM_ SG_ 276 LE_VL_ENT "Backrest front left unlocked (warning display for integral seat C215)";
+CM_ SG_ 276 SH_VL_STU1 "Front left seat heating stage 1 is switched on";
+CM_ SG_ 276 SH_VL_STU2 "Front left seat heating stage 2 is switched on";
+CM_ SG_ 276 SH_VL_USPG "Seat heating / ventilation switched off due to undervoltage";
+CM_ SG_ 276 GS_VL_GES "Seat belt buckle on the front left";
+CM_ BO_ 772 "";
+CM_ SG_ 772 MVL_LS_EIN "memory front left";
+CM_ SG_ 772 MVL_REST_EIN "Memory front left";
+CM_ SG_ 772 MVL_FAHR_AKT "Memory front left";
+CM_ SG_ 772 MVL_MAN_SP "memory front left";
+CM_ SG_ 772 ESH_VL_AKT "entry aid front left active";
+CM_ BO_ 277 "";
+CM_ SG_ 277 SVR_LE_RP "front right seat";
+CM_ SG_ 277 ISOFIX_LL "ISOFIX position taken";
+CM_ SG_ 277 FSG_VR_KL "Vehicle-sensitive seat belt lock control lamp";
+CM_ SG_ 277 MVR_ATM_AUS "memory front right";
+CM_ SG_ 277 P1_MVR "Memory position 1 last taken / saved";
+CM_ SG_ 277 P2_MVR "Memory position 2 last taken / saved";
+CM_ SG_ 277 SVR_POS "Position fore / aft adjustment seat front right (frontmost section [0])";
+CM_ SG_ 277 SBLFT_VR_ST "Status seat ventilation front right";
+CM_ SG_ 277 LE_VR_ENT "backrest front right unlocked (warning display with integral seat C215)";
+CM_ SG_ 277 SH_VR_STU1 "Front right seat heating stage 1 is switched on";
+CM_ SG_ 277 SH_VR_STU2 "front right seat heating stage 2 is switched on";
+CM_ SG_ 277 SH_VR_USPG "Seat heating / ventilation switched off due to undervoltage";
+CM_ SG_ 277 GS_VR_GES "seat belt buckle inserted at the front right";
+CM_ BO_ 773 "";
+CM_ SG_ 773 MVR_LS_EIN "memory front right";
+CM_ SG_ 773 MVR_REST_EIN "Memory front right";
+CM_ SG_ 773 MVR_FAHR_AKT "Front right memory";
+CM_ SG_ 773 MVR_MAN_SP "front right memory";
+CM_ SG_ 773 ESH_VR_AKT "entry aid at the front right active";
+CM_ BO_ 728 "";
+CM_ SG_ 728 SBLFT_HR_ST "Status seat ventilation, rear right";
+CM_ SG_ 728 SH_HR_STU1 "Rear right seat heating stage 1 is switched on";
+CM_ SG_ 728 SH_HR_STU2 "Rear right seat heating stage 2 is switched on";
+CM_ SG_ 728 SH_HR_USPG "Seat heating / ventilation switched off due to undervoltage";
+CM_ SG_ 728 SHR_RP "Right rear seat: rest position assumed";
+CM_ SG_ 728 SBLFT_HL_ST "Status seat ventilation, rear left";
+CM_ SG_ 728 SH_HL_STU1 "Rear left seat heating stage 1 is switched on";
+CM_ SG_ 728 SH_HL_STU2 "Rear left seat heating, stage 2 is switched on";
+CM_ SG_ 728 SH_HL_USPG "Seat heating / ventilation switched off due to undervoltage";
+CM_ SG_ 728 SHL_RP "Rear left seat: rest position assumed";
+CM_ BO_ 712 "";
+CM_ SG_ 712 P_PFDS "Supply pressure FDS pump";
+CM_ SG_ 712 PFDSMOT_ST "Status of the FDS pump motor";
+CM_ SG_ 712 PFDS_OVLD "Pre-warning overload";
+CM_ SG_ 712 PFDS_ENT "vent the pressure vessel";
+CM_ SG_ 712 PFDS_DEAKT "FDS pump deactivated";
+CM_ BO_ 716 "";
+CM_ SG_ 716 PFDS_ANF_VL "FDS pump request";
+CM_ SG_ 716 FDSVL_STAT "FDSVL status";
+CM_ SG_ 716 SEIT_AKT_VL "lateral stop adjustment active";
+CM_ SG_ 716 MITT_AKT_VL "Dynamic lumbar support adjustment active";
+CM_ SG_ 716 FDS_AKT_VL "Driving dynamic seat adjustment active";
+CM_ BO_ 717 "";
+CM_ SG_ 717 PFDS_ANF_VR "FDS pump request";
+CM_ SG_ 717 FDSVR_STAT "FDSVR status";
+CM_ SG_ 717 SEIT_AKT_VR "lateral stop adjustment active";
+CM_ SG_ 717 MITT_AKT_VR "Dynamic lumbar support adjustment active";
+CM_ SG_ 717 FDS_AKT_VR "Driving dynamic seat adjustment active";
+CM_ BO_ 8 "";
+CM_ SG_ 8 P_SK_SOLL "Target power seat air conditioning (0-100%, 0-100.1%)";
+CM_ SG_ 8 SH_SBLFT "seat heating [0], seat ventilation [1]";
+CM_ SG_ 8 REST_AKT "residual heat mode active";
+CM_ SG_ 8 STH_AKT "auxiliary heating / auxiliary ventilation active";
+CM_ SG_ 8 HEATING "switch on auxiliary heating";
+CM_ SG_ 8 VENTILATE "Switch on parking ventilation";
+CM_ SG_ 8 KOMP_STELL "refrigeration compressor control signal";
+CM_ SG_ 8 M_KOMP "Torque absorption refrigeration compressor";
+CM_ SG_ 8 U_GEBL "fan voltage";
+CM_ SG_ 8 NLFTS "Motor fan setpoint speed";
+CM_ SG_ 8 LL_DZA "Idle speed increase to increase the cooling capacity";
+CM_ SG_ 8 KLA_DEF "KLA defective";
+CM_ SG_ 8 ZH_EIN_OK "Switching on auxiliary heater allowed";
+CM_ SG_ 8 ZWP_EIN "switch on additional water pump";
+CM_ SG_ 8 IFG_EIN "switch on indoor sensor fan";
+CM_ SG_ 8 KOMP_EIN_KLA "switch on the refrigeration compressor";
+CM_ SG_ 8 HHS_EIN "Switch on the heated rear window";
+CM_ SG_ 8 MAXCOOL "\"MAXCOOL\" display (USA only)";
+CM_ BO_ 680 "";
+CM_ SG_ 680 FOND_MODE "Remote control FKLA active";
+CM_ SG_ 680 FKLA_GBA_MAN "FKLA fan bar display only active in manual mode";
+CM_ SG_ 680 FKLA_DSPL_NEG "FKLA display always negative";
+CM_ SG_ 680 FKLA_DSPL_POS "FKLA display always positive";
+CM_ SG_ 680 TAKT_RED "Reduction of the cycle valve characteristic";
+CM_ SG_ 680 FLR_LES "read errors";
+CM_ SG_ 680 FLR_LOE "delete errors";
+CM_ SG_ 680 WVK_EIN "FKLA heat pre-conditioning on";
+CM_ SG_ 680 SWA "Sensor value display active";
+CM_ SG_ 680 BLOWER_AUTO "Automatic blower active";
+CM_ SG_ 680 GE "basic setting active";
+CM_ SG_ 680 EC "EC mode active";
+CM_ SG_ 680 CALIBRATION "calibration run active";
+CM_ SG_ 680 RECIRCULATION "Recirculation active";
+CM_ SG_ 680 KLA_OFF "0 button pressed";
+CM_ SG_ 680 DEFROST "Defrost function active";
+CM_ SG_ 680 GEBL_SOLL_H "Rear fan setpoint";
+CM_ SG_ 680 SOLL_HR "Setpoint rear right";
+CM_ SG_ 680 SOLL_HL "Setpoint rear left";
+CM_ SG_ 680 TBSOLL_HR "target exhaust temperature rear right";
+CM_ SG_ 680 TBSOLL_HL "target exhaust temperature rear left";
+CM_ BO_ 520 "";
+CM_ SG_ 520 T_AUSSEN_WM "Outside air temperature for heat management";
+CM_ SG_ 520 T_TAU "dew point temperature";
+CM_ SG_ 520 SUN_MW "Sun intensity mean";
+CM_ SG_ 520 SONNE_HL "Sun intensity back left";
+CM_ SG_ 520 SUN_HR "Sun intensity back right";
+CM_ SG_ 520 SONNE_VR "Sun intensity front right";
+CM_ SG_ 520 SUN_VL "Sun intensity front left";
+CM_ BO_ 592 "";
+CM_ SG_ 592 AHLF_EIN "Switch on automatic acceleration / deceleration";
+CM_ SG_ 592 KB_KLA "Direction of comfort control: Open [0], Close [1]";
+CM_ SG_ 592 SHD_KLA "SHD / open / close convertible top";
+CM_ SG_ 592 FVL_KLA "Open / close front left window";
+CM_ SG_ 592 FVR_KLA "Open / close front right window";
+CM_ SG_ 592 FHL_KLA "Open / close rear left window";
+CM_ SG_ 592 FHR_KLA "Open / close rear right window";
+CM_ BO_ 368 "";
+CM_ SG_ 368 FKLA_FLR4 "FKLA error, byte 4";
+CM_ SG_ 368 FKLA_FLR3 "FKLA error, byte 3";
+CM_ SG_ 368 FKLA_FLR2 "FKLA error, byte 2";
+CM_ SG_ 368 FKLA_FLR1 "FKLA error, byte 1";
+CM_ SG_ 368 GEBLAUTO_FKLA "automatic fan FKLA active";
+CM_ SG_ 368 REST_EIN "Switch on residual heat";
+CM_ SG_ 368 R134A_AUF "Solenoid valve R134a is open";
+CM_ SG_ 368 FKLA_ST_AUS "FKLA is switched off";
+CM_ SG_ 368 FAN_H "Fan position";
+CM_ SG_ 368 FKLA_SOLL_HR "Setpoint from rear right rear KLA";
+CM_ SG_ 368 FKLA_SOLL_HL "Setpoint of rear left rear KLA";
+CM_ BO_ 376 "";
+CM_ SG_ 376 LVP "position air distribution potentiometer";
+CM_ SG_ 376 FKLA_HW "Hardware status rear KLA";
+CM_ SG_ 376 FKLA_SW "software version Fond-KLA";
+CM_ SG_ 376 TVERD_H "rear evaporator temperature";
+CM_ SG_ 376 TB_HR "discharge temperature rear right";
+CM_ SG_ 376 TB_HL "discharge temperature rear left";
+CM_ BO_ 812 "";
+CM_ SG_ 812 M8 "meld. 8: \"Keyless Go teach-in process active\" (white)";
+CM_ SG_ 812 M9 "meld. 9: \"Check doors\" (white)";
+CM_ SG_ 812 M10 "Mess. 10: \"Check chip card / key battery\" (white, acknowledgment required)";
+CM_ SG_ 812 M11 "meld. 11: \"Check Keyless Go System\"";
+CM_ SG_ 812 M12 "meld. 12: \"Take your chip card / key with you!\"";
+CM_ SG_ 812 M13 "meld. 13: \"Keyless Go No authorization!\"";
+CM_ SG_ 812 M14 "meld. 14: \"Keyless Go in Diagnosis\"";
+CM_ SG_ 812 KG_SCHLUE_VH "Keyless Go with chip card [0] or key [1]";
+CM_ SG_ 812 M6 "meld. 6: \"Selector lever to P\" (white)";
+CM_ SG_ 812 DOOR_PRF "meld. 7: \"Check doors\" (RED)";
+CM_ SG_ 812 M0 "meld. 0: \"Chip card / key not recognized\" (red)";
+CM_ SG_ 812 M1 "meld. 1: \"Chip card / key not recognized\" (white)";
+CM_ SG_ 812 M2 "meld. 2: \"Chip card / key recognized in vehicle\" (white)";
+CM_ SG_ 812 M3 "meld. 3: \"Selector lever to P\" (red, continuous tone)";
+CM_ SG_ 812 M4 "meld. 4: \"Check chip card / key battery\" (white)";
+CM_ SG_ 812 M5 "Mess. 5: \"Visit Keyless Go workshop\" (white)";
+CM_ BO_ 224 "";
+CM_ SG_ 224 ZB_FBC_KG "access / driving authorization code";
+CM_ BO_ 584 "";
+CM_ SG_ 584 AHLF_EIN_KG "Switch on automatic startup";
+CM_ SG_ 584 KB_KG "Direction of comfort operation: Open [0], Close [1]";
+CM_ SG_ 584 SHD_KG "SHD / open / close convertible top";
+CM_ SG_ 584 FVL_KG "Open / close front left window";
+CM_ SG_ 584 FVR_KG "Open / close front right window";
+CM_ SG_ 584 FHL_KG "Open / close rear left window";
+CM_ SG_ 584 FHR_KG "Open / close rear right window";
+CM_ BO_ 672 "";
+CM_ SG_ 672 ZB_FBC_FSS "access / drive authorization code";
+CM_ BO_ 468 "";
+CM_ SG_ 468 HD_KGAS_BET "trunk lid KG external security button pressed";
+CM_ SG_ 468 HD_ZU_KG "close trunk lid";
+CM_ SG_ 468 HD_STOP_KG "trunk lid stop";
+CM_ SG_ 468 WBL_EIN_KG "hazard warning light on";
+CM_ BO_ 7 "";
+CM_ SG_ 7 SD_ST1 "System diagnosis status (R230)";
+CM_ SG_ 7 HD_KGIS_AKT "trunk lid KG interior lock button active";
+CM_ SG_ 7 HD_KGIS_BET "trunk lid KG interior lock button pressed";
+CM_ SG_ 7 HD_OEFWKL "opening angle trunk lid";
+CM_ SG_ 7 ZV_VL_SEL "Front left door is unlocked selectively";
+CM_ SG_ 7 ZV_VR_SEL "Front right door is unlocked selectively";
+CM_ SG_ 7 ZV_HL_SEL "Rear left door is unlocked selectively";
+CM_ SG_ 7 ZV_HR_SEL "Rear right door is unlocked selectively";
+CM_ SG_ 7 HD_ENT "trunk lid is unlocked";
+CM_ SG_ 7 HD_IS_BET "Boot lid interior lock button pressed";
+CM_ SG_ 7 HD_LFT_AUF "trunk lid opens";
+CM_ SG_ 7 HD_LFT_ZU "trunk lid closes";
+CM_ SG_ 7 ZV_VL_ENT "(target) state of front left locking: unlocked";
+CM_ SG_ 7 ZV_VR_ENT "(target) state of locking front right: unlocked";
+CM_ SG_ 7 ZV_HL_ENT "(target) status of rear left locking: unlocked";
+CM_ SG_ 7 ZV_HR_ENT "(target) state of locking rear right: unlocked";
+CM_ SG_ 7 ZV_HD_ENT "(target) status of locking of trunk lid: unlocked";
+CM_ SG_ 7 ZV_ENT_SEL "Central locking is selectively unlocked";
+CM_ SG_ 7 SEL_OK "Selective information in byte 4 is valid";
+CM_ SG_ 7 ZV_UNBKNT "(target) state of locking unknown";
+CM_ SG_ 7 MV_VL_ZV "Activate the front left solenoid valve";
+CM_ SG_ 7 MV_VR_ZV "Activate the front right solenoid valve";
+CM_ SG_ 7 MV_HL_ZV "Activate the solenoid valve at the rear left";
+CM_ SG_ 7 MV_HR_ZV "Activate the solenoid valve at the rear right";
+CM_ SG_ 7 ZZH_VL_AKT "closing aid front left active (C215)";
+CM_ SG_ 7 ZZH_VR_AKT "closing aid front right active (C215)";
+CM_ SG_ 7 HD_IOEF_BET "Boot lid interior opening button (KIT) pressed";
+CM_ SG_ 7 KOFABT_ZU "trunk partition closed (R230)";
+CM_ SG_ 7 ZV_AUSSEN "ZV was locked from the outside (W220 / C215)";
+CM_ SG_ 7 ZV_AV "ZV automatic locking carried out (v> 15 km / h)";
+CM_ SG_ 7 DFS_BET "rotary latch switch actuated";
+CM_ SG_ 7 HD_OEF "open trunk lid (external switch actuated)";
+CM_ SG_ 7 ZV_NV "ZV post-locking carried out";
+CM_ SG_ 7 KISI_WARN "Warning tone: Door child lock unlocked";
+CM_ SG_ 7 ZV_ST_ENT "Central locking is unlocked (vehicle is open)";
+CM_ SG_ 7 ZV_ST_VER "Central locking is locked (vehicle is closed)";
+CM_ BO_ 67 "";
+CM_ SG_ 67 SN1_ZVP "lock nut 1 (open)";
+CM_ SG_ 67 SN2_ZVP "lock nut 2 (close)";
+CM_ SG_ 67 KB_ZVP "Direction of comfort actuation: Open [0], Close [1]";
+CM_ SG_ 67 SHD_ZVP "SHD / open / close convertible top";
+CM_ SG_ 67 FVL_ZVP "Open / close front left window";
+CM_ SG_ 67 FVR_ZVP "Open / close front right window";
+CM_ SG_ 67 FHL_ZVP "Open / close rear left window";
+CM_ SG_ 67 FHR_ZVP "Open / close rear right window";
+CM_ BO_ 9 "";
+CM_ SG_ 9 DISCONNECT "BNS disconnects 30 and 30A in 2 seconds";
+CM_ SG_ 9 BNS_AKT "On-board power supply control unit active";
+CM_ SG_ 9 BN_SOCS1 "Vehicle electrical system warning: starter battery state of charge";
+CM_ SG_ 9 BN_SOCS2 "Vehicle electrical system warning: starter battery state of charge";
+CM_ SG_ 9 BN_SOHS_SB "Vehicle electrical system warning: Starter battery State of Health";
+CM_ SG_ 9 BN_SOHS_VB "Vehicle electrical system warning: State of Health supply battery";
+CM_ SG_ 9 BN_WARN1 "Vehicle electrical system warning: Emergency operation (Prio1 and Prio2 consumers off, starter battery supports)";
+CM_ SG_ 9 BN_WARN2 "On-board power supply warning: emergency operation (Prio1 or Prio2 consumers off)";
+CM_ SG_ 9 BN_WARN3 "Vehicle electrical system warning: Relay K2 defective";
+CM_ SG_ 9 BN_WARN4 "Vehicle electrical system warning: Starter battery fuse defective";
+CM_ SG_ 9 BN_WARN5 "Vehicle electrical system warning: \"Key is inserted\" not recognized";
+CM_ SG_ 9 BN_NTLF_P2 "On-board network emergency operation: Prio2 consumer off";
+CM_ SG_ 9 BN_NTLF_P1 "On-board network emergency operation: Prio1 consumer off";
+CM_ SG_ 9 BN_NTLF "On-board network emergency operation: Prio1 and Prio2 consumers off, second battery supports";
+CM_ BO_ 258 "";
+CM_ SG_ 258 FL_HELL_MSS "Duration of high beam light phase";
+CM_ SG_ 258 SGH_AN_MSS "duration of the horn";
+CM_ SG_ 258 BLI_HELL_MSS "Duration of the blinker light phase";
+CM_ SG_ 258 BLI_LI_EIN_MSS "turn on the left turn signal";
+CM_ SG_ 258 BLI_RE_EIN_MSS "switch on the right turn signal";
+CM_ SG_ 258 TXHIRU_EIN "switch on taxi call for help";
+CM_ SG_ 258 NSW_EIN_MSS "switch on fog lights";
+CM_ SG_ 258 SGH_EIN_MSS "switch on the horn";
+CM_ SG_ 258 IL_EIN_MSS "switch on the interior light";
+CM_ SG_ 258 ZV_ZU_MSS "close central locking";
+CM_ SG_ 258 FL_EIN_MSS "switch on high beam";
+CM_ BO_ 828 "";
+CM_ SG_ 828 NOT_ALM_DEF "Emergency alarm system defective";
+CM_ SG_ 828 TX_EL_DEF "Taxi electrics defective";
+CM_ SG_ 828 MSS_ALM "Silent alarm triggered";
+CM_ SG_ 828 MSS_USPG "MSS detects undervoltage";
+CM_ SG_ 828 DZ_DEF "roof sign defective";
+CM_ SG_ 828 DZ_PRF "check roof sign";
+CM_ SG_ 828 DZ_LA_DEF "roof sign lamp defect";
+CM_ SG_ 828 DZ_KL "Roof sign control lamp on";
+CM_ BO_ 472 "";
+CM_ SG_ 472 PTS_ST_AUS "PTS is completely switched off";
+CM_ BO_ 804 "";
+CM_ SG_ 804 P_RR "tire pressure spare wheel";
+CM_ SG_ 804 P_RHR "rear right tire pressure";
+CM_ SG_ 804 P_RHL "rear left tire pressure";
+CM_ SG_ 804 P_RVR "tire pressure front right";
+CM_ SG_ 804 P_RVL "tire pressure front left";
+CM_ SG_ 804 WITHPOS "display tire positions";
+CM_ SG_ 804 RVL "front left tire";
+CM_ SG_ 804 RVR "front right tire";
+CM_ SG_ 804 RHL "rear left tire";
+CM_ SG_ 804 RHR "rear right tire";
+CM_ SG_ 804 RR "spare wheel";
+CM_ SG_ 804 RDK_OFF "RDK deactivated";
+CM_ SG_ 804 WARNING_COLOR "warning color (red [1] / yellow [0])";
+CM_ SG_ 804 S_UE "jammer / overheating";
+CM_ SG_ 804 VBZ "load status / speed";
+CM_ SG_ 804 P_VERL_L "Slow pressure loss";
+CM_ SG_ 804 P_MIN "minimum pressure";
+CM_ SG_ 804 P_VERL_S "Rapid pressure loss";
+CM_ SG_ 804 RDK_INI "tire pressure control not initialized";
+CM_ SG_ 804 SERVICE "Service";
+CM_ BO_ 476 "";
+CM_ BO_ 570 "";
+CM_ SG_ 570 LONGITUDE "GPS Longitude (+ = East)";
+CM_ SG_ 570 LATITUDE "GPS Latitude (+ = North)";
+CM_ BO_ 571 "";
+CM_ SG_ 571 UTC_SECONDS "GPS Time Seconds";
+CM_ SG_ 571 UTC_MINUTES "GPS time minutes";
+CM_ SG_ 571 UTC_HOURS "GPS Time Hours";
+CM_ SG_ 571 UTC_DAYS "GPS Date Days";
+CM_ SG_ 571 UTC_MONTHS "GPS date months";
+CM_ SG_ 571 UTC_YEARS "GPS-Date Years";
+CM_ BO_ 572 "";
+CM_ SG_ 572 H_DOP "Horizontal dilution of position";
+CM_ SG_ 572 V_DOP "Vertical dilution of position";
+CM_ SG_ 572 CALI "Calibrated";
+CM_ SG_ 572 MDM "Matched to digital map";
+CM_ SG_ 572 FDG "Fully digitalized area";
+CM_ SG_ 572 IDG "Inside digitalized area (on map)";
+CM_ SG_ 572 DEAD_RCK "Dead reckoning available";
+CM_ SG_ 572 DIFF_POS_AVLB "Differential GPS position data available";
+CM_ SG_ 572 POS_AVLB "GPS position avilable";
+CM_ SG_ 572 GPS_FIX "GPS Fix";
+CM_ SG_ 572 GPS_HEIGHT "GPS height";
+CM_ SG_ 572 GPS_HEADING "GPS Heading (0 ° = North)";
+CM_ SG_ 572 GPS_SPEED "GPS Speed";
+CM_ BO_ 575 "";
+CM_ SG_ 575 WM_AID_SYS0 "Warning message: System error";
+CM_ SG_ 575 WM_AID_SYS1 "Warning message: Not authorized";
+CM_ SG_ 575 WM_TD_SYS "Warning message: Telediagnosis not authorized";
+CM_ SG_ 575 KEIN_NETZ "network not available";
+CM_ SG_ 575 BACKUP_BATT "Warning message for backup battery";
+CM_ SG_ 575 WM_INF0 "Warning message: unsuccessful call";
+CM_ SG_ 575 WM_INF1 "Warning message: call setup";
+CM_ SG_ 575 WM_INF2 "Warning message: Connection active";
+CM_ SG_ 575 HU_INFO "Audio warning info";
+CM_ SG_ 575 WM_TD0 "Warning message: Call unsuccessful";
+CM_ SG_ 575 WM_TD1 "Warning message: call setup";
+CM_ SG_ 575 WM_TD2 "Warning message: Connection active";
+CM_ SG_ 575 HU_TD "Audio warning TeleDiagnose";
+CM_ SG_ 575 WM_AID0 "Warning message: unsuccessful call";
+CM_ SG_ 575 WM_AID1 "Warning message: call setup";
+CM_ SG_ 575 WM_AID2 "Warning message: Connection active";
+CM_ SG_ 575 HU_AID "Audio warning TeleAid";
+CM_ BO_ 808 "";
+CM_ SG_ 808 D6_HU "data byte 6";
+CM_ SG_ 808 D5_HU "data byte 5";
+CM_ SG_ 808 D4_HU "data byte 4";
+CM_ SG_ 808 D3_HU "data byte 3";
+CM_ SG_ 808 D2_HU "data byte 2";
+CM_ SG_ 808 D1_HU "data byte 1";
+CM_ SG_ 808 D0_HU "data byte 0";
+CM_ SG_ 808 SNR_HU "Sequence Number";
+CM_ SG_ 808 EOM_HU "End of message";
+CM_ SG_ 808 ANR_HU "Acknowledge not requested";
+CM_ SG_ 808 ST_HU "Service type";
+CM_ SG_ 808 TPDU_HU "Data [0], connection management [1]";
+CM_ BO_ 52 "";
+CM_ SG_ 52 SBS_AKT "voice control system active";
+CM_ BO_ 524 "";
+CM_ SG_ 524 PRIO_AGW "priorities at the AGW";
+CM_ BO_ 831 "";
+CM_ SG_ 831 TP_AGW_KOMBI "communication AGW to KOMBI";
+CM_ BO_ 995 "";
+CM_ SG_ 995 TP_AGW_TELEAID "communication AGW to TELEAID";
+
+
+
+VAL_ 0 SD_ST1 0 "MEMORY1" 1 "MEMORY2" 2 "MEMORY3" 3 "NOT_DEFINED" 7 "SNV" ;
+VAL_ 0 SPEI_NR 0 "MEMORY1" 1 "MEMORY2" 2 "MEMORY3" 3 "NOT_DEFINED" 7 "SNV" ;
+VAL_ 0 FERN_ALM 0 "MEMORY1" 1 "MEMORY2" 2 "MEMORY3" 3 "NOT_DEFINED" 7 "SNV" ;
+VAL_ 0 PNK_ALM_AUS 0 "MEMORY1" 1 "MEMORY2" 2 "MEMORY3" 3 "NOT_DEFINED" 7 "SNV" ;
+VAL_ 0 PNK_ALM_EIN 0 "MEMORY1" 1 "MEMORY2" 2 "MEMORY3" 3 "NOT_DEFINED" 7 "SNV" ;
+VAL_ 0 BS_SL 0 "MEMORY1" 1 "MEMORY2" 2 "MEMORY3" 3 "NOT_DEFINED" 7 "SNV" ;
+VAL_ 0 SCHLUE_NEU 0 "MEMORY1" 1 "MEMORY2" 2 "MEMORY3" 3 "NOT_DEFINED" 7 "SNV" ;
+VAL_ 2 RIZ_VR 0 "PASSIVE" 1 "FORWARD" 2 "REVERSE" 3 "SNV" ;
+VAL_ 2 RIZ_VL 0 "PASSIVE" 1 "FORWARD" 2 "REVERSE" 3 "SNV" ;
+VAL_ 2 T_MOT 0 "PASSIVE" 1 "FORWARD" 2 "REVERSE" 3 "SNV" ;
+VAL_ 2 N_MOT 0 "PASSIVE" 1 "FORWARD" 2 "REVERSE" 3 "SNV" ;
+VAL_ 2 DVL 0 "PASSIVE" 1 "FORWARD" 2 "REVERSE" 3 "SNV" ;
+VAL_ 2 DRTGVL 0 "PASSIVE" 1 "FORWARD" 2 "REVERSE" 3 "SNV" ;
+VAL_ 1 HD_STOP 0 "FUNK" 1 "IR" 2 "SN" 3 "KG" 7 "SNV" ;
+VAL_ 1 ZVQ 0 "FUNK" 1 "IR" 2 "SN" 3 "KG" 7 "SNV" ;
+VAL_ 31 RDK_VH 0 "START_WAS_LAUNCHED" 1 "V1" 2 "V2" 3 "V3" 4 "V4" 5 "V5" 6 "V6" 7 "V7" ;
+VAL_ 31 XEN_VH 0 "START_WAS_LAUNCHED" 1 "V1" 2 "V2" 3 "V3" 4 "V4" 5 "V5" 6 "V6" 7 "V7" ;
+VAL_ 31 HR_VH 0 "START_WAS_LAUNCHED" 1 "V1" 2 "V2" 3 "V3" 4 "V4" 5 "V5" 6 "V6" 7 "V7" ;
+VAL_ 31 ZZH_VH 0 "START_WAS_LAUNCHED" 1 "V1" 2 "V2" 3 "V3" 4 "V4" 5 "V5" 6 "V6" 7 "V7" ;
+VAL_ 31 FKLA_VH 0 "START_WAS_LAUNCHED" 1 "V1" 2 "V2" 3 "V3" 4 "V4" 5 "V5" 6 "V6" 7 "V7" ;
+VAL_ 31 AHK_VH 0 "START_WAS_LAUNCHED" 1 "V1" 2 "V2" 3 "V3" 4 "V4" 5 "V5" 6 "V6" 7 "V7" ;
+VAL_ 31 PTS_VH 0 "START_WAS_LAUNCHED" 1 "V1" 2 "V2" 3 "V3" 4 "V4" 5 "V5" 6 "V6" 7 "V7" ;
+VAL_ 31 SPI_VH 0 "START_WAS_LAUNCHED" 1 "V1" 2 "V2" 3 "V3" 4 "V4" 5 "V5" 6 "V6" 7 "V7" ;
+VAL_ 31 SBS_VH 0 "START_WAS_LAUNCHED" 1 "V1" 2 "V2" 3 "V3" 4 "V4" 5 "V5" 6 "V6" 7 "V7" ;
+VAL_ 31 MFL_VH 0 "START_WAS_LAUNCHED" 1 "V1" 2 "V2" 3 "V3" 4 "V4" 5 "V5" 6 "V6" 7 "V7" ;
+VAL_ 31 TEL_VH 0 "START_WAS_LAUNCHED" 1 "V1" 2 "V2" 3 "V3" 4 "V4" 5 "V5" 6 "V6" 7 "V7" ;
+VAL_ 31 OMS_VH 0 "START_WAS_LAUNCHED" 1 "V1" 2 "V2" 3 "V3" 4 "V4" 5 "V5" 6 "V6" 7 "V7" ;
+VAL_ 31 FKSH_VH 0 "START_WAS_LAUNCHED" 1 "V1" 2 "V2" 3 "V3" 4 "V4" 5 "V5" 6 "V6" 7 "V7" ;
+VAL_ 31 ASG_VH 0 "START_WAS_LAUNCHED" 1 "V1" 2 "V2" 3 "V3" 4 "V4" 5 "V5" 6 "V6" 7 "V7" ;
+VAL_ 31 WWSHZG_VH 0 "START_WAS_LAUNCHED" 1 "V1" 2 "V2" 3 "V3" 4 "V4" 5 "V5" 6 "V6" 7 "V7" ;
+VAL_ 31 ART_VH 0 "START_WAS_LAUNCHED" 1 "V1" 2 "V2" 3 "V3" 4 "V4" 5 "V5" 6 "V6" 7 "V7" ;
+VAL_ 31 FZGVERSN 0 "START_WAS_LAUNCHED" 1 "V1" 2 "V2" 3 "V3" 4 "V4" 5 "V5" 6 "V6" 7 "V7" ;
+VAL_ 31 KP_VH 0 "START_WAS_LAUNCHED" 1 "V1" 2 "V2" 3 "V3" 4 "V4" 5 "V5" 6 "V6" 7 "V7" ;
+VAL_ 31 MSS_VH 0 "START_WAS_LAUNCHED" 1 "V1" 2 "V2" 3 "V3" 4 "V4" 5 "V5" 6 "V6" 7 "V7" ;
+VAL_ 31 STH_VH 0 "START_WAS_LAUNCHED" 1 "V1" 2 "V2" 3 "V3" 4 "V4" 5 "V5" 6 "V6" 7 "V7" ;
+VAL_ 31 KG_VH 0 "START_WAS_LAUNCHED" 1 "V1" 2 "V2" 3 "V3" 4 "V4" 5 "V5" 6 "V6" 7 "V7" ;
+VAL_ 31 FCOD_MOT 0 "M272E35_DE35" 1 "M271E18ML105" 2 "M271E18ML120" 3 "M112E37" 4 "M272E25_DE25" 5 "M272E30_DE30" 7 "M112E28" 8 "M112E32" 10 "M273E46_DE46" 11 "M273E55_DE55" 12 "M112E26" 13 "M113E43" 14 "M113E50" 18 "M271E18ML140" 19 "M271DE18ML105" 20 "M271DE18ML125" 22 "M111E_E23ML" 23 "M111E_E20" 24 "M111E_E20ML" 25 "M112E32_140" 26 "M266E20ATL" 27 "M266E15" 28 "M266E17" 29 "M266E20" 30 "M275E55" 31 "M137E58" 32 "OM640DE20LA60" 34 "OM640DE20LA80" 35 "OM642DE30LA160" 36 "OM640DE20LA100" 37 "OM613DE32LA" 38 "OM639DE15LA" 39 "OM628DE40LA" 40 "OM642DE30LA140" 43 "OM612DE27LA" 44 "OM611DE22LA100" 45 "OM611DE22LA85" 46 "OM611DE22LA75" 48 "AMGM112E32ML" 49 "AMGM113E55ML" 50 "AMGM155E55ML" 51 "AMGM275E60" 52 "AMGOM612DE30LA" 56 "AMGM137E63" 57 "AMGM113E55" 60 "AMGM156E60ML" 61 "AMGM156E55ML" 62 "VR6" 63 "SNV" ;
+VAL_ 31 PRW_VH 0 "M272E35_DE35" 1 "M271E18ML105" 2 "M271E18ML120" 3 "M112E37" 4 "M272E25_DE25" 5 "M272E30_DE30" 7 "M112E28" 8 "M112E32" 10 "M273E46_DE46" 11 "M273E55_DE55" 12 "M112E26" 13 "M113E43" 14 "M113E50" 18 "M271E18ML140" 19 "M271DE18ML105" 20 "M271DE18ML125" 22 "M111E_E23ML" 23 "M111E_E20" 24 "M111E_E20ML" 25 "M112E32_140" 26 "M266E20ATL" 27 "M266E15" 28 "M266E17" 29 "M266E20" 30 "M275E55" 31 "M137E58" 32 "OM640DE20LA60" 34 "OM640DE20LA80" 35 "OM642DE30LA160" 36 "OM640DE20LA100" 37 "OM613DE32LA" 38 "OM639DE15LA" 39 "OM628DE40LA" 40 "OM642DE30LA140" 43 "OM612DE27LA" 44 "OM611DE22LA100" 45 "OM611DE22LA85" 46 "OM611DE22LA75" 48 "AMGM112E32ML" 49 "AMGM113E55ML" 50 "AMGM155E55ML" 51 "AMGM275E60" 52 "AMGOM612DE30LA" 56 "AMGM137E63" 57 "AMGM113E55" 60 "AMGM156E60ML" 61 "AMGM156E55ML" 62 "VR6" 63 "SNV" ;
+VAL_ 31 FCOD_BR 0 "BR221" 1 "BR129" 2 "BR210" 3 "BR202" 4 "BR220" 5 "BR170" 6 "BR203" 7 "BR168" 8 "BR163" 9 "BR208" 10 "BR463" 11 "BR215" 12 "BR230" 13 "BR211" 14 "BR209" 15 "BR461" 16 "BR240" 17 "BR251" 18 "BR171" 19 "BR164" 20 "BR169" 21 "BR199" 22 "BR216" 23 "BR219" 24 "BR454" 25 "NCV2" 26 "VITO" 27 "SPRINTER" 28 "NCV3" 29 "NCV1" 30 "REST" 31 "SNV" ;
+VAL_ 31 FCOD_KAR 0 "W" 1 "V" 2 "C" 3 "S" 4 "A" 5 "R" 6 "SS" 7 "SNV" ;
+VAL_ 31 EDW_VAR 0 "KIS_KAS" 1 "IS_KAS" 2 "KIS_AS" 3 "IS_AS" 7 "SNV" ;
+VAL_ 31 TANK_VAR 0 "STD" 1 "SKI" 2 "NOT_DEFINED" 3 "SNV" ;
+VAL_ 31 FSB_VAR 0 "SPECIAL" 2 "GREEN" 6 "SIGLASOL" 7 "SNV" ;
+VAL_ 31 ABC_VH 0 "SNV" 1 "TAXI" 2 "SPECIAL" ;
+VAL_ 31 ERS_LICHT 0 "SNV" 1 "TAXI" 2 "SPECIAL" ;
+VAL_ 31 LICHT_LD 0 "CAN" 1 "JAP" 2 "USA" 3 "RDW" ;
+VAL_ 31 KLA_LD 0 "EURO" 1 "HOT" 2 "KALT" 3 "SNV" ;
+VAL_ 31 AHLFV_SPERR 0 "EURO" 1 "HOT" 2 "KALT" 3 "SNV" ;
+VAL_ 31 AHLFH_SPERR 0 "EURO" 1 "HOT" 2 "KALT" 3 "SNV" ;
+VAL_ 31 RDK_LD 0 "RDW" 1 "USA" 2 "NOT_DEFINED" 3 "SNV" ;
+VAL_ 31 MSS_VAR 0 "SNV" 1 "TAXI" 2 "SPECIAL" ;
+VAL_ 3 KPL 0 "U_GRUEN" 1 "U_GELB" 2 "U_ROT" 3 "U_MIN" ;
+VAL_ 3 WHST 0 "P" 1 "R" 2 "N" 4 "D" 7 "SNV" ;
+VAL_ 3 EHB_BN 0 "U_GRUEN" 1 "U_GELB" 2 "U_ROT" 3 "U_MIN" ;
+VAL_ 3 ART_ABW_AKT 0 "U_GRUEN" 1 "U_GELB" 2 "U_ROT" 3 "U_MIN" ;
+VAL_ 3 ST3_LEDL_DL 5 "D" 6 "N" 7 "R" 8 "P" 9 "PLUS" 10 "MINUS" 11 "N_ZW_D" 12 "N_ZW_R" 13 "P_ZW_R" 15 "SNV" ;
+VAL_ 3 ST3_LEDL_BL 5 "D" 6 "N" 7 "R" 8 "P" 9 "PLUS" 10 "MINUS" 11 "N_ZW_D" 12 "N_ZW_R" 13 "P_ZW_R" 15 "SNV" ;
+VAL_ 3 ST3_LEDR_DL 5 "D" 6 "N" 7 "R" 8 "P" 9 "PLUS" 10 "MINUS" 11 "N_ZW_D" 12 "N_ZW_R" 13 "P_ZW_R" 15 "SNV" ;
+VAL_ 3 ST3_LEDR_BL 5 "D" 6 "N" 7 "R" 8 "P" 9 "PLUS" 10 "MINUS" 11 "N_ZW_D" 12 "N_ZW_R" 13 "P_ZW_R" 15 "SNV" ;
+VAL_ 3 ST2_LED_DL 5 "D" 6 "N" 7 "R" 8 "P" 9 "PLUS" 10 "MINUS" 11 "N_ZW_D" 12 "N_ZW_R" 13 "P_ZW_R" 15 "SNV" ;
+VAL_ 3 LOADED 0 "EMPTY" 1 "HALF" 2 "FULL" 3 "SNV" ;
+VAL_ 3 CRASH_MS 0 "EMPTY" 1 "HALF" 2 "FULL" 3 "SNV" ;
+VAL_ 3 WHC 5 "D" 6 "N" 7 "R" 8 "P" 9 "PLUS" 10 "MINUS" 11 "N_ZW_D" 12 "N_ZW_R" 13 "P_ZW_R" 15 "SNV" ;
+VAL_ 3 LTG_CHK_POS 5 "D" 6 "N" 7 "R" 8 "P" 9 "PLUS" 10 "MINUS" 11 "N_ZW_D" 12 "N_ZW_R" 13 "P_ZW_R" 15 "SNV" ;
+VAL_ 3 EHB_PUMPE_LFT 5 "D" 6 "N" 7 "R" 8 "P" 9 "PLUS" 10 "MINUS" 11 "N_ZW_D" 12 "N_ZW_R" 13 "P_ZW_R" 15 "SNV" ;
+VAL_ 3 VGL_ST 5 "D" 6 "N" 7 "R" 8 "P" 9 "PLUS" 10 "MINUS" 11 "N_ZW_D" 12 "N_ZW_R" 13 "P_ZW_R" 15 "SNV" ;
+VAL_ 3 RG 5 "D" 6 "N" 7 "R" 8 "P" 9 "PLUS" 10 "MINUS" 11 "N_ZW_D" 12 "N_ZW_R" 13 "P_ZW_R" 15 "SNV" ;
+VAL_ 3 BLS 0 "BREMSE_NBET" 1 "BREMSE_BET" 2 "NOT_DEFINED" 3 "SNV" ;
+VAL_ 3 BLS_UNT 0 "BREMSE_NBET" 1 "BREMSE_BET" 2 "NOT_DEFINED" 3 "SNV" ;
+VAL_ 3 INF_RFE_FSG 0 "BREMSE_NBET" 1 "BREMSE_BET" 2 "NOT_DEFINED" 3 "SNV" ;
+VAL_ 3 LUEFT_MOT_KL 0 "BREMSE_NBET" 1 "BREMSE_BET" 2 "NOT_DEFINED" 3 "SNV" ;
+VAL_ 3 KOMP_NOTAUS 0 "BREMSE_NBET" 1 "BREMSE_BET" 2 "NOT_DEFINED" 3 "SNV" ;
+VAL_ 3 KOMP_BAUS 0 "BREMSE_NBET" 1 "BREMSE_BET" 2 "NOT_DEFINED" 3 "SNV" ;
+VAL_ 3 ANL_LFT 0 "BREMSE_NBET" 1 "BREMSE_BET" 2 "NOT_DEFINED" 3 "SNV" ;
+VAL_ 382 FR_COOL 0 "GBL_KNL0" 1 "GBL_KNL1" 2 "GBL_KNL2" 7 "SNV" ;
+VAL_ 382 GRSBS_AUS 0 "GBL_KNL0" 1 "GBL_KNL1" 2 "GBL_KNL2" 7 "SNV" ;
+VAL_ 382 P_KNL 0 "P_KNL0" 1 "P_KNL1" 2 "P_KNL2" 3 "P_KNL3" 4 "P_KNL4" 15 "SNV" ;
+VAL_ 382 GBL_KNL 0 "GBL_KNL0" 1 "GBL_KNL1" 2 "GBL_KNL2" 7 "SNV" ;
+VAL_ 382 AHLF_AUS 0 "GBL_KNL0" 1 "GBL_KNL1" 2 "GBL_KNL2" 7 "SNV" ;
+VAL_ 30 LAND 0 "RDW" 1 "C494" 2 "C460" 3 "C498" 4 "C823" 5 "C625" 6 "C623" 15 "SNV" ;
+VAL_ 30 VER_AE 0 "AE1" 1 "AEX" 2 "AE2" 3 "START_SERIES_WAS_LAUNCHED" ;
+VAL_ 30 VER_JAHR 0 "YEAR00" 1 "YEAR01" 29 "YEAR29" 30 "UNDEFINED" 31 "START_SERIES" ;
+VAL_ 512 ZVB_EIN_MS 0 "OFF" 1 "PRESAFE" 2 "BACK" 3 "NOT_DEFINED" ;
+VAL_ 512 N_VRBT_SBCSH_AKT 0 "OFF" 1 "PRESAFE" 2 "BACK" 3 "NOT_DEFINED" ;
+VAL_ 512 NOTBRE 0 "OFF" 1 "PRESAFE" 2 "BACK" 3 "NOT_DEFINED" ;
+VAL_ 512 ASV_KKL_169 0 "OFF" 1 "PRESAFE" 2 "BACK" 3 "NOT_DEFINED" ;
+VAL_ 512 PRESF_L_SHD 0 "OFF" 1 "PRESAFE" 2 "BACK" 3 "NOT_DEFINED" ;
+VAL_ 512 PRESF_R_SHD 0 "OFF" 1 "PRESAFE" 2 "BACK" 3 "NOT_DEFINED" ;
+VAL_ 512 PRESF_L_SVL 0 "OFF" 1 "PRESAFE" 2 "BACK" 3 "NOT_DEFINED" ;
+VAL_ 512 PRESF_R_SVR 0 "OFF" 1 "PRESAFE" 2 "BACK" 3 "NOT_DEFINED" ;
+VAL_ 512 PRESF_TGL 0 "OFF" 1 "PRESAFE" 2 "BACK" 3 "NOT_DEFINED" ;
+VAL_ 12 SD_ST1 0 "GERMAN" 1 "ENGLISH" 2 "FRENCH" 3 "ITALIAN" 4 "SPANISH" 5 "JAPANESE" 6 "ENGLISH_J" ;
+VAL_ 12 FDS_F_CHAR 0 "GERMAN" 1 "ENGLISH" 2 "FRENCH" 3 "ITALIAN" 4 "SPANISH" 5 "JAPANESE" 6 "ENGLISH_J" ;
+VAL_ 12 ESH_LS_EIN 0 "GERMAN" 1 "ENGLISH" 2 "FRENCH" 3 "ITALIAN" 4 "SPANISH" 5 "JAPANESE" 6 "ENGLISH_J" ;
+VAL_ 12 ESH_SITZ_EIN 0 "GERMAN" 1 "ENGLISH" 2 "FRENCH" 3 "ITALIAN" 4 "SPANISH" 5 "JAPANESE" 6 "ENGLISH_J" ;
+VAL_ 12 FDS_B_CHAR 0 "GERMAN" 1 "ENGLISH" 2 "FRENCH" 3 "ITALIAN" 4 "SPANISH" 5 "JAPANESE" 6 "ENGLISH_J" ;
+VAL_ 12 SPI_PARK_AUS 0 "GERMAN" 1 "ENGLISH" 2 "FRENCH" 3 "ITALIAN" 4 "SPANISH" 5 "JAPANESE" 6 "ENGLISH_J" ;
+VAL_ 12 VWZ_AUS_MFL 0 "GERMAN" 1 "ENGLISH" 2 "FRENCH" 3 "ITALIAN" 4 "SPANISH" 5 "JAPANESE" 6 "ENGLISH_J" ;
+VAL_ 12 VWZ_AKT 0 "GERMAN" 1 "ENGLISH" 2 "FRENCH" 3 "ITALIAN" 4 "SPANISH" 5 "JAPANESE" 6 "ENGLISH_J" ;
+VAL_ 12 STHL_EIN_KOMBI 0 "GERMAN" 1 "ENGLISH" 2 "FRENCH" 3 "ITALIAN" 4 "SPANISH" 5 "JAPANESE" 6 "ENGLISH_J" ;
+VAL_ 12 V_ANZ 0 "GERMAN" 1 "ENGLISH" 2 "FRENCH" 3 "ITALIAN" 4 "SPANISH" 5 "JAPANESE" 6 "ENGLISH_J" ;
+VAL_ 12 ABL_NLZ 0 "GERMAN" 1 "ENGLISH" 2 "FRENCH" 3 "ITALIAN" 4 "SPANISH" 5 "JAPANESE" 6 "ENGLISH_J" ;
+VAL_ 12 INLI_NLZ 0 "GERMAN" 1 "ENGLISH" 2 "FRENCH" 3 "ITALIAN" 4 "SPANISH" 5 "JAPANESE" 6 "ENGLISH_J" ;
+VAL_ 12 LANGUAGE 0 "GERMAN" 1 "ENGLISH" 2 "FRENCH" 3 "ITALIAN" 4 "SPANISH" 5 "JAPANESE" 6 "ENGLISH_J" ;
+VAL_ 12 UFB_EIN 0 "GERMAN" 1 "ENGLISH" 2 "FRENCH" 3 "ITALIAN" 4 "SPANISH" 5 "JAPANESE" 6 "ENGLISH_J" ;
+VAL_ 12 RDK_AKT 0 "GERMAN" 1 "ENGLISH" 2 "FRENCH" 3 "ITALIAN" 4 "SPANISH" 5 "JAPANESE" 6 "ENGLISH_J" ;
+VAL_ 12 FL_OK 0 "GERMAN" 1 "ENGLISH" 2 "FRENCH" 3 "ITALIAN" 4 "SPANISH" 5 "JAPANESE" 6 "ENGLISH_J" ;
+VAL_ 12 IRS_VDK_EIN 0 "GERMAN" 1 "ENGLISH" 2 "FRENCH" 3 "ITALIAN" 4 "SPANISH" 5 "JAPANESE" 6 "ENGLISH_J" ;
+VAL_ 610 D6_KI 160 "CON_SETUP" 161 "CON_ACK" 163 "CON_TEST" 175 "UNACK_DATA" ;
+VAL_ 610 D5_KI 160 "CON_SETUP" 161 "CON_ACK" 163 "CON_TEST" 175 "UNACK_DATA" ;
+VAL_ 610 D4_KI 160 "CON_SETUP" 161 "CON_ACK" 163 "CON_TEST" 175 "UNACK_DATA" ;
+VAL_ 610 D3_KI 160 "CON_SETUP" 161 "CON_ACK" 163 "CON_TEST" 175 "UNACK_DATA" ;
+VAL_ 610 D2_KI 160 "CON_SETUP" 161 "CON_ACK" 163 "CON_TEST" 175 "UNACK_DATA" ;
+VAL_ 610 D1_KI 160 "CON_SETUP" 161 "CON_ACK" 163 "CON_TEST" 175 "UNACK_DATA" ;
+VAL_ 610 D0_KI 160 "CON_SETUP" 161 "CON_ACK" 163 "CON_TEST" 175 "UNACK_DATA" ;
+VAL_ 610 SNR_KI 160 "CON_SETUP" 161 "CON_ACK" 163 "CON_TEST" 175 "UNACK_DATA" ;
+VAL_ 610 EOM_KI 160 "CON_SETUP" 161 "CON_ACK" 163 "CON_TEST" 175 "UNACK_DATA" ;
+VAL_ 610 ANR_KI 160 "CON_SETUP" 161 "CON_ACK" 163 "CON_TEST" 175 "UNACK_DATA" ;
+VAL_ 610 ST_KI 160 "CON_SETUP" 161 "CON_ACK" 163 "CON_TEST" 175 "UNACK_DATA" ;
+VAL_ 610 TPDU_KI 160 "CON_SETUP" 161 "CON_ACK" 163 "CON_TEST" 175 "UNACK_DATA" ;
+VAL_ 560 PTT_1_1 0 "RESERVED" 1 "RESERVED_1" 2 "RESERVED_2" 3 "AUDIO" 4 "NAVI" 5 "TEL" 6 "NEW_SER" 7 "SPR_FNK" 8 "DAT_FNK" 255 "SNV" ;
+VAL_ 560 PTT_1_2 0 "RESERVED" 1 "RESERVED_1" 2 "RESERVED_2" 3 "AUDIO" 4 "NAVI" 5 "TEL" 6 "NEW_SER" 7 "SPR_FNK" 8 "DAT_FNK" 255 "SNV" ;
+VAL_ 560 PTT_2_1 0 "RESERVED" 1 "RESERVED_1" 2 "RESERVED_2" 3 "AUDIO" 4 "NAVI" 5 "TEL" 6 "NEW_SER" 7 "SPR_FNK" 8 "DAT_FNK" 255 "SNV" ;
+VAL_ 560 PTT_2_2 0 "RESERVED" 1 "RESERVED_1" 2 "RESERVED_2" 3 "AUDIO" 4 "NAVI" 5 "TEL" 6 "NEW_SER" 7 "SPR_FNK" 8 "DAT_FNK" 255 "SNV" ;
+VAL_ 560 PTT_3_1 0 "RESERVED" 1 "RESERVED_1" 2 "RESERVED_2" 3 "AUDIO" 4 "NAVI" 5 "TEL" 6 "NEW_SER" 7 "SPR_FNK" 8 "DAT_FNK" 255 "SNV" ;
+VAL_ 560 PTT_3_2 0 "RESERVED" 1 "RESERVED_1" 2 "RESERVED_2" 3 "AUDIO" 4 "NAVI" 5 "TEL" 6 "NEW_SER" 7 "SPR_FNK" 8 "DAT_FNK" 255 "SNV" ;
+VAL_ 560 PTT_4_1 0 "RESERVED" 1 "RESERVED_1" 2 "RESERVED_2" 3 "AUDIO" 4 "NAVI" 5 "TEL" 6 "NEW_SER" 7 "SPR_FNK" 8 "DAT_FNK" 255 "SNV" ;
+VAL_ 560 PTT_4_2 0 "RESERVED" 1 "RESERVED_1" 2 "RESERVED_2" 3 "AUDIO" 4 "NAVI" 5 "TEL" 6 "NEW_SER" 7 "SPR_FNK" 8 "DAT_FNK" 255 "SNV" ;
+VAL_ 560 BUTTON_5_1 0 "RESERVED" 1 "RESERVED_1" 2 "RESERVED_2" 3 "AUDIO" 4 "NAVI" 5 "TEL" 6 "NEW_SER" 7 "SPR_FNK" 8 "DAT_FNK" 255 "SNV" ;
+VAL_ 560 BUTTON_5_2 0 "RESERVED" 1 "RESERVED_1" 2 "RESERVED_2" 3 "AUDIO" 4 "NAVI" 5 "TEL" 6 "NEW_SER" 7 "SPR_FNK" 8 "DAT_FNK" 255 "SNV" ;
+VAL_ 560 BUTTON_6_1 0 "RESERVED" 1 "RESERVED_1" 2 "RESERVED_2" 3 "AUDIO" 4 "NAVI" 5 "TEL" 6 "NEW_SER" 7 "SPR_FNK" 8 "DAT_FNK" 255 "SNV" ;
+VAL_ 560 BUTTON_6_2 0 "RESERVED" 1 "RESERVED_1" 2 "RESERVED_2" 3 "AUDIO" 4 "NAVI" 5 "TEL" 6 "NEW_SER" 7 "SPR_FNK" 8 "DAT_FNK" 255 "SNV" ;
+VAL_ 560 BUTTON_7_1 0 "RESERVED" 1 "RESERVED_1" 2 "RESERVED_2" 3 "AUDIO" 4 "NAVI" 5 "TEL" 6 "NEW_SER" 7 "SPR_FNK" 8 "DAT_FNK" 255 "SNV" ;
+VAL_ 560 BUTTON_7_2 0 "RESERVED" 1 "RESERVED_1" 2 "RESERVED_2" 3 "AUDIO" 4 "NAVI" 5 "TEL" 6 "NEW_SER" 7 "SPR_FNK" 8 "DAT_FNK" 255 "SNV" ;
+VAL_ 560 BUTTON_8_1 0 "RESERVED" 1 "RESERVED_1" 2 "RESERVED_2" 3 "AUDIO" 4 "NAVI" 5 "TEL" 6 "NEW_SER" 7 "SPR_FNK" 8 "DAT_FNK" 255 "SNV" ;
+VAL_ 560 BUTTON_8_2 0 "RESERVED" 1 "RESERVED_1" 2 "RESERVED_2" 3 "AUDIO" 4 "NAVI" 5 "TEL" 6 "NEW_SER" 7 "SPR_FNK" 8 "DAT_FNK" 255 "SNV" ;
+VAL_ 560 BUTTON_1_1 0 "RESERVED" 1 "RESERVED_1" 2 "RESERVED_2" 3 "AUDIO" 4 "NAVI" 5 "TEL" 6 "NEW_SER" 7 "SPR_FNK" 8 "DAT_FNK" 255 "SNV" ;
+VAL_ 560 BUTTON_1_2 0 "RESERVED" 1 "RESERVED_1" 2 "RESERVED_2" 3 "AUDIO" 4 "NAVI" 5 "TEL" 6 "NEW_SER" 7 "SPR_FNK" 8 "DAT_FNK" 255 "SNV" ;
+VAL_ 560 BUTTON_2_1 0 "RESERVED" 1 "RESERVED_1" 2 "RESERVED_2" 3 "AUDIO" 4 "NAVI" 5 "TEL" 6 "NEW_SER" 7 "SPR_FNK" 8 "DAT_FNK" 255 "SNV" ;
+VAL_ 560 BUTTON_2_2 0 "RESERVED" 1 "RESERVED_1" 2 "RESERVED_2" 3 "AUDIO" 4 "NAVI" 5 "TEL" 6 "NEW_SER" 7 "SPR_FNK" 8 "DAT_FNK" 255 "SNV" ;
+VAL_ 560 BUTTON_3_1 0 "RESERVED" 1 "RESERVED_1" 2 "RESERVED_2" 3 "AUDIO" 4 "NAVI" 5 "TEL" 6 "NEW_SER" 7 "SPR_FNK" 8 "DAT_FNK" 255 "SNV" ;
+VAL_ 560 BUTTON_3_2 0 "RESERVED" 1 "RESERVED_1" 2 "RESERVED_2" 3 "AUDIO" 4 "NAVI" 5 "TEL" 6 "NEW_SER" 7 "SPR_FNK" 8 "DAT_FNK" 255 "SNV" ;
+VAL_ 560 BUTTON_4_1 0 "RESERVED" 1 "RESERVED_1" 2 "RESERVED_2" 3 "AUDIO" 4 "NAVI" 5 "TEL" 6 "NEW_SER" 7 "SPR_FNK" 8 "DAT_FNK" 255 "SNV" ;
+VAL_ 560 BUTTON_4_2 0 "RESERVED" 1 "RESERVED_1" 2 "RESERVED_2" 3 "AUDIO" 4 "NAVI" 5 "TEL" 6 "NEW_SER" 7 "SPR_FNK" 8 "DAT_FNK" 255 "SNV" ;
+VAL_ 560 MFL_MENUE 0 "RESERVED" 1 "RESERVED_1" 2 "RESERVED_2" 3 "AUDIO" 4 "NAVI" 5 "TEL" 6 "NEW_SER" 7 "SPR_FNK" 8 "DAT_FNK" 255 "SNV" ;
+VAL_ 523 PRIO_KI 1 "PRIO1" 2 "PRIO2" 3 "PRIO3" ;
+VAL_ 840 CONFIG 0 "UEMPF0" 1 "UEMPF1" 2 "UEMPF2" 3 "VOR_EMPF" 4 "EMPF0" 5 "EMPF1" 6 "EMPF2" 7 "NEW_INI" ;
+VAL_ 840 PARITY_SAM_F 0 "UEMPF0" 1 "UEMPF1" 2 "UEMPF2" 3 "VOR_EMPF" 4 "EMPF0" 5 "EMPF1" 6 "EMPF2" 7 "NEW_INI" ;
+VAL_ 22 SD_ST2 0 "ENTR" 1 "OPEN" 2 "CLOSED" 3 "SNV" ;
+VAL_ 22 SD_ST1 0 "ENTR" 1 "OPEN" 2 "CLOSED" 3 "SNV" ;
+VAL_ 22 FHL_KZHB_VS 0 "ENTR" 1 "OPEN" 2 "CLOSED" 3 "SNV" ;
+VAL_ 22 FHL_AUF_VS 0 "ENTR" 1 "OPEN" 2 "CLOSED" 3 "SNV" ;
+VAL_ 22 FHL_BLOCK_VS 0 "ENTR" 1 "OPEN" 2 "CLOSED" 3 "SNV" ;
+VAL_ 22 FHL_NORM_VS 0 "ENTR" 1 "OPEN" 2 "CLOSED" 3 "SNV" ;
+VAL_ 22 FHR_KZHB_VS 0 "ENTR" 1 "OPEN" 2 "CLOSED" 3 "SNV" ;
+VAL_ 22 FHR_AUF_VS 0 "ENTR" 1 "OPEN" 2 "CLOSED" 3 "SNV" ;
+VAL_ 22 FHR_BLOCK_VS 0 "ENTR" 1 "OPEN" 2 "CLOSED" 3 "SNV" ;
+VAL_ 22 FHR_NORM_VS 0 "ENTR" 1 "OPEN" 2 "CLOSED" 3 "SNV" ;
+VAL_ 22 VS_M1 0 "ENTR" 1 "OPEN" 2 "CLOSED" 3 "SNV" ;
+VAL_ 22 VS_M2 0 "ENTR" 1 "OPEN" 2 "CLOSED" 3 "SNV" ;
+VAL_ 22 VS_M3 0 "ENTR" 1 "OPEN" 2 "CLOSED" 3 "SNV" ;
+VAL_ 22 VS_M4 0 "ENTR" 1 "OPEN" 2 "CLOSED" 3 "SNV" ;
+VAL_ 22 VS_M5 0 "ENTR" 1 "OPEN" 2 "CLOSED" 3 "SNV" ;
+VAL_ 22 VS_M6 0 "ENTR" 1 "OPEN" 2 "CLOSED" 3 "SNV" ;
+VAL_ 22 VS_M7 0 "ENTR" 1 "OPEN" 2 "CLOSED" 3 "SNV" ;
+VAL_ 22 VS_M8 0 "ENTR" 1 "OPEN" 2 "CLOSED" 3 "SNV" ;
+VAL_ 22 VDK_WARN 0 "ENTR" 1 "OPEN" 2 "CLOSED" 3 "SNV" ;
+VAL_ 22 UERB_KL 0 "ENTR" 1 "OPEN" 2 "CLOSED" 3 "SNV" ;
+VAL_ 22 VDK_KL_DL 0 "ENTR" 1 "OPEN" 2 "CLOSED" 3 "SNV" ;
+VAL_ 22 VDK_KL_BL 0 "ENTR" 1 "OPEN" 2 "CLOSED" 3 "SNV" ;
+VAL_ 22 VS_M9 0 "ENTR" 1 "OPEN" 2 "CLOSED" 3 "SNV" ;
+VAL_ 22 VS_M10 0 "ENTR" 1 "OPEN" 2 "CLOSED" 3 "SNV" ;
+VAL_ 22 VS_M11 0 "ENTR" 1 "OPEN" 2 "CLOSED" 3 "SNV" ;
+VAL_ 22 VS_M12 0 "ENTR" 1 "OPEN" 2 "CLOSED" 3 "SNV" ;
+VAL_ 22 VDK_ST 0 "ENTR" 1 "OPEN" 2 "CLOSED" 3 "SNV" ;
+VAL_ 22 VDK_IR_AKT 0 "ENTR" 1 "OPEN" 2 "CLOSED" 3 "SNV" ;
+VAL_ 22 HFE_SPERR 0 "ENTR" 1 "OPEN" 2 "CLOSED" 3 "SNV" ;
+VAL_ 22 FVL_SPERR 0 "ENTR" 1 "OPEN" 2 "CLOSED" 3 "SNV" ;
+VAL_ 22 FVR_SPERR 0 "ENTR" 1 "OPEN" 2 "CLOSED" 3 "SNV" ;
+VAL_ 22 FHL_SPERR 0 "ENTR" 1 "OPEN" 2 "CLOSED" 3 "SNV" ;
+VAL_ 22 FHR_SPERR 0 "ENTR" 1 "OPEN" 2 "CLOSED" 3 "SNV" ;
+VAL_ 20 SD_ST2 0 "TWILIGHT" 1 "TUNNEL" 2 "SPEED" 3 "RAIN" ;
+VAL_ 20 SD_ST1 0 "TWILIGHT" 1 "TUNNEL" 2 "SPEED" 3 "RAIN" ;
+VAL_ 20 FRBL_HELL 0 "TWILIGHT" 1 "TUNNEL" 2 "SPEED" 3 "RAIN" ;
+VAL_ 20 FRBL_VL 0 "TWILIGHT" 1 "TUNNEL" 2 "SPEED" 3 "RAIN" ;
+VAL_ 20 FRBL_VR 0 "TWILIGHT" 1 "TUNNEL" 2 "SPEED" 3 "RAIN" ;
+VAL_ 20 FRBL_HL 0 "TWILIGHT" 1 "TUNNEL" 2 "SPEED" 3 "RAIN" ;
+VAL_ 20 FRBL_HR 0 "TWILIGHT" 1 "TUNNEL" 2 "SPEED" 3 "RAIN" ;
+VAL_ 20 AFL_GRUND 0 "TWILIGHT" 1 "TUNNEL" 2 "SPEED" 3 "RAIN" ;
+VAL_ 20 LISR_DEF 0 "TWILIGHT" 1 "TUNNEL" 2 "SPEED" 3 "RAIN" ;
+VAL_ 20 VDK_ST_ZU 0 "TWILIGHT" 1 "TUNNEL" 2 "SPEED" 3 "RAIN" ;
+VAL_ 20 AL_EIN 0 "TWILIGHT" 1 "TUNNEL" 2 "SPEED" 3 "RAIN" ;
+VAL_ 20 KL_58D_EIN 0 "TWILIGHT" 1 "TUNNEL" 2 "SPEED" 3 "RAIN" ;
+VAL_ 20 DSPL_INV_DBE 0 "TWILIGHT" 1 "TUNNEL" 2 "SPEED" 3 "RAIN" ;
+VAL_ 20 AFL_ABL_EIN 0 "TWILIGHT" 1 "TUNNEL" 2 "SPEED" 3 "RAIN" ;
+VAL_ 896 ERROR 0 "NO_ERROR" 1 "ERROR1" 2 "ERROR2" 3 "ERROR3" 4 "ERROR4" 5 "ERROR5" 6 "ERROR6" 7 "ERROR7" ;
+VAL_ 896 NEU_INI_READY 0 "NO_ERROR" 1 "ERROR1" 2 "ERROR2" 3 "ERROR3" 4 "ERROR4" 5 "ERROR5" 6 "ERROR6" 7 "ERROR7" ;
+VAL_ 896 SEND_WIEDER 0 "NO_ERROR" 1 "ERROR1" 2 "ERROR2" 3 "ERROR3" 4 "ERROR4" 5 "ERROR5" 6 "ERROR6" 7 "ERROR7" ;
+VAL_ 896 SCH_WI_2_RS 0 "NO_ERROR" 1 "ERROR1" 2 "ERROR2" 3 "ERROR3" 4 "ERROR4" 5 "ERROR5" 6 "ERROR6" 7 "ERROR7" ;
+VAL_ 896 PARITY_DBE 0 "NO_ERROR" 1 "ERROR1" 2 "ERROR2" 3 "ERROR3" 4 "ERROR4" 5 "ERROR5" 6 "ERROR6" 7 "ERROR7" ;
+VAL_ 6 SD_ST2 0 "NBET" 1 "NOT_DEFINED" 2 "BET" 3 "SNV" ;
+VAL_ 6 SD_ST1 0 "NBET" 1 "NOT_DEFINED" 2 "BET" 3 "SNV" ;
+VAL_ 6 ASG_SPORT_BET 0 "NBET" 1 "NOT_DEFINED" 2 "BET" 3 "SNV" ;
+VAL_ 6 LED_STH_DEF 0 "NBET" 1 "NOT_DEFINED" 2 "BET" 3 "SNV" ;
+VAL_ 6 STHL_BET 0 "NBET" 1 "NOT_DEFINED" 2 "BET" 3 "SNV" ;
+VAL_ 6 SPI_N_LI 0 "NBET" 1 "NOT_DEFINED" 2 "BET" 3 "SNV" ;
+VAL_ 6 SPI_N_RE 0 "NBET" 1 "NOT_DEFINED" 2 "BET" 3 "SNV" ;
+VAL_ 6 SPI_N_OBEN 0 "NBET" 1 "NOT_DEFINED" 2 "BET" 3 "SNV" ;
+VAL_ 6 SPI_N_UNTEN 0 "NBET" 1 "NOT_DEFINED" 2 "BET" 3 "SNV" ;
+VAL_ 6 SPI_KLAPPEN 0 "NBET" 1 "NOT_DEFINED" 2 "BET" 3 "SNV" ;
+VAL_ 6 SPVS_BET 0 "NBET" 1 "NOT_DEFINED" 2 "BET" 3 "SNV" ;
+VAL_ 6 SPVS_RE 0 "NBET" 1 "NOT_DEFINED" 2 "BET" 3 "SNV" ;
+VAL_ 6 ART_ABSTAND 0 "NBET" 1 "NOT_DEFINED" 2 "BET" 3 "SNV" ;
+VAL_ 6 ART_ABW_BET 0 "NDEF_NBET" 1 "AUS_NDEF" 2 "ON_BET" 3 "SNV" ;
+VAL_ 6 ESP_BET 0 "NBET" 1 "EIN_NDEF" 2 "AUS_BET" 3 "SNV" ;
+VAL_ 6 ST3_BET 0 "NBET" 1 "NOT_DEFINED" 2 "BET" 3 "SNV" ;
+VAL_ 6 ST2_BET 0 "NBET" 1 "NOT_DEFINED" 2 "BET" 3 "SNV" ;
+VAL_ 6 VDK_AUF 0 "NBET" 1 "NOT_DEFINED" 2 "BET" 3 "SNV" ;
+VAL_ 6 VDK_ZU 0 "NBET" 1 "NOT_DEFINED" 2 "BET" 3 "SNV" ;
+VAL_ 6 UERB_HOCH 0 "NBET" 1 "NOT_DEFINED" 2 "BET" 3 "SNV" ;
+VAL_ 6 UERB_DOWN 0 "NBET" 1 "NOT_DEFINED" 2 "BET" 3 "SNV" ;
+VAL_ 6 PTS_BET 0 "NBET" 1 "NOT_DEFINED" 2 "BET" 3 "SNV" ;
+VAL_ 6 FKS_BET 0 "NBET" 1 "HOCH_NDEF" 2 "DOWN_BET" 3 "SNV" ;
+VAL_ 6 HR_BET 0 "NBET" 1 "NOT_DEFINED" 2 "BET" 3 "SNV" ;
+VAL_ 6 ZV_AUF_IS 0 "NBET" 1 "NOT_DEFINED" 2 "BET" 3 "SNV" ;
+VAL_ 6 ZV_ZU_IS 0 "NBET" 1 "NOT_DEFINED" 2 "BET" 3 "SNV" ;
+VAL_ 18 ISOFIX_BF 0 "KEIN_KISI" 1 "KISI_ERK" 2 "KISI_FEHLER" 3 "SNV" ;
+VAL_ 18 GS_F 0 "GS_OK" 1 "GS_NOK" 2 "GS_FEHLER" 3 "SNV" ;
+VAL_ 18 OC_BF 0 "OC_BF0" 1 "OC_BF1" 2 "OC_BF2" 3 "OC_BF3" 4 "OC_BF4" 6 "OC_BF_FEHLER" 7 "SNV" ;
+VAL_ 18 PSG_DETEC_FAST 0 "SNA" 1 "PSG_PRESENT" 2 "FAULT" 3 "PSG_ABSENT" ;
+VAL_ 18 GS_BF 0 "GS_OK" 1 "GS_NOK" 2 "GS_FEHLER" 3 "SNV" ;
+VAL_ 18 KISI_ST 0 "NO_KISI" 1 "KISI_V_ERK" 2 "KISI_R_ERK" 4 "KISI_FPOS" 6 "KISI_FEHLER" 7 "SNV" ;
+VAL_ 18 KISI_POS 0 "NO_KISI" 1 "KISI_V_ERK" 2 "KISI_R_ERK" 4 "KISI_FPOS" 6 "KISI_FEHLER" 7 "SNV" ;
+VAL_ 18 KISI_AB_OFF 0 "NO_KISI" 1 "KISI_V_ERK" 2 "KISI_R_ERK" 4 "KISI_FPOS" 6 "KISI_FEHLER" 7 "SNV" ;
+VAL_ 18 RAST_SITZ_BF 0 "NO_KISI" 1 "KISI_V_ERK" 2 "KISI_R_ERK" 4 "KISI_FPOS" 6 "KISI_FEHLER" 7 "SNV" ;
+VAL_ 276 SVL_LE_RP 0 "OFF" 1 "LEVEL_1" 2 "LEVEL_2" 3 "LEVEL_3" ;
+VAL_ 276 ISOFIX_RL 0 "OFF" 1 "LEVEL_1" 2 "LEVEL_2" 3 "LEVEL_3" ;
+VAL_ 276 FSG_VL_KL 0 "OFF" 1 "LEVEL_1" 2 "LEVEL_2" 3 "LEVEL_3" ;
+VAL_ 276 MVL_ATM_AUS 0 "OFF" 1 "LEVEL_1" 2 "LEVEL_2" 3 "LEVEL_3" ;
+VAL_ 276 P1_MVL 0 "OFF" 1 "LEVEL_1" 2 "LEVEL_2" 3 "LEVEL_3" ;
+VAL_ 276 P2_MVL 0 "OFF" 1 "LEVEL_1" 2 "LEVEL_2" 3 "LEVEL_3" ;
+VAL_ 276 SVL_POS 0 "OFF" 1 "LEVEL_1" 2 "LEVEL_2" 3 "LEVEL_3" ;
+VAL_ 276 SBLFT_VL_ST 0 "OFF" 1 "LEVEL_1" 2 "LEVEL_2" 3 "LEVEL_3" ;
+VAL_ 276 LE_VL_ENT 0 "OFF" 1 "LEVEL_1" 2 "LEVEL_2" 3 "LEVEL_3" ;
+VAL_ 276 SH_VL_STU1 0 "OFF" 1 "LEVEL_1" 2 "LEVEL_2" 3 "LEVEL_3" ;
+VAL_ 276 SH_VL_STU2 0 "OFF" 1 "LEVEL_1" 2 "LEVEL_2" 3 "LEVEL_3" ;
+VAL_ 276 SH_VL_USPG 0 "OFF" 1 "LEVEL_1" 2 "LEVEL_2" 3 "LEVEL_3" ;
+VAL_ 276 GS_VL_GES 0 "OFF" 1 "LEVEL_1" 2 "LEVEL_2" 3 "LEVEL_3" ;
+VAL_ 277 SVR_LE_RP 0 "OFF" 1 "LEVEL_1" 2 "LEVEL_2" 3 "LEVEL_3" ;
+VAL_ 277 ISOFIX_LL 0 "OFF" 1 "LEVEL_1" 2 "LEVEL_2" 3 "LEVEL_3" ;
+VAL_ 277 FSG_VR_KL 0 "OFF" 1 "LEVEL_1" 2 "LEVEL_2" 3 "LEVEL_3" ;
+VAL_ 277 MVR_ATM_AUS 0 "OFF" 1 "LEVEL_1" 2 "LEVEL_2" 3 "LEVEL_3" ;
+VAL_ 277 P1_MVR 0 "OFF" 1 "LEVEL_1" 2 "LEVEL_2" 3 "LEVEL_3" ;
+VAL_ 277 P2_MVR 0 "OFF" 1 "LEVEL_1" 2 "LEVEL_2" 3 "LEVEL_3" ;
+VAL_ 277 SVR_POS 0 "OFF" 1 "LEVEL_1" 2 "LEVEL_2" 3 "LEVEL_3" ;
+VAL_ 277 SBLFT_VR_ST 0 "OFF" 1 "LEVEL_1" 2 "LEVEL_2" 3 "LEVEL_3" ;
+VAL_ 277 LE_VR_ENT 0 "OFF" 1 "LEVEL_1" 2 "LEVEL_2" 3 "LEVEL_3" ;
+VAL_ 277 SH_VR_STU1 0 "OFF" 1 "LEVEL_1" 2 "LEVEL_2" 3 "LEVEL_3" ;
+VAL_ 277 SH_VR_STU2 0 "OFF" 1 "LEVEL_1" 2 "LEVEL_2" 3 "LEVEL_3" ;
+VAL_ 277 SH_VR_USPG 0 "OFF" 1 "LEVEL_1" 2 "LEVEL_2" 3 "LEVEL_3" ;
+VAL_ 277 GS_VR_GES 0 "OFF" 1 "LEVEL_1" 2 "LEVEL_2" 3 "LEVEL_3" ;
+VAL_ 728 SBLFT_HR_ST 0 "OFF" 1 "LEVEL_1" 2 "LEVEL_2" 3 "LEVEL_3" ;
+VAL_ 728 SH_HR_STU1 0 "OFF" 1 "LEVEL_1" 2 "LEVEL_2" 3 "LEVEL_3" ;
+VAL_ 728 SH_HR_STU2 0 "OFF" 1 "LEVEL_1" 2 "LEVEL_2" 3 "LEVEL_3" ;
+VAL_ 728 SH_HR_USPG 0 "OFF" 1 "LEVEL_1" 2 "LEVEL_2" 3 "LEVEL_3" ;
+VAL_ 728 SHR_RP 0 "OFF" 1 "LEVEL_1" 2 "LEVEL_2" 3 "LEVEL_3" ;
+VAL_ 728 SBLFT_HL_ST 0 "OFF" 1 "LEVEL_1" 2 "LEVEL_2" 3 "LEVEL_3" ;
+VAL_ 728 SH_HL_STU1 0 "OFF" 1 "LEVEL_1" 2 "LEVEL_2" 3 "LEVEL_3" ;
+VAL_ 728 SH_HL_STU2 0 "OFF" 1 "LEVEL_1" 2 "LEVEL_2" 3 "LEVEL_3" ;
+VAL_ 728 SH_HL_USPG 0 "OFF" 1 "LEVEL_1" 2 "LEVEL_2" 3 "LEVEL_3" ;
+VAL_ 728 SHL_RP 0 "OFF" 1 "LEVEL_1" 2 "LEVEL_2" 3 "LEVEL_3" ;
+VAL_ 712 P_PFDS 0 "OFF" 1 "ON" 2 "KWL" 3 "ERROR" ;
+VAL_ 712 PFDSMOT_ST 0 "OFF" 1 "ON" 2 "KWL" 3 "ERROR" ;
+VAL_ 712 PFDS_OVLD 0 "OFF" 1 "ON" 2 "KWL" 3 "ERROR" ;
+VAL_ 712 PFDS_ENT 0 "OFF" 1 "ON" 2 "KWL" 3 "ERROR" ;
+VAL_ 712 PFDS_DEAKT 0 "OFF" 1 "ON" 2 "KWL" 3 "ERROR" ;
+VAL_ 716 PFDS_ANF_VL 0 "IDLE" 1 "ON" 2 "OFF" 3 "N_DEF" ;
+VAL_ 716 FDSVL_STAT 0 "IDLE" 1 "ON" 2 "OFF" 3 "SNV" ;
+VAL_ 716 SEIT_AKT_VL 0 "IDLE" 1 "ON" 2 "OFF" 3 "SNV" ;
+VAL_ 716 MITT_AKT_VL 0 "IDLE" 1 "ON" 2 "OFF" 3 "SNV" ;
+VAL_ 716 FDS_AKT_VL 0 "IDLE" 1 "ON" 2 "OFF" 3 "SNV" ;
+VAL_ 717 PFDS_ANF_VR 0 "IDLE" 1 "ON" 2 "OFF" 3 "N_DEF" ;
+VAL_ 717 FDSVR_STAT 0 "IDLE" 1 "ON" 2 "OFF" 3 "SNV" ;
+VAL_ 717 SEIT_AKT_VR 0 "IDLE" 1 "ON" 2 "OFF" 3 "SNV" ;
+VAL_ 717 MITT_AKT_VR 0 "IDLE" 1 "ON" 2 "OFF" 3 "SNV" ;
+VAL_ 717 FDS_AKT_VR 0 "IDLE" 1 "ON" 2 "OFF" 3 "SNV" ;
+VAL_ 572 H_DOP 0 "RESERVED" 1 "NAV" 2 "NO_FIX" 3 "FIX_2D" 4 "FIX_3D" ;
+VAL_ 572 V_DOP 0 "RESERVED" 1 "NAV" 2 "NO_FIX" 3 "FIX_2D" 4 "FIX_3D" ;
+VAL_ 572 CALI 0 "RESERVED" 1 "NAV" 2 "NO_FIX" 3 "FIX_2D" 4 "FIX_3D" ;
+VAL_ 572 MDM 0 "RESERVED" 1 "NAV" 2 "NO_FIX" 3 "FIX_2D" 4 "FIX_3D" ;
+VAL_ 572 FDG 0 "RESERVED" 1 "NAV" 2 "NO_FIX" 3 "FIX_2D" 4 "FIX_3D" ;
+VAL_ 572 IDG 0 "RESERVED" 1 "NAV" 2 "NO_FIX" 3 "FIX_2D" 4 "FIX_3D" ;
+VAL_ 572 DEAD_RCK 0 "RESERVED" 1 "NAV" 2 "NO_FIX" 3 "FIX_2D" 4 "FIX_3D" ;
+VAL_ 572 DIFF_POS_AVLB 0 "RESERVED" 1 "NAV" 2 "NO_FIX" 3 "FIX_2D" 4 "FIX_3D" ;
+VAL_ 572 POS_AVLB 0 "RESERVED" 1 "NAV" 2 "NO_FIX" 3 "FIX_2D" 4 "FIX_3D" ;
+VAL_ 572 GPS_FIX 0 "RESERVED" 1 "NAV" 2 "NO_FIX" 3 "FIX_2D" 4 "FIX_3D" ;
+VAL_ 808 D6_HU 160 "CON_SETUP" 161 "CON_ACK" 163 "CON_TEST" 175 "UNACK_DATA" ;
+VAL_ 808 D5_HU 160 "CON_SETUP" 161 "CON_ACK" 163 "CON_TEST" 175 "UNACK_DATA" ;
+VAL_ 808 D4_HU 160 "CON_SETUP" 161 "CON_ACK" 163 "CON_TEST" 175 "UNACK_DATA" ;
+VAL_ 808 D3_HU 160 "CON_SETUP" 161 "CON_ACK" 163 "CON_TEST" 175 "UNACK_DATA" ;
+VAL_ 808 D2_HU 160 "CON_SETUP" 161 "CON_ACK" 163 "CON_TEST" 175 "UNACK_DATA" ;
+VAL_ 808 D1_HU 160 "CON_SETUP" 161 "CON_ACK" 163 "CON_TEST" 175 "UNACK_DATA" ;
+VAL_ 808 D0_HU 160 "CON_SETUP" 161 "CON_ACK" 163 "CON_TEST" 175 "UNACK_DATA" ;
+VAL_ 808 SNR_HU 160 "CON_SETUP" 161 "CON_ACK" 163 "CON_TEST" 175 "UNACK_DATA" ;
+VAL_ 808 EOM_HU 160 "CON_SETUP" 161 "CON_ACK" 163 "CON_TEST" 175 "UNACK_DATA" ;
+VAL_ 808 ANR_HU 160 "CON_SETUP" 161 "CON_ACK" 163 "CON_TEST" 175 "UNACK_DATA" ;
+VAL_ 808 ST_HU 160 "CON_SETUP" 161 "CON_ACK" 163 "CON_TEST" 175 "UNACK_DATA" ;
+VAL_ 808 TPDU_HU 160 "CON_SETUP" 161 "CON_ACK" 163 "CON_TEST" 175 "UNACK_DATA" ;
+VAL_ 524 PRIO_AGW 1 "PRIO1" 2 "PRIO2" 3 "PRIO3" ;
+
+
+

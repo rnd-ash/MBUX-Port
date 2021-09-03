@@ -1,13 +1,6 @@
 import os
 import sys
 
-in_file = open(sys.argv[1], 'r')
-can_subsystem = sys.argv[2] # Marking for which subsystem of can this is
-
-output_dir = "app/src/main/java/com/rndash/mbheadunit/nativeCan/can{0}/".format(can_subsystem.upper())
-
-print("OUTPUT DIR: {0} - CANBUS {1}".format(output_dir, can_subsystem))
-
 class enum_object:
     def __init__(self, line: str, existing_names: []):
         self.line = line
@@ -341,19 +334,25 @@ package com.rndash.mbheadunit.nativeCan.can{0}
                 print("Duplicate enum {0}. Ignoring".format(enum_name))
     return buf
 
-
-
-
-p = Parser(in_file.readlines())
-frames=[]
-
 # Returns if the frame can be added to DB (Filters out diagnostic messages)
 def is_frame_name_valid(f: str) -> bool:
     if f.startswith("D_RQ") or f.startswith("D_RS") or f.startswith("SD_") or f.startswith("APPL_") or f.startswith("NM_") or f.startswith("SG_"):
         return False
     return True
 
-while True:
+
+if __name__ == "__main__":
+  in_file = open(sys.argv[1], 'r')
+  can_subsystem = sys.argv[2] # Marking for which subsystem of can this is
+
+  output_dir = "app/src/main/java/com/rndash/mbheadunit/nativeCan/can{0}/".format(can_subsystem.upper())
+
+  print("OUTPUT DIR: {0} - CANBUS {1}".format(output_dir, can_subsystem))
+
+  p = Parser(in_file.readlines())
+  frames=[]
+
+  while True:
     e = p.read_frame_block()
     if (not e):
         print("Read complete")
@@ -374,8 +373,8 @@ while True:
         o = open(output_dir + e.get_name() + ".kt", "w")
         o.write(generate_class_content(e))    
 
-o = open("{0}Can{1}Addrs.kt".format(output_dir, can_subsystem), "w")
-o.write(generate_addr_file(frames)) # Generate all the enums into 1 file for ECU Addresses
+  o = open("{0}Can{1}Addrs.kt".format(output_dir, can_subsystem), "w")
+  o.write(generate_addr_file(frames)) # Generate all the enums into 1 file for ECU Addresses
 
-o = open("{0}Can{1}Enums.kt".format(output_dir, can_subsystem), "w")
-o.write(generate_enum_file(frames))
+  o = open("{0}Can{1}Enums.kt".format(output_dir, can_subsystem), "w")
+  o.write(generate_enum_file(frames))

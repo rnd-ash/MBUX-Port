@@ -1,0 +1,1695 @@
+VERSION ""
+
+
+NS_ : 
+	NS_DESC_
+	CM_
+	BA_DEF_
+	BA_
+	VAL_
+	CAT_DEF_
+	CAT_
+	FILTER
+	BA_DEF_DEF_
+	EV_DATA_
+	ENVVAR_DATA_
+	SGTYPE_
+	SGTYPE_VAL_
+	BA_DEF_SGTYPE_
+	BA_SGTYPE_
+	SIG_TYPE_REF_
+	VAL_TABLE_
+	SIG_GROUP_
+	SIG_VALTYPE_
+	SIGTYPE_VALTYPE_
+	BO_TX_BU_
+	BA_DEF_REL_
+	BA_REL_
+	BA_DEF_DEF_REL_
+	BU_SG_REL_
+	BU_EV_REL_
+	BU_BO_REL_
+	SG_MUL_VAL_
+
+BS_:
+
+BU_: BS PRW MS AAD EDC GS EWM FBS EZS KLA ZGW CONFIG DG KOMBI SBW MRM FS ABC ART LWR RGS ARCADE LRW PSM VG
+
+
+BO_ 512 BS_200h: 8 BS
+ SG_ TM_DL : 50|14@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ DRTGTM : 48|2@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ DVR : 34|14@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ DRTGVR : 32|2@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ DVL : 18|14@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ DRTGVL : 16|2@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ BLS : 14|2@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ BZ200H : 10|4@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ BLS_PA : 9|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ BLS_UNT : 8|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ BBV_KL : 7|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ ABS_KL : 5|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ ESP_KL : 4|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ ESP_INFO_DL : 3|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ ESP_INFO_BL : 2|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ BAS_KL : 1|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ BRE_KL : 0|1@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 520 BS_208h: 8 BS
+ SG_ DHL : 50|14@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ DRTGHL : 48|2@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ DHR : 34|14@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ DRTGHR : 32|2@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ MBRE_ESP : 20|12@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ BRE_AKT_ART : 19|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ ANFN : 17|2@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ BRE_AKT_ESP : 16|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SLV_ESP : 12|4@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ TM_AUS : 11|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SZS : 9|2@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ DDYN_UNT : 8|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ GMIN_ESP : 5|3@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ GMAX_ESP : 2|3@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ MINMAX_ART : 1|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ AKT_R_ESP : 0|1@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 624 BS_270h: 8 BS
+ SG_ PRW_ST : 21|3@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ PRW_WARN : 16|4@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ RIZ_HR : 8|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ RIZ_HL : 0|8@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 768 BS_300h: 8 BS
+ SG_ GIER_ROH : 48|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ M_ESP : 35|13@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ MMAX_ESP : 34|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ MMIN_ESP : 33|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ MTGL_ESP : 32|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ DM_ART : 19|13@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ DMMAX_ART : 18|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ DMMIN_ART : 17|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ DMTGL_ART : 16|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SFB : 14|2@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SFB_PA : 13|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ T_Z : 11|2@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ AMR_AKT_ESP : 10|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ MDYN_ESP : 9|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ MPAR_ESP : 8|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ LWS_INI_EIN : 7|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ LWS_INI_OK : 6|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ ESP_GIER_AKT : 5|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ ART_E : 4|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ VOLLBRE : 3|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ BAS_AKT : 2|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ DMDYN_ART : 1|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ DMPAR_ART : 0|1@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 808 BS_328h: 8 BS
+ SG_ RIZ_VR : 56|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ RIZ_VL : 48|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ BZ328H : 45|3@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ KPL_OEF : 44|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ NOTBRE : 41|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ ESP_DSPL : 35|5@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ AY_S : 16|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ WMS : 1|15@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ WMS_PA : 0|1@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 1589 BS_APPL2: 8 BS
+ SG_ APPL2 : 0|64@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 1696 PRW_MESS1: 8 PRW
+ SG_ MESS1 : 0|64@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 1697 PRW_MESS2: 8 PRW
+ SG_ MESS2 : 0|64@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 1698 PRW_MESS3: 8 PRW
+ SG_ MESS3 : 0|64@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 1699 PRW_MESS4: 8 PRW
+ SG_ MESS4 : 0|64@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 256 MS_100h: 8 MS
+ SG_ FBS : 0|64@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 257 MS_101h: 8 MS
+ SG_ MS_FBS : 0|64@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 528 MS_210h: 8 MS
+ SG_ V_MAX_TM : 56|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FMMOTMAX : 48|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ V_DSPL_EIN : 47|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ V_DSPL_BL : 46|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ V_DSPL_ERR : 45|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ V_DSPL_LIM : 44|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ V_MAX_REG : 43|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ TM_EIN : 42|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ V_DSPL_PGB : 41|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FBS_SE : 40|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ V_MAX_SUM : 39|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ NOTL : 38|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ KD_MS : 37|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ V_MAX_EIN : 36|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ TM_REG : 35|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ KUEB_S_A : 34|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ LL : 33|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ PWG_ERR : 32|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ CRASH_MS : 31|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ KOMP_BAUS : 30|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ MSS_AKT : 29|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ MSS_KL : 28|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ MSS_DEF : 27|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ VGL_ST : 26|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ LL_STBL : 25|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ V_DSPL_NEU : 24|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ PW : 16|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ GMIN_MS : 13|3@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ GMAX_MS : 10|3@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ ZH_AUS_MS : 9|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ AKT_R_MS : 8|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ ANF1 : 7|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ KRIECH_AUS : 6|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SLV_MS : 1|4@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ KOMP_NOTAUS : 0|1@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 530 MS_212h: 8 MS
+ SG_ M_ESPV : 51|13@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ M_EGS_E : 50|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ M_EGS_Q : 49|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ CALID_CVN_E : 48|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ M_FEV : 35|13@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ M_ESP_E : 34|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SME_E : 33|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ M_FV : 19|13@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ M_ART_E : 18|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ TM_MS : 17|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ NMOTS : 0|16@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 616 MS_268h: 8 MS
+ SG_ PW_F : 40|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ M_KOMP_MAX : 32|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ LAST_GEN : 26|6@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ LRS_MODE : 25|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ KID_MS : 24|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ HZL_ST : 22|2@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ ASV_KKL_169 : 18|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ OEL_INFO_169 : 17|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ KL_61_EIN : 16|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ IMAX_MS : 8|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ IMIN_MS : 0|8@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 755 MS_2F3h: 8 MS
+ SG_ FSC_SOLL : 40|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FSC_IST : 0|8@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 776 MS_308h: 8 MS
+ SG_ OEL_QUAL : 56|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ OEL_FS : 48|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ T_OEL : 40|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ TEMP_KL : 39|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ DBAA : 38|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ LUEFT_MOT_KL : 37|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ ANL_LFT : 36|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ ADR_DEF_KL : 35|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ ADR_KL : 34|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ ZAS : 33|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ UEHITZ : 32|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ TANK_KL : 31|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ DIAG_KL : 30|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ OEL_KL : 29|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ VGL_KL : 28|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ LUFI_KL : 27|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ EOH : 26|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ ELHP_WARN : 25|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ NMOT : 8|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ ZASBED : 7|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ WKS_KL : 6|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ KSF_KL : 5|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SASV : 4|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SAST : 3|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ N_MAX_BG : 2|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ KUEB_O_A : 1|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ KPL : 0|1@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 786 MS_312h: 8 MS
+ SG_ M_MIN : 51|13@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ M_MAX : 35|13@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ M_MAX_ATL : 19|13@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ M_STA : 3|13@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 1408 AAD_580h: 8 AAD
+ SG_ AADNT : 56|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ AADKBDYN : 48|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ AADKB : 40|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FTK_DPW : 32|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FTK_VMI : 16|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FTK_LMI : 8|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FTK_BMI : 0|8@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 1544 MS_608h: 8 MS
+ SG_ PFKO : 60|4@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ ZVB_EIN_MS : 59|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ PFW : 57|2@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ ZWP_EIN_MS : 56|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ VB : 40|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ V_MAX_FIX : 32|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FCOD_MOT : 26|6@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ GS_NVH : 25|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FCOD_MOT6 : 24|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FCOD_BR : 19|5@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FCOD_KAR : 16|3@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ T_LUFT : 8|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ T_MOT : 0|8@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 1193 MS_APPL2: 8 MS
+ SG_ APPL2 : 0|64@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 1768 MS_APPL4: 8 MS
+ SG_ APPL4 : 0|64@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 1864 MS_APPL5: 8 MS
+ SG_ APPL5 : 0|64@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 1552 MS_APPL6: 8 MS
+ SG_ APPL6 : 0|64@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 1706 MS_APPL7: 8 MS
+ SG_ APPL7 : 0|64@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 1648 EDC_MESS1: 8 EDC
+ SG_ MESS1 : 0|64@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 1649 EDC_MESS2: 8 EDC
+ SG_ MESS2 : 0|64@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 536 GS_218h: 8 GS
+ SG_ ERROR : 59|5@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ CALID_CVN_AKT : 58|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FEHLPRF_ST : 56|2@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ MKRIECH : 48|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ MOT_NAUS : 47|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ MOT_NAUS_CNF : 46|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ K_LSTFR : 45|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ DYN0_AMR_EGS : 42|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ DYN1_EGS : 41|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ MPAR_EGS : 40|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FPC_AAD_NEU : 37|3@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ UEHITZ_GET : 36|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ GS_NOTL : 35|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ ALF : 34|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ KS : 33|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ GET_OK : 32|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ HSM : 31|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SWITCH : 30|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FW_HOCH : 29|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ GSP_OK : 28|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ G_G : 27|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ K_G_B : 26|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ K_O_B : 25|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ K_S_B : 24|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ GIC : 20|4@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ GZC : 16|4@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ M_EGS : 3|13@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ MMAX_EGS : 2|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ MMIN_EGS : 1|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ MTGL_EGS : 0|1@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 824 GS_338h: 8 GS
+ SG_ NTURBINE : 48|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ NAB : 0|16@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 1048 GS_418h: 8 GS
+ SG_ FMRAD : 53|11@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ WHST : 50|3@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FMRADTGL : 49|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FMRADPAR : 48|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ M_VERL : 40|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ GIC : 36|4@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ GZC : 32|4@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ KD : 31|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ ESV_BRE : 30|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ MECH : 28|2@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ CVT : 27|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SWITCH : 26|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FRONT : 25|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ ALL_WHEEL : 24|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ T_GET : 16|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FPC : 8|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FSC : 0|8@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 1308 GS_APPL1: 8 GS
+ SG_ APPL1 : 0|64@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 1290 GS_HSA: 8 GS
+ SG_ HSA : 0|64@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 1291 GS_HSB: 8 GS
+ SG_ HSB : 0|64@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 1292 GS_HSC: 8 GS
+ SG_ HSC : 0|64@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 1293 GS_HSD: 8 GS
+ SG_ HSD : 0|64@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 1294 GS_HSE: 8 GS
+ SG_ HSE : 0|64@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 260 EWM_104h: 8 EWM
+ SG_ EWM_FBS : 0|64@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 560 EWM_230h: 8 EWM
+ SG_ WHC : 4|4@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ KD : 2|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FPT : 1|1@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 1776 EWM_MESS1: 8 EWM
+ SG_ MESS1 : 0|64@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 1777 EWM_MESS2: 8 EWM
+ SG_ MESS2 : 0|64@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 272 FBS_110h: 8 FBS
+ SG_ IFZ_ST : 0|64@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 273 FBS_111h: 8 FBS
+ SG_ FBS_MS : 0|64@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 274 FBS_112h: 8 FBS
+ SG_ FBS_GS : 0|64@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 276 FBS_114h: 8 FBS
+ SG_ FBS_EWM : 0|64@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 576 EZS_240h: 8 EZS
+ SG_ LDC : 62|2@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FZGVERSN : 59|3@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ ABC_VH : 58|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ GBL_AUS : 57|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ ART_VH : 56|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ ART_ABSTAND : 48|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ ABL_EIN : 46|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ ART_ABW_BET : 44|2@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ ST3_BET : 42|2@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ ST2_BET : 40|2@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ KL_31B : 36|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ HAS_KL : 35|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ ESP_BET : 33|2@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ BN_NTLF : 32|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ CRASH : 31|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ CRASH_CNF : 30|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ INF_RFE_SAM : 29|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ VSTAT_A : 28|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ ASG_SPORT_BET : 27|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ BN_SOCS : 26|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ BLS_A : 25|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SAM_PAS : 24|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ KL_50 : 15|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ KL_15 : 14|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ BS_SL : 13|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ LL_RLC : 10|2@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ KG_ALB_OK : 9|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ KG_KL_AKT : 8|1@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 1040 KLA_410h: 8 KLA
+ SG_ T_AUSSEN_WM : 40|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ NLFTS : 24|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ M_KOMP : 16|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ P_KAELTE8 : 8|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ KOMP_EIN : 7|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ LL_DZA : 1|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ ZH_EIN_OK : 0|1@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 1550 EZS_MESS1: 8 EZS
+ SG_ MESS1 : 0|64@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 584 ZGW_248h: 8 ZGW
+ SG_ ART_VH : 56|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ X_CRASH : 47|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ CRASH_CNF : 46|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ CRASH : 45|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ KOMBI_MW_OK : 40|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ OC_BF : 37|3@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ GS_F : 34|2@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ GS_BF : 32|2@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ MW_AKT_SAM : 31|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ BNS_AKT : 30|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ KL_31B : 29|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ HAS_KL : 28|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ ESP_BET : 26|2@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ BN_NTLF : 25|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ KL54_RM : 24|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ BLS_A : 23|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ VSTAT_A : 22|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ INF_RFE_SAM : 21|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SAM_PAS : 20|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ ANH_ERK2 : 14|2@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ MOT_AUF : 11|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ GWHST_P_SAM : 9|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ BN_SOCS : 8|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ ST3_BET : 6|2@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ ST2_BET : 4|2@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ ABL_EIN : 3|1@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 588 ZGW_24Ch: 8 ZGW
+ SG_ SVR_POS : 8|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SVL_POS : 0|8@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 1038 KLA_40Eh: 8 KLA
+ SG_ HZL_ANF : 0|8@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 1791 CONFIG_6FFh: 8 CONFIG
+ SG_ AAS_VH : 55|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ PAS_VH : 54|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ ART_VH : 52|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ TM_BRE_VH : 51|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ KLA_VH : 50|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ VER_AE : 22|2@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ VER_JAHR : 17|5@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ GUARD_B4 : 15|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ GUARD_B6 : 14|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ LDC : 6|2@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ LL_RLC : 4|2@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ GBL_AUS : 0|1@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 1764 GS_APPL2: 8 GS
+ SG_ APPL2 : 0|64@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 1088 DG_RQ_GLOBAL: 8 DG
+ SG_ DG_RQ_GLOBAL : 0|64@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 1032 KOMBI_408h: 8 KOMBI
+ SG_ WRC : 61|3@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ RT_EIN : 60|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ ZH_FREIG : 59|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SGT_VH : 58|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ V_DSPL_AKT : 57|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ WRC3 : 56|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ KM16 : 40|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ MAZ : 32|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ KL_58D : 24|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ T_AUSSEN : 16|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ KL_61E : 15|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ TFSM : 14|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ VGL_KL_DEF : 13|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ KLA_VH : 12|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ V_MPH : 11|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ TACHO_SYM : 10|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ V_DSPL_AUS : 9|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ TF_AUF : 8|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ TANK_FS : 0|8@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 1042 KOMBI_412h: 8 KOMBI
+ SG_ MAZ_NEU : 52|12@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ DANZ : 26|14@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ DRTGANZ : 24|2@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ V_ANZ : 12|12@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ IST_ABST : 9|3@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ ABST_S : 8|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ OPT_WARN_AUS : 1|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ AKU_WARN_AUS : 0|1@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 1664 KOMBI_MESS1: 8 KOMBI
+ SG_ MESS1 : 0|64@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 1665 KOMBI_MESS2: 8 KOMBI
+ SG_ MESS2 : 0|64@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 562 SBW_232h: 8 SBW
+ SG_ CRC232H : 24|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ BZ232H : 16|4@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ LRT_PM3 : 5|3@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SID_SBW : 0|2@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 568 MRM_238h: 8 MRM
+ SG_ LW : 21|11@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ LW_VZ : 20|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ LW_INI : 19|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ LW_CF : 18|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ LW_OV : 17|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ LW_PA : 16|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ BZ238H : 12|4@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ WH_PA : 11|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ TMWH_ST2_VH : 10|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ BLI_LI : 9|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ BLI_RE : 8|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ OFF : 7|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ WA : 6|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ S_PLUS_B : 5|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ S_MINUS_B : 4|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ VMAX_AKT : 3|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ WH_UP : 2|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ S_PLUS1_B : 1|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ S_MINUS1_B : 0|1@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 832 FS_340h: 8 FS
+ SG_ M_LAST : 60|4@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FS_ID : 56|3@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FZGN_HR : 40|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FZGN_HL : 32|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FZGN_VR : 24|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FZGN_VL : 16|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ ST3_LEDL_DL : 15|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ ST3_LEDL_BL : 14|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ ST3_LEDR_DL : 13|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ ST3_LEDR_BL : 12|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ ST2_LED_DL : 11|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ LOADED : 9|2@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FM1 : 7|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FM2 : 6|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FM3 : 5|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FM4 : 4|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ M1 : 3|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ M2 : 2|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ NEDG : 1|1@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 840 ABC_348h: 8 ABC
+ SG_ ESM_AMP : 57|7@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ ESM_AKT : 56|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ WMVS_ABC : 51|5@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ BZ348H : 48|3@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ WMR_MAX : 40|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ WME_MAX : 32|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FN_HR : 24|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FN_HL : 16|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FN_VR : 8|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FN_VL : 0|8@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 1597 FS_APPL2: 8 FS
+ SG_ APPL2 : 0|64@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 1616 FS_MESS1: 8 FS
+ SG_ MESS1 : 0|64@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 1617 FS_MESS2: 8 FS
+ SG_ MESS2 : 0|64@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 592 ART_250h: 8 ART
+ SG_ GMIN_ART : 53|3@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ GMAX_ART : 50|3@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ AKT_R_ART : 48|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ MBRE_ART : 36|12@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ BZ250H : 32|4@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ M_ART : 19|13@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ ART_REG : 18|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ LIM_REG : 17|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ CAS_REG : 10|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ MDYN_ART : 9|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ MPAR_ART : 8|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ DYN_UNT : 7|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ BL_UNT : 6|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ ART_BRE : 5|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ ART_OK : 4|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SLV_ART : 0|4@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 600 ART_258h: 8 ART
+ SG_ ART_ABW_AKT : 51|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ ART_REAKT : 50|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ ART_UEBERSP : 49|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ ART_DSPL_NEU : 48|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ V_ZIEL : 40|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ TM_EIN_ART : 39|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ ART_DSPL_BL : 38|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ ART_SEG_EIN : 37|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ OBJ_ERK : 36|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ ART_EIN : 35|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ ART_DSPL_LIM : 34|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ ART_VFBR : 33|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ ART_DSPL_PGB : 32|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SOLL_ABST : 24|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ ABST_R_OBJ : 16|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ V_ART : 8|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ ART_ERR : 4|4@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ ART_INFO : 3|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ ART_WT : 2|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ S_OBJ : 1|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ ART_DSPL_EIN : 0|1@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 1577 ART_APPL2: 8 ART
+ SG_ APPL2 : 0|64@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 1680 ART_MESS1: 8 ART
+ SG_ MESS1 : 0|64@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 1681 ART_MESS2: 8 ART
+ SG_ MESS2 : 0|64@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 1682 ART_MESS3: 8 ART
+ SG_ MESS3 : 0|64@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 1683 ART_MESS4: 8 ART
+ SG_ MESS4 : 0|64@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 1328 LWR_530h: 8 LWR
+ SG_ SUB_ABL_R : 9|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SUB_ABL_L : 8|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ LWR_M1 : 7|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ LWR_M2 : 6|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ LWR_M3 : 5|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ LWR_M4 : 4|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ LWR_M5 : 3|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ LWR_M6 : 2|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ LWR_M7 : 1|1@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 1624 LWR_MESS1: 8 LWR
+ SG_ MESS1 : 0|64@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 1625 LWR_MESS2: 8 LWR
+ SG_ MESS2 : 0|64@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 1626 LWR_MESS3: 8 LWR
+ SG_ MESS3 : 0|64@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 1104 RGS_L_450h: 8 RGS
+ SG_ PRESF_L_KI : 14|2@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ PRESF_L_SVL : 6|2@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ PRESF_L_SHD : 4|2@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ PRESF_L_TGL : 0|1@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 1672 RGS_L_MESS1: 8 RGS
+ SG_ MESS1 : 0|64@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 1112 RGS_R_458h: 8 RGS
+ SG_ PRESF_R_KI : 14|2@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ PRESF_R_SVR : 6|2@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ PRESF_R_SHD : 4|2@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ PRESF_R_TGL : 0|1@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 1676 RGS_R_MESS1: 8 RGS
+ SG_ MESS1 : 0|64@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 53 ARCADE_A2: 8 ARCADE
+ SG_ CRASH_C : 5|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ CRASH_F : 2|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ CONF_CRASH : 0|1@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 258 GS_102h: 8 GS
+ SG_ GS_FBS : 0|64@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 566 LRW_236h: 8 LRW
+ SG_ CRC236H : 56|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ LRWS_ST : 38|2@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ LRWS_ID : 36|2@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ BZ236H : 32|4@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ VLRW : 18|14@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ LRW : 2|14@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 948 PSM_3B4h: 8 PSM
+ SG_ PSM_DZ_MAX : 48|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ PSM_DZ_AKT : 42|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ PSM_DZ_TGL : 41|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ PSM_DZ_PAR : 40|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ PSM_MOM_SOLL : 27|13@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ PSM_MOM_AKT : 26|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ PSM_MOM_TGL : 25|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ PSM_MOM_PAR : 24|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ PSM_N_SOLL : 8|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ PSM_ADR_AKT : 2|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ PSM_ADR_TGL : 1|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ PSM_ADR_PAR : 0|1@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 952 PSM_3B8h: 8 PSM
+ SG_ PSM_FPM_SP : 20|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ PSM_FERN_STOP : 19|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ PSM_FERN_START : 18|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ PSM_DZ_TGL : 17|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ PSM_DZ_PAR : 16|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ PSM_V_SOLL : 8|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ PSM_V_AKT : 2|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ PSM_V_TGL : 1|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ PSM_V_PAR : 0|1@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 1064 VG_428h: 8 VG
+ SG_ ANFN_VG : 14|2@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ ANFNTGL_VG : 13|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ ANFNPAR_VG : 12|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ VG_GANG : 5|3@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SH_ABTD : 4|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ VG_ERR : 2|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ VG_LOL : 1|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SH_IMP : 0|1@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 1576 ART_APPL1: 8 ART
+ SG_ APPL1 : 0|64@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 1588 BS_APPL1: 8 BS
+ SG_ APPL1 : 0|64@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 1596 FS_APPL1: 8 FS
+ SG_ APPL1 : 0|64@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 1584 MS_APPL1: 8 MS
+ SG_ APPL1 : 0|64@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 1760 MS_APPL3: 8 MS
+ SG_ APPL3 : 0|64@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 1551 EZS_MESS2: 8 EZS
+ SG_ MESS2 : 0|64@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 1281 GS_HS1: 8 GS
+ SG_ HS1 : 0|64@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 1282 GS_HS2: 8 GS
+ SG_ HS2 : 0|64@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 1283 GS_HS3: 8 GS
+ SG_ HS3 : 0|64@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 1284 GS_HS4: 8 GS
+ SG_ HS4 : 0|64@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 1285 GS_HS5: 8 GS
+ SG_ HS5 : 0|64@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 1286 GS_HS6: 8 GS
+ SG_ HS6 : 0|64@1+ (1,0) [0|0] "" Vector__XXX
+
+
+
+
+CM_ BO_ 512 "";
+CM_ SG_ 512 TM_DL "Left wheel speed for cruise control";
+CM_ SG_ 512 DRTGTM "direction of rotation wheel left for cruise control";
+CM_ SG_ 512 DVR "wheel speed front right";
+CM_ SG_ 512 DRTGVR "direction of rotation of the front right wheel";
+CM_ SG_ 512 DVL "wheel speed front left";
+CM_ SG_ 512 DRTGVL "direction of rotation of front left wheel";
+CM_ SG_ 512 BLS "brake light switch";
+CM_ SG_ 512 BZ200H "message counter";
+CM_ SG_ 512 BLS_PA "BLS Parity (even parity)";
+CM_ SG_ 512 BLS_UNT "brake light suppression (EBV_KL at 163 / T0 / T1N)";
+CM_ SG_ 512 BBV_KL "Brake pad wear indicator lamp";
+CM_ SG_ 512 ABS_KL "ABS defective control lamp";
+CM_ SG_ 512 ESP_KL "ESP defective control lamp";
+CM_ SG_ 512 ESP_INFO_DL "ESP info lamp steady light";
+CM_ SG_ 512 ESP_INFO_BL "ESP info lamp flashing light";
+CM_ SG_ 512 BAS_KL "BAS defective control lamp";
+CM_ SG_ 512 BRE_KL "brake defective control lamp (EBV_KL at 463/461 / NCV2)";
+CM_ BO_ 520 "";
+CM_ SG_ 520 DHL "rear left wheel speed";
+CM_ SG_ 520 DRTGHL "direction of rotation of rear left wheel";
+CM_ SG_ 520 DHR "wheel speed rear right";
+CM_ SG_ 520 DRTGHR "direction of rotation of the rear right wheel";
+CM_ SG_ 520 MBRE_ESP "Set braking torque (BR240 factor 1.8 greater)";
+CM_ SG_ 520 BRE_AKT_ART "ART brake intervention active";
+CM_ SG_ 520 ANFN "ESP request: insert \"N\"";
+CM_ SG_ 520 BRE_AKT_ESP "ESP brake intervention active";
+CM_ SG_ 520 SLV_ESP "switching line shift ESP";
+CM_ SG_ 520 TM_AUS "Cruise control mode off";
+CM_ SG_ 520 SZS "system status";
+CM_ SG_ 520 DDYN_UNT "Suppression of dynamic full load downshift";
+CM_ SG_ 520 GMIN_ESP "target gear, lower limit";
+CM_ SG_ 520 GMAX_ESP "target gear, upper limit";
+CM_ SG_ 520 MINMAX_ART "Target gear request from ART";
+CM_ SG_ 520 AKT_R_ESP "ESP / ART request: \"Active downshift\"";
+CM_ BO_ 624 "";
+CM_ SG_ 624 PRW_ST "Flat roll warning status";
+CM_ SG_ 624 PRW_WARN "Warning messages flat roll warner";
+CM_ SG_ 624 RIZ_HR "Pulse ring counter, rear right wheel (48 per revolution)";
+CM_ SG_ 624 RIZ_HL "Pulse ring counter, rear left wheel (48 per revolution)";
+CM_ BO_ 768 "";
+CM_ SG_ 768 GIER_ROH "Raw signal yaw rate without adjustment / filtering (+ = left)";
+CM_ SG_ 768 M_ESP "Required. Engine torque";
+CM_ SG_ 768 MMAX_ESP "Motor torque request Max";
+CM_ SG_ 768 MMIN_ESP "Motor torque request Min";
+CM_ SG_ 768 MTGL_ESP "Motor torque request. Toggle 40ms + -10";
+CM_ SG_ 768 DM_ART "Required. Engine torque";
+CM_ SG_ 768 DMMAX_ART "Motor torque request Max";
+CM_ SG_ 768 DMMIN_ART "engine torque request min";
+CM_ SG_ 768 DMTGL_ART "engine torque request. Toggle 40ms + -10";
+CM_ SG_ 768 SFB "driver brakes";
+CM_ SG_ 768 SFB_PA "driver brakes parity (even parity)";
+CM_ SG_ 768 T_Z "transmission cycle time";
+CM_ SG_ 768 AMR_AKT_ESP "drive torque control active";
+CM_ SG_ 768 MDYN_ESP "Dynamic motor torque request";
+CM_ SG_ 768 MPAR_ESP "Motor torque request parity (even parity)";
+CM_ SG_ 768 LWS_INI_EIN "Steering angle sensor initialization possible";
+CM_ SG_ 768 LWS_INI_OK "Initialization of steering angle sensor o.k.";
+CM_ SG_ 768 ESP_GIER_AKT "ESP yaw moment control active";
+CM_ SG_ 768 ART_E "Enable ART";
+CM_ SG_ 768 VOLLBRE "Full braking (ABS controls all 4 wheels)";
+CM_ SG_ 768 BAS_AKT "BAS control active";
+CM_ SG_ 768 DMDYN_ART "Dynamic engine torque request";
+CM_ SG_ 768 DMPAR_ART "Motor torque request parity (even parity)";
+CM_ BO_ 808 "";
+CM_ SG_ 808 RIZ_VR "Pulse ring counter, front right wheel (48 per revolution)";
+CM_ SG_ 808 RIZ_VL "Pulse ring counter, front left wheel (48 per revolution)";
+CM_ SG_ 808 BZ328H "message counter";
+CM_ SG_ 808 KPL_OEF "open clutch";
+CM_ SG_ 808 NOTBRE "emergency braking (brake light flashing)";
+CM_ SG_ 808 ESP_DSPL "ESP display messages";
+CM_ SG_ 808 AY_S "vehicle lateral acceleration. in the center of gravity (+ = left)";
+CM_ SG_ 808 WMS "Set roll torque change";
+CM_ SG_ 808 WMS_PA "WMS Parity (even parity)";
+CM_ BO_ 1589 "";
+CM_ SG_ 1589 APPL2 "application";
+CM_ BO_ 1696 "";
+CM_ SG_ 1696 MESS1 "measured values";
+CM_ BO_ 1697 "";
+CM_ SG_ 1697 MESS2 "measured values";
+CM_ BO_ 1698 "";
+CM_ SG_ 1698 MESS3 "measured values";
+CM_ BO_ 1699 "";
+CM_ SG_ 1699 MESS4 "measured values";
+CM_ BO_ 256 "";
+CM_ SG_ 256 FBS "FBS message to EZS (8 bytes)";
+CM_ BO_ 257 "";
+CM_ SG_ 257 MS_FBS "FBS message to EZS (8 bytes)";
+CM_ BO_ 528 "";
+CM_ SG_ 528 V_MAX_TM "Set maximum or cruise control speed";
+CM_ SG_ 528 FMMOTMAX "factor for depreciation. d. Max. Mom. When decreasing A. pressure";
+CM_ SG_ 528 V_DSPL_EIN "Speed ??limiter / cruise control display on";
+CM_ SG_ 528 V_DSPL_BL "display flashes";
+CM_ SG_ 528 V_DSPL_ERR "\"Error\" indication on the display";
+CM_ SG_ 528 V_DSPL_LIM "Display \"Limit?\" on the display";
+CM_ SG_ 528 V_MAX_REG "speed limiter regulates";
+CM_ SG_ 528 TM_EIN "Tempomat switched on";
+CM_ SG_ 528 V_DSPL_PGB "\"Winter tire limit reached\" on the display";
+CM_ SG_ 528 FBS_SE "FBS: Start Error";
+CM_ SG_ 528 V_MAX_SUM "warning buzzer on";
+CM_ SG_ 528 NOTL "emergency operation";
+CM_ SG_ 528 KD_MS "Kickdown (changeover scenario open!)";
+CM_ SG_ 528 V_MAX_EIN "speed limit switched on";
+CM_ SG_ 528 TM_REG "Tempomat regulates";
+CM_ SG_ 528 KUEB_S_A "Req. Converter lock-up clutch \"slip\"";
+CM_ SG_ 528 LL "idle";
+CM_ SG_ 528 PWG_ERR "Pedal encoder error";
+CM_ SG_ 528 CRASH_MS "crash signal from engine control";
+CM_ SG_ 528 KOMP_BAUS "Switch off air conditioning compressor: acceleration";
+CM_ SG_ 528 MSS_AKT "Motor start / stop system active";
+CM_ SG_ 528 MSS_KL "Motor start / stop system control lamp";
+CM_ SG_ 528 MSS_DEF "Motor start / stop system defective";
+CM_ SG_ 528 VGL_ST "preheating status";
+CM_ SG_ 528 LL_STBL "idle is stable";
+CM_ SG_ 528 V_DSPL_NEU "Re-trigger the minimum display time";
+CM_ SG_ 528 PW "pedal value";
+CM_ SG_ 528 GMIN_MS "target gear, lower limit";
+CM_ SG_ 528 GMAX_MS "target gear, upper limit";
+CM_ SG_ 528 ZH_AUS_MS "switch off auxiliary heater";
+CM_ SG_ 528 AKT_R_MS "MS request: \"Active downshift\"";
+CM_ SG_ 528 ANF1 "MS request: \"Approach 1st gear\"";
+CM_ SG_ 528 KRIECH_AUS "Switch off KSG creeping";
+CM_ SG_ 528 SLV_MS "switching line shift MS";
+CM_ SG_ 528 KOMP_NOTAUS "Air conditioning compressor emergency shutdown";
+CM_ BO_ 530 "";
+CM_ SG_ 530 M_ESPV "Preset torque ESP";
+CM_ SG_ 530 M_EGS_E "Enable torque request EGS";
+CM_ SG_ 530 M_EGS_Q "Acknowledgment of torque request EGS";
+CM_ SG_ 530 CALID_CVN_E "Transfer CALID / CVN enable";
+CM_ SG_ 530 M_FEV "Substitute default torque driver";
+CM_ SG_ 530 M_ESP_E "Enable torque request ESP";
+CM_ SG_ 530 SME_E "Enable fast torque setting";
+CM_ SG_ 530 M_FV "driver default torque";
+CM_ SG_ 530 M_ART_E "Enable torque request ART";
+CM_ SG_ 530 TM_MS "Series cruise control is variant-coded";
+CM_ SG_ 530 NMOTS "Target engine idling speed";
+CM_ BO_ 616 "";
+CM_ SG_ 616 PW_F "pedal value driver (only 169)";
+CM_ SG_ 616 M_KOMP_MAX "Max. Air conditioning compressor torque";
+CM_ SG_ 616 LAST_GEN "Generator utilization (only with LIN generators!)";
+CM_ SG_ 616 LRS_MODE "Air control system mode";
+CM_ SG_ 616 KID_MS "Request force-free in \"D\" (FCVT)";
+CM_ SG_ 616 HZL_ST "Status of heating output";
+CM_ SG_ 616 ASV_KKL_169 "shut-off valve cooling circuit M266 ATL";
+CM_ SG_ 616 OEL_INFO_169 "Oil info, reserved M266";
+CM_ SG_ 616 KL_61_EIN "Terminal 61";
+CM_ SG_ 616 IMAX_MS "target ratio, upper limit (FCVT)";
+CM_ SG_ 616 IMIN_MS "target ratio, lower limit (FCVT)";
+CM_ BO_ 755 "";
+CM_ SG_ 755 FSC_SOLL "Gear step shift recommendation \"target\"";
+CM_ SG_ 755 FSC_IST "Gear step shift recommendation \"Actual\"";
+CM_ BO_ 776 "";
+CM_ SG_ 776 OEL_QUAL "oil quality";
+CM_ SG_ 776 OEL_FS "oil level";
+CM_ SG_ 776 T_OEL "oil temperature";
+CM_ SG_ 776 TEMP_KL "cooling water temperature too high";
+CM_ SG_ 776 DBAA "speed limitation for display active (0 for CR)";
+CM_ SG_ 776 LUEFT_MOT_KL "Motor fan defective control lamp";
+CM_ SG_ 776 ANL_LFT "starter is running";
+CM_ SG_ 776 ADR_DEF_KL "ADR defective control lamp (only commercial vehicles)";
+CM_ SG_ 776 ADR_KL "ADR control lamp (only commercial vehicles)";
+CM_ SG_ 776 ZAS "cylinder deactivation";
+CM_ SG_ 776 UEHITZ "engine oil temperature too high (overheating)";
+CM_ SG_ 776 TANK_KL "Tank cap open control lamp";
+CM_ SG_ 776 DIAG_KL "Diagnostic control lamp (OBD II)";
+CM_ SG_ 776 OEL_KL "Oil level / oil pressure control lamp";
+CM_ SG_ 776 VGL_KL "Pre-glow control lamp";
+CM_ SG_ 776 LUFI_KL "air filter dirty control lamp (only diesel)";
+CM_ SG_ 776 EOH "ethanol operation detected";
+CM_ SG_ 776 ELHP_WARN "Warning message for the eco power steering pump";
+CM_ SG_ 776 NMOT "engine speed";
+CM_ SG_ 776 ZASBED "cylinder deactivation conditions met";
+CM_ SG_ 776 WKS_KL "water in fuel control lamp (only CR2-USA)";
+CM_ SG_ 776 KSF_KL "fuel filter clogged control lamp (only CR2-USA)";
+CM_ SG_ 776 SASV "fuel cutoff full";
+CM_ SG_ 776 SAST "partial thrust cut-off";
+CM_ SG_ 776 N_MAX_BG "speed limitation function active";
+CM_ SG_ 776 KUEB_O_A "Req. Torque converter lock-up clutch \"open\"";
+CM_ SG_ 776 KPL "clutch pressed";
+CM_ BO_ 786 "";
+CM_ SG_ 786 M_MIN "minimum motor torque";
+CM_ SG_ 786 M_MAX "maximum motor torque";
+CM_ SG_ 786 M_MAX_ATL "Maximum motor torque including dyn. Turbocharger share";
+CM_ SG_ 786 M_STA "Static motor torque";
+CM_ BO_ 1408 "";
+CM_ SG_ 1408 AADNT "Nervousness";
+CM_ SG_ 1408 AADKBDYN "Spontaneous dynamic demand";
+CM_ SG_ 1408 AADKB "Continuous driver observation";
+CM_ SG_ 1408 FTK_DPW "Max.diff. Pedal angle value per maneuver";
+CM_ SG_ 1408 FTK_VMI "code number brake type (> 100: dynamic)";
+CM_ SG_ 1408 FTK_LMI "Code number transverse acceleration type (> 100: dynamic)";
+CM_ SG_ 1408 FTK_BMI "code number acceleration type (> 100: dynamic)";
+CM_ BO_ 1544 "";
+CM_ SG_ 1544 PFKO "Particle filter correction offset FMMOTMAX";
+CM_ SG_ 1544 ZVB_EIN_MS "switch on additional consumer";
+CM_ SG_ 1544 PFW "Particle filter warning";
+CM_ SG_ 1544 ZWP_EIN_MS "switch on additional water pump";
+CM_ SG_ 1544 VB "consumption";
+CM_ SG_ 1544 V_MAX_FIX "Fixed maximum speed";
+CM_ SG_ 1544 FCOD_MOT "Vehicle code motor 7Bit, Bit0-5 (Bit6 -> Signal FCOD_MOT6)";
+CM_ SG_ 1544 GS_NVH "transmission control not available";
+CM_ SG_ 1544 FCOD_MOT6 "Vehicle code engine with 7 bits, bit 6";
+CM_ SG_ 1544 FCOD_BR "vehicle code series";
+CM_ SG_ 1544 FCOD_KAR "vehicle code body";
+CM_ SG_ 1544 T_LUFT "intake air temperature";
+CM_ SG_ 1544 T_MOT "engine coolant temperature";
+CM_ BO_ 1193 "";
+CM_ SG_ 1193 APPL2 "application";
+CM_ BO_ 1768 "";
+CM_ SG_ 1768 APPL4 "application";
+CM_ BO_ 1864 "";
+CM_ SG_ 1864 APPL5 "application";
+CM_ BO_ 1552 "";
+CM_ SG_ 1552 APPL6 "application";
+CM_ BO_ 1706 "";
+CM_ SG_ 1706 APPL7 "application";
+CM_ BO_ 1648 "";
+CM_ SG_ 1648 MESS1 "measured values";
+CM_ BO_ 1649 "";
+CM_ SG_ 1649 MESS2 "measured values";
+CM_ BO_ 536 "";
+CM_ SG_ 536 ERROR "Error number or counter for CALID / CVN transmission";
+CM_ SG_ 536 CALID_CVN_AKT "CALID / CVN transmission active";
+CM_ SG_ 536 FEHLPRF_ST "Status error check";
+CM_ SG_ 536 MKRIECH "creep torque (FFh with EGS, CVT) or CALID / CVN";
+CM_ SG_ 536 MOT_NAUS "Motor emergency shutdown";
+CM_ SG_ 536 MOT_NAUS_CNF "MOT_NAUS confirmbit";
+CM_ SG_ 536 K_LSTFR "converter lockup clutch unloaded";
+CM_ SG_ 536 DYN0_AMR_EGS "intervention mode / drive torque control";
+CM_ SG_ 536 DYN1_EGS "intervention mode / drive torque control";
+CM_ SG_ 536 MPAR_EGS "Motor torque request parity (even parity)";
+CM_ SG_ 536 FPC_AAD_NEU "Drive program for AAD";
+CM_ SG_ 536 UEHITZ_GET "Overtemperature transmission";
+CM_ SG_ 536 GS_NOTL "GS in emergency mode";
+CM_ SG_ 536 ALF "start release";
+CM_ SG_ 536 KS "bang start";
+CM_ SG_ 536 GET_OK "gear ok";
+CM_ SG_ 536 HSM "manual switching mode";
+CM_ SG_ 536 FW_HOCH "driving resistance high";
+CM_ SG_ 536 GSP_OK "basic switching program o.k.";
+CM_ SG_ 536 G_G "off-road gear";
+CM_ SG_ 536 K_G_B "Order (converter bypass) clutch \"closed\"";
+CM_ SG_ 536 K_O_B "Order (converter bypass) clutch \"open\"";
+CM_ SG_ 536 K_S_B "Order (converter bypass) clutch \"slip\"";
+CM_ SG_ 536 GIC "actual gear";
+CM_ SG_ 536 GZC "target gear";
+CM_ SG_ 536 M_EGS "Required. Engine torque";
+CM_ SG_ 536 MMAX_EGS "Motor torque request Max";
+CM_ SG_ 536 MMIN_EGS "engine torque request min";
+CM_ SG_ 536 MTGL_EGS "motor torque request. Toggle 40ms + -10";
+CM_ BO_ 824 "";
+CM_ SG_ 824 NTURBINE "turbine speed (EGS52-NAG, VGS-NAG2)";
+CM_ SG_ 824 NAB "gearbox output speed (only 463/461, otherwise FFFFh)";
+CM_ BO_ 1048 "";
+CM_ SG_ 1048 FMRAD "wheel torque factor (7FFh at KSG)";
+CM_ SG_ 1048 WHST "Gear selector lever position (NAG, KSG, CVT)";
+CM_ SG_ 1048 FMRADTGL "Factor wheel torque toggle 40ms + -10";
+CM_ SG_ 1048 FMRADPAR "Wheel torque parity factor (even parity)";
+CM_ SG_ 1048 M_VERL "torque loss (FFh at KSG)";
+CM_ SG_ 1048 GIC "actual gear";
+CM_ SG_ 1048 GZC "target gear";
+CM_ SG_ 1048 KD "Kickdown";
+CM_ SG_ 1048 ESV_BRE "apply brake when switching on";
+CM_ SG_ 1048 MECH "gear mechanism variant";
+CM_ SG_ 1048 CVT "continuously variable transmission [1], multi-step transmission [0]";
+CM_ SG_ 1048 FRONT "front-wheel drive [1], rear-wheel drive [0]";
+CM_ SG_ 1048 ALL_WHEEL "all-wheel drive";
+CM_ SG_ 1048 T_GET "transmission oil temperature";
+CM_ SG_ 1048 FPC "driving program";
+CM_ SG_ 1048 FSC "speed step";
+CM_ BO_ 1308 "";
+CM_ SG_ 1308 APPL1 "application";
+CM_ BO_ 1290 "";
+CM_ SG_ 1290 HSA "manual control on the test bench";
+CM_ BO_ 1291 "";
+CM_ SG_ 1291 HSB "manual control on the test bench";
+CM_ BO_ 1292 "";
+CM_ SG_ 1292 HSC "manual control on the test bench";
+CM_ BO_ 1293 "";
+CM_ SG_ 1293 HSD "manual control on the test bench";
+CM_ BO_ 1294 "";
+CM_ SG_ 1294 HSE "manual control on the test bench";
+CM_ BO_ 260 "";
+CM_ SG_ 260 EWM_FBS "FBS message to EZS (8 bytes)";
+CM_ BO_ 560 "";
+CM_ SG_ 560 WHC "gear selector lever position (only NAG)";
+CM_ SG_ 560 KD "kickdown";
+CM_ SG_ 560 FPT "Drive program button pressed";
+CM_ BO_ 1776 "";
+CM_ SG_ 1776 MESS1 "measured values";
+CM_ BO_ 1777 "";
+CM_ SG_ 1777 MESS2 "measured values";
+CM_ BO_ 272 "";
+CM_ SG_ 272 IFZ_ST "FBS message to MS (8 bytes)";
+CM_ BO_ 273 "";
+CM_ SG_ 273 FBS_MS "FBS message to MS (8 bytes)";
+CM_ BO_ 274 "";
+CM_ SG_ 274 FBS_GS "FBS message to GS (8 bytes)";
+CM_ BO_ 276 "";
+CM_ SG_ 276 FBS_EWM "FBS message to EWM (8 bytes)";
+CM_ BO_ 576 "";
+CM_ SG_ 576 LDC "country code";
+CM_ SG_ 576 FZGVERSN "model-dependent vehicle version (only 220/215/230)";
+CM_ SG_ 576 ABC_VH "ABC available";
+CM_ SG_ 576 GBL_AUS "E-suction fan: basic ventilation off";
+CM_ SG_ 576 ART_VH "ART available";
+CM_ SG_ 576 ART_ABSTAND "distance factor";
+CM_ SG_ 576 ABL_EIN "Switch on low beam";
+CM_ SG_ 576 ART_ABW_BET "ART distance warning on / off activated";
+CM_ SG_ 576 ST3_BET "LF / ABC 3-stage switch actuated";
+CM_ SG_ 576 ST2_BET "LF / ABC 2-stage switch actuated";
+CM_ SG_ 576 KL_31B "wiper outside of parking position";
+CM_ SG_ 576 HAS_KL "handbrake applied (control lamp)";
+CM_ SG_ 576 ESP_BET "ESP on / off actuated";
+CM_ SG_ 576 BN_NTLF "On-board network emergency operation: Prio1 and Prio2 consumers off, second battery supports";
+CM_ SG_ 576 CRASH "crash signal from Airbag-SG";
+CM_ SG_ 576 CRASH_CNF "CRASH confirmbit";
+CM_ SG_ 576 INF_RFE_SAM "SAM / x: EHB-ASG in fall-back level, x = B (230), V (211,164,251), F (240)";
+CM_ SG_ 576 VSTAT_A "SAM / x: v-Signal from EHB-ASG, x = B (230), V (211), F (240)";
+CM_ SG_ 576 ASG_SPORT_BET "ASG sport mode on / off activated (ST2_LED_DL if ABC is available)";
+CM_ SG_ 576 BN_SOCS "Vehicle electrical system warning: starter battery state of charge";
+CM_ SG_ 576 BLS_A "SAM / x: Brake light switch output EHB-ASG, x = B (230), V (211), F (240)";
+CM_ SG_ 576 SAM_PAS "SAM / x passive, x = B (230), V (211), F (240)";
+CM_ SG_ 576 KL_50 "Terminal 50";
+CM_ SG_ 576 KL_15 "Terminal 15";
+CM_ SG_ 576 BS_SL "brake switch for shift lock";
+CM_ SG_ 576 LL_RLC "left-hand drive / right-hand drive";
+CM_ SG_ 576 KG_ALB_OK "Keyles Go event conditions met";
+CM_ SG_ 576 KG_KL_AKT "Keyless Go terminal control active";
+CM_ BO_ 1040 "";
+CM_ SG_ 1040 T_AUSSEN_WM "outside air temperature for heat management";
+CM_ SG_ 1040 NLFTS "Motor fan setpoint speed";
+CM_ SG_ 1040 M_KOMP "Torque absorption refrigeration compressor";
+CM_ SG_ 1040 P_KAELTE8 "refrigerant pressure";
+CM_ SG_ 1040 KOMP_EIN "A / C compressor switched on";
+CM_ SG_ 1040 LL_DZA "Idle speed increase to increase the cooling capacity";
+CM_ SG_ 1040 ZH_EIN_OK "Switching on auxiliary heater allowed";
+CM_ BO_ 1550 "";
+CM_ SG_ 1550 MESS1 "measured values";
+CM_ BO_ 584 "";
+CM_ SG_ 584 ART_VH "ART available";
+CM_ SG_ 584 X_CRASH "Any crash event";
+CM_ SG_ 584 CRASH_CNF "CRASH confirmbit";
+CM_ SG_ 584 CRASH "crash signal from Airbag-SG";
+CM_ SG_ 584 KOMBI_MW_OK "Kombi has added value";
+CM_ SG_ 584 OC_BF "Occupant classification co-driver";
+CM_ SG_ 584 GS_F "seat belt buckle driver";
+CM_ SG_ 584 GS_BF "seat belt buckle front passenger";
+CM_ SG_ 584 MW_AKT_SAM "SBC added value: overrun active";
+CM_ SG_ 584 BNS_AKT "On-board power supply control unit active";
+CM_ SG_ 584 KL_31B "wiper outside of parking position";
+CM_ SG_ 584 HAS_KL "handbrake applied (control lamp)";
+CM_ SG_ 584 ESP_BET "ESP on / off actuated";
+CM_ SG_ 584 BN_NTLF "On-board network emergency operation: Prio1 and Prio2 consumers off, second battery supports";
+CM_ SG_ 584 KL54_RM "Terminal 54 hardware active";
+CM_ SG_ 584 BLS_A "SAM / x: Brake light switch output EHB-ASG, x = B (230), V (211), F (240)";
+CM_ SG_ 584 VSTAT_A "SAM / x: v-signal from EHB-ASG, x = B (230), V (211), F (240)";
+CM_ SG_ 584 INF_RFE_SAM "SAM / x: EHB-ASG in fall-back level, x = B (230), V (211,164,251), F (240)";
+CM_ SG_ 584 SAM_PAS "SAM / x passive, x = B (230), V (211), F (240)";
+CM_ SG_ 584 ANH_ERK2 "Trailer operation detected";
+CM_ SG_ 584 MOT_AUF "engine hood is open";
+CM_ SG_ 584 GWHST_P_SAM "Gear selector lever position \"P\" recognized";
+CM_ SG_ 584 BN_SOCS "Vehicle electrical system warning: starter battery state of charge";
+CM_ SG_ 584 ST3_BET "LF / ABC 3-stage switch actuated";
+CM_ SG_ 584 ST2_BET "LF / ABC 2-stage switch actuated";
+CM_ SG_ 584 ABL_EIN "switch on low beam";
+CM_ BO_ 588 "";
+CM_ SG_ 588 SVR_POS "Position fore / aft adjustment seat front right (frontmost section [0])";
+CM_ SG_ 588 SVL_POS "Position fore / aft adjustment seat front left (frontmost section [0])";
+CM_ BO_ 1038 "";
+CM_ SG_ 1038 HZL_ANF "Heating power requirement";
+CM_ BO_ 1791 "";
+CM_ SG_ 1791 AAS_VH "distance assistant available";
+CM_ SG_ 1791 PAS_VH "Parking assistant available";
+CM_ SG_ 1791 ART_VH "ART available";
+CM_ SG_ 1791 TM_BRE_VH "Braking cruise control available (in SBC or RDU)";
+CM_ SG_ 1791 KLA_VH "air conditioning available";
+CM_ SG_ 1791 VER_AE "year of change";
+CM_ SG_ 1791 VER_JAHR "year";
+CM_ SG_ 1791 GUARD_B4 "special protection Guard B4";
+CM_ SG_ 1791 GUARD_B6 "special protection Guard B6 / 7";
+CM_ SG_ 1791 LDC "country code";
+CM_ SG_ 1791 LL_RLC "left-hand drive / right-hand drive";
+CM_ SG_ 1791 GBL_AUS "E-suction fan: basic ventilation off";
+CM_ BO_ 1764 "";
+CM_ SG_ 1764 APPL2 "application";
+CM_ BO_ 1088 "";
+CM_ SG_ 1088 DG_RQ_GLOBAL "Functional diagnosis request";
+CM_ BO_ 1032 "";
+CM_ SG_ 1032 WRC "maximum winter tire speed with 4 bits";
+CM_ SG_ 1032 RT_EIN "Activate roller test mode ESP";
+CM_ SG_ 1032 ZH_FREIG "Enable auxiliary heater";
+CM_ SG_ 1032 SGT_VH "segment tachometer available";
+CM_ SG_ 1032 V_DSPL_AKT "Speed ??limiter / cruise control display active";
+CM_ SG_ 1032 WRC3 "Winter tire maximum speed bit 3";
+CM_ SG_ 1032 KM16 "mileage";
+CM_ SG_ 1032 MAZ "engine shutdown time (is sent from terminal 15)";
+CM_ SG_ 1032 KL_58D "Terminal 58 dimmed";
+CM_ SG_ 1032 T_AUSSEN "Raw outside air temperature";
+CM_ SG_ 1032 KL_61E "Terminal 61 decoupled";
+CM_ SG_ 1032 TFSM "minimum tank level";
+CM_ SG_ 1032 VGL_KL_DEF "Pre-glow control lamp defective";
+CM_ SG_ 1032 KLA_VH "air conditioning available";
+CM_ SG_ 1032 V_MPH "mph instead of km / h (variable speed limit)";
+CM_ SG_ 1032 TACHO_SYM "Tacho calibration";
+CM_ SG_ 1032 V_DSPL_AUS "Speed ??limiter / tempomat display not possible";
+CM_ SG_ 1032 TF_AUF "driver's door open";
+CM_ SG_ 1032 TANK_FS "tank level";
+CM_ BO_ 1042 "";
+CM_ SG_ 1042 MAZ_NEU "engine shutdown time";
+CM_ SG_ 1042 DANZ "wheel speed calculated from V_ANZ";
+CM_ SG_ 1042 DRTGANZ "direction of wheel rotation to V_ANZ";
+CM_ SG_ 1042 V_ANZ "Displayed speed";
+CM_ SG_ 1042 IST_ABST "Set distance";
+CM_ SG_ 1042 ABST_S "distance unit";
+CM_ SG_ 1042 OPT_WARN_AUS "Optical warning off";
+CM_ SG_ 1042 AKU_WARN_AUS "Acoustic warning off";
+CM_ BO_ 1664 "";
+CM_ SG_ 1664 MESS1 "measured values";
+CM_ BO_ 1665 "";
+CM_ SG_ 1665 MESS2 "measured values";
+CM_ BO_ 562 "";
+CM_ SG_ 562 CRC232H "CRC checksum byte 1";
+CM_ SG_ 562 BZ232H "message counter";
+CM_ SG_ 562 LRT_PM3 "Steering wheel buttons \"+\", \"-\" pressed";
+CM_ SG_ 562 SID_SBW "sender identification";
+CM_ BO_ 568 "";
+CM_ SG_ 568 LW "steering angle";
+CM_ SG_ 568 LW_VZ "steering angle sign";
+CM_ SG_ 568 LW_INI "Steering angle sensor: not initialized";
+CM_ SG_ 568 LW_CF "Steering angle sensor: Code error";
+CM_ SG_ 568 LW_OV "Steering angle sensor: overflow";
+CM_ SG_ 568 LW_PA "Steering angle parity (even parity)";
+CM_ SG_ 568 BZ238H "message counter";
+CM_ SG_ 568 WH_PA "Cruise control lever parity (even parity)";
+CM_ SG_ 568 TMWH_ST2_VH "2-stage cruise control lever available";
+CM_ SG_ 568 BLI_LI "direction flashing left";
+CM_ SG_ 568 BLI_RE "right direction flashing";
+CM_ SG_ 568 OFF "Cruise control lever: \"Switch off\"";
+CM_ SG_ 568 WA "Cruise control lever: \"Resume\"";
+CM_ SG_ 568 S_PLUS_B "Cruise control lever: \"Set and accelerate level0\"";
+CM_ SG_ 568 S_MINUS_B "Cruise control lever: \"Set and decelerate level0\"";
+CM_ SG_ 568 VMAX_AKT "Operation variable speed limit";
+CM_ SG_ 568 WH_UP "Cruise control lever implausible";
+CM_ SG_ 568 S_PLUS1_B "Cruise control lever: \"Set and accelerate level 1\"";
+CM_ SG_ 568 S_MINUS1_B "Cruise control lever: \"Set and delay stage 1\"";
+CM_ BO_ 832 "";
+CM_ SG_ 832 M_LAST "Load torque ABC pump";
+CM_ SG_ 832 FS_ID "Identification of suspension control";
+CM_ SG_ 832 FZGN_HR "vehicle level at the rear right";
+CM_ SG_ 832 FZGN_HL "vehicle level rear left";
+CM_ SG_ 832 FZGN_VR "vehicle level front right";
+CM_ SG_ 832 FZGN_VL "vehicle level front left";
+CM_ SG_ 832 ST3_LEDL_DL "Left LED 3-stage switch permanent light (164/251 lower LED)";
+CM_ SG_ 832 ST3_LEDL_BL "Left LED 3-position switch, flashing light";
+CM_ SG_ 832 ST3_LEDR_DL "Right LED 3-stage switch permanent light (164/251 upper LED)";
+CM_ SG_ 832 ST3_LEDR_BL "Right LED 3-position switch, flashing light";
+CM_ SG_ 832 ST2_LED_DL "LED 2-stage switch permanent light";
+CM_ SG_ 832 LOADED "loading";
+CM_ SG_ 832 FM1 "Error 1: \"Stop auto too low\"";
+CM_ SG_ 832 FM2 "Error 2: \"wait briefly\" (LF) / \"steering oil\" (only ABC)";
+CM_ SG_ 832 FM3 "Error 3: \"Go to workshop\"";
+CM_ SG_ 832 FM4 "Error 4: \"Park vehicle\"";
+CM_ SG_ 832 M1 "Message 1: \"Vehicle is lifting\", BR164 / 251: \"Highway-> Offroad\", BR164 Offroad: \"Highway-> Offroad1\"";
+CM_ SG_ 832 M2 "Message 2: \"Level selection deleted\"";
+CM_ SG_ 832 NEDG "level calibration carried out";
+CM_ BO_ 840 "";
+CM_ SG_ 840 ESM_AMP "factor for amplitude extended EMS multi-value function";
+CM_ SG_ 840 ESM_AKT "Extended EMS value-added function active";
+CM_ SG_ 840 WMVS_ABC "target roll torque distribution";
+CM_ SG_ 840 BZ348H "message counter";
+CM_ SG_ 840 WMR_MAX "Max.adjustable rolling moment reduction";
+CM_ SG_ 840 WME_MAX "Max. Adjustable roll torque increase";
+CM_ SG_ 840 FN_HR "normal force rear right wheel";
+CM_ SG_ 840 FN_HL "normal force rear left wheel";
+CM_ SG_ 840 FN_VR "normal force front right wheel";
+CM_ SG_ 840 FN_VL "normal force front left wheel";
+CM_ BO_ 1597 "";
+CM_ SG_ 1597 APPL2 "application";
+CM_ BO_ 1616 "";
+CM_ SG_ 1616 MESS1 "measured values";
+CM_ BO_ 1617 "";
+CM_ SG_ 1617 MESS2 "measured values";
+CM_ BO_ 592 "";
+CM_ SG_ 592 GMIN_ART "target gear, lower limit";
+CM_ SG_ 592 GMAX_ART "target gear, upper limit";
+CM_ SG_ 592 AKT_R_ART "ART request: \"Active downshift\"";
+CM_ SG_ 592 MBRE_ART "braking torque (0000h: passive value)";
+CM_ SG_ 592 BZ250H "message counter";
+CM_ SG_ 592 M_ART "Required. Engine torque";
+CM_ SG_ 592 ART_REG "ART regulates";
+CM_ SG_ 592 LIM_REG "Limiter controls";
+CM_ SG_ 592 CAS_REG "Cityassistent regulates";
+CM_ SG_ 592 MDYN_ART "Motor torque request dynamic";
+CM_ SG_ 592 MPAR_ART "Motor torque request parity (even parity)";
+CM_ SG_ 592 DYN_UNT "Suppression of dynamic full load downshift";
+CM_ SG_ 592 BL_UNT "brake light suppression";
+CM_ SG_ 592 ART_BRE "ART brakes";
+CM_ SG_ 592 ART_OK "ART ok";
+CM_ SG_ 592 SLV_ART "switching line shift ART";
+CM_ BO_ 600 "";
+CM_ SG_ 600 ART_ABW_AKT "ART distance warning is switched on";
+CM_ SG_ 600 ART_REAKT "Display of the system availability after system errors";
+CM_ SG_ 600 ART_UEBERSP "ART is overwritten by the driver";
+CM_ SG_ 600 ART_DSPL_NEU "Re-trigger the minimum display time";
+CM_ SG_ 600 V_ZIEL "speed of detected target vehicle";
+CM_ SG_ 600 TM_EIN_ART "ART-Tempomat switched on";
+CM_ SG_ 600 ART_DSPL_BL "speed display flashing";
+CM_ SG_ 600 ART_SEG_EIN "Switch on ART segment display";
+CM_ SG_ 600 OBJ_ERK "Relevant object recognized";
+CM_ SG_ 600 ART_EIN "Adaptive cruise control switched on";
+CM_ SG_ 600 ART_DSPL_LIM "Indication \"---\" on the display";
+CM_ SG_ 600 ART_VFBR "Indication \"DTR AUS [0]\" on the display";
+CM_ SG_ 600 ART_DSPL_PGB "\"Winter tire limit reached\" on the display";
+CM_ SG_ 600 SOLL_ABST "driver's desired distance";
+CM_ SG_ 600 ABST_R_OBJ "Distance relevant object";
+CM_ SG_ 600 V_ART "set ART speed";
+CM_ SG_ 600 ART_ERR "ART error code";
+CM_ SG_ 600 ART_INFO "ART info lamp";
+CM_ SG_ 600 ART_WT "ART warning tone";
+CM_ SG_ 600 S_OBJ "Detection of stationary object";
+CM_ SG_ 600 ART_DSPL_EIN "Switch display to ART display";
+CM_ BO_ 1577 "";
+CM_ SG_ 1577 APPL2 "application";
+CM_ BO_ 1680 "";
+CM_ SG_ 1680 MESS1 "measured values";
+CM_ BO_ 1681 "";
+CM_ SG_ 1681 MESS2 "measured values";
+CM_ BO_ 1682 "";
+CM_ SG_ 1682 MESS3 "measured values";
+CM_ BO_ 1683 "";
+CM_ SG_ 1683 MESS4 "measured values";
+CM_ BO_ 1328 "";
+CM_ SG_ 1328 SUB_ABL_R "Substitution of right low beam";
+CM_ SG_ 1328 SUB_ABL_L "Substitution of left low beam";
+CM_ SG_ 1328 LWR_M1 "Display message 1: \"Cornering light defect! Drive to the workshop\"";
+CM_ SG_ 1328 LWR_M2 "Display message 2: \"Cornering light, replacement light activated!\" (White)";
+CM_ SG_ 1328 LWR_M3 "Display message 3: \"Cornering light currently not available\" (white).";
+CM_ SG_ 1328 LWR_M4 "Display message 4: \"Cornering light currently not available\" (white / 5x flashing at 1Hz)";
+CM_ SG_ 1328 LWR_M5 "Display message 5: \"Left cornering light\"";
+CM_ SG_ 1328 LWR_M6 "Display message 6: \"Right cornering light\"";
+CM_ SG_ 1328 LWR_M7 "Display message 7: \"Cornering light currently not available\"";
+CM_ BO_ 1624 "";
+CM_ SG_ 1624 MESS1 "measured values";
+CM_ BO_ 1625 "";
+CM_ SG_ 1625 MESS2 "measured values";
+CM_ BO_ 1626 "";
+CM_ SG_ 1626 MESS3 "measured values";
+CM_ BO_ 1104 "";
+CM_ SG_ 1104 PRESF_L_KI "Presafe adjustment combination message";
+CM_ SG_ 1104 PRESF_L_SVL "Presafe adjustment seat front left";
+CM_ SG_ 1104 PRESF_L_SHD "Presafe adjustment for sliding / tilting roof";
+CM_ SG_ 1104 PRESF_L_TGL "Presafe toggle bit 40ms (1 / message)";
+CM_ BO_ 1672 "";
+CM_ SG_ 1672 MESS1 "measured values";
+CM_ BO_ 1112 "";
+CM_ SG_ 1112 PRESF_R_KI "Presafe adjustment combined message";
+CM_ SG_ 1112 PRESF_R_SVR "Presafe adjustment seat front right";
+CM_ SG_ 1112 PRESF_R_SHD "Presafe adjustment, sliding / tilting roof";
+CM_ SG_ 1112 PRESF_R_TGL "Presafe toggle bit 40ms (1 / message)";
+CM_ BO_ 1676 "";
+CM_ SG_ 1676 MESS1 "measured values";
+CM_ BO_ 53 "";
+CM_ SG_ 53 CRASH_C "frontal event 5";
+CM_ SG_ 53 CRASH_F "frontal event 2";
+CM_ SG_ 53 CONF_CRASH "Confirm bit for all crash events, toggling";
+CM_ BO_ 258 "";
+CM_ SG_ 258 GS_FBS "FBS message to EZS (8 bytes)";
+CM_ BO_ 566 "";
+CM_ SG_ 566 CRC236H "CRC checksum byte 1";
+CM_ SG_ 566 LRWS_ST "Steering wheel angle sensor status";
+CM_ SG_ 566 LRWS_ID "Identification of the steering wheel angle sensor";
+CM_ SG_ 566 BZ236H "message counter";
+CM_ SG_ 566 VLRW "steering wheel angular speed";
+CM_ SG_ 566 LRW "steering wheel angle";
+CM_ BO_ 948 "";
+CM_ SG_ 948 PSM_DZ_MAX "maximum speed";
+CM_ SG_ 948 PSM_DZ_AKT "speed limitation active";
+CM_ SG_ 948 PSM_DZ_TGL "speed limitation";
+CM_ SG_ 948 PSM_DZ_PAR "speed limitation";
+CM_ SG_ 948 PSM_MOM_SOLL "Maximum motor torque";
+CM_ SG_ 948 PSM_MOM_AKT "torque limitation active";
+CM_ SG_ 948 PSM_MOM_TGL "torque limit";
+CM_ SG_ 948 PSM_MOM_PAR "torque limitation";
+CM_ SG_ 948 PSM_N_SOLL "Motor target speed ADR";
+CM_ SG_ 948 PSM_ADR_AKT "Working speed control active";
+CM_ SG_ 948 PSM_ADR_TGL "working speed control";
+CM_ SG_ 948 PSM_ADR_PAR "working speed control";
+CM_ BO_ 952 "";
+CM_ SG_ 952 PSM_FPM_SP "Disable accelerator pedal module";
+CM_ SG_ 952 PSM_FERN_STOP "Motor remote stop active";
+CM_ SG_ 952 PSM_FERN_START "Motor remote start active";
+CM_ SG_ 952 PSM_DZ_TGL "speed limitation";
+CM_ SG_ 952 PSM_DZ_PAR "speed limitation";
+CM_ SG_ 952 PSM_V_SOLL "speed limit";
+CM_ SG_ 952 PSM_V_AKT "speed limit active";
+CM_ SG_ 952 PSM_V_TGL "speed limit";
+CM_ SG_ 952 PSM_V_PAR "speed limit";
+CM_ BO_ 1064 "";
+CM_ SG_ 1064 ANFN_VG "VG";
+CM_ SG_ 1064 ANFNTGL_VG "VG";
+CM_ SG_ 1064 ANFNPAR_VG "VG";
+CM_ SG_ 1064 VG_GANG "Current gear transfer case";
+CM_ SG_ 1064 SH_ABTD "switching process aborted (shift aborted)";
+CM_ SG_ 1064 VG_ERR "VG error (ECU failure detected)";
+CM_ SG_ 1064 VG_LOL "Terrain information lamp (low lamp)";
+CM_ SG_ 1064 SH_IMP "switching conditions not met (shift impossible)";
+CM_ BO_ 1576 "";
+CM_ SG_ 1576 APPL1 "application";
+CM_ BO_ 1588 "";
+CM_ SG_ 1588 APPL1 "application";
+CM_ BO_ 1596 "";
+CM_ SG_ 1596 APPL1 "application";
+CM_ BO_ 1584 "";
+CM_ SG_ 1584 APPL1 "application";
+CM_ BO_ 1760 "";
+CM_ SG_ 1760 APPL3 "application";
+CM_ BO_ 1551 "";
+CM_ SG_ 1551 MESS2 "measured values";
+CM_ BO_ 1281 "";
+CM_ SG_ 1281 HS1 "manual control on the test bench";
+CM_ BO_ 1282 "";
+CM_ SG_ 1282 HS2 "manual control on the test bench";
+CM_ BO_ 1283 "";
+CM_ SG_ 1283 HS3 "manual control on the test bench";
+CM_ BO_ 1284 "";
+CM_ SG_ 1284 HS4 "manual control on the test bench";
+CM_ BO_ 1285 "";
+CM_ BO_ 1286 "";
+
+
+
+VAL_ 512 TM_DL 0 "PASSIVE" 1 "FORWARD" 2 "REVERSE" 3 "SNV" ;
+VAL_ 512 DRTGTM 0 "PASSIVE" 1 "FORWARD" 2 "REVERSE" 3 "SNV" ;
+VAL_ 512 DVR 0 "PASSIVE" 1 "FORWARD" 2 "REVERSE" 3 "SNV" ;
+VAL_ 512 DRTGVR 0 "PASSIVE" 1 "FORWARD" 2 "REVERSE" 3 "SNV" ;
+VAL_ 512 DVL 0 "PASSIVE" 1 "FORWARD" 2 "REVERSE" 3 "SNV" ;
+VAL_ 512 DRTGVL 0 "PASSIVE" 1 "FORWARD" 2 "REVERSE" 3 "SNV" ;
+VAL_ 512 BLS 0 "BREMSE_NBET" 1 "BREMSE_BET" 2 "NOT_DEFINED" 3 "SNV" ;
+VAL_ 512 BZ200H 0 "BREMSE_NBET" 1 "BREMSE_BET" 2 "NOT_DEFINED" 3 "SNV" ;
+VAL_ 512 BLS_PA 0 "BREMSE_NBET" 1 "BREMSE_BET" 2 "NOT_DEFINED" 3 "SNV" ;
+VAL_ 512 BLS_UNT 0 "BREMSE_NBET" 1 "BREMSE_BET" 2 "NOT_DEFINED" 3 "SNV" ;
+VAL_ 520 DHL 0 "PASSIVE" 1 "FORWARD" 2 "REVERSE" 3 "SNV" ;
+VAL_ 520 DRTGHL 0 "PASSIVE" 1 "FORWARD" 2 "REVERSE" 3 "SNV" ;
+VAL_ 520 DHR 0 "PASSIVE" 1 "FORWARD" 2 "REVERSE" 3 "SNV" ;
+VAL_ 520 DRTGHR 0 "PASSIVE" 1 "FORWARD" 2 "REVERSE" 3 "SNV" ;
+VAL_ 520 MBRE_ESP 0 "NOT_DEFINED" 1 "ANF_N" 2 "IDLE" 3 "SNV" ;
+VAL_ 520 BRE_AKT_ART 0 "ERR_DIAG" 1 "NORM" 2 "NOT_DEFINED" 3 "EXHAUST" ;
+VAL_ 520 ANFN 0 "NOT_DEFINED" 1 "ANF_N" 2 "IDLE" 3 "SNV" ;
+VAL_ 520 BRE_AKT_ESP 0 "NOT_DEFINED" 1 "ANF_N" 2 "IDLE" 3 "SNV" ;
+VAL_ 520 SLV_ESP 0 "SKL0" 1 "SKL1" 2 "SKL2" 3 "SKL3" 4 "SKL4" 5 "SKL5" 6 "SKL6" 7 "SKL7" 8 "SKL8" 9 "SKL9" 10 "SKL10" ;
+VAL_ 520 TM_AUS 0 "SKL0" 1 "SKL1" 2 "SKL2" 3 "SKL3" 4 "SKL4" 5 "SKL5" 6 "SKL6" 7 "SKL7" 8 "SKL8" 9 "SKL9" 10 "SKL10" ;
+VAL_ 520 SZS 0 "ERR_DIAG" 1 "NORM" 2 "NOT_DEFINED" 3 "EXHAUST" ;
+VAL_ 520 DDYN_UNT 0 "ERR_DIAG" 1 "NORM" 2 "NOT_DEFINED" 3 "EXHAUST" ;
+VAL_ 520 GMIN_ESP 0 "PASSIVE" 1 "G1" 2 "G2" 3 "G3" 4 "G4" 5 "G5" 6 "G6" 7 "G7" ;
+VAL_ 520 GMAX_ESP 0 "PASSIVE" 1 "G1" 2 "G2" 3 "G3" 4 "G4" 5 "G5" 6 "G6" 7 "G7" ;
+VAL_ 520 MINMAX_ART 0 "PASSIVE" 1 "G1" 2 "G2" 3 "G3" 4 "G4" 5 "G5" 6 "G6" 7 "G7" ;
+VAL_ 520 AKT_R_ESP 0 "PASSIVE" 1 "G1" 2 "G2" 3 "G3" 4 "G4" 5 "G5" 6 "G6" 7 "G7" ;
+VAL_ 624 PRW_ST 0 "ON" 1 "WARN" 2 "OFF" 3 "INIT" 4 "NOT_DEFINED" 5 "NOT_DEFINED_5" 6 "PRW_NV" 7 "SNV" ;
+VAL_ 624 PRW_WARN 0 "OK" 1 "WARN_OHNE" 2 "PRW_NV" 3 "PRW_START" 4 "WARN_VL" 5 "WARN_VR" 6 "WARN_HL" 7 "WARN_HR" 8 "NOT_DEFINED" 14 "UNDEFINED" 15 "SNV" ;
+VAL_ 768 GIER_ROH 0 "NOT_DEFINED" 1 "T20_0" 2 "T23_1" 3 "SNV" ;
+VAL_ 768 M_ESP 0 "NOT_DEFINED" 1 "T20_0" 2 "T23_1" 3 "SNV" ;
+VAL_ 768 MMAX_ESP 0 "NOT_DEFINED" 1 "T20_0" 2 "T23_1" 3 "SNV" ;
+VAL_ 768 MMIN_ESP 0 "NOT_DEFINED" 1 "T20_0" 2 "T23_1" 3 "SNV" ;
+VAL_ 768 MTGL_ESP 0 "NOT_DEFINED" 1 "T20_0" 2 "T23_1" 3 "SNV" ;
+VAL_ 768 DM_ART 0 "NOT_DEFINED" 1 "T20_0" 2 "T23_1" 3 "SNV" ;
+VAL_ 768 DMMAX_ART 0 "NOT_DEFINED" 1 "T20_0" 2 "T23_1" 3 "SNV" ;
+VAL_ 768 DMMIN_ART 0 "NOT_DEFINED" 1 "T20_0" 2 "T23_1" 3 "SNV" ;
+VAL_ 768 DMTGL_ART 0 "NOT_DEFINED" 1 "T20_0" 2 "T23_1" 3 "SNV" ;
+VAL_ 768 SFB 0 "BRAKE_NO" 1 "BREMSE_YES" 2 "NOT_DEFINED" 3 "SNV" ;
+VAL_ 768 SFB_PA 0 "BRAKE_NO" 1 "BREMSE_YES" 2 "NOT_DEFINED" 3 "SNV" ;
+VAL_ 768 T_Z 0 "NOT_DEFINED" 1 "T20_0" 2 "T23_1" 3 "SNV" ;
+VAL_ 768 AMR_AKT_ESP 0 "NOT_DEFINED" 1 "T20_0" 2 "T23_1" 3 "SNV" ;
+VAL_ 768 MDYN_ESP 0 "NOT_DEFINED" 1 "T20_0" 2 "T23_1" 3 "SNV" ;
+VAL_ 768 MPAR_ESP 0 "NOT_DEFINED" 1 "T20_0" 2 "T23_1" 3 "SNV" ;
+VAL_ 808 RIZ_VR 0 "OK" 1 "ESP_DEF" 2 "ESP_OFF" 3 "ESP_OFF_DS" 4 "BAS_DEF" 5 "ABS_DEF" 6 "ABS_OFF" 7 "BKV_DEF_GBV" 8 "ALL_OFF_DS" 9 "SBCS_DEF" 10 "SBCS_ON" 11 "SBCH_N_AKT" 13 "ESP_BAS_DEF" 14 "SBCH_OFF" 15 "SBCH" 16 "ALL_DEF" 17 "ALL_DEF_GBV" 19 "ALL_DIAG" 20 "ALL_DIAG_GBV" 22 "ALL_OFF" 23 "ALL_OFF_GBV" 24 "SBCS" 25 "SBCS_OFF" 26 "BRAKE" 27 "SBCS_N_AKT" 28 "SBCH_DEF" 29 "SBCS_DEF_29" 30 "GWH_P" 31 "SNV" ;
+VAL_ 808 RIZ_VL 0 "OK" 1 "ESP_DEF" 2 "ESP_OFF" 3 "ESP_OFF_DS" 4 "BAS_DEF" 5 "ABS_DEF" 6 "ABS_OFF" 7 "BKV_DEF_GBV" 8 "ALL_OFF_DS" 9 "SBCS_DEF" 10 "SBCS_ON" 11 "SBCH_N_AKT" 13 "ESP_BAS_DEF" 14 "SBCH_OFF" 15 "SBCH" 16 "ALL_DEF" 17 "ALL_DEF_GBV" 19 "ALL_DIAG" 20 "ALL_DIAG_GBV" 22 "ALL_OFF" 23 "ALL_OFF_GBV" 24 "SBCS" 25 "SBCS_OFF" 26 "BRAKE" 27 "SBCS_N_AKT" 28 "SBCH_DEF" 29 "SBCS_DEF_29" 30 "GWH_P" 31 "SNV" ;
+VAL_ 808 BZ328H 0 "OK" 1 "ESP_DEF" 2 "ESP_OFF" 3 "ESP_OFF_DS" 4 "BAS_DEF" 5 "ABS_DEF" 6 "ABS_OFF" 7 "BKV_DEF_GBV" 8 "ALL_OFF_DS" 9 "SBCS_DEF" 10 "SBCS_ON" 11 "SBCH_N_AKT" 13 "ESP_BAS_DEF" 14 "SBCH_OFF" 15 "SBCH" 16 "ALL_DEF" 17 "ALL_DEF_GBV" 19 "ALL_DIAG" 20 "ALL_DIAG_GBV" 22 "ALL_OFF" 23 "ALL_OFF_GBV" 24 "SBCS" 25 "SBCS_OFF" 26 "BRAKE" 27 "SBCS_N_AKT" 28 "SBCH_DEF" 29 "SBCS_DEF_29" 30 "GWH_P" 31 "SNV" ;
+VAL_ 808 KPL_OEF 0 "OK" 1 "ESP_DEF" 2 "ESP_OFF" 3 "ESP_OFF_DS" 4 "BAS_DEF" 5 "ABS_DEF" 6 "ABS_OFF" 7 "BKV_DEF_GBV" 8 "ALL_OFF_DS" 9 "SBCS_DEF" 10 "SBCS_ON" 11 "SBCH_N_AKT" 13 "ESP_BAS_DEF" 14 "SBCH_OFF" 15 "SBCH" 16 "ALL_DEF" 17 "ALL_DEF_GBV" 19 "ALL_DIAG" 20 "ALL_DIAG_GBV" 22 "ALL_OFF" 23 "ALL_OFF_GBV" 24 "SBCS" 25 "SBCS_OFF" 26 "BRAKE" 27 "SBCS_N_AKT" 28 "SBCH_DEF" 29 "SBCS_DEF_29" 30 "GWH_P" 31 "SNV" ;
+VAL_ 808 NOTBRE 0 "OK" 1 "ESP_DEF" 2 "ESP_OFF" 3 "ESP_OFF_DS" 4 "BAS_DEF" 5 "ABS_DEF" 6 "ABS_OFF" 7 "BKV_DEF_GBV" 8 "ALL_OFF_DS" 9 "SBCS_DEF" 10 "SBCS_ON" 11 "SBCH_N_AKT" 13 "ESP_BAS_DEF" 14 "SBCH_OFF" 15 "SBCH" 16 "ALL_DEF" 17 "ALL_DEF_GBV" 19 "ALL_DIAG" 20 "ALL_DIAG_GBV" 22 "ALL_OFF" 23 "ALL_OFF_GBV" 24 "SBCS" 25 "SBCS_OFF" 26 "BRAKE" 27 "SBCS_N_AKT" 28 "SBCH_DEF" 29 "SBCS_DEF_29" 30 "GWH_P" 31 "SNV" ;
+VAL_ 808 ESP_DSPL 0 "OK" 1 "ESP_DEF" 2 "ESP_OFF" 3 "ESP_OFF_DS" 4 "BAS_DEF" 5 "ABS_DEF" 6 "ABS_OFF" 7 "BKV_DEF_GBV" 8 "ALL_OFF_DS" 9 "SBCS_DEF" 10 "SBCS_ON" 11 "SBCH_N_AKT" 13 "ESP_BAS_DEF" 14 "SBCH_OFF" 15 "SBCH" 16 "ALL_DEF" 17 "ALL_DEF_GBV" 19 "ALL_DIAG" 20 "ALL_DIAG_GBV" 22 "ALL_OFF" 23 "ALL_OFF_GBV" 24 "SBCS" 25 "SBCS_OFF" 26 "BRAKE" 27 "SBCS_N_AKT" 28 "SBCH_DEF" 29 "SBCS_DEF_29" 30 "GWH_P" 31 "SNV" ;
+VAL_ 528 V_MAX_TM 0 "PASSIVE" 1 "G1" 2 "G2" 3 "G3" 4 "G4" 5 "G5" 6 "G6" 7 "G7" ;
+VAL_ 528 FMMOTMAX 0 "PASSIVE" 1 "G1" 2 "G2" 3 "G3" 4 "G4" 5 "G5" 6 "G6" 7 "G7" ;
+VAL_ 528 V_DSPL_EIN 0 "PASSIVE" 1 "G1" 2 "G2" 3 "G3" 4 "G4" 5 "G5" 6 "G6" 7 "G7" ;
+VAL_ 528 V_DSPL_BL 0 "PASSIVE" 1 "G1" 2 "G2" 3 "G3" 4 "G4" 5 "G5" 6 "G6" 7 "G7" ;
+VAL_ 528 V_DSPL_ERR 0 "PASSIVE" 1 "G1" 2 "G2" 3 "G3" 4 "G4" 5 "G5" 6 "G6" 7 "G7" ;
+VAL_ 528 V_DSPL_LIM 0 "PASSIVE" 1 "G1" 2 "G2" 3 "G3" 4 "G4" 5 "G5" 6 "G6" 7 "G7" ;
+VAL_ 528 V_MAX_REG 0 "PASSIVE" 1 "G1" 2 "G2" 3 "G3" 4 "G4" 5 "G5" 6 "G6" 7 "G7" ;
+VAL_ 528 TM_EIN 0 "PASSIVE" 1 "G1" 2 "G2" 3 "G3" 4 "G4" 5 "G5" 6 "G6" 7 "G7" ;
+VAL_ 528 V_DSPL_PGB 0 "PASSIVE" 1 "G1" 2 "G2" 3 "G3" 4 "G4" 5 "G5" 6 "G6" 7 "G7" ;
+VAL_ 528 FBS_SE 0 "PASSIVE" 1 "G1" 2 "G2" 3 "G3" 4 "G4" 5 "G5" 6 "G6" 7 "G7" ;
+VAL_ 528 V_MAX_SUM 0 "PASSIVE" 1 "G1" 2 "G2" 3 "G3" 4 "G4" 5 "G5" 6 "G6" 7 "G7" ;
+VAL_ 528 NOTL 0 "PASSIVE" 1 "G1" 2 "G2" 3 "G3" 4 "G4" 5 "G5" 6 "G6" 7 "G7" ;
+VAL_ 528 KD_MS 0 "PASSIVE" 1 "G1" 2 "G2" 3 "G3" 4 "G4" 5 "G5" 6 "G6" 7 "G7" ;
+VAL_ 528 V_MAX_EIN 0 "PASSIVE" 1 "G1" 2 "G2" 3 "G3" 4 "G4" 5 "G5" 6 "G6" 7 "G7" ;
+VAL_ 528 TM_REG 0 "PASSIVE" 1 "G1" 2 "G2" 3 "G3" 4 "G4" 5 "G5" 6 "G6" 7 "G7" ;
+VAL_ 528 KUEB_S_A 0 "PASSIVE" 1 "G1" 2 "G2" 3 "G3" 4 "G4" 5 "G5" 6 "G6" 7 "G7" ;
+VAL_ 528 LL 0 "PASSIVE" 1 "G1" 2 "G2" 3 "G3" 4 "G4" 5 "G5" 6 "G6" 7 "G7" ;
+VAL_ 528 PWG_ERR 0 "PASSIVE" 1 "G1" 2 "G2" 3 "G3" 4 "G4" 5 "G5" 6 "G6" 7 "G7" ;
+VAL_ 528 CRASH_MS 0 "PASSIVE" 1 "G1" 2 "G2" 3 "G3" 4 "G4" 5 "G5" 6 "G6" 7 "G7" ;
+VAL_ 528 KOMP_BAUS 0 "PASSIVE" 1 "G1" 2 "G2" 3 "G3" 4 "G4" 5 "G5" 6 "G6" 7 "G7" ;
+VAL_ 528 MSS_AKT 0 "PASSIVE" 1 "G1" 2 "G2" 3 "G3" 4 "G4" 5 "G5" 6 "G6" 7 "G7" ;
+VAL_ 528 MSS_KL 0 "PASSIVE" 1 "G1" 2 "G2" 3 "G3" 4 "G4" 5 "G5" 6 "G6" 7 "G7" ;
+VAL_ 528 MSS_DEF 0 "PASSIVE" 1 "G1" 2 "G2" 3 "G3" 4 "G4" 5 "G5" 6 "G6" 7 "G7" ;
+VAL_ 528 VGL_ST 0 "PASSIVE" 1 "G1" 2 "G2" 3 "G3" 4 "G4" 5 "G5" 6 "G6" 7 "G7" ;
+VAL_ 528 LL_STBL 0 "PASSIVE" 1 "G1" 2 "G2" 3 "G3" 4 "G4" 5 "G5" 6 "G6" 7 "G7" ;
+VAL_ 528 V_DSPL_NEU 0 "PASSIVE" 1 "G1" 2 "G2" 3 "G3" 4 "G4" 5 "G5" 6 "G6" 7 "G7" ;
+VAL_ 528 PW 0 "PASSIVE" 1 "G1" 2 "G2" 3 "G3" 4 "G4" 5 "G5" 6 "G6" 7 "G7" ;
+VAL_ 528 GMIN_MS 0 "PASSIVE" 1 "G1" 2 "G2" 3 "G3" 4 "G4" 5 "G5" 6 "G6" 7 "G7" ;
+VAL_ 528 GMAX_MS 0 "PASSIVE" 1 "G1" 2 "G2" 3 "G3" 4 "G4" 5 "G5" 6 "G6" 7 "G7" ;
+VAL_ 528 ZH_AUS_MS 0 "PASSIVE" 1 "G1" 2 "G2" 3 "G3" 4 "G4" 5 "G5" 6 "G6" 7 "G7" ;
+VAL_ 528 AKT_R_MS 0 "PASSIVE" 1 "G1" 2 "G2" 3 "G3" 4 "G4" 5 "G5" 6 "G6" 7 "G7" ;
+VAL_ 528 SLV_MS 0 "SKL0" 1 "SKL1" 2 "SKL2" 3 "SKL3" 4 "SKL4" 5 "SKL5" 6 "SKL6" 7 "SKL7" 8 "SKL8" 9 "SKL9" 10 "SKL10" ;
+VAL_ 528 KOMP_NOTAUS 0 "SKL0" 1 "SKL1" 2 "SKL2" 3 "SKL3" 4 "SKL4" 5 "SKL5" 6 "SKL6" 7 "SKL7" 8 "SKL8" 9 "SKL9" 10 "SKL10" ;
+VAL_ 616 PW_F 0 "HEATER_SHUT_OFF_VALVE_IS_CLOSED" 1 "OPEN" 2 "TAKT" 3 "SNV" ;
+VAL_ 616 M_KOMP_MAX 0 "HEATER_SHUT_OFF_VALVE_IS_CLOSED" 1 "OPEN" 2 "TAKT" 3 "SNV" ;
+VAL_ 616 LAST_GEN 0 "HEATER_SHUT_OFF_VALVE_IS_CLOSED" 1 "OPEN" 2 "TAKT" 3 "SNV" ;
+VAL_ 616 LRS_MODE 0 "HEATER_SHUT_OFF_VALVE_IS_CLOSED" 1 "OPEN" 2 "TAKT" 3 "SNV" ;
+VAL_ 616 KID_MS 0 "HEATER_SHUT_OFF_VALVE_IS_CLOSED" 1 "OPEN" 2 "TAKT" 3 "SNV" ;
+VAL_ 616 HZL_ST 0 "HEATER_SHUT_OFF_VALVE_IS_CLOSED" 1 "OPEN" 2 "TAKT" 3 "SNV" ;
+VAL_ 616 ASV_KKL_169 0 "HEATER_SHUT_OFF_VALVE_IS_CLOSED" 1 "OPEN" 2 "TAKT" 3 "SNV" ;
+VAL_ 616 OEL_INFO_169 0 "HEATER_SHUT_OFF_VALVE_IS_CLOSED" 1 "OPEN" 2 "TAKT" 3 "SNV" ;
+VAL_ 616 KL_61_EIN 0 "HEATER_SHUT_OFF_VALVE_IS_CLOSED" 1 "OPEN" 2 "TAKT" 3 "SNV" ;
+VAL_ 755 FSC_SOLL 1 "UP" 2 "DOWN" 32 "PAS" 49 "ONE" 50 "TWO" 51 "THREE" 52 "FOUR" 53 "FUENF" 54 "SIX" 55 "SEVEN" 65 "A" 68 "D" 70 "F_ERROR_MARK" 78 "N" 80 "P" 82 "R" 255 "SNV" ;
+VAL_ 755 FSC_IST 32 "BLANK" 49 "ONE" 50 "TWO" 51 "THREE" 52 "FOUR" 53 "FUENF" 54 "SIX" 55 "SEVEN" 65 "A" 68 "D" 70 "F_ERROR_MARK" 78 "N" 80 "P" 82 "R" 255 "SNV" ;
+VAL_ 1544 PFKO 0 "M272E35" 1 "M271E18ML105" 2 "M271E18ML120" 3 "M112E37" 4 "M272E25" 5 "M272E30" 7 "M112E28" 8 "M112E32" 10 "M273E46" 11 "M273E55" 12 "M112E26" 13 "M113E43" 14 "M113E50" 18 "M271E18ML140" 19 "M271DE18ML105" 20 "M271DE18ML125" 22 "M111E_E23ML" 23 "M111E_E20" 24 "M111E_E20ML" 25 "M112E32_140" 26 "M266E20ATL" 27 "M266E15" 28 "M266E17" 29 "M266E20" 30 "M275E55" 31 "M137E58" 32 "OM640DE20LA60" 34 "OM640DE20LA80" 35 "OM642DE30LA160" 36 "OM640DE20LA100" 37 "OM613DE32LA" 38 "OM639DE15LA" 39 "OM628DE40LA" 40 "OM642DE30LA140" 43 "OM612DE27LA" 44 "OM611DE22LA100" 45 "OM611DE22LA85" 46 "OM611DE22LA75" 64 "M134E11" 65 "M135E13" 66 "M135E15" 67 "M135E15ATL" 68 "M272DE25" 69 "M272DE30" 70 "M272DE35" 71 "M273DE46" 72 "M273DE55" 79 "M271E18MLATTR115" 80 "M271E18MLATTR141" 96 "OM629DE40LA" 97 "OM646DE22EVO120" 98 "OM646DE22LAEVO100" 99 "OM642DE30LARED140" ;
+VAL_ 1544 ZVB_EIN_MS 0 "M272E35" 1 "M271E18ML105" 2 "M271E18ML120" 3 "M112E37" 4 "M272E25" 5 "M272E30" 7 "M112E28" 8 "M112E32" 10 "M273E46" 11 "M273E55" 12 "M112E26" 13 "M113E43" 14 "M113E50" 18 "M271E18ML140" 19 "M271DE18ML105" 20 "M271DE18ML125" 22 "M111E_E23ML" 23 "M111E_E20" 24 "M111E_E20ML" 25 "M112E32_140" 26 "M266E20ATL" 27 "M266E15" 28 "M266E17" 29 "M266E20" 30 "M275E55" 31 "M137E58" 32 "OM640DE20LA60" 34 "OM640DE20LA80" 35 "OM642DE30LA160" 36 "OM640DE20LA100" 37 "OM613DE32LA" 38 "OM639DE15LA" 39 "OM628DE40LA" 40 "OM642DE30LA140" 43 "OM612DE27LA" 44 "OM611DE22LA100" 45 "OM611DE22LA85" 46 "OM611DE22LA75" 64 "M134E11" 65 "M135E13" 66 "M135E15" 67 "M135E15ATL" 68 "M272DE25" 69 "M272DE30" 70 "M272DE35" 71 "M273DE46" 72 "M273DE55" 79 "M271E18MLATTR115" 80 "M271E18MLATTR141" 96 "OM629DE40LA" 97 "OM646DE22EVO120" 98 "OM646DE22LAEVO100" 99 "OM642DE30LARED140" ;
+VAL_ 1544 PFW 0 "OK" 1 "PFW1" 2 "PFW2" 3 "SNV" ;
+VAL_ 1544 ZWP_EIN_MS 0 "OK" 1 "PFW1" 2 "PFW2" 3 "SNV" ;
+VAL_ 1544 VB 0 "M272E35" 1 "M271E18ML105" 2 "M271E18ML120" 3 "M112E37" 4 "M272E25" 5 "M272E30" 7 "M112E28" 8 "M112E32" 10 "M273E46" 11 "M273E55" 12 "M112E26" 13 "M113E43" 14 "M113E50" 18 "M271E18ML140" 19 "M271DE18ML105" 20 "M271DE18ML125" 22 "M111E_E23ML" 23 "M111E_E20" 24 "M111E_E20ML" 25 "M112E32_140" 26 "M266E20ATL" 27 "M266E15" 28 "M266E17" 29 "M266E20" 30 "M275E55" 31 "M137E58" 32 "OM640DE20LA60" 34 "OM640DE20LA80" 35 "OM642DE30LA160" 36 "OM640DE20LA100" 37 "OM613DE32LA" 38 "OM639DE15LA" 39 "OM628DE40LA" 40 "OM642DE30LA140" 43 "OM612DE27LA" 44 "OM611DE22LA100" 45 "OM611DE22LA85" 46 "OM611DE22LA75" 64 "M134E11" 65 "M135E13" 66 "M135E15" 67 "M135E15ATL" 68 "M272DE25" 69 "M272DE30" 70 "M272DE35" 71 "M273DE46" 72 "M273DE55" 79 "M271E18MLATTR115" 80 "M271E18MLATTR141" 96 "OM629DE40LA" 97 "OM646DE22EVO120" 98 "OM646DE22LAEVO100" 99 "OM642DE30LARED140" ;
+VAL_ 1544 V_MAX_FIX 0 "M272E35" 1 "M271E18ML105" 2 "M271E18ML120" 3 "M112E37" 4 "M272E25" 5 "M272E30" 7 "M112E28" 8 "M112E32" 10 "M273E46" 11 "M273E55" 12 "M112E26" 13 "M113E43" 14 "M113E50" 18 "M271E18ML140" 19 "M271DE18ML105" 20 "M271DE18ML125" 22 "M111E_E23ML" 23 "M111E_E20" 24 "M111E_E20ML" 25 "M112E32_140" 26 "M266E20ATL" 27 "M266E15" 28 "M266E17" 29 "M266E20" 30 "M275E55" 31 "M137E58" 32 "OM640DE20LA60" 34 "OM640DE20LA80" 35 "OM642DE30LA160" 36 "OM640DE20LA100" 37 "OM613DE32LA" 38 "OM639DE15LA" 39 "OM628DE40LA" 40 "OM642DE30LA140" 43 "OM612DE27LA" 44 "OM611DE22LA100" 45 "OM611DE22LA85" 46 "OM611DE22LA75" 64 "M134E11" 65 "M135E13" 66 "M135E15" 67 "M135E15ATL" 68 "M272DE25" 69 "M272DE30" 70 "M272DE35" 71 "M273DE46" 72 "M273DE55" 79 "M271E18MLATTR115" 80 "M271E18MLATTR141" 96 "OM629DE40LA" 97 "OM646DE22EVO120" 98 "OM646DE22LAEVO100" 99 "OM642DE30LARED140" ;
+VAL_ 1544 FCOD_MOT 0 "M272E35" 1 "M271E18ML105" 2 "M271E18ML120" 3 "M112E37" 4 "M272E25" 5 "M272E30" 7 "M112E28" 8 "M112E32" 10 "M273E46" 11 "M273E55" 12 "M112E26" 13 "M113E43" 14 "M113E50" 18 "M271E18ML140" 19 "M271DE18ML105" 20 "M271DE18ML125" 22 "M111E_E23ML" 23 "M111E_E20" 24 "M111E_E20ML" 25 "M112E32_140" 26 "M266E20ATL" 27 "M266E15" 28 "M266E17" 29 "M266E20" 30 "M275E55" 31 "M137E58" 32 "OM640DE20LA60" 34 "OM640DE20LA80" 35 "OM642DE30LA160" 36 "OM640DE20LA100" 37 "OM613DE32LA" 38 "OM639DE15LA" 39 "OM628DE40LA" 40 "OM642DE30LA140" 43 "OM612DE27LA" 44 "OM611DE22LA100" 45 "OM611DE22LA85" 46 "OM611DE22LA75" 64 "M134E11" 65 "M135E13" 66 "M135E15" 67 "M135E15ATL" 68 "M272DE25" 69 "M272DE30" 70 "M272DE35" 71 "M273DE46" 72 "M273DE55" 79 "M271E18MLATTR115" 80 "M271E18MLATTR141" 96 "OM629DE40LA" 97 "OM646DE22EVO120" 98 "OM646DE22LAEVO100" 99 "OM642DE30LARED140" ;
+VAL_ 1544 GS_NVH 0 "M272E35" 1 "M271E18ML105" 2 "M271E18ML120" 3 "M112E37" 4 "M272E25" 5 "M272E30" 7 "M112E28" 8 "M112E32" 10 "M273E46" 11 "M273E55" 12 "M112E26" 13 "M113E43" 14 "M113E50" 18 "M271E18ML140" 19 "M271DE18ML105" 20 "M271DE18ML125" 22 "M111E_E23ML" 23 "M111E_E20" 24 "M111E_E20ML" 25 "M112E32_140" 26 "M266E20ATL" 27 "M266E15" 28 "M266E17" 29 "M266E20" 30 "M275E55" 31 "M137E58" 32 "OM640DE20LA60" 34 "OM640DE20LA80" 35 "OM642DE30LA160" 36 "OM640DE20LA100" 37 "OM613DE32LA" 38 "OM639DE15LA" 39 "OM628DE40LA" 40 "OM642DE30LA140" 43 "OM612DE27LA" 44 "OM611DE22LA100" 45 "OM611DE22LA85" 46 "OM611DE22LA75" 64 "M134E11" 65 "M135E13" 66 "M135E15" 67 "M135E15ATL" 68 "M272DE25" 69 "M272DE30" 70 "M272DE35" 71 "M273DE46" 72 "M273DE55" 79 "M271E18MLATTR115" 80 "M271E18MLATTR141" 96 "OM629DE40LA" 97 "OM646DE22EVO120" 98 "OM646DE22LAEVO100" 99 "OM642DE30LARED140" ;
+VAL_ 1544 FCOD_MOT6 0 "M272E35" 1 "M271E18ML105" 2 "M271E18ML120" 3 "M112E37" 4 "M272E25" 5 "M272E30" 7 "M112E28" 8 "M112E32" 10 "M273E46" 11 "M273E55" 12 "M112E26" 13 "M113E43" 14 "M113E50" 18 "M271E18ML140" 19 "M271DE18ML105" 20 "M271DE18ML125" 22 "M111E_E23ML" 23 "M111E_E20" 24 "M111E_E20ML" 25 "M112E32_140" 26 "M266E20ATL" 27 "M266E15" 28 "M266E17" 29 "M266E20" 30 "M275E55" 31 "M137E58" 32 "OM640DE20LA60" 34 "OM640DE20LA80" 35 "OM642DE30LA160" 36 "OM640DE20LA100" 37 "OM613DE32LA" 38 "OM639DE15LA" 39 "OM628DE40LA" 40 "OM642DE30LA140" 43 "OM612DE27LA" 44 "OM611DE22LA100" 45 "OM611DE22LA85" 46 "OM611DE22LA75" 64 "M134E11" 65 "M135E13" 66 "M135E15" 67 "M135E15ATL" 68 "M272DE25" 69 "M272DE30" 70 "M272DE35" 71 "M273DE46" 72 "M273DE55" 79 "M271E18MLATTR115" 80 "M271E18MLATTR141" 96 "OM629DE40LA" 97 "OM646DE22EVO120" 98 "OM646DE22LAEVO100" 99 "OM642DE30LARED140" ;
+VAL_ 1544 FCOD_BR 0 "BR221" 1 "BR129" 2 "BR210" 3 "BR202" 4 "BR220" 5 "BR170" 6 "BR203" 7 "BR168" 8 "BR163" 9 "BR208" 10 "BR463" 11 "BR215" 12 "BR230" 13 "BR211" 14 "BR209" 15 "BR461" 16 "BR240" 17 "BR251" 18 "BR171" 19 "BR164" 20 "BR169" 21 "BR199" 22 "BR216" 23 "BR219" 24 "BR454" 25 "NCV2" 26 "VITO" 27 "SPRINTER" 28 "NCV3" 29 "NCV1" 30 "REST" 31 "SNV" ;
+VAL_ 1544 FCOD_KAR 0 "W" 1 "V" 2 "C" 3 "S" 4 "A" 5 "R" 6 "SS" 7 "SNV" ;
+VAL_ 536 ERROR 0 "SPORT" 1 "COMFORT" 2 "NOT_DEFINED" 3 "NOT_DEFINED_3" 4 "NOT_DEFINED_4" 5 "NOT_DEFINED_5" 6 "OFFROAD" 7 "SNV" ;
+VAL_ 536 CALID_CVN_AKT 0 "SPORT" 1 "COMFORT" 2 "NOT_DEFINED" 3 "NOT_DEFINED_3" 4 "NOT_DEFINED_4" 5 "NOT_DEFINED_5" 6 "OFFROAD" 7 "SNV" ;
+VAL_ 536 FEHLPRF_ST 0 "WAIT" 1 "OK" 2 "ERROR" 3 "NOT_DEFINED" ;
+VAL_ 536 MKRIECH 0 "SPORT" 1 "COMFORT" 2 "NOT_DEFINED" 3 "NOT_DEFINED_3" 4 "NOT_DEFINED_4" 5 "NOT_DEFINED_5" 6 "OFFROAD" 7 "SNV" ;
+VAL_ 536 MOT_NAUS 0 "SPORT" 1 "COMFORT" 2 "NOT_DEFINED" 3 "NOT_DEFINED_3" 4 "NOT_DEFINED_4" 5 "NOT_DEFINED_5" 6 "OFFROAD" 7 "SNV" ;
+VAL_ 536 MOT_NAUS_CNF 0 "SPORT" 1 "COMFORT" 2 "NOT_DEFINED" 3 "NOT_DEFINED_3" 4 "NOT_DEFINED_4" 5 "NOT_DEFINED_5" 6 "OFFROAD" 7 "SNV" ;
+VAL_ 536 K_LSTFR 0 "SPORT" 1 "COMFORT" 2 "NOT_DEFINED" 3 "NOT_DEFINED_3" 4 "NOT_DEFINED_4" 5 "NOT_DEFINED_5" 6 "OFFROAD" 7 "SNV" ;
+VAL_ 536 DYN0_AMR_EGS 0 "SPORT" 1 "COMFORT" 2 "NOT_DEFINED" 3 "NOT_DEFINED_3" 4 "NOT_DEFINED_4" 5 "NOT_DEFINED_5" 6 "OFFROAD" 7 "SNV" ;
+VAL_ 536 DYN1_EGS 0 "SPORT" 1 "COMFORT" 2 "NOT_DEFINED" 3 "NOT_DEFINED_3" 4 "NOT_DEFINED_4" 5 "NOT_DEFINED_5" 6 "OFFROAD" 7 "SNV" ;
+VAL_ 536 MPAR_EGS 0 "SPORT" 1 "COMFORT" 2 "NOT_DEFINED" 3 "NOT_DEFINED_3" 4 "NOT_DEFINED_4" 5 "NOT_DEFINED_5" 6 "OFFROAD" 7 "SNV" ;
+VAL_ 536 FPC_AAD_NEU 0 "SPORT" 1 "COMFORT" 2 "NOT_DEFINED" 3 "NOT_DEFINED_3" 4 "NOT_DEFINED_4" 5 "NOT_DEFINED_5" 6 "OFFROAD" 7 "SNV" ;
+VAL_ 536 UEHITZ_GET 0 "SPORT" 1 "COMFORT" 2 "NOT_DEFINED" 3 "NOT_DEFINED_3" 4 "NOT_DEFINED_4" 5 "NOT_DEFINED_5" 6 "OFFROAD" 7 "SNV" ;
+VAL_ 536 GS_NOTL 0 "SPORT" 1 "COMFORT" 2 "NOT_DEFINED" 3 "NOT_DEFINED_3" 4 "NOT_DEFINED_4" 5 "NOT_DEFINED_5" 6 "OFFROAD" 7 "SNV" ;
+VAL_ 536 ALF 0 "SPORT" 1 "COMFORT" 2 "NOT_DEFINED" 3 "NOT_DEFINED_3" 4 "NOT_DEFINED_4" 5 "NOT_DEFINED_5" 6 "OFFROAD" 7 "SNV" ;
+VAL_ 536 KS 0 "SPORT" 1 "COMFORT" 2 "NOT_DEFINED" 3 "NOT_DEFINED_3" 4 "NOT_DEFINED_4" 5 "NOT_DEFINED_5" 6 "OFFROAD" 7 "SNV" ;
+VAL_ 536 GET_OK 0 "SPORT" 1 "COMFORT" 2 "NOT_DEFINED" 3 "NOT_DEFINED_3" 4 "NOT_DEFINED_4" 5 "NOT_DEFINED_5" 6 "OFFROAD" 7 "SNV" ;
+VAL_ 536 HSM 0 "N" 1 "D1" 2 "D2" 3 "D3" 4 "D4" 5 "D5" 6 "D6" 7 "D7" 8 "D_CVT" 9 "R_CVT" 10 "R3" 11 "R" 12 "R2" 13 "P" 14 "CANCEL" 15 "SNV" ;
+VAL_ 536 SWITCH 0 "N" 1 "D1" 2 "D2" 3 "D3" 4 "D4" 5 "D5" 6 "D6" 7 "D7" 8 "D_CVT" 9 "R_CVT" 10 "R3" 11 "R" 12 "R2" 13 "P" 14 "CANCEL" 15 "SNV" ;
+VAL_ 536 FW_HOCH 0 "N" 1 "D1" 2 "D2" 3 "D3" 4 "D4" 5 "D5" 6 "D6" 7 "D7" 8 "D_CVT" 9 "R_CVT" 10 "R3" 11 "R" 12 "R2" 13 "P" 14 "CANCEL" 15 "SNV" ;
+VAL_ 536 GSP_OK 0 "N" 1 "D1" 2 "D2" 3 "D3" 4 "D4" 5 "D5" 6 "D6" 7 "D7" 8 "D_CVT" 9 "R_CVT" 10 "R3" 11 "R" 12 "R2" 13 "P" 14 "CANCEL" 15 "SNV" ;
+VAL_ 536 G_G 0 "N" 1 "D1" 2 "D2" 3 "D3" 4 "D4" 5 "D5" 6 "D6" 7 "D7" 8 "D_CVT" 9 "R_CVT" 10 "R3" 11 "R" 12 "R2" 13 "P" 14 "CANCEL" 15 "SNV" ;
+VAL_ 536 K_G_B 0 "N" 1 "D1" 2 "D2" 3 "D3" 4 "D4" 5 "D5" 6 "D6" 7 "D7" 8 "D_CVT" 9 "R_CVT" 10 "R3" 11 "R" 12 "R2" 13 "P" 14 "CANCEL" 15 "SNV" ;
+VAL_ 536 K_O_B 0 "N" 1 "D1" 2 "D2" 3 "D3" 4 "D4" 5 "D5" 6 "D6" 7 "D7" 8 "D_CVT" 9 "R_CVT" 10 "R3" 11 "R" 12 "R2" 13 "P" 14 "CANCEL" 15 "SNV" ;
+VAL_ 536 K_S_B 0 "N" 1 "D1" 2 "D2" 3 "D3" 4 "D4" 5 "D5" 6 "D6" 7 "D7" 8 "D_CVT" 9 "R_CVT" 10 "R3" 11 "R" 12 "R2" 13 "P" 14 "CANCEL" 15 "SNV" ;
+VAL_ 536 GIC 0 "N" 1 "D1" 2 "D2" 3 "D3" 4 "D4" 5 "D5" 6 "D6" 7 "D7" 8 "D_CVT" 9 "R_CVT" 10 "R3" 11 "R" 12 "R2" 13 "P" 14 "NO_FORCE" 15 "SNV" ;
+VAL_ 536 GZC 0 "N" 1 "D1" 2 "D2" 3 "D3" 4 "D4" 5 "D5" 6 "D6" 7 "D7" 8 "D_CVT" 9 "R_CVT" 10 "R3" 11 "R" 12 "R2" 13 "P" 14 "CANCEL" 15 "SNV" ;
+VAL_ 1048 FMRAD 0 "P" 1 "R" 2 "N" 4 "D" 7 "SNV" ;
+VAL_ 1048 WHST 0 "P" 1 "R" 2 "N" 4 "D" 7 "SNV" ;
+VAL_ 1048 FMRADTGL 0 "P" 1 "R" 2 "N" 4 "D" 7 "SNV" ;
+VAL_ 1048 FMRADPAR 0 "P" 1 "R" 2 "N" 4 "D" 7 "SNV" ;
+VAL_ 1048 M_VERL 0 "N" 1 "D1" 2 "D2" 3 "D3" 4 "D4" 5 "D5" 6 "D6" 7 "D7" 8 "D_CVT" 9 "R_CVT" 10 "R3" 11 "R" 12 "R2" 13 "P" 14 "CANCEL" 15 "SNV" ;
+VAL_ 1048 GIC 0 "N" 1 "D1" 2 "D2" 3 "D3" 4 "D4" 5 "D5" 6 "D6" 7 "D7" 8 "D_CVT" 9 "R_CVT" 10 "R3" 11 "R" 12 "R2" 13 "P" 14 "NO_FORCE" 15 "SNV" ;
+VAL_ 1048 GZC 0 "N" 1 "D1" 2 "D2" 3 "D3" 4 "D4" 5 "D5" 6 "D6" 7 "D7" 8 "D_CVT" 9 "R_CVT" 10 "R3" 11 "R" 12 "R2" 13 "P" 14 "CANCEL" 15 "SNV" ;
+VAL_ 1048 KD 2 "C_MGFB_WT" 3 "C_MGSNN" 4 "C_MGBB" 6 "C_MGGEA" 7 "C_MGZSN" 10 "A_MGFB_WT" 11 "A_MGSNN" 12 "A_MGBB" 14 "A_MGGEA" 15 "A_MGZSN" 18 "S_MGFB_WT" 19 "S_MGSNN" 20 "S_MGBB" 22 "S_MGGEA" 23 "S_MGZSN" 24 "UP" 25 "DOWN" 32 "BLANK" 64 "BLANK_MGN" 65 "A" 67 "C" 70 "F_ERROR_MARK" 77 "M" 83 "S" 87 "W" 95 "UNDERSCORE" 96 "BLANK_MGW" 97 "A_MGN" 99 "C_MGN" 109 "M_MGN" 115 "S_MGN" 119 "W_MGN" 127 "__MGN" 129 "A_MGW" 131 "C_MGW" 134 "F_MGW" 141 "M_MGW" 147 "S_MGW" 151 "W_MGW" 159 "__MGW" 255 "SNV" ;
+VAL_ 1048 ESV_BRE 2 "C_MGFB_WT" 3 "C_MGSNN" 4 "C_MGBB" 6 "C_MGGEA" 7 "C_MGZSN" 10 "A_MGFB_WT" 11 "A_MGSNN" 12 "A_MGBB" 14 "A_MGGEA" 15 "A_MGZSN" 18 "S_MGFB_WT" 19 "S_MGSNN" 20 "S_MGBB" 22 "S_MGGEA" 23 "S_MGZSN" 24 "UP" 25 "DOWN" 32 "BLANK" 64 "BLANK_MGN" 65 "A" 67 "C" 70 "F_ERROR_MARK" 77 "M" 83 "S" 87 "W" 95 "UNDERSCORE" 96 "BLANK_MGW" 97 "A_MGN" 99 "C_MGN" 109 "M_MGN" 115 "S_MGN" 119 "W_MGN" 127 "__MGN" 129 "A_MGW" 131 "C_MGW" 134 "F_MGW" 141 "M_MGW" 147 "S_MGW" 151 "W_MGW" 159 "__MGW" 255 "SNV" ;
+VAL_ 1048 MECH 0 "LARGE" 1 "SMALL" 2 "GROSS2" 3 "KLEIN2" ;
+VAL_ 1048 CVT 0 "LARGE" 1 "SMALL" 2 "GROSS2" 3 "KLEIN2" ;
+VAL_ 1048 SWITCH 0 "LARGE" 1 "SMALL" 2 "GROSS2" 3 "KLEIN2" ;
+VAL_ 1048 FRONT 0 "LARGE" 1 "SMALL" 2 "GROSS2" 3 "KLEIN2" ;
+VAL_ 1048 ALL_WHEEL 0 "LARGE" 1 "SMALL" 2 "GROSS2" 3 "KLEIN2" ;
+VAL_ 1048 T_GET 2 "C_MGFB_WT" 3 "C_MGSNN" 4 "C_MGBB" 6 "C_MGGEA" 7 "C_MGZSN" 10 "A_MGFB_WT" 11 "A_MGSNN" 12 "A_MGBB" 14 "A_MGGEA" 15 "A_MGZSN" 18 "S_MGFB_WT" 19 "S_MGSNN" 20 "S_MGBB" 22 "S_MGGEA" 23 "S_MGZSN" 24 "UP" 25 "DOWN" 32 "BLANK" 64 "BLANK_MGN" 65 "A" 67 "C" 70 "F_ERROR_MARK" 77 "M" 83 "S" 87 "W" 95 "UNDERSCORE" 96 "BLANK_MGW" 97 "A_MGN" 99 "C_MGN" 109 "M_MGN" 115 "S_MGN" 119 "W_MGN" 127 "__MGN" 129 "A_MGW" 131 "C_MGW" 134 "F_MGW" 141 "M_MGW" 147 "S_MGW" 151 "W_MGW" 159 "__MGW" 255 "SNV" ;
+VAL_ 1048 FPC 2 "C_MGFB_WT" 3 "C_MGSNN" 4 "C_MGBB" 6 "C_MGGEA" 7 "C_MGZSN" 10 "A_MGFB_WT" 11 "A_MGSNN" 12 "A_MGBB" 14 "A_MGGEA" 15 "A_MGZSN" 18 "S_MGFB_WT" 19 "S_MGSNN" 20 "S_MGBB" 22 "S_MGGEA" 23 "S_MGZSN" 24 "UP" 25 "DOWN" 32 "BLANK" 64 "BLANK_MGN" 65 "A" 67 "C" 70 "F_ERROR_MARK" 77 "M" 83 "S" 87 "W" 95 "UNDERSCORE" 96 "BLANK_MGW" 97 "A_MGN" 99 "C_MGN" 109 "M_MGN" 115 "S_MGN" 119 "W_MGN" 127 "__MGN" 129 "A_MGW" 131 "C_MGW" 134 "F_MGW" 141 "M_MGW" 147 "S_MGW" 151 "W_MGW" 159 "__MGW" 255 "SNV" ;
+VAL_ 1048 FSC 32 "BLANK" 49 "ONE" 50 "TWO" 51 "THREE" 52 "FOUR" 53 "FUENF" 54 "SIX" 55 "SEVEN" 65 "A" 68 "D" 70 "F_ERROR_MARK" 78 "N" 80 "P" 82 "R" 255 "SNV" ;
+VAL_ 560 WHC 5 "D" 6 "N" 7 "R" 8 "P" 9 "PLUS" 10 "MINUS" 11 "N_ZW_D" 12 "R_ZW_N" 13 "P_ZW_R" 15 "SNV" ;
+VAL_ 560 KD 5 "D" 6 "N" 7 "R" 8 "P" 9 "PLUS" 10 "MINUS" 11 "N_ZW_D" 12 "R_ZW_N" 13 "P_ZW_R" 15 "SNV" ;
+VAL_ 560 FPT 5 "D" 6 "N" 7 "R" 8 "P" 9 "PLUS" 10 "MINUS" 11 "N_ZW_D" 12 "R_ZW_N" 13 "P_ZW_R" 15 "SNV" ;
+VAL_ 576 LDC 0 "RDW" 1 "USA_CAN" 2 "NOT_DEFINED" 3 "SNV" ;
+VAL_ 576 FZGVERSN 0 "START_WAS_LAUNCHED" 1 "V1" 2 "V2" 3 "V3" 4 "V4" 5 "V5" 6 "V6" 7 "V7" ;
+VAL_ 576 ABC_VH 0 "START_WAS_LAUNCHED" 1 "V1" 2 "V2" 3 "V3" 4 "V4" 5 "V5" 6 "V6" 7 "V7" ;
+VAL_ 576 GBL_AUS 0 "START_WAS_LAUNCHED" 1 "V1" 2 "V2" 3 "V3" 4 "V4" 5 "V5" 6 "V6" 7 "V7" ;
+VAL_ 576 ART_VH 0 "START_WAS_LAUNCHED" 1 "V1" 2 "V2" 3 "V3" 4 "V4" 5 "V5" 6 "V6" 7 "V7" ;
+VAL_ 576 ART_ABSTAND 0 "NBET" 1 "UNBET_NDEF" 2 "OBBET_BET" 3 "NOT_DEFINED_ROCKER_AND_PUSH_PUSH" ;
+VAL_ 576 ABL_EIN 0 "NBET" 1 "AUS_BET" 2 "EIN_NDEF" 3 "SNV" ;
+VAL_ 576 ART_ABW_BET 0 "NDEF_NBET" 1 "AUS_NDEF" 2 "ON_BET" 3 "SNV" ;
+VAL_ 576 ST3_BET 0 "NBET" 1 "UNBET_NDEF" 2 "OBBET_BET" 3 "NOT_DEFINED_ROCKER_AND_PUSH_PUSH" ;
+VAL_ 576 ST2_BET 0 "NBET" 1 "UNBET_NDEF" 2 "OBBET_BET" 3 "NOT_DEFINED_ROCKER_AND_PUSH_PUSH" ;
+VAL_ 576 KL_31B 0 "NOT_DEFINED" 1 "LL" 2 "RL" 3 "SNV" ;
+VAL_ 576 HAS_KL 0 "NOT_DEFINED" 1 "LL" 2 "RL" 3 "SNV" ;
+VAL_ 576 ESP_BET 0 "NBET" 1 "AUS_BET" 2 "EIN_NDEF" 3 "SNV" ;
+VAL_ 576 BN_NTLF 0 "NBET" 1 "AUS_BET" 2 "EIN_NDEF" 3 "SNV" ;
+VAL_ 576 CRASH 0 "NOT_DEFINED" 1 "LL" 2 "RL" 3 "SNV" ;
+VAL_ 576 CRASH_CNF 0 "NOT_DEFINED" 1 "LL" 2 "RL" 3 "SNV" ;
+VAL_ 576 INF_RFE_SAM 0 "NOT_DEFINED" 1 "LL" 2 "RL" 3 "SNV" ;
+VAL_ 576 VSTAT_A 0 "NOT_DEFINED" 1 "LL" 2 "RL" 3 "SNV" ;
+VAL_ 576 ASG_SPORT_BET 0 "NOT_DEFINED" 1 "LL" 2 "RL" 3 "SNV" ;
+VAL_ 576 BN_SOCS 0 "NOT_DEFINED" 1 "LL" 2 "RL" 3 "SNV" ;
+VAL_ 576 BLS_A 0 "NOT_DEFINED" 1 "LL" 2 "RL" 3 "SNV" ;
+VAL_ 576 SAM_PAS 0 "NOT_DEFINED" 1 "LL" 2 "RL" 3 "SNV" ;
+VAL_ 576 LL_RLC 0 "NOT_DEFINED" 1 "LL" 2 "RL" 3 "SNV" ;
+VAL_ 576 KG_ALB_OK 0 "NOT_DEFINED" 1 "LL" 2 "RL" 3 "SNV" ;
+VAL_ 576 KG_KL_AKT 0 "NOT_DEFINED" 1 "LL" 2 "RL" 3 "SNV" ;
+VAL_ 584 ART_VH 0 "GS_OK" 1 "GS_NOK" 2 "GS_FEHLER" 3 "SNV" ;
+VAL_ 584 X_CRASH 0 "GS_OK" 1 "GS_NOK" 2 "GS_FEHLER" 3 "SNV" ;
+VAL_ 584 CRASH_CNF 0 "GS_OK" 1 "GS_NOK" 2 "GS_FEHLER" 3 "SNV" ;
+VAL_ 584 CRASH 0 "GS_OK" 1 "GS_NOK" 2 "GS_FEHLER" 3 "SNV" ;
+VAL_ 584 KOMBI_MW_OK 0 "GS_OK" 1 "GS_NOK" 2 "GS_FEHLER" 3 "SNV" ;
+VAL_ 584 OC_BF 0 "OC_0" 1 "OC_1" 2 "OC_2" 3 "OC_3" 4 "OC_4" 6 "OC_FEHLER" 7 "SNV" ;
+VAL_ 584 GS_F 0 "GS_OK" 1 "GS_NOK" 2 "GS_FEHLER" 3 "SNV" ;
+VAL_ 584 GS_BF 0 "GS_OK" 1 "GS_NOK" 2 "GS_FEHLER" 3 "SNV" ;
+VAL_ 584 MW_AKT_SAM 0 "NONE" 1 "OK" 2 "NOT_DEFINED" 3 "SNV" ;
+VAL_ 584 BNS_AKT 0 "NONE" 1 "OK" 2 "NOT_DEFINED" 3 "SNV" ;
+VAL_ 584 KL_31B 0 "NONE" 1 "OK" 2 "NOT_DEFINED" 3 "SNV" ;
+VAL_ 584 HAS_KL 0 "NONE" 1 "OK" 2 "NOT_DEFINED" 3 "SNV" ;
+VAL_ 584 ESP_BET 0 "NBET" 1 "AUS_BET" 2 "EIN_NDEF" 3 "SNV" ;
+VAL_ 584 BN_NTLF 0 "NBET" 1 "AUS_BET" 2 "EIN_NDEF" 3 "SNV" ;
+VAL_ 584 KL54_RM 0 "NBET" 1 "AUS_BET" 2 "EIN_NDEF" 3 "SNV" ;
+VAL_ 584 BLS_A 0 "NONE" 1 "OK" 2 "NOT_DEFINED" 3 "SNV" ;
+VAL_ 584 VSTAT_A 0 "NONE" 1 "OK" 2 "NOT_DEFINED" 3 "SNV" ;
+VAL_ 584 INF_RFE_SAM 0 "NONE" 1 "OK" 2 "NOT_DEFINED" 3 "SNV" ;
+VAL_ 584 SAM_PAS 0 "NONE" 1 "OK" 2 "NOT_DEFINED" 3 "SNV" ;
+VAL_ 584 ANH_ERK2 0 "NONE" 1 "OK" 2 "NOT_DEFINED" 3 "SNV" ;
+VAL_ 584 MOT_AUF 0 "NONE" 1 "OK" 2 "NOT_DEFINED" 3 "SNV" ;
+VAL_ 584 GWHST_P_SAM 0 "NONE" 1 "OK" 2 "NOT_DEFINED" 3 "SNV" ;
+VAL_ 584 BN_SOCS 0 "NONE" 1 "OK" 2 "NOT_DEFINED" 3 "SNV" ;
+VAL_ 584 ST3_BET 0 "NBET" 1 "UNBET_NDEF" 2 "OBBET_BET" 3 "NOT_DEFINED_ROCKER_AND_PUSH_PUSH" ;
+VAL_ 584 ST2_BET 0 "NBET" 1 "UNBET_NDEF" 2 "OBBET_BET" 3 "NOT_DEFINED_ROCKER_AND_PUSH_PUSH" ;
+VAL_ 584 ABL_EIN 0 "NBET" 1 "UNBET_NDEF" 2 "OBBET_BET" 3 "NOT_DEFINED_ROCKER_AND_PUSH_PUSH" ;
+VAL_ 1791 AAS_VH 0 "YEAR00" 1 "YEAR01" 29 "YEAR29" 30 "N_DEF" 31 "SB" ;
+VAL_ 1791 PAS_VH 0 "YEAR00" 1 "YEAR01" 29 "YEAR29" 30 "N_DEF" 31 "SB" ;
+VAL_ 1791 ART_VH 0 "YEAR00" 1 "YEAR01" 29 "YEAR29" 30 "N_DEF" 31 "SB" ;
+VAL_ 1791 TM_BRE_VH 0 "YEAR00" 1 "YEAR01" 29 "YEAR29" 30 "N_DEF" 31 "SB" ;
+VAL_ 1791 KLA_VH 0 "YEAR00" 1 "YEAR01" 29 "YEAR29" 30 "N_DEF" 31 "SB" ;
+VAL_ 1791 VER_AE 0 "AE1" 1 "AEX" 2 "AE2" 3 "SB" ;
+VAL_ 1791 VER_JAHR 0 "YEAR00" 1 "YEAR01" 29 "YEAR29" 30 "N_DEF" 31 "SB" ;
+VAL_ 1791 GUARD_B4 0 "NOT_DEFINED" 1 "LL" 2 "RL" 3 "SNV" ;
+VAL_ 1791 GUARD_B6 0 "NOT_DEFINED" 1 "LL" 2 "RL" 3 "SNV" ;
+VAL_ 1791 LDC 0 "RDW" 1 "USA_CAN" 2 "NOT_DEFINED" 3 "SNV" ;
+VAL_ 1791 LL_RLC 0 "NOT_DEFINED" 1 "LL" 2 "RL" 3 "SNV" ;
+VAL_ 1791 GBL_AUS 0 "NOT_DEFINED" 1 "LL" 2 "RL" 3 "SNV" ;
+VAL_ 1032 WRC 0 "UBG" 1 "BG210" 2 "BG190" 3 "BG160" 4 "BG240" 5 "BG230" 6 "BG220" 7 "BG200" 128 "BG180" 129 "BG170" 130 "BG150" 131 "BG140" 132 "BG130" 133 "BG120" 134 "BG110" 135 "BG100" ;
+VAL_ 1032 RT_EIN 0 "UBG" 1 "BG210" 2 "BG190" 3 "BG160" 4 "BG240" 5 "BG230" 6 "BG220" 7 "BG200" 128 "BG180" 129 "BG170" 130 "BG150" 131 "BG140" 132 "BG130" 133 "BG120" 134 "BG110" 135 "BG100" ;
+VAL_ 1032 ZH_FREIG 0 "UBG" 1 "BG210" 2 "BG190" 3 "BG160" 4 "BG240" 5 "BG230" 6 "BG220" 7 "BG200" 128 "BG180" 129 "BG170" 130 "BG150" 131 "BG140" 132 "BG130" 133 "BG120" 134 "BG110" 135 "BG100" ;
+VAL_ 1032 SGT_VH 0 "UBG" 1 "BG210" 2 "BG190" 3 "BG160" 4 "BG240" 5 "BG230" 6 "BG220" 7 "BG200" 128 "BG180" 129 "BG170" 130 "BG150" 131 "BG140" 132 "BG130" 133 "BG120" 134 "BG110" 135 "BG100" ;
+VAL_ 1032 V_DSPL_AKT 0 "UBG" 1 "BG210" 2 "BG190" 3 "BG160" 4 "BG240" 5 "BG230" 6 "BG220" 7 "BG200" 128 "BG180" 129 "BG170" 130 "BG150" 131 "BG140" 132 "BG130" 133 "BG120" 134 "BG110" 135 "BG100" ;
+VAL_ 1032 WRC3 0 "UBG" 1 "BG210" 2 "BG190" 3 "BG160" 4 "BG240" 5 "BG230" 6 "BG220" 7 "BG200" 128 "BG180" 129 "BG170" 130 "BG150" 131 "BG140" 132 "BG130" 133 "BG120" 134 "BG110" 135 "BG100" ;
+VAL_ 1042 MAZ_NEU 0 "PASSIVE" 1 "FORWARD" 2 "REVERSE" 3 "SNV" ;
+VAL_ 1042 DANZ 0 "PASSIVE" 1 "FORWARD" 2 "REVERSE" 3 "SNV" ;
+VAL_ 1042 DRTGANZ 0 "PASSIVE" 1 "FORWARD" 2 "REVERSE" 3 "SNV" ;
+VAL_ 1042 V_ANZ 0 "VERY_SMALL" 1 "SMALL" 2 "MEDIUM" 3 "LARGE" 4 "VERY_LARGE" 5 "NOT_DEFINED" 6 "NOT_DEFINED_6" 7 "NOT_DEFINED_7" ;
+VAL_ 1042 IST_ABST 0 "VERY_SMALL" 1 "SMALL" 2 "MEDIUM" 3 "LARGE" 4 "VERY_LARGE" 5 "NOT_DEFINED" 6 "NOT_DEFINED_6" 7 "NOT_DEFINED_7" ;
+VAL_ 1042 ABST_S 0 "VERY_SMALL" 1 "SMALL" 2 "MEDIUM" 3 "LARGE" 4 "VERY_LARGE" 5 "NOT_DEFINED" 6 "NOT_DEFINED_6" 7 "NOT_DEFINED_7" ;
+VAL_ 562 CRC232H 0 "EWM" 1 "MRM" 2 "NOT_DEFINED" 3 "NOT_DEFINED_3" ;
+VAL_ 562 BZ232H 0 "EWM" 1 "MRM" 2 "NOT_DEFINED" 3 "NOT_DEFINED_3" ;
+VAL_ 562 LRT_PM3 0 "NBET" 1 "PLUS" 2 "MINUS" 3 "PLUS_MINUS" 4 "NOT_DEFINED" 5 "NOT_DEFINED_5" 6 "NOT_DEFINED_6" 7 "SNV" ;
+VAL_ 562 SID_SBW 0 "EWM" 1 "MRM" 2 "NOT_DEFINED" 3 "NOT_DEFINED_3" ;
+VAL_ 832 M_LAST 0 "EMPTY" 1 "HALF" 2 "FULL" 3 "SNV" ;
+VAL_ 832 FS_ID 0 "LF" 1 "SLF" 2 "EHNR" 3 "ABC" ;
+VAL_ 832 FZGN_HR 0 "EMPTY" 1 "HALF" 2 "FULL" 3 "SNV" ;
+VAL_ 832 FZGN_HL 0 "EMPTY" 1 "HALF" 2 "FULL" 3 "SNV" ;
+VAL_ 832 FZGN_VR 0 "EMPTY" 1 "HALF" 2 "FULL" 3 "SNV" ;
+VAL_ 832 FZGN_VL 0 "EMPTY" 1 "HALF" 2 "FULL" 3 "SNV" ;
+VAL_ 832 LOADED 0 "EMPTY" 1 "HALF" 2 "FULL" 3 "SNV" ;
+VAL_ 592 GMIN_ART 0 "PASSIVE" 1 "G1" 2 "G2" 3 "G3" 4 "G4" 5 "G5" 6 "G6" 7 "G7" ;
+VAL_ 592 GMAX_ART 0 "PASSIVE" 1 "G1" 2 "G2" 3 "G3" 4 "G4" 5 "G5" 6 "G6" 7 "G7" ;
+VAL_ 592 AKT_R_ART 0 "PASSIVE" 1 "G1" 2 "G2" 3 "G3" 4 "G4" 5 "G5" 6 "G6" 7 "G7" ;
+VAL_ 592 MBRE_ART 0 "SKL0" 1 "SKL1" 2 "SKL2" 3 "SKL3" 4 "SKL4" 5 "SKL5" 6 "SKL6" 7 "SKL7" 8 "SKL8" 9 "SKL9" 10 "SKL10" ;
+VAL_ 592 BZ250H 0 "SKL0" 1 "SKL1" 2 "SKL2" 3 "SKL3" 4 "SKL4" 5 "SKL5" 6 "SKL6" 7 "SKL7" 8 "SKL8" 9 "SKL9" 10 "SKL10" ;
+VAL_ 592 M_ART 0 "SKL0" 1 "SKL1" 2 "SKL2" 3 "SKL3" 4 "SKL4" 5 "SKL5" 6 "SKL6" 7 "SKL7" 8 "SKL8" 9 "SKL9" 10 "SKL10" ;
+VAL_ 592 ART_REG 0 "SKL0" 1 "SKL1" 2 "SKL2" 3 "SKL3" 4 "SKL4" 5 "SKL5" 6 "SKL6" 7 "SKL7" 8 "SKL8" 9 "SKL9" 10 "SKL10" ;
+VAL_ 592 LIM_REG 0 "SKL0" 1 "SKL1" 2 "SKL2" 3 "SKL3" 4 "SKL4" 5 "SKL5" 6 "SKL6" 7 "SKL7" 8 "SKL8" 9 "SKL9" 10 "SKL10" ;
+VAL_ 592 CAS_REG 0 "SKL0" 1 "SKL1" 2 "SKL2" 3 "SKL3" 4 "SKL4" 5 "SKL5" 6 "SKL6" 7 "SKL7" 8 "SKL8" 9 "SKL9" 10 "SKL10" ;
+VAL_ 592 MDYN_ART 0 "SKL0" 1 "SKL1" 2 "SKL2" 3 "SKL3" 4 "SKL4" 5 "SKL5" 6 "SKL6" 7 "SKL7" 8 "SKL8" 9 "SKL9" 10 "SKL10" ;
+VAL_ 592 MPAR_ART 0 "SKL0" 1 "SKL1" 2 "SKL2" 3 "SKL3" 4 "SKL4" 5 "SKL5" 6 "SKL6" 7 "SKL7" 8 "SKL8" 9 "SKL9" 10 "SKL10" ;
+VAL_ 592 SLV_ART 0 "SKL0" 1 "SKL1" 2 "SKL2" 3 "SKL3" 4 "SKL4" 5 "SKL5" 6 "SKL6" 7 "SKL7" 8 "SKL8" 9 "SKL9" 10 "SKL10" ;
+VAL_ 600 ART_ABW_AKT 0 "OK" 1 "DIRT" 2 "ART_DEF" 3 "ART_LIM_DEF" 4 "EXT" 5 "DBC_DEF" 6 "SCHMUTZ_DBC_DEF" 7 "ART_DBC_DEF" 8 "ART_LIM_DBC_DEF" 9 "EXT_DBC" 15 "UNDEFINED" ;
+VAL_ 600 ART_REAKT 0 "OK" 1 "DIRT" 2 "ART_DEF" 3 "ART_LIM_DEF" 4 "EXT" 5 "DBC_DEF" 6 "SCHMUTZ_DBC_DEF" 7 "ART_DBC_DEF" 8 "ART_LIM_DBC_DEF" 9 "EXT_DBC" 15 "UNDEFINED" ;
+VAL_ 600 ART_UEBERSP 0 "OK" 1 "DIRT" 2 "ART_DEF" 3 "ART_LIM_DEF" 4 "EXT" 5 "DBC_DEF" 6 "SCHMUTZ_DBC_DEF" 7 "ART_DBC_DEF" 8 "ART_LIM_DBC_DEF" 9 "EXT_DBC" 15 "UNDEFINED" ;
+VAL_ 600 ART_DSPL_NEU 0 "OK" 1 "DIRT" 2 "ART_DEF" 3 "ART_LIM_DEF" 4 "EXT" 5 "DBC_DEF" 6 "SCHMUTZ_DBC_DEF" 7 "ART_DBC_DEF" 8 "ART_LIM_DBC_DEF" 9 "EXT_DBC" 15 "UNDEFINED" ;
+VAL_ 600 V_ZIEL 0 "OK" 1 "DIRT" 2 "ART_DEF" 3 "ART_LIM_DEF" 4 "EXT" 5 "DBC_DEF" 6 "SCHMUTZ_DBC_DEF" 7 "ART_DBC_DEF" 8 "ART_LIM_DBC_DEF" 9 "EXT_DBC" 15 "UNDEFINED" ;
+VAL_ 600 TM_EIN_ART 0 "OK" 1 "DIRT" 2 "ART_DEF" 3 "ART_LIM_DEF" 4 "EXT" 5 "DBC_DEF" 6 "SCHMUTZ_DBC_DEF" 7 "ART_DBC_DEF" 8 "ART_LIM_DBC_DEF" 9 "EXT_DBC" 15 "UNDEFINED" ;
+VAL_ 600 ART_DSPL_BL 0 "OK" 1 "DIRT" 2 "ART_DEF" 3 "ART_LIM_DEF" 4 "EXT" 5 "DBC_DEF" 6 "SCHMUTZ_DBC_DEF" 7 "ART_DBC_DEF" 8 "ART_LIM_DBC_DEF" 9 "EXT_DBC" 15 "UNDEFINED" ;
+VAL_ 600 ART_SEG_EIN 0 "OK" 1 "DIRT" 2 "ART_DEF" 3 "ART_LIM_DEF" 4 "EXT" 5 "DBC_DEF" 6 "SCHMUTZ_DBC_DEF" 7 "ART_DBC_DEF" 8 "ART_LIM_DBC_DEF" 9 "EXT_DBC" 15 "UNDEFINED" ;
+VAL_ 600 OBJ_ERK 0 "OK" 1 "DIRT" 2 "ART_DEF" 3 "ART_LIM_DEF" 4 "EXT" 5 "DBC_DEF" 6 "SCHMUTZ_DBC_DEF" 7 "ART_DBC_DEF" 8 "ART_LIM_DBC_DEF" 9 "EXT_DBC" 15 "UNDEFINED" ;
+VAL_ 600 ART_EIN 0 "OK" 1 "DIRT" 2 "ART_DEF" 3 "ART_LIM_DEF" 4 "EXT" 5 "DBC_DEF" 6 "SCHMUTZ_DBC_DEF" 7 "ART_DBC_DEF" 8 "ART_LIM_DBC_DEF" 9 "EXT_DBC" 15 "UNDEFINED" ;
+VAL_ 600 ART_DSPL_LIM 0 "OK" 1 "DIRT" 2 "ART_DEF" 3 "ART_LIM_DEF" 4 "EXT" 5 "DBC_DEF" 6 "SCHMUTZ_DBC_DEF" 7 "ART_DBC_DEF" 8 "ART_LIM_DBC_DEF" 9 "EXT_DBC" 15 "UNDEFINED" ;
+VAL_ 600 ART_VFBR 0 "OK" 1 "DIRT" 2 "ART_DEF" 3 "ART_LIM_DEF" 4 "EXT" 5 "DBC_DEF" 6 "SCHMUTZ_DBC_DEF" 7 "ART_DBC_DEF" 8 "ART_LIM_DBC_DEF" 9 "EXT_DBC" 15 "UNDEFINED" ;
+VAL_ 600 ART_DSPL_PGB 0 "OK" 1 "DIRT" 2 "ART_DEF" 3 "ART_LIM_DEF" 4 "EXT" 5 "DBC_DEF" 6 "SCHMUTZ_DBC_DEF" 7 "ART_DBC_DEF" 8 "ART_LIM_DBC_DEF" 9 "EXT_DBC" 15 "UNDEFINED" ;
+VAL_ 600 SOLL_ABST 0 "OK" 1 "DIRT" 2 "ART_DEF" 3 "ART_LIM_DEF" 4 "EXT" 5 "DBC_DEF" 6 "SCHMUTZ_DBC_DEF" 7 "ART_DBC_DEF" 8 "ART_LIM_DBC_DEF" 9 "EXT_DBC" 15 "UNDEFINED" ;
+VAL_ 600 ABST_R_OBJ 0 "OK" 1 "DIRT" 2 "ART_DEF" 3 "ART_LIM_DEF" 4 "EXT" 5 "DBC_DEF" 6 "SCHMUTZ_DBC_DEF" 7 "ART_DBC_DEF" 8 "ART_LIM_DBC_DEF" 9 "EXT_DBC" 15 "UNDEFINED" ;
+VAL_ 600 V_ART 0 "OK" 1 "DIRT" 2 "ART_DEF" 3 "ART_LIM_DEF" 4 "EXT" 5 "DBC_DEF" 6 "SCHMUTZ_DBC_DEF" 7 "ART_DBC_DEF" 8 "ART_LIM_DBC_DEF" 9 "EXT_DBC" 15 "UNDEFINED" ;
+VAL_ 600 ART_ERR 0 "OK" 1 "DIRT" 2 "ART_DEF" 3 "ART_LIM_DEF" 4 "EXT" 5 "DBC_DEF" 6 "SCHMUTZ_DBC_DEF" 7 "ART_DBC_DEF" 8 "ART_LIM_DBC_DEF" 9 "EXT_DBC" 15 "UNDEFINED" ;
+VAL_ 600 ART_INFO 0 "OK" 1 "DIRT" 2 "ART_DEF" 3 "ART_LIM_DEF" 4 "EXT" 5 "DBC_DEF" 6 "SCHMUTZ_DBC_DEF" 7 "ART_DBC_DEF" 8 "ART_LIM_DBC_DEF" 9 "EXT_DBC" 15 "UNDEFINED" ;
+VAL_ 600 ART_WT 0 "OK" 1 "DIRT" 2 "ART_DEF" 3 "ART_LIM_DEF" 4 "EXT" 5 "DBC_DEF" 6 "SCHMUTZ_DBC_DEF" 7 "ART_DBC_DEF" 8 "ART_LIM_DBC_DEF" 9 "EXT_DBC" 15 "UNDEFINED" ;
+VAL_ 600 S_OBJ 0 "OK" 1 "DIRT" 2 "ART_DEF" 3 "ART_LIM_DEF" 4 "EXT" 5 "DBC_DEF" 6 "SCHMUTZ_DBC_DEF" 7 "ART_DBC_DEF" 8 "ART_LIM_DBC_DEF" 9 "EXT_DBC" 15 "UNDEFINED" ;
+VAL_ 600 ART_DSPL_EIN 0 "OK" 1 "DIRT" 2 "ART_DEF" 3 "ART_LIM_DEF" 4 "EXT" 5 "DBC_DEF" 6 "SCHMUTZ_DBC_DEF" 7 "ART_DBC_DEF" 8 "ART_LIM_DBC_DEF" 9 "EXT_DBC" 15 "UNDEFINED" ;
+VAL_ 1104 PRESF_L_KI 0 "PRESF_WM_AUS" 1 "PRESF_WM_EIN" 2 "NDEF" 3 "NDEF_3" ;
+VAL_ 1104 PRESF_L_SVL 0 "OFF" 1 "PRESAFE" 2 "BACK" 3 "NOT_DEFINED" ;
+VAL_ 1104 PRESF_L_SHD 0 "OFF" 1 "PRESAFE" 2 "BACK" 3 "NOT_DEFINED" ;
+VAL_ 1104 PRESF_L_TGL 0 "OFF" 1 "PRESAFE" 2 "BACK" 3 "NOT_DEFINED" ;
+VAL_ 1112 PRESF_R_KI 0 "PRESF_WM_AUS" 1 "PRESF_WM_EIN" 2 "NDEF" 3 "NDEF_3" ;
+VAL_ 1112 PRESF_R_SVR 0 "OFF" 1 "PRESAFE" 2 "BACK" 3 "NOT_DEFINED" ;
+VAL_ 1112 PRESF_R_SHD 0 "OFF" 1 "PRESAFE" 2 "BACK" 3 "NOT_DEFINED" ;
+VAL_ 1112 PRESF_R_TGL 0 "OFF" 1 "PRESAFE" 2 "BACK" 3 "NOT_DEFINED" ;
+VAL_ 566 CRC236H 0 "INIT_PSBL" 1 "INIT_SELF" 2 "INIT_MUST" 3 "SNV" ;
+VAL_ 566 LRWS_ST 0 "OK" 1 "INI" 2 "ERR" 3 "ERR_INI" ;
+VAL_ 566 LRWS_ID 0 "INIT_PSBL" 1 "INIT_SELF" 2 "INIT_MUST" 3 "SNV" ;
+VAL_ 566 BZ236H 0 "INIT_PSBL" 1 "INIT_SELF" 2 "INIT_MUST" 3 "SNV" ;
+VAL_ 1064 ANFN_VG 0 "NOT_DEFINED" 1 "ANF_N" 2 "IDLE" 3 "SNV" ;
+VAL_ 1064 ANFNTGL_VG 0 "NOT_DEFINED" 1 "ANF_N" 2 "IDLE" 3 "SNV" ;
+VAL_ 1064 ANFNPAR_VG 0 "NOT_DEFINED" 1 "ANF_N" 2 "IDLE" 3 "SNV" ;
+VAL_ 1064 VG_GANG 0 "SH_IPG" 1 "LO" 2 "HI" 4 "N" 7 "SNV" ;
+VAL_ 1064 SH_ABTD 0 "SH_IPG" 1 "LO" 2 "HI" 4 "N" 7 "SNV" ;
+VAL_ 1064 VG_ERR 0 "SH_IPG" 1 "LO" 2 "HI" 4 "N" 7 "SNV" ;
+VAL_ 1064 VG_LOL 0 "SH_IPG" 1 "LO" 2 "HI" 4 "N" 7 "SNV" ;
+VAL_ 1064 SH_IMP 0 "SH_IPG" 1 "LO" 2 "HI" 4 "N" 7 "SNV" ;
+
+
+
